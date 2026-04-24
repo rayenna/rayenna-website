@@ -66,15 +66,12 @@ const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis'
 
   <!-- Page Hero -->
   <section class="page-hero">
-    <div class="container" style="text-align:center; position:relative; z-index:1">
+    <img src="/media/blog.webp" alt="Rayenna Solar Blog" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
       <span class="section-tag">Knowledge Hub</span>
       <h1 class="page-hero__title">Solar Energy <span>Blog</span></h1>
       <p class="page-hero__subtitle">Expert guides, pricing breakdowns, and solar news — everything you need to make informed decisions about going solar.</p>
-    </div>
-    <div class="page-hero__wave">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/>
-      </svg>
     </div>
   </section>
 
@@ -135,9 +132,32 @@ const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis'
 
 <style>
 .page-hero {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%);
-  padding: 140px 0 80px;
   position: relative;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 30, 55, 0.65);
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 72px;
 }
 .page-hero__title {
   font-family: var(--font-heading);
@@ -148,8 +168,6 @@ const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis'
 }
 .page-hero__title span { color: var(--color-primary); }
 .page-hero__subtitle { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; }
-.page-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
-.page-hero__wave svg { width: 100%; display: block; }
 
 .category-filter {
   display: flex;

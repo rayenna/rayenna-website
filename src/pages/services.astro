@@ -1,258 +1,286 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const services = [
-  {
-    id: 'residential',
-    icon: '🏠',
-    title: 'Residential Solar',
-    subtitle: 'For Homes & Villas',
-    desc: 'Power your home with clean solar energy. Our residential systems are tailored to your household\'s energy consumption, roof size, and budget — ensuring maximum savings from day one.',
-    points: ['Custom system design for your home', 'Grid-tied and off-grid options', 'Net metering & govt. subsidy assistance', 'Real-time monitoring app included'],
-    color: '#fff4ec',
-    accent: '#f97316',
-  },
-  {
-    id: 'commercial',
-    icon: '🏢',
-    title: 'Commercial Solar',
-    subtitle: 'For Businesses & Factories',
-    desc: 'Reduce your operational costs significantly with a commercial solar installation. Whether it\'s a shop, warehouse, hotel, or factory — we design systems that match your load profile.',
-    points: ['High-capacity industrial systems', 'Rooftop & ground-mount options', 'DISCOM approvals & documentation', 'Detailed ROI analysis provided'],
-    color: '#eff6ff',
-    accent: '#3b82f6',
-  },
-  {
-    id: 'maintenance',
-    icon: '🔧',
-    title: 'Maintenance & Support',
-    subtitle: 'Ongoing Care for Your System',
-    desc: 'Solar panels require minimal maintenance, but periodic cleaning, inverter checks, and performance audits ensure your system always runs at peak efficiency.',
-    points: ['Annual maintenance contracts (AMC)', 'Panel cleaning & inspection', 'Inverter servicing & replacement', '24/7 support helpline'],
-    color: '#eef9f0',
-    accent: '#22c55e',
-  },
-  {
-    id: 'consultation',
-    icon: '💬',
-    title: 'Free Consultation',
-    subtitle: 'Start Your Solar Journey',
-    desc: 'Not sure where to begin? Our solar experts will visit your site, assess your energy needs, and provide a detailed proposal — completely free of charge, with no obligation.',
-    points: ['In-person site visit', 'Energy audit & load calculation', 'Detailed cost-benefit report', 'System sizing recommendations'],
-    color: '#fdf4ff',
-    accent: '#a855f7',
-  },
-];
 ---
-<Layout title="Our Services — Rayenna Energy" description="Explore Rayenna Energy's solar services: residential solar, commercial solar, maintenance, and free consultation in Kochi, Kerala.">
+<Layout title="Our Services – Rayenna Solar" description="Explore Rayenna Energy's solar services: domestic solar, commercial solar, and consultation services in Kochi, Kerala.">
 
-  <!-- Page Hero -->
+  <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
-    <div class="container" style="text-align:center; position:relative; z-index:1">
-      <span class="section-tag">What We Offer</span>
-      <h1 class="page-hero__title">Solar Solutions for <span>Every Need</span></h1>
-      <p class="page-hero__subtitle">From residential rooftops to large commercial installations, Rayenna Energy has the expertise to bring solar power to your doorstep.</p>
-    </div>
-    <div class="page-hero__wave">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
-      </svg>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <h1 class="page-hero__title">Our Services</h1>
     </div>
   </section>
 
-  <!-- Services -->
-  <section style="padding:var(--section-padding); background:var(--color-white)">
-    <div class="container">
-      <div class="services-list">
-        {services.map((s, i) => (
-          <div class="service-item" id={s.id} style={`--service-accent: ${s.accent}; --service-bg: ${s.color}`}>
-            <div class="service-item__visual">
-              <div class="service-icon-wrap" style={`background:${s.color}`}>
-                <span class="service-icon">{s.icon}</span>
-              </div>
-              <div class="service-connector"></div>
-            </div>
-            <div class="service-item__content">
-              <span class="service-tag" style={`background:${s.color}; color:${s.accent}`}>{s.subtitle}</span>
-              <h2 class="service-title">{s.title}</h2>
-              <p class="service-desc">{s.desc}</p>
-              <ul class="service-points">
-                {s.points.map(p => (
-                  <li>
-                    <span class="point-check" style={`background:${s.color}; color:${s.accent}`}>✓</span>
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <a href={`${base}/contact`} class="btn btn-primary" style={`background:${s.accent}; border-color:${s.accent}`}>Get a Quote →</a>
-            </div>
-          </div>
-        ))}
+  <!-- ===== WHAT WE OFFER INTRO ===== -->
+  <section class="offer-intro">
+    <div class="container offer-intro__inner">
+      <div class="offer-intro__content">
+        <h2 class="section-title">WHAT WE OFFER</h2>
+        <p class="offer-tagline">Explore Our Extensive Services and Discover What Fits You Best!</p>
+        <p>We at Rayenna, understand that energy requirements vary from one client to another, which is why our services are designed with flexibility in mind. Whether you are a homeowner looking to reduce your electricity bills or a business seeking to achieve long-term cost savings, our team offers customised solar solutions to meet your specific requirements. We take great pride in providing top-grade components, exceptional installation services and ongoing support to guarantee that each system operates at its optimal level.</p>
+        <p style="margin-top:16px;">We also place a strong emphasis on completing projects on schedule, so there are no needless delays in getting your solar system up and operating. Our dedication doesn't end with installation; we also offer ongoing care to make sure your system keeps working at its best. We can provide proactive support and resolve any issues before they escalate by monitoring performance in real-time with our advanced online monitoring systems. With Rayenna's end-to-end solar services, renewable energy is now affordable, accessible, and efficient for both residential and commercial establishments. Explore our services to learn more about how our custom solar solutions can meet your specific energy requirements.</p>
+      </div>
+      <div class="offer-intro__image">
+        <img src="/media/solar-roof-top.webp" alt="Solar services overview" />
       </div>
     </div>
   </section>
 
-  <!-- Why Rayenna -->
-  <section style="padding:var(--section-padding); background:var(--color-light)">
-    <div class="container text-center">
-      <span class="section-tag">Why Choose Us</span>
-      <h2 class="section-title" style="margin-bottom:48px">The <span>Rayenna Advantage</span></h2>
-      <div class="advantage-grid">
-        {[
-          { icon: '🏅', title: 'Premium Quality', desc: 'Only Tier-1 solar panels and certified inverters' },
-          { icon: '📋', title: 'Full Compliance', desc: 'DISCOM approvals and subsidy documentation handled by us' },
-          { icon: '💳', title: 'Flexible Financing', desc: 'EMI options and subsidy claim assistance available' },
-          { icon: '📊', title: 'Smart Monitoring', desc: 'Real-time app to track your energy production and savings' },
-          { icon: '🔒', title: 'Warranty Backed', desc: '25-year panel performance warranty, 5-year installation warranty' },
-          { icon: '📞', title: 'Always There', desc: 'Dedicated after-sales support team for the life of your system' },
-        ].map(a => (
-          <div class="advantage-card">
-            <div class="advantage-icon">{a.icon}</div>
-            <h3>{a.title}</h3>
-            <p>{a.desc}</p>
+  <!-- ===== SERVICE 1: DOMESTIC ===== -->
+  <section class="service-section service-section--alt" id="domestic">
+    <div class="container service-section__inner">
+      <div class="service-section__image">
+        <img src="/media/Drilling-solar.webp" alt="Domestic solar installation" />
+      </div>
+      <div class="service-section__content">
+        <span class="service-num">1.</span>
+        <h2 class="section-title">Domestic Services</h2>
+        <p>Energy independence is something you can achieve with Rayenna's residential solar panel installation, in addition to energy savings. Our systems are intended to assist you in reducing your electricity expenses by generating your power, thereby granting you greater control over your monthly expenditures. With our solar solutions, you can use energy freely, knowing it's sustainably generated — whether it's for your household needs or charging your EV, there's no need to think twice. Furthermore, you may lessen your carbon footprint with our solar solutions, helping to create a cleaner, greener world for the coming generations.</p>
+        <p style="margin-top:16px;">We mainly assist you with the following procedures:</p>
+
+        <div class="service-steps">
+          <div class="service-step">
+            <div class="service-step__num">01</div>
+            <div class="service-step__body">
+              <h3>Feasibility</h3>
+              <p>We assess your site to see if installing solar is an appropriate choice. To guarantee that your system will provide the best possible energy output, our staff does a thorough site study, taking into account elements like roof direction and shading.</p>
+            </div>
           </div>
-        ))}
+          <div class="service-step">
+            <div class="service-step__num">02</div>
+            <div class="service-step__body">
+              <h3>Registration</h3>
+              <p>Following confirmation of the viability, we help with the required documentation and government registrations. Ensuring conformity with local legislation, we expedite the process from gaining approvals to applying for subsidies.</p>
+            </div>
+          </div>
+          <div class="service-step">
+            <div class="service-step__num">03</div>
+            <div class="service-step__body">
+              <h3>Completion</h3>
+              <p>We assess your site to see if installing solar is an appropriate choice. To guarantee that your system will provide the best possible energy output, our staff does a thorough site study, taking into account elements like roof direction and shading.</p>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:24px;">We can design and implement systems for homes of all sizes, from small apartments to large properties, due to the scalability of our solar panels. To ensure that your solar investment is operating well, we offer prompt maintenance services and frequent inspections. With proper maintenance and care, your solar panels can serve you efficiently for up to 20 years, while delivering a full return on your investment within just 5-6 years. Enjoy the independence of renewable energy without the burden of expensive utilities or complicated maintenance with Rayenna's residential services.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section style="padding:64px 0; background:var(--color-white)">
-    <div class="container text-center">
-      <h2 class="section-title">This is the Right Time to <span>Invest in Solar</span></h2>
-      <p class="section-subtitle" style="margin:0 auto 32px">Prices have never been lower, subsidies are available, and returns are guaranteed. Start today.</p>
-      <a href={`${base}/contact`} class="btn btn-primary" style="font-size:1rem; padding:16px 40px">Book a Free Site Visit →</a>
+  <!-- ===== SERVICE 2: COMMERCIAL ===== -->
+  <section class="service-section" id="commercial">
+    <div class="container service-section__inner">
+      <div class="service-section__content">
+        <span class="service-num">2.</span>
+        <h2 class="section-title">Commercial Services</h2>
+        <p>Rayenna's solar solutions for businesses are built to deliver both immediate and long-term benefits. Hotels, restaurants and other commercial buildings can drastically lower their operating expenses by adding solar panels. Our systems assist companies in reducing their electricity costs while demonstrating their dedication to environmental responsibility — a feature that attracts more eco-conscious customers and investors.</p>
+        <p style="margin-top:16px;">Beyond the financial benefits, efficiency is the design feature of our business systems. Rayenna's premium components guarantee long-term performance and durability, allowing businesses to concentrate on their operations rather than energy-related concerns. Using our customised methodology, we evaluate every location to design a system that optimises energy production and possible savings. Our online monitoring system also enables business owners to monitor performance and get maintenance warnings, guaranteeing prompt repair. In essence, Rayenna assists businesses in switching to solar power, which improves their bottom line and ensures a more sustainable future.</p>
+      </div>
+      <div class="service-section__image">
+        <img src="/media/Hardshell-solar.webp" alt="Commercial solar installation" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 3: CONSULTATION ===== -->
+  <section class="service-section service-section--alt" id="consultation">
+    <div class="container service-section__inner">
+      <div class="service-section__image">
+        <img src="/media/Plan-solar.webp" alt="Solar consultation" />
+      </div>
+      <div class="service-section__content">
+        <span class="service-num">3.</span>
+        <h2 class="section-title">Consultation Services</h2>
+        <p>Rayenna's consultation services provide comprehensive guidance throughout the entire process of transitioning to solar energy. Our team begins by doing a thorough site assessment to assess the unique needs and circumstances of your property. To gain insight into your current energy consumption and pinpoint the areas where solar energy can have the most significant impact, we perform energy audits. Our recommendations are specific and suited to your needs based on this data.</p>
+        <p style="margin-top:16px;">We also assist clients in navigating the financial aspects of solar energy, including the exploration of available incentives and the comprehension of potential savings. Our professionals make sure you get the best return on your solar investment by staying current on the newest tax breaks and financial incentives. The goal of Rayenna's consultation services is to equip you with all the knowledge you require to decide on going solar with assurance.</p>
+        <div class="service-cta-block">
+          <p>Ready to switch to solar energy?</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Contact us today to schedule a consultation and discover how Rayenna can transform your energy usage.</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
 
 <style>
+/* ===== PAGE HERO ===== */
 .page-hero {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%);
-  padding: 140px 0 80px;
-  text-align: center;
   position: relative;
+  height: 320px;
+  background: url('/media/hero (1).webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 30, 55, 0.65);
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 72px;
 }
 .page-hero__title {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: white;
-  margin: 12px 0 20px;
-  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
-.page-hero__title span { color: var(--color-primary); }
-.page-hero__subtitle {
-  color: rgba(255,255,255,0.8);
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-.page-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
-.page-hero__wave svg { width: 100%; display: block; }
 
-.services-list { display: flex; flex-direction: column; gap: 64px; }
-.service-item {
+/* ===== WHAT WE OFFER INTRO ===== */
+.offer-intro {
+  padding: var(--section-padding);
+  background: var(--color-white);
+}
+.offer-intro__inner {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
   align-items: start;
 }
-.service-item__visual { display: flex; flex-direction: column; align-items: center; }
-.service-icon-wrap {
-  width: 80px; height: 80px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
-}
-.service-icon { font-size: 2.2rem; }
-.service-connector {
-  width: 2px;
-  flex: 1;
-  min-height: 40px;
-  background: var(--color-border);
-  margin-top: 12px;
-}
-.service-item:last-child .service-connector { display: none; }
-
-.service-tag {
-  display: inline-block;
+.offer-intro__content .section-title { margin-bottom: 16px; }
+.offer-tagline {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 50px;
-  margin-bottom: 12px;
-}
-.service-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 800;
+  font-size: 1.1rem;
   color: var(--color-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  line-height: 1.4;
 }
-.service-desc {
+.offer-intro__content p {
   color: var(--color-text-muted);
-  line-height: 1.8;
-  max-width: 640px;
-  margin-bottom: 24px;
+  line-height: 1.9;
 }
-.service-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-.service-points li {
+.offer-intro__image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  max-height: 460px;
+  position: sticky;
+  top: 100px;
+}
+
+/* ===== SERVICE SECTIONS ===== */
+.service-section {
+  padding: var(--section-padding);
+  background: var(--color-white);
+}
+.service-section--alt {
+  background: var(--color-light);
+}
+.service-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.service-section__image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  max-height: 480px;
+  position: sticky;
+  top: 100px;
+}
+.service-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+}
+.service-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.service-section__content .section-title {
+  margin-bottom: 20px;
+}
+
+/* ===== SERVICE STEPS ===== */
+.service-steps {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.95rem;
-  color: var(--color-text);
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 28px;
 }
-.point-check {
-  width: 22px; height: 22px;
+.service-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.service-step__num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  flex-shrink: 0;
 }
-
-.advantage-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.advantage-card {
-  padding: 28px 20px;
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition);
-}
-.advantage-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.advantage-icon { font-size: 2rem; margin-bottom: 14px; }
-.advantage-card h3 {
+.service-step__body h3 {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-secondary);
   margin-bottom: 8px;
+  font-size: 1.05rem;
 }
-.advantage-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
+.service-step__body p {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
 
-@media (max-width: 768px) {
-  .service-item { grid-template-columns: 1fr; }
-  .service-item__visual { flex-direction: row; }
-  .service-connector { display: none; }
-  .advantage-grid { grid-template-columns: 1fr 1fr; }
+/* ===== CONSULTATION CTA ===== */
+.service-cta-block {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--color-primary);
 }
-@media (max-width: 480px) {
-  .advantage-grid { grid-template-columns: 1fr; }
+.service-cta-block p {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 16px !important;
+  font-size: 1.05rem;
+}
+.service-cta-block .btn {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .offer-intro__inner,
+  .service-section__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .offer-intro__image img,
+  .service-section__image img {
+    position: static;
+    max-height: 320px;
+  }
+  .service-section__inner .service-section__image:last-child {
+    order: -1;
+  }
 }
 </style>
