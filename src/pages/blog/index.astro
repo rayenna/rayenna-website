@@ -1,0 +1,309 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Sample blog posts — replace with real content or a CMS later
+const posts = [
+  {
+    slug: 'how-much-does-solar-cost-in-kerala',
+    title: 'How Much Does a Solar Panel System Cost in Kerala in 2024?',
+    excerpt: 'A complete guide to solar panel pricing, government subsidies, and what you can realistically expect to pay for a residential system in Kerala.',
+    date: '15 Nov 2024',
+    category: 'Pricing & Finance',
+    readTime: '5 min read',
+    emoji: '💰',
+  },
+  {
+    slug: 'pm-surya-ghar-subsidy-guide',
+    title: 'PM Surya Ghar Muft Bijli Yojana: Your Complete Subsidy Guide',
+    excerpt: 'The government\'s free electricity scheme offers up to ₹78,000 in subsidies. Here\'s exactly how to apply and what to expect.',
+    date: '8 Nov 2024',
+    category: 'Government Schemes',
+    readTime: '7 min read',
+    emoji: '🏛',
+  },
+  {
+    slug: 'solar-vs-electricity-bill-comparison',
+    title: 'Solar vs. KSEB Bill: A Real-World Cost Comparison',
+    excerpt: 'We ran the numbers for a typical Kerala household with a ₹3,000/month electricity bill. Here\'s the honest breakdown of ROI, savings, and payback period.',
+    date: '1 Nov 2024',
+    category: 'Analysis',
+    readTime: '6 min read',
+    emoji: '📊',
+  },
+  {
+    slug: 'best-solar-panels-brands-india-2024',
+    title: 'Best Solar Panel Brands Available in India in 2024',
+    excerpt: 'From Adani to Waaree to Vikram Solar — we compare the top brands on efficiency, warranty, pricing, and reliability for Indian conditions.',
+    date: '22 Oct 2024',
+    category: 'Buying Guide',
+    readTime: '8 min read',
+    emoji: '🔆',
+  },
+  {
+    slug: 'solar-maintenance-tips',
+    title: '5 Simple Maintenance Tips to Keep Your Solar System at Peak Performance',
+    excerpt: 'Solar panels are low-maintenance — but not zero-maintenance. These five tips can protect your investment and boost output by up to 15%.',
+    date: '10 Oct 2024',
+    category: 'Maintenance',
+    readTime: '4 min read',
+    emoji: '🔧',
+  },
+  {
+    slug: 'net-metering-explained',
+    title: 'Net Metering in Kerala: How to Sell Solar Power Back to the Grid',
+    excerpt: 'If your solar panels produce more electricity than you use, you can sell it back to KSEB. Here\'s how net metering works and how to apply.',
+    date: '2 Oct 2024',
+    category: 'Education',
+    readTime: '5 min read',
+    emoji: '🔌',
+  },
+];
+
+const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis', 'Buying Guide', 'Maintenance', 'Education'];
+---
+<Layout title="Solar Energy Blog — Rayenna Energy" description="Read expert articles on solar energy, government subsidies, pricing, and installation tips from Rayenna Energy's blog.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container" style="text-align:center; position:relative; z-index:1">
+      <span class="section-tag">Knowledge Hub</span>
+      <h1 class="page-hero__title">Solar Energy <span>Blog</span></h1>
+      <p class="page-hero__subtitle">Expert guides, pricing breakdowns, and solar news — everything you need to make informed decisions about going solar.</p>
+    </div>
+    <div class="page-hero__wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container">
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        {categories.map(cat => (
+          <button class={`cat-btn ${cat === 'All' ? 'active' : ''}`} data-cat={cat}>{cat}</button>
+        ))}
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="posts-grid">
+        {posts.map((post, i) => (
+          <article class="post-card" data-category={post.category}>
+            <div class="post-card__emoji">{post.emoji}</div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span class="post-category">{post.category}</span>
+                <span class="post-read-time">{post.readTime}</span>
+              </div>
+              <h2 class="post-title">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h2>
+              <p class="post-excerpt">{post.excerpt}</p>
+              <div class="post-footer">
+                <span class="post-date">📅 {post.date}</span>
+                <a href={`/blog/${post.slug}`} class="post-read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section style="padding:64px 0; background:var(--color-white)">
+    <div class="container">
+      <div class="newsletter-box">
+        <div>
+          <h3>Stay Updated on Solar News</h3>
+          <p>Get the latest articles, subsidy updates, and solar tips delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%);
+  padding: 140px 0 80px;
+  position: relative;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin: 12px 0 20px;
+}
+.page-hero__title span { color: var(--color-primary); }
+.page-hero__subtitle { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+.page-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.page-hero__wave svg { width: 100%; display: block; }
+
+.category-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.cat-btn {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 2px solid var(--color-border);
+  background: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+}
+.cat-btn:hover, .cat-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.post-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.post-card__emoji {
+  background: var(--color-primary-light);
+  padding: 28px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.post-card__body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.post-category {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+.post-read-time { font-size: 0.8rem; color: var(--color-text-muted); }
+.post-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.post-title a { transition: color var(--transition); }
+.post-title a:hover { color: var(--color-primary); }
+.post-excerpt {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+.post-date { font-size: 0.82rem; color: var(--color-text-muted); }
+.post-read-more {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: gap var(--transition);
+}
+.post-read-more:hover { text-decoration: underline; }
+
+.newsletter-box {
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.newsletter-box h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--color-secondary);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+.newsletter-box p { color: var(--color-text-muted); font-size: 0.9rem; }
+.newsletter-form { display: flex; gap: 12px; flex-wrap: wrap; }
+.newsletter-form input {
+  padding: 12px 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  min-width: 260px;
+  transition: border-color var(--transition);
+}
+.newsletter-form input:focus { border-color: var(--color-primary); }
+
+@media (max-width: 900px) {
+  .posts-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .posts-grid { grid-template-columns: 1fr; }
+  .newsletter-box { flex-direction: column; padding: 28px; }
+  .newsletter-form input { min-width: 100%; }
+}
+</style>
+
+<script>
+  // Category filter
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const postCards = document.querySelectorAll<HTMLElement>('.post-card');
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-cat');
+      postCards.forEach(card => {
+        const show = cat === 'All' || card.dataset.category === cat;
+        card.style.display = show ? 'flex' : 'none';
+      });
+    });
+  });
+</script>

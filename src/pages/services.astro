@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    id: 'residential',
+    icon: '🏠',
+    title: 'Residential Solar',
+    subtitle: 'For Homes & Villas',
+    desc: 'Power your home with clean solar energy. Our residential systems are tailored to your household\'s energy consumption, roof size, and budget — ensuring maximum savings from day one.',
+    points: ['Custom system design for your home', 'Grid-tied and off-grid options', 'Net metering & govt. subsidy assistance', 'Real-time monitoring app included'],
+    color: '#fff4ec',
+    accent: '#f97316',
+  },
+  {
+    id: 'commercial',
+    icon: '🏢',
+    title: 'Commercial Solar',
+    subtitle: 'For Businesses & Factories',
+    desc: 'Reduce your operational costs significantly with a commercial solar installation. Whether it\'s a shop, warehouse, hotel, or factory — we design systems that match your load profile.',
+    points: ['High-capacity industrial systems', 'Rooftop & ground-mount options', 'DISCOM approvals & documentation', 'Detailed ROI analysis provided'],
+    color: '#eff6ff',
+    accent: '#3b82f6',
+  },
+  {
+    id: 'maintenance',
+    icon: '🔧',
+    title: 'Maintenance & Support',
+    subtitle: 'Ongoing Care for Your System',
+    desc: 'Solar panels require minimal maintenance, but periodic cleaning, inverter checks, and performance audits ensure your system always runs at peak efficiency.',
+    points: ['Annual maintenance contracts (AMC)', 'Panel cleaning & inspection', 'Inverter servicing & replacement', '24/7 support helpline'],
+    color: '#eef9f0',
+    accent: '#22c55e',
+  },
+  {
+    id: 'consultation',
+    icon: '💬',
+    title: 'Free Consultation',
+    subtitle: 'Start Your Solar Journey',
+    desc: 'Not sure where to begin? Our solar experts will visit your site, assess your energy needs, and provide a detailed proposal — completely free of charge, with no obligation.',
+    points: ['In-person site visit', 'Energy audit & load calculation', 'Detailed cost-benefit report', 'System sizing recommendations'],
+    color: '#fdf4ff',
+    accent: '#a855f7',
+  },
+];
+---
+<Layout title="Our Services — Rayenna Energy" description="Explore Rayenna Energy's solar services: residential solar, commercial solar, maintenance, and free consultation in Kochi, Kerala.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container" style="text-align:center; position:relative; z-index:1">
+      <span class="section-tag">What We Offer</span>
+      <h1 class="page-hero__title">Solar Solutions for <span>Every Need</span></h1>
+      <p class="page-hero__subtitle">From residential rooftops to large commercial installations, Rayenna Energy has the expertise to bring solar power to your doorstep.</p>
+    </div>
+    <div class="page-hero__wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section style="padding:var(--section-padding); background:var(--color-white)">
+    <div class="container">
+      <div class="services-list">
+        {services.map((s, i) => (
+          <div class="service-item" id={s.id} style={`--service-accent: ${s.accent}; --service-bg: ${s.color}`}>
+            <div class="service-item__visual">
+              <div class="service-icon-wrap" style={`background:${s.color}`}>
+                <span class="service-icon">{s.icon}</span>
+              </div>
+              <div class="service-connector"></div>
+            </div>
+            <div class="service-item__content">
+              <span class="service-tag" style={`background:${s.color}; color:${s.accent}`}>{s.subtitle}</span>
+              <h2 class="service-title">{s.title}</h2>
+              <p class="service-desc">{s.desc}</p>
+              <ul class="service-points">
+                {s.points.map(p => (
+                  <li>
+                    <span class="point-check" style={`background:${s.color}; color:${s.accent}`}>✓</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <a href="/contact" class="btn btn-primary" style={`background:${s.accent}; border-color:${s.accent}`}>Get a Quote →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Rayenna -->
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container text-center">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title" style="margin-bottom:48px">The <span>Rayenna Advantage</span></h2>
+      <div class="advantage-grid">
+        {[
+          { icon: '🏅', title: 'Premium Quality', desc: 'Only Tier-1 solar panels and certified inverters' },
+          { icon: '📋', title: 'Full Compliance', desc: 'DISCOM approvals and subsidy documentation handled by us' },
+          { icon: '💳', title: 'Flexible Financing', desc: 'EMI options and subsidy claim assistance available' },
+          { icon: '📊', title: 'Smart Monitoring', desc: 'Real-time app to track your energy production and savings' },
+          { icon: '🔒', title: 'Warranty Backed', desc: '25-year panel performance warranty, 5-year installation warranty' },
+          { icon: '📞', title: 'Always There', desc: 'Dedicated after-sales support team for the life of your system' },
+        ].map(a => (
+          <div class="advantage-card">
+            <div class="advantage-icon">{a.icon}</div>
+            <h3>{a.title}</h3>
+            <p>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:64px 0; background:var(--color-white)">
+    <div class="container text-center">
+      <h2 class="section-title">This is the Right Time to <span>Invest in Solar</span></h2>
+      <p class="section-subtitle" style="margin:0 auto 32px">Prices have never been lower, subsidies are available, and returns are guaranteed. Start today.</p>
+      <a href="/contact" class="btn btn-primary" style="font-size:1rem; padding:16px 40px">Book a Free Site Visit →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%);
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin: 12px 0 20px;
+  line-height: 1.2;
+}
+.page-hero__title span { color: var(--color-primary); }
+.page-hero__subtitle {
+  color: rgba(255,255,255,0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.page-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.page-hero__wave svg { width: 100%; display: block; }
+
+.services-list { display: flex; flex-direction: column; gap: 64px; }
+.service-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.service-item__visual { display: flex; flex-direction: column; align-items: center; }
+.service-icon-wrap {
+  width: 80px; height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.service-icon { font-size: 2.2rem; }
+.service-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  background: var(--color-border);
+  margin-top: 12px;
+}
+.service-item:last-child .service-connector { display: none; }
+
+.service-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+.service-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+.service-desc {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 640px;
+  margin-bottom: 24px;
+}
+.service-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.service-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.point-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.advantage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.advantage-card {
+  padding: 28px 20px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.advantage-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.advantage-icon { font-size: 2rem; margin-bottom: 14px; }
+.advantage-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+.advantage-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .service-item { grid-template-columns: 1fr; }
+  .service-item__visual { flex-direction: row; }
+  .service-connector { display: none; }
+  .advantage-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .advantage-grid { grid-template-columns: 1fr; }
+}
+</style>

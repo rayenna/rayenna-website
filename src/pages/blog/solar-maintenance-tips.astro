@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const post = {
+  title: '5 Simple Maintenance Tips to Keep Your Solar System at Peak Performance',
+  date: '10 October 2024',
+  category: 'Maintenance',
+  readTime: '4 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="Solar panels are low-maintenance — but not zero-maintenance. These five tips can protect your investment and boost output by up to 15%.">
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+      <div class="post-meta">
+        <span class="post-category">{post.category}</span>
+        <span>·</span>
+        <span>{post.readTime}</span>
+        <span>·</span>
+        <span>{post.date}</span>
+      </div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author">
+        <div class="author-avatar">☀</div>
+        <div>
+          <strong>{post.author}</strong>
+          <span>Rayenna Energy, Kochi</span>
+        </div>
+      </div>
+    </div>
+    <div class="post-hero__wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/>
+      </svg>
+    </div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <p class="post-lead">One of solar energy's biggest selling points is low maintenance. But <em>low maintenance</em> doesn't mean <em>no maintenance</em>. A few simple habits can keep your system running at peak efficiency and protect your investment for decades.</p>
+
+        <h2>Tip 1: Clean Your Panels Every 2–3 Months</h2>
+        <p>Dust, bird droppings, and debris accumulate on panel surfaces and block sunlight — reducing output by 5–15%. In Kerala, the combination of coastal salt spray and post-monsoon organic matter makes regular cleaning especially important.</p>
+        <p><strong>How to clean:</strong> Use a soft cloth or sponge with plain water. Avoid abrasive materials or harsh detergents. Early morning or evening is best — cleaning hot panels with cold water can cause micro-cracks.</p>
+
+        <div class="post-callout">
+          <span class="callout-icon">🔧</span>
+          <div>
+            <strong>Safety First</strong>
+            <p>Never climb onto your roof without proper safety equipment. Rayenna Energy offers a professional annual cleaning and inspection service — ask us about it when you book your installation.</p>
+          </div>
+        </div>
+
+        <h2>Tip 2: Monitor Your Generation Data Monthly</h2>
+        <p>Most modern inverters come with a monitoring app (Solis, Growatt, SolarEdge, etc.) that shows daily, monthly, and lifetime generation. Make it a habit to check this monthly. A sudden unexplained drop in output is an early warning sign of a panel or inverter issue — catching it early can prevent bigger problems.</p>
+
+        <h2>Tip 3: Inspect for Physical Damage After Storms</h2>
+        <p>Kerala experiences intense monsoon rains, occasional strong winds, and tropical storms. After any severe weather event, do a visual inspection of your panels from ground level:</p>
+        <ul class="post-list">
+          <li>Look for cracked or discoloured panels (may indicate moisture ingress or cell damage).</li>
+          <li>Check that mounting brackets and frames haven't shifted or loosened.</li>
+          <li>Inspect cables and junction boxes for any damage or exposed wiring.</li>
+          <li>If anything looks unusual, call your installer — don't attempt electrical repairs yourself.</li>
+        </ul>
+
+        <h2>Tip 4: Keep Nearby Trees Trimmed</h2>
+        <p>Even partial shading from an overhanging branch can disproportionately reduce your system's output — especially with string inverter setups where shading on one panel affects the entire string. If any tree or structure near your home has grown to cast shade on your panels, have it trimmed.</p>
+
+        <h2>Tip 5: Schedule an Annual Professional Check-Up</h2>
+        <p>Once a year, have a qualified technician inspect your system. A professional check-up should cover:</p>
+        <ul class="post-list">
+          <li>Inverter health check and firmware update</li>
+          <li>Electrical connection tightness and corrosion inspection</li>
+          <li>Panel performance test (individual panel output check)</li>
+          <li>Mounting structure integrity check</li>
+          <li>Earth fault and insulation resistance test</li>
+        </ul>
+        <p>This annual check typically costs ₹1,500–3,000 and can extend your system's lifespan by years.</p>
+
+        <h2>How Long Will Your Solar System Last?</h2>
+        <p>With proper maintenance, modern solar panels typically last <strong>25–30 years</strong>. The inverter is the component most likely to need replacement, usually after 10–15 years. Budgeting ₹25,000–40,000 for an inverter replacement mid-life is wise financial planning.</p>
+
+        <div class="post-cta">
+          <h3>Rayenna Energy Maintenance Service</h3>
+          <p>We offer annual maintenance plans for all our installations — and for systems installed by others. Keep your solar investment protected.</p>
+          <a href="/contact" class="btn btn-primary">Enquire About Maintenance →</a>
+        </div>
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href="/blog/best-solar-panels-brands-india-2024">Best Solar Panel Brands →</a></li>
+            <li><a href="/blog/how-much-does-solar-cost-in-kerala">Solar System Cost in Kerala →</a></li>
+            <li><a href="/blog/net-metering-explained">Net Metering Explained →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🔧</div>
+          <strong>25-Year Lifespan</strong>
+          <p>Properly maintained solar panels can generate clean energy for 25–30 years.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.post-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 800; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-secondary), #2b5289); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 800; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>

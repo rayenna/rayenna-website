@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  { icon: '🏆', title: 'Quality First', desc: 'We use only premium-grade solar equipment from trusted global brands to ensure your system performs for decades.' },
+  { icon: '🎯', title: 'Customer-Centric', desc: 'Every installation is tailored to your unique needs. We listen, assess, and design specifically for your property and energy goals.' },
+  { icon: '🔬', title: 'Technical Excellence', desc: 'Our certified team stays up-to-date with the latest solar technology and installation best practices.' },
+  { icon: '🌱', title: 'Sustainability', desc: 'We are committed to making Kerala greener, one rooftop at a time. Your switch to solar is a vote for the planet.' },
+  { icon: '📱', title: 'Smart Monitoring', desc: 'Every system we install includes real-time monitoring so you can track your savings and system performance 24/7.' },
+  { icon: '🤝', title: 'Long-Term Partnership', desc: 'We don\'t disappear after installation. Our after-sales support and maintenance keeps your investment protected.' },
+];
+---
+<Layout title="About Us — Rayenna Energy" description="Learn about Rayenna Energy, Kerala's trusted solar energy solutions provider based in Kochi, Ernakulam.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <span class="section-tag">Who We Are</span>
+      <h1 class="page-hero__title">Powering Kerala's <span>Green Future</span></h1>
+      <p class="page-hero__subtitle">Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy.</p>
+    </div>
+    <div class="page-hero__wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="about-main" style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container about-main__grid">
+      <div class="about-main__content">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">Built on Expertise, <span>Driven by Purpose</span></h2>
+        <p>Rayenna Energy was founded with a singular mission: to make clean, affordable solar energy accessible to every home and business in Kerala. The knowledge and experience of our leadership team form the cornerstone upon which we've established our standing as a reliable supplier of solar energy solutions.</p>
+        <p style="margin-top:16px;">Going solar is about more than simply saving money on electricity bills. It's about making the earth a better place for future generations. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future — one rooftop at a time.</p>
+        <p style="margin-top:16px;">We guarantee a return on your initial investment within 5 to 6 years, rendering it a prudent financial decision for both your property and the environment. With the right maintenance and care, your solar system can operate at peak efficiency for over two decades.</p>
+        <div class="about-main__highlights">
+          <div class="highlight">
+            <span class="highlight__num">5–6</span>
+            <span class="highlight__label">Year ROI</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight__num">20+</span>
+            <span class="highlight__label">Year System Life</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight__num">100%</span>
+            <span class="highlight__label">Satisfaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-main__visual">
+        <div class="about-visual-card">
+          <div class="about-visual-icon">☀</div>
+          <h3>Our Mission</h3>
+          <p>To accelerate Kerala's transition to renewable energy by providing accessible, high-quality solar solutions with exceptional customer service.</p>
+        </div>
+        <div class="about-visual-card about-visual-card--alt">
+          <div class="about-visual-icon">🌱</div>
+          <h3>Our Vision</h3>
+          <p>A Kerala where every rooftop generates clean energy — reducing dependence on the grid and building a sustainable future for all.</p>
+        </div>
+        <div class="about-location">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>No. 3324/52, Ray Bhavan, NH Bypass,<br/>Vyttila, Ernakulam, Kerala 682019</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section style="padding:var(--section-padding); background:var(--color-white)">
+    <div class="container">
+      <div class="text-center mb-4" style="margin-bottom:48px">
+        <span class="section-tag">The Rayenna Way</span>
+        <h2 class="section-title">Choosing <span>Quality</span> at Every Step</h2>
+        <p class="section-subtitle" style="margin:0 auto">Quality is our priority at Rayenna. We make sure every solar system is constructed for dependability and long-term performance.</p>
+      </div>
+      <div class="values-grid">
+        {values.map(v => (
+          <div class="value-card">
+            <div class="value-card__icon">{v.icon}</div>
+            <h3>{v.title}</h3>
+            <p>{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:64px 0; background:var(--color-light)">
+    <div class="container text-center">
+      <h2 class="section-title">Ready to Go Solar?</h2>
+      <p class="section-subtitle" style="margin: 0 auto 32px">Talk to our experts today. Free consultation, no obligation.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap">
+        <a href="/contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="/services" class="btn btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%);
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin: 12px 0 20px;
+  line-height: 1.2;
+}
+.page-hero__title span { color: var(--color-primary); }
+.page-hero__subtitle {
+  color: rgba(255,255,255,0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.page-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.page-hero__wave svg { width: 100%; display: block; }
+
+.about-main__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-main__content p { color: var(--color-text-muted); line-height: 1.8; }
+.about-main__highlights {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.highlight { text-align: center; }
+.highlight__num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+.highlight__label { font-size: 0.85rem; color: var(--color-text-muted); }
+
+.about-main__visual { display: flex; flex-direction: column; gap: 20px; }
+.about-visual-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--color-primary);
+}
+.about-visual-card--alt { border-left-color: var(--color-secondary); }
+.about-visual-icon { font-size: 2rem; margin-bottom: 12px; }
+.about-visual-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+.about-visual-card p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.about-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.about-location svg { color: var(--color-primary); margin-top: 2px; flex-shrink: 0; }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.value-card {
+  padding: 32px 24px;
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+  border: 2px solid transparent;
+}
+.value-card:hover {
+  border-color: var(--color-primary);
+  background: white;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.value-card__icon { font-size: 2rem; margin-bottom: 16px; }
+.value-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 12px;
+}
+.value-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.7; }
+
+@media (max-width: 900px) {
+  .about-main__grid { grid-template-columns: 1fr; gap: 40px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .about-main__highlights { flex-direction: column; gap: 16px; }
+}
+</style>

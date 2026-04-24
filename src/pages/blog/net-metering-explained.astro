@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const post = {
+  title: 'Net Metering in Kerala: How to Sell Solar Power Back to the Grid',
+  date: '2 October 2024',
+  category: 'Education',
+  readTime: '5 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="If your solar panels produce more electricity than you use, you can sell it back to KSEB. Here's how net metering works and how to apply.">
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+      <div class="post-meta">
+        <span class="post-category">{post.category}</span>
+        <span>·</span>
+        <span>{post.readTime}</span>
+        <span>·</span>
+        <span>{post.date}</span>
+      </div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author">
+        <div class="author-avatar">☀</div>
+        <div>
+          <strong>{post.author}</strong>
+          <span>Rayenna Energy, Kochi</span>
+        </div>
+      </div>
+    </div>
+    <div class="post-hero__wave">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/>
+      </svg>
+    </div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <p class="post-lead">Net metering is one of the most financially powerful benefits of going solar. It allows you to sell excess electricity your panels generate back to KSEB — effectively using the grid as a giant battery. Here's how it works in Kerala.</p>
+
+        <h2>What Is Net Metering?</h2>
+        <p>Net metering is a billing mechanism where your electricity meter runs both forwards and backwards. When your solar panels generate more power than you're using, the excess flows into the grid and your meter runs backwards — credits accumulate on your account. When you draw power from the grid (at night or on cloudy days), those credits offset the cost.</p>
+        <p>At the end of each billing cycle, you only pay for the <em>net</em> difference between what you consumed and what you exported.</p>
+
+        <h2>How Net Metering Works in Kerala (KSEB)</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header">
+            <span>Scenario</span><span>What Happens</span><span>Your Bill</span>
+          </div>
+          <div class="cost-row">
+            <span>Solar generates more than you use</span><span>Excess exported to grid; meter credits accumulate</span><span>₹0 or credit carried forward</span>
+          </div>
+          <div class="cost-row">
+            <span>Solar generates less than you use</span><span>Draw from grid; credits offset the import</span><span>Pay only the net difference</span>
+          </div>
+          <div class="cost-row">
+            <span>Credits exceed monthly consumption</span><span>Surplus credits carry forward to next month</span><span>Nil bill, credits build up</span>
+          </div>
+          <div class="cost-row">
+            <span>Annual surplus credits</span><span>KSEB pays out remaining credits at buyback rate</span><span>Annual cash payment from KSEB</span>
+          </div>
+        </div>
+
+        <div class="post-callout">
+          <span class="callout-icon">🔌</span>
+          <div>
+            <strong>Current KSEB Buyback Rate</strong>
+            <p>As of 2024, KSEB purchases surplus solar power at ₹3.14 per unit for residential connections. Credits that aren't used within the settlement year are paid out at this rate.</p>
+          </div>
+        </div>
+
+        <h2>How to Apply for Net Metering in Kerala</h2>
+        <ul class="post-list">
+          <li><strong>Step 1:</strong> Install a grid-tied solar system through an MNRE-empanelled vendor (this is a prerequisite — off-grid systems cannot participate in net metering).</li>
+          <li><strong>Step 2:</strong> Your vendor submits a net metering application to KSEB on your behalf, along with technical documents about your system.</li>
+          <li><strong>Step 3:</strong> KSEB inspects the installation and approves the application (typically within 30–60 days).</li>
+          <li><strong>Step 4:</strong> KSEB installs a bidirectional (net) meter at your premises, replacing your existing meter.</li>
+          <li><strong>Step 5:</strong> Net metering begins automatically. Your subsequent bills will show import and export units separately.</li>
+        </ul>
+
+        <h2>Net Metering vs. Gross Metering</h2>
+        <p>In net metering, only your <em>surplus</em> power goes to the grid. In gross metering (used for larger commercial installations), <em>all</em> solar power goes to the grid and you buy all your consumption separately. For residential customers in Kerala, net metering is the standard and more financially advantageous arrangement.</p>
+
+        <h2>Real-World Example</h2>
+        <div class="roi-example">
+          <div class="roi-row"><span>Monthly generation (3 kW system)</span><strong>300 units</strong></div>
+          <div class="roi-row"><span>Monthly home consumption</span><strong>250 units</strong></div>
+          <div class="roi-row"><span>Net export to grid</span><strong>50 units</strong></div>
+          <div class="roi-row roi-row--highlight"><span>Credits earned (50 × ₹3.14)</span><strong>₹157 credit</strong></div>
+          <div class="roi-row"><span>Effective monthly bill</span><strong>₹0 (with credit carryover)</strong></div>
+        </div>
+
+        <div class="post-cta">
+          <h3>Maximise Your Solar Returns with Net Metering</h3>
+          <p>Rayenna Energy handles the complete net metering application with KSEB for every installation we do — at no additional cost to you.</p>
+          <a href="/contact" class="btn btn-primary">Get Started Today →</a>
+        </div>
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href="/blog/how-much-does-solar-cost-in-kerala">Solar System Cost in Kerala →</a></li>
+            <li><a href="/blog/solar-vs-electricity-bill-comparison">Solar vs KSEB Bill Comparison →</a></li>
+            <li><a href="/blog/pm-surya-ghar-subsidy-guide">PM Surya Ghar Subsidy Guide →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🔌</div>
+          <strong>Sell Power to KSEB</strong>
+          <p>With net metering, your meter can run backwards — turning sunlight directly into bill savings.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.post-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2b5289 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 800; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 0; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.roi-example { background: var(--color-light); border-radius: var(--radius-md); padding: 24px; margin: 20px 0 28px; }
+.roi-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-border); font-size: 0.92rem; }
+.roi-row:last-child { border: none; }
+.roi-row span { color: var(--color-text-muted); }
+.roi-row strong { color: var(--color-secondary); }
+.roi-row--highlight { background: var(--color-primary-light); margin: 0 -8px; padding: 12px 8px; border-radius: var(--radius-sm); }
+.roi-row--highlight span { color: var(--color-primary); font-weight: 600; }
+.roi-row--highlight strong { color: var(--color-primary); font-size: 1.05rem; }
+.post-cta { background: linear-gradient(135deg, var(--color-secondary), #2b5289); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 800; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row--header span:nth-child(n+3) { display: none; } .cost-row span:nth-child(n+3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>
