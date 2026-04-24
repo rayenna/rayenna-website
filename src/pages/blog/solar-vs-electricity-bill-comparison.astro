@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const post = {
   title: 'Solar vs. KSEB Bill: A Real-World Cost Comparison',
@@ -13,7 +14,7 @@ const post = {
 
   <section class="post-hero">
     <div class="container post-hero__inner">
-      <a href="/blog" class="back-link">← Back to Blog</a>
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
       <div class="post-meta">
         <span class="post-category">{post.category}</span>
         <span>·</span>
@@ -98,7 +99,7 @@ const post = {
         <div class="post-cta">
           <h3>Get Your Personalised Savings Analysis</h3>
           <p>Every home is different. Our team will calculate your exact savings based on your actual bill, roof area, and location — completely free.</p>
-          <a href="/contact" class="btn btn-primary">Get My Free Analysis →</a>
+          <a href={`${base}/contact`} class="btn btn-primary">Get My Free Analysis →</a>
         </div>
       </article>
 
@@ -106,14 +107,14 @@ const post = {
         <div class="sidebar-card">
           <h4>Get a Free Quote</h4>
           <p>Talk to our solar experts. No obligation, no pressure.</p>
-          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
         </div>
         <div class="sidebar-card">
           <h4>Related Articles</h4>
           <ul class="sidebar-links">
-            <li><a href="/blog/how-much-does-solar-cost-in-kerala">Solar System Cost in Kerala →</a></li>
-            <li><a href="/blog/pm-surya-ghar-subsidy-guide">PM Surya Ghar Subsidy Guide →</a></li>
-            <li><a href="/blog/net-metering-explained">Net Metering Explained →</a></li>
+            <li><a href={`${base}/blog/how-much-does-solar-cost-in-kerala`}>Solar System Cost in Kerala →</a></li>
+            <li><a href={`${base}/blog/pm-surya-ghar-subsidy-guide`}>PM Surya Ghar Subsidy Guide →</a></li>
+            <li><a href={`${base}/blog/net-metering-explained`}>Net Metering Explained →</a></li>
           </ul>
         </div>
         <div class="sidebar-card sidebar-card--cta">

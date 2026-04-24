@@ -2,12 +2,13 @@
 import '../styles/global.css';
 
 const { title = 'Rayenna Energy — Solar Solutions in Kochi', description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/services', label: 'Our Services' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact Us' },
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/about`, label: 'About Us' },
+  { href: `${base}/services`, label: 'Our Services' },
+  { href: `${base}/blog`, label: 'Blog' },
+  { href: `${base}/contact`, label: 'Contact Us' },
 ];
 const currentPath = Astro.url.pathname;
 ---
@@ -18,7 +19,7 @@ const currentPath = Astro.url.pathname;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <title>{title}</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,7 +29,7 @@ const currentPath = Astro.url.pathname;
   <!-- ===== NAVBAR ===== -->
   <header class="navbar" id="navbar">
     <div class="container navbar__inner">
-      <a href="/" class="navbar__logo" aria-label="Rayenna Energy Home">
+      <a href={`${base}/`} class="navbar__logo" aria-label="Rayenna Energy Home">
         <div class="logo-mark">☀</div>
         <div class="logo-text">
           <span class="logo-name">Rayenna</span>
@@ -45,7 +46,7 @@ const currentPath = Astro.url.pathname;
         ))}
       </nav>
 
-      <a href="/contact" class="btn btn-primary navbar__cta hide-mobile">Get Free Quote</a>
+      <a href={`${base}/contact`} class="btn btn-primary navbar__cta hide-mobile">Get Free Quote</a>
 
       <button class="navbar__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -57,7 +58,7 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a href={link.href} class="mobile-link">{link.label}</a>
       ))}
-      <a href="/contact" class="btn btn-primary" style="margin-top:12px; width:100%; justify-content:center;">Get Free Quote</a>
+      <a href={`${base}/contact`} class="btn btn-primary" style="margin-top:12px; width:100%; justify-content:center;">Get Free Quote</a>
     </div>
   </header>
 
@@ -101,10 +102,10 @@ const currentPath = Astro.url.pathname;
       <div class="footer__col">
         <h4 class="footer__heading">Our Services</h4>
         <ul class="footer__links">
-          <li><a href="/services#residential">Residential Solar</a></li>
-          <li><a href="/services#commercial">Commercial Solar</a></li>
-          <li><a href="/services#maintenance">Maintenance & Support</a></li>
-          <li><a href="/services#consultation">Free Consultation</a></li>
+          <li><a href={`${base}/services#residential`}>Residential Solar</a></li>
+          <li><a href={`${base}/services#commercial`}>Commercial Solar</a></li>
+          <li><a href={`${base}/services#maintenance`}>Maintenance & Support</a></li>
+          <li><a href={`${base}/services#consultation`}>Free Consultation</a></li>
         </ul>
       </div>
 

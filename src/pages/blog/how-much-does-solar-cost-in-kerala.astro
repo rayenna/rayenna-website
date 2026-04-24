@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // This is a sample post. In a real Astro site, you'd use
 // Content Collections and write posts as .md files.
@@ -16,7 +17,7 @@ const post = {
   <!-- Page Hero -->
   <section class="post-hero">
     <div class="container post-hero__inner">
-      <a href="/blog" class="back-link">← Back to Blog</a>
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
       <div class="post-meta">
         <span class="post-category">{post.category}</span>
         <span>·</span>
@@ -101,7 +102,7 @@ const post = {
         <div class="post-cta">
           <h3>Get Your Free Solar Quote Today</h3>
           <p>Our experts will visit your site and give you an exact cost estimate within 48 hours.</p>
-          <a href="/contact" class="btn btn-primary">Book a Free Site Visit →</a>
+          <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Visit →</a>
         </div>
       </article>
 
@@ -110,14 +111,14 @@ const post = {
         <div class="sidebar-card">
           <h4>Get a Free Quote</h4>
           <p>Talk to our solar experts. No obligation, no pressure.</p>
-          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
         </div>
         <div class="sidebar-card">
           <h4>Related Articles</h4>
           <ul class="sidebar-links">
-            <li><a href="/blog/pm-surya-ghar-subsidy-guide">PM Surya Ghar Subsidy Guide →</a></li>
-            <li><a href="/blog/solar-vs-electricity-bill-comparison">Solar vs KSEB Bill Comparison →</a></li>
-            <li><a href="/blog/net-metering-explained">Net Metering Explained →</a></li>
+            <li><a href={`${base}/blog/pm-surya-ghar-subsidy-guide`}>PM Surya Ghar Subsidy Guide →</a></li>
+            <li><a href={`${base}/blog/solar-vs-electricity-bill-comparison`}>Solar vs KSEB Bill Comparison →</a></li>
+            <li><a href={`${base}/blog/net-metering-explained`}>Net Metering Explained →</a></li>
           </ul>
         </div>
         <div class="sidebar-card sidebar-card--cta">

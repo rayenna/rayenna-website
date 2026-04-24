@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="Rayenna Energy — Solar Solutions in Kochi, Kerala">
 
@@ -16,8 +17,8 @@ import Layout from '../layouts/Layout.astro';
         <h1 class="hero__title">Soar into a <span>Sunny</span> Tomorrow!</h1>
         <p class="hero__subtitle">Make a switch to solar energy for a sustainable lifestyle that cares for both the planet and your wallet. Partner with Rayenna Energy for future-ready energy solutions.</p>
         <div class="hero__actions">
-          <a href="/services" class="btn btn-primary">See Our Services</a>
-          <a href="/contact#callback" class="btn btn-outline">Get a Call Back</a>
+          <a href={`${base}/services`} class="btn btn-primary">See Our Services</a>
+          <a href={`${base}/contact#callback`} class="btn btn-outline">Get a Call Back</a>
         </div>
         <div class="hero__badges">
           <div class="badge">
@@ -168,7 +169,7 @@ import Layout from '../layouts/Layout.astro';
             <span>End-to-end service from design to support</span>
           </div>
         </div>
-        <a href="/about" class="btn btn-primary mt-4">Read More About Us</a>
+        <a href={`${base}/about`} class="btn btn-primary mt-4">Read More About Us</a>
       </div>
     </div>
   </section>
