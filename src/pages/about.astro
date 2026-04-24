@@ -6,6 +6,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
+    <img src={`${base}/media/hero-copy.webp`} alt="" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <h1 class="page-hero__title">About Us</h1>
@@ -20,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p>Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
       </div>
       <div class="about-section__image">
-        <img src="/media/Artboard-2-copymnre.webp" alt="Rayenna Energy" />
+        <img src={`${base}/media/Artboard-2-copymnre.webp`} alt="Rayenna Energy" />
       </div>
     </div>
   </section>
@@ -29,7 +30,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="mission-section">
     <div class="container mission-section__inner">
       <div class="mission-section__image">
-        <img src="/media/solar-roof-top.webp" alt="Solar rooftop installation" />
+        <img src={`${base}/media/solar-roof-top.webp`} alt="Solar rooftop installation" />
       </div>
       <div class="mission-section__content">
         <h2 class="section-title">OUR MISSION</h2>
@@ -46,7 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="leaders-grid">
         <div class="leader-card">
           <div class="leader-card__avatar">
-            <img src="/media/Artboard-2mnre.webp" alt="Ganesh — Director" />
+            <img src={`${base}/media/Artboard-2mnre.webp`} alt="Ganesh — Director" />
           </div>
           <div class="leader-card__content">
             <h3>Ganesh</h3>
@@ -56,7 +57,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
         <div class="leader-card">
           <div class="leader-card__avatar">
-            <img src="/media/Artboard-1mnre.webp" alt="Shabeer — Director" />
+            <img src={`${base}/media/Artboard-1mnre.webp`} alt="Shabeer — Director" />
           </div>
           <div class="leader-card__content">
             <h3>Shabeer</h3>
@@ -77,7 +78,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p>Rayenna Energy is strong because of our committed group of engineers, technicians, and customer service representatives, all of whom are essential in leading us to the forefront. Our experts, highly skilled in technical areas and project management, ensure the design and implementation of systems to meet industry requirements for energy generation. The customer service team assist clients with first questions and post-installation support, while our trained experts concentrate on careful installation and maintenance. Our team's dedication to ongoing education and training helps them stay ahead of industry developments, enhancing Rayenna's standing as a leader in solar solutions.</p>
       </div>
       <div class="skilled-section__image">
-        <img src="/media/Drilling-solar.webp" alt="Rayenna installation team" />
+        <img src={`${base}/media/Drilling-solar.webp`} alt="Rayenna installation team" />
       </div>
     </div>
   </section>
@@ -86,7 +87,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="promise-section">
     <div class="container promise-section__inner">
       <div class="promise-section__image">
-        <img src="/media/Plan-solar.webp" alt="Our promise to you" />
+        <img src={`${base}/media/Plan-solar.webp`} alt="Our promise to you" />
       </div>
       <div class="promise-section__content">
         <h2 class="section-title">Our Promise to You</h2>
@@ -107,18 +108,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .page-hero {
   position: relative;
   height: 320px;
-  background: url('/media/hero-copy.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 .page-hero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(10, 30, 55, 0.65);
+  z-index: 1;
 }
 .page-hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding-top: 72px;
 }
 .page-hero__title {

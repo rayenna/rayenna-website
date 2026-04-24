@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname;
   <header class="navbar" id="navbar">
     <div class="container navbar__inner">
       <a href={`${base}/`} class="navbar__logo" aria-label="Rayenna Energy Home">
-        <img src="/media/Rayenna-Logo-Horizondal.webp" alt="Rayenna Energy" class="logo-img" />
+        <img src={`${base}/media/Rayenna-Logo-Horizondal.webp`} alt="Rayenna Energy" class="logo-img" />
       </a>
 
       <nav class="navbar__nav" id="main-nav" aria-label="Main navigation">
@@ -64,7 +64,7 @@ const currentPath = Astro.url.pathname;
     <div class="container footer__grid">
       <div class="footer__brand">
         <div class="footer__logo">
-          <img src="/media/Logo-white.webp" alt="Rayenna Energy" class="footer-logo-img" />
+          <img src={`${base}/media/Logo-white.webp`} alt="Rayenna Energy" class="footer-logo-img" />
         </div>
         <p class="footer__desc">Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy.</p>
         <div class="footer__social">

@@ -7,8 +7,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- ===== HERO ===== -->
   <section class="hero">
     <picture>
-      <source media="(max-width: 768px)" srcset="/media/hero-mobile.webp" />
-      <img src="/media/hero.jpg" alt="Solar panels on rooftop" class="hero__bg-img" />
+      <source media="(max-width: 768px)" srcset={`${base}/media/hero-mobile.webp`} />
+      <img src={`${base}/media/hero.jpg`} alt="Solar panels on rooftop" class="hero__bg-img" />
     </picture>
     <div class="hero__overlay"></div>
     <div class="container hero__inner">
@@ -27,7 +27,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="solar-intro">
     <div class="container solar-intro__inner">
       <div class="solar-intro__image">
-        <img src="/media/Solar-Kochi.webp" alt="Solar installation in Kochi" />
+        <img src={`${base}/media/Solar-Kochi.webp`} alt="Solar installation in Kochi" />
       </div>
       <div class="solar-intro__content">
         <h2 class="section-title">Solar Power: The Bright Choice for the Earth and You</h2>
@@ -95,7 +95,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       </div>
       <div class="invest-section__image">
-        <img src="/media/Artboard-1mnre.webp" alt="Solar investment benefits" />
+        <img src={`${base}/media/Artboard-1mnre.webp`} alt="Solar investment benefits" />
       </div>
     </div>
   </section>
@@ -104,7 +104,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="rayenna-way">
     <div class="container rayenna-way__inner">
       <div class="rayenna-way__image">
-        <img src="/media/Hardshell-solar.webp" alt="Rayenna solar quality" />
+        <img src={`${base}/media/Hardshell-solar.webp`} alt="Rayenna solar quality" />
       </div>
       <div class="rayenna-way__content">
         <h2 class="section-title">Choosing the Rayenna Way</h2>
