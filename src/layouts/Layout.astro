@@ -63,57 +63,29 @@ const currentPath = Astro.url.pathname;
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer__grid">
-      <div class="footer__brand">
-        <div class="footer__logo">
-          <img src={`${base}/media/Logo-white.webp`} alt="Rayenna Energy" class="footer-logo-img" />
-        </div>
-        <p class="footer__desc">Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook" class="social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram" class="social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
+
+      <!-- Col 1: Logo -->
+      <div class="footer__col footer__col--logo">
+        <img src={`${base}/media/Logo-white.webp`} alt="Rayenna Energy" class="footer-logo-img" />
       </div>
 
-      <div class="footer__col">
-        <h4 class="footer__heading">Quick Links</h4>
-        <ul class="footer__links">
-          {navLinks.map(l => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
+      <!-- Col 2: MNRE Badge -->
+      <div class="footer__col footer__col--badge">
+        <img src={`${base}/media/Artboard-2-copymnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="footer-badge-img" />
       </div>
 
-      <div class="footer__col">
-        <h4 class="footer__heading">Our Services</h4>
-        <ul class="footer__links">
-          <li><a href={`${base}/services#domestic`}>Domestic Solar</a></li>
-          <li><a href={`${base}/services#commercial`}>Commercial Solar</a></li>
-          <li><a href={`${base}/services#consultation`}>Consultation</a></li>
-        </ul>
+      <!-- Col 3: About Us -->
+      <div class="footer__col footer__col--about">
+        <h4 class="footer__heading">About Us</h4>
+        <p class="footer__text">Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
       </div>
 
-      <div class="footer__col">
-        <h4 class="footer__heading">Contact Us</h4>
-        <ul class="footer__contact">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            No. 3324/52, Ray Bhavan, NH Bypass, Thykoodam, Vyttila, Ernakulam, Kerala, India, 682019
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+917907369304">+91 7907 369 304</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:sales@rayenna.energy">sales@rayenna.energy</a>
-          </li>
-        </ul>
+      <!-- Col 4: Contact -->
+      <div class="footer__col footer__col--contact">
+        <h4 class="footer__heading">Contact us</h4>
+        <p class="footer__text">No. 3324/52, Ray Bhavan, Nh Bypass,<br />Thykoodam, Vyttila,<br />Ernakulam, Kerala, India, 682019</p>
       </div>
+
     </div>
 
     <div class="footer__bottom">
@@ -225,93 +197,92 @@ const currentPath = Astro.url.pathname;
 /* ===== FOOTER ===== */
 .footer {
   background: var(--color-navy);
-  color: rgba(255,255,255,0.75);
-  padding: 64px 0 0;
+  color: rgba(255,255,255,0.8);
+  padding: 52px 0 0;
 }
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
+  grid-template-columns: 180px 140px 1fr 1fr;
   gap: 48px;
+  align-items: center;
   padding-bottom: 48px;
 }
-.footer__brand .footer__logo {
-  margin-bottom: 20px;
+
+/* Col 1 — Stacked logo */
+.footer__col--logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .footer-logo-img {
-  height: 48px;
-  width: auto;
+  width: 140px;
+  height: auto;
   display: block;
+  object-fit: contain;
 }
-.footer__desc {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-.footer__social { display: flex; gap: 12px; }
-.social-link {
+
+/* Col 2 — MNRE badge */
+.footer__col--badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px; height: 38px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  color: rgba(255,255,255,0.75);
-  transition: all var(--transition);
 }
-.social-link:hover {
-  background: var(--color-primary);
-  color: white;
-  transform: translateY(-2px);
+.footer-badge-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Col 3 & 4 — text columns */
+.footer__col--about,
+.footer__col--contact {
+  align-self: flex-start;
 }
 .footer__heading {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--color-white);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
-.footer__links { display: flex; flex-direction: column; gap: 10px; }
-.footer__links a {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.7);
-  transition: color var(--transition);
-}
-.footer__links a:hover { color: var(--color-primary); }
-.footer__contact { display: flex; flex-direction: column; gap: 14px; }
-.footer__contact li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.footer__text {
   font-size: 0.88rem;
-  line-height: 1.6;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.72);
 }
-.footer__contact li svg { flex-shrink: 0; margin-top: 3px; color: var(--color-primary); }
-.footer__contact a { color: rgba(255,255,255,0.7); transition: color var(--transition); }
-.footer__contact a:hover { color: var(--color-primary); }
+
+/* Bottom bar */
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
-  padding: 20px 0;
+  padding: 18px 0;
 }
 .footer__bottom-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  flex-wrap: wrap;
-  gap: 8px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
 }
 
 @media (max-width: 1024px) {
-  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }
+  .footer__col--contact { grid-column: 2 / span 2; }
 }
 @media (max-width: 768px) {
   .navbar__nav { display: none; }
   .navbar__burger { display: flex; }
-  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer__bottom-inner { flex-direction: column; text-align: center; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .footer__col--logo { grid-column: 1 / span 2; justify-content: flex-start; }
+  .footer__col--badge { justify-content: flex-start; }
+  .footer__col--contact { grid-column: auto; }
+  .footer__bottom-inner { text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__col--logo { grid-column: auto; }
 }
 </style>
 
