@@ -238,36 +238,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin-bottom: 14px;
 }
 .intro-highlights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .intro-highlight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   background: var(--color-light);
-  border-radius: var(--radius-lg);
-  padding: 40px 24px 36px;
-  text-align: center;
-  border-bottom: 4px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: 20px 28px;
+  border-left: 4px solid var(--color-secondary);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition);
 }
 .intro-highlight:hover {
-  transform: translateY(-4px);
+  transform: translateX(4px);
   box-shadow: var(--shadow-md);
-  border-bottom-color: var(--color-primary);
+  border-left-color: var(--color-primary);
 }
 .intro-highlight strong {
-  display: block;
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-size: 2.4rem;
   font-weight: 600;
   color: var(--color-navy);
   line-height: 1;
-  margin-bottom: 14px;
   white-space: nowrap;
+  min-width: 80px;
 }
 .intro-highlight span {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--color-text-muted);
   font-weight: 600;
   text-transform: uppercase;
@@ -482,14 +483,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    =========================== */
 @media (min-width: 640px) {
   .consult-features { grid-template-columns: 1fr 1fr; }
-  .intro-highlights { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (min-width: 900px) {
   .intro-section__inner {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    align-items: center;
+    align-items: start;
   }
   .service-block__inner {
     grid-template-columns: 1fr 1fr;
