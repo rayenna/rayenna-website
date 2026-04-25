@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar" id="navbar">
-    <div class="container navbar__inner">
+    <div class="navbar__inner">
       <a href={`${base}/`} class="navbar__logo" aria-label="Rayenna Energy Home">
         <img src={`${base}/media/rayenna-logo-nav.png`} alt="Rayenna Energy" class="logo-img" />
       </a>
@@ -144,15 +144,14 @@ const currentPath = Astro.url.pathname;
   align-items: center;
   gap: 32px;
   height: 72px;
-  padding-left: 0 !important;
-  padding-right: 24px !important;
+  width: 100%;
+  padding: 0 32px 0 24px;
 }
 .navbar__logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   padding: 4px 0;
-  margin-left: 0;
 }
 .logo-img {
   height: 32px;
