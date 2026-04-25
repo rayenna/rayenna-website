@@ -2,26 +2,28 @@
    Rayenna Energy — Global CSS
    =========================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  /* Brand Colors — extracted from rayenna.energy */
-  --color-primary: #f97316;        /* Solar orange — CTAs, accents */
-  --color-primary-dark: #ea6c00;
-  --color-primary-light: #fff4ec;
-  --color-secondary: #1e3a5f;      /* Deep navy blue — headings, nav */
-  --color-secondary-light: #2b5289;
+  /* Brand Colors — matched exactly from rayenna.energy source */
+  --color-primary: #a83838;        /* Rayenna maroon — CTAs, hero, accents */
+  --color-primary-dark: #8a2c2c;
+  --color-primary-light: #f9efef;
+  --color-secondary: #788bba;      /* Muted blue-gray — section headings */
+  --color-secondary-light: #8fa0c5;
+  --color-navy: #27324f;           /* Footer background */
+  --color-navy-dark: #1d253a;      /* Footer bottom bar */
   --color-white: #ffffff;
-  --color-light: #f8f9fa;
+  --color-light: #f5f5f5;
   --color-light-2: #f0f4f8;
-  --color-text: #333333;
-  --color-text-muted: #666666;
-  --color-border: #e2e8f0;
-  --color-success: #22c55e;
+  --color-text: #363636;
+  --color-text-muted: #616161;
+  --color-border: #e0e0e0;
+  --color-success: #4caf50;
 
-  /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  /* Typography — Poppins only, matching original */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
 
   /* Spacing */
   --section-padding: 80px 0;
@@ -49,20 +51,20 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   background: var(--color-white);
   line-height: 1.7;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
 img { max-width: 100%; height: auto; display: block; }
-
 a { color: inherit; text-decoration: none; }
-
 ul { list-style: none; }
 
 /* Container */
 .container {
+  width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: var(--container-pad);
@@ -72,13 +74,13 @@ ul { list-style: none; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
+  padding: 12px 38px;
   border-radius: 50px;
-  font-family: var(--font-heading);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-weight: 500;
   font-size: 0.95rem;
-  letter-spacing: 0.3px;
   cursor: pointer;
   transition: all var(--transition);
   border: 2px solid transparent;
@@ -94,27 +96,27 @@ ul { list-style: none; }
   background: var(--color-primary-dark);
   border-color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+  box-shadow: 0 6px 20px rgba(168,56,56,0.35);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 .btn-outline:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: var(--color-secondary);
+  background: var(--color-navy);
   color: var(--color-white);
-  border-color: var(--color-secondary);
+  border-color: var(--color-navy);
 }
 .btn-secondary:hover {
-  background: var(--color-secondary-light);
+  background: var(--color-secondary);
   transform: translateY(-2px);
 }
 
@@ -123,9 +125,9 @@ ul { list-style: none; }
   display: inline-block;
   background: var(--color-primary-light);
   color: var(--color-primary);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   padding: 6px 16px;
@@ -135,17 +137,17 @@ ul { list-style: none; }
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
   color: var(--color-secondary);
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: 20px;
 }
 
 .section-title span { color: var(--color-primary); }
 
 .section-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
   max-width: 600px;
   line-height: 1.8;
@@ -184,18 +186,9 @@ ul { list-style: none; }
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes countUp {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
-}
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-12px); }
-}
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
-  70% { box-shadow: 0 0 0 16px rgba(249,115,22,0); }
-  100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
 }
 
 .animate-fade-up { animation: fadeUp 0.7s ease both; }
@@ -203,9 +196,11 @@ ul { list-style: none; }
 .animate-fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
 .animate-fade-in { animation: fadeIn 1s ease both; }
 
-/* Responsive helpers */
+/* ===== MOBILE-FIRST RESPONSIVE ===== */
+/* Base = mobile. Enhance upward. */
+
 @media (max-width: 768px) {
-  :root { --section-padding: 60px 0; }
+  :root { --section-padding: 56px 0; }
   .hide-mobile { display: none !important; }
 }
 @media (min-width: 769px) {

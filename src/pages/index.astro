@@ -203,10 +203,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 4.5vw, 4rem);
-  font-weight: 700;
-  color: #8B2525;
-  line-height: 1.15;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 400;
+  color: #a83838;
+  line-height: 1.2;
   margin-bottom: 32px;
 }
 
@@ -226,8 +226,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 
 .hero__subtitle {
-  font-size: 1.05rem;
-  color: #6B2020;
+  font-size: 1rem;
+  color: #a83838;
   line-height: 1.75;
   flex: 1;
   min-width: 0;
@@ -245,42 +245,42 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 30px;
+  padding: 12px 38px;
   border-radius: 50px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all var(--transition);
   text-decoration: none;
-  background: #8B2525;
+  background: #a83838;
   color: #fff;
-  border: 2px solid #8B2525;
+  border: 2px solid #a83838;
 }
 .btn-hero-primary:hover {
-  background: #6e1c1c;
-  border-color: #6e1c1c;
+  background: #8a2c2c;
+  border-color: #8a2c2c;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139,37,37,0.35);
+  box-shadow: 0 6px 20px rgba(168,56,56,0.35);
 }
 .btn-hero-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 30px;
+  padding: 12px 38px;
   border-radius: 50px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all var(--transition);
   text-decoration: none;
   background: transparent;
-  color: #8B2525;
-  border: 2px solid #8B2525;
+  color: #a83838;
+  border: 2px solid #a83838;
 }
 .btn-hero-outline:hover {
-  background: #8B2525;
+  background: #a83838;
   color: #fff;
   transform: translateY(-2px);
 }
@@ -553,18 +553,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     align-items: flex-end;
     padding-bottom: 48px;
   }
-  .hero__photo { object-position: 70% center; }
+  .hero__photo {
+    object-position: center center;
+    content: url('/rayenna-website/media/hero-mobile.webp');
+  }
   .hero__gradient {
     background: linear-gradient(
       to top,
       rgba(255,255,255,0.92) 0%,
-      rgba(255,255,255,0.75) 40%,
-      rgba(255,255,255,0.3) 70%,
+      rgba(255,255,255,0.78) 40%,
+      rgba(255,255,255,0.35) 70%,
       rgba(255,255,255,0) 100%
     );
   }
   .hero__content {
     padding: 0 24px;
+    width: 100%;
     max-width: 100%;
   }
   .hero__title { font-size: 2.2rem; }
