@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Sample blog posts — replace with real content or a CMS later
 const posts = [
   {
     slug: 'how-much-does-solar-cost-in-kerala',
@@ -11,25 +10,22 @@ const posts = [
     date: '15 Nov 2024',
     category: 'Pricing & Finance',
     readTime: '5 min read',
-    emoji: '💰',
   },
   {
     slug: 'pm-surya-ghar-subsidy-guide',
     title: 'PM Surya Ghar Muft Bijli Yojana: Your Complete Subsidy Guide',
-    excerpt: 'The government\'s free electricity scheme offers up to ₹78,000 in subsidies. Here\'s exactly how to apply and what to expect.',
+    excerpt: "The government's free electricity scheme offers up to ₹78,000 in subsidies. Here's exactly how to apply and what to expect.",
     date: '8 Nov 2024',
     category: 'Government Schemes',
     readTime: '7 min read',
-    emoji: '🏛',
   },
   {
     slug: 'solar-vs-electricity-bill-comparison',
     title: 'Solar vs. KSEB Bill: A Real-World Cost Comparison',
-    excerpt: 'We ran the numbers for a typical Kerala household with a ₹3,000/month electricity bill. Here\'s the honest breakdown of ROI, savings, and payback period.',
+    excerpt: "We ran the numbers for a typical Kerala household with a ₹3,000/month electricity bill. Here's the honest breakdown of ROI, savings, and payback period.",
     date: '1 Nov 2024',
     category: 'Analysis',
     readTime: '6 min read',
-    emoji: '📊',
   },
   {
     slug: 'best-solar-panels-brands-india-2024',
@@ -38,7 +34,6 @@ const posts = [
     date: '22 Oct 2024',
     category: 'Buying Guide',
     readTime: '8 min read',
-    emoji: '🔆',
   },
   {
     slug: 'solar-maintenance-tips',
@@ -47,7 +42,6 @@ const posts = [
     date: '10 Oct 2024',
     category: 'Maintenance',
     readTime: '4 min read',
-    emoji: '🔧',
   },
   {
     slug: 'net-metering-explained',
@@ -56,53 +50,89 @@ const posts = [
     date: '2 Oct 2024',
     category: 'Education',
     readTime: '5 min read',
-    emoji: '🔌',
   },
 ];
 
-const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis', 'Buying Guide', 'Maintenance', 'Education'];
+const categoryColors: Record<string, string> = {
+  'Pricing & Finance':   '#a83838',
+  'Government Schemes':  '#3a6ea8',
+  'Analysis':            '#788bba',
+  'Buying Guide':        '#4a8a6f',
+  'Maintenance':         '#8a6f2c',
+  'Education':           '#6a3a8a',
+};
+
+const featured = posts[0];
+const rest = posts.slice(1);
+const categories = ['All', ...new Set(posts.map(p => p.category))];
 ---
 <Layout title="Solar Energy Blog — Rayenna Energy" description="Read expert articles on solar energy, government subsidies, pricing, and installation tips from Rayenna Energy's blog.">
 
-  <!-- Page Hero -->
+  <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
     <img src={`${base}/media/blog.webp`} alt="Rayenna Solar Blog" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
-      <span class="section-tag">Knowledge Hub</span>
-      <h1 class="page-hero__title">Solar Energy <span>Blog</span></h1>
-      <p class="page-hero__subtitle">Expert guides, pricing breakdowns, and solar news — everything you need to make informed decisions about going solar.</p>
+      <p class="page-hero__eyebrow">Knowledge Hub</p>
+      <h1 class="page-hero__title">Solar Energy Blog</h1>
+      <p class="page-hero__sub">Expert guides, pricing breakdowns, and solar news — everything you need to make informed decisions about going solar.</p>
     </div>
   </section>
 
-  <!-- Blog Posts -->
-  <section style="padding:var(--section-padding); background:var(--color-light)">
+  <!-- ===== BLOG CONTENT ===== -->
+  <section class="blog-section">
     <div class="container">
 
-      <!-- Category Filter -->
+      <!-- Category filter -->
       <div class="category-filter">
         {categories.map(cat => (
           <button class={`cat-btn ${cat === 'All' ? 'active' : ''}`} data-cat={cat}>{cat}</button>
         ))}
       </div>
 
-      <!-- Posts Grid -->
+      <!-- Featured post -->
+      <article class="featured-card" data-category={featured.category}>
+        <div class="featured-card__label">
+          <span class="cat-pill" style={`background:${categoryColors[featured.category]}18; color:${categoryColors[featured.category]};`}>
+            {featured.category}
+          </span>
+          <span class="read-time">{featured.readTime}</span>
+        </div>
+        <h2 class="featured-card__title">
+          <a href={`${base}/blog/${featured.slug}`}>{featured.title}</a>
+        </h2>
+        <p class="featured-card__excerpt">{featured.excerpt}</p>
+        <div class="featured-card__footer">
+          <span class="post-date">{featured.date}</span>
+          <a href={`${base}/blog/${featured.slug}`} class="read-more-link">
+            Read Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Posts grid -->
       <div class="posts-grid">
-        {posts.map((post, i) => (
+        {rest.map(post => (
           <article class="post-card" data-category={post.category}>
-            <div class="post-card__emoji">{post.emoji}</div>
+            <div class="post-card__accent" style={`background:${categoryColors[post.category] ?? 'var(--color-secondary)'}`}></div>
             <div class="post-card__body">
               <div class="post-meta">
-                <span class="post-category">{post.category}</span>
-                <span class="post-read-time">{post.readTime}</span>
+                <span class="cat-pill" style={`background:${categoryColors[post.category]}18; color:${categoryColors[post.category]};`}>
+                  {post.category}
+                </span>
+                <span class="read-time">{post.readTime}</span>
               </div>
               <h2 class="post-title">
                 <a href={`${base}/blog/${post.slug}`}>{post.title}</a>
               </h2>
               <p class="post-excerpt">{post.excerpt}</p>
               <div class="post-footer">
-                <span class="post-date">📅 {post.date}</span>
-                <a href={`${base}/blog/${post.slug}`} class="post-read-more">Read More →</a>
+                <span class="post-date">{post.date}</span>
+                <a href={`${base}/blog/${post.slug}`} class="read-more-link">
+                  Read
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
               </div>
             </div>
           </article>
@@ -112,31 +142,36 @@ const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis'
     </div>
   </section>
 
-  <!-- Newsletter CTA -->
-  <section style="padding:64px 0; background:var(--color-white)">
-    <div class="container">
-      <div class="newsletter-box">
-        <div>
-          <h3>Stay Updated on Solar News</h3>
-          <p>Get the latest articles, subsidy updates, and solar tips delivered to your inbox.</p>
-        </div>
-        <form class="newsletter-form" onsubmit="return false">
-          <input type="email" placeholder="Your email address" required />
-          <button type="submit" class="btn btn-primary">Subscribe</button>
-        </form>
+  <!-- ===== NEWSLETTER CTA ===== -->
+  <section class="newsletter-section">
+    <div class="container newsletter-inner">
+      <div class="newsletter-content">
+        <span class="section-tag">Stay in the Loop</span>
+        <h2 class="section-title" style="color:#ffffff;">Stay Updated on Solar News</h2>
+        <p>Get the latest articles, subsidy updates, and solar tips delivered to your inbox. No spam, ever.</p>
       </div>
+      <form class="newsletter-form" onsubmit="return false">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
     </div>
   </section>
 
 </Layout>
 
 <style>
+/* ===========================
+   Blog Page — Mobile First
+   =========================== */
+
+/* ===== PAGE HERO ===== */
 .page-hero {
   position: relative;
-  height: 420px;
+  min-height: 420px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   overflow: hidden;
+  padding-bottom: 56px;
 }
 .page-hero__bg {
   position: absolute;
@@ -144,182 +179,286 @@ const categories = ['All', 'Pricing & Finance', 'Government Schemes', 'Analysis'
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 40%;
   z-index: 0;
 }
 .page-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 30, 55, 0.65);
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 50, 0.9) 0%,
+    rgba(10, 25, 50, 0.55) 50%,
+    rgba(10, 25, 50, 0.2) 100%
+  );
   z-index: 1;
 }
 .page-hero__inner {
   position: relative;
   z-index: 2;
-  text-align: center;
-  padding-top: 72px;
+  padding-top: 88px;
+}
+.page-hero__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 10px;
 }
 .page-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: white;
-  margin: 12px 0 20px;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 14px;
 }
-.page-hero__title span { color: var(--color-primary); }
-.page-hero__subtitle { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+.page-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 520px;
+  line-height: 1.75;
+}
 
+/* ===== BLOG SECTION ===== */
+.blog-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+
+/* Category filter */
 .category-filter {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 .cat-btn {
-  padding: 8px 18px;
+  padding: 7px 18px;
   border-radius: 50px;
   border: 2px solid var(--color-border);
   background: var(--color-white);
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   color: var(--color-text-muted);
   transition: all var(--transition);
+  white-space: nowrap;
 }
 .cat-btn:hover, .cat-btn.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: white;
+  color: #ffffff;
 }
 
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-.post-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
+/* ===== FEATURED CARD ===== */
+.featured-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
+  margin-bottom: 28px;
+  border-left: 5px solid var(--color-primary);
   transition: all var(--transition);
-  display: flex;
-  flex-direction: column;
 }
-.post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.post-card__emoji {
-  background: var(--color-primary-light);
-  padding: 28px;
-  font-size: 2.5rem;
-  text-align: center;
+.featured-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
-.post-card__body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-.post-meta {
+.featured-card__label {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.featured-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+.featured-card__title a { transition: color var(--transition); }
+.featured-card__title a:hover { color: var(--color-primary); }
+.featured-card__excerpt {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 720px;
+}
+.featured-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===== POST GRID ===== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.post-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+.post-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.post-card__accent {
+  height: 4px;
+  width: 100%;
+  flex-shrink: 0;
+}
+.post-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
-.post-category {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
+
+/* Category pill */
+.cat-pill {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 3px 10px;
   border-radius: 50px;
 }
-.post-read-time { font-size: 0.8rem; color: var(--color-text-muted); }
+.read-time {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
 .post-title {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-secondary);
-  line-height: 1.4;
-  margin-bottom: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.45;
+  margin-bottom: 10px;
 }
 .post-title a { transition: color var(--transition); }
 .post-title a:hover { color: var(--color-primary); }
 .post-excerpt {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.75;
   flex: 1;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .post-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--color-border);
+  gap: 8px;
 }
-.post-date { font-size: 0.82rem; color: var(--color-text-muted); }
-.post-read-more {
+.post-date {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+.read-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--color-primary);
   transition: gap var(--transition);
+  white-space: nowrap;
 }
-.post-read-more:hover { text-decoration: underline; }
+.read-more-link:hover { gap: 8px; }
 
-.newsletter-box {
-  background: var(--color-light);
-  border-radius: var(--radius-md);
-  padding: 40px 48px;
-  display: flex;
+/* ===== NEWSLETTER ===== */
+.newsletter-section {
+  padding: 72px 0;
+  background: var(--color-navy);
+}
+.newsletter-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
 }
-.newsletter-box h3 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--color-secondary);
-  font-size: 1.3rem;
-  margin-bottom: 6px;
+.newsletter-content .section-tag { margin-bottom: 12px; }
+.newsletter-content p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
-.newsletter-box p { color: var(--color-text-muted); font-size: 0.9rem; }
-.newsletter-form { display: flex; gap: 12px; flex-wrap: wrap; }
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .newsletter-form input {
-  padding: 12px 20px;
-  border: 2px solid var(--color-border);
+  padding: 14px 20px;
   border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 0.95rem;
   outline: none;
-  min-width: 260px;
   transition: border-color var(--transition);
 }
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.45); }
 .newsletter-form input:focus { border-color: var(--color-primary); }
+.newsletter-form .btn { width: 100%; justify-content: center; }
 
-@media (max-width: 900px) {
+/* ===========================
+   Breakpoints — tablet+
+   =========================== */
+@media (min-width: 640px) {
   .posts-grid { grid-template-columns: 1fr 1fr; }
+  .newsletter-form { flex-direction: row; }
+  .newsletter-form input { flex: 1; }
+  .newsletter-form .btn { width: auto; }
 }
-@media (max-width: 600px) {
-  .posts-grid { grid-template-columns: 1fr; }
-  .newsletter-box { flex-direction: column; padding: 28px; }
-  .newsletter-form input { min-width: 100%; }
+
+@media (min-width: 1024px) {
+  .posts-grid { grid-template-columns: repeat(3, 1fr); }
+  .newsletter-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
 }
 </style>
 
 <script>
-  // Category filter
   const catBtns = document.querySelectorAll('.cat-btn');
-  const postCards = document.querySelectorAll<HTMLElement>('.post-card');
+  const allCards = document.querySelectorAll<HTMLElement>('.post-card, .featured-card');
 
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       catBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const cat = btn.getAttribute('data-cat');
-      postCards.forEach(card => {
+      allCards.forEach(card => {
         const show = cat === 'All' || card.dataset.category === cat;
         card.style.display = show ? 'flex' : 'none';
       });
