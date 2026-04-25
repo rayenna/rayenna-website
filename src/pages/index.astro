@@ -25,7 +25,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="solar-intro">
     <div class="container solar-intro__inner">
       <div class="solar-intro__image">
-        <img src={`${base}/media/Solar-Kochi.webp`} alt="Solar installation in Kochi" />
+        <img src={`${base}/media/image.png`} alt="Solar energy growth chart" />
       </div>
       <div class="solar-intro__content">
         <h2 class="section-title">Solar Power: The Bright Choice for the Earth and You</h2>
@@ -288,7 +288,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ===== SOLAR INTRO ===== */
 .solar-intro {
   padding: var(--section-padding);
-  background: var(--color-white);
+  background: #fdf8f0;
 }
 .solar-intro__inner {
   display: grid;
@@ -298,9 +298,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 .solar-intro__image img {
   width: 100%;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  object-fit: cover;
+  max-width: 480px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  object-fit: contain;
+  background: #f5f5f5;
 }
 .solar-intro__content p {
   color: var(--color-text-muted);
