@@ -178,16 +178,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   z-index: 0;
 }
 
-/* Very subtle gradient only to ensure the left text area is readable */
+/* Gradient gives readability across the wider content area */
 .hero__gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(255,255,255,0.55) 0%,
-    rgba(255,255,255,0.35) 30%,
-    rgba(255,255,255,0.1) 50%,
-    rgba(255,255,255,0) 65%
+    rgba(255,255,255,0.65) 0%,
+    rgba(255,255,255,0.55) 35%,
+    rgba(255,255,255,0.2) 55%,
+    rgba(255,255,255,0) 70%
   );
   z-index: 1;
 }
@@ -196,7 +196,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 520px;
+  max-width: 620px;
+  width: 52%;
   padding: 60px 0 60px 6vw;
 }
 
@@ -229,7 +230,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   color: #6B2020;
   line-height: 1.75;
   flex: 1;
-  max-width: 380px;
+  min-width: 0;
 }
 
 .hero__actions {
