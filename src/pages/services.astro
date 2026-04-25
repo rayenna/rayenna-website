@@ -42,41 +42,47 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <!-- ===== SERVICE 1: DOMESTIC ===== -->
   <section class="service-block service-block--alt" id="domestic">
-    <div class="container service-block__inner">
-      <div class="service-block__image">
-        <img src={`${base}/media/Drilling-solar.jpg`} alt="Domestic solar panel installation" />
-        <div class="service-block__badge">01</div>
-      </div>
-      <div class="service-block__content">
-        <span class="section-tag">Residential</span>
-        <h2 class="section-title">Domestic Services</h2>
-        <p>Energy independence is something you can achieve with Rayenna's residential solar installation, in addition to real energy savings. Our systems help reduce your electricity expenses by generating your own power — whether for household needs, EV charging, or just cutting your monthly bills. You can use energy freely, knowing it's sustainably generated.</p>
-        <p>We can design and implement systems for homes of all sizes, from small apartments to large properties, due to the scalability of our solar panels. With proper maintenance and care, your solar panels can serve you efficiently for up to 20 years, while delivering a full return on your investment within just 5–6 years.</p>
+    <div class="container domestic-inner">
 
-        <div class="service-steps">
-          <div class="service-step">
-            <div class="service-step__num">01</div>
-            <div class="service-step__body">
-              <h3>Feasibility Assessment</h3>
-              <p>Our team does a thorough site study, taking into account elements like roof direction, shading, and energy consumption to ensure your system delivers optimal output.</p>
-            </div>
+      <!-- Top row: image left, text right — both top-aligned -->
+      <div class="domestic-top">
+        <div class="service-block__image">
+          <img src={`${base}/media/Drilling-solar.jpg`} alt="Domestic solar panel installation" />
+          <div class="service-block__badge">01</div>
+        </div>
+        <div class="service-block__content">
+          <span class="section-tag">Residential</span>
+          <h2 class="section-title">Domestic Services</h2>
+          <p>Energy independence is something you can achieve with Rayenna's residential solar installation, in addition to real energy savings. Our systems help reduce your electricity expenses by generating your own power — whether for household needs, EV charging, or just cutting your monthly bills. You can use energy freely, knowing it's sustainably generated.</p>
+          <p>We can design and implement systems for homes of all sizes. With proper maintenance and care, your solar panels can serve you efficiently for up to 20 years, while delivering a full return on your investment within just 5–6 years.</p>
+        </div>
+      </div>
+
+      <!-- Bottom row: 3 steps horizontally -->
+      <div class="service-steps-h">
+        <div class="service-step-h">
+          <div class="service-step__num">01</div>
+          <div class="service-step__body">
+            <h3>Feasibility Assessment</h3>
+            <p>Our team does a thorough site study, taking into account elements like roof direction, shading, and energy consumption to ensure your system delivers optimal output.</p>
           </div>
-          <div class="service-step">
-            <div class="service-step__num">02</div>
-            <div class="service-step__body">
-              <h3>Registration &amp; Approvals</h3>
-              <p>We handle all documentation and government registrations — from gaining local approvals to applying for available subsidies — so you don't have to.</p>
-            </div>
+        </div>
+        <div class="service-step-h">
+          <div class="service-step__num">02</div>
+          <div class="service-step__body">
+            <h3>Registration &amp; Approvals</h3>
+            <p>We handle all documentation and government registrations — from gaining local approvals to applying for available subsidies — so you don't have to.</p>
           </div>
-          <div class="service-step">
-            <div class="service-step__num">03</div>
-            <div class="service-step__body">
-              <h3>Installation &amp; Completion</h3>
-              <p>Our trained engineers execute the installation to the highest standards, followed by testing, commissioning, and handover with full system training.</p>
-            </div>
+        </div>
+        <div class="service-step-h">
+          <div class="service-step__num">03</div>
+          <div class="service-step__body">
+            <h3>Installation &amp; Completion</h3>
+            <p>Our trained engineers execute the installation to the highest standards, followed by testing, commissioning, and handover with full system training.</p>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -328,35 +334,47 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin-bottom: 14px;
 }
 
-/* Steps — compact single block */
-.service-steps {
-  margin-top: 24px;
+/* ===== DOMESTIC — custom layout ===== */
+.domestic-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.domestic-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 64px 0 40px;
+}
+
+/* Horizontal steps row */
+.service-steps-h {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding-bottom: 56px;
+}
+.service-step-h {
   background: #ffffff;
   border-radius: var(--radius-md);
+  padding: 24px 20px;
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
   border: 1px solid var(--color-border);
-}
-.service-step {
+  border-top: 3px solid var(--color-primary);
   display: flex;
-  gap: 14px;
+  gap: 16px;
   align-items: flex-start;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-.service-step:last-child {
-  border-bottom: none;
 }
 .service-step__num {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: var(--color-primary);
   color: #ffffff;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,14 +383,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .service-step__body h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--color-navy);
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 .service-step__body p {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -490,6 +508,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: start;
+  }
+  .domestic-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .service-steps-h {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
   }
   .service-block__inner {
     grid-template-columns: 1fr 1fr;
