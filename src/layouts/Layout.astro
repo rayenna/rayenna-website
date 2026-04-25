@@ -84,6 +84,21 @@ const currentPath = Astro.url.pathname;
       <div class="footer__col footer__col--contact">
         <h4 class="footer__heading">Contact us</h4>
         <p class="footer__text">No. 3324/52, Ray Bhavan, Nh Bypass,<br />Thykoodam, Vyttila,<br />Ernakulam, Kerala, India, 682019</p>
+        <p class="footer__text" style="margin-top:8px;">
+          <a href="tel:+917907369304" class="footer__link">+91 7907 369 304</a><br />
+          <a href="mailto:sales@rayenna.energy" class="footer__link">sales@rayenna.energy</a>
+        </p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -215,7 +230,7 @@ const currentPath = Astro.url.pathname;
   justify-content: flex-start;
 }
 .footer-logo-img {
-  width: 140px;
+  width: 168px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -228,8 +243,8 @@ const currentPath = Astro.url.pathname;
   justify-content: center;
 }
 .footer-badge-img {
-  width: 120px;
-  height: 120px;
+  width: 144px;
+  height: 144px;
   object-fit: contain;
   display: block;
 }
@@ -252,6 +267,37 @@ const currentPath = Astro.url.pathname;
   font-size: 0.88rem;
   line-height: 1.85;
   color: rgba(255,255,255,0.72);
+}
+
+/* Social links & inline links */
+.footer__link {
+  color: rgba(255,255,255,0.72);
+  transition: color var(--transition);
+}
+.footer__link:hover { color: var(--color-primary); }
+
+.footer__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.75);
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.social-link:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Bottom bar */
