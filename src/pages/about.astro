@@ -42,31 +42,62 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- ===== EXPERTISE OF LEADERSHIP ===== -->
   <section class="leadership-section">
     <div class="container">
-      <h2 class="section-title text-center" style="margin-bottom:48px">Expertise of Leadership</h2>
-      <p class="leadership-intro">At the heart of Rayenna Energy is a leadership team with decades of combined experience across various industries. Our directors, Ganesh and Shabeer, are founding members of the company, bringing nearly fifty years of industry experience between them. They form the backbone of Rayenna's leadership.</p>
-      <div class="leaders-grid">
-        <div class="leader-card">
-          <div class="leader-card__avatar">
-            <img src={`${base}/media/Artboard-2mnre.webp`} alt="Ganesh — Director" />
-          </div>
-          <div class="leader-card__content">
-            <h3>Ganesh</h3>
-            <span class="leader-role">Director &amp; Co-Founder</span>
-            <p>Ganesh began his career as a project engineer at Thermax, specializing in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master, which underscores his commitment to excellence.</p>
-          </div>
-        </div>
-        <div class="leader-card">
-          <div class="leader-card__avatar">
-            <img src={`${base}/media/Artboard-1mnre.webp`} alt="Shabeer — Director" />
-          </div>
-          <div class="leader-card__content">
-            <h3>Shabeer</h3>
-            <span class="leader-role">Director &amp; Co-Founder</span>
-            <p>Shabeer has a strong background in leadership roles, managing diverse, cross-functional teams across the Asia Pacific for prominent multinational companies. Together, their technical expertise and strategic insight empower Rayenna Energy to deliver innovative and reliable solar energy solutions.</p>
-          </div>
-        </div>
+      <div class="leadership-header">
+        <h2 class="section-title text-center">Expertise of Leadership</h2>
+        <p class="leadership-intro">At the heart of Rayenna Energy is a founding team with over a century of combined experience across maritime, technology, energy, and enterprise. Their complementary strengths form the bedrock on which Rayenna was built.</p>
       </div>
-      <p class="leadership-closing">Their shared commitment to quality and sustainability ensures that every project reflects our values and meets the highest standards. The knowledge and experience of our leadership team not only benefit Rayenna Energy but also establish our reputation as a reliable supplier of solar energy solutions. This collaborative approach enhances our ability to provide tailored solar energy solutions that exceed client expectations, giving our clients peace of mind in knowing they are working with experts dedicated to delivering innovative, dependable, and sustainable energy solutions.</p>
+
+      <div class="leaders-grid">
+
+        <!-- Ganesh -->
+        <div class="leader-card">
+          <div class="leader-card__header">
+            <div class="leader-card__initial">GV</div>
+            <div>
+              <h3 class="leader-card__name">Ganesh Venkitachalam</h3>
+              <span class="leader-role">Managing Director &amp; Co-Founder</span>
+            </div>
+          </div>
+          <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
+        </div>
+
+        <!-- Shabeer -->
+        <div class="leader-card">
+          <div class="leader-card__header">
+            <div class="leader-card__initial">SM</div>
+            <div>
+              <h3 class="leader-card__name">Shabeer Mohamed</h3>
+              <span class="leader-role">Director &amp; Co-Founder</span>
+            </div>
+          </div>
+          <p class="leader-card__bio">A transformational technology and sales leader with 25+ years at Oracle and IBM, Shabeer has driven $50M+ businesses and delivered 10× revenue growth. A sought-after board advisor, he brings world-class GTM strategy and enterprise leadership to the table.</p>
+        </div>
+
+        <!-- Anish -->
+        <div class="leader-card">
+          <div class="leader-card__header">
+            <div class="leader-card__initial">AS</div>
+            <div>
+              <h3 class="leader-card__name">Anish Samad</h3>
+              <span class="leader-role">Director &amp; Co-Founder</span>
+            </div>
+          </div>
+          <p class="leader-card__bio">A 29-year energy veteran who built his career across leading companies before founding ABRA ALARAB Petroleum Trading LLC in Dubai. He commands deep supply chain expertise and a vast network spanning the Middle East, Africa, and Asia.</p>
+        </div>
+
+        <!-- Arun -->
+        <div class="leader-card">
+          <div class="leader-card__header">
+            <div class="leader-card__initial">AB</div>
+            <div>
+              <h3 class="leader-card__name">Capt. Arun Balakrishnan</h3>
+              <span class="leader-role">Director &amp; Co-Founder</span>
+            </div>
+          </div>
+          <p class="leader-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -191,74 +222,81 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ===== LEADERSHIP ===== */
 .leadership-section {
   padding: var(--section-padding);
-  background: var(--color-white);
+  background: var(--color-light);
+}
+.leadership-header {
+  text-align: center;
+  margin-bottom: 52px;
 }
 .leadership-intro {
   color: var(--color-text-muted);
   line-height: 1.9;
-  max-width: 820px;
-  margin: 0 auto 48px;
-  text-align: center;
+  max-width: 700px;
+  margin: 16px auto 0;
   font-size: 1rem;
 }
 .leaders-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 28px;
 }
 .leader-card {
-  background: var(--color-light);
+  background: var(--color-white);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  padding: 32px 28px;
   box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--color-secondary);
   transition: all var(--transition);
 }
 .leader-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
+  border-top-color: var(--color-primary);
 }
-.leader-card__avatar {
-  height: 240px;
-  overflow: hidden;
+.leader-card__header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
 }
-.leader-card__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-.leader-card__content {
-  padding: 28px 32px;
-}
-.leader-card__content h3 {
+.leader-card__initial {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: #ffffff;
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+.leader-card__name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-navy);
   margin-bottom: 4px;
+  line-height: 1.3;
 }
 .leader-role {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-bottom: 16px;
 }
-.leader-card__content p {
+.leader-card__bio {
   color: var(--color-text-muted);
-  line-height: 1.8;
-  font-size: 0.95rem;
-}
-.leadership-closing {
-  color: var(--color-text-muted);
-  line-height: 1.9;
-  max-width: 820px;
-  margin: 0 auto;
-  text-align: center;
+  line-height: 1.85;
+  font-size: 0.92rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -272,6 +310,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .mission-section__image { order: -1; }
   .promise-section__image { order: -1; }
-  .leaders-grid { grid-template-columns: 1fr; }
+  .leaders-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 </style>
