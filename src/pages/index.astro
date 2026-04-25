@@ -11,14 +11,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="hero__content">
       <h1 class="hero__title">Soar into a <br />Sunny Tomorrow!</h1>
       <div class="hero__mid">
-        <div class="mnre-badge" aria-label="MNRE Approved Channel Partner">
-          <div class="mnre-badge__inner">
-            <span class="mnre-top">GOVT OF INDIA</span>
-            <span class="mnre-main">MNRE</span>
-            <span class="mnre-approved">APPROVED</span>
-            <span class="mnre-bottom">CHANNEL PARTNER</span>
-          </div>
-        </div>
+        <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
         <p class="hero__subtitle">Make a switch to solar energy for a sustainable lifestyle that cares for both the planet and your wallet. Partner with Rayenna Energy for future-ready energy solutions that ensure you save on energy costs while reducing your carbon footprint.</p>
       </div>
       <div class="hero__actions">
@@ -211,7 +204,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   font-family: var(--font-heading);
   font-size: clamp(2.6rem, 4.5vw, 4rem);
   font-weight: 700;
-  color: #6B1B1B;
+  color: #8B2525;
   line-height: 1.15;
   margin-bottom: 32px;
 }
@@ -223,74 +216,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin-bottom: 36px;
 }
 
-/* ===== MNRE BADGE ===== */
-.mnre-badge {
+/* ===== MNRE BADGE IMAGE ===== */
+.mnre-badge-img {
   flex-shrink: 0;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  border: 3px solid #6B1B1B;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  position: relative;
-}
-.mnre-badge::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(107,27,27,0.4);
-}
-.mnre-badge__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 1px;
-  padding: 4px;
-}
-.mnre-top {
-  font-family: var(--font-heading);
-  font-size: 0.48rem;
-  font-weight: 700;
-  color: #6B1B1B;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-.mnre-main {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: #6B1B1B;
-  line-height: 1;
-  letter-spacing: 1px;
-}
-.mnre-approved {
-  font-family: var(--font-heading);
-  font-size: 0.45rem;
-  font-weight: 700;
-  color: #6B1B1B;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-}
-.mnre-bottom {
-  font-family: var(--font-heading);
-  font-size: 0.42rem;
-  font-weight: 700;
-  color: #6B1B1B;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  line-height: 1.3;
-  text-align: center;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 .hero__subtitle {
   font-size: 0.97rem;
-  color: #333;
+  color: #6B2020;
   line-height: 1.8;
   flex: 1;
 }
@@ -314,15 +250,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   cursor: pointer;
   transition: all var(--transition);
   text-decoration: none;
-  background: #6B1B1B;
+  background: #8B2525;
   color: #fff;
-  border: 2px solid #6B1B1B;
+  border: 2px solid #8B2525;
 }
 .btn-hero-primary:hover {
-  background: #4e1414;
-  border-color: #4e1414;
+  background: #6e1c1c;
+  border-color: #6e1c1c;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(107,27,27,0.35);
+  box-shadow: 0 6px 20px rgba(139,37,37,0.35);
 }
 .btn-hero-outline {
   display: inline-flex;
@@ -337,11 +273,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   transition: all var(--transition);
   text-decoration: none;
   background: transparent;
-  color: #6B1B1B;
-  border: 2px solid #6B1B1B;
+  color: #8B2525;
+  border: 2px solid #8B2525;
 }
 .btn-hero-outline:hover {
-  background: #6B1B1B;
+  background: #8B2525;
   color: #fff;
   transform: translateY(-2px);
 }
