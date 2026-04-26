@@ -121,12 +121,15 @@ const currentPath = Astro.url.pathname;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: var(--color-white);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition);
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 .navbar--scrolled {
+  background: rgba(255,255,255,0.97);
   box-shadow: var(--shadow-md);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .navbar__inner {
   display: flex;
@@ -157,13 +160,24 @@ const currentPath = Astro.url.pathname;
   font-family: var(--font-heading);
   font-weight: 400;
   font-size: 0.9rem;
-  color: var(--color-text);
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: all var(--transition);
   letter-spacing: 0.2px;
 }
 .nav-link:hover, .nav-link.active {
+  color: white;
+  background: rgba(255,255,255,0.18);
+  text-shadow: none;
+}
+.navbar--scrolled .nav-link {
+  color: var(--color-text);
+  text-shadow: none;
+}
+.navbar--scrolled .nav-link:hover,
+.navbar--scrolled .nav-link.active {
   color: var(--color-primary);
   background: var(--color-primary-light);
 }
@@ -183,8 +197,12 @@ const currentPath = Astro.url.pathname;
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-secondary);
+  background: rgba(255,255,255,0.92);
   border-radius: 2px;
+  transition: background var(--transition);
+}
+.navbar--scrolled .navbar__burger span {
+  background: var(--color-secondary);
   transition: all var(--transition);
 }
 .navbar__burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -196,8 +214,11 @@ const currentPath = Astro.url.pathname;
   display: none;
   flex-direction: column;
   padding: 16px 24px 24px;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255,255,255,0.2);
   gap: 4px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .mobile-menu.open { display: flex; }
 .mobile-link {
@@ -336,9 +357,9 @@ const currentPath = Astro.url.pathname;
 
 <script>
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar?.classList.toggle('navbar--scrolled', window.scrollY > 20);
-  });
+  const updateNav = () => navbar?.classList.toggle('navbar--scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // apply correct state on initial load
 
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
