@@ -412,10 +412,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Panel options -->
           <div class="panel-options-section">
-            <p class="calc-field-label">Panel options — Kerala market prices</p>
+            <div class="panel-options-header">
+              <p class="calc-field-label" style="margin-bottom:0;">Panel options — Kerala market prices</p>
+              <p class="panel-select-hint">Tap a panel to see updated numbers</p>
+            </div>
 
             <!-- A: N-Type TopCon 620W — Premium -->
-            <div class="panel-option" id="panel-620">
+            <div class="panel-option" id="panel-620" data-panel-id="620">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge purple">Premium</span>
@@ -435,8 +438,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               </div>
             </div>
 
-            <!-- B: N-Type TopCon 600W — Recommended -->
-            <div class="panel-option recommended" id="panel-600">
+            <!-- B: N-Type TopCon 600W — Recommended (default selected) -->
+            <div class="panel-option selected" id="panel-600" data-panel-id="600">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge blue">Recommended</span>
@@ -457,7 +460,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
 
             <!-- C: N-Type TopCon 580W — Best Value -->
-            <div class="panel-option" id="panel-580tc">
+            <div class="panel-option" id="panel-580tc" data-panel-id="580tc">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge green">Best Value</span>
@@ -478,7 +481,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
 
             <!-- D: Bi-Facial Dual Glass 580W — Bifacial -->
-            <div class="panel-option" id="panel-580bf">
+            <div class="panel-option" id="panel-580bf" data-panel-id="580bf">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge teal">Bifacial</span>
@@ -499,7 +502,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
 
             <!-- E: Mono PERC 540W — Economy -->
-            <div class="panel-option" id="panel-540">
+            <div class="panel-option" id="panel-540" data-panel-id="540">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge grey">Economy</span>
@@ -1154,16 +1157,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /* ── PANEL OPTIONS ── */
 .panel-options-section { margin-bottom: 28px; }
+.panel-options-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.panel-select-hint {
+  font-size: 0.75rem;
+  color: var(--calc-blue);
+  font-style: italic;
+}
 .panel-option {
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 16px;
   margin-bottom: 10px;
   background: #fff;
-  transition: box-shadow var(--transition);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  position: relative;
 }
-.panel-option.recommended { border-color: var(--calc-blue); }
-.panel-option:hover { box-shadow: var(--shadow-md); }
+.panel-option:hover { border-color: #a0b8d4; box-shadow: var(--shadow-md); }
+.panel-option.selected {
+  border-color: var(--calc-blue);
+  background: #f6faff;
+  box-shadow: 0 0 0 3px rgba(24,95,165,0.1);
+}
+.panel-option.selected::after {
+  content: '✓ Selected';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--calc-blue);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+}
 .panel-option__header {
   display: flex;
   justify-content: space-between;
@@ -1483,6 +1519,23 @@ function updateEVImpact() {
   );
 }
 
+// ── Module-level cache (populated by calculateResults) ───────
+const PANEL_SPECS = [
+  { id: '620',   watt: 620, ppw: 26.0,  sqft: 26, label: '620W TopCon' },
+  { id: '600',   watt: 600, ppw: 25.7,  sqft: 25, label: '600W TopCon' },
+  { id: '580tc', watt: 580, ppw: 24.5,  sqft: 24, label: '580W TopCon' },
+  { id: '580bf', watt: 580, ppw: 24.0,  sqft: 25, label: '580W Bifacial' },
+  { id: '540',   watt: 540, ppw: 23.5,  sqft: 23, label: '540W PERC' },
+];
+type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
+let cachedPanelResults: PanelResult[] = [];
+let cachedSysKw    = 0;
+let cachedAnnSave  = 0;
+let cachedLifetime = 0;
+let selectedPanelId = '600';
+
+const inr = (n: number) => isNaN(n) || !isFinite(n) ? '—' : n.toLocaleString('en-IN');
+
 // ── Calculation ──────────────────────────────
 function calculateResults() {
   const s = state;
@@ -1510,53 +1563,75 @@ function calculateResults() {
   let sysKw      = Math.ceil(daily / 4.5 * 1.25);
   sysKw          = Math.max(1, isNaN(sysKw) ? 1 : sysKw);
   const annUnits = sysKw * 1200;
+  const annSave  = s.monthlyBill * 11;
+  const lifetime = annSave * 25;
+  const co2      = Math.round(annUnits * 0.82 * 25 / 1000);
 
-  // ── Panel counts (real Kerala market panels) ────────────────
-  // watt, price-per-watt, sq-ft-per-panel
-  const panels = [
-    { id: '620',   watt: 620, ppw: 26.0,  sqft: 26 },
-    { id: '600',   watt: 600, ppw: 25.7,  sqft: 25 },
-    { id: '580tc', watt: 580, ppw: 24.5,  sqft: 24 },
-    { id: '580bf', watt: 580, ppw: 24.0,  sqft: 25 },
-    { id: '540',   watt: 540, ppw: 23.5,  sqft: 23 },
-  ];
-  const panelResults = panels.map(p => {
+  // Cache for panel-switch updates
+  cachedSysKw   = sysKw;
+  cachedAnnSave = annSave;
+  cachedLifetime = lifetime;
+
+  // Compute per-panel data
+  cachedPanelResults = PANEL_SPECS.map(p => {
     const count = Math.ceil(sysKw * 1000 / p.watt);
     const roof  = count * p.sqft;
     const cost  = count * p.watt * p.ppw;
     return { ...p, count, roof, cost };
   });
 
-  // Use recommended (600W TopCon) for headline stat card & system cost
-  const rec      = panelResults.find(p => p.id === '600')!;
-  const bos      = sysKw * 55000;   // balance-of-system: inverter, mounting, wiring, install
-  const cost     = rec.cost + bos;
-  const subsidy  = Math.min(78000, cost * 0.4);
-  const net      = cost - subsidy;
-  const annSave  = s.monthlyBill * 11;
-  const payback  = net / annSave;
-  const lifetime = annSave * 25;
-  const co2      = Math.round(annUnits * 0.82 * 25 / 1000);
-
-  const inr = (n: number) => isNaN(n) || !isFinite(n) ? '—' : n.toLocaleString('en-IN');
-
+  // Static fields (same regardless of panel choice)
   setText('result-kw',    sysKw + ' kW');
   setText('result-units', 'Generates ~' + inr(annUnits) + ' units/year');
   setText('result-daily', daily.toFixed(1) + ' units/day');
-  setText('result-panels', rec.count + ' panels (600W TopCon)');
-  setText('result-roof',   rec.roof + ' sq ft');
-  setText('result-subsidy','₹' + inr(Math.round(subsidy)));
+  setText('fin-annual',   '₹' + inr(annSave));
+  setText('fin-lifetime', '₹' + inr(lifetime));
+  setText('fin-co2',      co2 + ' tonnes');
 
-  panelResults.forEach(p => {
+  // Per-panel card stats (count, roof, cost chips inside each card)
+  cachedPanelResults.forEach(p => {
     setText(`p${p.id}-panels`, p.count + ' panels');
     setText(`p${p.id}-roof`,   p.roof  + ' sq ft');
     setText(`p${p.id}-cost`,   '₹' + inr(Math.round(p.cost)));
   });
 
-  setText('fin-annual',  '₹' + inr(annSave));
-  setText('fin-payback', isNaN(payback) || !isFinite(payback) ? '—' : payback.toFixed(1) + ' years');
-  setText('fin-lifetime','₹' + inr(lifetime));
-  setText('fin-co2',     co2 + ' tonnes');
+  // Apply the currently selected panel to headline + financial rows
+  updatePanelDisplay(selectedPanelId);
+}
+
+// ── Update headline stats & financials for the chosen panel ──
+function updatePanelDisplay(id: string) {
+  if (!cachedPanelResults.length) return;
+  selectedPanelId = id;
+
+  const p = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1]; // fallback 600W
+  const bos     = cachedSysKw * 55000;
+  const cost    = p.cost + bos;
+  const subsidy = Math.min(78000, cost * 0.4);
+  const net     = cost - subsidy;
+  const payback = net / cachedAnnSave;
+
+  setText('result-panels', p.count + ' panels (' + p.label + ')');
+  setText('result-roof',   p.roof  + ' sq ft');
+  setText('result-subsidy','₹' + inr(Math.round(subsidy)));
+  setText('fin-payback',   isNaN(payback) || !isFinite(payback) ? '—' : payback.toFixed(1) + ' years');
+
+  // Mark selected card
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.classList.toggle('selected', card.dataset.panelId === id);
+  });
+}
+
+// ── Panel selection click handler ────────────
+function initPanelSelect() {
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Ignore clicks on the "Learn more" button or expanded detail text
+      if ((e.target as HTMLElement).closest('.panel-expand, .panel-option__detail')) return;
+      if (!cachedPanelResults.length) return;
+      updatePanelDisplay(card.dataset.panelId ?? '600');
+    });
+  });
 }
 
 function setText(id: string, val: string) {
@@ -1634,6 +1709,13 @@ function resetAll() {
     setText(did, dv);
   });
 
+  // Reset panel selection to default (600W)
+  selectedPanelId = '600';
+  cachedPanelResults = [];
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.classList.toggle('selected', card.dataset.panelId === '600');
+  });
+
   // Reset panel expanders
   document.querySelectorAll('.panel-option__detail').forEach(d => d.classList.add('hidden'));
   document.querySelectorAll<HTMLElement>('.panel-expand').forEach(b => { b.textContent = 'Learn more ▾'; });
@@ -1647,6 +1729,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCards('occupancy-grid', 'occ',  v => { state.homeAllDay = v === 'home'; });
   initToggles();
   initPanelExpand();
+  initPanelSelect();
 
   bindSlider('ac-hours',   'ac-hours-val',  v => String(v), v => { state.acHours = v; });
   bindSlider('bill-slider','bill-val', v => '₹' + v.toLocaleString('en-IN'), v => { state.monthlyBill = v; });
