@@ -553,13 +553,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <p class="calc-footnote__heading">Important notes on this estimate</p>
               <ol class="calc-footnote__list">
                 <li>
-                  <strong>What the cost includes —</strong> The total system cost shown covers solar PV modules, grid-tied inverter, mounting structure, DC &amp; AC cabling, earthing, net-metering equipment, and complete installation by a certified team. No hidden line items.
+                  <div class="fn-item">
+                    <strong>What the cost includes</strong>
+                    <p>The total system cost shown covers solar PV modules, grid-tied inverter, mounting structure, DC &amp; AC cabling, earthing, net-metering equipment, and complete installation by a certified team. No hidden line items.</p>
+                  </div>
                 </li>
                 <li>
-                  <strong>For reference only —</strong> All figures are indicative estimates based on prevailing Kerala market rates. Actual costs vary with roof type, shadow analysis, panel brand selection, and site-specific civil work. Our team will conduct a detailed site visit and assessment and provide you with a precise, fixed proposal at no charge.
+                  <div class="fn-item">
+                    <strong>For reference only</strong>
+                    <p>All figures are indicative estimates based on prevailing Kerala market rates. Actual costs vary with roof type, shadow analysis, panel brand selection, and site-specific civil work. Our team will conduct a detailed site visit and assessment and provide you with a precise, fixed proposal — at no charge.</p>
+                  </div>
                 </li>
                 <li>
-                  <strong>About the subsidy —</strong> The PM Surya Ghar subsidy is shown as a deduction for illustrative purposes. In practice, the subsidy is credited directly to your bank account by the DISCOM or the relevant Government agency after system commissioning and verification — not as an upfront discount on the invoice.
+                  <div class="fn-item">
+                    <strong>About the subsidy</strong>
+                    <p>The PM Surya Ghar subsidy is shown as a deduction for illustrative purposes. In practice, the subsidy amount is credited directly to your bank account by the DISCOM or the relevant Government agency after system commissioning and verification — it is not an upfront discount on the invoice.</p>
+                  </div>
                 </li>
               </ol>
             </div>
@@ -1371,37 +1380,50 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   counter-reset: fn;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   padding: 0;
   margin: 0;
 }
 .calc-footnote__list li {
   counter-increment: fn;
   display: flex;
-  gap: 10px;
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  gap: 14px;
+  align-items: flex-start;
 }
 .calc-footnote__list li::before {
   content: counter(fn);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  background: var(--calc-blue-light);
-  color: var(--calc-blue);
+  min-width: 22px;
+  height: 22px;
+  background: var(--calc-blue);
+  color: #fff;
   border-radius: 50%;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   font-family: var(--font-heading);
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
 }
-.calc-footnote__list li strong {
+.fn-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.fn-item strong {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--color-navy);
-  font-weight: 600;
+  line-height: 1.3;
+}
+.fn-item p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin: 0;
 }
 
 /* ── REASSURANCE STRIP ── */
