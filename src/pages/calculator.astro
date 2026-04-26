@@ -545,6 +545,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <a href={`${base}/contact`} class="btn btn-primary">Get a personalised quote →</a>
             <button class="btn-calc-outline" type="button" id="recalculate-btn">← Recalculate</button>
           </div>
+
+          <!-- Footnote / T&C -->
+          <div class="calc-footnote">
+            <div class="calc-footnote__icon">ℹ️</div>
+            <div class="calc-footnote__body">
+              <p class="calc-footnote__heading">Important notes on this estimate</p>
+              <ol class="calc-footnote__list">
+                <li>
+                  <strong>What the cost includes —</strong> The total system cost shown covers solar PV modules, grid-tied inverter, mounting structure, DC &amp; AC cabling, earthing, net-metering equipment, and complete installation by a certified team. No hidden line items.
+                </li>
+                <li>
+                  <strong>For reference only —</strong> All figures are indicative estimates based on prevailing Kerala market rates. Actual costs vary with roof type, shadow analysis, panel brand selection, and site-specific civil work. Our team will conduct a detailed site visit and assessment and provide you with a precise, fixed proposal at no charge.
+                </li>
+                <li>
+                  <strong>About the subsidy —</strong> The PM Surya Ghar subsidy is shown as a deduction for illustrative purposes. In practice, the subsidy is credited directly to your bank account by the DISCOM or the relevant Government agency after system commissioning and verification — not as an upfront discount on the invoice.
+                </li>
+              </ol>
+            </div>
+          </div>
         </div>
 
       </div><!-- .calc-card -->
@@ -1323,6 +1342,67 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   text-align: center;
 }
 .btn-calc-outline:hover { background: var(--calc-blue); color: #fff; }
+
+/* ── FOOTNOTE / T&C ── */
+.calc-footnote {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #f8f9fb;
+  border: 1px solid #dce4ef;
+  border-left: 4px solid var(--calc-blue);
+  border-radius: var(--radius-md);
+  padding: 20px 20px 20px 18px;
+  margin-top: 28px;
+}
+.calc-footnote__icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 2px; }
+.calc-footnote__body { flex: 1; }
+.calc-footnote__heading {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--calc-blue);
+  margin-bottom: 12px;
+}
+.calc-footnote__list {
+  list-style: none;
+  counter-reset: fn;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+.calc-footnote__list li {
+  counter-increment: fn;
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.calc-footnote__list li::before {
+  content: counter(fn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: var(--calc-blue-light);
+  color: var(--calc-blue);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.calc-footnote__list li strong {
+  color: var(--color-navy);
+  font-weight: 600;
+}
 
 /* ── REASSURANCE STRIP ── */
 .reassurance-section { padding: var(--section-padding); background: #fff; }
