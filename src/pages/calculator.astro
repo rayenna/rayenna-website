@@ -405,8 +405,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <p class="rs-val" id="result-roof">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">Subsidy available</p>
-              <p class="rs-val" id="result-subsidy">₹78,000</p>
+              <p class="rs-label">PM Surya Ghar subsidy</p>
+              <p class="rs-val" id="result-subsidy">—</p>
             </div>
           </div>
 
@@ -1641,6 +1641,14 @@ function updateEVImpact() {
   );
 }
 
+// ── PM Surya Ghar subsidy (MNRE tiered structure) ────────────
+// 1 kW → ₹30,000 | 2 kW → ₹60,000 | 3 kW+ → ₹78,000
+function pmSubsidy(sysKw: number): number {
+  if (sysKw <= 1) return 30000;
+  if (sysKw <= 2) return 60000;
+  return 78000;
+}
+
 // ── Module-level cache (populated by calculateResults) ───────
 const PANEL_SPECS = [
   { id: '620',   watt: 620, ppw: 26.0,  sqft: 26, label: '620W TopCon' },
@@ -1725,9 +1733,9 @@ function updatePanelDisplay(id: string) {
   selectedPanelId = id;
 
   const p = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1]; // fallback 600W
-  const cost    = p.cost / 0.52;          // panels = 52% of total installed cost
-  const bos     = cost - p.cost;           // BOS = remaining 48%
-  const subsidy = Math.min(78000, cost * 0.4);
+  const cost    = p.cost / 0.52;           // panels = 52% of total installed cost
+  const bos     = cost - p.cost;            // BOS = remaining 48%
+  const subsidy = pmSubsidy(cachedSysKw);   // MNRE tiered: 1kW=₹30k, 2kW=₹60k, 3kW+=₹78k
   const net     = cost - subsidy;
   const payback = net / cachedAnnSave;
 
