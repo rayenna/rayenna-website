@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname;
 <body>
 
   <!-- ===== NAVBAR ===== -->
-  <header class="navbar" id="navbar">
+  <header class={`navbar${currentPath === `${base}/` || currentPath === `${base}` ? ' navbar--hero' : ''}`} id="navbar">
     <div class="navbar__inner">
       <a href={`${base}/`} class="navbar__logo" aria-label="Rayenna Energy Home">
         <img src={`${base}/media/rayenna-logo-nav.png`} alt="Rayenna Energy" class="logo-img" />
@@ -121,10 +121,16 @@ const currentPath = Astro.url.pathname;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: transparent;
-  box-shadow: none;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
+/* Homepage only: start transparent */
+.navbar--hero {
+  background: transparent;
+  box-shadow: none;
+}
+.navbar--hero.navbar--scrolled,
 .navbar--scrolled {
   background: rgba(255,255,255,0.97);
   box-shadow: var(--shadow-md);
@@ -160,26 +166,25 @@ const currentPath = Astro.url.pathname;
   font-family: var(--font-heading);
   font-weight: 400;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  color: var(--color-text);
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: all var(--transition);
   letter-spacing: 0.2px;
 }
 .nav-link:hover, .nav-link.active {
-  color: white;
-  background: rgba(255,255,255,0.18);
-  text-shadow: none;
-}
-.navbar--scrolled .nav-link {
-  color: var(--color-text);
-  text-shadow: none;
-}
-.navbar--scrolled .nav-link:hover,
-.navbar--scrolled .nav-link.active {
   color: var(--color-primary);
   background: var(--color-primary-light);
+}
+/* Homepage transparent state: navy text, readable on light hero */
+.navbar--hero:not(.navbar--scrolled) .nav-link {
+  color: var(--color-navy);
+  font-weight: 500;
+}
+.navbar--hero:not(.navbar--scrolled) .nav-link:hover,
+.navbar--hero:not(.navbar--scrolled) .nav-link.active {
+  color: var(--color-primary);
+  background: rgba(168,56,56,0.1);
 }
 
 /* Burger */
@@ -197,12 +202,12 @@ const currentPath = Astro.url.pathname;
   display: block;
   width: 24px;
   height: 2px;
-  background: rgba(255,255,255,0.92);
+  background: var(--color-secondary);
   border-radius: 2px;
   transition: background var(--transition);
 }
-.navbar--scrolled .navbar__burger span {
-  background: var(--color-secondary);
+.navbar--hero:not(.navbar--scrolled) .navbar__burger span {
+  background: var(--color-navy);
   transition: all var(--transition);
 }
 .navbar__burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -357,9 +362,11 @@ const currentPath = Astro.url.pathname;
 
 <script>
   const navbar = document.getElementById('navbar');
-  const updateNav = () => navbar?.classList.toggle('navbar--scrolled', window.scrollY > 20);
+  const updateNav = () => {
+    if (navbar) navbar.classList.toggle('navbar--scrolled', window.scrollY > 20);
+  };
   window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav(); // apply correct state on initial load
+  updateNav();
 
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
