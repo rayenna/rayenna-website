@@ -109,7 +109,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       </div>
       <div class="service-block__image">
-        <img src={`${base}/media/Hardshell-solar.webp`} alt="Commercial solar installation" />
+        <img src={`${base}/media/Plan-solar.webp`} alt="Commercial solar installation" />
         <div class="service-block__badge">02</div>
       </div>
     </div>
@@ -119,7 +119,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="service-block service-block--alt" id="consultation">
     <div class="container service-block__inner">
       <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="Solar energy consultation" />
+        <img src={`${base}/media/Hardshell-solar.webp`} alt="Solar energy consultation" />
         <div class="service-block__badge">03</div>
       </div>
       <div class="service-block__content">
@@ -295,17 +295,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .service-block__inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
+  gap: 28px;
   align-items: start;
 }
+/* On mobile: always show text content first, image below */
+.service-block__image { order: 2; }
+.service-block__content { order: 1; }
 .service-block__image {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: visible;
+  /* ensure badge doesn't get clipped on mobile */
+  padding-bottom: 20px;
+  padding-right: 8px;
 }
 .service-block__image img {
   width: 100%;
-  height: 420px;
+  height: 260px;
   object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -313,15 +319,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 .service-block__badge {
   position: absolute;
-  bottom: -16px;
-  right: -16px;
-  width: 56px;
-  height: 56px;
+  bottom: 4px;
+  right: -4px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--color-primary);
   color: #ffffff;
   font-family: 'Oswald', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -501,6 +507,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ===========================
    Breakpoints — tablet+
    =========================== */
+/* Extra-small phones */
+@media (max-width: 480px) {
+  .service-block { padding: 48px 0; }
+  .service-block__image img { height: 220px; }
+  .intro-highlight { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+}
+
 @media (min-width: 640px) {
   .consult-features { grid-template-columns: 1fr 1fr; }
 }
@@ -524,11 +537,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     gap: 72px;
     align-items: center;
   }
-  /* Flip layout for commercial */
-  .service-block__inner--flip .service-block__image {
-    order: 1;
+  /* Reset mobile order so DOM order controls layout on desktop */
+  .service-block__image { order: unset; }
+  .service-block__content { order: unset; }
+  /* Flip: push image to right column for commercial section */
+  .service-block__inner--flip .service-block__image { order: 1; }
+  .service-block__image {
+    padding-bottom: 20px;
+    padding-right: 20px;
   }
   .service-block__image img { height: 460px; }
+  .service-block__badge {
+    bottom: -4px;
+    right: -4px;
+    width: 56px;
+    height: 56px;
+    font-size: 1.2rem;
+  }
   .cta-banner__inner {
     grid-template-columns: 1fr auto;
     gap: 48px;
