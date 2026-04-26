@@ -526,7 +526,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Financial snapshot -->
           <div class="fin-snapshot">
-            <p class="calc-field-label">Financial snapshot</p>
+            <p class="calc-field-label">Cost breakdown</p>
+            <div class="fin-row"><span>Panel cost</span><span id="fin-panel-cost">—</span></div>
+            <div class="fin-row"><span>Inverter, mounting &amp; installation</span><span id="fin-bos">—</span></div>
+            <div class="fin-row fin-total"><span>Total system cost</span><span id="fin-total-cost">—</span></div>
+            <div class="fin-row fin-subsidy"><span>PM Surya Ghar subsidy</span><span id="fin-subsidy-row">—</span></div>
+            <div class="fin-row fin-highlight"><span>Net cost to you</span><span id="fin-net-cost">—</span></div>
+
+            <p class="calc-field-label" style="margin-top:24px;">Returns</p>
             <div class="fin-row"><span>Est. annual savings</span><span id="fin-annual">—</span></div>
             <div class="fin-row"><span>Payback period</span><span id="fin-payback">—</span></div>
             <div class="fin-row fin-highlight"><span>25-year savings</span><span id="fin-lifetime">—</span></div>
@@ -1289,6 +1296,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   font-size: 1.2rem;
   color: var(--calc-blue);
 }
+.fin-row.fin-total { border-top: 2px solid var(--color-border); margin-top: 4px; padding-top: 14px; }
+.fin-row.fin-total span { font-weight: 700; color: var(--color-navy) !important; }
+.fin-row.fin-subsidy span:last-child { color: #2e7d32 !important; font-weight: 600; }
+.fin-row.fin-subsidy span:first-child::before { content: ''; }
 
 /* ── RESULT CTAs ── */
 .result-ctas {
@@ -1616,9 +1627,19 @@ function updatePanelDisplay(id: string) {
   const net     = cost - subsidy;
   const payback = net / cachedAnnSave;
 
+  // Headline stat tiles
   setText('result-panels', p.count + ' panels (' + p.label + ')');
   setText('result-roof',   p.roof  + ' sq ft');
   setText('result-subsidy','₹' + inr(Math.round(subsidy)));
+
+  // Cost breakdown rows
+  setText('fin-panel-cost',  '₹' + inr(Math.round(p.cost)));
+  setText('fin-bos',         '₹' + inr(Math.round(bos)));
+  setText('fin-total-cost',  '₹' + inr(Math.round(cost)));
+  setText('fin-subsidy-row', '− ₹' + inr(Math.round(subsidy)));
+  setText('fin-net-cost',    '₹' + inr(Math.round(net)));
+
+  // Payback (changes with panel selection)
   setText('fin-payback',   isNaN(payback) || !isFinite(payback) ? '—' : payback.toFixed(1) + ' years');
 
   // Mark selected card
