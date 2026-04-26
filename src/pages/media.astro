@@ -40,30 +40,6 @@ const showcase = [
     </div>
   </section>
 
-  <!-- ===== STATS STRIP ===== -->
-  <section class="stats-strip">
-    <div class="container stats-strip__inner">
-      <div class="stat-item">
-        <strong>11+</strong>
-        <span>Installations Completed</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <strong>66+ kW</strong>
-        <span>Solar Capacity Deployed</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <strong>5+</strong>
-        <span>Locations Across Kerala</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <strong>100%</strong>
-        <span>Customer Satisfaction</span>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== INSTALLATION GALLERY ===== -->
   <section class="gallery-section">
@@ -258,40 +234,6 @@ const showcase = [
   line-height: 1.8;
 }
 
-/* ===== STATS STRIP ===== */
-.stats-strip {
-  background: var(--color-navy);
-  padding: 0;
-}
-.stats-strip__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
-}
-.stat-item:last-child { border-bottom: none; }
-.stat-item strong {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.stat-item span {
-  font-size: 0.78rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-.stat-divider { display: none; }
 
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
@@ -625,15 +567,6 @@ const showcase = [
    =========================== */
 @media (min-width: 540px) {
   .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .stats-strip__inner { flex-direction: row; }
-  .stat-item {
-    flex: 1;
-    border-bottom: none;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    padding: 32px 16px;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-divider { display: none; }
 }
 
 @media (min-width: 768px) {
