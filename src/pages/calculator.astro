@@ -1621,8 +1621,8 @@ function updatePanelDisplay(id: string) {
   selectedPanelId = id;
 
   const p = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1]; // fallback 600W
-  const bos     = cachedSysKw * 55000;
-  const cost    = p.cost + bos;
+  const cost    = p.cost / 0.52;          // panels = 52% of total installed cost
+  const bos     = cost - p.cost;           // BOS = remaining 48%
   const subsidy = Math.min(78000, cost * 0.4);
   const net     = cost - subsidy;
   const payback = net / cachedAnnSave;
