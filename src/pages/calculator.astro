@@ -43,7 +43,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="calc-intro">
     <div class="container calc-intro__inner">
       <div class="calc-intro__image">
-        <img src={`${base}/media/Hardshell-solar.webp`} alt="Solar system installation" />
+        <img src={`${base}/media/solar-calculator-intro.png`} alt="Solar panels powering a green city" />
       </div>
       <div class="calc-intro__content">
         <span class="section-tag">How it works</span>
@@ -717,10 +717,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 .calc-intro__image img {
   width: 100%;
-  border-radius: var(--radius-md);
-  object-fit: cover;
-  max-height: 420px;
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+  max-height: 460px;
+  background: #e4f6f8;
 }
 .calc-intro__content .section-title { margin-bottom: 16px; }
 .calc-intro__content p {
