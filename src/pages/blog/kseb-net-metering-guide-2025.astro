@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = {
+  title: 'KSEB Net Metering Application: A Step-by-Step Guide for 2025',
+  date: '18 January 2025',
+  category: 'Government Schemes',
+  readTime: '4 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="How to apply for KSEB net metering in 2025 — step by step, including the new KSERC regulations and the documents you need.">
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta">
+        <span class="post-category">{post.category}</span>
+        <span>·</span><span>{post.readTime}</span>
+        <span>·</span><span>{post.date}</span>
+      </div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author">
+        <div class="author-avatar">☀</div>
+        <div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div>
+      </div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+      <article class="post-content">
+        <p class="post-lead">Net metering is one of the most powerful benefits of going solar in Kerala — and one of the least understood. Once it is set up, KSEB credits your account for every unit of solar power you export to the grid.</p>
+
+        <h2>What Is Net Metering?</h2>
+        <p>Net metering allows you to send unused solar electricity back to the KSEB grid during the day and draw electricity back at night. Your electricity meter tracks the difference. At the end of the billing cycle, you only pay for the net units consumed — which for most solar homes is dramatically lower, sometimes even zero.</p>
+
+        <h2>The 2025 Net Metering Rules You Need to Know</h2>
+        <p>From October 2025, KSERC has introduced an important change: residential customers can install up to 3 kW under standard net metering. For systems between 3 kW and 5 kW, a battery bank covering at least 30% of system capacity is now mandatory. Systems commissioned before October 2025 remain unaffected under their existing agreements.</p>
+
+        <div class="post-callout">
+          <span class="callout-icon">⚡</span>
+          <div>
+            <strong>The 3 kW sweet spot</strong>
+            <p>For most Kerala homes, a 3 kW system hits maximum subsidy eligibility, meets net metering requirements, and delivers the fastest payback. It is the right size for the majority of households.</p>
+          </div>
+        </div>
+
+        <h2>Step-by-Step Application Process</h2>
+        <ul class="post-list">
+          <li><strong>Step 1 — Apply through PM Surya Ghar portal:</strong> Register on pmsuryaghar.gov.in using your KSEB consumer number and Aadhaar-linked mobile. Submit your rooftop solar application and wait for Technical Feasibility (TFR) approval from KSEB.</li>
+          <li><strong>Step 2 — Choose an empanelled vendor:</strong> Only MNRE-empanelled vendors can process the subsidy and net metering paperwork. Rayenna Energy handles all of this on your behalf.</li>
+          <li><strong>Step 3 — Installation:</strong> Once TFR is approved, your system is installed. The physical installation takes 1–2 days.</li>
+          <li><strong>Step 4 — Net meter installation:</strong> Your installer applies to KSEB for net meter installation. KSEB replaces your existing meter with a bidirectional net meter. This typically takes 2–4 weeks.</li>
+          <li><strong>Step 5 — System goes live:</strong> Once the net meter is installed and inspected, your system is commissioned. From this point, you begin earning credits for every unit you export.</li>
+        </ul>
+
+        <h2>Documents Required</h2>
+        <p>You will need your KSEB consumer number, Aadhaar card, latest electricity bill, proof of property ownership, and bank account details. Your installer manages the submission.</p>
+
+        <h2>How Long Does the Whole Process Take?</h2>
+        <p>From the day you sign with your installer to the day your system is live and exporting power, expect 4–8 weeks in Kerala. Most of this time is KSEB queue time, not installation time. When you work with Rayenna, we track your application status at every stage and keep you informed. No surprises, no chasing paperwork.</p>
+
+        <div class="post-cta">
+          <h3>Let Us Handle the Paperwork</h3>
+          <p>Rayenna manages your entire net metering application — from portal registration to KSEB approval to commissioning.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Start Your Application →</a>
+        </div>
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/on-grid-vs-off-grid-solar-kerala`}>On-Grid vs Off-Grid →</a></li>
+            <li><a href={`${base}/blog/pm-surya-ghar-subsidy-guide`}>PM Surya Ghar Guide →</a></li>
+            <li><a href={`${base}/blog/going-solar-kochi-guide-2025`}>Going Solar in Kochi →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">☀</div>
+          <strong>4–8 Weeks</strong>
+          <p>Typical time from enquiry to a live, generating solar system in Kerala.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style>{`
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color 0.3s; }
+.back-link:hover { color: #a83838; }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: #a83838; font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+`}</style>

@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = { title: 'What to Ask Before Signing a Solar Installation Contract in Kerala', date: '8 February 2025', category: 'Buying Guide', readTime: '4 min read', author: 'Rayenna Energy Team' };
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="8 critical questions every Kerala homeowner must ask before signing a solar installation contract — protect your investment and your subsidy.">
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+      <article class="post-content">
+        <p class="post-lead">Going solar is a 25-year commitment. The company you choose matters enormously — and the contract you sign matters even more. Here are the questions every Kerala homeowner should ask before putting pen to paper.</p>
+        <h2>1. Are You MNRE-Empanelled?</h2>
+        <p>This is non-negotiable. Only vendors listed on the MNRE empanelled list can process the PM Surya Ghar subsidy. Ask for their registration number and verify it on pmsuryaghar.gov.in. If they cannot provide this, walk away.</p>
+        <h2>2. What Exactly Is Included in the Price?</h2>
+        <p>A complete solar installation in Kerala should include panels, inverter, mounting structure, AC and DC cables, earthing, lightning protection, net meter application, and KSEB documentation. Ask for a line-by-line breakdown. Vague quotes that lump everything into one number often hide additional charges later.</p>
+        <h2>3. What Are the Warranty Terms — for Each Component?</h2>
+        <ul class="post-list">
+          <li><strong>Panel performance warranty:</strong> Should be 25 years, guaranteeing at least 80–85% output.</li>
+          <li><strong>Inverter warranty:</strong> Should be minimum 5 years, ideally 10.</li>
+          <li><strong>Workmanship warranty:</strong> The installer's guarantee on their own labour — should be at least 5 years. Get all three in writing, in the contract itself — not just a verbal promise.</li>
+        </ul>
+        <h2>4. Who Handles the Subsidy Paperwork?</h2>
+        <p>A reputable installer handles the entire PM Surya Ghar application process on your behalf — from portal registration to subsidy disbursement. If you are expected to navigate the government portal alone, that is a red flag.</p>
+        <h2>5. What Is the Payment Structure?</h2>
+        <div class="post-callout">
+          <span class="callout-icon">⚠️</span>
+          <div><strong>Red flag</strong><p>Any installer asking for 100% payment upfront should be approached with caution. A standard payment structure is 30–50% advance, balance on commissioning. This protects you if anything goes wrong during the process.</p></div>
+        </div>
+        <h2>6. Do You Have Local References I Can Call?</h2>
+        <p>Ask for three to five customer contacts in your district — not testimonials on their website, but real people you can call. A confident, experienced installer will have no hesitation providing these.</p>
+        <h2>7. Who Provides After-Sales Service?</h2>
+        <p>Solar panels last 25 years. Your installer should still be reachable in year 10. Ask who handles maintenance, monitoring, and repairs — and whether they have a local service team or rely on a distant headquarters.</p>
+        <h2>8. Will the System Have Remote Monitoring?</h2>
+        <p>Most modern systems come with app-based monitoring that shows real-time generation data. Confirm whether monitoring is included, and who you contact if something looks wrong.</p>
+        <div class="post-cta">
+          <h3>Talk to Rayenna — Every Question Has a Clear Answer</h3>
+          <p>We welcome every question. Transparency is how we earn your trust before we earn your business.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Talk to Our Team →</a>
+        </div>
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
+        <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/monocrystalline-vs-polycrystalline-kerala`}>Panel Types Compared →</a></li><li><a href={`${base}/blog/solar-panel-warranty-explained`}>Warranty Explained →</a></li><li><a href={`${base}/blog/string-inverter-vs-microinverter-hybrid`}>Inverter Types →</a></li></ul></div>
+        <div class="sidebar-card sidebar-card--cta"><div style="font-size:3rem; margin-bottom:12px">📋</div><strong>5-Year Workmanship</strong><p>Every Rayenna installation includes a 5-year workmanship warranty — in writing, in your contract.</p></div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style>{`
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
+.back-link:hover { color: #a83838; }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: #a83838; font-weight: 700; }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+`}</style>

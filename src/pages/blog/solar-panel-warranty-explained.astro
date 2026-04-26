@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = { title: "Solar Panel Warranty Explained: What's Covered, What's Not, and What to Watch For", date: '1 March 2025', category: 'Maintenance', readTime: '4 min read', author: 'Rayenna Energy Team' };
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="What does a 25-year solar warranty actually cover? A clear breakdown of performance, product and workmanship warranties — and what to do if something goes wrong.">
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+      <article class="post-content">
+        <p class="post-lead">"25-year warranty" sounds impressive. But what does it actually mean? What happens if a panel breaks in year 7? Who do you call if your inverter stops working? These are the questions that separate a good solar investment from an expensive disappointment.</p>
+        <h2>There Are Three Separate Warranties — Not One</h2>
+        <p>Most installers advertise "25-year warranty" as a single promise. In reality, a complete solar installation involves three distinct warranties from different parties.</p>
+        <h2>1. Panel Performance Warranty (from the manufacturer)</h2>
+        <p>This guarantees your panels will produce a minimum percentage of their rated output over time. The industry standard: at least 97% of rated output in year 1, and at least 85% of rated output by year 25. This covers gradual efficiency degradation — the natural, slow decline in panel output over time. It does not cover physical damage.</p>
+        <h2>2. Panel Product Warranty (from the manufacturer)</h2>
+        <p>This covers manufacturing defects, delamination, and physical failures of the panel itself. Standard terms: 10–12 years from reputable brands. Premium brands like Waaree, Adani, and Vikram Solar offer up to 15 years.</p>
+        <h2>3. Workmanship Warranty (from your installer)</h2>
+        <p>This is the installer's guarantee on their own work — the mounting structure, wiring, and installation quality. A minimum of 5 years is standard; Rayenna provides this on all installations.</p>
+        <div class="post-callout">
+          <span class="callout-icon">⚠️</span>
+          <div><strong>Read the fine print</strong><p>Most panel warranties do not cover physical damage from external causes — hail, storms, falling objects, fire, or flood. This damage is covered by your home insurance policy, not your solar warranty. Ensure your home insurance is updated to include your solar system.</p></div>
+        </div>
+        <h2>What to Do If Something Goes Wrong</h2>
+        <ul class="post-list">
+          <li><strong>Step 1 — Check your monitoring app:</strong> Is generation low, or has it stopped? A sudden drop suggests an inverter or connection issue; a gradual decline may indicate a panel fault.</li>
+          <li><strong>Step 2 — Contact your installer first:</strong> They will diagnose whether it is an installation issue or a component failure and manage the claim on your behalf.</li>
+          <li><strong>Step 3 — If your installer is unresponsive:</strong> Contact the panel or inverter manufacturer directly with your warranty documentation.</li>
+        </ul>
+        <h2>The Lesson: Choose Your Installer as Carefully as Your Panels</h2>
+        <p>The best panel warranty in the world is useless if your installer has closed down by year 6. Rayenna works exclusively with established, MNRE-approved brands and maintains a dedicated service team for all our installations.</p>
+        <div class="post-cta">
+          <h3>All Rayenna Installations Come with Full Warranty Documentation</h3>
+          <p>We provide clear, written warranty terms for every component — before you sign, not after.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Get Your Warranty-Backed Quote →</a>
+        </div>
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
+        <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/monsoon-solar-system-kerala`}>Monsoon & Solar →</a></li><li><a href={`${base}/blog/solar-maintenance-tips`}>Maintenance Tips →</a></li><li><a href={`${base}/blog/what-to-ask-solar-contract-kerala`}>Contract Checklist →</a></li></ul></div>
+        <div class="sidebar-card sidebar-card--cta"><div style="font-size:3rem; margin-bottom:12px">🛡️</div><strong>25 Years</strong><p>Rayenna installs only panels with a 25-year performance warranty from Tier-1 manufacturers.</p></div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style>{`
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
+.back-link:hover { color: #a83838; }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: #a83838; font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+`}</style>

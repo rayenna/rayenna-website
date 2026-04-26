@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = { title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System Save Over 25 Years?', date: '8 March 2025', category: 'Education', readTime: '4 min read', author: 'Rayenna Energy Team' };
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="The actual carbon math for a Kerala household switching to solar — 123 tonnes of CO₂ avoided over 25 years. Here are the numbers.">
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+      <article class="post-content">
+        <p class="post-lead">Most people go solar to save money. But the environmental impact is staggering — and worth understanding. Here is the actual carbon math for a Kerala household switching to solar.</p>
+        <h2>Where India's Grid Electricity Comes From</h2>
+        <p>India's electricity grid is still heavily dependent on coal-based thermal power. The national average emission factor is approximately 0.82 kg of CO₂ per kWh (unit). Every time you draw a unit of electricity from the KSEB grid, roughly 820 grams of CO₂ is released somewhere at a power plant.</p>
+        <h2>The Numbers for a 5 kW Kerala Household</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Time Period</span><span>Units Generated</span><span>CO₂ Avoided</span></div>
+          <div class="cost-row"><span>Year 1</span><span>~6,500 units</span><span>~5,330 kg (5.3 tonnes)</span></div>
+          <div class="cost-row"><span>5 Years</span><span>~32,000 units</span><span>~26,240 kg (26 tonnes)</span></div>
+          <div class="cost-row"><span>10 Years</span><span>~63,000 units</span><span>~51,660 kg (52 tonnes)</span></div>
+          <div class="cost-row"><span>25 Years</span><span>~1,50,000 units</span><span>~1,23,000 kg (123 tonnes)</span></div>
+        </div>
+        <div class="post-callout">
+          <span class="callout-icon">🌿</span>
+          <div><strong>123 tonnes of CO₂ avoided over 25 years</strong><p>That is the equivalent of planting approximately 5,500 trees — or taking a car off the road for over 12 years.</p></div>
+        </div>
+        <h2>What About the Carbon Cost of Manufacturing the Panels?</h2>
+        <p>Manufacturing solar panels does produce CO₂ — primarily in the silicon refining and cell production process. The carbon payback period — the time a solar panel takes to generate enough clean energy to offset its own manufacturing footprint — is typically 1.5 to 3 years for modern monocrystalline panels. After that, every unit generated is a net carbon saving. Over a 25-year lifespan, the ratio of clean energy produced to carbon emitted in manufacturing is roughly 25:1 to 30:1.</p>
+        <h2>Beyond Carbon: The Full Environmental Picture</h2>
+        <p>Reduced water consumption (thermal power plants are heavy water users), reduced air pollution from coal combustion, and reduced pressure on Kerala's overtaxed grid during peak summer hours are all additional environmental benefits of going solar that do not show up in the carbon numbers.</p>
+        <p>Going solar is not just smart for your wallet. It is a decision with a measurable, lasting impact on the environment your children will inherit.</p>
+        <div class="post-cta">
+          <h3>Start Making Your Environmental Impact</h3>
+          <p>Book a free consultation and find out how much CO₂ your household could avoid by switching to solar.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Get Started Today →</a>
+        </div>
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
+        <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/solar-performance-ratio-explained`}>Performance Ratio →</a></li><li><a href={`${base}/blog/monsoon-solar-system-kerala`}>Solar in Monsoon →</a></li><li><a href={`${base}/blog/going-solar-kochi-guide-2025`}>Kochi Solar Guide →</a></li></ul></div>
+        <div class="sidebar-card sidebar-card--cta"><div style="font-size:3rem; margin-bottom:12px">🌿</div><strong>123 Tonnes</strong><p>CO₂ avoided by a 5 kW Kerala home over 25 years — equivalent to 5,500 trees planted.</p></div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style>{`
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
+.back-link:hover { color: #a83838; }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.cost-table { border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1fr 1.2fr 1.4fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.88rem; }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+`}</style>

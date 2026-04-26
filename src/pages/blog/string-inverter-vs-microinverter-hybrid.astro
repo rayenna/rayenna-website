@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = { title: 'String Inverter vs Microinverter vs Hybrid Inverter: Which Is Right for You?', date: '15 February 2025', category: 'Buying Guide', readTime: '4 min read', author: 'Rayenna Energy Team' };
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="String inverter, microinverter or hybrid — a clear comparison to help Kerala homeowners choose the right inverter for their solar system.">
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+      <article class="post-content">
+        <p class="post-lead">The inverter is the brain of your solar system — it converts the DC electricity your panels generate into the AC electricity your home uses. Choosing the right type makes a real difference to performance, especially in Kerala's conditions.</p>
+        <h2>String Inverters — The Standard Choice</h2>
+        <p>A string inverter connects all your panels in a series and converts their combined output in one central unit. It is the most common and cost-effective option. Best for rooftops with good, unobstructed south-facing space and minimal shading. The catch: if one panel underperforms due to shade or dust, it can drag down the output of the entire string.</p>
+        <h2>Microinverters — Panel-Level Intelligence</h2>
+        <p>Instead of one central inverter, microinverters attach to each individual panel. Each panel works independently, so shading on one panel does not affect the others. Best for rooftops with partial shading, complex angles, or panels facing different directions. The catch: higher upfront cost — typically ₹15,000–₹25,000 more for a 3 kW system.</p>
+        <h2>Hybrid Inverters — Built for the Future</h2>
+        <p>A hybrid inverter can manage solar panels, a battery bank, and the grid simultaneously. Best for homeowners who want battery backup for power cuts, or who anticipate adding storage later. The catch: higher cost, and currently not eligible for the PM Surya Ghar subsidy as a standalone on-grid system.</p>
+        <h2>Quick Comparison</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Type</span><span>Cost</span><span>Shade tolerance</span><span>Battery</span><span>Best for</span></div>
+          <div class="cost-row"><span>String Inverter</span><span>Lowest</span><span>Low</span><span>No</span><span>Clear, south-facing roof</span></div>
+          <div class="cost-row"><span>Microinverter</span><span>Highest</span><span>Excellent</span><span>No</span><span>Shaded or complex rooftops</span></div>
+          <div class="cost-row"><span>Hybrid Inverter</span><span>Medium-High</span><span>Medium</span><span>Yes</span><span>Frequent power cuts</span></div>
+        </div>
+        <div class="post-callout">
+          <span class="callout-icon">💡</span>
+          <div><strong>For most Kerala homes with a clear rooftop</strong><p>A quality string inverter from brands like Fronius, SMA, Solis, or Growatt is the right call — reliable, cost-effective, and fully subsidy-eligible. If your roof has shading challenges, we will recommend microinverters after the site survey.</p></div>
+        </div>
+        <p>We do not prescribe inverter types before seeing your roof. Our site survey identifies shading patterns, roof angles, and your usage profile — and then we recommend the inverter that makes the most financial sense for your specific situation.</p>
+        <div class="post-cta">
+          <h3>Get the Right Inverter for Your Roof</h3>
+          <p>Book a free site survey and our engineers will recommend the best inverter type after assessing your specific conditions.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Book Free Site Survey →</a>
+        </div>
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
+        <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/monocrystalline-vs-polycrystalline-kerala`}>Panel Types Compared →</a></li><li><a href={`${base}/blog/on-grid-vs-off-grid-solar-kerala`}>On-Grid vs Off-Grid →</a></li><li><a href={`${base}/blog/solar-panel-warranty-explained`}>Warranty Guide →</a></li></ul></div>
+        <div class="sidebar-card sidebar-card--cta"><div style="font-size:3rem; margin-bottom:12px">⚡</div><strong>Free Site Survey</strong><p>Rayenna analyses your roof's shading and orientation before recommending an inverter type.</p></div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style>{`
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
+.back-link:hover { color: #a83838; }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.cost-table { border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; overflow-x: auto; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr 0.6fr 1.4fr; }
+.cost-row span { padding: 12px 14px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+`}</style>
