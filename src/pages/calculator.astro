@@ -791,8 +791,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   border-radius: var(--radius-lg);
   border: 1.5px solid var(--calc-border);
   box-shadow: var(--shadow-md);
-  padding: 32px 24px 40px;
-  max-width: 720px;
+  padding: 36px 28px 48px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
@@ -1346,14 +1346,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ── FOOTNOTE / T&C ── */
 .calc-footnote {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   align-items: flex-start;
   background: #f8f9fb;
   border: 1px solid #dce4ef;
   border-left: 4px solid var(--calc-blue);
   border-radius: var(--radius-md);
-  padding: 20px 20px 20px 18px;
-  margin-top: 28px;
+  padding: 24px 28px 24px 22px;
+  margin-top: 32px;
 }
 .calc-footnote__icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 2px; }
 .calc-footnote__body { flex: 1; }
@@ -1466,13 +1466,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .calc-intro__image img { min-height: 520px; max-height: 620px; }
   .how-cards { gap: 14px; }
   .trust-inner { gap: 0; justify-content: space-evenly; }
-  .result-stats-grid { grid-template-columns: 1fr 1fr; }
+  .result-stats-grid { grid-template-columns: repeat(4, 1fr); }
   .occupancy-grid { grid-template-columns: 1fr 1fr; }
+  .home-type-grid { grid-template-columns: repeat(4, 1fr); }
+  .charger-grid   { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (min-width: 900px) {
   .cta-banner__inner { grid-template-columns: 1fr auto; gap: 48px; }
-  .calc-card { padding: 48px 56px 56px; }
+  .calc-card { padding: 52px 72px 64px; }
 }
 </style>
 
