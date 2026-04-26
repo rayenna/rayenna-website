@@ -43,7 +43,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="calc-intro">
     <div class="container calc-intro__inner">
       <div class="calc-intro__image">
-        <img src={`${base}/media/solar-calculator-intro.png`} alt="Solar panels powering a green city" />
+        <img src={`${base}/media/solar-calculator-intro.jpg`} alt="High-efficiency solar panels on a rooftop" />
       </div>
       <div class="calc-intro__content">
         <span class="section-tag">How it works</span>
@@ -719,11 +719,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   border-radius: var(--radius-lg);
   overflow: hidden;
   line-height: 0;
+  box-shadow: var(--shadow-md);
 }
 .calc-intro__image img {
-  width: 110%;
-  margin-left: -5%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  object-position: center 30%;
   display: block;
 }
 .calc-intro__content .section-title { margin-bottom: 16px; }
