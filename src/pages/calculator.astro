@@ -412,64 +412,113 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Panel options -->
           <div class="panel-options-section">
-            <p class="calc-field-label">Panel options</p>
+            <p class="calc-field-label">Panel options — Kerala market prices</p>
 
-            <div class="panel-option recommended" id="panel-540">
+            <!-- A: N-Type TopCon 620W — Premium -->
+            <div class="panel-option" id="panel-620">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge purple">Premium</span>
+                  <h4>N-Type TopCon 620W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-620-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p620-panels">— panels</span>
+                <span>22.8% efficiency</span>
+                <span id="p620-roof">— sq ft</span>
+                <span>₹26/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-620-detail">
+                <p>The latest N-Type TopCon technology delivers the highest watt-peak and lowest degradation rate on the market. Fewer panels needed, maximum roof-space efficiency. Best choice when you want the most power from the least area.</p>
+              </div>
+            </div>
+
+            <!-- B: N-Type TopCon 600W — Recommended -->
+            <div class="panel-option recommended" id="panel-600">
               <div class="panel-option__header">
                 <div>
                   <span class="panel-badge blue">Recommended</span>
-                  <h4>Monocrystalline 540W</h4>
+                  <h4>N-Type TopCon 600W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-600-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p600-panels">— panels</span>
+                <span>22.2% efficiency</span>
+                <span id="p600-roof">— sq ft</span>
+                <span>₹25.7/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-600-detail">
+                <p>The best all-round choice for Kerala rooftops. N-Type TopCon cells offer superior performance in high-temperature and low-light (overcast monsoon) conditions — exactly what the Kerala climate demands. Excellent long-term value.</p>
+              </div>
+            </div>
+
+            <!-- C: N-Type TopCon 580W — Best Value -->
+            <div class="panel-option" id="panel-580tc">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge green">Best Value</span>
+                  <h4>N-Type TopCon 580W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580tc-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p580tc-panels">— panels</span>
+                <span>21.8% efficiency</span>
+                <span id="p580tc-roof">— sq ft</span>
+                <span>₹24.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-580tc-detail">
+                <p>N-Type TopCon at a more accessible price point. Retains all the key advantages of TopCon technology — low temperature coefficient, excellent low-light performance, and higher energy yield per Wp — at a lower upfront cost than the 600W or 620W variants.</p>
+              </div>
+            </div>
+
+            <!-- D: Bi-Facial Dual Glass 580W — Bifacial -->
+            <div class="panel-option" id="panel-580bf">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge teal">Bifacial</span>
+                  <h4>Bifacial Dual Glass 580W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580bf-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p580bf-panels">— panels</span>
+                <span>21.3% + bifacial gain</span>
+                <span id="p580bf-roof">— sq ft</span>
+                <span>₹24/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-580bf-detail">
+                <p>Dual-glass bifacial panels generate electricity from both sides, harvesting reflected light from the roof surface and surroundings. Particularly effective on light-coloured flat rooftops. The glass-glass construction also offers better protection against Kerala's heavy monsoon humidity and extreme rainfall.</p>
+              </div>
+            </div>
+
+            <!-- E: Mono PERC 540W — Economy -->
+            <div class="panel-option" id="panel-540">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge grey">Economy</span>
+                  <h4>Mono PERC 540W</h4>
                 </div>
                 <button class="panel-expand" type="button" data-target="panel-540-detail">Learn more ▾</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p540-panels">— panels</span>
-                <span>21.5% efficiency</span>
+                <span>20.5% efficiency</span>
                 <span id="p540-roof">— sq ft</span>
+                <span>₹23.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
                 <span>25yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-540-detail">
-                <p>Premium monocrystalline cells offer the highest efficiency available for residential use, requiring the least roof space. Ideal for homes with limited roof area or those wanting the best long-term performance.</p>
+                <p>Proven Mono PERC technology at the most affordable price point. A solid and reliable choice for homeowners prioritising the lowest upfront cost. Widely available with a strong installer support network across Kerala. Best suited for rooftops with ample available area.</p>
               </div>
             </div>
 
-            <div class="panel-option" id="panel-400">
-              <div class="panel-option__header">
-                <div>
-                  <span class="panel-badge green">Budget-friendly</span>
-                  <h4>Monocrystalline 400W</h4>
-                </div>
-                <button class="panel-expand" type="button" data-target="panel-400-detail">Learn more ▾</button>
-              </div>
-              <div class="panel-option__stats">
-                <span id="p400-panels">— panels</span>
-                <span>19.8% efficiency</span>
-                <span id="p400-roof">— sq ft</span>
-                <span>25yr warranty</span>
-              </div>
-              <div class="panel-option__detail hidden" id="panel-400-detail">
-                <p>A popular middle-ground option with excellent efficiency and a proven track record. Well-suited for most Kerala homes with moderate roof space available.</p>
-              </div>
-            </div>
-
-            <div class="panel-option" id="panel-330">
-              <div class="panel-option__header">
-                <div>
-                  <span class="panel-badge grey">Economy</span>
-                  <h4>Polycrystalline 330W</h4>
-                </div>
-                <button class="panel-expand" type="button" data-target="panel-330-detail">Learn more ▾</button>
-              </div>
-              <div class="panel-option__stats">
-                <span id="p330-panels">— panels</span>
-                <span>17.2% efficiency</span>
-                <span id="p330-roof">— sq ft</span>
-                <span>25yr warranty</span>
-              </div>
-              <div class="panel-option__detail hidden" id="panel-330-detail">
-                <p>Entry-level polycrystalline panels are cost-effective for homes with ample roof space. Performance is slightly lower but still delivers a strong return on investment over 25 years.</p>
-              </div>
-            </div>
           </div>
 
           <!-- Financial snapshot -->
@@ -1139,9 +1188,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   border-radius: 50px;
   margin-bottom: 4px;
 }
-.panel-badge.blue  { background: var(--calc-blue-light); color: var(--calc-blue); }
-.panel-badge.green { background: #e8f5e9; color: #2e7d32; }
-.panel-badge.grey  { background: #f5f5f5; color: #666; }
+.panel-badge.blue   { background: var(--calc-blue-light); color: var(--calc-blue); }
+.panel-badge.purple { background: #f0eaff; color: #6b21a8; }
+.panel-badge.green  { background: #e8f5e9; color: #2e7d32; }
+.panel-badge.teal   { background: #e0f7f4; color: #00796b; }
+.panel-badge.grey   { background: #f5f5f5; color: #666; }
 .panel-expand {
   background: none;
   border: 1px solid var(--color-border);
@@ -1460,14 +1511,26 @@ function calculateResults() {
   sysKw          = Math.max(1, isNaN(sysKw) ? 1 : sysKw);
   const annUnits = sysKw * 1200;
 
-  const p540 = Math.ceil(sysKw * 1000 / 540);
-  const p400 = Math.ceil(sysKw * 1000 / 400);
-  const p330 = Math.ceil(sysKw * 1000 / 330);
-  const r540 = p540 * 27;
-  const r400 = p400 * 27;
-  const r330 = p330 * 27;
+  // ── Panel counts (real Kerala market panels) ────────────────
+  // watt, price-per-watt, sq-ft-per-panel
+  const panels = [
+    { id: '620',   watt: 620, ppw: 26.0,  sqft: 26 },
+    { id: '600',   watt: 600, ppw: 25.7,  sqft: 25 },
+    { id: '580tc', watt: 580, ppw: 24.5,  sqft: 24 },
+    { id: '580bf', watt: 580, ppw: 24.0,  sqft: 25 },
+    { id: '540',   watt: 540, ppw: 23.5,  sqft: 23 },
+  ];
+  const panelResults = panels.map(p => {
+    const count = Math.ceil(sysKw * 1000 / p.watt);
+    const roof  = count * p.sqft;
+    const cost  = count * p.watt * p.ppw;
+    return { ...p, count, roof, cost };
+  });
 
-  const cost     = sysKw * 90000;
+  // Use recommended (600W TopCon) for headline stat card & system cost
+  const rec      = panelResults.find(p => p.id === '600')!;
+  const bos      = sysKw * 55000;   // balance-of-system: inverter, mounting, wiring, install
+  const cost     = rec.cost + bos;
   const subsidy  = Math.min(78000, cost * 0.4);
   const net      = cost - subsidy;
   const annSave  = s.monthlyBill * 11;
@@ -1480,13 +1543,15 @@ function calculateResults() {
   setText('result-kw',    sysKw + ' kW');
   setText('result-units', 'Generates ~' + inr(annUnits) + ' units/year');
   setText('result-daily', daily.toFixed(1) + ' units/day');
-  setText('result-panels', p540 + ' panels (540W)');
-  setText('result-roof',  r540 + ' sq ft');
-  setText('result-subsidy','₹' + inr(subsidy));
+  setText('result-panels', rec.count + ' panels (600W TopCon)');
+  setText('result-roof',   rec.roof + ' sq ft');
+  setText('result-subsidy','₹' + inr(Math.round(subsidy)));
 
-  setText('p540-panels', p540 + ' panels'); setText('p540-roof', r540 + ' sq ft');
-  setText('p400-panels', p400 + ' panels'); setText('p400-roof', r400 + ' sq ft');
-  setText('p330-panels', p330 + ' panels'); setText('p330-roof', r330 + ' sq ft');
+  panelResults.forEach(p => {
+    setText(`p${p.id}-panels`, p.count + ' panels');
+    setText(`p${p.id}-roof`,   p.roof  + ' sq ft');
+    setText(`p${p.id}-cost`,   '₹' + inr(Math.round(p.cost)));
+  });
 
   setText('fin-annual',  '₹' + inr(annSave));
   setText('fin-payback', isNaN(payback) || !isFinite(payback) ? '—' : payback.toFixed(1) + ' years');
