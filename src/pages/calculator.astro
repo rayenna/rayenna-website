@@ -715,12 +715,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   gap: 48px;
   align-items: center;
 }
-.calc-intro__image img {
-  width: 100%;
+.calc-intro__image {
   border-radius: var(--radius-lg);
-  object-fit: contain;
-  max-height: 460px;
-  background: #e4f6f8;
+  overflow: hidden;
+  line-height: 0;
+}
+.calc-intro__image img {
+  width: 110%;
+  margin-left: -5%;
+  height: auto;
+  display: block;
 }
 .calc-intro__content .section-title { margin-bottom: 16px; }
 .calc-intro__content p {
