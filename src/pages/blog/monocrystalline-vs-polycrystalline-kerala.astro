@@ -51,13 +51,13 @@ const post = { title: 'Monocrystalline vs Polycrystalline Solar Panels: Which Is
     </div>
   </section>
 </Layout>
-<style>{`
-.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+<style>
+.post-hero { background: linear-gradient(135deg, var(--color-navy) 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
 .post-hero__inner { max-width: 860px; }
-.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
-.back-link:hover { color: #a83838; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
 .post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
-.post-category { background: #a83838; color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
 .post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
 .post-author { display: flex; align-items: center; gap: 14px; }
 .author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
@@ -66,31 +66,34 @@ const post = { title: 'Monocrystalline vs Polycrystalline Solar Panels: Which Is
 .post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
 .post-hero__wave svg { width: 100%; display: block; }
 .post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
-.post-content { background: white; border-radius: 12px; padding: 48px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid #a83838; padding-left: 20px; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
 .post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
 .post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
-.cost-table { border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
 .cost-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; }
-.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.88rem; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; }
 .cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
 .cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
-.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid #a83838; border-radius: 0 6px 6px 0; padding: 20px; margin: 24px 0; }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
 .callout-icon { font-size: 1.5rem; flex-shrink: 0; }
 .post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
 .post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
-.post-cta { background: linear-gradient(135deg, #27324f, #3a4a6b); border-radius: 12px; padding: 32px; margin-top: 40px; text-align: center; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
 .post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
 .post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
 .post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
-.sidebar-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
 .sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
 .sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
 .sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
 .sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
 .sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.sidebar-links a { font-size: 0.88rem; color: #a83838; font-weight: 600; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
 .sidebar-links a:hover { text-decoration: underline; }
 @media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
 @media (max-width: 600px) { .post-content { padding: 24px; } }
-`}</style>
+</style>
