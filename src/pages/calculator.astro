@@ -430,7 +430,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p620-panels">— panels</span>
                 <span>22.8% efficiency</span>
                 <span id="p620-roof">— sq ft</span>
-                <span>₹26/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
+                <span>₹29.5/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-620-detail">
@@ -451,7 +451,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p600-panels">— panels</span>
                 <span>22.2% efficiency</span>
                 <span id="p600-roof">— sq ft</span>
-                <span>₹25.7/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
+                <span>₹29/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-600-detail">
@@ -472,7 +472,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p580tc-panels">— panels</span>
                 <span>21.8% efficiency</span>
                 <span id="p580tc-roof">— sq ft</span>
-                <span>₹24.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
+                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580tc-detail">
@@ -493,7 +493,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p580bf-panels">— panels</span>
                 <span>21.3% + bifacial gain</span>
                 <span id="p580bf-roof">— sq ft</span>
-                <span>₹24/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
+                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580bf-detail">
@@ -514,7 +514,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p540-panels">— panels</span>
                 <span>20.5% efficiency</span>
                 <span id="p540-roof">— sq ft</span>
-                <span>₹23.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
+                <span>₹27.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
                 <span>25yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-540-detail">
@@ -1651,11 +1651,11 @@ function pmSubsidy(sysKw: number): number {
 
 // ── Module-level cache (populated by calculateResults) ───────
 const PANEL_SPECS = [
-  { id: '620',   watt: 620, ppw: 26.0,  sqft: 26, label: '620W TopCon' },
-  { id: '600',   watt: 600, ppw: 25.7,  sqft: 25, label: '600W TopCon' },
-  { id: '580tc', watt: 580, ppw: 24.5,  sqft: 24, label: '580W TopCon' },
-  { id: '580bf', watt: 580, ppw: 24.0,  sqft: 25, label: '580W Bifacial' },
-  { id: '540',   watt: 540, ppw: 23.5,  sqft: 23, label: '540W PERC' },
+  { id: '620',   watt: 620, ppw: 29.5,  sqft: 26, label: '620W TopCon' },
+  { id: '600',   watt: 600, ppw: 29.0,  sqft: 25, label: '600W TopCon' },
+  { id: '580tc', watt: 580, ppw: 28.5,  sqft: 24, label: '580W TopCon' },
+  { id: '580bf', watt: 580, ppw: 28.5,  sqft: 25, label: '580W Bifacial' },
+  { id: '540',   watt: 540, ppw: 27.5,  sqft: 23, label: '540W PERC' },
 ];
 type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
 let cachedPanelResults: PanelResult[] = [];
@@ -1733,8 +1733,8 @@ function updatePanelDisplay(id: string) {
   selectedPanelId = id;
 
   const p = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1]; // fallback 600W
-  const cost    = p.cost / 0.52;           // panels = 52% of total installed cost
-  const bos     = cost - p.cost;            // BOS = remaining 48%
+  const cost    = p.cost / 0.48;            // panels = 48% of total installed cost
+  const bos     = cost - p.cost;            // BOS = remaining 52%
   const subsidy = pmSubsidy(cachedSysKw);   // MNRE tiered: 1kW=₹30k, 2kW=₹60k, 3kW+=₹78k
   const net     = cost - subsidy;
   const payback = net / cachedAnnSave;
