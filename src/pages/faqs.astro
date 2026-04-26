@@ -7,7 +7,7 @@ const categories = [
     id: 'costs',
     emoji: '₹',
     label: 'Costs & Subsidies',
-    tagline: '5 questions',
+    count: 5,
     faqs: [
       {
         q: 'How much does a solar panel system cost in Kerala in 2025?',
@@ -35,7 +35,7 @@ const categories = [
     id: 'roof',
     emoji: '🏠',
     label: 'Roof & System Requirements',
-    tagline: '4 questions',
+    count: 4,
     faqs: [
       {
         q: 'How much roof space do I need for a solar system?',
@@ -59,7 +59,7 @@ const categories = [
     id: 'how-solar-works',
     emoji: '⚡',
     label: 'How Solar Works',
-    tagline: '5 questions',
+    count: 5,
     faqs: [
       {
         q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
@@ -87,7 +87,7 @@ const categories = [
     id: 'process',
     emoji: '📋',
     label: 'Subsidy Application & Process',
-    tagline: '4 questions',
+    count: 4,
     faqs: [
       {
         q: 'How do I apply for the PM Surya Ghar subsidy?',
@@ -111,7 +111,7 @@ const categories = [
     id: 'maintenance',
     emoji: '🔧',
     label: 'Maintenance & Warranties',
-    tagline: '4 questions',
+    count: 4,
     faqs: [
       {
         q: 'How much maintenance do solar panels require?',
@@ -135,7 +135,7 @@ const categories = [
     id: 'special',
     emoji: '🏢',
     label: 'Special Situations',
-    tagline: '3 questions',
+    count: 3,
     faqs: [
       {
         q: 'Can apartments and housing societies go solar in Kerala?',
@@ -152,97 +152,83 @@ const categories = [
     ],
   },
 ];
-
-const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
 ---
 <Layout title="Frequently Asked Questions – Rayenna Solar" description="Everything you need to know about solar in Kerala — costs, subsidies, installation, maintenance, and more. Answered by Rayenna Energy.">
 
-  <!-- ===== HERO ===== -->
-  <section class="faq-hero">
-    <img src={`${base}/media/hero (1).webp`} alt="" class="faq-hero__bg" />
-    <div class="faq-hero__overlay"></div>
-
-    <!-- Animated rays -->
-    <div class="sun-rays" aria-hidden="true">
-      {Array.from({length: 12}).map((_, i) => (
-        <div class="ray" style={`--i:${i}`}></div>
-      ))}
-    </div>
-
-    <div class="container faq-hero__inner">
-      <div class="faq-hero__badge">
-        <span class="faq-hero__count">{totalFaqs}</span>
-        <span>Questions Answered</span>
-      </div>
-      <h1 class="faq-hero__title">Solar FAQs<br /><span>for Kerala Homes</span></h1>
-      <p class="faq-hero__sub">Everything you need to know about going solar — costs, subsidies, roof requirements, warranties and more. Clear, honest answers from Kerala's MNRE-approved solar experts.</p>
-
-      <!-- Search -->
-      <div class="faq-search-wrap">
-        <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input
-          type="text"
-          id="faq-search"
-          class="faq-search"
-          placeholder="Search any question…"
-          autocomplete="off"
-          aria-label="Search FAQs"
-        />
-        <button class="faq-search-clear" id="faq-search-clear" aria-label="Clear search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <img src={`${base}/media/Plan-solar.webp`} alt="Rayenna Solar FAQ" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">Knowledge Base</p>
+      <h1 class="page-hero__title">Solar FAQs for<br />Kerala Homes</h1>
+      <p class="page-hero__sub">Clear, honest answers to every question about going solar — from costs and subsidies to installation timelines and warranties.</p>
     </div>
   </section>
 
-  <!-- ===== CATEGORY PILLS NAV ===== -->
-  <nav class="cat-nav" id="cat-nav" aria-label="FAQ categories">
-    <div class="cat-nav__inner" id="cat-nav-inner">
-      <button class="cat-pill cat-pill--active" data-filter="all">All Topics</button>
-      {categories.map(c => (
-        <button class="cat-pill" data-filter={c.id}>
-          <span class="cat-pill__emoji">{c.emoji}</span>
-          {c.label}
-        </button>
-      ))}
+  <!-- ===== SEARCH + CATEGORY NAV ===== -->
+  <div class="faq-nav-wrap" id="faq-nav-wrap">
+    <!-- Search row -->
+    <div class="faq-search-row">
+      <div class="container faq-search-inner">
+        <div class="faq-search-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="faq-search" placeholder="Search any question…" autocomplete="off" aria-label="Search FAQs" />
+          <button class="faq-search-clear" id="faq-search-clear" aria-label="Clear">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <p class="faq-search-hint" id="faq-search-hint">25 questions across 6 topics</p>
+      </div>
     </div>
-  </nav>
+
+    <!-- Category pills -->
+    <nav class="cat-nav" aria-label="FAQ categories">
+      <div class="container">
+        <div class="cat-nav__inner" id="cat-nav-inner">
+          <button class="cat-pill cat-pill--active" data-filter="all">All</button>
+          {categories.map(c => (
+            <button class="cat-pill" data-filter={c.id}>
+              <span class="cat-pill__emoji">{c.emoji}</span>
+              <span>{c.label}</span>
+              <span class="cat-pill__count">{c.count}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
+  </div>
 
   <!-- ===== FAQ BODY ===== -->
   <div class="faq-body" id="faq-body">
 
-    <!-- No results -->
     <div class="no-results" id="no-results" style="display:none">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <div class="no-results__icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
       <p>No questions match your search.</p>
-      <button id="clear-search-btn" class="btn btn-primary" style="margin-top:16px;padding:10px 28px;font-size:0.9rem;">Clear Search</button>
+      <button id="clear-search-btn" class="btn btn-primary" style="margin-top:20px;padding:10px 28px;font-size:0.88rem;">Clear Search</button>
     </div>
 
     {categories.map((cat, ci) => (
       <section class="faq-category" id={`cat-${cat.id}`} data-category={cat.id}>
         <div class="container">
           <div class="faq-category__header">
-            <div class={`faq-category__icon faq-category__icon--${ci % 3}`}>
-              <span>{cat.emoji}</span>
-            </div>
-            <div>
-              <h2 class="faq-category__title">{cat.label}</h2>
-              <p class="faq-category__tagline">{cat.tagline}</p>
-            </div>
+            <span class="section-tag">{cat.emoji} {cat.label}</span>
           </div>
 
           <div class="accordion" data-cat={cat.id}>
             {cat.faqs.map((faq, fi) => (
               <div class="accordion-item" data-question={faq.q.toLowerCase()}>
                 <button class="accordion-trigger" aria-expanded="false">
-                  <span class="accordion-trigger__num">0{fi + 1}</span>
-                  <span class="accordion-trigger__q">{faq.q}</span>
-                  <span class="accordion-trigger__icon" aria-hidden="true">
+                  <span class="accordion-num">0{fi + 1}</span>
+                  <span class="accordion-q">{faq.q}</span>
+                  <span class="accordion-icon" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                   </span>
                 </button>
                 <div class="accordion-panel">
-                  <div class="accordion-panel__inner">
+                  <div class="accordion-panel__body">
                     <p>{faq.a}</p>
                   </div>
                 </div>
@@ -254,22 +240,76 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
     ))}
   </div>
 
-  <!-- ===== SUBSIDY HIGHLIGHT CARD ===== -->
-  <section class="subsidy-highlight">
-    <div class="container">
-      <div class="subsidy-card">
-        <div class="subsidy-card__glow"></div>
-        <div class="subsidy-card__content">
-          <p class="subsidy-card__eyebrow">Government Subsidy</p>
-          <h3 class="subsidy-card__title">Get up to <strong>₹78,000</strong> off your solar installation</h3>
-          <p class="subsidy-card__body">As an MNRE-approved channel partner, Rayenna Energy handles your PM Surya Ghar subsidy application end-to-end — at no extra cost to you.</p>
-          <a href={`${base}/contact`} class="btn btn-primary subsidy-card__btn">Check My Eligibility</a>
+  <!-- ===== SUBSIDY HIGHLIGHT ===== -->
+  <section class="subsidy-section">
+    <div class="container subsidy-inner">
+      <div class="subsidy-img-col">
+        <img
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80&auto=format&fit=crop"
+          alt="Solar panels on a home rooftop"
+          class="subsidy-photo"
+          loading="lazy"
+        />
+        <div class="subsidy-badge">
+          <strong>₹78,000</strong>
+          <span>Max Subsidy Available</span>
         </div>
-        <div class="subsidy-card__graphic" aria-hidden="true">
-          <div class="subsidy-ring subsidy-ring--1"></div>
-          <div class="subsidy-ring subsidy-ring--2"></div>
-          <div class="subsidy-ring subsidy-ring--3"></div>
-          <span class="subsidy-amount">₹78K</span>
+      </div>
+      <div class="subsidy-content-col">
+        <span class="section-tag">PM Surya Ghar Scheme</span>
+        <h2 class="section-title">Don't miss out on <span>₹78,000</span> in government subsidies</h2>
+        <p class="subsidy-desc">The PM Surya Ghar: Muft Bijli Yojana is available exclusively through MNRE-empanelled installers. As a certified channel partner, Rayenna Energy handles the entire subsidy process on your behalf — documentation, portal submission, KSEB approvals, and bank credit — at no extra cost to you.</p>
+        <ul class="subsidy-points">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Up to ₹78,000 credited directly to your bank
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Available only via MNRE-approved vendors like Rayenna
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Credited within 30 working days of commissioning
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            We manage all paperwork — you just say yes
+          </li>
+        </ul>
+        <a href={`${base}/contact`} class="btn btn-primary">Check My Eligibility</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WARRANTY STRIP ===== -->
+  <section class="warranty-strip">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Peace of Mind</span>
+        <h2 class="section-title text-center">Everything comes with a warranty</h2>
+      </div>
+      <div class="warranty-cards">
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <strong>25 Years</strong>
+          <p>Panel performance warranty — guaranteed at 85%+ output</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          </div>
+          <strong>5–10 Years</strong>
+          <p>Inverter warranty covering all major brands we install</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <strong>5 Years</strong>
+          <p>Workmanship warranty on installation quality and roof sealing</p>
         </div>
       </div>
     </div>
@@ -281,11 +321,11 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
     <div class="faq-cta__overlay"></div>
     <div class="container faq-cta__inner">
       <h2 class="faq-cta__title">Still have questions?</h2>
-      <p class="faq-cta__sub">Our solar experts in Kerala are ready to answer anything — from a quick phone call to a full on-site assessment. It's completely free.</p>
+      <p class="faq-cta__sub">Our solar experts are just a call or message away. Free consultations, honest answers, no pressure.</p>
       <div class="faq-cta__actions">
-        <a href={`${base}/contact`} class="btn btn-primary faq-cta__btn">Talk to an Expert</a>
+        <a href={`${base}/contact`} class="btn btn-primary">Talk to an Expert</a>
         <a href="tel:+917907369304" class="faq-cta__call">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           +91 7907 369 304
         </a>
       </div>
@@ -295,208 +335,176 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
 </Layout>
 
 <style>
-/* ===========================
+/* ============================
    FAQ Page — Mobile First
-   =========================== */
+   Aligned with About / Services / Contact
+   ============================ */
 
-/* ===== HERO ===== */
-.faq-hero {
+/* ===== PAGE HERO ===== */
+.page-hero {
   position: relative;
-  min-height: 520px;
+  min-height: 420px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   overflow: hidden;
-  padding: 100px 0 64px;
+  padding-bottom: 56px;
 }
-.faq-hero__bg {
+.page-hero__bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center 30%;
   z-index: 0;
 }
-.faq-hero__overlay {
+.page-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(8, 18, 40, 0.97) 0%,
-    rgba(39, 50, 79, 0.88) 50%,
-    rgba(8, 18, 40, 0.92) 100%
+    to top,
+    rgba(10, 25, 50, 0.92) 0%,
+    rgba(10, 25, 50, 0.60) 50%,
+    rgba(10, 25, 50, 0.20) 100%
   );
   z-index: 1;
 }
-
-/* Animated sun rays */
-.sun-rays {
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 420px;
-  height: 420px;
-  z-index: 1;
-  opacity: 0.07;
-}
-.ray {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  height: 2px;
-  transform-origin: 0 50%;
-  transform: rotate(calc(var(--i) * 30deg));
-  background: linear-gradient(to right, rgba(255,200,50,0.8), transparent);
-  animation: ray-pulse 3s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.25s);
-}
-@keyframes ray-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-.faq-hero__inner {
+.page-hero__inner {
   position: relative;
   z-index: 2;
-  max-width: 680px;
+  padding-top: 88px;
 }
-.faq-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(168, 56, 56, 0.2);
-  border: 1px solid rgba(168, 56, 56, 0.4);
-  border-radius: 99px;
-  padding: 6px 16px 6px 6px;
-  margin-bottom: 20px;
-}
-.faq-hero__count {
-  background: var(--color-primary);
-  color: #fff;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.faq-hero__badge span:last-child {
-  font-size: 0.8rem;
+.page-hero__eyebrow {
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
 }
-.faq-hero__title {
+.page-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 500;
   color: #fff;
-  line-height: 1.15;
-  margin-bottom: 16px;
+  line-height: 1.2;
+  margin-bottom: 14px;
 }
-.faq-hero__title span { color: var(--color-primary); }
-.faq-hero__sub {
-  color: rgba(255,255,255,0.65);
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  line-height: 1.85;
-  margin-bottom: 32px;
+.page-hero__sub {
+  font-size: clamp(0.92rem, 2vw, 1rem);
+  color: rgba(255,255,255,0.70);
+  max-width: 500px;
+  line-height: 1.8;
 }
 
-/* Search bar */
-.faq-search-wrap {
-  position: relative;
-  max-width: 520px;
-}
-.faq-search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255,255,255,0.4);
-  pointer-events: none;
-}
-.faq-search {
-  width: 100%;
-  padding: 15px 48px 15px 48px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 99px;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-.faq-search::placeholder { color: rgba(255,255,255,0.4); }
-.faq-search:focus {
-  border-color: var(--color-primary);
-  background: rgba(255,255,255,0.15);
-}
-.faq-search-clear {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.4);
-  cursor: pointer;
-  display: none;
-  padding: 4px;
-}
-.faq-search-clear.visible { display: flex; }
-
-/* ===== CATEGORY NAV ===== */
-.cat-nav {
+/* ===== SEARCH + NAV WRAPPER ===== */
+.faq-nav-wrap {
   background: #fff;
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 64px;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
+
+/* Search row */
+.faq-search-row {
+  border-bottom: 1px solid var(--color-border);
+  padding: 14px 0;
+}
+.faq-search-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.faq-search-field {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-light);
+  border: 2px solid var(--color-border);
+  border-radius: 99px;
+  padding: 9px 16px;
+  transition: border-color 0.2s;
+}
+.faq-search-field:focus-within {
+  border-color: var(--color-primary);
+  background: #fff;
+}
+.faq-search-field svg { color: var(--color-text-muted); flex-shrink: 0; }
+.faq-search-field input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  width: 100%;
+}
+.faq-search-field input::placeholder { color: var(--color-text-muted); }
+.faq-search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: none;
+  padding: 2px;
+  flex-shrink: 0;
+}
+.faq-search-clear.visible { display: flex; }
+.faq-search-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Category pills */
+.cat-nav { overflow: hidden; }
 .cat-nav__inner {
   display: flex;
-  gap: 6px;
-  padding: 12px 24px;
+  gap: 4px;
+  padding: 10px 0;
   overflow-x: auto;
   scrollbar-width: none;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 .cat-nav__inner::-webkit-scrollbar { display: none; }
 .cat-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 18px;
+  padding: 7px 16px;
   border-radius: 99px;
   border: 2px solid transparent;
   background: var(--color-light);
   color: var(--color-text-muted);
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .cat-pill:hover {
-  background: rgba(168,56,56,0.08);
+  background: var(--color-primary-light);
   color: var(--color-primary);
 }
 .cat-pill--active {
   background: var(--color-primary);
   color: #fff;
-  border-color: var(--color-primary);
 }
-.cat-pill__emoji { font-size: 0.9rem; }
+.cat-pill__emoji { font-size: 0.85rem; }
+.cat-pill__count {
+  background: rgba(0,0,0,0.12);
+  border-radius: 99px;
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  font-weight: 700;
+}
+.cat-pill--active .cat-pill__count { background: rgba(255,255,255,0.25); }
 
 /* ===== FAQ BODY ===== */
 .faq-body { background: var(--color-light); }
@@ -505,202 +513,224 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 80px 24px;
   color: var(--color-text-muted);
-  gap: 12px;
+  gap: 10px;
   text-align: center;
 }
-
-/* ===== CATEGORY SECTION ===== */
-.faq-category {
-  padding: 56px 0 0;
-}
-.faq-category:last-child { padding-bottom: 56px; }
-.faq-category__header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 32px;
-}
-.faq-category__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
+.no-results__icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-.faq-category__icon--0 { background: rgba(168, 56, 56, 0.1); }
-.faq-category__icon--1 { background: rgba(39, 50, 79, 0.08); }
-.faq-category__icon--2 { background: rgba(120, 139, 186, 0.15); }
-.faq-category__title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-  font-weight: 600;
-  color: var(--color-navy);
-  margin-bottom: 3px;
-}
-.faq-category__tagline {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
+/* Category section */
+.faq-category { padding: 52px 0 0; }
+.faq-category:last-child { padding-bottom: 56px; }
+.faq-category__header { margin-bottom: 24px; }
+
 /* ===== ACCORDION ===== */
-.accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.accordion { display: flex; flex-direction: column; gap: 8px; }
+
 .accordion-item {
   background: #fff;
   border-radius: var(--radius-md);
-  overflow: hidden;
   border: 1px solid var(--color-border);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
+.accordion-item:hover { box-shadow: var(--shadow-sm); }
 .accordion-item.is-open {
+  border-color: rgba(168,56,56,0.3);
   box-shadow: var(--shadow-md);
-  border-color: rgba(168,56,56,0.25);
 }
 .accordion-item--hidden { display: none; }
+
 .accordion-trigger {
   width: 100%;
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 20px 20px;
+  padding: 20px 22px;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  transition: background 0.15s ease;
 }
-.accordion-trigger:hover { background: rgba(168,56,56,0.03); }
-.accordion-trigger__num {
+.accordion-num {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--color-primary);
-  opacity: 0.6;
+  opacity: 0.55;
   flex-shrink: 0;
-  margin-top: 2px;
-  min-width: 20px;
+  margin-top: 3px;
+  min-width: 18px;
 }
-.accordion-trigger__q {
+.accordion-q {
   flex: 1;
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-navy);
   line-height: 1.5;
+  transition: color 0.2s;
 }
-.accordion-item.is-open .accordion-trigger__q { color: var(--color-primary); }
-.accordion-trigger__icon {
+.accordion-item.is-open .accordion-q { color: var(--color-primary); }
+.accordion-icon {
   flex-shrink: 0;
   color: var(--color-text-muted);
   margin-top: 2px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.2s;
 }
-.accordion-item.is-open .accordion-trigger__icon { transform: rotate(180deg); color: var(--color-primary); }
+.accordion-item.is-open .accordion-icon {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
 
 .accordion-panel {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.accordion-panel__inner {
-  padding: 0 20px 22px calc(20px + 14px + 20px);
+.accordion-panel__body {
+  padding: 0 22px 22px calc(22px + 14px + 18px);
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
 }
-.accordion-panel__inner p {
+.accordion-panel__body p {
   color: var(--color-text-muted);
   font-size: 0.92rem;
   line-height: 1.9;
 }
 
-/* ===== SUBSIDY HIGHLIGHT ===== */
-.subsidy-highlight {
-  padding: 64px 0;
-  background: var(--color-light);
+/* ===== SUBSIDY SECTION ===== */
+.subsidy-section {
+  padding: var(--section-padding);
+  background: #fff;
 }
-.subsidy-card {
+.subsidy-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.subsidy-img-col {
   position: relative;
-  background: var(--color-navy);
+}
+.subsidy-photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
   border-radius: var(--radius-lg);
-  padding: 48px 36px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  box-shadow: var(--shadow-lg);
 }
-.subsidy-card__glow {
+.subsidy-badge {
   position: absolute;
-  top: -80px;
-  left: -80px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(168,56,56,0.3) 0%, transparent 70%);
-  pointer-events: none;
-}
-.subsidy-card__eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 10px;
-}
-.subsidy-card__title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 3vw, 1.9rem);
-  font-weight: 500;
+  bottom: -18px;
+  right: 20px;
+  background: var(--color-primary);
   color: #fff;
-  line-height: 1.3;
-  margin-bottom: 14px;
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(168,56,56,0.4);
 }
-.subsidy-card__title strong { color: var(--color-primary); font-weight: 700; }
-.subsidy-card__body {
-  color: rgba(255,255,255,0.65);
-  font-size: 0.92rem;
+.subsidy-badge strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.subsidy-badge span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+.subsidy-content-col { padding-top: 24px; }
+.subsidy-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
   line-height: 1.85;
   margin-bottom: 24px;
-  max-width: 480px;
 }
-.subsidy-card__btn { align-self: flex-start; }
+.subsidy-points {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 32px;
+}
+.subsidy-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.subsidy-points li svg { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
 
-/* Animated rings graphic */
-.subsidy-card__graphic {
-  position: relative;
+/* ===== WARRANTY STRIP ===== */
+.warranty-strip {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.section-header-center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.warranty-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.warranty-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--color-primary);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.warranty-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.warranty-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
+  margin: 0 auto 18px;
 }
-.subsidy-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(168,56,56,0.25);
-  animation: ring-pulse 3s ease-in-out infinite;
-}
-.subsidy-ring--1 { width: 100px; height: 100px; animation-delay: 0s; }
-.subsidy-ring--2 { width: 150px; height: 150px; animation-delay: 0.6s; border-color: rgba(168,56,56,0.15); }
-.subsidy-ring--3 { width: 200px; height: 200px; animation-delay: 1.2s; border-color: rgba(168,56,56,0.08); }
-@keyframes ring-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-}
-.subsidy-amount {
-  position: relative;
+.warranty-card strong {
+  display: block;
   font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -1px;
-  z-index: 1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+.warranty-card p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
 }
 
 /* ===== CTA ===== */
@@ -722,7 +752,7 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
 .faq-cta__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8, 18, 40, 0.88);
+  background: rgba(8, 18, 40, 0.87);
   z-index: 1;
 }
 .faq-cta__inner {
@@ -740,7 +770,7 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
 }
 .faq-cta__sub {
   color: rgba(255,255,255,0.65);
-  max-width: 500px;
+  max-width: 480px;
   margin: 0 auto 32px;
   line-height: 1.85;
   font-size: 0.95rem;
@@ -751,12 +781,11 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
   align-items: center;
   gap: 16px;
 }
-.faq-cta__btn { padding: 14px 40px; }
 .faq-cta__call {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.72);
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 500;
@@ -767,23 +796,20 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
 /* ===========================
    Breakpoints
    =========================== */
+@media (min-width: 600px) {
+  .faq-search-hint { display: block; }
+}
+
 @media (min-width: 640px) {
   .faq-cta__actions { flex-direction: row; justify-content: center; }
+  .warranty-cards { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 768px) {
-  .subsidy-card {
-    flex-direction: row;
-    align-items: center;
-    gap: 48px;
-  }
-  .subsidy-card__content { flex: 1; }
-  .subsidy-card__graphic { flex: 0 0 220px; }
-  .accordion-trigger__q { font-size: 1rem; }
-}
-
-@media (min-width: 960px) {
-  .sun-rays { opacity: 0.1; width: 500px; height: 500px; }
+@media (min-width: 900px) {
+  .subsidy-inner { grid-template-columns: 1fr 1fr; gap: 72px; }
+  .subsidy-content-col { padding-top: 0; }
+  .subsidy-photo { height: 420px; }
+  .accordion-q { font-size: 1rem; }
 }
 </style>
 
@@ -791,19 +817,20 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
   // ===== ACCORDION =====
   document.querySelectorAll<HTMLElement>('.accordion-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
-      const item = trigger.closest<HTMLElement>('.accordion-item')!;
-      const panel = item.querySelector<HTMLElement>('.accordion-panel')!;
+      const item   = trigger.closest<HTMLElement>('.accordion-item')!;
+      const panel  = item.querySelector<HTMLElement>('.accordion-panel')!;
       const isOpen = item.classList.contains('is-open');
 
-      // Close all in same accordion
-      const accordion = item.closest<HTMLElement>('.accordion')!;
-      accordion.querySelectorAll<HTMLElement>('.accordion-item.is-open').forEach(open => {
-        if (open !== item) {
-          open.classList.remove('is-open');
-          open.querySelector<HTMLElement>('.accordion-panel')!.style.maxHeight = '0';
-          open.querySelector<HTMLButtonElement>('.accordion-trigger')!.setAttribute('aria-expanded', 'false');
-        }
-      });
+      // Close siblings
+      item.closest<HTMLElement>('.accordion')!
+        .querySelectorAll<HTMLElement>('.accordion-item.is-open')
+        .forEach(open => {
+          if (open !== item) {
+            open.classList.remove('is-open');
+            open.querySelector<HTMLElement>('.accordion-panel')!.style.maxHeight = '0';
+            open.querySelector<HTMLButtonElement>('.accordion-trigger')!.setAttribute('aria-expanded', 'false');
+          }
+        });
 
       if (isOpen) {
         item.classList.remove('is-open');
@@ -821,6 +848,7 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
   const searchInput = document.getElementById('faq-search') as HTMLInputElement;
   const searchClear = document.getElementById('faq-search-clear') as HTMLButtonElement;
   const noResults   = document.getElementById('no-results') as HTMLElement;
+  const searchHint  = document.getElementById('faq-search-hint') as HTMLElement;
   const allItems    = Array.from(document.querySelectorAll<HTMLElement>('.accordion-item'));
   const allCats     = Array.from(document.querySelectorAll<HTMLElement>('.faq-category'));
 
@@ -829,37 +857,33 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
     searchClear.classList.toggle('visible', term.length > 0);
 
     if (!term) {
-      allItems.forEach(item => item.classList.remove('accordion-item--hidden'));
-      allCats.forEach(cat => cat.style.display = '');
+      allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
+      allCats.forEach(c => (c.style.display = ''));
       noResults.style.display = 'none';
+      searchHint.textContent = '25 questions across 6 topics';
       return;
     }
 
     let visible = 0;
     allItems.forEach(item => {
-      const question = item.dataset.question || '';
-      const answer   = item.querySelector('.accordion-panel__inner p')?.textContent?.toLowerCase() || '';
-      const match    = question.includes(term) || answer.includes(term);
-      item.classList.toggle('accordion-item--hidden', !match);
-      if (match) visible++;
+      const q2 = item.dataset.question || '';
+      const a  = item.querySelector('.accordion-panel__body p')?.textContent?.toLowerCase() || '';
+      const ok = q2.includes(term) || a.includes(term);
+      item.classList.toggle('accordion-item--hidden', !ok);
+      if (ok) visible++;
     });
 
-    // Hide empty categories
     allCats.forEach(cat => {
-      const hasVisible = cat.querySelectorAll('.accordion-item:not(.accordion-item--hidden)').length > 0;
-      cat.style.display = hasVisible ? '' : 'none';
+      cat.style.display = cat.querySelectorAll('.accordion-item:not(.accordion-item--hidden)').length > 0 ? '' : 'none';
     });
 
     noResults.style.display = visible === 0 ? 'flex' : 'none';
+    searchHint.textContent  = visible > 0 ? `${visible} result${visible !== 1 ? 's' : ''} found` : 'No results';
   }
 
   searchInput.addEventListener('input', e => runSearch((e.target as HTMLInputElement).value));
 
-  function clearSearch() {
-    searchInput.value = '';
-    runSearch('');
-    searchInput.focus();
-  }
+  function clearSearch() { searchInput.value = ''; runSearch(''); searchInput.focus(); }
   searchClear.addEventListener('click', clearSearch);
   document.getElementById('clear-search-btn')?.addEventListener('click', clearSearch);
 
@@ -870,42 +894,30 @@ const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
     pill.addEventListener('click', () => {
       pills.forEach(p => p.classList.remove('cat-pill--active'));
       pill.classList.add('cat-pill--active');
-      // Clear search when switching category
       searchInput.value = '';
       runSearch('');
 
       const filter = pill.dataset.filter;
       allCats.forEach(cat => {
-        if (filter === 'all' || cat.dataset.category === filter) {
-          cat.style.display = '';
-        } else {
-          cat.style.display = 'none';
-        }
+        cat.style.display = filter === 'all' || cat.dataset.category === filter ? '' : 'none';
       });
 
-      // Scroll to section
       if (filter !== 'all') {
         const target = document.getElementById(`cat-${filter}`);
-        if (target) {
-          const offset = 140;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
+        if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 160, behavior: 'smooth' });
       }
     });
   });
 
-  // Highlight active pill on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = (entry.target as HTMLElement).dataset.category;
+  // Auto-highlight active pill while scrolling
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = (e.target as HTMLElement).dataset.category;
         pills.forEach(p => p.classList.remove('cat-pill--active'));
-        const matchPill = pills.find(p => p.dataset.filter === id);
-        if (matchPill) matchPill.classList.add('cat-pill--active');
+        (pills.find(p => p.dataset.filter === id) || pills[0]).classList.add('cat-pill--active');
       }
     });
-  }, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
-
-  allCats.forEach(cat => observer.observe(cat));
+  }, { rootMargin: '-130px 0px -60% 0px' });
+  allCats.forEach(c => io.observe(c));
 </script>
