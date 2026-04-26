@@ -349,14 +349,36 @@ const currentPath = Astro.url.pathname;
   .navbar__nav { display: none; }
   .navbar__burger { display: flex; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
-  .footer__col--logo { grid-column: 1 / span 2; justify-content: flex-start; }
-  .footer__col--badge { justify-content: flex-start; }
-  .footer__col--contact { grid-column: auto; }
+  .footer__col--logo { grid-column: 1; justify-content: flex-start; }
+  .footer__col--badge { grid-column: 2; justify-content: flex-start; }
+  .footer__col--about { grid-column: 1; }
+  .footer__col--contact { grid-column: 2; }
   .footer__bottom-inner { text-align: center; }
 }
 @media (max-width: 480px) {
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__col--logo { grid-column: auto; }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+  /* Logo and badge: side by side in row 1 */
+  .footer__col--logo {
+    grid-column: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .footer__col--badge {
+    grid-column: 2;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  /* About and Contact: each spans full width below */
+  .footer__col--about,
+  .footer__col--contact {
+    grid-column: 1 / span 2;
+  }
+  /* Scale logos down to fit side by side */
+  .footer-logo-img { width: 130px; }
+  .footer-badge-img { width: 100px; height: 100px; }
 }
 </style>
 
