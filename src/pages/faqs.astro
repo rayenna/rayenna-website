@@ -1,0 +1,911 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const categories = [
+  {
+    id: 'costs',
+    emoji: '₹',
+    label: 'Costs & Subsidies',
+    tagline: '5 questions',
+    faqs: [
+      {
+        q: 'How much does a solar panel system cost in Kerala in 2025?',
+        a: 'A rooftop solar system in Kerala typically costs between ₹70,000–₹90,000 per kW before subsidies. A popular 3 kW system runs ₹1.85–₹2.15 lakhs before subsidy. After applying the government\'s PM Surya Ghar subsidy of up to ₹78,000, your out-of-pocket cost comes down to approximately ₹1.1–₹1.4 lakhs. Pricing varies based on panel brand, inverter type, and your roof\'s structural requirements.',
+      },
+      {
+        q: 'What is the PM Surya Ghar: Muft Bijli Yojana subsidy, and how much can I get?',
+        a: 'This is the central government\'s flagship solar subsidy scheme. It offers fixed Central Financial Assistance (CFA) to residential customers installing on-grid rooftop solar systems. The subsidy is structured as follows — up to ₹30,000 for 1 kW, up to ₹60,000 for 2 kW, and up to ₹78,000 for 3 kW and above. The maximum subsidy is capped at ₹78,000 regardless of system size. The amount is credited directly to your bank account within 30 working days of commissioning.',
+      },
+      {
+        q: 'What is the payback period for solar in Kerala?',
+        a: 'Given Kerala\'s high electricity tariffs (₹8–₹9 per unit) and strong solar irradiation, most homeowners recover their investment in 3–5 years. After that, you generate effectively free electricity for the remaining 20+ years of the system\'s life.',
+      },
+      {
+        q: 'Are there financing options available for solar in Kerala?',
+        a: 'Yes. Many banks and NBFCs now offer dedicated solar loans at 6–8% interest rates. In several cases, your monthly EMI is less than your current KSEB bill savings — meaning the system pays for itself from day one. Rayenna can guide you through financing options best suited to your situation.',
+      },
+      {
+        q: 'Will the subsidy be available if I choose a company that is not MNRE-approved?',
+        a: 'No. The government subsidy under PM Surya Ghar is only available through MNRE-empanelled vendors. Choosing an unapproved installer means you forfeit the ₹78,000 subsidy entirely. Rayenna Energy is an MNRE-approved channel partner, so your subsidy eligibility is fully protected.',
+      },
+    ],
+  },
+  {
+    id: 'roof',
+    emoji: '🏠',
+    label: 'Roof & System Requirements',
+    tagline: '4 questions',
+    faqs: [
+      {
+        q: 'How much roof space do I need for a solar system?',
+        a: 'As a general rule, you need approximately 100 square feet of shadow-free rooftop area per kW of solar capacity. So a 3 kW system requires around 300 sq. ft. of clear, unshaded roof. South-facing roofs provide the best output in Kerala, though east- or west-facing roofs also work well.',
+      },
+      {
+        q: 'Does my roof need to be in perfect condition before installation?',
+        a: 'Your roof should be structurally sound enough to support the panels and mounting structure. If your roof has existing damage or is due for repair, it\'s best to address that before installation. Our team will assess your roof\'s condition during the free site survey and advise you accordingly.',
+      },
+      {
+        q: 'Can solar panels be installed on tiled or sloped roofs?',
+        a: 'Yes. Both traditional Mangalore-tiled and modern ceramic-tiled roofs in Kerala can accommodate solar panels using specialised hook-and-rail mounting systems. Our installation team is experienced in leak-proof mounting for Kerala\'s roof types and will ensure your roof remains watertight after installation.',
+      },
+      {
+        q: 'What is the ideal direction for solar panels in Kerala?',
+        a: 'South-facing is optimal for maximum annual generation. East- or west-facing installations also perform well, though output may be marginally lower. What matters most is that the panels are not shaded between 9 AM and 4 PM — this is when the bulk of solar generation occurs.',
+      },
+    ],
+  },
+  {
+    id: 'how-solar-works',
+    emoji: '⚡',
+    label: 'How Solar Works',
+    tagline: '5 questions',
+    faqs: [
+      {
+        q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
+        a: 'An on-grid system is connected to the KSEB grid. It is the most common and cost-effective option for Kerala homes — excess power is exported to the grid via net metering, and you receive credit on your bill. An off-grid system runs entirely on batteries and is suitable for areas with no grid connection. A hybrid system combines grid connectivity with battery backup, giving you power during outages while still using net metering. For most Kerala homes, an on-grid system is the smartest financial choice.',
+      },
+      {
+        q: 'What is net metering, and how does it benefit me?',
+        a: 'Net metering allows you to export surplus solar electricity to the KSEB grid during the day and draw power back at night. KSEB credits your account for the units you export, which offsets your bill. Effectively, the grid acts as a free battery — you bank energy during the day and use it at night.',
+      },
+      {
+        q: 'Will my solar system work during Kerala\'s monsoon season?',
+        a: 'Yes — and better than you might expect. While generation does drop by 20–30% during the peak monsoon months of June–August, a well-sized system in central Kerala still produces approximately 600 units during those three months. Over a full year, a 3 kW system typically generates around 3,600 units, already accounting for monsoon losses. Solar remains highly viable in Kerala year-round.',
+      },
+      {
+        q: 'Will my solar system work during a power cut?',
+        a: 'A standard on-grid system automatically shuts down during a power outage — this is a safety feature required by KSEB to protect grid workers. If you need power during outages, a hybrid system with battery backup is the right choice. Talk to our team and we will help you decide what\'s right for your home.',
+      },
+      {
+        q: 'How much electricity does a 3 kW solar system generate per day?',
+        a: 'In Kerala\'s conditions, a well-installed 3 kW system generates approximately 10–12 units per day on a clear day, and around 3,600 units annually when averaged across all seasons including monsoon.',
+      },
+    ],
+  },
+  {
+    id: 'process',
+    emoji: '📋',
+    label: 'Subsidy Application & Process',
+    tagline: '4 questions',
+    faqs: [
+      {
+        q: 'How do I apply for the PM Surya Ghar subsidy?',
+        a: 'The process involves registering on the national portal at pmsuryaghar.gov.in using your KSEB consumer number and Aadhaar-linked mobile number, selecting an empanelled vendor, getting the system installed after receiving Technical Feasibility (TFR) approval, and then having the subsidy credited to your bank account. As a Rayenna customer, we handle the entire application process on your behalf — you don\'t have to navigate the portal alone.',
+      },
+      {
+        q: 'What documents are required for the subsidy application?',
+        a: 'You will need your Aadhaar card, recent KSEB electricity bill, proof of property ownership (or rental agreement), bank account details, and a passport-size photograph. Our team will help you compile and submit all documentation correctly.',
+      },
+      {
+        q: 'How long does the entire process take — from enquiry to a working system?',
+        a: 'From your initial consultation to a fully commissioned system, the typical timeline in Kerala is 4–8 weeks. The physical installation itself takes just 1–2 days. The rest of the time accounts for site survey, system design, KSEB feasibility approval, and net meter installation. We keep you informed at every step.',
+      },
+      {
+        q: 'Can I claim the subsidy if I have already installed solar previously?',
+        a: 'No. The PM Surya Ghar subsidy is available only to consumers who have not previously availed a government solar subsidy. If you installed a system under an older scheme such as KSEB Soura or ANERT\'s Surya Thejus, you are not eligible to claim the current subsidy.',
+      },
+    ],
+  },
+  {
+    id: 'maintenance',
+    emoji: '🔧',
+    label: 'Maintenance & Warranties',
+    tagline: '4 questions',
+    faqs: [
+      {
+        q: 'How much maintenance do solar panels require?',
+        a: 'Very little. Solar panels are designed to be low-maintenance. We recommend a basic visual inspection every few months and a professional system check once a year. Occasional cleaning — particularly after heavy dust or leaf accumulation — can improve output by up to 15%. Kerala\'s monsoon rains naturally clean the panels during the rainy season.',
+      },
+      {
+        q: 'What warranties come with a Rayenna installation?',
+        a: 'A complete Rayenna installation includes a 25-year performance warranty on solar panels (guaranteed to maintain at least 85% of initial output), a 5–10 year warranty on the inverter, and a 5-year workmanship warranty on the installation itself. All warranty terms are documented clearly in your agreement.',
+      },
+      {
+        q: 'Do I need lightning protection for my solar system in Kerala?',
+        a: 'Given Kerala\'s heavy monsoon lightning activity, lightning arresters are strongly recommended and are a sensible safeguard for your solar investment. They protect your inverter, panels, and any battery storage from surge damage. Rayenna ensures all installations comply with Indian safety codes in this regard.',
+      },
+      {
+        q: 'What happens to my system after 25 years?',
+        a: 'Solar panels degrade slowly over time. After 25 years, most quality panels still operate at 80–85% of their original output. At that point, you can choose to replace individual underperforming panels or upgrade to newer, higher-efficiency technology. The inverter will likely need replacement sooner — typically after 10–12 years.',
+      },
+    ],
+  },
+  {
+    id: 'special',
+    emoji: '🏢',
+    label: 'Special Situations',
+    tagline: '3 questions',
+    faqs: [
+      {
+        q: 'Can apartments and housing societies go solar in Kerala?',
+        a: 'Yes, though it requires a collective decision and compliance with KSEB\'s guidelines for common area installations. Individual flat owners can also explore solar for their specific units if they have dedicated rooftop access. This is an evolving area of regulation — contact us for an assessment specific to your building.',
+      },
+      {
+        q: 'Can businesses and commercial establishments avail the subsidy?',
+        a: 'The PM Surya Ghar subsidy is specifically for residential consumers. However, commercial and industrial solar installations can still benefit from accelerated depreciation benefits and KSEB\'s commercial net metering policy, which significantly improves the financial case. Our team can walk you through the commercial options.',
+      },
+      {
+        q: 'What is the new KSERC 2025 net metering regulation I\'ve been hearing about?',
+        a: 'From October 2025, new KSERC regulations cap residential net metering at 3 kW for systems without battery storage. If you wish to install more than 3 kW, you will need to include battery backup covering at least 30% of your system\'s capacity. If your system was already approved and commissioned before October 2025, your existing net metering agreement remains unaffected. We stay current on all regulatory changes and design every new system in full compliance.',
+      },
+    ],
+  },
+];
+
+const totalFaqs = categories.reduce((acc, c) => acc + c.faqs.length, 0);
+---
+<Layout title="Frequently Asked Questions – Rayenna Solar" description="Everything you need to know about solar in Kerala — costs, subsidies, installation, maintenance, and more. Answered by Rayenna Energy.">
+
+  <!-- ===== HERO ===== -->
+  <section class="faq-hero">
+    <img src={`${base}/media/hero (1).webp`} alt="" class="faq-hero__bg" />
+    <div class="faq-hero__overlay"></div>
+
+    <!-- Animated rays -->
+    <div class="sun-rays" aria-hidden="true">
+      {Array.from({length: 12}).map((_, i) => (
+        <div class="ray" style={`--i:${i}`}></div>
+      ))}
+    </div>
+
+    <div class="container faq-hero__inner">
+      <div class="faq-hero__badge">
+        <span class="faq-hero__count">{totalFaqs}</span>
+        <span>Questions Answered</span>
+      </div>
+      <h1 class="faq-hero__title">Solar FAQs<br /><span>for Kerala Homes</span></h1>
+      <p class="faq-hero__sub">Everything you need to know about going solar — costs, subsidies, roof requirements, warranties and more. Clear, honest answers from Kerala's MNRE-approved solar experts.</p>
+
+      <!-- Search -->
+      <div class="faq-search-wrap">
+        <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          type="text"
+          id="faq-search"
+          class="faq-search"
+          placeholder="Search any question…"
+          autocomplete="off"
+          aria-label="Search FAQs"
+        />
+        <button class="faq-search-clear" id="faq-search-clear" aria-label="Clear search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY PILLS NAV ===== -->
+  <nav class="cat-nav" id="cat-nav" aria-label="FAQ categories">
+    <div class="cat-nav__inner" id="cat-nav-inner">
+      <button class="cat-pill cat-pill--active" data-filter="all">All Topics</button>
+      {categories.map(c => (
+        <button class="cat-pill" data-filter={c.id}>
+          <span class="cat-pill__emoji">{c.emoji}</span>
+          {c.label}
+        </button>
+      ))}
+    </div>
+  </nav>
+
+  <!-- ===== FAQ BODY ===== -->
+  <div class="faq-body" id="faq-body">
+
+    <!-- No results -->
+    <div class="no-results" id="no-results" style="display:none">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>No questions match your search.</p>
+      <button id="clear-search-btn" class="btn btn-primary" style="margin-top:16px;padding:10px 28px;font-size:0.9rem;">Clear Search</button>
+    </div>
+
+    {categories.map((cat, ci) => (
+      <section class="faq-category" id={`cat-${cat.id}`} data-category={cat.id}>
+        <div class="container">
+          <div class="faq-category__header">
+            <div class={`faq-category__icon faq-category__icon--${ci % 3}`}>
+              <span>{cat.emoji}</span>
+            </div>
+            <div>
+              <h2 class="faq-category__title">{cat.label}</h2>
+              <p class="faq-category__tagline">{cat.tagline}</p>
+            </div>
+          </div>
+
+          <div class="accordion" data-cat={cat.id}>
+            {cat.faqs.map((faq, fi) => (
+              <div class="accordion-item" data-question={faq.q.toLowerCase()}>
+                <button class="accordion-trigger" aria-expanded="false">
+                  <span class="accordion-trigger__num">0{fi + 1}</span>
+                  <span class="accordion-trigger__q">{faq.q}</span>
+                  <span class="accordion-trigger__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-panel">
+                  <div class="accordion-panel__inner">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- ===== SUBSIDY HIGHLIGHT CARD ===== -->
+  <section class="subsidy-highlight">
+    <div class="container">
+      <div class="subsidy-card">
+        <div class="subsidy-card__glow"></div>
+        <div class="subsidy-card__content">
+          <p class="subsidy-card__eyebrow">Government Subsidy</p>
+          <h3 class="subsidy-card__title">Get up to <strong>₹78,000</strong> off your solar installation</h3>
+          <p class="subsidy-card__body">As an MNRE-approved channel partner, Rayenna Energy handles your PM Surya Ghar subsidy application end-to-end — at no extra cost to you.</p>
+          <a href={`${base}/contact`} class="btn btn-primary subsidy-card__btn">Check My Eligibility</a>
+        </div>
+        <div class="subsidy-card__graphic" aria-hidden="true">
+          <div class="subsidy-ring subsidy-ring--1"></div>
+          <div class="subsidy-ring subsidy-ring--2"></div>
+          <div class="subsidy-ring subsidy-ring--3"></div>
+          <span class="subsidy-amount">₹78K</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="faq-cta">
+    <img src={`${base}/media/glass-BG.webp`} alt="" class="faq-cta__bg" />
+    <div class="faq-cta__overlay"></div>
+    <div class="container faq-cta__inner">
+      <h2 class="faq-cta__title">Still have questions?</h2>
+      <p class="faq-cta__sub">Our solar experts in Kerala are ready to answer anything — from a quick phone call to a full on-site assessment. It's completely free.</p>
+      <div class="faq-cta__actions">
+        <a href={`${base}/contact`} class="btn btn-primary faq-cta__btn">Talk to an Expert</a>
+        <a href="tel:+917907369304" class="faq-cta__call">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 7907 369 304
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ===========================
+   FAQ Page — Mobile First
+   =========================== */
+
+/* ===== HERO ===== */
+.faq-hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 0 64px;
+}
+.faq-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: 0;
+}
+.faq-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 18, 40, 0.97) 0%,
+    rgba(39, 50, 79, 0.88) 50%,
+    rgba(8, 18, 40, 0.92) 100%
+  );
+  z-index: 1;
+}
+
+/* Animated sun rays */
+.sun-rays {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 420px;
+  height: 420px;
+  z-index: 1;
+  opacity: 0.07;
+}
+.ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: rotate(calc(var(--i) * 30deg));
+  background: linear-gradient(to right, rgba(255,200,50,0.8), transparent);
+  animation: ray-pulse 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.25s);
+}
+@keyframes ray-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.faq-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+.faq-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(168, 56, 56, 0.2);
+  border: 1px solid rgba(168, 56, 56, 0.4);
+  border-radius: 99px;
+  padding: 6px 16px 6px 6px;
+  margin-bottom: 20px;
+}
+.faq-hero__count {
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.faq-hero__badge span:last-child {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.faq-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.faq-hero__title span { color: var(--color-primary); }
+.faq-hero__sub {
+  color: rgba(255,255,255,0.65);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+/* Search bar */
+.faq-search-wrap {
+  position: relative;
+  max-width: 520px;
+}
+.faq-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+.faq-search {
+  width: 100%;
+  padding: 15px 48px 15px 48px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 99px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.faq-search::placeholder { color: rgba(255,255,255,0.4); }
+.faq-search:focus {
+  border-color: var(--color-primary);
+  background: rgba(255,255,255,0.15);
+}
+.faq-search-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  display: none;
+  padding: 4px;
+}
+.faq-search-clear.visible { display: flex; }
+
+/* ===== CATEGORY NAV ===== */
+.cat-nav {
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 64px;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.cat-nav__inner {
+  display: flex;
+  gap: 6px;
+  padding: 12px 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cat-nav__inner::-webkit-scrollbar { display: none; }
+.cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background: var(--color-light);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cat-pill:hover {
+  background: rgba(168,56,56,0.08);
+  color: var(--color-primary);
+}
+.cat-pill--active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.cat-pill__emoji { font-size: 0.9rem; }
+
+/* ===== FAQ BODY ===== */
+.faq-body { background: var(--color-light); }
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  color: var(--color-text-muted);
+  gap: 12px;
+  text-align: center;
+}
+
+/* ===== CATEGORY SECTION ===== */
+.faq-category {
+  padding: 56px 0 0;
+}
+.faq-category:last-child { padding-bottom: 56px; }
+.faq-category__header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.faq-category__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.faq-category__icon--0 { background: rgba(168, 56, 56, 0.1); }
+.faq-category__icon--1 { background: rgba(39, 50, 79, 0.08); }
+.faq-category__icon--2 { background: rgba(120, 139, 186, 0.15); }
+.faq-category__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 3px;
+}
+.faq-category__tagline {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ===== ACCORDION ===== */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.accordion-item {
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.accordion-item.is-open {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(168,56,56,0.25);
+}
+.accordion-item--hidden { display: none; }
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.accordion-trigger:hover { background: rgba(168,56,56,0.03); }
+.accordion-trigger__num {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 20px;
+}
+.accordion-trigger__q {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.5;
+}
+.accordion-item.is-open .accordion-trigger__q { color: var(--color-primary); }
+.accordion-trigger__icon {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  transition: transform 0.3s ease;
+}
+.accordion-item.is-open .accordion-trigger__icon { transform: rotate(180deg); color: var(--color-primary); }
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-panel__inner {
+  padding: 0 20px 22px calc(20px + 14px + 20px);
+}
+.accordion-panel__inner p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+
+/* ===== SUBSIDY HIGHLIGHT ===== */
+.subsidy-highlight {
+  padding: 64px 0;
+  background: var(--color-light);
+}
+.subsidy-card {
+  position: relative;
+  background: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 48px 36px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.subsidy-card__glow {
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,56,56,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.subsidy-card__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+.subsidy-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.subsidy-card__title strong { color: var(--color-primary); font-weight: 700; }
+.subsidy-card__body {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  margin-bottom: 24px;
+  max-width: 480px;
+}
+.subsidy-card__btn { align-self: flex-start; }
+
+/* Animated rings graphic */
+.subsidy-card__graphic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+.subsidy-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(168,56,56,0.25);
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+.subsidy-ring--1 { width: 100px; height: 100px; animation-delay: 0s; }
+.subsidy-ring--2 { width: 150px; height: 150px; animation-delay: 0.6s; border-color: rgba(168,56,56,0.15); }
+.subsidy-ring--3 { width: 200px; height: 200px; animation-delay: 1.2s; border-color: rgba(168,56,56,0.08); }
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+.subsidy-amount {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  z-index: 1;
+}
+
+/* ===== CTA ===== */
+.faq-cta {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.faq-cta__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.faq-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 40, 0.88);
+  z-index: 1;
+}
+.faq-cta__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 64px 24px;
+}
+.faq-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.faq-cta__sub {
+  color: rgba(255,255,255,0.65);
+  max-width: 500px;
+  margin: 0 auto 32px;
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+.faq-cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.faq-cta__btn { padding: 14px 40px; }
+.faq-cta__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.faq-cta__call:hover { color: #fff; }
+
+/* ===========================
+   Breakpoints
+   =========================== */
+@media (min-width: 640px) {
+  .faq-cta__actions { flex-direction: row; justify-content: center; }
+}
+
+@media (min-width: 768px) {
+  .subsidy-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+  .subsidy-card__content { flex: 1; }
+  .subsidy-card__graphic { flex: 0 0 220px; }
+  .accordion-trigger__q { font-size: 1rem; }
+}
+
+@media (min-width: 960px) {
+  .sun-rays { opacity: 0.1; width: 500px; height: 500px; }
+}
+</style>
+
+<script>
+  // ===== ACCORDION =====
+  document.querySelectorAll<HTMLElement>('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest<HTMLElement>('.accordion-item')!;
+      const panel = item.querySelector<HTMLElement>('.accordion-panel')!;
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all in same accordion
+      const accordion = item.closest<HTMLElement>('.accordion')!;
+      accordion.querySelectorAll<HTMLElement>('.accordion-item.is-open').forEach(open => {
+        if (open !== item) {
+          open.classList.remove('is-open');
+          open.querySelector<HTMLElement>('.accordion-panel')!.style.maxHeight = '0';
+          open.querySelector<HTMLButtonElement>('.accordion-trigger')!.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        panel.style.maxHeight = '0';
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ===== SEARCH =====
+  const searchInput = document.getElementById('faq-search') as HTMLInputElement;
+  const searchClear = document.getElementById('faq-search-clear') as HTMLButtonElement;
+  const noResults   = document.getElementById('no-results') as HTMLElement;
+  const allItems    = Array.from(document.querySelectorAll<HTMLElement>('.accordion-item'));
+  const allCats     = Array.from(document.querySelectorAll<HTMLElement>('.faq-category'));
+
+  function runSearch(q: string) {
+    const term = q.toLowerCase().trim();
+    searchClear.classList.toggle('visible', term.length > 0);
+
+    if (!term) {
+      allItems.forEach(item => item.classList.remove('accordion-item--hidden'));
+      allCats.forEach(cat => cat.style.display = '');
+      noResults.style.display = 'none';
+      return;
+    }
+
+    let visible = 0;
+    allItems.forEach(item => {
+      const question = item.dataset.question || '';
+      const answer   = item.querySelector('.accordion-panel__inner p')?.textContent?.toLowerCase() || '';
+      const match    = question.includes(term) || answer.includes(term);
+      item.classList.toggle('accordion-item--hidden', !match);
+      if (match) visible++;
+    });
+
+    // Hide empty categories
+    allCats.forEach(cat => {
+      const hasVisible = cat.querySelectorAll('.accordion-item:not(.accordion-item--hidden)').length > 0;
+      cat.style.display = hasVisible ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'flex' : 'none';
+  }
+
+  searchInput.addEventListener('input', e => runSearch((e.target as HTMLInputElement).value));
+
+  function clearSearch() {
+    searchInput.value = '';
+    runSearch('');
+    searchInput.focus();
+  }
+  searchClear.addEventListener('click', clearSearch);
+  document.getElementById('clear-search-btn')?.addEventListener('click', clearSearch);
+
+  // ===== CATEGORY PILLS =====
+  const pills = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-pill'));
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('cat-pill--active'));
+      pill.classList.add('cat-pill--active');
+      // Clear search when switching category
+      searchInput.value = '';
+      runSearch('');
+
+      const filter = pill.dataset.filter;
+      allCats.forEach(cat => {
+        if (filter === 'all' || cat.dataset.category === filter) {
+          cat.style.display = '';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+
+      // Scroll to section
+      if (filter !== 'all') {
+        const target = document.getElementById(`cat-${filter}`);
+        if (target) {
+          const offset = 140;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // Highlight active pill on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = (entry.target as HTMLElement).dataset.category;
+        pills.forEach(p => p.classList.remove('cat-pill--active'));
+        const matchPill = pills.find(p => p.dataset.filter === id);
+        if (matchPill) matchPill.classList.add('cat-pill--active');
+      }
+    });
+  }, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+
+  allCats.forEach(cat => observer.observe(cat));
+</script>
