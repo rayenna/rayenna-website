@@ -1529,9 +1529,8 @@ const PANEL_SPECS = [
 ];
 type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
 let cachedPanelResults: PanelResult[] = [];
-let cachedSysKw    = 0;
-let cachedAnnSave  = 0;
-let cachedLifetime = 0;
+let cachedSysKw     = 0;
+let cachedAnnSave   = 0;
 let selectedPanelId = '600';
 
 const inr = (n: number) => isNaN(n) || !isFinite(n) ? '—' : n.toLocaleString('en-IN');
@@ -1570,7 +1569,6 @@ function calculateResults() {
   // Cache for panel-switch updates
   cachedSysKw   = sysKw;
   cachedAnnSave = annSave;
-  cachedLifetime = lifetime;
 
   // Compute per-panel data
   cachedPanelResults = PANEL_SPECS.map(p => {
