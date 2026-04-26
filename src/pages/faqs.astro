@@ -412,6 +412,9 @@ const categories = [
   border-bottom: 1px solid var(--color-border);
   padding: 14px 0;
 }
+.faq-search-row .container {
+  padding: var(--container-pad);
+}
 .faq-search-inner {
   display: flex;
   align-items: center;
@@ -467,11 +470,19 @@ const categories = [
 .cat-nav__inner {
   display: flex;
   gap: 4px;
-  padding: 10px 0;
+  padding: 10px 24px 10px 24px;
   overflow-x: auto;
   scrollbar-width: none;
+  /* Ensure last pill is never clipped */
+  -webkit-overflow-scrolling: touch;
 }
 .cat-nav__inner::-webkit-scrollbar { display: none; }
+/* Remove the container's side padding so pills scroll edge-to-edge */
+.cat-nav .container {
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
 .cat-pill {
   display: inline-flex;
   align-items: center;
