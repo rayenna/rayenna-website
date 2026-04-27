@@ -1659,13 +1659,36 @@ function pmSubsidy(sysKw: number): number {
 }
 
 // ── Non-panel system costs (BOS) ─────────────
+// Tiered rates reflect higher fixed overheads for small systems
 function calcBos(sysKw: number): number {
   let inverter: number;
-  if      (sysKw <= 3) inverter = 15000;
-  else if (sysKw <= 5) inverter = 22000;
-  else if (sysKw <= 7) inverter = 30000;
-  else                  inverter = 38000;
-  return inverter + (sysKw * 3000) + (sysKw * 2500) + (sysKw * 2000) + 2000;
+  if      (sysKw <= 1) inverter = 12000;
+  else if (sysKw <= 2) inverter = 16000;
+  else if (sysKw <= 3) inverter = 20000;
+  else if (sysKw <= 4) inverter = 24000;
+  else if (sysKw <= 5) inverter = 28000;
+  else if (sysKw <= 7) inverter = 36000;
+  else                  inverter = 45000;
+
+  let mounting: number;
+  if      (sysKw <= 2) mounting = sysKw * 5000;
+  else if (sysKw <= 3) mounting = sysKw * 4500;
+  else if (sysKw <= 5) mounting = sysKw * 4000;
+  else                  mounting = sysKw * 3500;
+
+  let cables: number;
+  if      (sysKw <= 2) cables = 8000;
+  else if (sysKw <= 3) cables = 10000;
+  else if (sysKw <= 5) cables = 12000;
+  else                  cables = sysKw * 2000;
+
+  let install: number;
+  if      (sysKw <= 2) install = 8000;
+  else if (sysKw <= 3) install = 10000;
+  else if (sysKw <= 5) install = 12000;
+  else                  install = sysKw * 2000;
+
+  return inverter + mounting + cables + install + 2000; // 2000 = KSEB net meter
 }
 
 // ── EV live impact ────────────────────────────
@@ -1677,8 +1700,8 @@ function updateEVImpact() {
   setText('ev-extra-panels', '+' + evExtraPanels + (evExtraPanels === 1 ? ' panel' : ' panels'));
 
   const evNote = state.evCount > 1
-    ? `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, × ${state.evCount} EVs, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. We recommend sizing your system to cover this fully so you charge on solar, not the grid.`
-    : `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. We recommend sizing your system to cover this fully so you charge on solar, not the grid.`;
+    ? `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week × ${state.evCount} EVs, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`
+    : `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`;
   setText('ev-impact-note', evNote);
 }
 
@@ -1694,7 +1717,7 @@ function calculateResults() {
   daily += s.fridge    *  200  * 24 * 0.3  / 1000;
   daily += s.microwave * 1200  *         1 / 1000;
   daily += s.washing   *  500  *         1 / 1000;
-  const rooms = s.bedrooms + s.bathrooms + 1;
+  const rooms = s.bedrooms;                          // lighting: count by bedrooms
   daily += rooms       *   50  *         8 / 1000;
   if (s.geyser) daily += 2000 / 1000;
   if (s.pump)   daily += 750 * 2 / 1000;
