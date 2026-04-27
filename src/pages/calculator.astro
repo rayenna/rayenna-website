@@ -1659,36 +1659,54 @@ function pmSubsidy(sysKw: number): number {
 }
 
 // ── Non-panel system costs (BOS) ─────────────
-// Tiered rates reflect higher fixed overheads for small systems
+// Kerala market reality (Apr 2026): all-in ₹75k–85k/kW total installed cost.
+// At ₹29/W panels = ₹29k/kW, non-panel BoS = ₹46k–56k/kW.
+// Small systems are disproportionately expensive — fixed overheads
+// (inverter electronics, cable runs, team visit, KSEB fee) don't halve
+// when system size halves.
 function calcBos(sysKw: number): number {
+  // Inverter — BIS-certified string inverter, Kerala supply chain pricing
   let inverter: number;
-  if      (sysKw <= 1) inverter = 12000;
-  else if (sysKw <= 2) inverter = 16000;
-  else if (sysKw <= 3) inverter = 20000;
-  else if (sysKw <= 4) inverter = 24000;
-  else if (sysKw <= 5) inverter = 28000;
-  else if (sysKw <= 7) inverter = 36000;
-  else                  inverter = 45000;
+  if      (sysKw <= 1) inverter = 18000;
+  else if (sysKw <= 2) inverter = 25000;
+  else if (sysKw <= 3) inverter = 32000;
+  else if (sysKw <= 4) inverter = 38000;
+  else if (sysKw <= 5) inverter = 44000;
+  else if (sysKw <= 6) inverter = 52000;
+  else if (sysKw <= 7) inverter = 58000;
+  else if (sysKw <= 8) inverter = 65000;
+  else if (sysKw <= 9) inverter = 72000;
+  else                  inverter = 80000;
 
+  // Mounting — GI/aluminium, Kerala coastal wind-load rated
   let mounting: number;
-  if      (sysKw <= 2) mounting = sysKw * 5000;
-  else if (sysKw <= 3) mounting = sysKw * 4500;
-  else if (sysKw <= 5) mounting = sysKw * 4000;
-  else                  mounting = sysKw * 3500;
+  if      (sysKw <= 1) mounting = 12000;
+  else if (sysKw <= 2) mounting = 18000;
+  else if (sysKw <= 3) mounting = 22000;
+  else if (sysKw <= 4) mounting = 26000;
+  else if (sysKw <= 5) mounting = 30000;
+  else if (sysKw <= 7) mounting = sysKw * 4500;
+  else                  mounting = sysKw * 4000;
 
+  // DC+AC cables, earthing, lightning arrester, SPD
   let cables: number;
-  if      (sysKw <= 2) cables = 8000;
-  else if (sysKw <= 3) cables = 10000;
-  else if (sysKw <= 5) cables = 12000;
-  else                  cables = sysKw * 2000;
+  if      (sysKw <= 1) cables = 10000;
+  else if (sysKw <= 2) cables = 13000;
+  else if (sysKw <= 3) cables = 16000;
+  else if (sysKw <= 4) cables = 18000;
+  else if (sysKw <= 5) cables = 20000;
+  else                  cables = sysKw * 3500;
 
+  // Installation, commissioning & testing
   let install: number;
-  if      (sysKw <= 2) install = 8000;
-  else if (sysKw <= 3) install = 10000;
-  else if (sysKw <= 5) install = 12000;
-  else                  install = sysKw * 2000;
+  if      (sysKw <= 1) install = 10000;
+  else if (sysKw <= 2) install = 14000;
+  else if (sysKw <= 3) install = 18000;
+  else if (sysKw <= 4) install = 20000;
+  else if (sysKw <= 5) install = 22000;
+  else                  install = sysKw * 3500;
 
-  return inverter + mounting + cables + install + 2000; // 2000 = KSEB net meter
+  return inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
 }
 
 // ── EV live impact ────────────────────────────
