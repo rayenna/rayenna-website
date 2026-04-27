@@ -2,6 +2,43 @@
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+function videoUrl(file: string): string {
+  return `${base}/media/${file.split('/').map((p) => encodeURIComponent(p)).join('/')}`;
+}
+
+function categoryLabel(cat: string): string {
+  const labels: Record<string, string> = {
+    customer:  'Customer Stories',
+    promo:     'Why Solar?',
+    brand:     'Brand & Vision',
+    solutions: 'Solutions',
+    expert:    'Expert Insights',
+  };
+  return labels[cat] ?? cat;
+}
+
+const videos = [
+  { title: 'Sudheer — Njarakkal Installation',              category: 'customer',  file: 'references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4' },
+  { title: '5 Reasons to Switch to Solar',                  category: 'promo',     file: 'rayenna videos/5 Reasons to switch to Solar.mp4' },
+  { title: 'Avail Mindblowing Subsidies with Solar',        category: 'promo',     file: 'rayenna videos/Avail Mindblowing Subsidies with Solar Installation from Rayenna.mp4' },
+  { title: 'Avoid Bill Shocks with Rayenna Solar',          category: 'promo',     file: 'rayenna videos/Avoid Bill Shocks with Rayenna Solar.mp4' },
+  { title: 'Beat the High Power Bills',                     category: 'promo',     file: 'rayenna videos/Beat the High Power Bills with Rayenna Solar Solutions.mp4' },
+  { title: 'Help Before These Bills Consume Me',            category: 'promo',     file: 'rayenna videos/Help Before these Bills consume me.mp4' },
+  { title: 'Let the Sun Fuel Your Life',                    category: 'promo',     file: 'rayenna videos/Let the Sun Fuel your life and not your Bills.mp4' },
+  { title: 'Rayenna to the Rescue — Bill Shocks',           category: 'promo',     file: 'rayenna videos/Rayenna to the Rescue from Bill Shocks.mp4' },
+  { title: 'Rayenna to the Rescue — Rising Power Bills',    category: 'promo',     file: 'rayenna videos/Rayenna to the rescue against rising Power BIlls.mp4' },
+  { title: 'Why Pay More When the Sun Is Free?',            category: 'promo',     file: 'rayenna videos/Why Pay More when the Sun if FREE.mp4' },
+  { title: "Connecting You to Earth's Purest Energy",       category: 'brand',     file: "rayenna videos/Connecting you to Earth's Purest Energy.mp4" },
+  { title: 'From Daylight to Delight',                      category: 'brand',     file: 'rayenna videos/From Daylight to Delight.mp4' },
+  { title: 'Rayenna Engagement Model',                      category: 'brand',     file: 'rayenna videos/Rayenna Engagement Model.mp4' },
+  { title: 'Solar — Conquering the World Like Lokah',       category: 'brand',     file: 'rayenna videos/Solar - Conquering the World like Lokah.mp4' },
+  { title: 'Energy Solutions for Commercial Enterprises',   category: 'solutions', file: 'rayenna videos/Rayenna Energy Solutions for Commerical Enterprises.mp4' },
+  { title: 'Solar Solutions for EV Owners',                 category: 'solutions', file: 'rayenna videos/Rayenna Solar Solutions for EV Owners.mp4' },
+  { title: 'Talk to Mathew — Our Technical Manager',        category: 'expert',    file: 'rayenna videos/Talk to Mathew - Our technical Manager on Solar Intallation.mp4' },
+  { title: 'Types of Panels Available — Mathew Explains',   category: 'expert',    file: 'rayenna videos/Types of Panels Available - Mathew brings clarity to it.mp4' },
+  { title: 'When Does a Hybrid System Become Feasible?',    category: 'expert',    file: 'rayenna videos/When does Hybrid Systems become feasible - Mathew clarifies.mp4' },
+];
+
 const installations = [
   { name: 'Abdul Rahim',  location: 'Edathala',      capacity: '5 kW',  inverter: 'Solaire',  panels: 'Adani',  img: 'ABDUL-RAHIMEDATHALA5KW-SOLAIRE-INVERTER-PANELS-ADANI-1.jpeg' },
   { name: 'Byju George',  location: 'Thevara',       capacity: '10 kW', inverter: 'Solis',    panels: 'Waaree', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
@@ -88,30 +125,86 @@ const allSlides = [
     </div>
   </section>
 
-  <!-- ===== FEATURED VIDEO ===== -->
-  <section class="video-section">
-    <div class="video-section__bg-text" aria-hidden="true">VIDEO</div>
+  <!-- ===== VIDEO LIBRARY ===== -->
+  <section class="video-library" id="video-library">
+    <div class="vl-bg-text" aria-hidden="true">FILMS</div>
     <div class="container">
+
       <div class="section-header section-header--light">
-        <span class="section-tag section-tag--light">Featured Video</span>
-        <h2 class="section-title section-title--light">Watch Our Work in Action</h2>
-        <p class="section-intro section-intro--light">See a real Rayenna solar installation from start to finish — captured at Sudheer's home in Njarakkal.</p>
+        <span class="section-tag section-tag--light">Video Library</span>
+        <h2 class="section-title section-title--light">Films, Stories &amp; Insights</h2>
+        <p class="section-intro section-intro--light">Customer installation stories, expert guidance from our team, and brand films — everything Rayenna, in motion.</p>
       </div>
-      <div class="video-player-wrap">
-        <div class="video-meta">
-          <span class="video-meta__name">Sudheer — Njarakkal</span>
-          <span class="video-meta__spec">3 kW · Solis Inverter · Adani Panels</span>
-        </div>
+
+      <!-- Featured Player -->
+      <div class="vl-featured" id="vl-featured">
         <video
-          class="video-player"
+          id="vl-player"
+          class="vl-player"
           controls
           preload="metadata"
-          poster={`${base}/media/references/RUPESHCALICUT3KW-DEYE-INVERTER-PANELS-ADANI-edited.jpeg`}
+          src={videoUrl('references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4')}
         >
-          <source src={`${base}/media/references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <div class="vl-featured__footer">
+          <div class="vl-featured__meta">
+            <p class="vl-featured__title" id="vl-title">Sudheer — Njarakkal Installation</p>
+            <span class="vl-badge vl-badge--customer" id="vl-badge">Customer Stories</span>
+          </div>
+          <p class="vl-featured__hint">Select any video below to play it here</p>
+        </div>
       </div>
+
+      <!-- Category Tabs -->
+      <div class="vl-tabs-scroll">
+        <div class="vl-tabs" role="tablist" id="vl-tabs">
+          {[
+            { cat: 'all',       label: 'All Videos' },
+            { cat: 'customer',  label: 'Customer Stories' },
+            { cat: 'promo',     label: 'Why Solar?' },
+            { cat: 'brand',     label: 'Brand & Vision' },
+            { cat: 'solutions', label: 'Solutions' },
+            { cat: 'expert',    label: 'Expert Insights' },
+          ].map((tab, i) => (
+            <button
+              class={`vl-tab${i === 0 ? ' vl-tab--active' : ''}`}
+              data-cat={tab.cat}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="vl-grid" id="vl-grid">
+        {videos.map((v) => (
+          <button
+            class="vl-card"
+            data-cat={v.category}
+            data-src={videoUrl(v.file)}
+            data-title={v.title}
+            data-badge={categoryLabel(v.category)}
+            data-badgecat={v.category}
+            aria-label={`Play: ${v.title}`}
+          >
+            <div class={`vl-card__thumb vl-card__thumb--${v.category}`}>
+              <span class="vl-thumb-cat">{categoryLabel(v.category)}</span>
+              <span class="vl-play-btn" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </div>
+            <div class="vl-card__body">
+              <p class="vl-card__title">{v.title}</p>
+              <span class={`vl-badge vl-badge--${v.category}`}>{categoryLabel(v.category)}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
     </div>
   </section>
 
@@ -374,14 +467,14 @@ const allSlides = [
   color: var(--color-primary);
 }
 
-/* ===== VIDEO SECTION ===== */
-.video-section {
+/* ===== VIDEO LIBRARY ===== */
+.video-library {
   position: relative;
   background: var(--color-navy);
   padding: var(--section-padding);
   overflow: hidden;
 }
-.video-section__bg-text {
+.vl-bg-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -389,7 +482,7 @@ const allSlides = [
   font-family: var(--font-heading);
   font-size: clamp(80px, 18vw, 220px);
   font-weight: 900;
-  color: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.025);
   letter-spacing: 0.2em;
   white-space: nowrap;
   pointer-events: none;
@@ -401,39 +494,183 @@ const allSlides = [
   color: rgba(255,255,255,0.7);
 }
 .section-title--light { color: #fff; }
-.section-intro--light {
-  color: rgba(255,255,255,0.65);
+.section-intro--light { color: rgba(255,255,255,0.65); }
+
+/* Featured Player */
+.vl-featured {
+  max-width: 900px;
+  margin: 0 auto 40px;
 }
-.video-player-wrap {
-  max-width: 860px;
-  margin: 0 auto;
+.vl-player {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  background: #000;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.55);
+  max-height: 520px;
 }
-.video-meta {
+.vl-featured__footer {
+  padding: 14px 2px 0;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 14px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.vl-featured__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
 }
-.video-meta__name {
+.vl-featured__title {
   font-family: var(--font-heading);
+  font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  font-size: 0.95rem;
 }
-.video-meta__spec {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
-  padding-left: 16px;
-  border-left: 1px solid rgba(255,255,255,0.2);
+.vl-featured__hint {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.3px;
 }
-.video-player {
+
+/* Category Badges */
+.vl-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.vl-badge--customer  { background: rgba(168, 56, 56, 0.28);  color: #e88080; }
+.vl-badge--promo     { background: rgba(39,  50, 79, 0.6);   color: #8ab0e8; }
+.vl-badge--brand     { background: rgba(180,120, 40, 0.28);  color: #e8c47a; }
+.vl-badge--solutions { background: rgba( 40,140,100, 0.28);  color: #72d4a8; }
+.vl-badge--expert    { background: rgba(100, 60,180, 0.28);  color: #c0a0f0; }
+
+/* Category Tabs */
+.vl-tabs-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 32px;
+}
+.vl-tabs-scroll::-webkit-scrollbar { display: none; }
+.vl-tabs {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  padding: 0 2px;
+}
+.vl-tab {
+  border: none;
+  border-radius: 99px;
+  padding: 9px 20px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.55);
+  transition: background 0.2s, color 0.2s;
+}
+.vl-tab:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+.vl-tab--active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Video Grid */
+.vl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.vl-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.vl-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.18);
+}
+.vl-card--hidden { display: none; }
+
+/* Thumbnail */
+.vl-card__thumb {
+  position: relative;
   width: 100%;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-  display: block;
-  max-height: 520px;
-  background: #000;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vl-card__thumb--customer  { background: linear-gradient(135deg, #a83838 0%, #c86060 100%); }
+.vl-card__thumb--promo     { background: linear-gradient(135deg, #1e3a72 0%, #27324f 100%); }
+.vl-card__thumb--brand     { background: linear-gradient(135deg, #7a3a1e 0%, #b06828 100%); }
+.vl-card__thumb--solutions { background: linear-gradient(135deg, #1a4a3a 0%, #2a6b52 100%); }
+.vl-card__thumb--expert    { background: linear-gradient(135deg, #2d1a5e 0%, #4a2d8a 100%); }
+
+.vl-thumb-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  background: rgba(0,0,0,0.28);
+  padding: 3px 9px;
+  border-radius: 99px;
+  backdrop-filter: blur(4px);
+}
+.vl-play-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.22s, transform 0.22s;
+  flex-shrink: 0;
+}
+.vl-card:hover .vl-play-btn {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.14);
+}
+
+/* Card Body */
+.vl-card__body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.vl-card__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.45;
 }
 
 /* ===== SHOWCASE SLIDESHOW ===== */
@@ -715,6 +952,8 @@ const allSlides = [
    =========================== */
 @media (min-width: 540px) {
   .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .vl-grid      { grid-template-columns: 1fr 1fr; }
+  .vl-tabs      { width: auto; }
 }
 
 @media (min-width: 768px) {
@@ -733,6 +972,9 @@ const allSlides = [
 @media (min-width: 960px) {
   .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .gallery-card__img-wrap { height: 240px; }
+  .vl-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .vl-tabs-scroll { overflow: visible; }
+  .vl-tabs { justify-content: center; }
 }
 </style>
 
@@ -792,4 +1034,50 @@ const allSlides = [
 
   restartProgress();
   startAuto();
+
+  // ── Video Library ──────────────────────────────────────────────────────────
+  const vlPlayer = document.getElementById('vl-player') as HTMLVideoElement | null;
+  const vlTitle  = document.getElementById('vl-title')  as HTMLElement | null;
+  const vlBadge  = document.getElementById('vl-badge')  as HTMLElement | null;
+  const vlCards  = Array.from(document.querySelectorAll<HTMLElement>('.vl-card'));
+  const vlTabs   = Array.from(document.querySelectorAll<HTMLElement>('.vl-tab'));
+
+  vlCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const src      = card.dataset.src      ?? '';
+      const title    = card.dataset.title    ?? '';
+      const badge    = card.dataset.badge    ?? '';
+      const badgeCat = card.dataset.badgecat ?? '';
+
+      if (vlPlayer) {
+        vlPlayer.src = src;
+        vlPlayer.play().catch(() => {});
+      }
+      if (vlTitle) vlTitle.textContent = title;
+      if (vlBadge) {
+        vlBadge.textContent = badge;
+        vlBadge.className   = `vl-badge vl-badge--${badgeCat}`;
+      }
+
+      document.getElementById('vl-featured')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  vlTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat ?? 'all';
+
+      vlTabs.forEach((t) => {
+        t.classList.remove('vl-tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('vl-tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      vlCards.forEach((card) => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.classList.toggle('vl-card--hidden', !show);
+      });
+    });
+  });
 </script>
