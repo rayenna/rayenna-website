@@ -18,7 +18,7 @@ A professional marketing and lead-generation website for **Rayenna Energy Privat
 | **Language** | TypeScript / HTML / CSS (no client-side framework like React) |
 | **Styling** | Scoped component CSS + a global design system (`global.css`) |
 | **Fonts** | Poppins (body) + Oswald (headings) via Google Fonts |
-| **Forms** | [Formspree](https://formspree.io) (`xwvazrnw`) for both contact forms |
+| **Forms** | [Web3Forms](https://web3forms.com) for both contact forms |
 | **Hosting** | GitHub Pages (deployed via `gh-pages` branch) |
 | **Version Control** | Git / GitHub, auto-synced |
 | **Images** | WebP + JPEG, served from `/public/media/` |
@@ -130,7 +130,7 @@ Every inner page follows the same **3-zone structure**:
 - Category pills with scroll-spy highlighting
 - Subsidy highlight section with Unsplash photo
 
-### Forms (both powered by Formspree `xwvazrnw`)
+### Forms (both powered by Web3Forms)
 - **Homepage callback widget** — Name, Phone, City; tagged with "Homepage callback form" in email subject
 - **Contact page full form** — Name, Phone, Email, Subject, Message; real fetch API with success/error states
 
@@ -173,5 +173,5 @@ rayenna/
 - **Build command:** `npm run build`
 - **Output directory:** `dist/`
 - **Host:** GitHub Pages
-- **Base URL:** `/rayenna-website/`
+- **Custom Domain:** `rayenna.energy`
 - Auto-committed and pushed to `origin/main` after each session
