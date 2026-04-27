@@ -173,5 +173,7 @@ rayenna/
 - **Build command:** `npm run build`
 - **Output directory:** `dist/`
 - **Host:** GitHub Pages
-- **Custom Domain:** `rayenna.energy`
+- **Primary Domain:** `rayennaenergy.com` (custom domain, CNAME in `public/CNAME`)
+- **Secondary Domain:** `rayenna.energy` — redirects to `rayennaenergy.com` via GoDaddy URL forwarding
+- **Domain Registrar:** GoDaddy (both domains)
 - Auto-committed and pushed to `origin/main` after each session
