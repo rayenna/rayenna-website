@@ -1582,7 +1582,7 @@ const STEPPER_MAP: Record<string, keyof typeof state> = {
 function syncState(id: string, val: number) {
   const key = STEPPER_MAP[id];
   if (key) (state as Record<string, unknown>)[key] = val;
-  if (['ev-count'].includes(id)) updateEVImpact();
+  if (id === 'ev-count') updateEVImpact();
 }
 
 // ── Card selectors ────────────────────────────
@@ -1620,87 +1620,110 @@ function bindSlider(id: string, displayId: string, fmt: (v: number) => string, c
     const v = parseInt(input.value);
     if (disp) disp.textContent = fmt(v);
     cb(v);
-    // Update gradient fill
     const pct = ((v - +input.min) / (+input.max - +input.min)) * 100;
     input.style.background = `linear-gradient(to right, #185FA5 ${pct}%, #dce5ef ${pct}%)`;
   });
-  // Set initial gradient
   const pct = ((+input.value - +input.min) / (+input.max - +input.min)) * 100;
   input.style.background = `linear-gradient(to right, #185FA5 ${pct}%, #dce5ef ${pct}%)`;
 }
 
-// ── EV live impact ────────────────────────────
-function updateEVImpact() {
-  const evDaily = (state.chargerKw * state.chargeHours * state.chargeDays * state.evCount) / 7;
-  const extra   = Math.ceil((evDaily / 4.5 * 1.25) * 1000 / 540);
-  setText('ev-added-load',   evDaily.toFixed(1) + ' kWh');
-  setText('ev-extra-panels', extra + ' panel' + (extra !== 1 ? 's' : ''));
-  setText('ev-impact-note',
-    `Charging ${state.evCount} EV(s) at ${state.chargerKw} kW for ${state.chargeHours} hrs/day, ` +
-    `${state.chargeDays} days/week adds an average of ${evDaily.toFixed(1)} kWh/day to your system requirement.`
-  );
+// ── Helper ───────────────────────────────────
+function setText(id: string, val: string) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
 }
+const inr = (n: number): string =>
+  (isNaN(n) || !isFinite(n)) ? '—' : Math.round(n).toLocaleString('en-IN');
 
-// ── PM Surya Ghar subsidy (MNRE tiered structure) ────────────
-// 1 kW → ₹30,000 | 2 kW → ₹60,000 | 3 kW+ → ₹78,000
+// ── Panel data ───────────────────────────────
+const PANEL_SPECS = [
+  { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
+  { id: '600',   watt: 600, ppw: 29.0, sqft: 27, label: 'N-Type TopCon 600W'      },
+  { id: '580tc', watt: 580, ppw: 28.5, sqft: 27, label: 'N-Type TopCon 580W'      },
+  { id: '580bf', watt: 580, ppw: 28.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
+  { id: '540',   watt: 540, ppw: 27.5, sqft: 27, label: 'Mono PERC 540W'          },
+];
+type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
+
+let cachedPanelResults: PanelResult[] = [];
+let cachedSysKw    = 0;
+let cachedBos      = 0;
+let cachedAnnSave  = 0;
+let selectedPanelId = '600';
+
+// ── Subsidy (MNRE tiered) ────────────────────
 function pmSubsidy(sysKw: number): number {
   if (sysKw <= 1) return 30000;
   if (sysKw <= 2) return 60000;
   return 78000;
 }
 
-// ── Module-level cache (populated by calculateResults) ───────
-const PANEL_SPECS = [
-  { id: '620',   watt: 620, ppw: 29.5,  sqft: 26, label: '620W TopCon' },
-  { id: '600',   watt: 600, ppw: 29.0,  sqft: 25, label: '600W TopCon' },
-  { id: '580tc', watt: 580, ppw: 28.5,  sqft: 24, label: '580W TopCon' },
-  { id: '580bf', watt: 580, ppw: 28.5,  sqft: 25, label: '580W Bifacial' },
-  { id: '540',   watt: 540, ppw: 27.5,  sqft: 23, label: '540W PERC' },
-];
-type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
-let cachedPanelResults: PanelResult[] = [];
-let cachedSysKw     = 0;
-let cachedAnnSave   = 0;
-let selectedPanelId = '600';
+// ── Non-panel system costs (BOS) ─────────────
+function calcBos(sysKw: number): number {
+  let inverter: number;
+  if      (sysKw <= 3) inverter = 15000;
+  else if (sysKw <= 5) inverter = 22000;
+  else if (sysKw <= 7) inverter = 30000;
+  else                  inverter = 38000;
+  return inverter + (sysKw * 3000) + (sysKw * 2500) + (sysKw * 2000) + 2000;
+}
 
-const inr = (n: number) => isNaN(n) || !isFinite(n) ? '—' : n.toLocaleString('en-IN');
+// ── EV live impact ────────────────────────────
+function updateEVImpact() {
+  const evDailyAvg  = (state.chargerKw * state.chargeHours * state.chargeDays * state.evCount) / 7;
+  const evExtraPanels = Math.ceil((evDailyAvg / (4.5 * 0.80)) * 1.25 * 1000 / 600);
 
-// ── Calculation ──────────────────────────────
+  setText('ev-added-load',   evDailyAvg.toFixed(1) + ' kWh/day');
+  setText('ev-extra-panels', '+' + evExtraPanels + (evExtraPanels === 1 ? ' panel' : ' panels'));
+
+  const evNote = state.evCount > 1
+    ? `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, × ${state.evCount} EVs, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. We recommend sizing your system to cover this fully so you charge on solar, not the grid.`
+    : `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. We recommend sizing your system to cover this fully so you charge on solar, not the grid.`;
+  setText('ev-impact-note', evNote);
+}
+
+// ── Main calculation ──────────────────────────
 function calculateResults() {
   const s = state;
 
+  // Daily consumption
   let daily = 0;
-  daily += s.ac        * 1500   * s.acHours / 1000;
-  daily += s.fans      * 75     * 10        / 1000;
-  daily += s.tvs       * 120    * 6         / 1000;
-  daily += s.fridge    * 200    * 24 * 0.3  / 1000;
-  daily += s.microwave * 1200   * 1         / 1000;
-  daily += s.washing   * 500    * 1         / 1000;
+  daily += s.ac        * 1500  * s.acHours / 1000;
+  daily += s.fans      *   75  *        10 / 1000;
+  daily += s.tvs       *  120  *         6 / 1000;
+  daily += s.fridge    *  200  * 24 * 0.3  / 1000;
+  daily += s.microwave * 1200  *         1 / 1000;
+  daily += s.washing   *  500  *         1 / 1000;
   const rooms = s.bedrooms + s.bathrooms + 1;
-  daily += rooms       * 50     * 8         / 1000;
-  if (s.geyser) daily += 2000 * 1 / 1000;
-  if (s.pump)   daily += 750  * 2 / 1000;
+  daily += rooms       *   50  *         8 / 1000;
+  if (s.geyser) daily += 2000 / 1000;
+  if (s.pump)   daily += 750 * 2 / 1000;
 
   if (s.hasEV) {
     const evAvg = (s.chargerKw * s.chargeHours * s.chargeDays * s.evCount) / 7;
     daily += isNaN(evAvg) ? 0 : evAvg;
   }
 
-  if (!s.homeAllDay) daily *= 0.7;
+  daily = daily * (s.homeAllDay ? 1.0 : 0.7);
   daily = isNaN(daily) ? 0 : daily;
 
-  let sysKw      = Math.ceil(daily / 4.5 * 1.25);
-  sysKw          = Math.max(1, isNaN(sysKw) ? 1 : sysKw);
-  const annUnits = sysKw * 1200;
-  const annSave  = s.monthlyBill * 11;
+  // System sizing — Kerala PSH 4.5 hr, PR 0.80, 25% margin
+  const rawKW  = daily / (4.5 * 0.80);
+  let sysKw    = Math.ceil(rawKW * 1.25);
+  sysKw        = Math.max(1, isNaN(sysKw) ? 1 : sysKw);
+
+  const annUnits = Math.round(sysKw * 1200);
+  const annSave  = Math.round(s.monthlyBill * 11);
   const lifetime = annSave * 25;
   const co2      = Math.round(annUnits * 0.82 * 25 / 1000);
+  const bos      = calcBos(sysKw);
+  const subsidy  = pmSubsidy(sysKw);
 
-  // Cache for panel-switch updates
   cachedSysKw   = sysKw;
+  cachedBos     = bos;
   cachedAnnSave = annSave;
 
-  // Compute per-panel data
+  // Per-panel data
   cachedPanelResults = PANEL_SPECS.map(p => {
     const count = Math.ceil(sysKw * 1000 / p.watt);
     const roof  = count * p.sqft;
@@ -1708,53 +1731,49 @@ function calculateResults() {
     return { ...p, count, roof, cost };
   });
 
-  // Static fields (same regardless of panel choice)
-  setText('result-kw',    sysKw + ' kW');
-  setText('result-units', 'Generates ~' + inr(annUnits) + ' units/year');
-  setText('result-daily', daily.toFixed(1) + ' units/day');
-  setText('fin-annual',   '₹' + inr(annSave));
-  setText('fin-lifetime', '₹' + inr(lifetime));
-  setText('fin-co2',      co2 + ' tonnes');
+  // Static result fields
+  setText('result-kw',     sysKw + ' kW');
+  setText('result-units',  'Generates ~' + annUnits.toLocaleString('en-IN') + ' units/year');
+  setText('result-daily',  daily.toFixed(1) + ' units');
+  setText('result-subsidy','₹' + inr(subsidy));
+  setText('fin-annual',    '₹' + inr(annSave) + '/yr');
+  setText('fin-lifetime',  '₹' + inr(lifetime));
+  setText('fin-co2',       co2 + ' tonnes');
 
-  // Per-panel card stats (count, roof, cost chips inside each card)
+  // Panel card chips (all 5 panels)
   cachedPanelResults.forEach(p => {
     setText(`p${p.id}-panels`, p.count + ' panels');
-    setText(`p${p.id}-roof`,   p.roof  + ' sq ft');
-    setText(`p${p.id}-cost`,   '₹' + inr(Math.round(p.cost)));
+    setText(`p${p.id}-roof`,   p.roof.toLocaleString('en-IN') + ' sq ft');
+    setText(`p${p.id}-cost`,   '₹' + inr(p.cost));
   });
 
-  // Apply the currently selected panel to headline + financial rows
   updatePanelDisplay(selectedPanelId);
 }
 
-// ── Update headline stats & financials for the chosen panel ──
+// ── Update financials for selected panel ──────
 function updatePanelDisplay(id: string) {
   if (!cachedPanelResults.length) return;
   selectedPanelId = id;
 
-  const p = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1]; // fallback 600W
-  const cost    = p.cost / 0.48;            // panels = 48% of total installed cost
-  const bos     = cost - p.cost;            // BOS = remaining 52%
-  const subsidy = pmSubsidy(cachedSysKw);   // MNRE tiered: 1kW=₹30k, 2kW=₹60k, 3kW+=₹78k
-  const net     = cost - subsidy;
-  const payback = net / cachedAnnSave;
+  const p         = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1];
+  const subsidy   = pmSubsidy(cachedSysKw);
+  const totalCost = p.cost + cachedBos;
+  const netCost   = totalCost - subsidy;
+  const payback   = netCost / cachedAnnSave;
 
   // Headline stat tiles
-  setText('result-panels', p.count + ' panels (' + p.label + ')');
-  setText('result-roof',   p.roof  + ' sq ft');
-  setText('result-subsidy','₹' + inr(Math.round(subsidy)));
+  setText('result-panels', p.count + ' panels');
+  setText('result-roof',   p.roof.toLocaleString('en-IN') + ' sq ft');
 
   // Cost breakdown rows
-  setText('fin-panel-cost',  '₹' + inr(Math.round(p.cost)));
-  setText('fin-bos',         '₹' + inr(Math.round(bos)));
-  setText('fin-total-cost',  '₹' + inr(Math.round(cost)));
-  setText('fin-subsidy-row', '− ₹' + inr(Math.round(subsidy)));
-  setText('fin-net-cost',    '₹' + inr(Math.round(net)));
+  setText('fin-panel-cost',  '₹' + inr(p.cost));
+  setText('fin-bos',         '₹' + inr(cachedBos));
+  setText('fin-total-cost',  '₹' + inr(totalCost));
+  setText('fin-subsidy-row', '−₹' + inr(subsidy));
+  setText('fin-net-cost',    '₹' + inr(netCost));
+  setText('fin-payback',     (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + ' years');
 
-  // Payback (changes with panel selection)
-  setText('fin-payback',   isNaN(payback) || !isFinite(payback) ? '—' : payback.toFixed(1) + ' years');
-
-  // Mark selected card
+  // Selected card highlight
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
     card.classList.toggle('selected', card.dataset.panelId === id);
   });
@@ -1764,17 +1783,11 @@ function updatePanelDisplay(id: string) {
 function initPanelSelect() {
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
     card.addEventListener('click', (e) => {
-      // Ignore clicks on the "Learn more" button or expanded detail text
       if ((e.target as HTMLElement).closest('.panel-expand, .panel-option__detail')) return;
       if (!cachedPanelResults.length) return;
       updatePanelDisplay(card.dataset.panelId ?? '600');
     });
   });
-}
-
-function setText(id: string, val: string) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
 }
 
 // ── Panel expand ─────────────────────────────
@@ -1789,7 +1802,7 @@ function initPanelExpand() {
   });
 }
 
-// ── Recalculate ──────────────────────────────
+// ── Reset all ────────────────────────────────
 function resetAll() {
   Object.assign(state, {
     homeType:'house', bedrooms:3, bathrooms:2, floors:1,
@@ -1799,10 +1812,9 @@ function resetAll() {
     acHours:8, homeAllDay:true, monthlyBill:5000,
   });
 
-  // Reset cards
   ['house','apartment','villa','rowhouse'].forEach(t => {
-    const c = document.querySelector<HTMLElement>(`.ht-card[data-type="${t}"]`);
-    c?.classList.toggle('selected', t === 'house');
+    document.querySelector<HTMLElement>(`.ht-card[data-type="${t}"]`)
+      ?.classList.toggle('selected', t === 'house');
   });
   document.querySelectorAll<HTMLElement>('.charger-card').forEach(c => {
     c.classList.toggle('selected', c.dataset.kw === '3.3');
@@ -1811,7 +1823,6 @@ function resetAll() {
     c.classList.toggle('selected', c.dataset.occ === 'home');
   });
 
-  // Reset steppers
   const defaults: Record<string, number> = {
     bedrooms:3, bathrooms:2, floors:1, ac:2, fans:4,
     tvs:2, fridge:1, microwave:1, washing:1, 'ev-count':1,
@@ -1824,18 +1835,16 @@ function resetAll() {
     if (el) el.textContent = String(val);
   });
 
-  // Reset toggles
   (document.getElementById('toggle-geyser') as HTMLInputElement).checked = true;
   (document.getElementById('toggle-pump')   as HTMLInputElement).checked = false;
   (document.getElementById('toggle-ev')     as HTMLInputElement).checked = false;
   document.getElementById('ev-panel')?.classList.add('hidden');
 
-  // Reset sliders
   const sliders: [string, string, string][] = [
-    ['ac-hours', 'ac-hours-val', '8'],
-    ['bill-slider', 'bill-val', '₹5,000'],
-    ['ev-hours', 'ev-hours-val', '4'],
-    ['ev-days', 'ev-days-val', '5'],
+    ['ac-hours',    'ac-hours-val', '8'],
+    ['bill-slider', 'bill-val',     '₹5,000'],
+    ['ev-hours',    'ev-hours-val', '4'],
+    ['ev-days',     'ev-days-val',  '5'],
   ];
   sliders.forEach(([sid, did, dv]) => {
     const el = document.getElementById(sid) as HTMLInputElement | null;
@@ -1847,14 +1856,11 @@ function resetAll() {
     setText(did, dv);
   });
 
-  // Reset panel selection to default (600W)
   selectedPanelId = '600';
   cachedPanelResults = [];
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
     card.classList.toggle('selected', card.dataset.panelId === '600');
   });
-
-  // Reset panel expanders
   document.querySelectorAll('.panel-option__detail').forEach(d => d.classList.add('hidden'));
   document.querySelectorAll<HTMLElement>('.panel-expand').forEach(b => { b.textContent = 'Learn more ▾'; });
 }
@@ -1869,10 +1875,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initPanelExpand();
   initPanelSelect();
 
-  bindSlider('ac-hours',   'ac-hours-val',  v => String(v), v => { state.acHours = v; });
-  bindSlider('bill-slider','bill-val', v => '₹' + v.toLocaleString('en-IN'), v => { state.monthlyBill = v; });
-  bindSlider('ev-hours',   'ev-hours-val',  v => String(v), v => { state.chargeHours = v; updateEVImpact(); });
-  bindSlider('ev-days',    'ev-days-val',   v => String(v), v => { state.chargeDays  = v; updateEVImpact(); });
+  bindSlider('ac-hours',   'ac-hours-val', v => String(v),                          v => { state.acHours = v; });
+  bindSlider('bill-slider','bill-val',     v => '₹' + v.toLocaleString('en-IN'),    v => { state.monthlyBill = v; });
+  bindSlider('ev-hours',   'ev-hours-val', v => String(v),                          v => { state.chargeHours = v; updateEVImpact(); });
+  bindSlider('ev-days',    'ev-days-val',  v => String(v),                          v => { state.chargeDays  = v; updateEVImpact(); });
 
   document.querySelectorAll<HTMLElement>('.btn-calc-next').forEach(btn => {
     btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.next ?? '1')));
