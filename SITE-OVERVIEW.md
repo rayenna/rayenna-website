@@ -1,6 +1,6 @@
 # Rayenna Energy — Site Overview
 
-_Last updated: 26 April 2026_
+_Last updated: 28 April 2026_
 
 ---
 
@@ -19,18 +19,22 @@ A professional marketing and lead-generation website for **Rayenna Energy Privat
 | **Styling** | Scoped component CSS + a global design system (`global.css`) |
 | **Fonts** | Poppins (body) + Oswald (headings) via Google Fonts |
 | **Forms** | [Web3Forms](https://web3forms.com) for both contact forms |
-| **Hosting** | GitHub Pages (deployed via `gh-pages` branch) |
+| **Hosting** | GitHub Pages (deployed via GitHub Actions on push to `main`) |
 | **Version Control** | Git / GitHub, auto-synced |
 | **Images** | WebP + JPEG, served from `/public/media/` |
+| **AI Chat** | `ChatWidget.astro` (Ray) — Cloudflare Worker proxy → Claude Haiku (Anthropic) |
+| **Voice I/O** | Web Speech API — `SpeechRecognition` (mic input) + `SpeechSynthesis` (TTS) |
+| **WhatsApp** | Floating button on all pages — pre-filled message, `+91 7907 369 304` |
 
 ---
 
-## Site Architecture — 25 Pages
+## Site Architecture — 27 Pages
 
 ```
 / (Home)
 ├── /about
 ├── /services
+├── /solar-calculator          ← residential solar sizing tool (added Apr 2026)
 ├── /media
 ├── /blog
 │   ├── /blog/how-much-does-solar-cost-in-kerala
@@ -55,7 +59,7 @@ A professional marketing and lead-generation website for **Rayenna Energy Privat
 └── /contact
 ```
 
-All 25 pages are **statically generated at build time** via `npm run build`.
+All 27 pages are **statically generated at build time** via `npm run build`.
 
 ---
 
@@ -138,6 +142,49 @@ Every inner page follows the same **3-zone structure**:
 - Embedded on homepage above the footer
 - Links to exact Rayenna Energy office location (Vyttila, Ernakulam)
 
+### WhatsApp Floating Button
+- Fixed button on all 27 pages (`Layout.astro`), bottom-right corner
+- Green (#25D366), 52px mobile / 58px desktop, pulse animation
+- Opens WhatsApp with pre-filled message: "Hi Rayenna Energy! I'm interested in solar installation."
+- Number: `+91 7907 369 304`
+- Hidden automatically on mobile when the Ray chat panel is open (JS toggle)
+- Desktop: tooltip "Chat with us!" on hover
+
+### Ray — AI Solar Chat Assistant
+- Floating chat widget (`src/components/ChatWidget.astro`) embedded on all 27 pages
+- **Character:** Ray, warm solar advisor; responds in English or Malayalam based on user language
+- **Architecture:** Browser → Cloudflare Worker (`worker/chat-proxy.js`) → Anthropic Claude Haiku
+- **Worker URL:** `https://rayenna-chat-proxy.rayennasolar.workers.dev` (hardcoded; survives GitHub Actions builds)
+- **API key:** Stored as Cloudflare environment variable — never exposed to the client
+
+**Chat UI features:**
+- Floating button (navy, bottom-right), pulse animation, "Ask Ray" tooltip on desktop
+- Mobile: slides up as a bottom sheet (85dvh); Desktop: floating card (380×560px)
+- Header: Ray avatar, online dot, voice toggle (muted by default), close button
+- Quick-reply chips on open: Home solar / Business solar / Subsidies / Talk to team (hidden after first message)
+- Typing indicator (3-dot bounce animation)
+- URL rendering: links auto-converted to styled pill buttons (WhatsApp → green, Calculator → blue)
+- Markdown support: `**bold**` and `*italic*` in responses
+
+**Voice Input (mic button):**
+- Browser-native `SpeechRecognition` API — shown only if the browser supports it (Chrome Android, Safari iOS)
+- Tap to start listening; interim transcript shown in real time; auto-sends when speech ends
+- Language: `en-IN` — captures both English and Malayalam
+- Permission denied → friendly in-chat error message
+
+**Voice Output (TTS):**
+- Browser-native `SpeechSynthesis` API — **off by default** for privacy
+- Toggle speaker icon in chat header to enable; Ray's avatar pulses while speaking
+- URLs cleaned before speech ("our WhatsApp", "our website")
+- Prefers `en-IN` local voice if available
+
+**Ray's knowledge & rules (system prompt in `worker/chat-proxy.js`):**
+- MNRE approval, Kerala service area, office address, phone, email
+- Services: residential, commercial, EV charging, monitoring, maintenance
+- Solar facts, ROI, PM Surya Ghar subsidy, KSEB net metering
+- Solar Calculator (`/solar-calculator`) — recommended to **home users only**; commercial users directed straight to WhatsApp
+- Never quotes specific prices; always ends with WhatsApp link or Calculator link
+
 ---
 
 ## File Structure
@@ -146,11 +193,14 @@ Every inner page follows the same **3-zone structure**:
 rayenna/
 ├── src/
 │   ├── layouts/
-│   │   └── Layout.astro          # Shared navbar + footer wrapper
+│   │   └── Layout.astro          # Shared navbar + footer + WhatsApp button + Ray widget
+│   ├── components/
+│   │   └── ChatWidget.astro      # Ray AI chat widget (voice + text)
 │   ├── pages/
 │   │   ├── index.astro           # Homepage
 │   │   ├── about.astro
 │   │   ├── services.astro
+│   │   ├── solar-calculator.astro # 4-step residential solar sizing tool
 │   │   ├── media.astro
 │   │   ├── faqs.astro
 │   │   ├── contact.astro
@@ -159,8 +209,13 @@ rayenna/
 │   │       └── [18 post files]
 │   └── styles/
 │       └── global.css            # Design tokens + base styles
+├── worker/
+│   └── chat-proxy.js             # Cloudflare Worker — Ray's secure API proxy + system prompt
 ├── public/
 │   └── media/                    # All images and video assets
+├── .github/
+│   └── workflows/
+│       └── deploy.yml            # GitHub Actions — builds + deploys to GitHub Pages on push
 ├── astro.config.mjs
 ├── package.json
 └── SITE-OVERVIEW.md              # This file
