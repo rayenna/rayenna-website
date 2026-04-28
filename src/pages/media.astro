@@ -296,7 +296,10 @@ const allSlides = [
     <div class="container cta-banner__inner">
       <h2 class="cta-banner__title">Ready to Be Our Next Success Story?</h2>
       <p class="cta-banner__sub">Join the growing list of homes and businesses across Kerala powering their lives with clean solar energy from Rayenna.</p>
-      <a href={`${base}/contact`} class="btn btn-primary cta-banner__btn">Get a Free Quote</a>
+      <div class="cta-banner__actions">
+        <a href={`${base}/contact`} class="btn btn-primary cta-banner__btn">Get a Free Quote</a>
+        <a href={`${base}/solar-calculator`} class="btn btn-primary cta-banner__btn">☀️ Calculate Your Savings</a>
+      </div>
     </div>
   </section>
 
@@ -974,7 +977,29 @@ const allSlides = [
   line-height: 1.8;
   font-size: 0.95rem;
 }
-.cta-banner__btn { padding: 14px 40px; }
+/* Mobile first — buttons stack vertically */
+.cta-banner__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.cta-banner__btn {
+  padding: 14px 40px;
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+@media (min-width: 540px) {
+  .cta-banner__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+  .cta-banner__btn { width: auto; }
+}
 
 /* ===========================
    Breakpoints
