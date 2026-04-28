@@ -418,26 +418,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /* Stats CTA — mobile first */
 .stats-cta {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
-  text-align: center;
-  margin-top: 24px;
-  padding: 14px 20px;
+  margin-top: 28px;
+  padding: 15px 32px;
   background-color: var(--color-primary);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 50px;
+  font-size: 0.9rem;
   font-weight: 600;
   font-family: var(--font-heading);
+  letter-spacing: 0.3px;
   text-decoration: none;
   min-height: 52px;
-  line-height: 1.4;
+  box-shadow: 0 4px 18px rgba(168, 56, 56, 0.28);
   -webkit-tap-highlight-color: transparent;
-  transition: background var(--transition);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.stats-cta:hover { background-color: var(--color-primary-dark); color: #fff; }
-.stats-cta:active { opacity: 0.85; }
+.stats-cta:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 6px 24px rgba(168, 56, 56, 0.4);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.stats-cta:active { opacity: 0.85; transform: none; }
 @media (min-width: 768px) {
-  .stats-cta { display: inline-block; width: auto; padding: 10px 24px; }
+  .stats-cta { width: auto; padding: 13px 36px; }
 }
 
 /* ===== INVEST IN SOLAR ===== */
