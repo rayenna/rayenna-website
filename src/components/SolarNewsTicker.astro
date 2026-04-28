@@ -1,0 +1,307 @@
+---
+const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
+---
+
+{workerUrl && (
+  <div class="news-ticker-strip" aria-label="Solar news ticker">
+    <solar-news-ticker
+      endpoint={workerUrl}
+      refresh-ms="1800000"
+      max-items="20"
+    ></solar-news-ticker>
+  </div>
+)}
+
+<style is:global>
+  .news-ticker-strip {
+    width: 100%;
+    background: #0b1120;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* sits immediately below the fixed navbar */
+    position: relative;
+    z-index: 49;
+  }
+
+  /* Give the web component full width */
+  .news-ticker-strip solar-news-ticker {
+    display: block;
+    width: 100%;
+  }
+</style>
+
+<script>
+/* ============================================================
+   SolarNewsTicker Web Component
+   Inline so it ships with Astro's asset pipeline (no extra fetch).
+   ============================================================ */
+class SolarNewsTicker extends HTMLElement {
+  static observedAttributes = ['endpoint', 'refresh-ms', 'max-items'];
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this._items = [];
+    this._timer = null;
+    this._reduceMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          --sn-accent:  #f59e0b;
+          --sn-border:  rgba(255,255,255,0.14);
+          --sn-muted:   rgba(255,255,255,0.50);
+          --sn-policy:  #2dd4bf;
+          --sn-grid:    #60a5fa;
+          --sn-market:  #f59e0b;
+          --sn-tech:    #a78bfa;
+          --sn-agri:    #34d399;
+          display: block;
+        }
+
+        .root {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+          min-height: 40px;
+        }
+
+        .label {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          font: 800 10px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+          letter-spacing: .22em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          user-select: none;
+          background: linear-gradient(90deg, #f59e0b, #fbbf24, #2dd4bf);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          filter: drop-shadow(0 1px 8px rgba(245,158,11,.22));
+          flex-shrink: 0;
+        }
+
+        .dot {
+          width: 6px; height: 6px; border-radius: 999px;
+          background: #34d399;
+          box-shadow: 0 0 0 2px rgba(52,211,153,.18);
+          animation: dotPulse 1.3s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+        @keyframes dotPulse {
+          0%,100% { opacity:.55; transform:scale(.9) }
+          50%      { opacity:1;   transform:scale(1.08) }
+        }
+
+        .viewport {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          padding: 6px 0;
+        }
+        .viewport:hover .track { animation-play-state: paused; }
+
+        .track {
+          display: inline-flex;
+          align-items: center;
+          white-space: nowrap;
+          will-change: transform;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        .item {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          padding: 6px 10px;
+          border-radius: 999px;
+          cursor: pointer;
+          user-select: none;
+          touch-action: manipulation;
+          background: transparent;
+          border: 0;
+        }
+        .item:focus-visible {
+          box-shadow: 0 0 0 2px rgba(245,158,11,.35);
+          outline: none;
+        }
+
+        .icon {
+          width: 22px; height: 22px; border-radius: 999px;
+          display: inline-flex; align-items: center; justify-content: center;
+          border: 1px solid var(--sn-border);
+          flex-shrink: 0;
+        }
+        .icon svg { width: 12px; height: 12px; }
+
+        .headline {
+          font: 500 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+          color: var(--sn-accent);
+          transition: opacity .15s ease;
+        }
+        .item:hover .headline { opacity: .8; }
+
+        .tag {
+          font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          letter-spacing: .07em;
+          text-transform: uppercase;
+          padding: 3px 7px;
+          border-radius: 999px;
+          border: 1px solid var(--sn-border);
+          opacity: .9;
+        }
+
+        .sep { color: var(--sn-muted); padding-left: 6px; font-size: 11px; }
+      </style>
+
+      <div class="root">
+        <div class="label"><span class="dot" aria-hidden="true"></span>Solar News</div>
+        <div class="viewport" role="region" aria-label="Solar news, auto-scrolling">
+          <div class="track"></div>
+        </div>
+      </div>
+    `;
+  }
+
+  connectedCallback()    { this._start(); }
+  disconnectedCallback() { this._stop();  }
+  attributeChangedCallback() { if (this.isConnected) this._start(); }
+
+  get endpoint()  { return this.getAttribute('endpoint') || '/api/solar-news'; }
+  get refreshMs() {
+    const v = Number(this.getAttribute('refresh-ms') || '');
+    return Number.isFinite(v) && v > 5000 ? v : 30 * 60 * 1000;
+  }
+  get maxItems() {
+    const v = Number(this.getAttribute('max-items') || '');
+    return Number.isFinite(v) && v > 0 ? Math.min(50, v) : 20;
+  }
+
+  _stop() {
+    if (this._timer) window.clearInterval(this._timer);
+    this._timer = null;
+  }
+
+  async _start() {
+    this._stop();
+    await this._load();
+    this._timer = window.setInterval(() => void this._load(), this.refreshMs);
+  }
+
+  async _load() {
+    try {
+      const res = await fetch(this.endpoint, { credentials: 'omit' });
+      if (!res.ok) throw new Error('network');
+      const data = await res.json();
+      const arr = Array.isArray(data) ? data : [];
+      const filtered = arr.filter(x => x && x.headline && x.url && x.tag).slice(0, this.maxItems);
+      if (!filtered.length) throw new Error('empty');
+      this._items = filtered;
+    } catch {
+      this._items = [
+        { headline: "India's solar capacity crosses 90 GW milestone", url: '#', tag: 'market' },
+        { headline: 'PM Surya Ghar scheme targets 1 crore rooftop installations', url: '#', tag: 'policy' },
+        { headline: 'Kerala leads southern states in rooftop solar adoption', url: '#', tag: 'market' },
+        { headline: 'KSEB net metering: how homeowners earn from excess solar power', url: '#', tag: 'grid' },
+        { headline: 'High-efficiency TOPCon panels now 20% cheaper than 2023', url: '#', tag: 'tech' },
+      ];
+    }
+    this._render();
+  }
+
+  _render() {
+    const track = this.shadowRoot.querySelector('.track');
+    if (!track) return;
+
+    const doubled = [...this._items, ...this._items];
+    track.innerHTML = '';
+    track.style.animationName = this._reduceMotion ? 'none' : 'marquee';
+    track.style.animationDuration = '40s';
+
+    for (const it of doubled) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'item';
+      btn.setAttribute('aria-label', `${it.tag}: ${it.headline}`);
+      btn.addEventListener('click', () => {
+        if (it.url && it.url !== '#') window.open(it.url, '_blank', 'noopener,noreferrer');
+      });
+
+      const t = this._tagStyle(it.tag);
+
+      const icon = document.createElement('span');
+      icon.className = 'icon';
+      icon.style.color = t.fg;
+      icon.style.background = this._mix(t.bg, 0.82);
+      icon.style.borderColor = this._mix(t.fg, 0.38, 'var(--sn-border)');
+      icon.innerHTML = this._iconSvg(it.tag);
+
+      const headline = document.createElement('span');
+      headline.className = 'headline';
+      headline.textContent = it.headline;
+
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.style.color = t.fg;
+      tag.style.background = t.bg;
+      tag.textContent = String(it.tag);
+
+      const sep = document.createElement('span');
+      sep.className = 'sep';
+      sep.textContent = '|';
+
+      btn.append(icon, headline, tag, sep);
+      track.append(btn);
+    }
+
+    requestAnimationFrame(() => {
+      const half = track.scrollWidth / 2;
+      if (!half || this._reduceMotion) return;
+      const dur = Math.min(110, Math.max(24, half / 32));
+      track.style.animationDuration = `${dur}s`;
+      track.style.gap = '24px';
+    });
+  }
+
+  _tagStyle(tag) {
+    switch (String(tag).toLowerCase()) {
+      case 'policy': return { fg: 'var(--sn-policy)', bg: 'rgba(45,212,191,0.14)' };
+      case 'grid':   return { fg: 'var(--sn-grid)',   bg: 'rgba(96,165,250,0.14)' };
+      case 'market': return { fg: 'var(--sn-market)', bg: 'rgba(245,158,11,0.14)' };
+      case 'tech':   return { fg: 'var(--sn-tech)',   bg: 'rgba(167,139,250,0.14)' };
+      case 'agri':   return { fg: 'var(--sn-agri)',   bg: 'rgba(52,211,153,0.14)' };
+      default:       return { fg: 'var(--sn-market)', bg: 'rgba(245,158,11,0.14)' };
+    }
+  }
+
+  _iconSvg(tag) {
+    const c = `fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"`;
+    const t = String(tag).toLowerCase();
+    if (t === 'policy') return `<svg viewBox="0 0 24 24" ${c}><path d="M12 3v18"/><path d="M4 7h16"/><path d="M6 7l-2 4h4z"/><path d="M18 7l2 4h-4z"/></svg>`;
+    if (t === 'grid')   return `<svg viewBox="0 0 24 24" ${c}><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>`;
+    if (t === 'market') return `<svg viewBox="0 0 24 24" ${c}><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg>`;
+    if (t === 'tech')   return `<svg viewBox="0 0 24 24" ${c}><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>`;
+    if (t === 'agri')   return `<svg viewBox="0 0 24 24" ${c}><path d="M11 20c0-8 7-14 12-16-2 8-8 16-12 16z"/><path d="M13 20c0-7-6-12-11-14 2 7 6 14 11 14z"/></svg>`;
+    return `<svg viewBox="0 0 24 24" ${c}><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>`;
+  }
+
+  _mix(colorVar, amount, fallback = 'transparent') {
+    return `color-mix(in srgb, ${colorVar} ${Math.round(amount * 100)}%, ${fallback})`;
+  }
+}
+
+if (!customElements.get('solar-news-ticker')) {
+  customElements.define('solar-news-ticker', SolarNewsTicker);
+}
+</script>
