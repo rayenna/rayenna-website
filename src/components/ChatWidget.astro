@@ -254,34 +254,39 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   font-family: inherit;
 }
 
-/* Styled link buttons inside chat bubbles */
+/* Styled link pills inside chat bubbles */
 .ray-link {
-  display: inline-block;
-  margin: 6px 0 2px;
-  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0 2px;
+  padding: 8px 16px;
   border-radius: 20px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   font-family: inherit;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  line-height: 1.4;
-  transition: opacity 0.15s;
+  line-height: 1.3;
+  transition: opacity 0.15s, transform 0.15s;
   word-break: break-word;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-/* In Ray's (bot) white bubbles — maroon pill */
+.ray-link:active { transform: scale(0.97); }
+/* In Ray's white bubbles — maroon filled pill */
 .ray-msg.ray-bot .ray-link {
   background: var(--ray-primary);
-  color: #fff;
+  color: #fff !important;
   border: none;
 }
-.ray-msg.ray-bot .ray-link:hover { opacity: 0.85; }
+.ray-msg.ray-bot .ray-link:hover { opacity: 0.87; }
 /* In user's maroon bubbles — white outline pill */
 .ray-msg.ray-user .ray-link {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.18);
+  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.65);
 }
-.ray-msg.ray-user .ray-link:hover { background: rgba(255,255,255,0.3); }
+.ray-msg.ray-user .ray-link:hover { background: rgba(255,255,255,0.28); }
 
 .ray-msg.ray-bot {
   background: var(--ray-white);
@@ -520,31 +525,39 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   }
 
   function renderBotText(raw) {
+    let text = raw;
+
     // 1. Normalise bare rayennaenergy.com URLs → add https://
-    let text = raw.replace(
-      /(?<![/"'\w])(rayennaenergy\.com\/[^\s.,)]*)/g,
+    text = text.replace(
+      /(?<![/"'\w])(rayennaenergy\.com\/[^\s.,)*"']*)/g,
       'https://$1'
     );
 
-    // 2. Split on full URLs (capturing group keeps them in the array)
-    //    Matches https:// AND wa.me shortlinks
-    const URL_RE = /(https?:\/\/[^\s)\]'"]+)/g;
+    // 2. Strip ** or * that Claude wraps directly around URLs
+    //    e.g. **https://...** → https://...
+    text = text.replace(/\*{1,2}(https?:\/\/[^\s*]+)\*{1,2}/g, '$1');
+
+    // 3. Split on full URLs — capturing group keeps URLs in the array
+    const URL_RE = /(https?:\/\/[^\s)\]'"*<>]+)/g;
     const parts = text.split(URL_RE);
 
     return parts.map((part, i) => {
       if (i % 2 === 1) {
-        // URL part — strip trailing punctuation Claude sometimes adds
-        const clean = part.replace(/[.,!?)]+$/, '');
-        // Friendly display label
-        let label = clean;
-        if (clean.includes('solar-calculator'))  label = '☀️ Try the Solar Calculator';
+        // URL — strip trailing punctuation/asterisks Claude sometimes appends
+        const clean = part.replace(/[.,!?)*\*]+$/, '');
+        // Human-friendly label + icon
+        let label;
+        if (clean.includes('solar-calculator'))              label = '☀️ Try the Solar Calculator';
         else if (clean.includes('whatsapp.com') || clean.includes('wa.me')) label = '💬 Chat with us on WhatsApp';
-        else if (clean.includes('mailto:'))      label = '📧 ' + clean.replace('mailto:', '');
+        else if (clean.includes('mailto:'))                  label = '📧 ' + clean.replace('mailto:', '');
+        else if (clean.includes('rayennaenergy.com'))        label = '🌐 ' + clean.replace('https://', '');
+        else                                                  label = clean;
         return `<a href="${clean}" target="_blank" rel="noopener noreferrer" class="ray-link">${label}</a>`;
       }
-      // Plain text — escape HTML, render **bold**, then newlines
+      // Plain text — escape, render **bold**, then newlines
       return escapeHtml(part)
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
         .replace(/\n/g, '<br>');
     }).join('');
   }
