@@ -415,10 +415,13 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   background: var(--ray-white);
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 #ray-input {
-  flex: 1;
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 0;
   padding: 10px 14px;
   border: 1.5px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
