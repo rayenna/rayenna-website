@@ -254,10 +254,17 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   font-family: inherit;
 }
 
-.ray-msg a {
-  color: inherit;
+.ray-msg.ray-bot a {
+  color: var(--ray-primary);
   text-decoration: underline;
   font-weight: 600;
+  word-break: break-all;
+}
+.ray-msg.ray-user a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 600;
+  word-break: break-all;
 }
 
 .ray-msg.ray-bot {
@@ -488,21 +495,35 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   if (!btn || !panel) return;
 
   // ── Helpers ──
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderBotText(text) {
+    // Split on URLs first so escaping never corrupts them.
+    // Capturing group makes split() keep the URL parts in the array.
+    const parts = text.split(/(https?:\/\/[^\s]+)/g);
+    return parts.map((part, i) => {
+      if (i % 2 === 1) {
+        // URL — strip trailing punctuation (.,) that Claude often appends
+        const clean = part.replace(/[.,)]+$/, '');
+        return `<a href="${clean}" target="_blank" rel="noopener noreferrer">${clean}</a>`;
+      }
+      // Plain text — escape HTML then convert newlines
+      return escapeHtml(part).replace(/\n/g, '<br>');
+    }).join('');
+  }
+
   function addMessage(text, role) {
     const div = document.createElement('div');
     div.classList.add('ray-msg', role === 'user' ? 'ray-user' : 'ray-bot');
 
     if (role === 'assistant') {
-      // Render line breaks and clickable links
-      div.innerHTML = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\n/g, '<br>')
-        .replace(
-          /(https?:\/\/[^\s<&]+)/g,
-          '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
-        );
+      div.innerHTML = renderBotText(text);
     } else {
       div.textContent = text;
     }
