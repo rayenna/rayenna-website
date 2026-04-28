@@ -42,6 +42,29 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
         <span id="ray-subtitle">Rayenna Solar Assistant</span>
       </div>
       <div id="ray-online-dot" aria-hidden="true"></div>
+      <button
+        id="ray-voice-toggle"
+        aria-label="Mute Ray's voice"
+        title="Toggle voice"
+      >
+        <svg id="ray-speaker-on" width="16" height="16" viewBox="0 0 24 24"
+             fill="none" aria-hidden="true">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="white"/>
+          <path d="M19.07 4.93a10 10 0 010 14.14"
+                stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M15.54 8.46a5 5 0 010 7.07"
+                stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg id="ray-speaker-off" width="16" height="16" viewBox="0 0 24 24"
+             fill="none" aria-hidden="true"
+             style="display:none">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="rgba(255,255,255,0.4)"/>
+          <line x1="23" y1="9" x2="17" y2="15"
+                stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="17" y1="9" x2="23" y2="15"
+                stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
       <button id="ray-close-btn" aria-label="Close chat">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5"
@@ -79,6 +102,23 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
         autocomplete="off"
         maxlength="500"
       />
+      <button
+        id="ray-mic-btn"
+        aria-label="Speak your message"
+        title="Tap to speak"
+        style="display:none"
+      >
+        <svg id="ray-mic-icon" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/>
+          <path d="M5 10a7 7 0 0014 0"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="19" x2="12" y2="22"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="22" x2="15" y2="22"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
       <button id="ray-send-btn" aria-label="Send message">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 19-7z"
@@ -414,6 +454,74 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 #ray-send-btn:hover   { background: var(--ray-primary-dark); }
 #ray-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
+/* ── Voice toggle button (header) ── */
+#ray-voice-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s;
+  min-width: 32px;
+  min-height: 32px;
+  flex-shrink: 0;
+}
+
+#ray-voice-toggle:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ── Avatar speaking animation ── */
+#ray-avatar.ray-speaking {
+  animation: ray-avatar-pulse 0.6s infinite alternate;
+}
+
+@keyframes ray-avatar-pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
+
+/* ── Mic button ── */
+#ray-mic-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--ray-cream);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ray-navy);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+#ray-mic-btn.ray-recording {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #ef4444;
+  animation: ray-mic-pulse 1s infinite;
+}
+
+@keyframes ray-mic-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+#ray-mic-btn:active { opacity: 0.8; }
+
+#ray-input.ray-listening {
+  border-color: #ef4444;
+  background: #fff5f5;
+  color: #ef4444;
+  font-style: italic;
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    Desktop — min-width: 768px
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -508,16 +616,21 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   let quickRepliesHidden = false;
 
   // ── DOM refs ──
-  const btn       = document.getElementById('ray-chat-btn');
-  const panel     = document.getElementById('ray-chat-panel');
-  const closeBtn  = document.getElementById('ray-close-btn');
-  const messages  = document.getElementById('ray-messages');
-  const input     = document.getElementById('ray-input');
-  const sendBtn   = document.getElementById('ray-send-btn');
-  const chips     = document.querySelectorAll('.ray-chip');
-  const qr        = document.getElementById('ray-quick-replies');
-  const iconOpen  = document.getElementById('ray-icon-open');
-  const iconClose = document.getElementById('ray-icon-close');
+  const btn          = document.getElementById('ray-chat-btn');
+  const panel        = document.getElementById('ray-chat-panel');
+  const closeBtn     = document.getElementById('ray-close-btn');
+  const messages     = document.getElementById('ray-messages');
+  const input        = document.getElementById('ray-input');
+  const sendBtn      = document.getElementById('ray-send-btn');
+  const chips        = document.querySelectorAll('.ray-chip');
+  const qr           = document.getElementById('ray-quick-replies');
+  const iconOpen     = document.getElementById('ray-icon-open');
+  const iconClose    = document.getElementById('ray-icon-close');
+  const micBtn       = document.getElementById('ray-mic-btn');
+  const voiceToggle  = document.getElementById('ray-voice-toggle');
+  const speakerOn    = document.getElementById('ray-speaker-on');
+  const speakerOff   = document.getElementById('ray-speaker-off');
+  const avatar       = document.getElementById('ray-avatar');
 
   if (!btn || !panel) return;
 
@@ -604,6 +717,131 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     }
   }
 
+  // ── VOICE OUTPUT ─────────────────────────────────────
+  let voiceEnabled = true;
+
+  voiceToggle.addEventListener('click', () => {
+    voiceEnabled = !voiceEnabled;
+    speakerOn.style.display  = voiceEnabled ? 'block' : 'none';
+    speakerOff.style.display = voiceEnabled ? 'none'  : 'block';
+    voiceToggle.setAttribute(
+      'aria-label',
+      voiceEnabled ? "Mute Ray's voice" : "Unmute Ray's voice"
+    );
+    if (!voiceEnabled) {
+      window.speechSynthesis.cancel();
+      avatar.classList.remove('ray-speaking');
+    }
+  });
+
+  function speakText(text) {
+    if (!voiceEnabled) return;
+    if (!window.speechSynthesis) return;
+
+    window.speechSynthesis.cancel();
+
+    const cleanText = text
+      .replace(/https?:\/\/wa\.me\/\S+/g, 'our WhatsApp')
+      .replace(/https?:\/\/api\.whatsapp\.com\/\S+/g, 'our WhatsApp')
+      .replace(/https?:\/\/\S+/g, 'our website')
+      .replace(/<[^>]+>/g, '')
+      .replace(/[☀️🏠🏢💰📞💬🌐📧]/g, '');
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.rate   = 0.92;
+    utterance.pitch  = 1.05;
+    utterance.volume = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferred =
+      voices.find(v => v.lang === 'en-IN' && v.localService) ||
+      voices.find(v => v.lang === 'en-IN') ||
+      voices.find(v => v.lang.startsWith('en') && v.localService) ||
+      voices.find(v => v.lang.startsWith('en'));
+    if (preferred) utterance.voice = preferred;
+
+    utterance.onstart = () => avatar.classList.add('ray-speaking');
+    utterance.onend   = () => avatar.classList.remove('ray-speaking');
+    utterance.onerror = () => avatar.classList.remove('ray-speaking');
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Pre-load voices (they load async on some browsers)
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+  }
+
+  // ── VOICE INPUT ───────────────────────────────────────
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  let recognition  = null;
+  let isRecording  = false;
+
+  if (SpeechRecognition) {
+    micBtn.style.display = 'flex';
+
+    recognition = new SpeechRecognition();
+    recognition.continuous     = false;
+    recognition.interimResults = true;
+    recognition.lang           = 'en-IN';
+
+    recognition.onstart = () => {
+      isRecording = true;
+      micBtn.classList.add('ray-recording');
+      micBtn.setAttribute('aria-label', 'Listening… tap to stop');
+      input.value       = '';
+      input.placeholder = 'Listening...';
+      input.classList.add('ray-listening');
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = Array.from(event.results)
+        .map(r => r[0].transcript)
+        .join('');
+      input.value = transcript;
+    };
+
+    recognition.onend = () => {
+      isRecording = false;
+      micBtn.classList.remove('ray-recording');
+      micBtn.setAttribute('aria-label', 'Speak your message');
+      input.placeholder = 'Type your question...';
+      input.classList.remove('ray-listening');
+      const text = input.value.trim();
+      if (text) {
+        input.value = '';
+        sendMessage(text);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      isRecording = false;
+      micBtn.classList.remove('ray-recording');
+      input.placeholder = 'Type your question...';
+      input.classList.remove('ray-listening');
+      if (event.error === 'not-allowed') {
+        addMessage(
+          "I couldn't access your microphone. Please check your browser " +
+          "permissions and try again, or just type your question below ☀️",
+          'assistant'
+        );
+      }
+    };
+
+    micBtn.addEventListener('click', () => {
+      if (isRecording) {
+        recognition.stop();
+      } else {
+        try { recognition.start(); } catch (e) { /* already started */ }
+      }
+    });
+  }
+
   function toggleChat() {
     isOpen = !isOpen;
     panel.classList.toggle('ray-open', isOpen);
@@ -616,6 +854,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (isOpen) {
       if (conversationHistory.length === 0) {
         addMessage(OPENING_MESSAGE, 'assistant');
+        speakText(OPENING_MESSAGE);
       }
       setTimeout(() => input && input.focus(), 300);
     }
@@ -650,6 +889,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
         "You can reach our team directly on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️";
 
       addMessage(reply, 'assistant');
+      speakText(reply);
       conversationHistory.push({ role: 'assistant', content: reply });
 
     } catch (_err) {
