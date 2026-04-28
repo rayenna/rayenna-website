@@ -576,7 +576,7 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
       const reply =
         data?.content?.[0]?.text ||
         "I'm sorry, I had a little trouble responding. " +
-        "You can reach our team directly on WhatsApp: https://wa.me/917907369304 ☀️";
+        "You can reach our team directly on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️";
 
       addMessage(reply, 'assistant');
       conversationHistory.push({ role: 'assistant', content: reply });
@@ -585,7 +585,7 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
       hideTyping();
       addMessage(
         "I'm having a little trouble right now. You can reach our team directly on WhatsApp: " +
-        "https://wa.me/917907369304 ☀️",
+        "https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️",
         'assistant'
       );
     }
