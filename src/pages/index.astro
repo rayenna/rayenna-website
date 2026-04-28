@@ -2,14 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<Layout title="Rayenna Solar Kochi — The Responsible Energy Company">
+<Layout
+  title="Solar Panel Installation in Kochi, Kerala | Rayenna Energy"
+  description="Rayenna Energy — MNRE-approved solar panel installer in Kochi, Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey. Call +91 7907 369 304."
+>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
     <img src={`${base}/media/hero (1).webp`} alt="Solar energy — child flying a kite" class="hero__photo" />
     <div class="hero__gradient"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Soar into a <br />Sunny Tomorrow!</h1>
+      <h1 class="hero__title">Solar Panel Installation<br />in Kochi, Kerala</h1>
       <div class="hero__mid">
         <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
         <p class="hero__subtitle">Make a switch to solar energy for a sustainable lifestyle that cares for both the planet and your wallet. Partner with Rayenna Energy for future-ready energy solutions that ensure you save on energy costs while reducing your carbon footprint.</p>
