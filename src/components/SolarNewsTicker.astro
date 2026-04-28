@@ -20,8 +20,9 @@ const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
     padding: 0 12px;
     box-sizing: border-box;
     overflow: hidden;
-    /* sits immediately below the fixed navbar */
-    position: relative;
+    /* Sticks just below the fixed navbar (72px tall) */
+    position: sticky;
+    top: 72px;
     z-index: 49;
   }
 
