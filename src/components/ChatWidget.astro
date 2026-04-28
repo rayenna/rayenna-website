@@ -850,6 +850,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     iconOpen.style.display  = isOpen ? 'none'  : 'block';
     iconClose.style.display = isOpen ? 'block' : 'none';
     btn.style.animation     = isOpen ? 'none'  : '';
+    document.body.classList.toggle('ray-chat-open', isOpen);
 
     if (isOpen) {
       if (conversationHistory.length === 0) {

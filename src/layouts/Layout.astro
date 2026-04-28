@@ -149,6 +149,13 @@ const currentPath = Astro.url.pathname;
   </a>
 
   <style>
+    /* Hide WhatsApp button when Ray chat is open (mobile) */
+    @media (max-width: 767px) {
+      body.ray-chat-open .wa-float {
+        display: none;
+      }
+    }
+
     /* ── MOBILE FIRST (base styles) ── */
     .wa-float {
       position: fixed;
