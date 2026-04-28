@@ -254,18 +254,34 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   font-family: inherit;
 }
 
-.ray-msg.ray-bot a {
-  color: var(--ray-primary);
-  text-decoration: underline;
-  font-weight: 600;
-  word-break: break-all;
+/* Styled link buttons inside chat bubbles */
+.ray-link {
+  display: inline-block;
+  margin: 6px 0 2px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: opacity 0.15s;
+  word-break: break-word;
 }
-.ray-msg.ray-user a {
+/* In Ray's (bot) white bubbles — maroon pill */
+.ray-msg.ray-bot .ray-link {
+  background: var(--ray-primary);
   color: #fff;
-  text-decoration: underline;
-  font-weight: 600;
-  word-break: break-all;
+  border: none;
 }
+.ray-msg.ray-bot .ray-link:hover { opacity: 0.85; }
+/* In user's maroon bubbles — white outline pill */
+.ray-msg.ray-user .ray-link {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.6);
+}
+.ray-msg.ray-user .ray-link:hover { background: rgba(255,255,255,0.3); }
 
 .ray-msg.ray-bot {
   background: var(--ray-white);
@@ -503,18 +519,33 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
       .replace(/"/g, '&quot;');
   }
 
-  function renderBotText(text) {
-    // Split on URLs first so escaping never corrupts them.
-    // Capturing group makes split() keep the URL parts in the array.
-    const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  function renderBotText(raw) {
+    // 1. Normalise bare rayennaenergy.com URLs → add https://
+    let text = raw.replace(
+      /(?<![/"'\w])(rayennaenergy\.com\/[^\s.,)]*)/g,
+      'https://$1'
+    );
+
+    // 2. Split on full URLs (capturing group keeps them in the array)
+    //    Matches https:// AND wa.me shortlinks
+    const URL_RE = /(https?:\/\/[^\s)\]'"]+)/g;
+    const parts = text.split(URL_RE);
+
     return parts.map((part, i) => {
       if (i % 2 === 1) {
-        // URL — strip trailing punctuation (.,) that Claude often appends
-        const clean = part.replace(/[.,)]+$/, '');
-        return `<a href="${clean}" target="_blank" rel="noopener noreferrer">${clean}</a>`;
+        // URL part — strip trailing punctuation Claude sometimes adds
+        const clean = part.replace(/[.,!?)]+$/, '');
+        // Friendly display label
+        let label = clean;
+        if (clean.includes('solar-calculator'))  label = '☀️ Try the Solar Calculator';
+        else if (clean.includes('whatsapp.com') || clean.includes('wa.me')) label = '💬 Chat with us on WhatsApp';
+        else if (clean.includes('mailto:'))      label = '📧 ' + clean.replace('mailto:', '');
+        return `<a href="${clean}" target="_blank" rel="noopener noreferrer" class="ray-link">${label}</a>`;
       }
-      // Plain text — escape HTML then convert newlines
-      return escapeHtml(part).replace(/\n/g, '<br>');
+      // Plain text — escape HTML, render **bold**, then newlines
+      return escapeHtml(part)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
     }).join('');
   }
 
