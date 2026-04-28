@@ -1,0 +1,1941 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Layout
+  title="Free Solar Calculator for Kerala Homes | System Size & Cost Estimator | Rayenna Energy"
+  description="Use Rayenna's free solar calculator to find the right system size and cost for your Kerala home. Get panel count, PM Surya Ghar subsidy estimate, and payback period instantly."
+>
+
+  <!-- ===== HERO ===== -->
+  <section class="page-hero">
+    <img src={`${base}/media/services-hero-opt3.jpg`} alt="Solar panels on a rooftop at sunset" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">Smart Solar Sizing Tool</p>
+      <h1 class="page-hero__title">Find Out Exactly How Much Solar You Need</h1>
+      <p class="page-hero__sub">Tell us about your home. We'll tell you exactly what to install.</p>
+      <div class="hero-btns">
+        <a href="#calculator" class="btn btn-primary hero-scroll-btn">Start the Calculator ↓</a>
+        <a href={`${base}/contact`} class="btn btn-outline-white">Get a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST STRIP ===== -->
+  <section class="trust-strip">
+    <div class="container trust-inner">
+      {[
+        { val: '5 min',  label: 'Time to complete' },
+        { val: '100%',   label: 'Personalised results' },
+        { val: 'Free',   label: 'No cost, no commitment' },
+        { val: 'MNRE',   label: 'Approved installer' },
+      ].map(m => (
+        <div class="trust-metric">
+          <strong>{m.val}</strong>
+          <span>{m.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="calc-intro">
+    <div class="container calc-intro__inner">
+      <div class="calc-intro__image">
+        <img src={`${base}/media/solar-calculator-intro.jpg`} alt="High-efficiency solar panels on a rooftop" />
+      </div>
+      <div class="calc-intro__content">
+        <span class="section-tag">How it works</span>
+        <h2 class="section-title">Your Home is Unique. Your Solar System Should Be Too.</h2>
+        <p>Most solar quotes you receive are generic — based on averages, not your actual home. Rayenna's Solar Calculator changes that. Tell us about your home type, the rooms and floors you have, the appliances you run every day, and whether you charge an electric vehicle. Our calculator uses real consumption data to recommend the exact system size, panel type, and number of panels your home needs — along with a financial snapshot showing your payback period and 25-year savings. No guesswork. No salespeople. Just numbers.</p>
+        <div class="how-cards">
+          <div class="how-card">
+            <span class="how-card__icon">⚡</span>
+            <div>
+              <h3>Enter your details</h3>
+              <p>Home type, rooms, and appliances</p>
+            </div>
+          </div>
+          <div class="how-card">
+            <span class="how-card__icon">☀️</span>
+            <div>
+              <h3>Get your recommendation</h3>
+              <p>System size, panels, and roof space</p>
+            </div>
+          </div>
+          <div class="how-card">
+            <span class="how-card__icon">💰</span>
+            <div>
+              <h3>See your savings</h3>
+              <p>Payback period and lifetime savings</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CALCULATOR MODULE ===== -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="calc-card">
+
+        <!-- Progress bar -->
+        <div class="calc-progress">
+          <div class="calc-progress-bar">
+            <div class="cpb-dot active" data-dot="1"><span>1</span></div>
+            <div class="cpb-line" data-line="1"></div>
+            <div class="cpb-dot" data-dot="2"><span>2</span></div>
+            <div class="cpb-line" data-line="2"></div>
+            <div class="cpb-dot" data-dot="3"><span>3</span></div>
+            <div class="cpb-line" data-line="3"></div>
+            <div class="cpb-dot" data-dot="4"><span>4</span></div>
+          </div>
+          <p class="calc-step-label" id="step-label">Step 1 of 4 — Your home</p>
+        </div>
+
+        <!-- ── STEP 1: HOME ── -->
+        <div class="calc-step" id="step-1">
+          <h3 class="calc-step-title">About Your Home</h3>
+
+          <p class="calc-field-label">Home type</p>
+          <div class="home-type-grid" id="home-type-grid">
+            <div class="ht-card selected" data-type="house">
+              <span class="ht-icon">🏠</span>
+              <strong>Independent house</strong>
+              <small>Standalone home</small>
+            </div>
+            <div class="ht-card" data-type="apartment">
+              <span class="ht-icon">🏢</span>
+              <strong>Apartment</strong>
+              <small>Flat / unit in a building</small>
+            </div>
+            <div class="ht-card" data-type="villa">
+              <span class="ht-icon">🏡</span>
+              <strong>Villa</strong>
+              <small>Detached / gated villa</small>
+            </div>
+            <div class="ht-card" data-type="rowhouse">
+              <span class="ht-icon">🏘</span>
+              <strong>Row house</strong>
+              <small>Terraced / linked home</small>
+            </div>
+          </div>
+
+          <div class="steppers-group">
+            <div class="stepper-row">
+              <label>Bedrooms</label>
+              <div class="stepper" data-id="bedrooms" data-min="1" data-max="10" data-val="3">
+                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <span class="stp-val">3</span>
+                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <label>Bathrooms</label>
+              <div class="stepper" data-id="bathrooms" data-min="1" data-max="10" data-val="2">
+                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <span class="stp-val">2</span>
+                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <label>Floors</label>
+              <div class="stepper" data-id="floors" data-min="1" data-max="4" data-val="1">
+                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <span class="stp-val">1</span>
+                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-nav">
+            <div></div>
+            <button class="btn-calc-next" type="button" data-next="2">Next →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: APPLIANCES ── -->
+        <div class="calc-step hidden" id="step-2">
+          <h3 class="calc-step-title">Your Appliances</h3>
+
+          <p class="calc-category-label">Cooling</p>
+          <div class="steppers-group">
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Air conditioners</label>
+                <small>1.5 ton split AC, 1500W each</small>
+              </div>
+              <div class="stepper" data-id="ac" data-min="0" data-max="15" data-val="2">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">2</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Ceiling fans</label>
+                <small>75W each</small>
+              </div>
+              <div class="stepper" data-id="fans" data-min="0" data-max="30" data-val="4">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">4</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="calc-category-label">Entertainment</p>
+          <div class="steppers-group">
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Televisions</label>
+                <small>LED, 120W each</small>
+              </div>
+              <div class="stepper" data-id="tvs" data-min="0" data-max="15" data-val="2">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">2</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="calc-category-label">Kitchen</p>
+          <div class="steppers-group">
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Refrigerator</label>
+                <small>200W, runs 30% of time</small>
+              </div>
+              <div class="stepper" data-id="fridge" data-min="0" data-max="5" data-val="1">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">1</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Microwave / OTG</label>
+                <small>1200W, ~1 hr/day</small>
+              </div>
+              <div class="stepper" data-id="microwave" data-min="0" data-max="5" data-val="1">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">1</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <div class="stepper-label-group">
+                <label>Washing machine</label>
+                <small>500W, ~1 hr/day</small>
+              </div>
+              <div class="stepper" data-id="washing" data-min="0" data-max="4" data-val="1">
+                <button class="stp-btn stp-minus" type="button">−</button>
+                <span class="stp-val">1</span>
+                <button class="stp-btn stp-plus" type="button">+</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="calc-category-label">Other</p>
+          <div class="toggles-group">
+            <div class="toggle-row">
+              <div class="stepper-label-group">
+                <label>Water heater / geyser</label>
+                <small>2000W, ~1 hr/day</small>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-geyser" checked />
+                <span class="toggle-pill"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="stepper-label-group">
+                <label>Water pump / motor</label>
+                <small>750W, ~2 hrs/day</small>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-pump" />
+                <span class="toggle-pill"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- EV Section -->
+          <div class="ev-section">
+            <div class="toggle-row ev-toggle-row">
+              <label class="ev-main-label">⚡ I have an electric vehicle</label>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-ev" />
+                <span class="toggle-pill"></span>
+              </label>
+            </div>
+
+            <div class="ev-panel hidden" id="ev-panel">
+              <div class="steppers-group">
+                <div class="stepper-row">
+                  <label>Number of EVs</label>
+                  <div class="stepper" data-id="ev-count" data-min="1" data-max="4" data-val="1">
+                    <button class="stp-btn stp-minus" type="button">−</button>
+                    <span class="stp-val">1</span>
+                    <button class="stp-btn stp-plus" type="button">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="calc-field-label" style="margin-top:20px;">Charger type</p>
+              <div class="charger-grid" id="charger-grid">
+                <div class="charger-card" data-kw="2.3">
+                  <strong>2.3 kW</strong>
+                  <span>Regular 5A socket</span>
+                  <small>Overnight standard plug</small>
+                </div>
+                <div class="charger-card selected" data-kw="3.3">
+                  <strong>3.3 kW</strong>
+                  <span>Slow wall box</span>
+                  <small>Standard home charger</small>
+                </div>
+                <div class="charger-card" data-kw="7.4">
+                  <strong>7.4 kW</strong>
+                  <span>Fast wall box</span>
+                  <small>Dedicated AC charger</small>
+                </div>
+                <div class="charger-card" data-kw="11">
+                  <strong>11 kW</strong>
+                  <span>Rapid AC charger</span>
+                  <small>3-phase, premium setup</small>
+                </div>
+              </div>
+
+              <div class="sliders-group">
+                <div class="slider-row">
+                  <label>Daily charging duration: <strong id="ev-hours-val">4</strong> hrs</label>
+                  <input type="range" id="ev-hours" min="1" max="12" value="4" step="1" class="calc-slider" />
+                </div>
+                <div class="slider-row">
+                  <label>Days charged per week: <strong id="ev-days-val">5</strong> days</label>
+                  <input type="range" id="ev-days" min="1" max="7" value="5" step="1" class="calc-slider" />
+                </div>
+              </div>
+
+              <div class="ev-impact-panel" id="ev-impact">
+                <div class="ev-impact-row">
+                  <div>
+                    <p class="ev-impact-label">Added daily load (avg)</p>
+                    <p class="ev-impact-val" id="ev-added-load">— kWh</p>
+                  </div>
+                  <div>
+                    <p class="ev-impact-label">Extra panels needed</p>
+                    <p class="ev-impact-val" id="ev-extra-panels">— panels</p>
+                  </div>
+                </div>
+                <p class="ev-impact-note" id="ev-impact-note"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-nav">
+            <button class="btn-calc-back" type="button" data-back="1">← Back</button>
+            <button class="btn-calc-next" type="button" data-next="3">Next →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: USAGE PATTERN ── -->
+        <div class="calc-step hidden" id="step-3">
+          <h3 class="calc-step-title">Your Usage Pattern</h3>
+
+          <div class="sliders-group">
+            <div class="slider-row">
+              <label>AC usage per day: <strong id="ac-hours-val">8</strong> hrs</label>
+              <input type="range" id="ac-hours" min="2" max="16" value="8" step="1" class="calc-slider" />
+              <div class="slider-range-labels"><span>2 hrs</span><span>16 hrs</span></div>
+            </div>
+          </div>
+
+          <p class="calc-field-label" style="margin-top:28px;">Daytime occupancy</p>
+          <div class="occupancy-grid" id="occupancy-grid">
+            <div class="occ-card selected" data-occ="home">
+              <strong>🏠 Home all day</strong>
+              <small>Housewife, work from home</small>
+            </div>
+            <div class="occ-card" data-occ="away">
+              <strong>🚗 Away daytime</strong>
+              <small>Office goers, school hours</small>
+            </div>
+          </div>
+
+          <div class="sliders-group" style="margin-top:28px;">
+            <div class="slider-row">
+              <label>Monthly KSEB bill: <strong id="bill-val">₹5,000</strong></label>
+              <input type="range" id="bill-slider" min="1000" max="15000" value="5000" step="500" class="calc-slider" />
+              <div class="slider-range-labels"><span>₹1,000</span><span>₹15,000</span></div>
+            </div>
+          </div>
+
+          <div class="calc-nav">
+            <button class="btn-calc-back" type="button" data-back="2">← Back</button>
+            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">Calculate →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 4: RESULTS ── -->
+        <div class="calc-step hidden" id="step-4">
+          <h3 class="calc-step-title">Your Personalised Recommendation</h3>
+
+          <!-- Hero result card -->
+          <div class="result-hero">
+            <p class="result-hero-label">Recommended system size</p>
+            <p class="result-hero-kw" id="result-kw">— kW</p>
+            <p class="result-hero-units" id="result-units">Generates ~— units/year</p>
+          </div>
+
+          <!-- 4 stat cards -->
+          <div class="result-stats-grid">
+            <div class="result-stat">
+              <p class="rs-label">Est. daily consumption</p>
+              <p class="rs-val" id="result-daily">—</p>
+            </div>
+            <div class="result-stat">
+              <p class="rs-label">Panels needed</p>
+              <p class="rs-val" id="result-panels">—</p>
+            </div>
+            <div class="result-stat">
+              <p class="rs-label">Roof space needed</p>
+              <p class="rs-val" id="result-roof">—</p>
+            </div>
+            <div class="result-stat">
+              <p class="rs-label">PM Surya Ghar subsidy</p>
+              <p class="rs-val" id="result-subsidy">—</p>
+            </div>
+          </div>
+
+          <!-- Panel options -->
+          <div class="panel-options-section">
+            <div class="panel-options-header">
+              <p class="calc-field-label" style="margin-bottom:0;">Panel options — Kerala market prices</p>
+              <p class="panel-select-hint">Tap a panel to see updated numbers</p>
+            </div>
+
+            <!-- A: N-Type TopCon 620W — Premium -->
+            <div class="panel-option" id="panel-620" data-panel-id="620">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge purple">Premium</span>
+                  <h4>N-Type TopCon 620W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-620-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p620-panels">— panels</span>
+                <span>22.8% efficiency</span>
+                <span id="p620-roof">— sq ft</span>
+                <span>₹29.5/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-620-detail">
+                <p>The latest N-Type TopCon technology delivers the highest watt-peak and lowest degradation rate on the market. Fewer panels needed, maximum roof-space efficiency. Best choice when you want the most power from the least area.</p>
+              </div>
+            </div>
+
+            <!-- B: N-Type TopCon 600W — Recommended (default selected) -->
+            <div class="panel-option selected" id="panel-600" data-panel-id="600">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge blue">Recommended</span>
+                  <h4>N-Type TopCon 600W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-600-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p600-panels">— panels</span>
+                <span>22.2% efficiency</span>
+                <span id="p600-roof">— sq ft</span>
+                <span>₹29/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-600-detail">
+                <p>The best all-round choice for Kerala rooftops. N-Type TopCon cells offer superior performance in high-temperature and low-light (overcast monsoon) conditions — exactly what the Kerala climate demands. Excellent long-term value.</p>
+              </div>
+            </div>
+
+            <!-- C: N-Type TopCon 580W — Best Value -->
+            <div class="panel-option" id="panel-580tc" data-panel-id="580tc">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge green">Best Value</span>
+                  <h4>N-Type TopCon 580W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580tc-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p580tc-panels">— panels</span>
+                <span>21.8% efficiency</span>
+                <span id="p580tc-roof">— sq ft</span>
+                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-580tc-detail">
+                <p>N-Type TopCon at a more accessible price point. Retains all the key advantages of TopCon technology — low temperature coefficient, excellent low-light performance, and higher energy yield per Wp — at a lower upfront cost than the 600W or 620W variants.</p>
+              </div>
+            </div>
+
+            <!-- D: Bi-Facial Dual Glass 580W — Bifacial -->
+            <div class="panel-option" id="panel-580bf" data-panel-id="580bf">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge teal">Bifacial</span>
+                  <h4>Bifacial Dual Glass 580W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580bf-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p580bf-panels">— panels</span>
+                <span>21.3% + bifacial gain</span>
+                <span id="p580bf-roof">— sq ft</span>
+                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
+                <span>30yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-580bf-detail">
+                <p>Dual-glass bifacial panels generate electricity from both sides, harvesting reflected light from the roof surface and surroundings. Particularly effective on light-coloured flat rooftops. The glass-glass construction also offers better protection against Kerala's heavy monsoon humidity and extreme rainfall.</p>
+              </div>
+            </div>
+
+            <!-- E: Mono PERC 540W — Economy -->
+            <div class="panel-option" id="panel-540" data-panel-id="540">
+              <div class="panel-option__header">
+                <div>
+                  <span class="panel-badge grey">Economy</span>
+                  <h4>Mono PERC 540W</h4>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-540-detail">Learn more ▾</button>
+              </div>
+              <div class="panel-option__stats">
+                <span id="p540-panels">— panels</span>
+                <span>20.5% efficiency</span>
+                <span id="p540-roof">— sq ft</span>
+                <span>₹27.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
+                <span>25yr warranty</span>
+              </div>
+              <div class="panel-option__detail hidden" id="panel-540-detail">
+                <p>Proven Mono PERC technology at the most affordable price point. A solid and reliable choice for homeowners prioritising the lowest upfront cost. Widely available with a strong installer support network across Kerala. Best suited for rooftops with ample available area.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Financial snapshot -->
+          <div class="fin-snapshot">
+            <p class="calc-field-label">Cost breakdown</p>
+            <div class="fin-row"><span>Panel cost</span><span id="fin-panel-cost">—</span></div>
+            <div class="fin-row"><span>Inverter, mounting &amp; installation</span><span id="fin-bos">—</span></div>
+            <div class="fin-row fin-total"><span>Total system cost</span><span id="fin-total-cost">—</span></div>
+            <div class="fin-row fin-subsidy"><span>PM Surya Ghar subsidy</span><span id="fin-subsidy-row">—</span></div>
+            <div class="fin-row fin-highlight"><span>Net cost to you</span><span id="fin-net-cost">—</span></div>
+
+            <p class="calc-field-label" style="margin-top:24px;">Returns</p>
+            <div class="fin-row"><span>Est. annual savings</span><span id="fin-annual">—</span></div>
+            <div class="fin-row"><span>Payback period</span><span id="fin-payback">—</span></div>
+            <div class="fin-row fin-highlight"><span>25-year savings</span><span id="fin-lifetime">—</span></div>
+            <div class="fin-row"><span>CO₂ avoided (25yr)</span><span id="fin-co2">—</span></div>
+          </div>
+
+          <!-- Result CTAs -->
+          <div class="result-ctas">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a personalised quote →</a>
+            <button class="btn-calc-outline" type="button" id="recalculate-btn">← Recalculate</button>
+          </div>
+
+          <!-- Footnote / T&C -->
+          <div class="calc-footnote">
+            <div class="calc-footnote__icon">ℹ️</div>
+            <div class="calc-footnote__body">
+              <p class="calc-footnote__heading">Important notes on this estimate</p>
+              <ol class="calc-footnote__list">
+                <li>
+                  <div class="fn-item">
+                    <strong>What the cost includes</strong>
+                    <p>The total system cost shown covers solar PV modules, grid-tied inverter, mounting structure, DC &amp; AC cabling, earthing, net-metering equipment, and complete installation by a certified team. No hidden line items. <em>All applicable taxes and statutory levies, including GST, are additional and will be reflected in the final invoice.</em></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="fn-item">
+                    <strong>For reference only</strong>
+                    <p>All figures are indicative estimates based on prevailing Kerala market rates. Actual costs vary with roof type, shadow analysis, panel brand selection, and site-specific civil work. Our team will conduct a detailed site visit and assessment and provide you with a precise, fixed proposal — at no charge.</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="fn-item">
+                    <strong>About the subsidy</strong>
+                    <p>The PM Surya Ghar subsidy is shown as a deduction for illustrative purposes. In practice, the subsidy amount is credited directly to your bank account by the DISCOM or the relevant Government agency after system commissioning and verification — it is not an upfront discount on the invoice.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- .calc-card -->
+    </div>
+  </section>
+
+  <!-- ===== REASSURANCE STRIP ===== -->
+  <section class="reassurance-section">
+    <div class="container reassurance__inner">
+      <div class="reassurance-card">
+        <span class="reassurance-icon">🔒</span>
+        <h3>Your data stays private</h3>
+        <p>We don't store your inputs. This tool runs entirely in your browser.</p>
+      </div>
+      <div class="reassurance-card">
+        <span class="reassurance-icon">✅</span>
+        <h3>MNRE-approved installer</h3>
+        <p>Every system we install qualifies for the full PM Surya Ghar subsidy.</p>
+      </div>
+      <div class="reassurance-card">
+        <span class="reassurance-icon">📞</span>
+        <h3>Free expert review</h3>
+        <p>Not sure about your results? Our team will review them with you at no cost.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section class="cta-banner">
+    <div class="container cta-banner__inner">
+      <div class="cta-banner__content">
+        <h2>Ready to go solar? Let's size your system together.</h2>
+        <p>Our team will visit your home for free, verify these numbers, and give you a fixed quote with no hidden charges.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Survey</a>
+        <a href="tel:+917907369304" class="btn btn-outline-white">Call Us Now</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* =============================================
+   Solar Calculator Page — Mobile First
+   ============================================= */
+
+/* ── Shared tokens (calculator blue palette) ── */
+:root {
+  --calc-blue:       #185FA5;
+  --calc-blue-mid:   #378ADD;
+  --calc-blue-light: #E6F1FB;
+  --calc-border:     #d0dce8;
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(10,25,50,0.88) 0%,
+    rgba(10,25,50,0.55) 50%,
+    rgba(10,25,50,0.25) 100%);
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 88px;
+}
+.page-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 10px;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.page-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 2px solid rgba(255,255,255,0.55);
+  color: #fff;
+  background: transparent;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: var(--color-navy);
+  padding: 20px 0;
+}
+.trust-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.trust-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  min-width: 120px;
+  text-align: center;
+}
+.trust-metric strong {
+  font-family: 'Oswald', var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+}
+.trust-metric span {
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ── HOW IT WORKS INTRO ── */
+.calc-intro { padding: var(--section-padding); background: #fff; }
+.calc-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.calc-intro__image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: var(--shadow-md);
+}
+.calc-intro__image img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
+.calc-intro__content .section-title { margin-bottom: 16px; }
+.calc-intro__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.how-cards { display: flex; flex-direction: column; gap: 12px; }
+.how-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--calc-blue-light);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  border-left: 3px solid var(--calc-blue);
+}
+.how-card__icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.how-card h3 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+.how-card p { font-size: 0.83rem; color: var(--color-text-muted); margin: 0; }
+
+/* ── CALCULATOR SECTION ── */
+.calculator-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.calc-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--calc-border);
+  box-shadow: var(--shadow-md);
+  padding: 36px 28px 48px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ── PROGRESS BAR ── */
+.calc-progress { margin-bottom: 32px; text-align: center; }
+.calc-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.cpb-dot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  color: #aaa;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.cpb-dot.active  { background: var(--calc-blue); color: #fff; box-shadow: 0 0 0 4px rgba(24,95,165,0.15); }
+.cpb-dot.done    { background: var(--calc-blue); color: #fff; }
+.cpb-line {
+  flex: 1; height: 3px;
+  background: #e5e5e5;
+  transition: background 0.3s ease;
+  max-width: 80px;
+}
+.cpb-line.done { background: var(--calc-blue); }
+.calc-step-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+}
+
+/* ── STEP TRANSITIONS ── */
+.calc-step { animation: stepFadeIn 0.35s ease both; }
+.calc-step.hidden { display: none; }
+@keyframes stepFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.calc-step-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 24px;
+}
+
+/* ── LABELS ── */
+.calc-field-label {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  display: block;
+}
+.calc-category-label {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--calc-blue);
+  margin: 24px 0 10px;
+  border-bottom: 1px solid var(--calc-blue-light);
+  padding-bottom: 6px;
+}
+
+/* ── HOME TYPE CARDS ── */
+.home-type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.ht-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition);
+  background: #fff;
+}
+.ht-card:hover { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.ht-card.selected { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.ht-icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+.ht-card strong { font-size: 0.88rem; color: var(--color-navy); display: block; margin-bottom: 2px; }
+.ht-card small  { font-size: 0.75rem; color: var(--color-text-muted); }
+
+/* ── STEPPERS ── */
+.steppers-group { display: flex; flex-direction: column; gap: 0; }
+.stepper-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.stepper-row:last-child { border-bottom: none; }
+.stepper-row > label,
+.stepper-row > div > label {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+.stepper-label-group { flex: 1; }
+.stepper-label-group label { display: block; font-size: 0.92rem; color: var(--color-text); }
+.stepper-label-group small { font-size: 0.76rem; color: var(--color-text-muted); }
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.stp-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--calc-border);
+  background: #fff;
+  color: var(--calc-blue);
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.stp-btn:hover { background: var(--calc-blue); color: #fff; border-color: var(--calc-blue); }
+.stp-val {
+  min-width: 28px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+/* ── TOGGLE SWITCHES ── */
+.toggles-group { display: flex; flex-direction: column; }
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.toggle-row label:not(.toggle-switch) { font-size: 0.92rem; color: var(--color-text); }
+.toggle-switch {
+  position: relative;
+  width: 44px; height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-pill {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 24px;
+  transition: background 0.25s ease;
+}
+.toggle-pill::after {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  top: 3px; left: 3px;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle-switch input:checked + .toggle-pill { background: var(--calc-blue); }
+.toggle-switch input:checked + .toggle-pill::after { transform: translateX(20px); }
+
+/* ── EV SECTION ── */
+.ev-section {
+  margin-top: 24px;
+  border: 1.5px solid var(--calc-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.ev-toggle-row {
+  padding: 14px 16px !important;
+  background: var(--calc-blue-light);
+  border-bottom: none !important;
+  margin: 0 !important;
+}
+.ev-main-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-navy);
+}
+.ev-panel {
+  padding: 20px 16px;
+  background: #fafcff;
+  border-top: 1px solid var(--calc-border);
+}
+.ev-panel.hidden { display: none; }
+
+/* ── CHARGER GRID ── */
+.charger-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.charger-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition);
+  background: #fff;
+}
+.charger-card:hover { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.charger-card.selected { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.charger-card strong { display: block; font-size: 1.05rem; color: var(--color-navy); margin-bottom: 2px; }
+.charger-card span  { display: block; font-size: 0.82rem; color: var(--color-text); }
+.charger-card small { display: block; font-size: 0.73rem; color: var(--color-text-muted); }
+
+/* ── SLIDERS ── */
+.sliders-group { display: flex; flex-direction: column; gap: 20px; }
+.slider-row { display: flex; flex-direction: column; gap: 10px; }
+.slider-row label { font-size: 0.92rem; color: var(--color-text); }
+.slider-row label strong { color: var(--color-navy); }
+.calc-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+  background: linear-gradient(to right, var(--calc-blue) 0%, var(--calc-blue) 50%, #dce5ef 50%, #dce5ef 100%);
+  cursor: pointer;
+  outline: none;
+}
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--calc-blue);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 6px rgba(24,95,165,0.4);
+  cursor: pointer;
+}
+.calc-slider::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--calc-blue);
+  border: 3px solid #fff;
+  cursor: pointer;
+}
+.slider-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.73rem;
+  color: var(--color-text-muted);
+}
+
+/* ── EV IMPACT PANEL ── */
+.ev-impact-panel {
+  background: var(--calc-blue-light);
+  border: 1px solid var(--calc-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.ev-impact-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 10px;
+}
+.ev-impact-row > div { flex: 1; }
+.ev-impact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--calc-blue); font-weight: 600; margin-bottom: 4px; }
+.ev-impact-val { font-size: 1.15rem; font-weight: 700; color: var(--color-navy); font-family: 'Oswald', var(--font-heading); }
+.ev-impact-note { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; }
+
+/* ── OCCUPANCY CARDS ── */
+.occupancy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.occ-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition);
+  background: #fff;
+}
+.occ-card:hover { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.occ-card.selected { border-color: var(--calc-blue); background: var(--calc-blue-light); }
+.occ-card strong { display: block; font-size: 0.92rem; color: var(--color-navy); margin-bottom: 4px; }
+.occ-card small  { font-size: 0.78rem; color: var(--color-text-muted); }
+
+/* ── NAV BUTTONS ── */
+.calc-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  gap: 12px;
+}
+.btn-calc-next {
+  background: var(--calc-blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex: 1;
+  max-width: 240px;
+}
+.btn-calc-next:hover { background: #1450a0; transform: translateY(-1px); }
+.btn-calc-next.btn-calc-primary { background: var(--color-primary); }
+.btn-calc-next.btn-calc-primary:hover { background: var(--color-primary-dark); }
+.btn-calc-back {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  padding: 13px 24px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-calc-back:hover { border-color: var(--color-text-muted); color: var(--color-text); }
+
+/* ── RESULT HERO CARD ── */
+.result-hero {
+  background: var(--calc-blue-light);
+  border: 1.5px solid var(--calc-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  padding: 28px 20px;
+  margin-bottom: 24px;
+}
+.result-hero-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--calc-blue);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.result-hero-kw {
+  font-family: 'Oswald', var(--font-heading);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.result-hero-units { font-size: 0.92rem; color: var(--calc-blue); font-weight: 500; }
+
+/* ── 4 STAT CARDS ── */
+.result-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.result-stat {
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  border: 1px solid var(--color-border);
+}
+.rs-label { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); margin-bottom: 6px; font-weight: 600; }
+.rs-val { font-family: 'Oswald', var(--font-heading); font-size: 1.4rem; font-weight: 600; color: var(--color-navy); }
+
+/* ── PANEL OPTIONS ── */
+.panel-options-section { margin-bottom: 28px; }
+.panel-options-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.panel-select-hint {
+  font-size: 0.75rem;
+  color: var(--calc-blue);
+  font-style: italic;
+}
+.panel-option {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+.panel-option:hover { border-color: #a0b8d4; box-shadow: var(--shadow-md); }
+.panel-option.selected {
+  border-color: var(--calc-blue);
+  background: #f6faff;
+  box-shadow: 0 0 0 3px rgba(24,95,165,0.1);
+}
+.panel-option.selected::after {
+  content: '✓ Selected';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--calc-blue);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+}
+.panel-option__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+.panel-option__header h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-top: 4px;
+}
+.panel-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-bottom: 4px;
+}
+.panel-badge.blue   { background: var(--calc-blue-light); color: var(--calc-blue); }
+.panel-badge.purple { background: #f0eaff; color: #6b21a8; }
+.panel-badge.green  { background: #e8f5e9; color: #2e7d32; }
+.panel-badge.teal   { background: #e0f7f4; color: #00796b; }
+.panel-badge.grey   { background: #f5f5f5; color: #666; }
+.panel-expand {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.panel-expand:hover { border-color: var(--calc-blue); color: var(--calc-blue); }
+.panel-option__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.panel-option__stats span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: var(--color-light);
+  border-radius: 4px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.panel-option__detail {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+.panel-option__detail p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+.panel-option__detail.hidden { display: none; }
+
+/* ── FINANCIAL SNAPSHOT ── */
+.fin-snapshot { margin-bottom: 28px; }
+.fin-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  gap: 12px;
+}
+.fin-row span:first-child { color: var(--color-text-muted); }
+.fin-row span:last-child { font-weight: 600; color: var(--color-navy); }
+.fin-row.fin-highlight span:last-child {
+  font-family: 'Oswald', var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--calc-blue);
+}
+.fin-row.fin-total { border-top: 2px solid var(--color-border); margin-top: 4px; padding-top: 14px; }
+.fin-row.fin-total span { font-weight: 700; color: var(--color-navy) !important; }
+.fin-row.fin-subsidy span:last-child { color: #2e7d32 !important; font-weight: 600; }
+.fin-row.fin-subsidy span:first-child::before { content: ''; }
+
+/* ── RESULT CTAs ── */
+.result-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.result-ctas .btn { justify-content: center; }
+.btn-calc-outline {
+  background: transparent;
+  color: var(--calc-blue);
+  border: 2px solid var(--calc-blue);
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.btn-calc-outline:hover { background: var(--calc-blue); color: #fff; }
+
+/* ── FOOTNOTE / T&C ── */
+.calc-footnote {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: #f8f9fb;
+  border: 1px solid #dce4ef;
+  border-left: 4px solid var(--calc-blue);
+  border-radius: var(--radius-md);
+  padding: 24px 28px 24px 22px;
+  margin-top: 32px;
+}
+.calc-footnote__icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 2px; }
+.calc-footnote__body { flex: 1; }
+.calc-footnote__heading {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--calc-blue);
+  margin-bottom: 12px;
+}
+.calc-footnote__list {
+  list-style: none;
+  counter-reset: fn;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+.calc-footnote__list li {
+  counter-increment: fn;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.calc-footnote__list li::before {
+  content: counter(fn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  background: var(--calc-blue);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.fn-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.fn-item strong {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.3;
+}
+.fn-item p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── REASSURANCE STRIP ── */
+.reassurance-section { padding: var(--section-padding); background: #fff; }
+.reassurance__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.reassurance-card {
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition);
+}
+.reassurance-card:hover { box-shadow: var(--shadow-md); }
+.reassurance-icon { font-size: 2rem; display: block; margin-bottom: 12px; }
+.reassurance-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+.reassurance-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+
+/* ── CTA BANNER ── */
+.cta-banner { padding: 64px 0; background: var(--color-navy); }
+.cta-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.cta-banner__content h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.cta-banner__content p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.cta-banner__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* =============================================
+   RESPONSIVE — Tablet & Desktop
+   ============================================= */
+@media (min-width: 640px) {
+  .result-ctas { flex-direction: row; }
+  .result-ctas .btn, .result-ctas .btn-calc-outline { flex: 1; }
+  .reassurance__inner { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .calc-intro__inner { grid-template-columns: 6fr 8fr; gap: 48px; }
+  .calc-intro__image img { min-height: 520px; max-height: 620px; }
+  .how-cards { gap: 14px; }
+  .trust-inner { gap: 0; justify-content: space-evenly; }
+  .result-stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .occupancy-grid { grid-template-columns: 1fr 1fr; }
+  .home-type-grid { grid-template-columns: repeat(4, 1fr); }
+  .charger-grid   { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .cta-banner__inner { grid-template-columns: 1fr auto; gap: 48px; }
+  .calc-card { padding: 52px 72px 64px; }
+}
+</style>
+
+<script>
+const state = {
+  homeType:    'house',
+  bedrooms:    3,
+  bathrooms:   2,
+  floors:      1,
+  ac:          2,
+  fans:        4,
+  tvs:         2,
+  fridge:      1,
+  microwave:   1,
+  washing:     1,
+  geyser:      true,
+  pump:        false,
+  hasEV:       false,
+  evCount:     1,
+  chargerKw:   3.3,
+  chargeHours: 4,
+  chargeDays:  5,
+  acHours:     8,
+  homeAllDay:  true,
+  monthlyBill: 5000,
+};
+
+const STEP_LABELS = [
+  '',
+  'Step 1 of 4 — Your home',
+  'Step 2 of 4 — Your appliances',
+  'Step 3 of 4 — Usage pattern',
+  'Step 4 of 4 — Your results',
+];
+
+// ── Navigation ──────────────────────────────
+function goToStep(n: number) {
+  document.querySelectorAll('.calc-step').forEach(el => el.classList.add('hidden'));
+  const target = document.getElementById(`step-${n}`);
+  target?.classList.remove('hidden');
+
+  document.querySelectorAll<HTMLElement>('.cpb-dot').forEach((dot, i) => {
+    const s = i + 1;
+    dot.classList.toggle('active', s === n);
+    dot.classList.toggle('done',   s < n);
+  });
+  document.querySelectorAll<HTMLElement>('.cpb-line').forEach((line, i) => {
+    line.classList.toggle('done', i + 1 < n);
+  });
+
+  const lbl = document.getElementById('step-label');
+  if (lbl) lbl.textContent = STEP_LABELS[n] ?? '';
+
+  document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (n === 4) calculateResults();
+}
+
+// ── Stepper controls ─────────────────────────
+function initSteppers() {
+  document.querySelectorAll<HTMLElement>('.stepper').forEach(stp => {
+    const id  = stp.dataset.id ?? '';
+    const min = parseInt(stp.dataset.min ?? '0');
+    const max = parseInt(stp.dataset.max ?? '99');
+    const valEl = stp.querySelector<HTMLElement>('.stp-val');
+
+    stp.querySelector('.stp-minus')?.addEventListener('click', () => {
+      let v = parseInt(stp.dataset.val ?? '0');
+      if (v > min) { v--; stp.dataset.val = String(v); if (valEl) valEl.textContent = String(v); syncState(id, v); }
+    });
+    stp.querySelector('.stp-plus')?.addEventListener('click', () => {
+      let v = parseInt(stp.dataset.val ?? '0');
+      if (v < max) { v++; stp.dataset.val = String(v); if (valEl) valEl.textContent = String(v); syncState(id, v); }
+    });
+  });
+}
+
+const STEPPER_MAP: Record<string, keyof typeof state> = {
+  bedrooms: 'bedrooms', bathrooms: 'bathrooms', floors: 'floors',
+  ac: 'ac', fans: 'fans', tvs: 'tvs',
+  fridge: 'fridge', microwave: 'microwave', washing: 'washing',
+  'ev-count': 'evCount',
+};
+function syncState(id: string, val: number) {
+  const key = STEPPER_MAP[id];
+  if (key) (state as Record<string, unknown>)[key] = val;
+  if (id === 'ev-count') updateEVImpact();
+}
+
+// ── Card selectors ────────────────────────────
+function initCards(gridId: string, attr: string, cb: (val: string) => void) {
+  document.querySelectorAll<HTMLElement>(`#${gridId} [data-${attr}]`).forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll(`#${gridId} [data-${attr}]`).forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      cb(card.dataset[attr] ?? '');
+    });
+  });
+}
+
+// ── Toggles ──────────────────────────────────
+function initToggles() {
+  document.getElementById('toggle-geyser')?.addEventListener('change', (e) => {
+    state.geyser = (e.target as HTMLInputElement).checked;
+  });
+  document.getElementById('toggle-pump')?.addEventListener('change', (e) => {
+    state.pump = (e.target as HTMLInputElement).checked;
+  });
+  document.getElementById('toggle-ev')?.addEventListener('change', (e) => {
+    state.hasEV = (e.target as HTMLInputElement).checked;
+    document.getElementById('ev-panel')?.classList.toggle('hidden', !state.hasEV);
+    if (state.hasEV) updateEVImpact();
+  });
+}
+
+// ── Sliders ──────────────────────────────────
+function bindSlider(id: string, displayId: string, fmt: (v: number) => string, cb: (v: number) => void) {
+  const input = document.getElementById(id) as HTMLInputElement | null;
+  const disp  = document.getElementById(displayId);
+  if (!input) return;
+  input.addEventListener('input', () => {
+    const v = parseInt(input.value);
+    if (disp) disp.textContent = fmt(v);
+    cb(v);
+    const pct = ((v - +input.min) / (+input.max - +input.min)) * 100;
+    input.style.background = `linear-gradient(to right, #185FA5 ${pct}%, #dce5ef ${pct}%)`;
+  });
+  const pct = ((+input.value - +input.min) / (+input.max - +input.min)) * 100;
+  input.style.background = `linear-gradient(to right, #185FA5 ${pct}%, #dce5ef ${pct}%)`;
+}
+
+// ── Helper ───────────────────────────────────
+function setText(id: string, val: string) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+const inr = (n: number): string =>
+  (isNaN(n) || !isFinite(n)) ? '—' : Math.round(n).toLocaleString('en-IN');
+
+// ── Panel data ───────────────────────────────
+const PANEL_SPECS = [
+  { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
+  { id: '600',   watt: 600, ppw: 29.0, sqft: 27, label: 'N-Type TopCon 600W'      },
+  { id: '580tc', watt: 580, ppw: 28.5, sqft: 27, label: 'N-Type TopCon 580W'      },
+  { id: '580bf', watt: 580, ppw: 28.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
+  { id: '540',   watt: 540, ppw: 27.5, sqft: 27, label: 'Mono PERC 540W'          },
+];
+type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
+
+let cachedPanelResults: PanelResult[] = [];
+let cachedSysKw    = 0;
+let cachedBos      = 0;
+let cachedAnnSave  = 0;
+let selectedPanelId = '600';
+
+// ── Subsidy (MNRE tiered) ────────────────────
+function pmSubsidy(sysKw: number): number {
+  if (sysKw <= 1) return 30000;
+  if (sysKw <= 2) return 60000;
+  return 78000;
+}
+
+// ── Non-panel system costs (BOS) ─────────────
+// Kerala market reality (Apr 2026): all-in ₹75k–85k/kW total installed cost.
+// At ₹29/W panels = ₹29k/kW, non-panel BoS = ₹46k–56k/kW.
+// Small systems are disproportionately expensive — fixed overheads
+// (inverter electronics, cable runs, team visit, KSEB fee) don't halve
+// when system size halves.
+function calcBos(sysKw: number): number {
+  // Inverter — BIS-certified string inverter, Kerala supply chain pricing
+  let inverter: number;
+  if      (sysKw <= 1) inverter = 18000;
+  else if (sysKw <= 2) inverter = 25000;
+  else if (sysKw <= 3) inverter = 32000;
+  else if (sysKw <= 4) inverter = 38000;
+  else if (sysKw <= 5) inverter = 44000;
+  else if (sysKw <= 6) inverter = 52000;
+  else if (sysKw <= 7) inverter = 58000;
+  else if (sysKw <= 8) inverter = 65000;
+  else if (sysKw <= 9) inverter = 72000;
+  else                  inverter = 80000;
+
+  // Mounting — GI/aluminium, Kerala coastal wind-load rated
+  let mounting: number;
+  if      (sysKw <= 1) mounting = 12000;
+  else if (sysKw <= 2) mounting = 18000;
+  else if (sysKw <= 3) mounting = 22000;
+  else if (sysKw <= 4) mounting = 26000;
+  else if (sysKw <= 5) mounting = 30000;
+  else if (sysKw <= 7) mounting = sysKw * 4500;
+  else                  mounting = sysKw * 4000;
+
+  // DC+AC cables, earthing, lightning arrester, SPD
+  let cables: number;
+  if      (sysKw <= 1) cables = 10000;
+  else if (sysKw <= 2) cables = 13000;
+  else if (sysKw <= 3) cables = 16000;
+  else if (sysKw <= 4) cables = 18000;
+  else if (sysKw <= 5) cables = 20000;
+  else                  cables = sysKw * 3500;
+
+  // Installation, commissioning & testing
+  let install: number;
+  if      (sysKw <= 1) install = 10000;
+  else if (sysKw <= 2) install = 14000;
+  else if (sysKw <= 3) install = 18000;
+  else if (sysKw <= 4) install = 20000;
+  else if (sysKw <= 5) install = 22000;
+  else                  install = sysKw * 3500;
+
+  return inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
+}
+
+// ── EV live impact ────────────────────────────
+function updateEVImpact() {
+  const evDailyAvg  = (state.chargerKw * state.chargeHours * state.chargeDays * state.evCount) / 7;
+  const evExtraPanels = Math.ceil((evDailyAvg / (4.5 * 0.80)) * 1.25 * 1000 / 600);
+
+  setText('ev-added-load',   evDailyAvg.toFixed(1) + ' kWh/day');
+  setText('ev-extra-panels', '+' + evExtraPanels + (evExtraPanels === 1 ? ' panel' : ' panels'));
+
+  const evNote = state.evCount > 1
+    ? `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week × ${state.evCount} EVs, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`
+    : `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`;
+  setText('ev-impact-note', evNote);
+}
+
+// ── Main calculation ──────────────────────────
+function calculateResults() {
+  const s = state;
+
+  // Daily consumption
+  let daily = 0;
+  daily += s.ac        * 1500  * s.acHours / 1000;
+  daily += s.fans      *   75  *        10 / 1000;
+  daily += s.tvs       *  120  *         6 / 1000;
+  daily += s.fridge    *  200  * 24 * 0.3  / 1000;
+  daily += s.microwave * 1200  *         1 / 1000;
+  daily += s.washing   *  500  *         1 / 1000;
+  const rooms = s.bedrooms;                          // lighting: count by bedrooms
+  daily += rooms       *   50  *         8 / 1000;
+  if (s.geyser) daily += 2000 / 1000;
+  if (s.pump)   daily += 750 * 2 / 1000;
+
+  if (s.hasEV) {
+    const evAvg = (s.chargerKw * s.chargeHours * s.chargeDays * s.evCount) / 7;
+    daily += isNaN(evAvg) ? 0 : evAvg;
+  }
+
+  daily = daily * (s.homeAllDay ? 1.0 : 0.7);
+  daily = isNaN(daily) ? 0 : daily;
+
+  // System sizing — Kerala PSH 4.5 hr, PR 0.80, 25% margin
+  const rawKW  = daily / (4.5 * 0.80);
+  let sysKw    = Math.ceil(rawKW * 1.25);
+  sysKw        = Math.max(1, isNaN(sysKw) ? 1 : sysKw);
+
+  const annUnits = Math.round(sysKw * 1200);
+  const annSave  = Math.round(s.monthlyBill * 11);
+  const lifetime = annSave * 25;
+  const co2      = Math.round(annUnits * 0.82 * 25 / 1000);
+  const bos      = calcBos(sysKw);
+  const subsidy  = pmSubsidy(sysKw);
+
+  cachedSysKw   = sysKw;
+  cachedBos     = bos;
+  cachedAnnSave = annSave;
+
+  // Per-panel data
+  cachedPanelResults = PANEL_SPECS.map(p => {
+    const count = Math.ceil(sysKw * 1000 / p.watt);
+    const roof  = count * p.sqft;
+    const cost  = count * p.watt * p.ppw;
+    return { ...p, count, roof, cost };
+  });
+
+  // Static result fields
+  setText('result-kw',     sysKw + ' kW');
+  setText('result-units',  'Generates ~' + annUnits.toLocaleString('en-IN') + ' units/year');
+  setText('result-daily',  daily.toFixed(1) + ' units');
+  setText('result-subsidy','₹' + inr(subsidy));
+  setText('fin-annual',    '₹' + inr(annSave) + '/yr');
+  setText('fin-lifetime',  '₹' + inr(lifetime));
+  setText('fin-co2',       co2 + ' tonnes');
+
+  // Panel card chips (all 5 panels)
+  cachedPanelResults.forEach(p => {
+    setText(`p${p.id}-panels`, p.count + ' panels');
+    setText(`p${p.id}-roof`,   p.roof.toLocaleString('en-IN') + ' sq ft');
+    setText(`p${p.id}-cost`,   '₹' + inr(p.cost));
+  });
+
+  updatePanelDisplay(selectedPanelId);
+}
+
+// ── Update financials for selected panel ──────
+function updatePanelDisplay(id: string) {
+  if (!cachedPanelResults.length) return;
+  selectedPanelId = id;
+
+  const p         = cachedPanelResults.find(r => r.id === id) ?? cachedPanelResults[1];
+  const subsidy   = pmSubsidy(cachedSysKw);
+  const totalCost = p.cost + cachedBos;
+  const netCost   = totalCost - subsidy;
+  const payback   = netCost / cachedAnnSave;
+
+  // Headline stat tiles
+  setText('result-panels', p.count + ' panels');
+  setText('result-roof',   p.roof.toLocaleString('en-IN') + ' sq ft');
+
+  // Cost breakdown rows
+  setText('fin-panel-cost',  '₹' + inr(p.cost));
+  setText('fin-bos',         '₹' + inr(cachedBos));
+  setText('fin-total-cost',  '₹' + inr(totalCost));
+  setText('fin-subsidy-row', '−₹' + inr(subsidy));
+  setText('fin-net-cost',    '₹' + inr(netCost));
+  setText('fin-payback',     (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + ' years');
+
+  // Selected card highlight
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.classList.toggle('selected', card.dataset.panelId === id);
+  });
+}
+
+// ── Panel selection click handler ────────────
+function initPanelSelect() {
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.panel-expand, .panel-option__detail')) return;
+      if (!cachedPanelResults.length) return;
+      updatePanelDisplay(card.dataset.panelId ?? '600');
+    });
+  });
+}
+
+// ── Panel expand ─────────────────────────────
+function initPanelExpand() {
+  document.querySelectorAll<HTMLElement>('.panel-expand').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const detail = document.getElementById(btn.dataset.target ?? '');
+      if (!detail) return;
+      const hidden = detail.classList.toggle('hidden');
+      btn.textContent = hidden ? 'Learn more ▾' : 'Close ▲';
+    });
+  });
+}
+
+// ── Reset all ────────────────────────────────
+function resetAll() {
+  Object.assign(state, {
+    homeType:'house', bedrooms:3, bathrooms:2, floors:1,
+    ac:2, fans:4, tvs:2, fridge:1, microwave:1, washing:1,
+    geyser:true, pump:false, hasEV:false, evCount:1,
+    chargerKw:3.3, chargeHours:4, chargeDays:5,
+    acHours:8, homeAllDay:true, monthlyBill:5000,
+  });
+
+  ['house','apartment','villa','rowhouse'].forEach(t => {
+    document.querySelector<HTMLElement>(`.ht-card[data-type="${t}"]`)
+      ?.classList.toggle('selected', t === 'house');
+  });
+  document.querySelectorAll<HTMLElement>('.charger-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.kw === '3.3');
+  });
+  document.querySelectorAll<HTMLElement>('.occ-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.occ === 'home');
+  });
+
+  const defaults: Record<string, number> = {
+    bedrooms:3, bathrooms:2, floors:1, ac:2, fans:4,
+    tvs:2, fridge:1, microwave:1, washing:1, 'ev-count':1,
+  };
+  document.querySelectorAll<HTMLElement>('.stepper').forEach(s => {
+    const id  = s.dataset.id ?? '';
+    const val = defaults[id] ?? parseInt(s.dataset.min ?? '0');
+    s.dataset.val = String(val);
+    const el = s.querySelector<HTMLElement>('.stp-val');
+    if (el) el.textContent = String(val);
+  });
+
+  (document.getElementById('toggle-geyser') as HTMLInputElement).checked = true;
+  (document.getElementById('toggle-pump')   as HTMLInputElement).checked = false;
+  (document.getElementById('toggle-ev')     as HTMLInputElement).checked = false;
+  document.getElementById('ev-panel')?.classList.add('hidden');
+
+  const sliders: [string, string, string][] = [
+    ['ac-hours',    'ac-hours-val', '8'],
+    ['bill-slider', 'bill-val',     '₹5,000'],
+    ['ev-hours',    'ev-hours-val', '4'],
+    ['ev-days',     'ev-days-val',  '5'],
+  ];
+  sliders.forEach(([sid, did, dv]) => {
+    const el = document.getElementById(sid) as HTMLInputElement | null;
+    if (el) {
+      el.value = dv.replace(/[^0-9]/g, '') || dv;
+      const pct = ((+el.value - +el.min) / (+el.max - +el.min)) * 100;
+      el.style.background = `linear-gradient(to right, #185FA5 ${pct}%, #dce5ef ${pct}%)`;
+    }
+    setText(did, dv);
+  });
+
+  selectedPanelId = '600';
+  cachedPanelResults = [];
+  document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
+    card.classList.toggle('selected', card.dataset.panelId === '600');
+  });
+  document.querySelectorAll('.panel-option__detail').forEach(d => d.classList.add('hidden'));
+  document.querySelectorAll<HTMLElement>('.panel-expand').forEach(b => { b.textContent = 'Learn more ▾'; });
+}
+
+// ── Bootstrap ────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initSteppers();
+  initCards('home-type-grid', 'type', v => { state.homeType = v; });
+  initCards('charger-grid',   'kw',   v => { state.chargerKw = parseFloat(v); updateEVImpact(); });
+  initCards('occupancy-grid', 'occ',  v => { state.homeAllDay = v === 'home'; });
+  initToggles();
+  initPanelExpand();
+  initPanelSelect();
+
+  bindSlider('ac-hours',   'ac-hours-val', v => String(v),                          v => { state.acHours = v; });
+  bindSlider('bill-slider','bill-val',     v => '₹' + v.toLocaleString('en-IN'),    v => { state.monthlyBill = v; });
+  bindSlider('ev-hours',   'ev-hours-val', v => String(v),                          v => { state.chargeHours = v; updateEVImpact(); });
+  bindSlider('ev-days',    'ev-days-val',  v => String(v),                          v => { state.chargeDays  = v; updateEVImpact(); });
+
+  document.querySelectorAll<HTMLElement>('.btn-calc-next').forEach(btn => {
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.next ?? '1')));
+  });
+  document.querySelectorAll<HTMLElement>('.btn-calc-back').forEach(btn => {
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.back ?? '1')));
+  });
+
+  document.getElementById('recalculate-btn')?.addEventListener('click', () => {
+    resetAll();
+    goToStep(1);
+  });
+
+  document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>

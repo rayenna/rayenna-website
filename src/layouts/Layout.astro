@@ -7,7 +7,7 @@ const navLinks = [
   { href: `${base}/`, label: 'Home' },
   { href: `${base}/about`, label: 'About us' },
   { href: `${base}/services`, label: 'Our Services' },
-  { href: `${base}/calculator`, label: 'Solar Calculator' },
+  { href: `${base}/solar-calculator`, label: 'Solar Calculator', special: true },
   { href: `${base}/media`, label: 'Media' },
   { href: `${base}/blog`, label: 'Blog' },
   { href: `${base}/faqs`, label: 'FAQs' },
@@ -40,8 +40,8 @@ const currentPath = Astro.url.pathname;
         {navLinks.map(link => (
           <a
             href={link.href}
-            class={`nav-link ${currentPath === link.href || (link.href !== `${base}/` && currentPath.startsWith(link.href)) ? 'active' : ''}`}
-          >{link.label}</a>
+            class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${currentPath === link.href || (link.href !== `${base}/` && currentPath.startsWith(link.href)) ? 'active' : ''}`}
+          >{link.special ? '☀️ ' : ''}{link.label}</a>
         ))}
       </nav>
 
@@ -53,7 +53,9 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       {navLinks.map(link => (
-        <a href={link.href} class="mobile-link">{link.label}</a>
+        link.special
+          ? <a href={link.href} class="mobile-link mobile-nav-calculator">☀️ Calculate My Savings</a>
+          : <a href={link.href} class="mobile-link">{link.label}</a>
       ))}
     </div>
   </header>
@@ -305,6 +307,29 @@ const currentPath = Astro.url.pathname;
   background: rgba(168,56,56,0.1);
 }
 
+/* Desktop calculator pill — only visible at 768px+ (where .navbar__nav shows) */
+@media (min-width: 768px) {
+  .nav-link.nav-calculator-link {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+  }
+  .nav-link.nav-calculator-link:hover,
+  .nav-link.nav-calculator-link.active {
+    background-color: var(--color-primary-dark);
+    color: #fff;
+    opacity: 0.92;
+  }
+  /* Transparent hero override */
+  .navbar--hero:not(.navbar--scrolled) .nav-link.nav-calculator-link {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+}
+
 /* Burger */
 .navbar__burger {
   display: none;
@@ -354,6 +379,24 @@ const currentPath = Astro.url.pathname;
   transition: color var(--transition);
 }
 .mobile-link:hover { color: var(--color-primary); }
+.mobile-nav-calculator {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  margin-top: 8px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 52px;
+  line-height: 1.4;
+  border-bottom: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-nav-calculator:hover,
+.mobile-nav-calculator:active { background-color: var(--color-primary-dark); color: #fff; }
 
 /* ===== FOOTER ===== */
 .footer {

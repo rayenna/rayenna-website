@@ -17,9 +17,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
         <p class="hero__subtitle">Make a switch to solar energy for a sustainable lifestyle that cares for both the planet and your wallet. Partner with Rayenna Energy for future-ready energy solutions that ensure you save on energy costs while reducing your carbon footprint.</p>
       </div>
-      <div class="hero__actions">
-        <a href={`${base}/services`} class="btn btn-hero-primary">See our Services</a>
-        <a href={`${base}/contact`} class="btn btn-hero-outline">Get a call back</a>
+      <div class="hero-cta-wrapper">
+        <a href={`${base}/solar-calculator`} class="btn btn-hero-primary hero-btn-primary">☀️ Calculate My Savings</a>
+        <a href={`${base}/contact`} class="btn btn-hero-outline hero-btn-secondary">Get a call back</a>
       </div>
     </div>
   </section>
@@ -67,6 +67,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
           <p class="stat-label">Client satisfaction</p>
         </div>
+        <a href={`${base}/solar-calculator`} class="stats-cta">☀️ See how much you could save →</a>
       </div>
     </div>
   </section>
@@ -161,7 +162,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <h2>Not sure what size solar system you need?</h2>
           <p>Use our free calculator — enter your home details and get a personalised recommendation in under 5 minutes.</p>
         </div>
-        <a href={`${base}/calculator`} class="btn btn-primary calc-cta-btn">Try the Calculator →</a>
+        <a href={`${base}/solar-calculator`} class="btn btn-primary calc-cta-btn">☀️ Calculate My Savings →</a>
       </div>
     </div>
   </section>
@@ -267,22 +268,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   min-width: 0;
 }
 
-.hero__actions {
+/* ===== HERO CTA WRAPPER — mobile first ===== */
+.hero-cta-wrapper {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
-
-/* Hero-specific button overrides to match the maroon style */
-.btn-hero-primary {
-  display: inline-flex;
+.hero-btn-primary {
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 38px;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 28px;
   border-radius: 50px;
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all var(--transition);
@@ -290,18 +293,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   background: #a83838;
   color: #fff;
   border: 2px solid #a83838;
+  -webkit-tap-highlight-color: transparent;
 }
-.btn-hero-primary:hover {
-  background: #8a2c2c;
-  border-color: #8a2c2c;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(168,56,56,0.35);
-}
-.btn-hero-outline {
-  display: inline-flex;
+.hero-btn-primary:hover { background: #8a2c2c; border-color: #8a2c2c; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(168,56,56,0.35); }
+.hero-btn-primary:active { opacity: 0.85; transform: none; }
+.hero-btn-secondary {
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 38px;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 28px;
   border-radius: 50px;
   font-family: var(--font-heading);
   font-weight: 500;
@@ -312,11 +315,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   background: transparent;
   color: #a83838;
   border: 2px solid #a83838;
+  -webkit-tap-highlight-color: transparent;
 }
-.btn-hero-outline:hover {
-  background: #a83838;
-  color: #fff;
-  transform: translateY(-2px);
+.hero-btn-secondary:hover { background: #a83838; color: #fff; transform: translateY(-2px); }
+.hero-btn-secondary:active { opacity: 0.85; transform: none; }
+@media (min-width: 768px) {
+  .hero-cta-wrapper { flex-direction: row; width: auto; }
+  .hero-btn-primary, .hero-btn-secondary { width: auto; }
 }
 
 /* ===== SOLAR INTRO ===== */
@@ -403,12 +408,36 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 .stat-label {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
   font-weight: 600;
   color: var(--color-text-muted);
   margin-top: 8px;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+/* Stats CTA — mobile first */
+.stats-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 24px;
+  padding: 14px 20px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  min-height: 52px;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition);
+}
+.stats-cta:hover { background-color: var(--color-primary-dark); color: #fff; }
+.stats-cta:active { opacity: 0.85; }
+@media (min-width: 768px) {
+  .stats-cta { display: inline-block; width: auto; padding: 10px 24px; }
 }
 
 /* ===== INVEST IN SOLAR ===== */
@@ -695,7 +724,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     max-width: 100%;
   }
   .hero__title { font-size: 2.2rem; }
-  .hero__actions { flex-direction: column; align-items: flex-start; }
+  .hero-cta-wrapper { align-items: stretch; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .invest-cards { grid-template-columns: 1fr; }
 }

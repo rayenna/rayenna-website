@@ -196,6 +196,54 @@ ul { list-style: none; }
 .animate-fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
 .animate-fade-in { animation: fadeIn 1s ease both; }
 
+/* ===== CALCULATOR CTA CARD (shared — blog posts & FAQ) ===== */
+/* Mobile first */
+.calc-cta-card {
+  background: #eef4fb;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  margin: 40px 0;
+}
+.calc-cta-card__heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+}
+.calc-cta-card__sub {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.6;
+}
+.calc-cta-card__btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  min-height: 52px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--font-heading);
+  line-height: 1.4;
+  transition: background var(--transition), opacity var(--transition);
+}
+.calc-cta-card__btn:hover { background: var(--color-primary-dark); }
+.calc-cta-card__btn:active { opacity: 0.85; }
+@media (min-width: 768px) {
+  .calc-cta-card { padding: 36px 40px; }
+  .calc-cta-card__btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 32px;
+  }
+}
+
 /* ===== MOBILE-FIRST RESPONSIVE ===== */
 /* Base = mobile. Enhance upward. */
 

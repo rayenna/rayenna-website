@@ -55,6 +55,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <h2 class="section-title">Domestic Services</h2>
           <p>Energy independence is something you can achieve with Rayenna's residential solar installation, in addition to real energy savings. Our systems help reduce your electricity expenses by generating your own power — whether for household needs, EV charging, or just cutting your monthly bills. You can use energy freely, knowing it's sustainably generated.</p>
           <p>We can design and implement systems for homes of all sizes. With proper maintenance and care, your solar panels can serve you efficiently for up to 20 years, while delivering a full return on your investment within just 5–6 years.</p>
+          <a href={`${base}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
         </div>
       </div>
 
@@ -107,6 +108,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           ))}
         </div>
+        <a href={`${base}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
       </div>
       <div class="service-block__image">
         <img src={`${base}/media/Plan-solar.webp`} alt="Commercial solar installation" />
@@ -144,6 +146,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           ))}
         </div>
+        <a href={`${base}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
       </div>
     </div>
   </section>
@@ -455,6 +458,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0 !important;
+}
+
+/* ===== SERVICE CALC CTA ===== */
+/* Mobile first — full-width tap area */
+.service-calc-cta {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 20px;
+  min-height: 52px;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--transition);
+}
+.service-calc-cta:hover { color: var(--color-primary-dark); text-decoration: underline; }
+.service-calc-cta:active { opacity: 0.75; }
+@media (min-width: 768px) {
+  .service-calc-cta {
+    display: inline-block;
+    width: auto;
+    border-top: none;
+    padding: 0;
+    min-height: auto;
+    margin-top: 16px;
+  }
 }
 
 /* ===== CTA BANNER ===== */
