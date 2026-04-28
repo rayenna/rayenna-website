@@ -44,11 +44,12 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       <div id="ray-online-dot" aria-hidden="true"></div>
       <button
         id="ray-voice-toggle"
-        aria-label="Mute Ray's voice"
+        aria-label="Unmute Ray's voice"
         title="Toggle voice"
       >
         <svg id="ray-speaker-on" width="16" height="16" viewBox="0 0 24 24"
-             fill="none" aria-hidden="true">
+             fill="none" aria-hidden="true"
+             style="display:none">
           <path d="M11 5L6 9H2v6h4l5 4V5z" fill="white"/>
           <path d="M19.07 4.93a10 10 0 010 14.14"
                 stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -56,8 +57,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
                 stroke="white" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <svg id="ray-speaker-off" width="16" height="16" viewBox="0 0 24 24"
-             fill="none" aria-hidden="true"
-             style="display:none">
+             fill="none" aria-hidden="true">
           <path d="M11 5L6 9H2v6h4l5 4V5z" fill="rgba(255,255,255,0.4)"/>
           <line x1="23" y1="9" x2="17" y2="15"
                 stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
@@ -722,7 +722,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   }
 
   // ── VOICE OUTPUT ─────────────────────────────────────
-  let voiceEnabled = true;
+  let voiceEnabled = false;
 
   voiceToggle.addEventListener('click', () => {
     voiceEnabled = !voiceEnabled;
