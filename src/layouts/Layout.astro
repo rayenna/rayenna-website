@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ChatWidget from '../components/ChatWidget.astro';
 
 const { title = 'Rayenna Energy — Solar Solutions in Kochi', description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -115,6 +116,9 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
   </footer>
+
+  <!-- Ray AI Chat Widget -->
+  <ChatWidget />
 
   <!-- WhatsApp Floating Button -->
   <a

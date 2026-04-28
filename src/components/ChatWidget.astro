@@ -1,0 +1,636 @@
+---
+// ChatWidget.astro — Ray, Rayenna's AI Solar Assistant
+// Deployed as a Cloudflare Worker proxy (see worker/chat-proxy.js)
+const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
+---
+
+<div id="ray-chat-widget">
+
+  <!-- ── Floating bubble button ── -->
+  <button
+    id="ray-chat-btn"
+    aria-label="Chat with Ray, our solar assistant"
+    aria-expanded="false"
+  >
+    <svg id="ray-icon-open" width="26" height="26" viewBox="0 0 24 24"
+         fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"
+            fill="white"/>
+    </svg>
+    <svg id="ray-icon-close" width="22" height="22" viewBox="0 0 24 24"
+         fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+         style="display:none">
+      <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5"
+            stroke-linecap="round"/>
+    </svg>
+    <span class="ray-tooltip">Ask Ray ☀️</span>
+  </button>
+
+  <!-- ── Chat panel ── -->
+  <div
+    id="ray-chat-panel"
+    role="dialog"
+    aria-label="Chat with Ray"
+    aria-hidden="true"
+  >
+
+    <!-- Header -->
+    <div id="ray-chat-header">
+      <div id="ray-avatar">☀️</div>
+      <div id="ray-header-info">
+        <span id="ray-name">Ray</span>
+        <span id="ray-subtitle">Rayenna Solar Assistant</span>
+      </div>
+      <div id="ray-online-dot" aria-hidden="true"></div>
+      <button id="ray-close-btn" aria-label="Close chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div id="ray-messages" role="log" aria-live="polite"></div>
+
+    <!-- Quick reply chips -->
+    <div id="ray-quick-replies" aria-label="Quick questions">
+      <button class="ray-chip" data-msg="I'm interested in home solar">
+        🏠 Home solar
+      </button>
+      <button class="ray-chip" data-msg="I'm interested in business solar">
+        🏢 Business solar
+      </button>
+      <button class="ray-chip" data-msg="Tell me about government subsidies">
+        💰 Subsidies
+      </button>
+      <button class="ray-chip" data-msg="I'd like to talk to your team">
+        📞 Talk to team
+      </button>
+    </div>
+
+    <!-- Input -->
+    <div id="ray-input-area">
+      <input
+        id="ray-input"
+        type="text"
+        placeholder="Type your question..."
+        aria-label="Type your message to Ray"
+        autocomplete="off"
+        maxlength="500"
+      />
+      <button id="ray-send-btn" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 19-7z"
+                stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Ray Chat Widget — Mobile First
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root {
+  --ray-primary: #a83838;
+  --ray-primary-dark: #8a2c2c;
+  --ray-navy: #27324f;
+  --ray-cream: #fdf8f0;
+  --ray-white: #ffffff;
+  --ray-text: #1a1a1a;
+  --ray-muted: #616161;
+  --ray-shadow: 0 4px 24px rgba(30, 42, 59, 0.18);
+}
+
+/* ── Floating button ── */
+#ray-chat-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  min-width: 48px;
+  min-height: 48px;
+  background-color: var(--ray-navy);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: var(--ray-shadow);
+  -webkit-tap-highlight-color: transparent;
+  animation: ray-pulse-mobile 2.5s infinite;
+  transition: transform 0.2s ease;
+}
+
+.ray-tooltip { display: none; }
+
+@keyframes ray-pulse-mobile {
+  0%   { box-shadow: 0 0 0 0 rgba(39, 50, 79, 0.45); }
+  70%  { box-shadow: 0 0 0 10px rgba(39, 50, 79, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(39, 50, 79, 0); }
+}
+
+/* ── Chat panel — mobile bottom sheet ── */
+#ray-chat-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 85vh;
+  background: var(--ray-cream);
+  border-radius: 20px 20px 0 0;
+  box-shadow: var(--ray-shadow);
+  z-index: 9997;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+}
+
+#ray-chat-panel.ray-open {
+  transform: translateY(0);
+}
+
+/* ── Header ── */
+#ray-chat-header {
+  background: var(--ray-navy);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+#ray-avatar {
+  width: 38px;
+  height: 38px;
+  background: var(--ray-cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+#ray-header-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+#ray-name {
+  color: var(--ray-white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-family: inherit;
+}
+
+#ray-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  font-family: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ray-online-dot {
+  width: 8px;
+  height: 8px;
+  background: #25D366;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#ray-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 50%;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+#ray-close-btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ── Messages ── */
+#ray-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ray-msg {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  word-break: break-word;
+  font-family: inherit;
+}
+
+.ray-msg a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.ray-msg.ray-bot {
+  background: var(--ray-white);
+  color: var(--ray-text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.ray-msg.ray-user {
+  background: var(--ray-primary);
+  color: var(--ray-white);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+/* ── Typing indicator ── */
+.ray-typing {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 12px 16px !important;
+}
+
+.ray-typing span {
+  width: 7px;
+  height: 7px;
+  background: var(--ray-muted);
+  border-radius: 50%;
+  animation: ray-bounce 1.2s infinite;
+}
+
+.ray-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ray-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ray-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40%           { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Quick reply chips ── */
+#ray-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 8px 14px 10px;
+  flex-shrink: 0;
+  background: var(--ray-cream);
+}
+
+.ray-chip {
+  background: var(--ray-white);
+  color: var(--ray-primary);
+  border: 1.5px solid var(--ray-primary);
+  border-radius: 20px;
+  padding: 7px 13px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.3;
+}
+
+.ray-chip:active,
+.ray-chip:hover {
+  background: var(--ray-primary);
+  color: var(--ray-white);
+}
+
+/* ── Input area ── */
+#ray-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--ray-white);
+  flex-shrink: 0;
+}
+
+#ray-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  background: var(--ray-cream);
+  color: var(--ray-text);
+  min-height: 44px;
+  transition: border-color 0.2s;
+}
+
+#ray-input:focus { border-color: var(--ray-primary); }
+
+#ray-input::placeholder { color: var(--ray-muted); }
+
+#ray-send-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--ray-primary);
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+#ray-send-btn:active  { opacity: 0.82; }
+#ray-send-btn:hover   { background: var(--ray-primary-dark); }
+#ray-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Desktop — min-width: 768px
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (min-width: 768px) {
+
+  #ray-chat-btn {
+    bottom: 100px;
+    right: 30px;
+    width: 58px;
+    height: 58px;
+    animation: ray-pulse-desktop 2s infinite;
+  }
+
+  #ray-chat-btn:hover {
+    transform: scale(1.08);
+    animation: none;
+    box-shadow: 0 6px 24px rgba(39, 50, 79, 0.5);
+  }
+
+  .ray-tooltip {
+    display: block;
+    position: absolute;
+    right: 68px;
+    background: var(--ray-navy);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .ray-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--ray-navy);
+  }
+
+  #ray-chat-btn:hover .ray-tooltip { opacity: 1; }
+
+  @keyframes ray-pulse-desktop {
+    0%   { box-shadow: 0 0 0 0 rgba(39, 50, 79, 0.5); }
+    70%  { box-shadow: 0 0 0 14px rgba(39, 50, 79, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(39, 50, 79, 0); }
+  }
+
+  /* Desktop: floating card */
+  #ray-chat-panel {
+    bottom: 172px;
+    right: 30px;
+    left: auto;
+    width: 380px;
+    height: 560px;
+    border-radius: 16px;
+    transform: translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+      opacity 0.25s ease;
+  }
+
+  #ray-chat-panel.ray-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+</style>
+
+<script define:vars={{ workerUrl }}>
+(function () {
+
+  const WORKER_URL = workerUrl;
+
+  const OPENING_MESSAGE =
+    "Hi there! I'm Ray, your solar guide from Rayenna Energy ☀️ " +
+    "Whether you're curious about going solar at home or for your business, " +
+    "I'm here to help. What can I help you with today?";
+
+  // ── State ──
+  let isOpen = false;
+  let isLoading = false;
+  let conversationHistory = [];
+  let quickRepliesHidden = false;
+
+  // ── DOM refs ──
+  const btn       = document.getElementById('ray-chat-btn');
+  const panel     = document.getElementById('ray-chat-panel');
+  const closeBtn  = document.getElementById('ray-close-btn');
+  const messages  = document.getElementById('ray-messages');
+  const input     = document.getElementById('ray-input');
+  const sendBtn   = document.getElementById('ray-send-btn');
+  const chips     = document.querySelectorAll('.ray-chip');
+  const qr        = document.getElementById('ray-quick-replies');
+  const iconOpen  = document.getElementById('ray-icon-open');
+  const iconClose = document.getElementById('ray-icon-close');
+
+  if (!btn || !panel) return;
+
+  // ── Helpers ──
+  function addMessage(text, role) {
+    const div = document.createElement('div');
+    div.classList.add('ray-msg', role === 'user' ? 'ray-user' : 'ray-bot');
+
+    if (role === 'assistant') {
+      // Render line breaks and clickable links
+      div.innerHTML = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>')
+        .replace(
+          /(https?:\/\/[^\s<&]+)/g,
+          '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+        );
+    } else {
+      div.textContent = text;
+    }
+
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.classList.add('ray-msg', 'ray-bot', 'ray-typing');
+    div.id = 'ray-typing-indicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function hideTyping() {
+    const t = document.getElementById('ray-typing-indicator');
+    if (t) t.remove();
+  }
+
+  function hideQuickReplies() {
+    if (!quickRepliesHidden && qr) {
+      qr.style.display = 'none';
+      quickRepliesHidden = true;
+    }
+  }
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    panel.classList.toggle('ray-open', isOpen);
+    panel.setAttribute('aria-hidden', String(!isOpen));
+    btn.setAttribute('aria-expanded', String(isOpen));
+    iconOpen.style.display  = isOpen ? 'none'  : 'block';
+    iconClose.style.display = isOpen ? 'block' : 'none';
+    btn.style.animation     = isOpen ? 'none'  : '';
+
+    if (isOpen) {
+      if (conversationHistory.length === 0) {
+        addMessage(OPENING_MESSAGE, 'assistant');
+      }
+      setTimeout(() => input && input.focus(), 300);
+    }
+  }
+
+  // ── API call ──
+  async function sendMessage(userText) {
+    const text = userText.trim();
+    if (!text || isLoading) return;
+
+    isLoading = true;
+    sendBtn.disabled = true;
+    hideQuickReplies();
+
+    addMessage(text, 'user');
+    conversationHistory.push({ role: 'user', content: text });
+    showTyping();
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversationHistory }),
+      });
+
+      const data = await res.json();
+      hideTyping();
+
+      const reply =
+        data?.content?.[0]?.text ||
+        "I'm sorry, I had a little trouble responding. " +
+        "You can reach our team directly on WhatsApp: https://wa.me/917907369304 ☀️";
+
+      addMessage(reply, 'assistant');
+      conversationHistory.push({ role: 'assistant', content: reply });
+
+    } catch (_err) {
+      hideTyping();
+      addMessage(
+        "I'm having a little trouble right now. You can reach our team directly on WhatsApp: " +
+        "https://wa.me/917907369304 ☀️",
+        'assistant'
+      );
+    }
+
+    isLoading = false;
+    sendBtn.disabled = false;
+    if (input) input.focus();
+  }
+
+  // ── Event listeners ──
+  btn.addEventListener('click', toggleChat);
+  closeBtn.addEventListener('click', toggleChat);
+
+  sendBtn.addEventListener('click', () => {
+    const text = input.value;
+    input.value = '';
+    sendMessage(text);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      const text = input.value;
+      input.value = '';
+      sendMessage(text);
+    }
+  });
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      sendMessage(chip.getAttribute('data-msg') || '');
+    });
+  });
+
+  // Close on backdrop click (mobile sheet)
+  document.addEventListener('click', (e) => {
+    if (isOpen && !panel.contains(e.target) && !btn.contains(e.target)) {
+      toggleChat();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) toggleChat();
+  });
+
+})();
+</script>
