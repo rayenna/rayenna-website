@@ -91,7 +91,7 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
   </div>
 </div>
 
-<style>
+<style is:global>
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    Ray Chat Widget — Mobile First
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -258,38 +258,41 @@ const workerUrl = import.meta.env.PUBLIC_WORKER_URL || '';
 .ray-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin: 8px 0 2px;
-  padding: 9px 18px;
-  border-radius: 20px;
-  font-size: 0.88rem;
+  gap: 6px;
+  margin: 10px 0 4px;
+  padding: 11px 22px;
+  border-radius: 24px;
+  font-size: 0.92rem;
   font-weight: 700;
   font-family: inherit;
-  letter-spacing: 0.01em;
-  text-decoration: none;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
   line-height: 1.3;
   transition: opacity 0.15s, transform 0.15s;
   word-break: break-word;
-  box-shadow: 0 2px 10px rgba(0, 102, 204, 0.25);
+  box-shadow: 0 3px 12px rgba(0, 102, 204, 0.35);
+  cursor: pointer;
 }
-.ray-link:active { transform: scale(0.97); }
-/* In Ray's white bubbles — blue filled pill */
+.ray-link:active { transform: scale(0.96); }
+/* In Ray's white bubbles — bold blue pill */
 .ray-msg.ray-bot .ray-link {
-  background: #0066cc;
-  color: #fff !important;
+  background: #0066cc !important;
+  color: #ffffff !important;
   border: none;
 }
 .ray-msg.ray-bot .ray-link:hover {
-  background: #0052a3;
-  opacity: 1;
+  background: #0052a3 !important;
+  color: #ffffff !important;
 }
 /* In user's maroon bubbles — white outline pill */
 .ray-msg.ray-user .ray-link {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.22) !important;
   color: #fff !important;
-  border: 1.5px solid rgba(255,255,255,0.7);
+  border: 2px solid rgba(255,255,255,0.75);
 }
-.ray-msg.ray-user .ray-link:hover { background: rgba(255,255,255,0.32); }
+.ray-msg.ray-user .ray-link:hover {
+  background: rgba(255,255,255,0.35) !important;
+}
 
 .ray-msg.ray-bot {
   background: var(--ray-white);
