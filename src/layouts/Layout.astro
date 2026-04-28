@@ -114,6 +114,122 @@ const currentPath = Astro.url.pathname;
     </div>
   </footer>
 
+  <!-- WhatsApp Floating Button -->
+  <a
+    href="https://wa.me/917907369304"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="wa-float"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+         fill="white" width="26" height="26" aria-hidden="true">
+      <path d="M16 .5C7.439.5.5 7.439.5 16c0 2.75.703 5.389 2.043 7.719L.5 31.5l8-2
+               c2.219 1.188 4.719 1.813 7.5 1.813C24.561 31.313 31.5 24.374 31.5
+               15.813 31.5 7.439 24.561.5 16 .5zm0 28.625c-2.5 0-4.938-.656-7.063-1.906
+               l-.5-.313-5.25 1.313 1.375-5.063-.344-.531C2.844 20.5 2.125 18.281
+               2.125 16 2.125 8.344 8.344 2.125 16 2.125S29.875 8.344 29.875 16
+               23.656 29.125 16 29.125zm7.813-9.969c-.438-.219-2.563-1.25-2.969-1.406
+               s-.688-.219-.969.219-1.125 1.406-1.375 1.688-.5.313-.938.094
+               c-.438-.219-1.844-.688-3.5-2.188-1.313-1.156-2.188-2.594-2.438-3.031
+               s-.031-.688.188-.906c.188-.188.438-.5.656-.75s.281-.438.438-.719
+               .156-.531.063-.75-1-2.375-1.375-3.25c-.375-.875-.75-.75-1-.75
+               s-.531 0-.813 0-1.063.281-1.625.875S7.5 10.719 7.5 12.5c0 1.781
+               1.313 3.531 1.5 3.781s2.594 3.969 6.281 5.563c.875.375 1.563.594
+               2.094.781.875.281 1.688.25 2.313.156.719-.094 2.219-.906 2.531-1.781
+               s.313-1.625.219-1.781-.344-.281-.781-.5z"/>
+    </svg>
+    <span class="wa-tooltip" aria-hidden="true">Chat with us!</span>
+  </a>
+
+  <style>
+    /* ── MOBILE FIRST (base styles) ── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      min-width: 48px;
+      min-height: 48px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.45);
+      z-index: 9999;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      animation: wa-pulse-mobile 2.5s infinite;
+      transition: transform 0.2s ease;
+    }
+
+    .wa-tooltip {
+      display: none;
+    }
+
+    @keyframes wa-pulse-mobile {
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+      70%  { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ── TABLET & DESKTOP (min-width: 768px) ── */
+    @media (min-width: 768px) {
+      .wa-float {
+        bottom: 30px;
+        right: 30px;
+        width: 58px;
+        height: 58px;
+        animation: wa-pulse-desktop 2s infinite;
+      }
+
+      .wa-float:hover {
+        transform: scale(1.1);
+        animation: none;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+      }
+
+      .wa-tooltip {
+        display: block;
+        position: absolute;
+        right: 68px;
+        background: #1a1a1a;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-family: sans-serif;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .wa-tooltip::after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 6px solid transparent;
+        border-left-color: #1a1a1a;
+      }
+
+      .wa-float:hover .wa-tooltip {
+        opacity: 1;
+      }
+
+      @keyframes wa-pulse-desktop {
+        0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+        70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      }
+    }
+  </style>
+  <!-- End WhatsApp Floating Button -->
+
 </body>
 </html>
 
