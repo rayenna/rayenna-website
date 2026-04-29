@@ -950,5 +950,10 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (e.key === 'Escape' && isOpen) toggleChat();
   });
 
+  // Auto-open after 60 s if the user hasn't opened Ray themselves
+  setTimeout(() => {
+    if (!isOpen) toggleChat();
+  }, 60000);
+
 })();
 </script>
