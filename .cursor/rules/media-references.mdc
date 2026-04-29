@@ -1,0 +1,26 @@
+---
+description: Rules for adding new reference installation photos to the media page
+globs: src/pages/media.astro
+alwaysApply: false
+---
+
+# Adding Reference Installation Photos
+
+When new reference photos are added to `public/media/references/`, they MUST be added to **both** places in `src/pages/media.astro`:
+
+## 1. `installations` array (Completed Projects gallery)
+
+```js
+{ name: 'First Last', location: 'City', capacity: 'X kW', inverter: 'Brand', panels: 'Brand', img: 'FILENAME.jpeg' },
+```
+
+Parse name, location, capacity, inverter brand, and panel brand directly from the filename.
+Example: `ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg` → Arun, Kollam, 5 kW, Solis, Waaree
+
+## 2. `allSlides` array (Solar — Beautifully Done slideshow)
+
+```js
+{ img: 'FILENAME.jpeg', caption: 'First Last — City', sub: 'X kW · Brand Inverter · Brand Panels' },
+```
+
+Both additions are mandatory — never add to one without the other.
