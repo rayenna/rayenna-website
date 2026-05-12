@@ -72,7 +72,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="leadership-header">
         <span class="section-tag">Our Founders</span>
         <h2 class="section-title">Expertise of Leadership</h2>
-        <p class="leadership-intro">Our leadership is Rayenna's greatest asset. With over a century of combined expertise spanning maritime, energy, technology, and enterprise, our four co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
+        <p class="leadership-intro">Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our three co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
       </div>
 
       <div class="leaders-grid">
@@ -85,17 +85,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
           <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
-        </div>
-
-        <div class="leader-card">
-          <div class="leader-card__header">
-            <div class="leader-card__initial">SM</div>
-            <div>
-              <h3 class="leader-card__name">Shabeer Mohamed</h3>
-              <span class="leader-role">Director &amp; Co-Founder</span>
-            </div>
-          </div>
-          <p class="leader-card__bio">A transformational technology and sales leader with 25+ years at Oracle and IBM, Shabeer has driven $50M+ businesses and delivered 10× revenue growth. A sought-after board advisor, he brings world-class GTM strategy and enterprise leadership to the table.</p>
         </div>
 
         <div class="leader-card">
@@ -468,6 +457,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 @media (min-width: 640px) {
   .mission-pillars { grid-template-columns: 1fr 1fr; }
   .leaders-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  /* 3 cards: last one spans both columns, centered */
+  .leaders-grid .leader-card:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 12px);
+    margin-inline: auto;
+  }
 }
 
 @media (min-width: 900px) {
@@ -481,6 +476,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     grid-template-columns: 1fr 1fr;
     gap: 72px;
     align-items: center;
+  }
+
+  /* 3-column equal layout for the three founders */
+  .leaders-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .leaders-grid .leader-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
   }
 
   .skilled-section__inner {
