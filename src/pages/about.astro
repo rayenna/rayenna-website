@@ -336,11 +336,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin: 0 auto;
   font-size: 1rem;
 }
-/* Mobile: stacked single-column cards, horizontal photo + text layout */
+/* Mobile: single-column, vertical card — photo on top */
 .leaders-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 24px;
 }
 .leader-card {
   background: #ffffff;
@@ -348,8 +348,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: column;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 .leader-card:hover {
@@ -357,35 +356,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   transform: translateY(-3px);
 }
 
-/* Mobile photo: square tile on the left */
+/* Photo: fixed height, no stretch tricks */
 .leader-card__photo {
-  flex-shrink: 0;
-  width: 110px;
+  width: 100%;
+  height: 260px;
   overflow: hidden;
+  flex-shrink: 0;
   position: relative;
 }
 .leader-card__photo img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  /* 30% from top ensures full face is visible for headshot portraits */
+  object-position: center 20%;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
 .leader-card:hover .leader-card__photo img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Accent stripe on photo edge */
+/* Bottom accent bar under photo */
 .leader-card__photo::after {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 3px;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
   background: var(--color-secondary);
   transition: background var(--transition);
 }
@@ -396,19 +395,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .leader-card__body {
   flex: 1;
   min-width: 0;
-  padding: 20px 18px;
+  padding: 22px 20px;
   display: flex;
   flex-direction: column;
 }
 .leader-card__identity {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .leader-card__name {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--color-navy);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   line-height: 1.3;
 }
 .leader-role {
@@ -422,10 +421,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .leader-card__bio {
   color: var(--color-text-muted);
   line-height: 1.8;
-  font-size: 0.865rem;
+  font-size: 0.875rem;
   border-top: 1px solid var(--color-border);
-  padding-top: 12px;
-  margin-top: auto;
+  padding-top: 14px;
 }
 
 /* ===== SKILLED HANDS ===== */
@@ -491,10 +489,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    =========================== */
 @media (min-width: 640px) {
   .mission-pillars { grid-template-columns: 1fr 1fr; }
-  /* Horizontal cards get a slightly larger photo at tablet */
-  .leader-card__photo { width: 130px; }
-  .leader-card__body { padding: 24px 22px; }
-  .leader-card__name { font-size: 1.05rem; }
+  /* Tablet: 2 columns, third card centered */
+  .leaders-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .leaders-grid .leader-card:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 12px);
+    margin-inline: auto;
+  }
 }
 
 @media (min-width: 900px) {
@@ -510,30 +511,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     align-items: center;
   }
 
-  /* Desktop: 3-column vertical portrait cards */
+  /* Desktop: 3-column equal layout */
   .leaders-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
     align-items: stretch;
   }
-  .leader-card {
-    flex-direction: column;
+  .leaders-grid .leader-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
   }
-  .leader-card__photo {
-    width: 100%;
-    height: 280px;
-    position: relative;
-  }
-  .leader-card__photo::after {
-    top: auto;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 3px;
-  }
-  .leader-card__body {
-    padding: 24px 22px;
-  }
+  .leader-card__photo { height: 300px; }
+  .leader-card__body { padding: 24px 22px; }
   .leader-card__name { font-size: 1.1rem; }
 
   .skilled-section__inner {
