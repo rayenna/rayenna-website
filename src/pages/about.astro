@@ -77,36 +77,42 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <div class="leaders-grid">
         <div class="leader-card">
-          <div class="leader-card__header">
-            <div class="leader-card__initial">GV</div>
-            <div>
+          <div class="leader-card__photo">
+            <img src={`${base}/media/ganesh-venkitachalam.jpg`} alt="Ganesh Venkitachalam" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
               <h3 class="leader-card__name">Ganesh Venkitachalam</h3>
               <span class="leader-role">Managing Director &amp; Co-Founder</span>
             </div>
+            <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
           </div>
-          <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
         </div>
 
         <div class="leader-card">
-          <div class="leader-card__header">
-            <div class="leader-card__initial">AS</div>
-            <div>
+          <div class="leader-card__photo">
+            <img src={`${base}/media/anish-samad.jpg`} alt="Anish Samad" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
               <h3 class="leader-card__name">Anish Samad</h3>
               <span class="leader-role">Director &amp; Co-Founder</span>
             </div>
+            <p class="leader-card__bio">A 29-year energy veteran who built his career across leading companies before founding ABRA ALARAB Petroleum Trading LLC in Dubai. He commands deep supply chain expertise and a vast network spanning the Middle East, Africa, and Asia.</p>
           </div>
-          <p class="leader-card__bio">A 29-year energy veteran who built his career across leading companies before founding ABRA ALARAB Petroleum Trading LLC in Dubai. He commands deep supply chain expertise and a vast network spanning the Middle East, Africa, and Asia.</p>
         </div>
 
         <div class="leader-card">
-          <div class="leader-card__header">
-            <div class="leader-card__initial">AB</div>
-            <div>
+          <div class="leader-card__photo">
+            <img src={`${base}/media/arun-balakrishnan.jpg`} alt="Capt. Arun Balakrishnan" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
               <h3 class="leader-card__name">Capt. Arun Balakrishnan</h3>
               <span class="leader-role">Director &amp; Co-Founder</span>
             </div>
+            <p class="leader-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
           </div>
-          <p class="leader-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
         </div>
       </div>
     </div>
@@ -330,67 +336,96 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin: 0 auto;
   font-size: 1rem;
 }
+/* Mobile: stacked single-column cards, horizontal photo + text layout */
 .leaders-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 .leader-card {
-  background: var(--color-light);
+  background: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
   box-shadow: var(--shadow-sm);
-  border-left: 4px solid var(--color-secondary);
-  transition: all var(--transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 .leader-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
-  border-left-color: var(--color-primary);
 }
-.leader-card__header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-.leader-card__initial {
+
+/* Mobile photo: square tile on the left */
+.leader-card__photo {
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+  width: 110px;
+  overflow: hidden;
+  position: relative;
+}
+.leader-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.leader-card:hover .leader-card__photo img {
+  transform: scale(1.05);
+}
+
+/* Accent stripe on photo edge */
+.leader-card__photo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
   background: var(--color-secondary);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.95rem;
+  transition: background var(--transition);
+}
+.leader-card:hover .leader-card__photo::after {
+  background: var(--color-primary);
+}
+
+.leader-card__body {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 18px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 1px;
+  flex-direction: column;
+}
+.leader-card__identity {
+  margin-bottom: 12px;
 }
 .leader-card__name {
   font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 1.05rem;
+  font-weight: 700;
+  font-size: 1rem;
   color: var(--color-navy);
   margin-bottom: 4px;
   line-height: 1.3;
 }
 .leader-role {
   display: block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--color-primary);
 }
 .leader-card__bio {
   color: var(--color-text-muted);
-  line-height: 1.85;
-  font-size: 0.9rem;
+  line-height: 1.8;
+  font-size: 0.865rem;
   border-top: 1px solid var(--color-border);
-  padding-top: 16px;
+  padding-top: 12px;
+  margin-top: auto;
 }
 
 /* ===== SKILLED HANDS ===== */
@@ -456,13 +491,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    =========================== */
 @media (min-width: 640px) {
   .mission-pillars { grid-template-columns: 1fr 1fr; }
-  .leaders-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  /* 3 cards: last one spans both columns, centered */
-  .leaders-grid .leader-card:last-child {
-    grid-column: 1 / -1;
-    max-width: calc(50% - 12px);
-    margin-inline: auto;
-  }
+  /* Horizontal cards get a slightly larger photo at tablet */
+  .leader-card__photo { width: 130px; }
+  .leader-card__body { padding: 24px 22px; }
+  .leader-card__name { font-size: 1.05rem; }
 }
 
 @media (min-width: 900px) {
@@ -478,13 +510,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     align-items: center;
   }
 
-  /* 3-column equal layout for the three founders */
-  .leaders-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .leaders-grid .leader-card:last-child {
-    grid-column: auto;
-    max-width: none;
-    margin-inline: 0;
+  /* Desktop: 3-column vertical portrait cards */
+  .leaders-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
   }
+  .leader-card {
+    flex-direction: column;
+  }
+  .leader-card__photo {
+    width: 100%;
+    height: 280px;
+    position: relative;
+  }
+  .leader-card__photo::after {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+  }
+  .leader-card__body {
+    padding: 24px 22px;
+  }
+  .leader-card__name { font-size: 1.1rem; }
 
   .skilled-section__inner {
     grid-template-columns: 1fr 1fr;
