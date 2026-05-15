@@ -327,6 +327,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ===== SOLAR INTRO ===== */
 .solar-intro {
   padding: var(--section-padding);
+  padding-bottom: 40px;
   background: var(--color-light);
 }
 .solar-intro__inner {
@@ -357,6 +358,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* ===== WHO WE ARE ===== */
 .who-we-are {
   padding: var(--section-padding);
+  padding-top: 40px;
   background: var(--color-light);
 }
 .who-we-are__inner {
@@ -701,6 +703,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .process-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
+  .solar-intro { padding-bottom: 24px; }
+  .who-we-are { padding-top: 24px; }
   .solar-intro__inner,
   .who-we-are__inner,
   .rayenna-way__inner,
