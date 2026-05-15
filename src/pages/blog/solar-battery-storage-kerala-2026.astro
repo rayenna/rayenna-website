@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = { title: 'Solar + Battery Storage in Kerala: Is 2026 the Year It Finally Makes Sense?', date: '9 May 2026', category: 'Buying Guide', readTime: '5 min read', author: 'Rayenna Energy Team' };
+---
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="Battery prices have fallen 70%, new KSERC rules reward storage, and electricity tariffs are rising. Here is whether solar-plus-storage makes sense for your Kerala home in 2026.">
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <p class="post-lead">For years, rooftop solar in Kerala meant one thing: panels plus KSEB net metering. Batteries were expensive, unnecessary, and rarely discussed. In 2026, three things have changed simultaneously — and if you are planning a solar installation this year, the battery storage question is no longer optional to consider.</p>
+
+        <h2>Why Battery Storage Is Now a Serious Conversation</h2>
+
+        <div class="post-callout">
+          <span class="callout-icon">🔋</span>
+          <div><strong>LiFePO4 Battery Prices Have Fallen ~70% in Four Years</strong><p>Lithium Iron Phosphate — the safest, most durable chemistry for home use — now costs significantly less than it did in 2021, with longer warranties and better performance.</p></div>
+        </div>
+
+        <p><strong>First, the regulatory environment is pushing toward storage.</strong> Kerala's new KSERC 2025 regulations explicitly encourage battery integration. Systems above 3 kW that pair with battery storage qualify for expanded net metering benefits. KSEB itself has been advocating for battery adoption — Kerala's daytime solar surplus has grown to the point where over 70% of generated energy is being exported back to the grid, creating genuine grid management challenges.</p>
+        <p><strong>Second, battery prices have fallen dramatically.</strong> Lithium Iron Phosphate (LiFePO4) technology has dropped in price by nearly 70% over the last four years. A home battery system that would have cost ₹3–4 lakhs in 2021 can now be sourced for significantly less, with longer warranties and better performance.</p>
+        <p><strong>Third, Kerala's electricity tariffs are rising.</strong> KSEB has flagged that tariffs could increase substantially by 2035 without major intervention. Every unit of solar energy you store and use yourself — rather than exporting to the grid at feed-in rates — is a unit you do not buy from KSEB at full tariff. As tariffs rise, the value of self-consumption increases.</p>
+
+        <h2>How Solar + Battery Actually Works</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Scenario</span><span>Without Battery</span><span>With Battery</span></div>
+          <div class="cost-row"><span>Daytime surplus solar</span><span>Exported to KSEB grid</span><span>Stored in your battery first</span></div>
+          <div class="cost-row"><span>Evening / night consumption</span><span>Draw from KSEB, pay full tariff</span><span>Draw from battery; KSEB only as backup</span></div>
+          <div class="cost-row"><span>Power cut / grid outage</span><span>No power (grid-tied)</span><span>Battery provides backup power</span></div>
+          <div class="cost-row"><span>Net metering eligibility (>3 kW)</span><span>Net Billing applies</span><span>Full Net Metering available</span></div>
+        </div>
+
+        <h2>What Size Battery Makes Sense for a Kerala Home?</h2>
+        <div class="roi-example">
+          <div class="roi-row"><span>Monthly consumption 400–500 units (3–5 kW system)</span><strong>5–10 kWh battery</strong></div>
+          <div class="roi-row"><span>High consumption with AC / water heater / EV (5–7 kW system)</span><strong>10–15 kWh battery</strong></div>
+          <div class="roi-row roi-row--highlight"><span>Expected payback — solar + storage (well-sized system)</span><strong>6–8 years</strong></div>
+          <div class="roi-row"><span>Expected payback — panels only</span><strong>5–6 years</strong></div>
+        </div>
+        <p>The exact sizing depends on your consumption profile, roof area, orientation, and budget — which is precisely what a professional solar assessment determines. Our free Solar Calculator is a good starting point.</p>
+
+        <h2>Is It Worth the Extra Cost?</h2>
+        <p>The honest answer: it depends on your situation, and it is a closer call than it was even two years ago.</p>
+        <p><strong>Battery storage delivers genuine value in 2026</strong> for households with high evening consumption, an EV, a concern about grid reliability, or a system larger than 3 kW that benefits from expanded net metering eligibility under the new KSERC regulations.</p>
+        <p><strong>Panels alone remain the simpler choice</strong> for households with modest evening consumption and good daytime self-use of solar power — with the option to add storage later as battery prices continue to decline.</p>
+        <p>The key is not to make this decision in isolation. Talk to a professional who understands both the technology and Kerala's specific regulatory environment.</p>
+
+        <div class="post-cta">
+          <h3>Find Out Whether Solar + Storage Is Right for Your Home</h3>
+          <p>As MNRE-approved installers operating across all of Kerala, the Rayenna team gives you an honest, numbers-based recommendation for your specific situation.</p>
+          <a href={`${base}/contact`} class="btn btn-primary">Talk to Our Team →</a>
+        </div>
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/string-inverter-vs-microinverter-hybrid`}>Inverter Types Compared →</a></li>
+            <li><a href={`${base}/blog/kseb-net-metering-guide-2025`}>KSEB Net Metering Guide →</a></li>
+            <li><a href={`${base}/blog/on-grid-vs-off-grid-solar-kerala`}>On-Grid vs Off-Grid Solar →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🔋</div>
+          <strong>70% Price Drop</strong>
+          <p>LiFePO4 home batteries have fallen ~70% in price since 2021 — making solar-plus-storage a genuinely viable option for Kerala homes in 2026.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section style="padding:0 0 56px; background:var(--color-light)">
+    <div class="container">
+      <div class="calc-cta-card">
+        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Start with your solar savings</p>
+        <p class="calc-cta-card__sub">Use our free Solar Calculator to get a personalised system size and savings estimate in under 5 minutes.</p>
+        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 1.3fr 1.5fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.roi-example { background: var(--color-light); border-radius: var(--radius-md); padding: 24px; margin: 20px 0 28px; }
+.roi-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-border); font-size: 0.92rem; }
+.roi-row:last-child { border: none; }
+.roi-row span { color: var(--color-text-muted); }
+.roi-row strong { color: var(--color-secondary); white-space: nowrap; }
+.roi-row--highlight { background: var(--color-primary-light); margin: 0 -8px; padding: 12px 8px; border-radius: var(--radius-sm); }
+.roi-row--highlight span { color: var(--color-primary); font-weight: 600; }
+.roi-row--highlight strong { color: var(--color-primary); font-size: 1.05rem; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row span:nth-child(3) { display: none; } .cost-row--header span:nth-child(3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>
