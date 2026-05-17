@@ -6,6 +6,13 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 
 <div id="ray-chat-widget">
 
+  <!-- ── Proactive nudge bubble ── -->
+  <div id="ray-nudge" aria-hidden="true">
+    <button id="ray-nudge-close" aria-label="Dismiss">×</button>
+    <p>👋 Wondering what solar would save you?</p>
+    <button id="ray-nudge-open">Ask Ray →</button>
+  </div>
+
   <!-- ── Floating bubble button ── -->
   <button
     id="ray-chat-btn"
@@ -145,6 +152,62 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   --ray-text: #1a1a1a;
   --ray-muted: #616161;
   --ray-shadow: 0 4px 24px rgba(30, 42, 59, 0.18);
+}
+
+/* ── Proactive nudge bubble ── */
+#ray-nudge {
+  position: fixed;
+  bottom: 156px;
+  right: 20px;
+  background: #fff;
+  border-radius: 16px 16px 4px 16px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 4px 20px rgba(30,42,59,0.18);
+  max-width: 220px;
+  z-index: 9998;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  animation: ray-nudge-in 0.35s ease;
+  border: 1px solid rgba(168,56,56,0.12);
+}
+#ray-nudge.visible { display: flex; }
+@keyframes ray-nudge-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+#ray-nudge p {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  line-height: 1.5;
+  margin: 0;
+  padding-right: 16px;
+}
+#ray-nudge-close {
+  position: absolute;
+  top: 8px; right: 10px;
+  background: none; border: none;
+  font-size: 1rem; line-height: 1;
+  color: #aaa; cursor: pointer;
+  padding: 0;
+}
+#ray-nudge-close:hover { color: #555; }
+#ray-nudge-open {
+  background: var(--ray-primary, #a83838);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+#ray-nudge-open:hover { background: var(--ray-primary-dark, #8a2c2c); }
+@media (min-width: 768px) {
+  #ray-nudge { bottom: 166px; right: 30px; max-width: 240px; }
 }
 
 /* ── Floating button ── */
@@ -950,10 +1013,33 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (e.key === 'Escape' && isOpen) toggleChat();
   });
 
-  // Auto-open after 60 s if the user hasn't opened Ray themselves
+  // Proactive nudge after 8 s — show teaser bubble if user hasn't interacted
+  const nudge = document.getElementById('ray-nudge');
+  const nudgeClose = document.getElementById('ray-nudge-close');
+  const nudgeOpen = document.getElementById('ray-nudge-open');
+  let nudgeDismissed = false;
+
   setTimeout(() => {
+    if (!isOpen && nudge) nudge.classList.add('visible');
+  }, 8000);
+
+  nudgeClose?.addEventListener('click', () => {
+    nudgeDismissed = true;
+    if (nudge) nudge.classList.remove('visible');
+  });
+
+  nudgeOpen?.addEventListener('click', () => {
+    if (nudge) nudge.classList.remove('visible');
     if (!isOpen) toggleChat();
-  }, 60000);
+  });
+
+  // Auto-open chat after 45 s if nudge wasn't dismissed and chat still closed
+  setTimeout(() => {
+    if (!isOpen && !nudgeDismissed) {
+      if (nudge) nudge.classList.remove('visible');
+      toggleChat();
+    }
+  }, 45000);
 
 })();
 </script>
