@@ -163,6 +163,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   border-radius: 16px 16px 4px 16px;
   padding: 14px 16px 12px;
   box-shadow: 0 4px 20px rgba(30,42,59,0.18);
+  width: min(220px, calc(100vw - 80px));
   max-width: 220px;
   z-index: 9998;
   display: none;
@@ -170,6 +171,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   gap: 10px;
   animation: ray-nudge-in 0.35s ease;
   border: 1px solid rgba(168,56,56,0.12);
+  box-sizing: border-box;
 }
 #ray-nudge.visible { display: flex; }
 @keyframes ray-nudge-in {
@@ -681,6 +683,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   let isLoading = false;
   let conversationHistory = [];
   let quickRepliesHidden = false;
+  let welcomeShown = false;
 
   // ── DOM refs ──
   const btn          = document.getElementById('ray-chat-btn');
@@ -925,7 +928,8 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (nudgeEl && isOpen) nudgeEl.classList.remove('visible');
 
     if (isOpen) {
-      if (conversationHistory.length === 0) {
+      if (!welcomeShown) {
+        welcomeShown = true;
         addMessage(OPENING_MESSAGE, 'assistant');
         speakText(OPENING_MESSAGE);
       }
