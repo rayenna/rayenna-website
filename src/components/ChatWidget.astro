@@ -940,23 +940,6 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   // Expose globally as a fallback
   window.__rayOpen = () => { if (!isOpen) toggleChat(); };
 
-  // ── Nudge button listeners (wired here where toggleChat is in scope) ──
-  const nudgeOpenBtn  = document.getElementById('ray-nudge-open');
-  const nudgeCloseBtn = document.getElementById('ray-nudge-close');
-
-  nudgeOpenBtn?.addEventListener('click', function (e) {
-    e.stopPropagation(); // prevent bubbling to the document backdrop-close handler
-    const n = document.getElementById('ray-nudge');
-    if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
-    if (!isOpen) toggleChat();
-  });
-
-  nudgeCloseBtn?.addEventListener('click', function (e) {
-    e.stopPropagation();
-    const n = document.getElementById('ray-nudge');
-    if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
-  });
-
   // ── API call ──
   async function sendMessage(userText) {
     const text = userText.trim();
@@ -1055,5 +1038,43 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     }
   }, 45000);
 
+})();
+</script>
+
+<!-- Nudge wiring: standalone inline script, independent of the bundled IIFE above -->
+<script is:inline>
+(function () {
+  function wire() {
+    var nudgeOpen  = document.getElementById('ray-nudge-open');
+    var nudgeClose = document.getElementById('ray-nudge-close');
+    var chatBtn    = document.getElementById('ray-chat-btn');
+
+    if (!nudgeOpen || !chatBtn) {
+      // Elements not ready yet — retry in 100 ms
+      setTimeout(wire, 100);
+      return;
+    }
+
+    nudgeOpen.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var nudge = document.getElementById('ray-nudge');
+      if (nudge) { nudge.classList.remove('visible'); nudge.dataset.dismissed = '1'; }
+      // Fire a non-bubbling click directly on the chat button so the
+      // backdrop-close handler (which listens on document) never sees it
+      chatBtn.dispatchEvent(new MouseEvent('click', { bubbles: false, cancelable: true }));
+    });
+
+    nudgeClose.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var nudge = document.getElementById('ray-nudge');
+      if (nudge) { nudge.classList.remove('visible'); nudge.dataset.dismissed = '1'; }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wire);
+  } else {
+    wire();
+  }
 })();
 </script>
