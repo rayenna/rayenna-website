@@ -944,13 +944,15 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   const nudgeOpenBtn  = document.getElementById('ray-nudge-open');
   const nudgeCloseBtn = document.getElementById('ray-nudge-close');
 
-  nudgeOpenBtn?.addEventListener('click', function () {
+  nudgeOpenBtn?.addEventListener('click', function (e) {
+    e.stopPropagation(); // prevent bubbling to the document backdrop-close handler
     const n = document.getElementById('ray-nudge');
     if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
     if (!isOpen) toggleChat();
   });
 
-  nudgeCloseBtn?.addEventListener('click', function () {
+  nudgeCloseBtn?.addEventListener('click', function (e) {
+    e.stopPropagation();
     const n = document.getElementById('ray-nudge');
     if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
   });
