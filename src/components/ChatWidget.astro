@@ -8,9 +8,9 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 
   <!-- ── Proactive nudge bubble ── -->
   <div id="ray-nudge">
-    <button id="ray-nudge-close" aria-label="Dismiss" onclick="this.closest('#ray-nudge').classList.remove('visible');this.closest('#ray-nudge').dataset.dismissed='1'">×</button>
+    <button id="ray-nudge-close" aria-label="Dismiss" onclick="var n=document.getElementById('ray-nudge');n.classList.remove('visible');n.dataset.dismissed='1'">×</button>
     <p>👋 Wondering what solar would save you?</p>
-    <button id="ray-nudge-open" onclick="this.closest('#ray-nudge').classList.remove('visible');document.getElementById('ray-chat-btn').click()">Ask Ray →</button>
+    <button id="ray-nudge-open" onclick="document.getElementById('ray-nudge').classList.remove('visible');if(window.__rayOpen)window.__rayOpen()">Ask Ray →</button>
   </div>
 
   <!-- ── Floating bubble button ── -->
@@ -920,6 +920,9 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     document.body.classList.toggle('ray-chat-open', isOpen);
     const waFloat = document.querySelector('.wa-float');
     if (waFloat) waFloat.style.display = isOpen ? 'none' : '';
+    // Hide nudge whenever chat opens
+    const nudgeEl = document.getElementById('ray-nudge');
+    if (nudgeEl && isOpen) nudgeEl.classList.remove('visible');
 
     if (isOpen) {
       if (conversationHistory.length === 0) {
@@ -929,6 +932,9 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       setTimeout(() => input && input.focus(), 300);
     }
   }
+
+  // Expose globally so the nudge's inline onclick can reach it
+  window.__rayOpen = () => { if (!isOpen) toggleChat(); };
 
   // ── API call ──
   async function sendMessage(userText) {
