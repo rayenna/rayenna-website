@@ -7,10 +7,10 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 <div id="ray-chat-widget">
 
   <!-- ── Proactive nudge bubble ── -->
-  <div id="ray-nudge" aria-hidden="true">
-    <button id="ray-nudge-close" aria-label="Dismiss">×</button>
+  <div id="ray-nudge">
+    <button id="ray-nudge-close" aria-label="Dismiss" onclick="this.closest('#ray-nudge').classList.remove('visible');this.closest('#ray-nudge').dataset.dismissed='1'">×</button>
     <p>👋 Wondering what solar would save you?</p>
-    <button id="ray-nudge-open">Ask Ray →</button>
+    <button id="ray-nudge-open" onclick="this.closest('#ray-nudge').classList.remove('visible');document.getElementById('ray-chat-btn').click()">Ask Ray →</button>
   </div>
 
   <!-- ── Floating bubble button ── -->
@@ -1013,30 +1013,17 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (e.key === 'Escape' && isOpen) toggleChat();
   });
 
-  // Proactive nudge after 8 s — show teaser bubble if user hasn't interacted
+  // Proactive nudge — show after 8 s; inline onclick handlers do the heavy lifting
   const nudge = document.getElementById('ray-nudge');
-  const nudgeClose = document.getElementById('ray-nudge-close');
-  const nudgeOpen = document.getElementById('ray-nudge-open');
-  let nudgeDismissed = false;
 
   setTimeout(() => {
     if (!isOpen && nudge) nudge.classList.add('visible');
   }, 8000);
 
-  nudgeClose?.addEventListener('click', () => {
-    nudgeDismissed = true;
-    if (nudge) nudge.classList.remove('visible');
-  });
-
-  nudgeOpen?.addEventListener('click', () => {
-    if (nudge) nudge.classList.remove('visible');
-    if (!isOpen) toggleChat();
-  });
-
-  // Auto-open chat after 45 s if nudge wasn't dismissed and chat still closed
+  // Auto-open chat after 45 s if not dismissed and still closed
   setTimeout(() => {
-    if (!isOpen && !nudgeDismissed) {
-      if (nudge) nudge.classList.remove('visible');
+    if (!isOpen && nudge && !nudge.dataset.dismissed) {
+      nudge.classList.remove('visible');
       toggleChat();
     }
   }, 45000);
