@@ -192,6 +192,8 @@ const allSlides = [
                 src={`${base}/media/references/${inst.img}`}
                 alt={`${inst.name} – ${inst.capacity} solar installation in ${inst.location}`}
                 loading="lazy"
+                decoding="async"
+                onload="this.dataset.loaded='1'"
               />
               <div class="gallery-card__overlay">
                 <span class="gallery-card__capacity">{inst.capacity}</span>
@@ -322,6 +324,8 @@ const allSlides = [
               src={`${base}/media/references/${slide.img}`}
               alt={slide.caption}
               loading={i === 0 ? 'eager' : 'lazy'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              fetchpriority={i === 0 ? 'high' : 'low'}
             />
             <div class="slide__overlay"></div>
             <div class="slide__caption">
@@ -595,12 +599,24 @@ const allSlides = [
   position: relative;
   height: 220px;
   overflow: hidden;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f0f0f0 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: img-skeleton 1.4s ease infinite;
+}
+@keyframes img-skeleton {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 .gallery-card__img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.gallery-card__img-wrap img.loaded,
+.gallery-card__img-wrap img[data-loaded] {
+  opacity: 1;
 }
 .gallery-card:hover .gallery-card__img-wrap img {
   transform: scale(1.04);
@@ -919,8 +935,11 @@ const allSlides = [
   min-height: 320px;
   max-height: 620px;
   overflow: hidden;
-  background: #000;
+  background: linear-gradient(90deg, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%);
+  background-size: 200% 100%;
+  animation: img-skeleton 1.6s ease infinite;
 }
+.slideshow.loaded { animation: none; }
 .slideshow__track { position: relative; width: 100%; height: 100%; }
 
 .slide {
@@ -1287,6 +1306,16 @@ const allSlides = [
 
   restartProgress();
   startAuto();
+
+  // Remove skeleton animation once first slide image loads
+  const firstSlideImg = document.querySelector<HTMLImageElement>('.slide--active img');
+  if (firstSlideImg) {
+    if (firstSlideImg.complete) {
+      slideshow?.classList.add('loaded');
+    } else {
+      firstSlideImg.addEventListener('load', () => slideshow?.classList.add('loaded'), { once: true });
+    }
+  }
 
   // ── Gallery Filters ────────────────────────────────────────────────────────
   const filters: Record<string, string> = { cap: 'all', inv: 'all', pan: 'all' };
