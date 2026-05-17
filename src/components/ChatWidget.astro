@@ -8,9 +8,9 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 
   <!-- ── Proactive nudge bubble ── -->
   <div id="ray-nudge">
-    <button id="ray-nudge-close" aria-label="Dismiss" onclick="var n=document.getElementById('ray-nudge');n.classList.remove('visible');n.dataset.dismissed='1'">×</button>
+    <button id="ray-nudge-close" aria-label="Dismiss">×</button>
     <p>👋 Wondering what solar would save you?</p>
-    <button id="ray-nudge-open" onclick="document.getElementById('ray-nudge').classList.remove('visible');if(window.__rayOpen)window.__rayOpen()">Ask Ray →</button>
+    <button id="ray-nudge-open">Ask Ray →</button>
   </div>
 
   <!-- ── Floating bubble button ── -->
@@ -937,8 +937,23 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     }
   }
 
-  // Expose globally so the nudge's inline onclick can reach it
+  // Expose globally as a fallback
   window.__rayOpen = () => { if (!isOpen) toggleChat(); };
+
+  // ── Nudge button listeners (wired here where toggleChat is in scope) ──
+  const nudgeOpenBtn  = document.getElementById('ray-nudge-open');
+  const nudgeCloseBtn = document.getElementById('ray-nudge-close');
+
+  nudgeOpenBtn?.addEventListener('click', function () {
+    const n = document.getElementById('ray-nudge');
+    if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
+    if (!isOpen) toggleChat();
+  });
+
+  nudgeCloseBtn?.addEventListener('click', function () {
+    const n = document.getElementById('ray-nudge');
+    if (n) { n.classList.remove('visible'); n.dataset.dismissed = '1'; }
+  });
 
   // ── API call ──
   async function sendMessage(userText) {
@@ -1023,7 +1038,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     if (e.key === 'Escape' && isOpen) toggleChat();
   });
 
-  // Proactive nudge — show after 8 s; inline onclick handlers do the heavy lifting
+  // Proactive nudge — show after 8 s
   const nudge = document.getElementById('ray-nudge');
 
   setTimeout(() => {
