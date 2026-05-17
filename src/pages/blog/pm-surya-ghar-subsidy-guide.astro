@@ -138,6 +138,29 @@ const post = {
     </div>
   </section>
 
+  <!-- ===== RELATED ARTICLES ===== -->
+  <section class="related-posts">
+    <div class="container">
+      <h2 class="related-posts__heading">Related Articles</h2>
+      <div class="related-posts__grid">
+        <a href={`${base}/blog/kseb-net-metering-rules-2026`} class="related-card">
+          <span class="related-tag">Net Metering</span>
+          <strong>KSEB Net Metering Rules 2026: What's Changed</strong>
+          <span class="related-arrow">→</span>
+        </a>
+        <a href={`${base}/blog/how-much-does-solar-cost-in-kerala`} class="related-card">
+          <span class="related-tag">Pricing</span>
+          <strong>How Much Does Solar Cost in Kerala in 2025?</strong>
+          <span class="related-arrow">→</span>
+        </a>
+        <a href={`${base}/blog/solar-loan-vs-subsidy-kerala`} class="related-card">
+          <span class="related-tag">Finance</span>
+          <strong>Solar Loan vs Subsidy: Which Route Is Better for Kerala Buyers?</strong>
+          <span class="related-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
@@ -280,4 +303,27 @@ const post = {
 @media (max-width: 600px) {
   .post-content { padding: 24px; }
 }
+
+/* Related posts */
+.related-posts { padding: 48px 0; background: #fff; }
+.related-posts__heading {
+  font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600;
+  color: var(--color-secondary); margin-bottom: 20px;
+}
+.related-posts__grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.related-card {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--color-light); border-radius: var(--radius-md);
+  padding: 16px 18px; border: 1.5px solid var(--color-border);
+  transition: border-color var(--transition); text-decoration: none;
+}
+.related-card:hover { border-color: var(--color-primary); }
+.related-tag {
+  font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--color-primary); background: rgba(168,56,56,0.08);
+  padding: 3px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.related-card strong { flex: 1; font-family: var(--font-heading); font-size: 0.88rem; color: var(--color-navy); line-height: 1.4; }
+.related-arrow { color: var(--color-primary); font-weight: 700; flex-shrink: 0; }
+@media (min-width: 640px) { .related-posts__grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
