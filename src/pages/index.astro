@@ -12,10 +12,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <img src={`${base}/media/hero (1).webp`} alt="Solar energy — child flying a kite" class="hero__photo" />
     <div class="hero__gradient"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Soar into a <br />Sunny Tomorrow!</h1>
+      <h1 class="hero__title">Your KSEB Bill<br />Could Be ₹0.</h1>
       <div class="hero__mid">
         <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
-        <p class="hero__subtitle">Make a switch to solar energy for a sustainable lifestyle that cares for both the planet and your wallet. Partner with Rayenna Energy for future-ready energy solutions that ensure you save on energy costs while reducing your carbon footprint.</p>
+        <p class="hero__subtitle">Kerala's MNRE-approved solar installer. Government subsidy up to ₹78,000. Free site survey. Most homes break even in 3–5 years — then generate free power for 20+ years.</p>
+      </div>
+      <div class="hero-trust-strip">
+        <span>✓ MNRE Approved</span>
+        <span>✓ ₹78,000 Subsidy</span>
+        <span>✓ Free Site Survey</span>
+        <span>✓ 25-Year Warranty</span>
       </div>
       <div class="hero-cta-wrapper">
         <a href={`${base}/solar-calculator`} class="btn btn-hero-primary hero-btn-primary">☀️ Calculate My Savings</a>
@@ -48,21 +54,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="who-we-are__stats">
         <div class="stat-item">
           <div class="stat-wrap">
-            <span class="stat-number" data-target="20">0</span>
+            <span class="stat-number" data-target="20">20</span>
             <span class="stat-suffix">+</span>
           </div>
           <p class="stat-label">Brands</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
-            <span class="stat-number" data-target="80">0</span>
+            <span class="stat-number" data-target="80">80</span>
             <span class="stat-suffix">%</span>
           </div>
           <p class="stat-label">Less bills</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
-            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-number" data-target="100">100</span>
             <span class="stat-suffix">%</span>
           </div>
           <p class="stat-label">Client satisfaction</p>
@@ -97,6 +103,59 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <h3>Subsidised</h3>
           <p>Government incentives and subsidies further reduce installation costs, making it a smart financial move today.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-tag">Customer Stories</span>
+        <h2 class="section-title">What Kerala Homeowners Say</h2>
+        <p class="testimonials-intro">Real results from real installations across Kerala. Every system installed by Rayenna comes with a 25-year performance warranty and end-to-end support.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="tcard">
+          <div class="tcard__stars">★★★★★</div>
+          <p class="tcard__quote">"Our KSEB bill dropped from ₹4,200 to under ₹400 in the very first month. The Rayenna team handled everything — from the subsidy paperwork to the net meter installation. Couldn't be happier."</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar">RK</div>
+            <div>
+              <strong>Rajan K.</strong>
+              <span>Thrippunithura, Ernakulam · 5 kW system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard__stars">★★★★★</div>
+          <p class="tcard__quote">"I was worried about the monsoon affecting performance. The team explained everything clearly, sized the system correctly, and even during the rainy months we're generating well. Professional, honest team."</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar">SM</div>
+            <div>
+              <strong>Sreeja M.</strong>
+              <span>Kakkanad, Kochi · 3 kW system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard__stars">★★★★★</div>
+          <p class="tcard__quote">"The ₹78,000 subsidy was credited to my account exactly as promised. Installation was done in a single day, the roof is completely leak-proof, and the online monitoring app shows me live generation data."</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar">AJ</div>
+            <div>
+              <strong>Anoop J.</strong>
+              <span>Vyttila, Ernakulam · 4 kW system</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="testimonials-footer">
+        <a href={`${base}/media`} class="btn btn-outline">See Our Installations →</a>
       </div>
     </div>
   </section>
@@ -266,6 +325,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   line-height: 1.75;
   flex: 1;
   min-width: 0;
+}
+
+/* ===== HERO TRUST STRIP ===== */
+.hero-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 20px;
+}
+.hero-trust-strip span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #27324f;
+  opacity: 0.75;
+  letter-spacing: 0.3px;
 }
 
 /* ===== HERO CTA WRAPPER — mobile first ===== */
@@ -595,6 +669,101 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   font-size: 0.88rem;
   color: var(--color-text-muted);
   line-height: 1.7;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.testimonials-intro {
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin: 12px auto 0;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.tcard {
+  background: var(--color-light);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  border-left: 4px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.tcard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.tcard__stars {
+  color: #f59e0b;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.tcard__quote {
+  color: var(--color-text);
+  font-size: 0.93rem;
+  line-height: 1.85;
+  font-style: italic;
+  flex: 1;
+}
+.tcard__quote::before { content: '\201C'; }
+.tcard__quote::after  { content: '\201D'; }
+.tcard__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+.tcard__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 1px;
+}
+.tcard__author strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+.tcard__author span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.testimonials-footer {
+  text-align: center;
+  margin-top: 36px;
+}
+@media (min-width: 640px) {
+  .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .testimonials-grid .tcard:last-child { grid-column: 1 / -1; max-width: calc(50% - 12px); margin-inline: auto; }
+}
+@media (min-width: 960px) {
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+  .testimonials-grid .tcard:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
 }
 
 /* ===== MAP ===== */

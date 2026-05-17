@@ -116,7 +116,10 @@ const currentPath = Astro.url.pathname;
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>© 2025 Rayenna Energy, All Rights Reserved.</p>
+        <p>© 2026 Rayenna Energy, All Rights Reserved.</p>
+        <div class="footer__legal">
+          <a href={`${base}/privacy`} class="footer__legal-link">Privacy Policy</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -504,11 +507,20 @@ const currentPath = Astro.url.pathname;
 }
 .footer__bottom-inner {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 8px;
   font-size: 0.82rem;
   color: rgba(255,255,255,0.45);
+  text-align: center;
 }
+.footer__legal { display: flex; gap: 20px; }
+.footer__legal-link {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem;
+  transition: color var(--transition);
+}
+.footer__legal-link:hover { color: rgba(255,255,255,0.75); }
 
 @media (max-width: 1024px) {
   .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }

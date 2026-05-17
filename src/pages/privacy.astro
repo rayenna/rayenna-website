@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const lastUpdated = '17 May 2026';
+---
+<Layout title="Privacy Policy | Rayenna Energy" description="Privacy Policy for Rayenna Energy Private Limited — how we collect, use, and protect your personal information.">
+
+  <section class="priv-hero">
+    <div class="container priv-hero__inner">
+      <span class="section-tag">Legal</span>
+      <h1 class="priv-title">Privacy Policy</h1>
+      <p class="priv-meta">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="priv-body">
+    <div class="container priv-layout">
+      <article class="priv-content">
+
+        <p class="priv-lead">Rayenna Energy Private Limited ("Rayenna", "we", "us", or "our") is committed to protecting the privacy of every person who visits our website or contacts us. This policy explains what information we collect, how we use it, and your rights in relation to it.</p>
+
+        <h2>1. Who We Are</h2>
+        <p>Rayenna Energy Private Limited is an MNRE-approved solar energy company registered in India, with its principal office at No. 3329/52, Ray Bhavan, NH Bypass, Thykoodam, Vyttila, Ernakulam, Kerala — 682019. You can reach us at <a href="mailto:sales@rayenna.energy">sales@rayenna.energy</a> or <a href="tel:+917907369304">+91 7907 369 304</a>.</p>
+
+        <h2>2. Information We Collect</h2>
+        <p>We collect information only when you voluntarily provide it to us through our website. This includes:</p>
+        <ul>
+          <li><strong>Contact forms:</strong> Name, phone number, email address, and any message you choose to submit via our contact or callback forms.</li>
+          <li><strong>Solar Calculator:</strong> Home configuration inputs (home type, room count, appliance usage, monthly bill). This data is processed entirely in your browser and is never stored on our servers.</li>
+          <li><strong>AI Chat (Ray):</strong> Messages you send to our AI assistant are processed via a secure Cloudflare Worker proxy. Chat transcripts are not stored or retained by Rayenna.</li>
+          <li><strong>Website analytics:</strong> We may use anonymous, aggregated analytics (such as page views and referral sources) to understand how visitors use our site. No personally identifiable information is collected through analytics.</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the information you provide solely to:</p>
+        <ul>
+          <li>Respond to your enquiries about solar installation, subsidies, or our services.</li>
+          <li>Contact you to arrange a free site survey or consultation you have requested.</li>
+          <li>Send you information you have explicitly requested (such as a quote or a call-back).</li>
+          <li>Improve the quality and relevance of our website and services.</li>
+        </ul>
+        <p>We do not use your information for automated profiling, unsolicited marketing, or any purpose beyond responding to your expressed interest in solar energy.</p>
+
+        <h2>4. How We Share Your Information</h2>
+        <p>We do not sell, trade, or rent your personal information to any third party. We may share information only in the following limited circumstances:</p>
+        <ul>
+          <li><strong>Form processing:</strong> Contact form submissions are processed by Web3Forms (web3forms.com), a third-party form handling service. Their privacy policy governs the handling of submitted data.</li>
+          <li><strong>AI chat:</strong> Chat messages are routed through Anthropic's Claude API via a Cloudflare Worker. Anthropic's privacy policy governs the processing of these messages. We do not retain chat transcripts.</li>
+          <li><strong>Legal obligation:</strong> We may disclose information if required to do so by law or in response to a valid legal request from a competent authority.</li>
+        </ul>
+
+        <h2>5. Data Retention</h2>
+        <p>Contact form submissions are retained only for as long as necessary to respond to your enquiry and maintain reasonable business records — typically no longer than 12 months. You may request deletion of your data at any time by emailing <a href="mailto:sales@rayenna.energy">sales@rayenna.energy</a>.</p>
+
+        <h2>6. Cookies</h2>
+        <p>Our website does not use tracking cookies or advertising cookies. We do not use cookies to identify individual visitors or build profiles. If this changes in the future, this policy will be updated accordingly.</p>
+
+        <h2>7. Third-Party Links</h2>
+        <p>Our website contains links to external sites including Google Maps, WhatsApp, and government portals (pmsuryaghar.gov.in, ekiran.kseb.in). We are not responsible for the privacy practices of these external sites and encourage you to review their respective privacy policies.</p>
+
+        <h2>8. Security</h2>
+        <p>We take reasonable technical and organisational measures to protect your personal information from unauthorised access, disclosure, or misuse. Our website is served over HTTPS. Form data is transmitted securely to our form processing provider.</p>
+
+        <h2>9. Your Rights</h2>
+        <p>Under applicable Indian data protection law and general best practice, you have the right to:</p>
+        <ul>
+          <li>Request access to the personal information we hold about you.</li>
+          <li>Request correction of inaccurate information.</li>
+          <li>Request deletion of your personal data.</li>
+          <li>Withdraw any consent you have given for us to contact you.</li>
+        </ul>
+        <p>To exercise any of these rights, email us at <a href="mailto:sales@rayenna.energy">sales@rayenna.energy</a>. We will respond within 30 days.</p>
+
+        <h2>10. Children's Privacy</h2>
+        <p>Our website is not directed at children under the age of 18. We do not knowingly collect personal information from minors. If you believe a minor has submitted information to us, please contact us and we will delete it promptly.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. The "Last updated" date at the top of this page indicates when the policy was last revised. We encourage you to review this page periodically.</p>
+
+        <h2>12. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
+        <div class="priv-contact-block">
+          <p><strong>Rayenna Energy Private Limited</strong><br />
+          No. 3329/52, Ray Bhavan, NH Bypass,<br />
+          Thykoodam, Vyttila, Ernakulam, Kerala — 682019</p>
+          <p>Email: <a href="mailto:sales@rayenna.energy">sales@rayenna.energy</a><br />
+          Phone: <a href="tel:+917907369304">+91 7907 369 304</a></p>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.priv-hero {
+  background: var(--color-navy);
+  padding: 120px 0 56px;
+}
+.priv-hero__inner { max-width: 800px; }
+.priv-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 12px 0 8px;
+  line-height: 1.2;
+}
+.priv-meta {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+.priv-body {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.priv-layout { max-width: 800px; }
+.priv-content {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  box-shadow: var(--shadow-sm);
+}
+.priv-lead {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  line-height: 1.85;
+  margin-bottom: 32px;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 20px;
+}
+.priv-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-secondary);
+  font-size: 1.15rem;
+  margin: 36px 0 12px;
+}
+.priv-content h2:first-of-type { margin-top: 0; }
+.priv-content p {
+  color: var(--color-text-muted);
+  line-height: 1.85;
+  margin-bottom: 14px;
+  font-size: 0.93rem;
+}
+.priv-content ul {
+  list-style: none;
+  margin: 8px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 0;
+}
+.priv-content ul li {
+  padding-left: 20px;
+  position: relative;
+  color: var(--color-text-muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+.priv-content ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.priv-content a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.priv-contact-block {
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-top: 8px;
+}
+.priv-contact-block p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+  .priv-content { padding: 24px 20px; }
+}
+</style>
