@@ -352,31 +352,54 @@ const allSlides = [
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS COMING SOON ===== -->
+  <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials-section">
-    <div class="container testimonials-inner">
-      <div class="testimonials-content">
+    <div class="container">
+      <div class="testimonials-header">
         <span class="section-tag section-tag--light">Customer Stories</span>
-        <h2 class="section-title section-title--light">Testimonials Coming Soon</h2>
-        <p class="section-intro section-intro--light">We are currently collecting feedback from our growing family of solar adopters. Their stories — of savings, sustainability, and satisfaction — will be right here shortly.</p>
-        <a href={`${base}/contact`} class="btn btn-primary testimonials-cta">Share Your Experience</a>
+        <h2 class="section-title section-title--light">What Our Customers Say</h2>
       </div>
-      <div class="testimonials-graphic">
-        <div class="testi-quote-icon">"</div>
-        <div class="testi-placeholder-cards">
-          <div class="testi-card testi-card--1">
-            <div class="testi-avatar">A</div>
-            <div class="testi-lines"><span></span><span></span></div>
-          </div>
-          <div class="testi-card testi-card--2">
-            <div class="testi-avatar">B</div>
-            <div class="testi-lines"><span></span><span></span></div>
-          </div>
-          <div class="testi-card testi-card--3">
-            <div class="testi-avatar">S</div>
-            <div class="testi-lines"><span></span><span></span></div>
+      <div class="testi-grid">
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">The technical and implementation teams were very helpful and knowledgeable. I switched my kitchen stoves from LPG to induction, saving significantly — not just on electricity charges but on LPG consumption too.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AR</div>
+            <div>
+              <strong>Arun</strong>
+              <span>Kollam · 5 kW system</span>
+            </div>
           </div>
         </div>
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">The Rayenna team was very helpful and supportive throughout the implementation. They completed the project at a very competitive rate — overall, excellent value for money.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SU</div>
+            <div>
+              <strong>Sudheer</strong>
+              <span>Ernakulam · 3 kW system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">I liked the attitude and professionalism of the team. Very helpful, knowledgeable, and extremely competitive on price. Their after-sales support is excellent too. I have already recommended them to many of my contacts.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BJ</div>
+            <div>
+              <strong>Baiju</strong>
+              <span>Ernakulam · 10 kW system</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="testimonials-cta-row">
+        <a href={`${base}/contact`} class="btn testimonials-cta">Share Your Experience →</a>
       </div>
     </div>
   </section>
@@ -1019,58 +1042,57 @@ const allSlides = [
 .testimonials-section {
   background: var(--color-primary);
   padding: var(--section-padding);
-  overflow: hidden;
 }
-.testimonials-inner {
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  align-items: center;
+  gap: 12px;
 }
-.testimonials-content {
+.testi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.testi-real-card {
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background var(--transition), transform var(--transition);
 }
-.testimonials-cta {
-  align-self: flex-start;
-  background: #fff;
-  color: var(--color-primary);
-  margin-top: 8px;
+.testi-real-card:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
 }
-.testimonials-cta:hover {
-  background: rgba(255,255,255,0.9);
+.testi-stars {
+  color: #fde68a;
+  font-size: 1rem;
+  letter-spacing: 2px;
 }
-.testimonials-graphic {
-  position: relative;
+.testi-quote {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.93rem;
+  line-height: 1.85;
+  font-style: italic;
+  flex: 1;
 }
-.testi-quote-icon {
-  font-family: Georgia, serif;
-  font-size: 120px;
-  line-height: 0.8;
-  color: rgba(255,255,255,0.12);
-  position: absolute;
-  top: -20px;
-  left: -10px;
-  pointer-events: none;
-}
-.testi-placeholder-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-top: 20px;
-}
-.testi-card {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
+.testi-quote::before { content: '\201C'; }
+.testi-quote::after  { content: '\201D'; }
+.testi-author {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
-.testi-card--1 { margin-left: 0; }
-.testi-card--2 { margin-left: 24px; }
-.testi-card--3 { margin-left: 12px; }
 .testi-avatar {
   width: 42px;
   height: 42px;
@@ -1081,24 +1103,43 @@ const allSlides = [
   justify-content: center;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.78rem;
   color: #fff;
   flex-shrink: 0;
+  letter-spacing: 1px;
 }
-.testi-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  flex: 1;
-}
-.testi-lines span {
+.testi-author strong {
   display: block;
-  height: 8px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 99px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 2px;
 }
-.testi-lines span:first-child { width: 80%; }
-.testi-lines span:last-child { width: 55%; }
+.testi-author span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+.testimonials-cta-row {
+  text-align: center;
+  margin-top: 36px;
+}
+.testimonials-cta {
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.testimonials-cta:hover {
+  background: rgba(255,255,255,0.9);
+  color: var(--color-primary);
+}
+@media (min-width: 640px) {
+  .testi-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .testi-grid .testi-real-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 12px); margin-inline: auto; }
+}
+@media (min-width: 960px) {
+  .testi-grid { grid-template-columns: repeat(3, 1fr); }
+  .testi-grid .testi-real-card:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+}
 
 /* ===== CTA BANNER ===== */
 .cta-banner {
@@ -1179,13 +1220,6 @@ const allSlides = [
   .showcase-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   .showcase-item--tall { grid-row: span 2; }
   .showcase-item img { min-height: 240px; }
-  .testimonials-inner {
-    flex-direction: row;
-    align-items: center;
-    gap: 64px;
-  }
-  .testimonials-content { flex: 1; }
-  .testimonials-graphic { flex: 1; }
 }
 
 @media (min-width: 960px) {
