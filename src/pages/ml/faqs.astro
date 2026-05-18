@@ -1,0 +1,1045 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mlPrefix = '/ml';
+
+const categories = [
+  {
+    id: 'costs',
+    emoji: '₹',
+    label: 'ചെലവ് & സബ്സിഡി',
+    count: 9,
+    faqs: [
+      {
+        q: 'How much does a solar panel system cost in Kerala in 2025?',
+        a: 'A rooftop solar system in Kerala typically costs between ₹70,000–₹90,000 per kW before subsidies. A popular 3 kW system runs ₹1.85–₹2.15 lakhs before subsidy. After applying the government\'s PM Surya Ghar subsidy of up to ₹78,000, your out-of-pocket cost comes down to approximately ₹1.1–₹1.4 lakhs. Pricing varies based on panel brand, inverter type, and your roof\'s structural requirements.',
+      },
+      {
+        q: 'What is the PM Surya Ghar: Muft Bijli Yojana subsidy, and how much can I get?',
+        a: 'This is the central government\'s flagship solar subsidy scheme. It offers fixed Central Financial Assistance (CFA) to residential customers installing on-grid rooftop solar systems. The subsidy is structured as follows — up to ₹30,000 for 1 kW, up to ₹60,000 for 2 kW, and up to ₹78,000 for 3 kW and above. The maximum subsidy is capped at ₹78,000 regardless of system size. The amount is credited directly to your bank account within 30 working days of commissioning.',
+      },
+      {
+        q: 'What is the payback period for solar in Kerala?',
+        a: 'Given Kerala\'s high electricity tariffs (₹8–₹9 per unit) and strong solar irradiation, most homeowners recover their investment in 3–5 years. After that, you generate effectively free electricity for the remaining 20+ years of the system\'s life.',
+      },
+      {
+        q: 'Are there financing options available for solar in Kerala?',
+        a: 'Yes. Many banks and NBFCs now offer dedicated solar loans at 6–8% interest rates. In several cases, your monthly EMI is less than your current KSEB bill savings — meaning the system pays for itself from day one. Rayenna can guide you through financing options best suited to your situation.',
+      },
+      {
+        q: 'Will the subsidy be available if I choose a company that is not MNRE-approved?',
+        a: 'No. The government subsidy under PM Surya Ghar is only available through MNRE-empanelled vendors. Choosing an unapproved installer means you forfeit the ₹78,000 subsidy entirely. Rayenna Energy is an MNRE-approved channel partner, so your subsidy eligibility is fully protected.',
+      },
+      {
+        q: 'Has the cost of solar panels changed recently? Is now a good time to buy?',
+        a: 'Yes — and the timing is currently very favourable for Kerala buyers. India\'s solar manufacturing capacity has grown enormously, and with US tariffs reducing export demand, domestic panel prices have become increasingly competitive. Combined with the PM Surya Ghar subsidy still being available and Kerala\'s rising KSEB tariffs, 2025–2026 represents one of the better windows in recent years to invest in solar. Our team can give you a current market price based on your specific system requirements.',
+      },
+      {
+        q: 'Will solar panel prices go up or down in the future?',
+        a: 'Panel prices have dropped approximately 80% over the last two decades and are expected to remain stable or decline marginally in the near term due to India\'s expanding domestic manufacturing capacity. However, the PM Surya Ghar subsidy amount is not guaranteed to remain at current levels — government schemes are reviewed periodically. The smarter approach is to lock in current pricing and subsidies rather than wait for further price drops that may be offset by subsidy reductions.',
+      },
+      {
+        q: 'Can I claim GST input credit on a commercial solar installation?',
+        a: 'Yes. Businesses registered under GST can claim input tax credit on the GST paid for commercial solar installations. Solar panels currently attract 12% GST. This effectively reduces the net cost of a commercial installation, improving your overall return on investment. Consult your chartered accountant for the specifics of your GST registration category.',
+      },
+      {
+        q: 'Is there a state-level subsidy in Kerala in addition to the central PM Surya Ghar subsidy?',
+        a: 'Currently, the primary subsidy available is the central government\'s PM Surya Ghar scheme offering up to ₹78,000. Kerala\'s state agency ANERT has run state-level schemes in the past, and KSEB has its own Soura programme history. It is worth checking anert.gov.in for any active state schemes at the time of your installation. Our team stays current on all available incentives and will ensure you claim everything you are entitled to.',
+      },
+    ],
+  },
+  {
+    id: 'roof',
+    emoji: '🏠',
+    label: 'റൂഫ് & സിസ്റ്റം',
+    count: 7,
+    faqs: [
+      {
+        q: 'How much roof space do I need for a solar system?',
+        a: 'As a general rule, you need approximately 100 square feet of shadow-free rooftop area per kW of solar capacity. So a 3 kW system requires around 300 sq. ft. of clear, unshaded roof. South-facing roofs provide the best output in Kerala, though east- or west-facing roofs also work well.',
+      },
+      {
+        q: 'Does my roof need to be in perfect condition before installation?',
+        a: 'Your roof should be structurally sound enough to support the panels and mounting structure. If your roof has existing damage or is due for repair, it\'s best to address that before installation. Our team will assess your roof\'s condition during the free site survey and advise you accordingly.',
+      },
+      {
+        q: 'Can solar panels be installed on tiled or sloped roofs?',
+        a: 'Yes. Both traditional Mangalore-tiled and modern ceramic-tiled roofs in Kerala can accommodate solar panels using specialised hook-and-rail mounting systems. Our installation team is experienced in leak-proof mounting for Kerala\'s roof types and will ensure your roof remains watertight after installation.',
+      },
+      {
+        q: 'What is the ideal direction for solar panels in Kerala?',
+        a: 'South-facing is optimal for maximum annual generation. East- or west-facing installations also perform well, though output may be marginally lower. What matters most is that the panels are not shaded between 9 AM and 4 PM — this is when the bulk of solar generation occurs.',
+      },
+      {
+        q: 'My roof has a water tank, AC unit, or overhead storage — can I still install solar?',
+        a: 'Yes, in most cases. Our site survey team will map your usable roof space, working around existing structures. The key is identifying contiguous shadow-free areas that face south, east, or west. Even partially obstructed roofs can accommodate a meaningful solar system — we design around your specific layout rather than applying a generic template.',
+      },
+      {
+        q: 'What is the minimum system size that makes financial sense in Kerala?',
+        a: 'For most Kerala homes, a 2 kW system is the practical minimum for meaningful bill savings. Below 2 kW, the savings may not justify the installation overhead. Most Kochi households with bills above ₹2,000 per month benefit most from a 3–5 kW system. Our free Solar Calculator will give you a personalised recommendation based on your actual consumption.',
+      },
+      {
+        q: 'Can I add more panels later if I start with a smaller system?',
+        a: 'Yes, this is called a phased installation and is entirely possible. Your inverter capacity and available roof space are the key constraints. If you plan to expand in the future, we design your initial system with this in mind — using an inverter with headroom for additional panels and routing wiring to accommodate future expansion. Tell us your future plans during the initial consultation.',
+      },
+    ],
+  },
+  {
+    id: 'how-solar-works',
+    emoji: '⚡',
+    label: 'സോളാർ എങ്ങനെ',
+    count: 9,
+    faqs: [
+      {
+        q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
+        a: 'An on-grid system is connected to the KSEB grid. It is the most common and cost-effective option for Kerala homes — excess power is exported to the grid via net metering, and you receive credit on your bill. An off-grid system runs entirely on batteries and is suitable for areas with no grid connection. A hybrid system combines grid connectivity with battery backup, giving you power during outages while still using net metering. For most Kerala homes, an on-grid system is the smartest financial choice.',
+      },
+      {
+        q: 'What is net metering, and how does it benefit me?',
+        a: 'Net metering allows you to export surplus solar electricity to the KSEB grid during the day and draw power back at night. KSEB credits your account for the units you export, which offsets your bill. Effectively, the grid acts as a free battery — you bank energy during the day and use it at night.',
+      },
+      {
+        q: 'Will my solar system work during Kerala\'s monsoon season?',
+        a: 'Yes — and better than you might expect. While generation does drop by 20–30% during the peak monsoon months of June–August, a well-sized system in central Kerala still produces approximately 600 units during those three months. Over a full year, a 3 kW system typically generates around 3,600 units, already accounting for monsoon losses. Solar remains highly viable in Kerala year-round.',
+      },
+      {
+        q: 'Will my solar system work during a power cut?',
+        a: 'A standard on-grid system automatically shuts down during a power outage — this is a safety feature required by KSEB to protect grid workers. If you need power during outages, a hybrid system with battery backup is the right choice. Talk to our team and we will help you decide what\'s right for your home.',
+      },
+      {
+        q: 'How much electricity does a 3 kW solar system generate per day?',
+        a: 'In Kerala\'s conditions, a well-installed 3 kW system generates approximately 10–12 units per day on a clear day, and around 3,600 units annually when averaged across all seasons including monsoon.',
+      },
+      {
+        q: 'What happens to my solar generation data — can I monitor it?',
+        a: 'Yes. All Rayenna installations include online monitoring capability. You can track your system\'s real-time generation, daily and monthly output, and performance trends through a monitoring app on your phone. This lets you spot any underperformance early and gives you a clear picture of your savings accumulating over time.',
+      },
+      {
+        q: 'What is a TOPCon or Bifacial panel, and should I be asking for one?',
+        a: 'TOPCon (Tunnel Oxide Passivated Contact) is a newer panel technology offering higher efficiency — typically 22–23% — compared to standard PERC panels at 19–21%. Bifacial panels generate power from both sides, capturing reflected light from the roof surface. Both technologies are now available in India and can be worth the modest premium for Kerala\'s conditions, especially if your roof space is limited and you want to maximise output from a smaller area. Ask our team whether these make sense for your specific installation.',
+      },
+      {
+        q: 'How does solar affect my home\'s resale value?',
+        a: 'Research consistently shows that solar installations increase residential property values, typically by 3–5% of the property value. In Kerala\'s increasingly energy-conscious market, a solar-equipped home with low electricity bills is an attractive selling point. The system transfers with the property, and the new owner inherits both the energy savings and any remaining warranty coverage.',
+      },
+      {
+        q: 'What is net billing, and how is it different from net metering?',
+        a: 'Under Kerala\'s new KSERC 2025 regulations, larger solar systems may fall under net billing rather than traditional net metering. With net metering, exported units are credited at full tariff rate against your bill. With net billing, exported energy is valued at a feed-in tariff — 1.5x the standard tariff during peak hours — and credited against your total bill. For most homes with systems up to 3 kW, traditional net metering continues to apply. For larger systems, our team will explain which arrangement applies to your installation and what it means for your savings.',
+      },
+    ],
+  },
+  {
+    id: 'process',
+    emoji: '📋',
+    label: 'സബ്സിഡി & പ്രക്രിയ',
+    count: 7,
+    faqs: [
+      {
+        q: 'How do I apply for the PM Surya Ghar subsidy?',
+        a: 'The process involves registering on the national portal at pmsuryaghar.gov.in using your KSEB consumer number and Aadhaar-linked mobile number, selecting an empanelled vendor, getting the system installed after receiving Technical Feasibility (TFR) approval, and then having the subsidy credited to your bank account. As a Rayenna customer, we handle the entire application process on your behalf — you don\'t have to navigate the portal alone.',
+      },
+      {
+        q: 'What documents are required for the subsidy application?',
+        a: 'You will need your Aadhaar card, recent KSEB electricity bill, proof of property ownership (or rental agreement), bank account details, and a passport-size photograph. Our team will help you compile and submit all documentation correctly.',
+      },
+      {
+        q: 'How long does the entire process take — from enquiry to a working system?',
+        a: 'From your initial consultation to a fully commissioned system, the typical timeline in Kerala is 4–8 weeks. The physical installation itself takes just 1–2 days. The rest of the time accounts for site survey, system design, KSEB feasibility approval, and net meter installation. We keep you informed at every step.',
+      },
+      {
+        q: 'Can I claim the subsidy if I have already installed solar previously?',
+        a: 'No. The PM Surya Ghar subsidy is available only to consumers who have not previously availed a government solar subsidy. If you installed a system under an older scheme such as KSEB Soura or ANERT\'s Surya Thejus, you are not eligible to claim the current subsidy.',
+      },
+      {
+        q: 'What is the KSEB ekiran portal and do I need to use it?',
+        a: 'Yes — the KSEB ekiran portal (ekiran.kseb.in) is the official online platform for all solar rooftop applications in Kerala. This is where you register your system, submit documents, track application status, and apply for net metering. As a Rayenna customer, our team handles all ekiran portal submissions on your behalf — you do not need to navigate it yourself.',
+      },
+      {
+        q: 'What is an Electrical Inspector certificate and why is it needed?',
+        a: 'Before KSEB installs your bi-directional net meter, your solar system must be inspected and certified by a licensed Electrical Inspector (EI). This certificate confirms your installation meets all safety and technical standards. KSEB will not proceed with net metering activation without it. Rayenna coordinates the Electrical Inspector\'s visit as part of our end-to-end installation service — this is not something you need to arrange separately.',
+      },
+      {
+        q: 'Can I apply for the PM Surya Ghar subsidy myself, or do I need to go through an installer?',
+        a: 'You initiate the application yourself on pmsuryaghar.gov.in using your KSEB consumer number and Aadhaar-linked mobile. However, the system must be installed by an MNRE-empanelled vendor, and many of the subsequent steps — KSEB feasibility approval, net meter application, subsidy disbursement documentation — require coordination between you, the installer, and KSEB. As a Rayenna customer, we manage the entire process on your behalf from registration to subsidy credit.',
+      },
+    ],
+  },
+  {
+    id: 'maintenance',
+    emoji: '🔧',
+    label: 'പരിപാലനം & വാറന്റി',
+    count: 7,
+    faqs: [
+      {
+        q: 'How much maintenance do solar panels require?',
+        a: 'Very little. Solar panels are designed to be low-maintenance. We recommend a basic visual inspection every few months and a professional system check once a year. Occasional cleaning — particularly after heavy dust or leaf accumulation — can improve output by up to 15%. Kerala\'s monsoon rains naturally clean the panels during the rainy season.',
+      },
+      {
+        q: 'What warranties come with a Rayenna installation?',
+        a: 'A complete Rayenna installation includes a 25-year performance warranty on solar panels (guaranteed to maintain at least 85% of initial output), a 5–10 year warranty on the inverter, and a 5-year workmanship warranty on the installation itself. All warranty terms are documented clearly in your agreement.',
+      },
+      {
+        q: 'Do I need lightning protection for my solar system in Kerala?',
+        a: 'Given Kerala\'s heavy monsoon lightning activity, lightning arresters are strongly recommended and are a sensible safeguard for your solar investment. They protect your inverter, panels, and any battery storage from surge damage. Rayenna ensures all installations comply with Indian safety codes in this regard.',
+      },
+      {
+        q: 'What happens to my system after 25 years?',
+        a: 'Solar panels degrade slowly over time. After 25 years, most quality panels still operate at 80–85% of their original output. At that point, you can choose to replace individual underperforming panels or upgrade to newer, higher-efficiency technology. The inverter will likely need replacement sooner — typically after 10–12 years.',
+      },
+      {
+        q: 'What should I do if my solar system stops generating or output drops suddenly?',
+        a: 'First, check your inverter\'s display or monitoring app for any error codes. A sudden drop in output can be caused by shading (a new obstruction like a tree branch), a tripped circuit breaker, an inverter fault, or a loose connection. If the issue is not immediately obvious from the monitoring system, contact your installer. As a Rayenna customer, our support team is reachable directly and will diagnose the issue remotely or arrange a site visit.',
+      },
+      {
+        q: 'How often should I clean my solar panels in Kerala?',
+        a: 'In most of Kerala, the monsoon rains (June–September) effectively clean your panels naturally. Outside monsoon season, a light rinse with water every 4–6 weeks using a soft brush or hose is sufficient to remove dust and bird droppings. Avoid harsh detergents and abrasive materials. Do not clean panels in the middle of the day when they are hot — early morning is ideal. A professional annual service check by Rayenna includes cleaning as part of the inspection.',
+      },
+      {
+        q: 'Does my home insurance cover the solar system?',
+        a: 'Standard home insurance policies in India do not automatically cover solar panels. You should inform your insurer about the installation and request an endorsement to include the solar system under your existing policy, or take out a separate equipment protection policy. The additional premium is typically modest and well worth the coverage against theft, fire, or storm damage. Our team can advise you on what to discuss with your insurer.',
+      },
+    ],
+  },
+  {
+    id: 'special',
+    emoji: '🏢',
+    label: 'പ്രത്യേക സാഹചര്യങ്ങൾ',
+    count: 6,
+    faqs: [
+      {
+        q: 'Can apartments and housing societies go solar in Kerala?',
+        a: 'Yes, though it requires a collective decision and compliance with KSEB\'s guidelines for common area installations. Individual flat owners can also explore solar for their specific units if they have dedicated rooftop access. This is an evolving area of regulation — contact us for an assessment specific to your building.',
+      },
+      {
+        q: 'Can businesses and commercial establishments avail the subsidy?',
+        a: 'The PM Surya Ghar subsidy is specifically for residential consumers. However, commercial and industrial solar installations can still benefit from accelerated depreciation benefits and KSEB\'s commercial net metering policy, which significantly improves the financial case. Our team can walk you through the commercial options.',
+      },
+      {
+        q: 'What is the new KSERC 2025 net metering regulation I\'ve been hearing about?',
+        a: 'From October 2025, new KSERC regulations cap residential net metering at 3 kW for systems without battery storage. If you wish to install more than 3 kW, you will need to include battery backup covering at least 30% of your system\'s capacity. If your system was already approved and commissioned before October 2025, your existing net metering agreement remains unaffected. We stay current on all regulatory changes and design every new system in full compliance.',
+      },
+      {
+        q: 'I am building a new house — when is the best time to plan for solar?',
+        a: 'The construction stage is the ideal time to plan your solar installation. You can orient the roof for optimal south-facing solar generation, incorporate conduit routing during construction (saving cost later), and potentially integrate solar into your electrical design from the start. Talk to us before your roof is completed — the savings from early planning can be significant.',
+      },
+      {
+        q: 'Can I go solar if I am renting my home?',
+        a: 'The subsidy and net metering agreement require property ownership. However, with your landlord\'s written consent, a solar system can be installed on a rental property — ownership of the system and any subsidy would typically belong to the property owner. Some landlords are increasingly open to solar because it increases property value. If you are a tenant interested in solar, speak to your landlord about a shared arrangement.',
+      },
+      {
+        q: 'What is the India-Pakistan situation\'s effect on electricity supply and solar in Kerala?',
+        a: 'Geopolitical tensions in the region have historically had limited direct impact on Kerala\'s electricity supply, which draws primarily from KSEB\'s hydro and solar assets plus interstate power purchase agreements. However, broader national energy security concerns — including reducing dependence on imported fuels — have accelerated India\'s domestic solar push, which directly benefits Kerala consumers through better subsidies, more domestic panel supply, and continued government focus on rooftop solar adoption.',
+      },
+    ],
+  },
+];
+---
+<Layout lang="ml" title="സോളാർ ചോദ്യോത്തരങ്ങൾ കേരളം | റയെന്ന എനർജി" description="കേരളത്തിലെ സോളാർ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്, ഇൻസ്റ്റാളേഷൻ, പരിപാലനം.">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <img src={`${base}/media/federico-beccari-ahi73ZN5P0Y-unsplash.jpg`} alt="Rayenna Solar FAQ" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">അറിവ് ബേസ്</p>
+      <h1 class="page-hero__title">കേരള വീടുകൾക്കുള്ള<br />സോളാർ ചോദ്യോത്തരങ്ങൾ</h1>
+      <p class="page-hero__sub">സോളാറിലേക്ക് മാറുന്നതിനെക്കുറിച്ചുള്ള എല്ലാ ചോദ്യങ്ങൾക്കും വ്യക്തമായ ഉത്തരങ്ങൾ.</p>
+      <p class="page-hero__count">6 വിഷയങ്ങളിൽ 45 ചോദ്യങ്ങൾ</p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-top: 20px;">
+    <p class="faq-lang-note" style="background:#EEF6FF;border-left:4px solid #3a6ea8;padding:12px 16px;border-radius:8px;font-size:0.9rem;line-height:1.6;">
+      <strong>ശ്രദ്ധിക്കുക:</strong> ചോദ്യോത്തര ഉത്തരങ്ങളുടെ വിശദാംശങ്ങൾ ഇപ്പോൾ ഇംഗ്ലീഷിലാണ്. മലയാളം പതിപ്പ് ഉടൻ ചേർക്കും.
+    </p>
+  </div>
+
+  <!-- ===== SEARCH + CATEGORY NAV ===== -->
+  <div class="faq-nav-wrap" id="faq-nav-wrap">
+    <!-- Search row -->
+    <div class="faq-search-row">
+      <div class="container faq-search-inner">
+        <div class="faq-search-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="faq-search" placeholder="ചോദ്യം തിരയുക…" autocomplete="off" aria-label="ചോദ്യോത്തരങ്ങൾ തിരയുക" />
+          <button class="faq-search-clear" id="faq-search-clear" aria-label="Clear">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <p class="faq-search-hint" id="faq-search-hint">6 വിഷയങ്ങളിൽ 45 ചോദ്യങ്ങൾ</p>
+      </div>
+    </div>
+
+    <!-- Category pills -->
+    <nav class="cat-nav" aria-label="FAQ categories">
+      <div class="container">
+        <div class="cat-nav__inner" id="cat-nav-inner">
+          <button class="cat-pill cat-pill--active" data-filter="all">എല്ലാം</button>
+          {categories.map(c => (
+            <button class="cat-pill" data-filter={c.id}>
+              <span class="cat-pill__emoji">{c.emoji}</span>
+              <span>{c.label}</span>
+              <span class="cat-pill__count">{c.count}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ===== FAQ BODY ===== -->
+  <div class="faq-body" id="faq-body">
+
+    <div class="no-results" id="no-results" style="display:none">
+      <div class="no-results__icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <p>No questions match your search.</p>
+      <button id="clear-search-btn" class="btn btn-primary" style="margin-top:20px;padding:10px 28px;font-size:0.88rem;">Clear Search</button>
+    </div>
+
+    {categories.map((cat, ci) => (
+      <section class="faq-category" id={`cat-${cat.id}`} data-category={cat.id}>
+        <div class="container">
+          <div class="faq-category__header">
+            <span class="section-tag">{cat.emoji} {cat.label}</span>
+          </div>
+
+          <div class="accordion" data-cat={cat.id}>
+            {cat.faqs.map((faq, fi) => (
+              <div class="accordion-item" data-question={faq.q.toLowerCase()}>
+                <button class="accordion-trigger" aria-expanded="false">
+                  <span class="accordion-num">0{fi + 1}</span>
+                  <span class="accordion-q">{faq.q}</span>
+                  <span class="accordion-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-panel">
+                  <div class="accordion-panel__body">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- ===== SUBSIDY HIGHLIGHT ===== -->
+  <section class="subsidy-section">
+    <div class="container subsidy-inner">
+      <div class="subsidy-img-col">
+        <img
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80&auto=format&fit=crop"
+          alt="Solar panels on a home rooftop"
+          class="subsidy-photo"
+          loading="lazy"
+        />
+        <div class="subsidy-badge">
+          <strong>₹78,000</strong>
+          <span>Max Subsidy Available</span>
+        </div>
+      </div>
+      <div class="subsidy-content-col">
+        <span class="section-tag">PM Surya Ghar Scheme</span>
+        <h2 class="section-title">Don't miss out on <span>₹78,000</span> in government subsidies</h2>
+        <p class="subsidy-desc">The PM Surya Ghar: Muft Bijli Yojana is available exclusively through MNRE-empanelled installers. As a certified channel partner, Rayenna Energy handles the entire subsidy process on your behalf — documentation, portal submission, KSEB approvals, and bank credit — at no extra cost to you.</p>
+        <ul class="subsidy-points">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Up to ₹78,000 credited directly to your bank
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Available only via MNRE-approved vendors like Rayenna
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Credited within 30 working days of commissioning
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            We manage all paperwork — you just say yes
+          </li>
+        </ul>
+        <a href={`${mlPrefix}/contact`} class="btn btn-primary">Check My Eligibility</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WARRANTY STRIP ===== -->
+  <section class="warranty-strip">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Peace of Mind</span>
+        <h2 class="section-title text-center">Everything comes with a warranty</h2>
+      </div>
+      <div class="warranty-cards">
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <strong>25 Years</strong>
+          <p>Panel performance warranty — guaranteed at 85%+ output</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          </div>
+          <strong>5–10 Years</strong>
+          <p>Inverter warranty covering all major brands we install</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <strong>5 Years</strong>
+          <p>Workmanship warranty on installation quality and roof sealing</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CALCULATOR CTA ===== -->
+  <section style="padding: 0 0 8px; background: var(--color-light)">
+    <div class="container">
+      <div class="calc-cta-card">
+        <p class="calc-cta-card__heading">☀️ See your solar savings</p>
+        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
+        <a href={`${mlPrefix}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="faq-cta">
+    <img src={`${base}/media/glass-BG.webp`} alt="" class="faq-cta__bg" />
+    <div class="faq-cta__overlay"></div>
+    <div class="container faq-cta__inner">
+      <h2 class="faq-cta__title">ഇനിയും ചോദ്യങ്ങളുണ്ടോ?</h2>
+      <p class="faq-cta__sub">Our solar experts are just a call or message away. Free consultations, honest answers, no pressure.</p>
+      <div class="faq-cta__actions">
+        <a href={`${mlPrefix}/contact`} class="btn btn-primary">Talk to an Expert</a>
+        <a href="tel:+917907369304" class="faq-cta__call">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 7907 369 304
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ============================
+   FAQ Page — Mobile First
+   Aligned with About / Services / Contact
+   ============================ */
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 50, 0.88) 0%,
+    rgba(10, 25, 50, 0.45) 50%,
+    rgba(10, 25, 50, 0.15) 100%
+  );
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 88px;
+}
+.page-hero__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.page-hero__sub {
+  font-size: clamp(0.92rem, 2vw, 1rem);
+  color: rgba(255,255,255,0.70);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.page-hero__count {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 99px;
+  padding: 5px 14px;
+}
+
+/* ===== SEARCH + NAV WRAPPER ===== */
+.faq-nav-wrap {
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 64px;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+/* Search row */
+.faq-search-row {
+  border-bottom: 1px solid var(--color-border);
+  padding: 14px 0;
+}
+.faq-search-row .container {
+  padding: var(--container-pad);
+}
+.faq-search-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.faq-search-field {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-light);
+  border: 2px solid var(--color-border);
+  border-radius: 99px;
+  padding: 9px 16px;
+  transition: border-color 0.2s;
+}
+.faq-search-field:focus-within {
+  border-color: var(--color-primary);
+  background: #fff;
+}
+.faq-search-field svg { color: var(--color-text-muted); flex-shrink: 0; }
+.faq-search-field input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  width: 100%;
+}
+.faq-search-field input::placeholder { color: var(--color-text-muted); }
+.faq-search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: none;
+  padding: 2px;
+  flex-shrink: 0;
+}
+.faq-search-clear.visible { display: flex; }
+.faq-search-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Category pills */
+.cat-nav { overflow: hidden; }
+.cat-nav__inner {
+  display: flex;
+  gap: 4px;
+  padding: 10px 24px 10px 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* Ensure last pill is never clipped */
+  -webkit-overflow-scrolling: touch;
+}
+.cat-nav__inner::-webkit-scrollbar { display: none; }
+/* Remove the container's side padding so pills scroll edge-to-edge */
+.cat-nav .container {
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background: var(--color-light);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cat-pill:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.cat-pill--active {
+  background: var(--color-primary);
+  color: #fff;
+}
+.cat-pill__emoji { font-size: 0.85rem; }
+.cat-pill__count {
+  background: rgba(0,0,0,0.12);
+  border-radius: 99px;
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  font-weight: 700;
+}
+.cat-pill--active .cat-pill__count { background: rgba(255,255,255,0.25); }
+
+/* ===== FAQ BODY ===== */
+.faq-body { background: var(--color-light); }
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px;
+  color: var(--color-text-muted);
+  gap: 10px;
+  text-align: center;
+}
+.no-results__icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Category section */
+.faq-category { padding: 52px 0 0; }
+.faq-category:last-child { padding-bottom: 56px; }
+.faq-category__header { margin-bottom: 24px; }
+
+/* ===== ACCORDION ===== */
+.accordion { display: flex; flex-direction: column; gap: 8px; }
+
+.accordion-item {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.accordion-item:hover { box-shadow: var(--shadow-sm); }
+.accordion-item.is-open {
+  border-color: rgba(168,56,56,0.3);
+  box-shadow: var(--shadow-md);
+}
+.accordion-item--hidden { display: none; }
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.accordion-num {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.55;
+  flex-shrink: 0;
+  margin-top: 3px;
+  min-width: 18px;
+}
+.accordion-q {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.accordion-item.is-open .accordion-q { color: var(--color-primary); }
+.accordion-icon {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  transition: transform 0.3s ease, color 0.2s;
+}
+.accordion-item.is-open .accordion-icon {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-panel__body {
+  padding: 0 22px 22px calc(22px + 14px + 18px);
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
+}
+.accordion-panel__body p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+
+/* ===== SUBSIDY SECTION ===== */
+.subsidy-section {
+  padding: var(--section-padding);
+  background: #fff;
+}
+.subsidy-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.subsidy-img-col {
+  position: relative;
+}
+.subsidy-photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.subsidy-badge {
+  position: absolute;
+  bottom: -18px;
+  right: 20px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(168,56,56,0.4);
+}
+.subsidy-badge strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.subsidy-badge span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+.subsidy-content-col { padding-top: 24px; }
+.subsidy-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+.subsidy-points {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 32px;
+}
+.subsidy-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.subsidy-points li svg { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+
+/* ===== WARRANTY STRIP ===== */
+.warranty-strip {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.section-header-center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.warranty-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.warranty-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--color-primary);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.warranty-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.warranty-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.warranty-card strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+.warranty-card p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ===== CTA ===== */
+.faq-cta {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.faq-cta__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.faq-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 40, 0.87);
+  z-index: 1;
+}
+.faq-cta__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 64px 24px;
+}
+.faq-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.faq-cta__sub {
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+.faq-cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.faq-cta__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.faq-cta__call:hover { color: #fff; }
+
+/* ===========================
+   Breakpoints
+   =========================== */
+@media (min-width: 600px) {
+  .faq-search-hint { display: block; }
+}
+
+@media (min-width: 640px) {
+  .faq-cta__actions { flex-direction: row; justify-content: center; }
+  .warranty-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .subsidy-inner { grid-template-columns: 1fr 1fr; gap: 72px; }
+  .subsidy-content-col { padding-top: 0; }
+  .subsidy-photo { height: 420px; }
+  .accordion-q { font-size: 1rem; }
+}
+</style>
+
+<script>
+  // ===== ACCORDION =====
+  document.querySelectorAll<HTMLElement>('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item   = trigger.closest<HTMLElement>('.accordion-item')!;
+      const panel  = item.querySelector<HTMLElement>('.accordion-panel')!;
+      const isOpen = item.classList.contains('is-open');
+
+      // Close siblings
+      item.closest<HTMLElement>('.accordion')!
+        .querySelectorAll<HTMLElement>('.accordion-item.is-open')
+        .forEach(open => {
+          if (open !== item) {
+            open.classList.remove('is-open');
+            open.querySelector<HTMLElement>('.accordion-panel')!.style.maxHeight = '0';
+            open.querySelector<HTMLButtonElement>('.accordion-trigger')!.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        panel.style.maxHeight = '0';
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ===== SEARCH =====
+  const searchInput = document.getElementById('faq-search') as HTMLInputElement;
+  const searchClear = document.getElementById('faq-search-clear') as HTMLButtonElement;
+  const noResults   = document.getElementById('no-results') as HTMLElement;
+  const searchHint  = document.getElementById('faq-search-hint') as HTMLElement;
+  const allItems    = Array.from(document.querySelectorAll<HTMLElement>('.accordion-item'));
+  const allCats     = Array.from(document.querySelectorAll<HTMLElement>('.faq-category'));
+
+  function runSearch(q: string) {
+    const term = q.toLowerCase().trim();
+    searchClear.classList.toggle('visible', term.length > 0);
+
+    if (!term) {
+      allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
+      allCats.forEach(c => (c.style.display = ''));
+      noResults.style.display = 'none';
+      searchHint.textContent = '45 questions across 6 topics';
+      return;
+    }
+
+    let visible = 0;
+    allItems.forEach(item => {
+      const q2 = item.dataset.question || '';
+      const a  = item.querySelector('.accordion-panel__body p')?.textContent?.toLowerCase() || '';
+      const ok = q2.includes(term) || a.includes(term);
+      item.classList.toggle('accordion-item--hidden', !ok);
+      if (ok) visible++;
+    });
+
+    allCats.forEach(cat => {
+      cat.style.display = cat.querySelectorAll('.accordion-item:not(.accordion-item--hidden)').length > 0 ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'flex' : 'none';
+    searchHint.textContent  = visible > 0 ? `${visible} result${visible !== 1 ? 's' : ''} found` : 'No results';
+  }
+
+  searchInput.addEventListener('input', e => runSearch((e.target as HTMLInputElement).value));
+
+  function clearSearch() { searchInput.value = ''; runSearch(''); searchInput.focus(); }
+  searchClear.addEventListener('click', clearSearch);
+  document.getElementById('clear-search-btn')?.addEventListener('click', clearSearch);
+
+  // ===== CATEGORY PILLS =====
+  const pills = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-pill'));
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('cat-pill--active'));
+      pill.classList.add('cat-pill--active');
+      searchInput.value = '';
+      runSearch('');
+
+      const filter = pill.dataset.filter;
+      allCats.forEach(cat => {
+        cat.style.display = filter === 'all' || cat.dataset.category === filter ? '' : 'none';
+      });
+
+      if (filter !== 'all') {
+        const target = document.getElementById(`cat-${filter}`);
+        if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 160, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Auto-highlight active pill while scrolling
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = (e.target as HTMLElement).dataset.category;
+        pills.forEach(p => p.classList.remove('cat-pill--active'));
+        (pills.find(p => p.dataset.filter === id) || pills[0]).classList.add('cat-pill--active');
+      }
+    });
+  }, { rootMargin: '-130px 0px -60% 0px' });
+  allCats.forEach(c => io.observe(c));
+</script>

@@ -4,4 +4,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rayennaenergy.com',
   integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ml'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

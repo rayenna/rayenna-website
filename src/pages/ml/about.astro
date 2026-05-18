@@ -1,0 +1,544 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mlPrefix = '/ml';
+---
+<Layout lang="ml" title="ഞങ്ങളെക്കുറിച്ച് | റയെന്ന എനർജി" description="വ്യറ്റിലയിലെ MNRE അംഗീകൃത സോളാർ കമ്പനി. കേരളമെമ്പാടും വീട്ടുപയോഗ, കമർഷ്യൽ ഇൻസ്റ്റാളേഷൻ. PM സൂര്യ ഘർ സബ്സിഡി സഹായം.">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <img src={`${base}/media/hero-copy.jpg`} alt="Rayenna Energy solar installation" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">ഉത്തരവിത്തമുള്ള ഊർജ്ജ കമ്പനി</p>
+      <h1 class="page-hero__title">കേരളത്തിന്റെ വിശ്വസ്ത<br />സോളാർ കമ്പനി</h1>
+      <p class="page-hero__sub">ഒരു റൂഫ് ടോപ്പ് വേളയിൽ — കേരളത്തിന്റെ ഊർജ്ജ ഉപയോഗം മാറ്റുന്നു.</p>
+    </div>
+  </section>
+
+  <!-- ===== WHO WE ARE ===== -->
+  <section class="intro-section">
+    <div class="container intro-section__inner">
+      <div class="intro-section__image">
+        <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="Rayenna installation team at work" />
+      </div>
+      <div class="intro-section__content">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">Innovating Solar Energy for a Greener Tomorrow</h2>
+        <p>Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
+        <p>Going solar is about more than simply saving money on electricity bills; it's about making the earth a better place for future generations. The knowledge and experience of our leadership team are not only a benefit to Rayenna Energy but also the cornerstone upon which we establish our standing as a reliable supplier of solar energy solutions.</p>
+        <div class="intro-badges">
+          <div class="intro-badge">
+            <strong>MNRE</strong>
+            <span>Approved Channel Partner</span>
+          </div>
+          <div class="intro-badge">
+            <strong>Govt. of India</strong>
+            <span>Certified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR MISSION ===== -->
+  <section class="mission-section">
+    <div class="container mission-section__inner">
+      <div class="mission-section__content">
+        <span class="section-tag">Our Mission</span>
+        <h2 class="section-title">Making Solar Reliable, Affordable, and Accessible for All</h2>
+        <p>Our goal at Rayenna is to contribute to a better, more sustainable future by making solar energy reliable and affordable for everyone. We are committed to offering innovative energy solutions that satisfy our clients' particular requirements while keeping an eye on sustainability.</p>
+        <p>At every stage, we guarantee transparency, quality, and efficiency since customer satisfaction is the driving force behind everything we do. We provide systems that operate at their best under a variety of circumstances by utilising premium materials and advanced technology.</p>
+      </div>
+      <div class="mission-pillars">
+        {[
+          { icon: '⚡', title: 'Quality First', text: 'Only the best-grade components make it into a Rayenna installation.' },
+          { icon: '🌿', title: 'Sustainability', text: 'Every system we deploy reduces your carbon footprint measurably.' },
+          { icon: '🔍', title: 'Transparency', text: 'Clear communication and real-time monitoring at every step.' },
+          { icon: '🤝', title: 'Customer First', text: 'Your satisfaction drives every decision we make.' },
+        ].map(p => (
+          <div class="mission-pillar">
+            <div class="mission-pillar__icon">{p.icon}</div>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEADERSHIP ===== -->
+  <section class="leadership-section">
+    <div class="container">
+      <div class="leadership-header">
+        <span class="section-tag">Our Founders</span>
+        <h2 class="section-title">Expertise of Leadership</h2>
+        <p class="leadership-intro">Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our three co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
+      </div>
+
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <div class="leader-card__photo">
+            <img src={`${base}/media/ganesh-venkitachalam.jpg`} alt="Ganesh Venkitachalam" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
+              <h3 class="leader-card__name">Ganesh Venkitachalam</h3>
+              <span class="leader-role">Managing Director &amp; Co-Founder</span>
+            </div>
+            <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
+          </div>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-card__photo">
+            <img src={`${base}/media/anish-samad.jpg`} alt="Anish Samad" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
+              <h3 class="leader-card__name">Anish Samad</h3>
+              <span class="leader-role">Director &amp; Co-Founder</span>
+            </div>
+            <p class="leader-card__bio">A 29-year energy veteran who built his career across leading companies before founding ABRA ALARAB Petroleum Trading LLC in Dubai. He commands deep supply chain expertise and a vast network spanning the Middle East, Africa, and Asia.</p>
+          </div>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-card__photo">
+            <img src={`${base}/media/arun-balakrishnan.jpg`} alt="Capt. Arun Balakrishnan" />
+          </div>
+          <div class="leader-card__body">
+            <div class="leader-card__identity">
+              <h3 class="leader-card__name">Capt. Arun Balakrishnan</h3>
+              <span class="leader-role">Director &amp; Co-Founder</span>
+            </div>
+            <p class="leader-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE SKILLED HANDS ===== -->
+  <section class="skilled-section">
+    <div class="container skilled-section__inner">
+      <div class="skilled-section__content">
+        <span class="section-tag">Our Team</span>
+        <h2 class="section-title">The Skilled Hands Behind Every Installation</h2>
+        <p>Rayenna Energy is strong because of our committed group of engineers, technicians, and customer service representatives, all of whom are essential in leading us to the forefront. Our experts, highly skilled in technical areas and project management, ensure the design and implementation of systems that meet industry requirements for energy generation.</p>
+        <p>Our team's dedication to ongoing education and training helps them stay ahead of industry developments, enhancing Rayenna's standing as a leader in solar solutions.</p>
+      </div>
+      <div class="skilled-section__image">
+        <img src={`${base}/media/Drilling-solar.webp`} alt="Rayenna engineers installing solar panels" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR PROMISE ===== -->
+  <section class="promise-section">
+    <div class="container promise-section__inner">
+      <div class="promise-section__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="Rayenna solar planning" />
+      </div>
+      <div class="promise-section__content">
+        <span class="section-tag">Our Promise</span>
+        <h2 class="section-title">Our Promise to You</h2>
+        <p>Rayenna is guided by core values that shape our approach to the industry. We have a strong commitment to sustainability and understand that providing energy solutions also entails protecting the environment. Our process-oriented approach stimulates innovation, enabling us to create ground-breaking solutions that meet our clients' changing needs.</p>
+        <p>At Rayenna, switching to solar power is a significant choice — so we place a high value on openness and communication at every stage. We source only the best materials to ensure durability and effectiveness, and our systems are engineered to operate efficiently in a variety of environments, irrespective of location.</p>
+        <div class="promise-cta">
+          <a href={`${mlPrefix}/contact`} class="btn btn-primary">Get in Touch</a>
+          <a href={`${mlPrefix}/services`} class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ===========================
+   About Page — Mobile First
+   =========================== */
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 50, 0.88) 0%,
+    rgba(10, 25, 50, 0.55) 50%,
+    rgba(10, 25, 50, 0.25) 100%
+  );
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 88px;
+}
+.page-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 10px;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.page-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ===== WHO WE ARE ===== */
+.intro-section {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.intro-section__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.intro-section__image {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.intro-section__image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.intro-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.intro-section__content .section-title { margin-bottom: 20px; }
+.intro-badges {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.intro-badge {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-light);
+  border-left: 3px solid var(--color-primary);
+  padding: 12px 18px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.intro-badge strong {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}
+.intro-badge span {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ===== MISSION ===== */
+.mission-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.mission-section__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.mission-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.mission-section__content .section-title { margin-bottom: 20px; }
+.mission-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.mission-pillar {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.mission-pillar__icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.mission-pillar h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+.mission-pillar p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ===== LEADERSHIP ===== */
+.leadership-section {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.leadership-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.leadership-header .section-tag { margin-bottom: 12px; }
+.leadership-header .section-title { margin-bottom: 16px; }
+.leadership-intro {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  max-width: 660px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+/* Mobile: single-column, vertical card — photo on top */
+.leaders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.leader-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.leader-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Photo: fixed height, no stretch tricks */
+.leader-card__photo {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  background: #f8f9fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leader-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.leader-card:hover .leader-card__photo img {
+  transform: scale(1.03);
+}
+
+/* Bottom accent bar under photo */
+.leader-card__photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-secondary);
+  transition: background var(--transition);
+}
+.leader-card:hover .leader-card__photo::after {
+  background: var(--color-primary);
+}
+
+.leader-card__body {
+  flex: 1;
+  min-width: 0;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.leader-card__identity {
+  margin-bottom: 14px;
+}
+.leader-card__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.leader-role {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.leader-card__bio {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+}
+
+/* ===== SKILLED HANDS ===== */
+.skilled-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.skilled-section__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.skilled-section__image img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+.skilled-section__content .section-title { margin-bottom: 20px; }
+.skilled-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* ===== OUR PROMISE ===== */
+.promise-section {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.promise-section__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.promise-section__image img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+.promise-section__content .section-title { margin-bottom: 20px; }
+.promise-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.promise-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* ===========================
+   Breakpoints — tablet+
+   =========================== */
+@media (min-width: 640px) {
+  .mission-pillars { grid-template-columns: 1fr 1fr; }
+  /* Tablet: 2 columns, third card centered */
+  .leaders-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .leaders-grid .leader-card:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 12px);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .intro-section__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+  }
+  .intro-section__image img { height: 480px; }
+
+  .mission-section__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  /* Desktop: 3-column equal layout */
+  .leaders-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+  .leaders-grid .leader-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .leader-card__photo { height: 280px; }
+  .leader-card__body { padding: 24px 22px; }
+  .leader-card__name { font-size: 1.1rem; }
+
+  .skilled-section__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+  }
+  .skilled-section__image { order: 1; }
+
+  .promise-section__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+  }
+}
+</style>

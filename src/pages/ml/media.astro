@@ -1,0 +1,1411 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mlPrefix = '/ml';
+
+function videoUrl(file: string): string {
+  return `${base}/media/${file.split('/').map((p) => encodeURIComponent(p)).join('/')}`;
+}
+
+function categoryLabel(cat: string): string {
+  const labels: Record<string, string> = {
+    customer:  'Customer Stories',
+    promo:     'Why Solar?',
+    brand:     'Brand & Vision',
+    solutions: 'Solutions',
+    expert:    'Expert Insights',
+  };
+  return labels[cat] ?? cat;
+}
+
+const videos = [
+  { title: 'Sudheer — Njarakkal Installation',              category: 'customer',  file: 'references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4',                     thumb: 'thumbs/customer--sudheer.jpg' },
+  { title: '5 Reasons to Switch to Solar',                  category: 'promo',     file: 'rayenna videos/5 Reasons to switch to Solar.mp4',                                    thumb: 'thumbs/promo--5-reasons.jpg' },
+  { title: 'Avail Mindblowing Subsidies with Solar',        category: 'promo',     file: 'rayenna videos/Avail Mindblowing Subsidies with Solar Installation from Rayenna.mp4', thumb: 'thumbs/promo--subsidies.jpg' },
+  { title: 'Avoid Bill Shocks with Rayenna Solar',          category: 'promo',     file: 'rayenna videos/Avoid Bill Shocks with Rayenna Solar.mp4',                             thumb: 'thumbs/promo--avoid-bill-shocks.jpg' },
+  { title: 'Beat the High Power Bills',                     category: 'promo',     file: 'rayenna videos/Beat the High Power Bills with Rayenna Solar Solutions.mp4',           thumb: 'thumbs/promo--beat-high-bills.jpg' },
+  { title: 'Help Before These Bills Consume Me',            category: 'promo',     file: 'rayenna videos/Help Before these Bills consume me.mp4',                               thumb: 'thumbs/promo--help-bills.jpg' },
+  { title: 'Let the Sun Fuel Your Life',                    category: 'promo',     file: 'rayenna videos/Let the Sun Fuel your life and not your Bills.mp4',                    thumb: 'thumbs/promo--sun-fuel.jpg' },
+  { title: 'Rayenna to the Rescue — Bill Shocks',           category: 'promo',     file: 'rayenna videos/Rayenna to the Rescue from Bill Shocks.mp4',                          thumb: 'thumbs/promo--rescue-bill-shocks.jpg' },
+  { title: 'Rayenna to the Rescue — Rising Power Bills',    category: 'promo',     file: 'rayenna videos/Rayenna to the rescue against rising Power BIlls.mp4',                thumb: 'thumbs/promo--rescue-rising-bills.jpg' },
+  { title: 'Why Pay More When the Sun Is Free?',            category: 'promo',     file: 'rayenna videos/Why Pay More when the Sun if FREE.mp4',                                thumb: 'thumbs/promo--why-pay-more.jpg' },
+  { title: "Connecting You to Earth's Purest Energy",       category: 'brand',     file: "rayenna videos/Connecting you to Earth's Purest Energy.mp4",                         thumb: 'thumbs/brand--connecting.jpg' },
+  { title: 'From Daylight to Delight',                      category: 'brand',     file: 'rayenna videos/From Daylight to Delight.mp4',                                         thumb: 'thumbs/brand--daylight.jpg' },
+  { title: 'Rayenna Engagement Model',                      category: 'brand',     file: 'rayenna videos/Rayenna Engagement Model.mp4',                                          thumb: 'thumbs/brand--engagement.jpg' },
+  { title: 'Solar — Conquering the World Like Lokah',       category: 'brand',     file: 'rayenna videos/Solar - Conquering the World like Lokah.mp4',                         thumb: 'thumbs/brand--lokah.jpg' },
+  { title: 'Energy Solutions for Commercial Enterprises',   category: 'solutions', file: 'rayenna videos/Rayenna Energy Solutions for Commerical Enterprises.mp4',             thumb: 'thumbs/solutions--commercial.jpg' },
+  { title: 'Solar Solutions for EV Owners',                 category: 'solutions', file: 'rayenna videos/Rayenna Solar Solutions for EV Owners.mp4',                           thumb: 'thumbs/solutions--ev.jpg' },
+  { title: 'Talk to Mathew — Our Technical Manager',        category: 'expert',    file: 'rayenna videos/Talk to Mathew - Our technical Manager on Solar Intallation.mp4',     thumb: 'thumbs/expert--mathew-talk.jpg' },
+  { title: 'Types of Panels Available — Mathew Explains',   category: 'expert',    file: 'rayenna videos/Types of Panels Available - Mathew brings clarity to it.mp4',         thumb: 'thumbs/expert--mathew-panels.jpg' },
+  { title: 'When Does a Hybrid System Become Feasible?',    category: 'expert',    file: 'rayenna videos/When does Hybrid Systems become feasible - Mathew clarifies.mp4',     thumb: 'thumbs/expert--mathew-hybrid.jpg' },
+];
+
+const installations = [
+  { name: 'Abdul Kalam',       location: 'Varkala',       capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'ABDUL-KALAM-VARKALA-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Abdul Rahim',       location: 'Edathala',      capacity: '5 kW',  inverter: 'Solaire',     panels: 'Adani',  img: 'ABDUL-RAHIMEDATHALA5KW-SOLAIRE-INVERTER-PANELS-ADANI-1.jpeg' },
+  { name: 'Angelo Thomas',     location: 'Edapally',      capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
+  { name: 'Anathasia',         location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'ANATHASIA-VARAPUZHA3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Arun',              location: 'Kollam',        capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
+  { name: 'Aysha George',      location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'AYSHA-GEORGE-RAVIPURAM-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Babu',              location: 'North Paravur', capacity: '5 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'BABU-NORTH-PARAVUR-5KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
+  { name: 'Balu',              location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'BALU-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Byju George',       location: 'Thevara',       capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
+  { name: 'Francis',           location: 'Palluruthy',    capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'FRANCISPALLURUTHY5KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Haridas',           location: 'Karimughal',    capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'HARIDAS-KARIMUGHAL-5KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Hyder',             location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
+  { name: 'Jelees',            location: 'Mahe',          capacity: '5 kW',  inverter: 'Feston',      panels: 'Waaree', img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
+  { name: 'Joby',              location: 'Chalakudy',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JOBYCHALAKUDY3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Joseph K.V.',       location: 'Vennala',       capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'JOSEPH-KV-VENNALA-5KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Koya',              location: 'Nilambur',      capacity: '3 kW',  inverter: 'Solis',       panels: 'Renew',  img: 'KOYA-NILAMBUR-3KW-SOLIS-INVERTER-PANELS-RENEW.png' },
+  { name: 'Manoj Kumar',       location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'MANOJ-KUMAR-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Mariamma',          location: 'Kollam',        capacity: '5 kW',  inverter: 'Deye Hybrid', panels: 'Adani',  img: 'MARIAMMA-KOLLAM-5KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.png' },
+  { name: 'Mary',              location: 'Fort Kochi',    capacity: '3 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'MARY-FORT-KOCHI-3KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
+  { name: 'Misha Lal',         location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'MISHA-LAL-PALLURUTHY-3KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
+  { name: 'Nidhin',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'NIDHIN-NORTH-PARAVUR-3KW-DEYE-INVERTER-PANELS-ADANI.png' },
+  { name: 'Padmaja',           location: 'Ezhikkara',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'PADMAJA-EZHIKKARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Prasad',            location: 'Chottanikkara', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'PRASAD-CHOTTANIKKARA-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Pushkaran',         location: 'Eroor',         capacity: '4 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'PUSHKARAN-EROOR-4KW-DEYE-INVERTER-PANELS-ADANI.png' },
+  { name: 'Ragin',             location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'RAGIN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Reetha',            location: 'Mundamveli',    capacity: '3 kW',  inverter: 'Selec',       panels: 'Adani',  img: 'REETHA-MUNDAMVELI-3KW-SELEC-INVERTER-PANELS-ADANI.png' },
+  { name: 'Rosa',              location: 'Vyttila',       capacity: '15 kW', inverter: 'Solaire',     panels: 'Waaree', img: 'ROSAVYTTILA15KW-SOLAIRE-INVERTER-PANELS-WAAREE-1.jpeg' },
+  { name: 'Rupesh',            location: 'Calicut',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'RUPESHCALICUT3KW-DEYE-INVERTER-PANELS-ADANI-edited.jpeg' },
+  { name: 'Sabu',              location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye Hybrid', panels: 'Adani',  img: 'SABU-VARAPUZHA-3KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.png' },
+  { name: 'Sajiv Kumar',       location: 'Vennala',       capacity: '5 kW',  inverter: 'Havells',     panels: 'Emmvee', img: 'SAJIVKUMARVENNALA5KW-HAVELLS-INVERTER-PANELS-EMMVEE-1.jpeg' },
+  { name: 'Sajan',             location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SAJAN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Santhosh Kumar B.', location: 'Kallara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SANTHOSH-KUMAR-B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.png' },
+  { name: 'Saphiya',           location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
+  { name: 'Sasidharan',        location: 'Eroor',         capacity: '3 kW',  inverter: 'Sunways',     panels: 'Adani',  img: 'SASIDHARAN-EROOR-3KW-SUNWAYS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Shamna',            location: 'Kollam',        capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SHAMNA-KOLLAM-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Thomas Varghese',   location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Havells',     panels: 'Adani',  img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Vanaja',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Vijith Kumar',      location: 'Vazhakkala',    capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VIJITH-KUMAR-VAZHAKKALA-5KW-DEYE-INVERTER-PANELS-ADANI.png' },
+  { name: 'Vinish',            location: 'Koonammavu',    capacity: '4 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VINISH-KOONAMMAVU-4KW-DEYE-INVERTER-PANELS-ADANI.png' },
+  { name: 'Vishnu T.V.',       location: 'Mulanthuruthy', capacity: '5 kW',  inverter: 'Growatt',     panels: 'Adani',  img: 'VISHNU-TVMULANTHURUTHY5KW-GROWATT-INVERTERPANELS-ADANI.jpeg' },
+];
+
+const allSlides = [
+  { img: 'Gemini_Generated_Image_14u7k214u7k214u7-edited.png',          caption: 'Solar Excellence',         sub: 'Rayenna Energy' },
+  { img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg', caption: 'Byju George — Thevara',    sub: '10 kW · Solis Inverter · Waaree Panels' },
+  { img: 'Gemini_Generated_Image_jhdbl7jhdbl7jhdb-edited.png',          caption: 'Clean Energy. Bright Homes.', sub: 'Rayenna Energy' },
+  { img: 'ROSAVYTTILA15KW-SOLAIRE-INVERTER-PANELS-WAAREE-1.jpeg',       caption: 'Rosa — Vyttila',           sub: '15 kW · Solaire Inverter · Waaree Panels' },
+  { img: 'Gemini_Generated_Image_14u7k214u7k214u7-1.png',               caption: 'Powering Kerala Forward',  sub: 'Rayenna Energy' },
+  { img: 'SAJIVKUMARVENNALA5KW-HAVELLS-INVERTER-PANELS-EMMVEE-1.jpeg',  caption: 'Sajiv Kumar — Vennala',    sub: '5 kW · Havells Inverter · Emmvee Panels' },
+  { img: 'Gemini_Generated_Image_jhdbl7jhdbl7jhdb.png',                 caption: 'Built to Last. Built to Save.', sub: 'Rayenna Energy' },
+  { img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg',      caption: 'Saphiya — Edapally',       sub: '5 kW · Solis Inverter · Waaree Panels' },
+  { img: 'RUPESHCALICUT3KW-DEYE-INVERTER-PANELS-ADANI-edited.jpeg',     caption: 'Rupesh — Calicut',         sub: '3 kW · Deye Inverter · Adani Panels' },
+  { img: 'VISHNU-TVMULANTHURUTHY5KW-GROWATT-INVERTERPANELS-ADANI.jpeg', caption: 'Vishnu T.V. — Mulanthuruthy', sub: '5 kW · Growatt Inverter · Adani Panels' },
+  { img: 'ANATHASIA-VARAPUZHA3KW-DEYE-INVERTER-PANELS-ADANI.jpeg',                   caption: 'Anathasia — Varapuzha',      sub: '3 kW · Deye Inverter · Adani Panels' },
+  { img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg',                        caption: 'Arun — Kollam',              sub: '5 kW · Solis Inverter · Waaree Panels' },
+  { img: 'SHAMNA-KOLLAM-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg',                       caption: 'Shamna — Kollam',            sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png',             caption: 'Angelo Thomas — Edapally',   sub: '10 kW · Solis Inverter · Waaree Panels' },
+  { img: 'ABDUL-KALAM-VARKALA-3KW-SOLIS-INVERTER-PANELS-ADANI.png',                  caption: 'Abdul Kalam — Varkala',      sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'AYSHA-GEORGE-RAVIPURAM-3KW-SOLIS-INVERTER-PANELS-ADANI.png',               caption: 'Aysha George — Ravipuram',   sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'RAGIN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png',                     caption: 'Ragin — Palluruthy',         sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'JOSEPH-KV-VENNALA-5KW-SOLIS-INVERTER-PANELS-ADANI.png',                    caption: 'Joseph K.V. — Vennala',      sub: '5 kW · Solis Inverter · Adani Panels' },
+  { img: 'REETHA-MUNDAMVELI-3KW-SELEC-INVERTER-PANELS-ADANI.png',                    caption: 'Reetha — Mundamveli',        sub: '3 kW · Selec Inverter · Adani Panels' },
+  { img: 'MISHA-LAL-PALLURUTHY-3KW-POLYCAB-INVERTER-PANELS-ADANI.png',               caption: 'Misha Lal — Palluruthy',     sub: '3 kW · Polycab Inverter · Adani Panels' },
+  { img: 'BALU-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png',                   caption: 'Balu — North Paravur',       sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'SAJAN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png',                     caption: 'Sajan — Palluruthy',         sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png',          caption: 'Thomas Varghese — Ravipuram', sub: '3 kW · Havells Inverter · Adani Panels' },
+  { img: 'MANOJ-KUMAR-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png',               caption: 'Manoj Kumar — Palluruthy',   sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png',                 caption: 'Vanaja — North Paravur',     sub: '3 kW · Solis Inverter · Adani Panels' },
+  { img: 'VIJITH-KUMAR-VAZHAKKALA-5KW-DEYE-INVERTER-PANELS-ADANI.png',               caption: 'Vijith Kumar — Vazhakkala',  sub: '5 kW · Deye Inverter · Adani Panels' },
+  { img: 'HARIDAS-KARIMUGHAL-5KW-SOLIS-INVERTER-PANELS-ADANI.png',                   caption: 'Haridas — Karimughal',       sub: '5 kW · Solis Inverter · Adani Panels' },
+  { img: 'SANTHOSH-KUMAR-B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.png',              caption: 'Santhosh Kumar — Kallara',   sub: '3 kW · Deye Inverter · Adani Panels' },
+  { img: 'KOYA-NILAMBUR-3KW-SOLIS-INVERTER-PANELS-RENEW.png',                        caption: 'Koya — Nilambur',            sub: '3 kW · Solis Inverter · Renew Panels' },
+  { img: 'PADMAJA-EZHIKKARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg',                   caption: 'Padmaja — Ezhikkara',        sub: '3 kW · Deye Inverter · Adani Panels' },
+];
+---
+<Layout lang="ml" title="സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി | റയെന്ന എനർജി" description="കേരളമെമ്പാടുമുള്ള പൂർത്തിയാക്കിയ സോളാർ പ്രോജക്റ്റുകൾ — ഫോട്ടോകളും വീഡിയോകളും.">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <img
+      src={`${base}/media/references/Gemini_Generated_Image_14u7k214u7k214u7.png`}
+      alt="Rayenna Energy solar installations"
+      class="page-hero__bg"
+    />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">പോർട്ട്ഫോളിയോ</p>
+      <h1 class="page-hero__title">കേരളമെമ്പാടും<br />സോളാർ ഇൻസ്റ്റാളേഷനുകൾ</h1>
+      <p class="page-hero__sub">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ. യഥാർത്ഥ സമ്പാദ്യം. കേരളത്തിലെ പൂർത്തിയാക്കിയ പ്രോജക്റ്റുകൾ.</p>
+    </div>
+  </section>
+
+
+  <!-- ===== INSTALLATION GALLERY ===== -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">ഇൻസ്റ്റാളേഷൻ ഗാലറി</span>
+        <h2 class="section-title">പൂർത്തിയാക്കിയ പ്രോജക്റ്റുകൾ</h2>
+        <p class="section-intro">ഓരോ പ്രോജക്റ്റും ശുദ്ധമായ കേരളത്തിലേക്കുള്ള ഒരു ചുവട്. ഗുണനിലവാരമുള്ള ഘടകങ്ങളും ശ്രദ്ധയും.</p>
+      </div>
+
+      <!-- ── Filter Bar ── -->
+      <div class="gallery-filters" id="gallery-filters">
+        <div class="gf-group">
+          <span class="gf-label">System Size</span>
+          <div class="gf-pills">
+            <button class="gf-pill gf-pill--active" data-type="cap" data-val="all">All</button>
+            <button class="gf-pill" data-type="cap" data-val="3 kW">3 kW</button>
+            <button class="gf-pill" data-type="cap" data-val="4 kW">4 kW</button>
+            <button class="gf-pill" data-type="cap" data-val="5 kW">5 kW</button>
+            <button class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
+            <button class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
+          </div>
+        </div>
+        <div class="gf-group">
+          <span class="gf-label">Inverter</span>
+          <div class="gf-pills">
+            <button class="gf-pill gf-pill--active" data-type="inv" data-val="all">All</button>
+            <button class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
+            <button class="gf-pill" data-type="inv" data-val="Deye Hybrid">Deye Hybrid</button>
+            <button class="gf-pill" data-type="inv" data-val="Feston">Feston</button>
+            <button class="gf-pill" data-type="inv" data-val="Growatt">Growatt</button>
+            <button class="gf-pill" data-type="inv" data-val="Havells">Havells</button>
+            <button class="gf-pill" data-type="inv" data-val="Polycab">Polycab</button>
+            <button class="gf-pill" data-type="inv" data-val="Selec">Selec</button>
+            <button class="gf-pill" data-type="inv" data-val="Solaire">Solaire</button>
+            <button class="gf-pill" data-type="inv" data-val="Solis">Solis</button>
+            <button class="gf-pill" data-type="inv" data-val="Sunways">Sunways</button>
+          </div>
+        </div>
+        <div class="gf-group">
+          <span class="gf-label">Panels</span>
+          <div class="gf-pills">
+            <button class="gf-pill gf-pill--active" data-type="pan" data-val="all">All</button>
+            <button class="gf-pill" data-type="pan" data-val="Adani">Adani</button>
+            <button class="gf-pill" data-type="pan" data-val="Emmvee">Emmvee</button>
+            <button class="gf-pill" data-type="pan" data-val="Renew">Renew</button>
+            <button class="gf-pill" data-type="pan" data-val="Waaree">Waaree</button>
+          </div>
+        </div>
+        <p class="gf-count" id="gf-count">Showing all {installations.length} installations</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        {installations.map((inst) => (
+          <article class="gallery-card" data-cap={inst.capacity} data-inv={inst.inverter} data-pan={inst.panels}>
+            <div class="gallery-card__img-wrap">
+              <img
+                src={`${base}/media/references/${inst.img}`}
+                alt={`${inst.name} – ${inst.capacity} solar installation in ${inst.location}`}
+                loading="lazy"
+                decoding="async"
+                onload="this.dataset.loaded='1'"
+              />
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__capacity">{inst.capacity}</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <div class="gallery-card__name-row">
+                <h3 class="gallery-card__name">{inst.name}</h3>
+                <span class="gallery-card__location">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {inst.location}
+                </span>
+              </div>
+              <div class="gallery-card__specs">
+                <span class="spec-pill spec-pill--inverter">{inst.inverter} Inverter</span>
+                <span class="spec-pill spec-pill--panels">{inst.panels} Panels</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="gf-empty" id="gf-empty" style="display:none">No installations match the selected filters. <button class="gf-reset-link" id="gf-reset">Reset filters</button></p>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO LIBRARY ===== -->
+  <section class="video-library" id="video-library">
+    <div class="vl-bg-text" aria-hidden="true">FILMS</div>
+    <div class="container">
+
+      <div class="section-header section-header--light">
+        <span class="section-tag section-tag--light">വീഡിയോ ലൈബ്രറി</span>
+        <h2 class="section-title section-title--light">ചലച്ചിത്രങ്ങൾ, കഥകൾ &amp; അറിവ്</h2>
+        <p class="section-intro section-intro--light">Customer installation stories, expert guidance from our team, and brand films — everything Rayenna, in motion.</p>
+      </div>
+
+      <!-- Featured Player -->
+      <div class="vl-featured" id="vl-featured">
+        <video
+          id="vl-player"
+          class="vl-player"
+          controls
+          preload="metadata"
+          src={videoUrl('references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4')}
+        >
+          Your browser does not support the video tag.
+        </video>
+        <div class="vl-featured__footer">
+          <div class="vl-featured__meta">
+            <p class="vl-featured__title" id="vl-title">Sudheer — Njarakkal Installation</p>
+            <span class="vl-badge vl-badge--customer" id="vl-badge">Customer Stories</span>
+          </div>
+          <p class="vl-featured__hint">Select any video below to play it here</p>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="vl-tabs-scroll">
+        <div class="vl-tabs" role="tablist" id="vl-tabs">
+          {[
+            { cat: 'all',       label: 'All Videos' },
+            { cat: 'customer',  label: 'Customer Stories' },
+            { cat: 'promo',     label: 'Why Solar?' },
+            { cat: 'brand',     label: 'Brand & Vision' },
+            { cat: 'solutions', label: 'Solutions' },
+            { cat: 'expert',    label: 'Expert Insights' },
+          ].map((tab, i) => (
+            <button
+              class={`vl-tab${i === 0 ? ' vl-tab--active' : ''}`}
+              data-cat={tab.cat}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="vl-grid" id="vl-grid">
+        {videos.map((v) => (
+          <button
+            class="vl-card"
+            data-cat={v.category}
+            data-src={videoUrl(v.file)}
+            data-title={v.title}
+            data-badge={categoryLabel(v.category)}
+            data-badgecat={v.category}
+            aria-label={`Play: ${v.title}`}
+          >
+            <div class="vl-card__thumb">
+              <img
+                src={`${base}/media/${v.thumb}`}
+                alt={v.title}
+                loading="lazy"
+                class="vl-card__thumb-img"
+              />
+              <div class="vl-card__thumb-overlay"></div>
+              <span class="vl-thumb-cat">{categoryLabel(v.category)}</span>
+              <span class="vl-play-btn" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </div>
+            <div class="vl-card__body">
+              <p class="vl-card__title">{v.title}</p>
+              <span class={`vl-badge vl-badge--${v.category}`}>{categoryLabel(v.category)}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== VISUAL SHOWCASE SLIDESHOW ===== -->
+  <section class="showcase-section">
+    <div class="showcase-header">
+      <span class="section-tag">വിഷ്വൽ ഷോകേസ്</span>
+      <h2 class="section-title">Solar — Beautifully Done</h2>
+    </div>
+
+    <div class="slideshow" id="slideshow" aria-label="Installation slideshow">
+      <div class="slideshow__track" id="slideshow-track">
+        {allSlides.map((slide, i) => (
+          <div class={`slide ${i === 0 ? 'slide--active' : ''}`} data-index={i}>
+            <img
+              src={`${base}/media/references/${slide.img}`}
+              alt={slide.caption}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              fetchpriority={i === 0 ? 'high' : 'low'}
+            />
+            <div class="slide__overlay"></div>
+            <div class="slide__caption">
+              <p class="slide__caption-title">{slide.caption}</p>
+              <p class="slide__caption-sub">{slide.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Prev / Next -->
+      <button class="slideshow__btn slideshow__btn--prev" id="ss-prev" aria-label="Previous slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="slideshow__btn slideshow__btn--next" id="ss-next" aria-label="Next slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="slideshow__dots" id="ss-dots">
+        {allSlides.map((_, i) => (
+          <button class={`dot ${i === 0 ? 'dot--active' : ''}`} data-dot={i} aria-label={`Go to slide ${i + 1}`}></button>
+        ))}
+      </div>
+
+      <!-- Progress bar -->
+      <div class="slideshow__progress" id="ss-progress"></div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-tag section-tag--light">Customer Stories</span>
+        <h2 class="section-title section-title--light">ഉപഭോക്താക്കൾ പറയുന്നത്</h2>
+      </div>
+      <div class="testi-grid">
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">The technical and implementation teams were very helpful and knowledgeable. I switched my kitchen stoves from LPG to induction, saving significantly — not just on electricity charges but on LPG consumption too.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AR</div>
+            <div>
+              <strong>Arun</strong>
+              <span>Kollam · 5 kW system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">The Rayenna team was very helpful and supportive throughout the implementation. They completed the project at a very competitive rate — overall, excellent value for money.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SU</div>
+            <div>
+              <strong>Sudheer</strong>
+              <span>Ernakulam · 3 kW system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">I liked the attitude and professionalism of the team. Very helpful, knowledgeable, and extremely competitive on price. Their after-sales support is excellent too. I have already recommended them to many of my contacts.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BJ</div>
+            <div>
+              <strong>Baiju</strong>
+              <span>Ernakulam · 10 kW system</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="testimonials-cta-row">
+        <a href={`${mlPrefix}/contact`} class="btn testimonials-cta">Share Your Experience →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <img src={`${base}/media/glass-BG.webp`} alt="" class="cta-banner__bg" />
+    <div class="cta-banner__overlay"></div>
+    <div class="container cta-banner__inner">
+      <h2 class="cta-banner__title">Ready to Be Our Next Success Story?</h2>
+      <p class="cta-banner__sub">Join the growing list of homes and businesses across Kerala powering their lives with clean solar energy from Rayenna.</p>
+      <div class="cta-banner__actions">
+        <a href={`${mlPrefix}/contact`} class="btn btn-primary cta-banner__btn">Get a Free Quote</a>
+        <a href={`${mlPrefix}/solar-calculator`} class="btn btn-primary cta-banner__btn">☀️ Calculate Your Savings</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ===========================
+   Media Page — Mobile First
+   =========================== */
+
+/* ===== HERO ===== */
+.page-hero {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 56px;
+  overflow: hidden;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 20, 45, 0.95) 0%,
+    rgba(8, 20, 45, 0.55) 55%,
+    rgba(8, 20, 45, 0.15) 100%
+  );
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 96px;
+}
+.page-hero__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.page-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: rgba(255,255,255,0.7);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+
+/* ── Filter Bar ── */
+.gallery-filters {
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gf-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.gf-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gf-pill {
+  border: 1.5px solid rgba(39,50,79,0.15);
+  background: #fff;
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-pill:hover {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+.gf-pill--active {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #fff;
+}
+.gf-count {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+.gf-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  grid-column: 1 / -1;
+}
+.gf-reset-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+}
+@media (min-width: 768px) {
+  .gallery-filters { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+  .gf-group { flex-shrink: 0; }
+  .gf-count { width: 100%; margin-top: 0; }
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.section-header .section-title { margin: 10px 0 14px; }
+.section-intro {
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.gallery-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.gallery-card__img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f0f0f0 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: img-skeleton 1.4s ease infinite;
+}
+@keyframes img-skeleton {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.gallery-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.gallery-card__img-wrap img.loaded,
+.gallery-card__img-wrap img[data-loaded] {
+  opacity: 1;
+}
+.gallery-card:hover .gallery-card__img-wrap img {
+  transform: scale(1.04);
+}
+.gallery-card__overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.gallery-card__capacity {
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 99px;
+}
+.gallery-card__info {
+  padding: 18px 20px 20px;
+}
+.gallery-card__name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.gallery-card__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+.gallery-card__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+.gallery-card__specs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.spec-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+.spec-pill--inverter {
+  background: rgba(39,50,79,0.08);
+  color: var(--color-navy);
+}
+.spec-pill--panels {
+  background: rgba(168,56,56,0.08);
+  color: var(--color-primary);
+}
+
+/* ===== VIDEO LIBRARY ===== */
+.video-library {
+  position: relative;
+  background: var(--color-navy);
+  padding: var(--section-padding);
+  overflow: hidden;
+}
+.vl-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: clamp(80px, 18vw, 220px);
+  font-weight: 900;
+  color: rgba(255,255,255,0.025);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.section-header--light { color: #fff; }
+.section-tag--light {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+}
+.section-title--light { color: #fff; }
+.section-intro--light { color: rgba(255,255,255,0.65); }
+
+/* Featured Player */
+.vl-featured {
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+.vl-player {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  background: #000;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.55);
+  max-height: 520px;
+}
+.vl-featured__footer {
+  padding: 14px 2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.vl-featured__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.vl-featured__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+.vl-featured__hint {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.3px;
+}
+
+/* Category Badges */
+.vl-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.vl-badge--customer  { background: rgba(168, 56, 56, 0.28);  color: #e88080; }
+.vl-badge--promo     { background: rgba(39,  50, 79, 0.6);   color: #8ab0e8; }
+.vl-badge--brand     { background: rgba(180,120, 40, 0.28);  color: #e8c47a; }
+.vl-badge--solutions { background: rgba( 40,140,100, 0.28);  color: #72d4a8; }
+.vl-badge--expert    { background: rgba(100, 60,180, 0.28);  color: #c0a0f0; }
+
+/* Category Tabs */
+.vl-tabs-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 32px;
+}
+.vl-tabs-scroll::-webkit-scrollbar { display: none; }
+.vl-tabs {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  padding: 0 2px;
+}
+.vl-tab {
+  border: none;
+  border-radius: 99px;
+  padding: 9px 20px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.55);
+  transition: background 0.2s, color 0.2s;
+}
+.vl-tab:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+.vl-tab--active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Video Grid */
+.vl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.vl-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.vl-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.18);
+}
+.vl-card--hidden { display: none; }
+
+/* Thumbnail */
+.vl-card__thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a1428;
+  overflow: hidden;
+}
+.vl-card__thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.vl-card:hover .vl-card__thumb-img {
+  transform: scale(1.06);
+}
+.vl-card__thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.08) 100%
+  );
+  z-index: 1;
+}
+.vl-thumb-cat {
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  background: rgba(0,0,0,0.28);
+  padding: 3px 9px;
+  border-radius: 99px;
+  backdrop-filter: blur(4px);
+}
+.vl-play-btn {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.22s, transform 0.22s;
+  flex-shrink: 0;
+}
+.vl-card:hover .vl-play-btn {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.14);
+}
+
+/* Card Body */
+.vl-card__body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.vl-card__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.45;
+}
+
+/* ===== SHOWCASE SLIDESHOW ===== */
+.showcase-section {
+  background: #0a1428;
+  padding-bottom: 0;
+}
+.showcase-header {
+  text-align: center;
+  padding: 56px 24px 40px;
+}
+.showcase-header .section-tag {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.65);
+}
+.showcase-header .section-title {
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Slideshow */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 60vw;
+  min-height: 320px;
+  max-height: 620px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%);
+  background-size: 200% 100%;
+  animation: img-skeleton 1.6s ease infinite;
+}
+.slideshow.loaded { animation: none; }
+.slideshow__track { position: relative; width: 100%; height: 100%; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+}
+.slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.slide__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.1) 55%,
+    transparent 100%
+  );
+}
+.slide__caption {
+  position: absolute;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 24px;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform 0.6s ease 0.3s, opacity 0.6s ease 0.3s;
+}
+.slide--active .slide__caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+.slide__caption-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.slide__caption-sub {
+  font-size: clamp(0.78rem, 1.5vw, 0.9rem);
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
+}
+
+/* Prev / Next */
+.slideshow__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.slideshow__btn:hover { background: var(--color-primary); }
+.slideshow__btn--prev { left: 16px; }
+.slideshow__btn--next { right: 16px; }
+
+/* Dots */
+.slideshow__dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 10;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.dot--active {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+/* Progress bar */
+.slideshow__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--color-primary);
+  width: 0%;
+  transition: width linear;
+  z-index: 10;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section {
+  background: var(--color-primary);
+  padding: var(--section-padding);
+}
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.testi-real-card {
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background var(--transition), transform var(--transition);
+}
+.testi-real-card:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+}
+.testi-stars {
+  color: #fde68a;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.testi-quote {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.93rem;
+  line-height: 1.85;
+  font-style: italic;
+  flex: 1;
+}
+.testi-quote::before { content: '\201C'; }
+.testi-quote::after  { content: '\201D'; }
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.testi-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 1px;
+}
+.testi-author strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.testi-author span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+.testimonials-cta-row {
+  text-align: center;
+  margin-top: 36px;
+}
+.testimonials-cta {
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.testimonials-cta:hover {
+  background: rgba(255,255,255,0.9);
+  color: var(--color-primary);
+}
+@media (min-width: 640px) {
+  .testi-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .testi-grid .testi-real-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 12px); margin-inline: auto; }
+}
+@media (min-width: 960px) {
+  .testi-grid { grid-template-columns: repeat(3, 1fr); }
+  .testi-grid .testi-real-card:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+}
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.cta-banner__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.cta-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 25, 55, 0.82);
+  z-index: 1;
+}
+.cta-banner__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 64px 24px;
+}
+.cta-banner__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.cta-banner__sub {
+  color: rgba(255,255,255,0.7);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+/* Mobile first — buttons stack vertically */
+.cta-banner__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.cta-banner__btn {
+  padding: 14px 40px;
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+@media (min-width: 540px) {
+  .cta-banner__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+  .cta-banner__btn { width: auto; }
+}
+
+/* ===========================
+   Breakpoints
+   =========================== */
+@media (min-width: 540px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .vl-grid      { grid-template-columns: 1fr 1fr; }
+  .vl-tabs      { width: auto; }
+}
+
+@media (min-width: 768px) {
+  .showcase-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .showcase-item--tall { grid-row: span 2; }
+  .showcase-item img { min-height: 240px; }
+}
+
+@media (min-width: 960px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .gallery-card__img-wrap { height: 240px; }
+  .vl-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .vl-tabs-scroll { overflow: visible; }
+  .vl-tabs { justify-content: center; }
+}
+</style>
+
+<script>
+  const INTERVAL = 4500;
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
+  const dots   = Array.from(document.querySelectorAll<HTMLElement>('.dot'));
+  const progress = document.getElementById('ss-progress') as HTMLElement;
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(n: number) {
+    slides[current].classList.remove('slide--active');
+    dots[current].classList.remove('dot--active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('slide--active');
+    dots[current].classList.add('dot--active');
+    restartProgress();
+  }
+
+  function restartProgress() {
+    if (!progress) return;
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progress.style.transition = `width ${INTERVAL}ms linear`;
+        progress.style.width = '100%';
+      });
+    });
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  document.getElementById('ss-prev')?.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+  document.getElementById('ss-next')?.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); startAuto(); });
+  });
+
+  // Pause on hover
+  const slideshow = document.getElementById('slideshow');
+  slideshow?.addEventListener('mouseenter', () => clearInterval(timer));
+  slideshow?.addEventListener('mouseleave', () => startAuto());
+
+  // Touch swipe
+  let touchStartX = 0;
+  slideshow?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  slideshow?.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+  });
+
+  restartProgress();
+  startAuto();
+
+  // Remove skeleton animation once first slide image loads
+  const firstSlideImg = document.querySelector<HTMLImageElement>('.slide--active img');
+  if (firstSlideImg) {
+    if (firstSlideImg.complete) {
+      slideshow?.classList.add('loaded');
+    } else {
+      firstSlideImg.addEventListener('load', () => slideshow?.classList.add('loaded'), { once: true });
+    }
+  }
+
+  // ── Gallery Filters ────────────────────────────────────────────────────────
+  const filters: Record<string, string> = { cap: 'all', inv: 'all', pan: 'all' };
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.gallery-card'));
+  const countEl = document.getElementById('gf-count');
+  const emptyEl = document.getElementById('gf-empty') as HTMLElement;
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach((card) => {
+      const match =
+        (filters.cap === 'all' || card.dataset.cap === filters.cap) &&
+        (filters.inv === 'all' || card.dataset.inv === filters.inv) &&
+        (filters.pan === 'all' || card.dataset.pan === filters.pan);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    if (countEl) {
+      countEl.textContent = filters.cap === 'all' && filters.inv === 'all' && filters.pan === 'all'
+        ? `Showing all ${cards.length} installations`
+        : `Showing ${visible} of ${cards.length} installations`;
+    }
+    if (emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  document.querySelectorAll<HTMLElement>('.gf-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const type = pill.dataset.type!;
+      const val  = pill.dataset.val!;
+      filters[type] = val;
+      // Update active state within the same group
+      document.querySelectorAll<HTMLElement>(`.gf-pill[data-type="${type}"]`).forEach((p) => {
+        p.classList.toggle('gf-pill--active', p.dataset.val === val);
+      });
+      applyFilters();
+    });
+  });
+
+  document.getElementById('gf-reset')?.addEventListener('click', () => {
+    filters.cap = 'all'; filters.inv = 'all'; filters.pan = 'all';
+    document.querySelectorAll<HTMLElement>('.gf-pill').forEach((p) => {
+      p.classList.toggle('gf-pill--active', p.dataset.val === 'all');
+    });
+    applyFilters();
+  });
+
+  // ── Video Library ──────────────────────────────────────────────────────────
+  const vlPlayer = document.getElementById('vl-player') as HTMLVideoElement | null;
+  const vlTitle  = document.getElementById('vl-title')  as HTMLElement | null;
+  const vlBadge  = document.getElementById('vl-badge')  as HTMLElement | null;
+  const vlCards  = Array.from(document.querySelectorAll<HTMLElement>('.vl-card'));
+  const vlTabs   = Array.from(document.querySelectorAll<HTMLElement>('.vl-tab'));
+
+  vlCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const src      = card.dataset.src      ?? '';
+      const title    = card.dataset.title    ?? '';
+      const badge    = card.dataset.badge    ?? '';
+      const badgeCat = card.dataset.badgecat ?? '';
+
+      if (vlPlayer) {
+        vlPlayer.src = src;
+        vlPlayer.play().catch(() => {});
+      }
+      if (vlTitle) vlTitle.textContent = title;
+      if (vlBadge) {
+        vlBadge.textContent = badge;
+        vlBadge.className   = `vl-badge vl-badge--${badgeCat}`;
+      }
+
+      document.getElementById('vl-featured')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  vlTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat ?? 'all';
+
+      vlTabs.forEach((t) => {
+        t.classList.remove('vl-tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('vl-tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      vlCards.forEach((card) => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.classList.toggle('vl-card--hidden', !show);
+      });
+    });
+  });
+</script>

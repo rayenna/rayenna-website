@@ -1,0 +1,597 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mlPrefix = '/ml';
+---
+<Layout lang="ml" title="കേരളത്തിലെ സോളാർ സേവനങ്ങൾ | റയെന്ന എനർജി" description="വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ സേവനങ്ങൾ. MNRE അംഗീകൃത. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ.">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <img src={`${base}/media/services-hero-opt3.jpg`} alt="Solar panels on a rooftop at sunset" class="page-hero__bg" />
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__inner">
+      <p class="page-hero__eyebrow">ഞങ്ങൾ നൽകുന്നത്</p>
+      <h1 class="page-hero__title">കേരളത്തിലെ സോളാർ<br />ഇൻസ്റ്റാളേഷൻ സേവനങ്ങൾ</h1>
+      <p class="page-hero__sub">ഓരോ വീടിനും ബിസിനസിനും അനുയോജ്യമായ സോളാർ പരിഹാരങ്ങൾ.</p>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro-section">
+    <div class="container intro-section__inner">
+      <div class="intro-section__content">
+        <span class="section-tag">End-to-End Solar</span>
+        <h2 class="section-title">Explore Our Extensive Services and Discover What Fits You Best</h2>
+        <p>We at Rayenna understand that energy requirements vary from one client to another, which is why our services are designed with flexibility in mind. Whether you are a homeowner looking to reduce your electricity bills or a business seeking long-term cost savings, our team offers customised solar solutions to meet your specific requirements.</p>
+        <p>We take great pride in providing top-grade components, exceptional installation services and ongoing support to guarantee that each system operates at its optimal level. With Rayenna's end-to-end solar services, renewable energy is now affordable, accessible, and efficient for both residential and commercial establishments.</p>
+      </div>
+      <div class="intro-highlights">
+        {[
+          { num: '20+', label: 'Brands Supported' },
+          { num: '80%',  label: 'Average Bill Reduction' },
+          { num: '3–4',  label: 'Year ROI' },
+          { num: '20',   label: 'Year Panel Lifespan' },
+        ].map(s => (
+          <div class="intro-highlight">
+            <strong>{s.num}</strong>
+            <span>{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 1: DOMESTIC ===== -->
+  <section class="service-block service-block--alt" id="domestic">
+    <div class="container domestic-inner">
+
+      <!-- Top row: image left, text right — both top-aligned -->
+      <div class="domestic-top">
+        <div class="service-block__image">
+          <img src={`${base}/media/Drilling-solar.jpg`} alt="Domestic solar panel installation" />
+          <div class="service-block__badge">01</div>
+        </div>
+        <div class="service-block__content">
+          <span class="section-tag">Residential</span>
+          <h2 class="section-title">Domestic Services</h2>
+          <p>Energy independence is something you can achieve with Rayenna's residential solar installation, in addition to real energy savings. Our systems help reduce your electricity expenses by generating your own power — whether for household needs, EV charging, or just cutting your monthly bills. You can use energy freely, knowing it's sustainably generated.</p>
+          <p>We can design and implement systems for homes of all sizes. With proper maintenance and care, your solar panels can serve you efficiently for up to 20 years, while delivering a full return on your investment within just 5–6 years.</p>
+          <a href={`${mlPrefix}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
+        </div>
+      </div>
+
+      <!-- Bottom row: 3 steps horizontally -->
+      <div class="service-steps-h">
+        <div class="service-step-h">
+          <div class="service-step__num">01</div>
+          <div class="service-step__body">
+            <h3>Feasibility Assessment</h3>
+            <p>Our team does a thorough site study, taking into account elements like roof direction, shading, and energy consumption to ensure your system delivers optimal output.</p>
+          </div>
+        </div>
+        <div class="service-step-h">
+          <div class="service-step__num">02</div>
+          <div class="service-step__body">
+            <h3>Registration &amp; Approvals</h3>
+            <p>We handle all documentation and government registrations — from gaining local approvals to applying for available subsidies — so you don't have to.</p>
+          </div>
+        </div>
+        <div class="service-step-h">
+          <div class="service-step__num">03</div>
+          <div class="service-step__body">
+            <h3>Installation &amp; Completion</h3>
+            <p>Our trained engineers execute the installation to the highest standards, followed by testing, commissioning, and handover with full system training.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 2: COMMERCIAL ===== -->
+  <section class="service-block" id="commercial">
+    <div class="container service-block__inner service-block__inner--flip">
+      <div class="service-block__content">
+        <span class="section-tag">Business & Industry</span>
+        <h2 class="section-title">Commercial Services</h2>
+        <p>Rayenna's solar solutions for businesses are built to deliver both immediate and long-term benefits. Hotels, restaurants, and commercial buildings can drastically lower operating expenses by adding solar panels, while demonstrating a commitment to environmental responsibility that attracts eco-conscious customers and investors.</p>
+        <p>Rayenna's premium components guarantee long-term performance and durability, allowing businesses to concentrate on their operations. Our online monitoring system enables business owners to track performance in real time and receive maintenance alerts — guaranteeing prompt, proactive support whenever it's needed.</p>
+        <div class="service-perks">
+          {[
+            'Significant reduction in electricity costs',
+            'Long-term performance with premium components',
+            'Real-time online monitoring dashboard',
+            "Enhances your brand's green credentials",
+          ].map(p => (
+            <div class="service-perk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>{p}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="service-block__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="Commercial solar installation" />
+        <div class="service-block__badge">02</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 3: CONSULTATION ===== -->
+  <section class="service-block service-block--alt" id="consultation">
+    <div class="container service-block__inner">
+      <div class="service-block__image">
+        <img src={`${base}/media/Hardshell-solar.webp`} alt="Solar energy consultation" />
+        <div class="service-block__badge">03</div>
+      </div>
+      <div class="service-block__content">
+        <span class="section-tag">Expert Guidance</span>
+        <h2 class="section-title">Consultation Services</h2>
+        <p>Rayenna's consultation services provide comprehensive guidance throughout the entire process of transitioning to solar energy. Our team begins with a thorough site assessment, followed by energy audits to identify where solar can have the most significant impact on your property.</p>
+        <p>We also assist clients in navigating the financial aspects of solar energy — exploring available incentives, understanding potential savings, and ensuring you get the best return on your solar investment. Our professionals stay current on the newest tax breaks and financial incentives available to you.</p>
+
+        <div class="consult-features">
+          {[
+            { icon: '📋', title: 'Site Assessment', text: "Detailed evaluation of your property's solar potential." },
+            { icon: '⚡', title: 'Energy Audit', text: 'Understanding your current consumption patterns.' },
+            { icon: '💰', title: 'Financial Guidance', text: 'Incentives, subsidies, and ROI analysis.' },
+            { icon: '📊', title: 'Tailored Proposal', text: 'A custom system recommendation just for you.' },
+          ].map(f => (
+            <div class="consult-feature">
+              <span class="consult-feature__icon">{f.icon}</span>
+              <div>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a href={`${mlPrefix}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container cta-banner__inner">
+      <div class="cta-banner__content">
+        <h2>Ready to switch to solar energy?</h2>
+        <p>Contact us today to schedule a consultation and discover how Rayenna can transform your energy usage.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href={`${mlPrefix}/contact`} class="btn btn-primary">Get a Free Consultation</a>
+        <a href={`${mlPrefix}/contact`} class="btn btn-outline-white">Call Us Now</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ===========================
+   Services Page — Mobile First
+   =========================== */
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 50, 0.88) 0%,
+    rgba(10, 25, 50, 0.55) 50%,
+    rgba(10, 25, 50, 0.25) 100%
+  );
+  z-index: 1;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 88px;
+}
+.page-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 10px;
+}
+.page-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.page-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ===== INTRO ===== */
+.intro-section {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.intro-section__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.intro-section__content .section-title { margin-bottom: 20px; }
+.intro-section__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.intro-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: center;
+  padding-top: 48px;
+}
+.intro-highlight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  padding: 20px 28px;
+  border-left: 4px solid var(--color-secondary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.intro-highlight:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--color-primary);
+}
+.intro-highlight strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1;
+  white-space: nowrap;
+  min-width: 80px;
+}
+.intro-highlight span {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+}
+
+/* ===== SERVICE BLOCKS ===== */
+.service-block {
+  padding: var(--section-padding);
+  background: #ffffff;
+}
+.service-block--alt {
+  background: var(--color-light);
+}
+.service-block__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+/* On mobile: always show text content first, image below */
+.service-block__image { order: 2; }
+.service-block__content { order: 1; }
+.service-block__image {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: visible;
+  /* ensure badge doesn't get clipped on mobile */
+  padding-bottom: 20px;
+  padding-right: 8px;
+}
+.service-block__image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+.service-block__badge {
+  position: absolute;
+  bottom: 4px;
+  right: -4px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(168,56,56,0.4);
+  z-index: 1;
+}
+.service-block__content .section-title { margin-bottom: 18px; }
+.service-block__content p {
+  color: var(--color-text-muted);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* ===== DOMESTIC — custom layout ===== */
+.domestic-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.domestic-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 64px 0 40px;
+}
+
+/* Horizontal steps row */
+.service-steps-h {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding-bottom: 56px;
+}
+.service-step-h {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.service-step__num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.service-step__body h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+.service-step__body p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Commercial perks */
+.service-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+.service-perk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+.service-perk svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+/* Consultation features */
+.consult-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+.consult-feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-sm);
+}
+.consult-feature__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.consult-feature h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+  margin-bottom: 4px;
+}
+.consult-feature p {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+/* ===== SERVICE CALC CTA ===== */
+/* Mobile first — full-width tap area */
+.service-calc-cta {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 20px;
+  min-height: 52px;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--transition);
+}
+.service-calc-cta:hover { color: var(--color-primary-dark); text-decoration: underline; }
+.service-calc-cta:active { opacity: 0.75; }
+@media (min-width: 768px) {
+  .service-calc-cta {
+    display: inline-block;
+    width: auto;
+    border-top: none;
+    padding: 0;
+    min-height: auto;
+    margin-top: 16px;
+  }
+}
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  padding: 64px 0;
+  background: var(--color-navy);
+}
+.cta-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.cta-banner__content h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.cta-banner__content p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+.cta-banner__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 2px solid rgba(255,255,255,0.5);
+  color: #ffffff;
+  background: transparent;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #ffffff;
+}
+
+/* ===========================
+   Breakpoints — tablet+
+   =========================== */
+/* Extra-small phones */
+@media (max-width: 480px) {
+  .service-block { padding: 48px 0; }
+  .service-block__image img { height: 220px; }
+  .intro-highlight { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+}
+
+@media (min-width: 640px) {
+  .consult-features { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .intro-section__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .domestic-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .service-steps-h {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .service-block__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  /* Reset mobile order so DOM order controls layout on desktop */
+  .service-block__image { order: unset; }
+  .service-block__content { order: unset; }
+  /* Flip: push image to right column for commercial section */
+  .service-block__inner--flip .service-block__image { order: 1; }
+  .service-block__image {
+    padding-bottom: 20px;
+    padding-right: 20px;
+  }
+  .service-block__image img { height: 460px; }
+  .service-block__badge {
+    bottom: -4px;
+    right: -4px;
+    width: 56px;
+    height: 56px;
+    font-size: 1.2rem;
+  }
+  .cta-banner__inner {
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+  }
+}
+</style>

@@ -2,17 +2,41 @@
 import '../styles/global.css';
 import ChatWidget from '../components/ChatWidget.astro';
 import SolarNewsTicker from '../components/SolarNewsTicker.astro';
+import {
+  getNavLinks,
+  useTranslations,
+  getAlternateUrls,
+  getLangFromPath,
+  type Lang,
+} from '../i18n/ui';
 
 const {
   title = 'Rayenna Energy — Solar Solutions in Kochi',
   description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.',
   ogImage = 'https://rayennaenergy.com/media/solar-panel-installation.jpg',
+  lang: langProp,
 } = Astro.props;
+
+const lang: Lang = langProp ?? getLangFromPath(Astro.url.pathname);
+const t = useTranslations(lang);
+const navLinks = getNavLinks(lang);
+const alternates = getAlternateUrls(Astro.url.pathname);
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const canonicalURL = new URL(Astro.url.pathname, 'https://rayennaenergy.com');
-// Auto-detect article type for blog post pages
-const isBlogPost = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/';
+const isBlogPost =
+  (Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/') ||
+  (Astro.url.pathname.startsWith('/ml/blog/') && Astro.url.pathname !== '/ml/blog/');
 const ogType = isBlogPost ? 'article' : 'website';
+const ogLocale = lang === 'ml' ? 'ml_IN' : 'en_IN';
+
+function navIsActive(href: string): boolean {
+  const norm = (p: string) => (p.replace(/\/$/, '') || '/');
+  const cur = norm(Astro.url.pathname);
+  const target = norm(href);
+  if (target === '/' || target === '/ml') return cur === '/' || cur === '/ml';
+  return cur === target || cur.startsWith(target + '/');
+}
 
 const localBusinessLD = {
   "@context": "https://schema.org",
@@ -56,26 +80,19 @@ const localBusinessLD = {
     { "@type": "AdministrativeArea", "name": "Kerala" }
   ]
 };
-const navLinks = [
-  { href: `${base}/`, label: 'Home' },
-  { href: `${base}/about`, label: 'About us' },
-  { href: `${base}/services`, label: 'Our Services' },
-  { href: `${base}/solar-calculator`, label: 'Solar Calculator', special: true },
-  { href: `${base}/media`, label: 'Media' },
-  { href: `${base}/blog`, label: 'Blog' },
-  { href: `${base}/faqs`, label: 'FAQs' },
-  { href: `${base}/contact`, label: 'Contact us' },
-];
-const currentPath = Astro.url.pathname;
+const homeHref = lang === 'ml' ? '/ml/' : '/';
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="canonical" href={canonicalURL.href} />
+  <link rel="alternate" hreflang="en" href={alternates.en} />
+  <link rel="alternate" hreflang="ml" href={alternates.ml} />
+  <link rel="alternate" hreflang="x-default" href={alternates.en} />
   <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
   <!-- Open Graph -->
@@ -87,7 +104,7 @@ const currentPath = Astro.url.pathname;
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content={canonicalURL.href} />
   <meta property="og:site_name" content="Rayenna Energy" />
-  <meta property="og:locale" content="en_IN" />
+  <meta property="og:locale" content={ogLocale} />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -101,13 +118,16 @@ const currentPath = Astro.url.pathname;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  {lang === 'ml' && (
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  )}
 </head>
-<body>
+<body class={lang === 'ml' ? 'lang-ml' : 'lang-en'}>
 
   <!-- ===== NAVBAR ===== -->
-  <header class={`navbar${currentPath === `${base}/` || currentPath === `${base}` ? ' navbar--hero' : ''}`} id="navbar">
+  <header class={`navbar${navIsActive(homeHref) ? ' navbar--hero' : ''}`} id="navbar">
     <div class="navbar__inner">
-      <a href={`${base}/`} class="navbar__logo" aria-label="Rayenna Energy Home">
+      <a href={homeHref} class="navbar__logo" aria-label="Rayenna Energy Home">
         <img src={`${base}/media/rayenna-logo-nav.png`} alt="Rayenna Energy" class="logo-img" />
       </a>
 
@@ -115,10 +135,15 @@ const currentPath = Astro.url.pathname;
         {navLinks.map(link => (
           <a
             href={link.href}
-            class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${currentPath === link.href || (link.href !== `${base}/` && currentPath.startsWith(link.href)) ? 'active' : ''}`}
+            class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
           >{link.special ? '☀️ ' : ''}{link.label}</a>
         ))}
       </nav>
+
+      <div class="lang-switcher" role="group" aria-label={t.langSwitcherAria}>
+        <a href={alternates.en} class:list={['lang-switcher__btn', { 'lang-switcher__btn--active': lang === 'en' }]}>EN</a>
+        <a href={alternates.ml} class:list={['lang-switcher__btn', { 'lang-switcher__btn--active': lang === 'ml' }]}>ML</a>
+      </div>
 
       <button class="navbar__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -127,9 +152,13 @@ const currentPath = Astro.url.pathname;
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-lang-switcher" role="group" aria-label={t.langSwitcherAria}>
+        <a href={alternates.en} class:list={['mobile-lang-btn', { 'mobile-lang-btn--active': lang === 'en' }]}>English</a>
+        <a href={alternates.ml} class:list={['mobile-lang-btn', { 'mobile-lang-btn--active': lang === 'ml' }]}>മലയാളം</a>
+      </div>
       {navLinks.map(link => (
         link.special
-          ? <a href={link.href} class="mobile-link mobile-nav-calculator">☀️ Calculate My Savings</a>
+          ? <a href={link.href} class="mobile-link mobile-nav-calculator">☀️ {t.nav.calcMobile}</a>
           : <a href={link.href} class="mobile-link">{link.label}</a>
       ))}
     </div>
@@ -159,21 +188,21 @@ const currentPath = Astro.url.pathname;
 
       <!-- Col 3: About Us + Area Links -->
       <div class="footer__col footer__col--about">
-        <h4 class="footer__heading">About Us</h4>
-        <p class="footer__text">Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
+        <h4 class="footer__heading">{t.footer.aboutHeading}</h4>
+        <p class="footer__text">{t.footer.aboutText}</p>
         <div class="footer__area-links">
-          <h4 class="footer__heading" style="margin-top:20px">We Install Across Kerala</h4>
+          <h4 class="footer__heading" style="margin-top:20px">{t.footer.areasHeading}</h4>
           <div class="footer__area-grid">
-            <a href={`${base}/solar-panels-kochi`} class="footer__area-link">Solar in Kochi</a>
-            <a href={`${base}/solar-panels-thrissur`} class="footer__area-link">Solar in Thrissur</a>
-            <a href={`${base}/solar-panels-trivandrum`} class="footer__area-link">Solar in Trivandrum</a>
+            <a href={lang === 'ml' ? '/ml/solar-panels-kochi' : '/solar-panels-kochi'} class="footer__area-link">{t.footer.kochi}</a>
+            <a href={lang === 'ml' ? '/ml/solar-panels-thrissur' : '/solar-panels-thrissur'} class="footer__area-link">{t.footer.thrissur}</a>
+            <a href={lang === 'ml' ? '/ml/solar-panels-trivandrum' : '/solar-panels-trivandrum'} class="footer__area-link">{t.footer.trivandrum}</a>
           </div>
         </div>
       </div>
 
       <!-- Col 4: Contact -->
       <div class="footer__col footer__col--contact">
-        <h4 class="footer__heading">Contact us</h4>
+        <h4 class="footer__heading">{t.footer.contactHeading}</h4>
         <p class="footer__text">No. 3329/52, Ray Bhavan, Nh Bypass,<br />Thykoodam, Vyttila,<br />Ernakulam, Kerala, India, 682019</p>
         <p class="footer__text" style="margin-top:8px;">
           <a href="tel:+917907369304" class="footer__link">+91 7907 369 304</a><br />
@@ -197,9 +226,9 @@ const currentPath = Astro.url.pathname;
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>© 2026 Rayenna Energy, All Rights Reserved.</p>
+        <p>{t.footer.copyright}</p>
         <div class="footer__legal">
-          <a href={`${base}/privacy`} class="footer__legal-link">Privacy Policy</a>
+          <a href="/privacy" class="footer__legal-link">{t.footer.privacy}</a>
         </div>
       </div>
     </div>
@@ -233,7 +262,7 @@ const currentPath = Astro.url.pathname;
                2.094.781.875.281 1.688.25 2.313.156.719-.094 2.219-.906 2.531-1.781
                s.313-1.625.219-1.781-.344-.281-.781-.5z"/>
     </svg>
-    <span class="wa-tooltip" aria-hidden="true">Chat with us!</span>
+    <span class="wa-tooltip" aria-hidden="true">{t.waTooltip}</span>
   </a>
 
   <style>
@@ -373,6 +402,67 @@ const currentPath = Astro.url.pathname;
   align-items: center;
   gap: 4px;
   margin-left: auto;
+}
+.lang-switcher {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(39, 50, 79, 0.08);
+  flex-shrink: 0;
+}
+.lang-switcher__btn {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-switcher__btn--active {
+  background: var(--color-primary);
+  color: #fff;
+}
+.lang-switcher__btn:hover:not(.lang-switcher__btn--active) {
+  background: rgba(168, 56, 56, 0.12);
+  color: var(--color-primary);
+}
+.navbar--hero:not(.navbar--scrolled) .lang-switcher {
+  background: rgba(255, 255, 255, 0.35);
+}
+.mobile-lang-switcher {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px 4px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 8px;
+}
+.mobile-lang-btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  background: var(--color-light);
+}
+.mobile-lang-btn--active {
+  background: var(--color-primary);
+  color: #fff;
+}
+html[lang="ml"] body.lang-ml {
+  font-family: 'Noto Sans Malayalam', var(--font-body), sans-serif;
+}
+html[lang="ml"] body.lang-ml .section-title,
+html[lang="ml"] body.lang-ml h1,
+html[lang="ml"] body.lang-ml h2,
+html[lang="ml"] body.lang-ml h3 {
+  font-family: 'Noto Sans Malayalam', var(--font-heading), sans-serif;
 }
 .nav-link {
   font-family: var(--font-heading);
@@ -620,8 +710,12 @@ const currentPath = Astro.url.pathname;
   .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }
   .footer__col--contact { grid-column: 2 / span 2; }
 }
+@media (min-width: 769px) {
+  .lang-switcher { display: flex; }
+}
 @media (max-width: 768px) {
   .navbar__nav { display: none; }
+  .lang-switcher { display: none; }
   .navbar__burger { display: flex; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   .footer__col--logo { grid-column: 1; justify-content: flex-start; }
