@@ -82,6 +82,7 @@ const localBusinessLD = {
   ]
 };
 const homeHref = localizedPath('/', lang);
+const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -229,7 +230,7 @@ const homeHref = localizedPath('/', lang);
       <div class="container footer__bottom-inner">
         <p>{t.footer.copyright}</p>
         <div class="footer__legal">
-          <a href={localizedPath('/privacy', lang)} class="footer__legal-link">{t.footer.privacy}</a>
+          <a href={privacyHref} class="footer__legal-link">{t.footer.privacy}</a>
         </div>
       </div>
     </div>
