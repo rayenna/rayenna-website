@@ -9,35 +9,35 @@ function videoUrl(file: string): string {
 
 function categoryLabel(cat: string): string {
   const labels: Record<string, string> = {
-    customer:  'Customer Stories',
-    promo:     'Why Solar?',
-    brand:     'Brand & Vision',
-    solutions: 'Solutions',
-    expert:    'Expert Insights',
+    customer:  'ഉപഭോക്തൃ കഥകൾ',
+    promo:     'എന്തുകൊണ്ട് സോളാർ?',
+    brand:     'ബ്രാൻഡ് & വീക്ഷണം',
+    solutions: 'പരിഹാരങ്ങൾ',
+    expert:    'വിദഗ്ധ അഭിപ്രായങ്ങൾ',
   };
   return labels[cat] ?? cat;
 }
 
 const videos = [
-  { title: 'Sudheer — Njarakkal Installation',              category: 'customer',  file: 'references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4',                     thumb: 'thumbs/customer--sudheer.jpg' },
-  { title: '5 Reasons to Switch to Solar',                  category: 'promo',     file: 'rayenna videos/5 Reasons to switch to Solar.mp4',                                    thumb: 'thumbs/promo--5-reasons.jpg' },
-  { title: 'Avail Mindblowing Subsidies with Solar',        category: 'promo',     file: 'rayenna videos/Avail Mindblowing Subsidies with Solar Installation from Rayenna.mp4', thumb: 'thumbs/promo--subsidies.jpg' },
-  { title: 'Avoid Bill Shocks with Rayenna Solar',          category: 'promo',     file: 'rayenna videos/Avoid Bill Shocks with Rayenna Solar.mp4',                             thumb: 'thumbs/promo--avoid-bill-shocks.jpg' },
-  { title: 'Beat the High Power Bills',                     category: 'promo',     file: 'rayenna videos/Beat the High Power Bills with Rayenna Solar Solutions.mp4',           thumb: 'thumbs/promo--beat-high-bills.jpg' },
-  { title: 'Help Before These Bills Consume Me',            category: 'promo',     file: 'rayenna videos/Help Before these Bills consume me.mp4',                               thumb: 'thumbs/promo--help-bills.jpg' },
-  { title: 'Let the Sun Fuel Your Life',                    category: 'promo',     file: 'rayenna videos/Let the Sun Fuel your life and not your Bills.mp4',                    thumb: 'thumbs/promo--sun-fuel.jpg' },
-  { title: 'Rayenna to the Rescue — Bill Shocks',           category: 'promo',     file: 'rayenna videos/Rayenna to the Rescue from Bill Shocks.mp4',                          thumb: 'thumbs/promo--rescue-bill-shocks.jpg' },
-  { title: 'Rayenna to the Rescue — Rising Power Bills',    category: 'promo',     file: 'rayenna videos/Rayenna to the rescue against rising Power BIlls.mp4',                thumb: 'thumbs/promo--rescue-rising-bills.jpg' },
-  { title: 'Why Pay More When the Sun Is Free?',            category: 'promo',     file: 'rayenna videos/Why Pay More when the Sun if FREE.mp4',                                thumb: 'thumbs/promo--why-pay-more.jpg' },
-  { title: "Connecting You to Earth's Purest Energy",       category: 'brand',     file: "rayenna videos/Connecting you to Earth's Purest Energy.mp4",                         thumb: 'thumbs/brand--connecting.jpg' },
-  { title: 'From Daylight to Delight',                      category: 'brand',     file: 'rayenna videos/From Daylight to Delight.mp4',                                         thumb: 'thumbs/brand--daylight.jpg' },
-  { title: 'Rayenna Engagement Model',                      category: 'brand',     file: 'rayenna videos/Rayenna Engagement Model.mp4',                                          thumb: 'thumbs/brand--engagement.jpg' },
-  { title: 'Solar — Conquering the World Like Lokah',       category: 'brand',     file: 'rayenna videos/Solar - Conquering the World like Lokah.mp4',                         thumb: 'thumbs/brand--lokah.jpg' },
-  { title: 'Energy Solutions for Commercial Enterprises',   category: 'solutions', file: 'rayenna videos/Rayenna Energy Solutions for Commerical Enterprises.mp4',             thumb: 'thumbs/solutions--commercial.jpg' },
-  { title: 'Solar Solutions for EV Owners',                 category: 'solutions', file: 'rayenna videos/Rayenna Solar Solutions for EV Owners.mp4',                           thumb: 'thumbs/solutions--ev.jpg' },
-  { title: 'Talk to Mathew — Our Technical Manager',        category: 'expert',    file: 'rayenna videos/Talk to Mathew - Our technical Manager on Solar Intallation.mp4',     thumb: 'thumbs/expert--mathew-talk.jpg' },
-  { title: 'Types of Panels Available — Mathew Explains',   category: 'expert',    file: 'rayenna videos/Types of Panels Available - Mathew brings clarity to it.mp4',         thumb: 'thumbs/expert--mathew-panels.jpg' },
-  { title: 'When Does a Hybrid System Become Feasible?',    category: 'expert',    file: 'rayenna videos/When does Hybrid Systems become feasible - Mathew clarifies.mp4',     thumb: 'thumbs/expert--mathew-hybrid.jpg' },
+  { title: 'സുധീർ — ഞാറക്കൽ ഇൻസ്റ്റാളേഷൻ',              category: 'customer',  file: 'references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4',                     thumb: 'thumbs/customer--sudheer.jpg' },
+  { title: 'സോളാറിലേക്ക് മാറാൻ 5 കാരണങ്ങൾ',                  category: 'promo',     file: 'rayenna videos/5 Reasons to switch to Solar.mp4',                                    thumb: 'thumbs/promo--5-reasons.jpg' },
+  { title: 'സോളാറുമായി മനോഹരമായ സബ്സിഡികൾ നേടുക',        category: 'promo',     file: 'rayenna videos/Avail Mindblowing Subsidies with Solar Installation from Rayenna.mp4', thumb: 'thumbs/promo--subsidies.jpg' },
+  { title: 'റയെന്ന സോളാരുമായി ബിൽ ഷോക്കുകൾ ഒഴിവാക്കുക',          category: 'promo',     file: 'rayenna videos/Avoid Bill Shocks with Rayenna Solar.mp4',                             thumb: 'thumbs/promo--avoid-bill-shocks.jpg' },
+  { title: 'ഉയർന്ന വൈദ്യുതി ബില്ലുകളെ മടയ്ക്കുക',                     category: 'promo',     file: 'rayenna videos/Beat the High Power Bills with Rayenna Solar Solutions.mp4',           thumb: 'thumbs/promo--beat-high-bills.jpg' },
+  { title: 'ഈ ബില്ലുകൾ എന്നെ തിന്നുകളിക്കുന്നതിനുമുമ്പ്',            category: 'promo',     file: 'rayenna videos/Help Before these Bills consume me.mp4',                               thumb: 'thumbs/promo--help-bills.jpg' },
+  { title: 'സൂര്യൻ നിങ്ങളുടെ ജീവിതം സമൃദ്ധമാക്കട്ടെ',                    category: 'promo',     file: 'rayenna videos/Let the Sun Fuel your life and not your Bills.mp4',                    thumb: 'thumbs/promo--sun-fuel.jpg' },
+  { title: 'ബിൽ ഷോക്കുകളിൽ റയെന്ന് രക്ഷിക്കാൻ',           category: 'promo',     file: 'rayenna videos/Rayenna to the Rescue from Bill Shocks.mp4',                          thumb: 'thumbs/promo--rescue-bill-shocks.jpg' },
+  { title: 'ഉയർന്ന വൈദ്യുതി ബില്ലുകളിൽ റയെന്ന് രക്ഷിക്കാൻ',    category: 'promo',     file: 'rayenna videos/Rayenna to the rescue against rising Power BIlls.mp4',                thumb: 'thumbs/promo--rescue-rising-bills.jpg' },
+  { title: 'സൂര്യൻ സൗജന്യമാകുമ്പോൾ എന്തിന് കൂടുതൽ നൽകണം?',            category: 'promo',     file: 'rayenna videos/Why Pay More when the Sun if FREE.mp4',                                thumb: 'thumbs/promo--why-pay-more.jpg' },
+  { title: 'ഭൂമിയുടെ ശുദ്ധമായ ഊർജ്ജവുമായി നിങ്ങളെ ബന്ധിപ്പിക്കുന്നു',       category: 'brand',     file: "rayenna videos/Connecting you to Earth's Purest Energy.mp4",                         thumb: 'thumbs/brand--connecting.jpg' },
+  { title: 'പ്രഭാതത്തിന്റെ സന്തോഷത്തിലേക്ക്',                      category: 'brand',     file: 'rayenna videos/From Daylight to Delight.mp4',                                         thumb: 'thumbs/brand--daylight.jpg' },
+  { title: 'റയെന്ന് എൻഗേജ്മെന്റ് മോഡൽ',                      category: 'brand',     file: 'rayenna videos/Rayenna Engagement Model.mp4',                                          thumb: 'thumbs/brand--engagement.jpg' },
+  { title: 'സോളാർ — ലോകഹം പോലെ ലോകം ജയിക്കുന്നു',       category: 'brand',     file: 'rayenna videos/Solar - Conquering the World like Lokah.mp4',                         thumb: 'thumbs/brand--lokah.jpg' },
+  { title: 'വാണിജ്യ സ്ഥാപനങ്ങൾക്കുള്ള ഊർജ്ജ പരിഹാരങ്ങൾ',   category: 'solutions', file: 'rayenna videos/Rayenna Energy Solutions for Commerical Enterprises.mp4',             thumb: 'thumbs/solutions--commercial.jpg' },
+  { title: 'EV ഉടമകൾക്കുള്ള സോളാർ പരിഹാരങ്ങൾ',                 category: 'solutions', file: 'rayenna videos/Rayenna Solar Solutions for EV Owners.mp4',                           thumb: 'thumbs/solutions--ev.jpg' },
+  { title: 'മാത്യുവിനോട് സംസാരിക്കുക — ടെക്നിക്കൽ മാനേജർ',        category: 'expert',    file: 'rayenna videos/Talk to Mathew - Our technical Manager on Solar Intallation.mp4',     thumb: 'thumbs/expert--mathew-talk.jpg' },
+  { title: 'ലഭ്യമായ പാനൽ തരങ്ങൾ — മാത്യു വിശദീകരിക്കുന്നു',   category: 'expert',    file: 'rayenna videos/Types of Panels Available - Mathew brings clarity to it.mp4',         thumb: 'thumbs/expert--mathew-panels.jpg' },
+  { title: 'ഹൈബ്രിഡ് സിസ്റ്റം എപ്പോൾ സാധ്യമാകും?',    category: 'expert',    file: 'rayenna videos/When does Hybrid Systems become feasible - Mathew clarifies.mp4',     thumb: 'thumbs/expert--mathew-hybrid.jpg' },
 ];
 
 const installations = [
@@ -228,7 +228,7 @@ const allSlides = [
       <div class="section-header section-header--light">
         <span class="section-tag section-tag--light">വീഡിയോ ലൈബ്രറി</span>
         <h2 class="section-title section-title--light">ചലച്ചിത്രങ്ങൾ, കഥകൾ &amp; അറിവ്</h2>
-        <p class="section-intro section-intro--light">Customer installation stories, expert guidance from our team, and brand films — everything Rayenna, in motion.</p>
+        <p class="section-intro section-intro--light">ഉപഭോക്തൃ ഇൻസ്റ്റാളേഷൻ കഥകൾ, ഞങ്ങളുടെ ടീമിന്റെ വിദഗ്ധ മാർഗ്ഗനിർദേശം, ബ്രാൻഡ് ചലച്ചിത്രങ്ങൾ — ചലനത്തിലുള്ള റയെന്ന്.</p>
       </div>
 
       <!-- Featured Player -->
@@ -244,10 +244,10 @@ const allSlides = [
         </video>
         <div class="vl-featured__footer">
           <div class="vl-featured__meta">
-            <p class="vl-featured__title" id="vl-title">Sudheer — Njarakkal Installation</p>
-            <span class="vl-badge vl-badge--customer" id="vl-badge">Customer Stories</span>
+            <p class="vl-featured__title" id="vl-title">സുധീർ — ഞാറക്കൽ ഇൻസ്റ്റാളേഷൻ</p>
+            <span class="vl-badge vl-badge--customer" id="vl-badge">ഉപഭോക്തൃ കഥകൾ</span>
           </div>
-          <p class="vl-featured__hint">Select any video below to play it here</p>
+          <p class="vl-featured__hint">താഴെയുള്ള ഏതെങ്കിലും വീഡിയോ തിരഞ്ഞെടുത്ത് ഇവിടെ പ്ലേ ചെയ്യുക</p>
         </div>
       </div>
 
@@ -255,12 +255,12 @@ const allSlides = [
       <div class="vl-tabs-scroll">
         <div class="vl-tabs" role="tablist" id="vl-tabs">
           {[
-            { cat: 'all',       label: 'All Videos' },
-            { cat: 'customer',  label: 'Customer Stories' },
-            { cat: 'promo',     label: 'Why Solar?' },
-            { cat: 'brand',     label: 'Brand & Vision' },
-            { cat: 'solutions', label: 'Solutions' },
-            { cat: 'expert',    label: 'Expert Insights' },
+            { cat: 'all',       label: 'എല്ലാ വീഡിയോകളും' },
+            { cat: 'customer',  label: 'ഉപഭോക്തൃ കഥകൾ' },
+            { cat: 'promo',     label: 'എന്തുകൊണ്ട് സോളാർ?' },
+            { cat: 'brand',     label: 'ബ്രാൻഡ് & വീക്ഷണം' },
+            { cat: 'solutions', label: 'പരിഹാരങ്ങൾ' },
+            { cat: 'expert',    label: 'വിദഗ്ധ അഭിപ്രായങ്ങൾ' },
           ].map((tab, i) => (
             <button
               class={`vl-tab${i === 0 ? ' vl-tab--active' : ''}`}
@@ -284,7 +284,7 @@ const allSlides = [
             data-title={v.title}
             data-badge={categoryLabel(v.category)}
             data-badgecat={v.category}
-            aria-label={`Play: ${v.title}`}
+            aria-label={`${v.title} പ്ലേ ചെയ്യുക`}
           >
             <div class="vl-card__thumb">
               <img
@@ -361,50 +361,51 @@ const allSlides = [
   <section class="testimonials-section">
     <div class="container">
       <div class="testimonials-header">
-        <span class="section-tag section-tag--light">Customer Stories</span>
-        <h2 class="section-title section-title--light">ഉപഭോക്താക്കൾ പറയുന്നത്</h2>
+        <span class="section-tag section-tag--light">ഉപഭോക്തൃ അനുഭവങ്ങൾ</span>
+        <h2 class="section-title section-title--light">കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്</h2>
+        <p class="testimonials-intro testimonials-intro--light">കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.</p>
       </div>
       <div class="testi-grid">
 
         <div class="testi-real-card">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">The technical and implementation teams were very helpful and knowledgeable. I switched my kitchen stoves from LPG to induction, saving significantly — not just on electricity charges but on LPG consumption too.</p>
+          <p class="testi-quote">ടെക്നിക്കൽ, ഇംപ്ളിമെന്റേഷൻ ടീമുകൾ വളരെ സഹായകരായിരുന്നു — അവര്‍ക്ക് നല്ല അറിവും ഉണ്ടായിരുന്നു. ഞാൻ കിച്ചൺ സ്റ്റോവുകൾ LPG-യിൽ നിന്ന് ഇൻഡക്ഷനിലേക്ക് മാറ്റി; വൈദ്യുതി ചാർജ് മാത്രമല്ല, LPG ഉപഭോഗവും കുറഞ്ഞു.</p>
           <div class="testi-author">
             <div class="testi-avatar">AR</div>
             <div>
               <strong>Arun</strong>
-              <span>Kollam · 5 kW system</span>
+              <span>കൊല്ലം · 5 kW സിസ്റ്റം</span>
             </div>
           </div>
         </div>
 
         <div class="testi-real-card">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">The Rayenna team was very helpful and supportive throughout the implementation. They completed the project at a very competitive rate — overall, excellent value for money.</p>
+          <p class="testi-quote">ഇംപ്ളിമെന്റേഷൻ മുഴുവനും റയെന്ന ടീം വളരെ സഹായകരും പിന്തുണ നൽകിയിരുന്നു. വളരെ മത്സരാധിഷ്ഠിത നിരക്കിൽ പ്രോജക്റ്റ് പൂർത്തിയാക്കി — മൊത്തത്തില്‍ മികച്ച മൂല്യം.</p>
           <div class="testi-author">
             <div class="testi-avatar">SU</div>
             <div>
               <strong>Sudheer</strong>
-              <span>Ernakulam · 3 kW system</span>
+              <span>എറണാകുളം · 3 kW സിസ്റ്റം</span>
             </div>
           </div>
         </div>
 
         <div class="testi-real-card">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">I liked the attitude and professionalism of the team. Very helpful, knowledgeable, and extremely competitive on price. Their after-sales support is excellent too. I have already recommended them to many of my contacts.</p>
+          <p class="testi-quote">ടീമിന്റെ സമീപനവും പ്രൊഫഷണലിസവും എനിക്ക് ഇഷ്ടപ്പെട്ടു. വളരെ സഹായകരവും അറിവുള്ളവരും, വിലയിലും ഏറെ മത്സരാധിഷ്ഠിതവും. ആഫ്റ്റർ സെയിൽസ് പിന്തുണയും മികച്ചതാണ്. എന്റെ പല ബന്ധുക്കൾക്കും ഞാൻ ഇതിനകം ശുപാർശ ചെയ്തിട്ടുണ്ട്.</p>
           <div class="testi-author">
             <div class="testi-avatar">BJ</div>
             <div>
               <strong>Baiju</strong>
-              <span>Ernakulam · 10 kW system</span>
+              <span>എറണാകുളം · 10 kW സിസ്റ്റം</span>
             </div>
           </div>
         </div>
 
       </div>
       <div class="testimonials-cta-row">
-        <a href={`${mlPrefix}/contact`} class="btn testimonials-cta">Share Your Experience →</a>
+        <a href={`${mlPrefix}/contact/`} class="btn testimonials-cta">നിങ്ങളുടെ അനുഭവം പങ്കിടുക →</a>
       </div>
     </div>
   </section>
@@ -1070,6 +1071,13 @@ const allSlides = [
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+.testimonials-intro--light {
+  color: rgba(255,255,255,0.85);
+  max-width: 580px;
+  margin: 0;
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 .testi-grid {
   display: grid;
