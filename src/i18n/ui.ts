@@ -31,6 +31,7 @@ const ML_ROUTES = new Set([
   '/solar-panels-kochi',
   '/solar-panels-thrissur',
   '/solar-panels-trivandrum',
+  '/privacy',
 ]);
 
 function normalizePath(path: string): string {
