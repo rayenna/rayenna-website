@@ -1,15 +1,28 @@
 ---
 // ChatWidget.astro — Ray, Rayenna's AI Solar Assistant
 // Deployed as a Cloudflare Worker proxy (see worker/chat-proxy.js)
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const chat = useTranslations(lang).chat;
 const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 ---
 
-<div id="ray-chat-widget">
+<div
+  id="ray-chat-widget"
+  class={`ray-lang-${lang}`}
+  style={`--ray-nudge-text: '${chat.nudge.replace(/'/g, "\\'")}';`}
+>
 
   <!-- ── Floating bubble button ── -->
   <button
     id="ray-chat-btn"
-    aria-label="Chat with Ray, our solar assistant"
+    aria-label={chat.btnAria}
     aria-expanded="false"
   >
     <svg id="ray-icon-open" width="26" height="26" viewBox="0 0 24 24"
@@ -23,14 +36,14 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5"
             stroke-linecap="round"/>
     </svg>
-    <span class="ray-tooltip">Ask Ray ☀️</span>
+    <span class="ray-tooltip">{chat.tooltip}</span>
   </button>
 
   <!-- ── Chat panel ── -->
   <div
     id="ray-chat-panel"
     role="dialog"
-    aria-label="Chat with Ray"
+    aria-label={chat.panelAria}
     aria-hidden="true"
   >
 
@@ -39,13 +52,13 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       <div id="ray-avatar">☀️</div>
       <div id="ray-header-info">
         <span id="ray-name">Ray</span>
-        <span id="ray-subtitle">Rayenna Solar Assistant</span>
+        <span id="ray-subtitle">{chat.subtitle}</span>
       </div>
       <div id="ray-online-dot" aria-hidden="true"></div>
       <button
         id="ray-voice-toggle"
-        aria-label="Unmute Ray's voice"
-        title="Toggle voice"
+        aria-label={chat.voiceUnmute}
+        title={chat.voiceTitle}
       >
         <svg id="ray-speaker-on" width="16" height="16" viewBox="0 0 24 24"
              fill="none" aria-hidden="true"
@@ -65,7 +78,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
                 stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <button id="ray-close-btn" aria-label="Close chat">
+      <button id="ray-close-btn" aria-label={chat.close}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5"
                 stroke-linecap="round"/>
@@ -77,19 +90,12 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     <div id="ray-messages" role="log" aria-live="polite"></div>
 
     <!-- Quick reply chips -->
-    <div id="ray-quick-replies" aria-label="Quick questions">
-      <button class="ray-chip" data-msg="I'm interested in home solar">
-        🏠 Home solar
-      </button>
-      <button class="ray-chip" data-msg="I'm interested in business solar">
-        🏢 Business solar
-      </button>
-      <button class="ray-chip" data-msg="Tell me about government subsidies">
-        💰 Subsidies
-      </button>
-      <button class="ray-chip" data-msg="I'd like to talk to your team">
-        📞 Talk to team
-      </button>
+    <div id="ray-quick-replies" aria-label={chat.quickRepliesAria}>
+      {chat.chips.map((chip) => (
+        <button class="ray-chip" data-msg={chip.msg}>
+          {chip.label}
+        </button>
+      ))}
     </div>
 
     <!-- Input -->
@@ -97,15 +103,15 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       <input
         id="ray-input"
         type="text"
-        placeholder="Type your question..."
-        aria-label="Type your message to Ray"
+        placeholder={chat.inputPlaceholder}
+        aria-label={chat.inputAria}
         autocomplete="off"
         maxlength="500"
       />
       <button
         id="ray-mic-btn"
-        aria-label="Speak your message"
-        title="Tap to speak"
+        aria-label={chat.micSpeak}
+        title={chat.micTap}
         style="display:none"
       >
         <svg id="ray-mic-icon" width="18" height="18" viewBox="0 0 24 24"
@@ -119,7 +125,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
                 stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <button id="ray-send-btn" aria-label="Send message">
+      <button id="ray-send-btn" aria-label={chat.send}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 19-7z"
                 stroke="white" stroke-width="2"
@@ -136,6 +142,15 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
    Ray Chat Widget — Mobile First
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+#ray-chat-widget.ray-lang-ml .ray-msg,
+#ray-chat-widget.ray-lang-ml .ray-chip,
+#ray-chat-widget.ray-lang-ml #ray-input,
+#ray-chat-widget.ray-lang-ml #ray-name,
+#ray-chat-widget.ray-lang-ml #ray-subtitle,
+#ray-chat-widget.ray-lang-ml .ray-tooltip {
+  font-family: 'Noto Sans Malayalam', var(--font-body), sans-serif;
+}
+
 :root {
   --ray-primary: #a83838;
   --ray-primary-dark: #8a2c2c;
@@ -151,7 +166,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 /* ── Proactive nudge (CSS pseudo-element on the chat button) ──
    Clicking it = clicking the button. Zero separate event listeners. */
 #ray-chat-btn[data-nudge]::before {
-  content: '👋 What would solar save you?';
+  content: var(--ray-nudge-text);
   position: absolute;
   bottom: 0;
   right: calc(100% + 14px);
@@ -639,15 +654,11 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 }
 </style>
 
-<script define:vars={{ workerUrl }}>
+<script define:vars={{ workerUrl, chat, lang }}>
 (function () {
 
   const WORKER_URL = workerUrl;
-
-  const OPENING_MESSAGE =
-    "Hi there! I'm Ray, your solar guide from Rayenna Energy ☀️ " +
-    "Whether you're curious about going solar at home or for your business, " +
-    "I'm here to help. What can I help you with today?";
+  const OPENING_MESSAGE = chat.opening;
 
   // ── State ──
   let isOpen = false;
@@ -707,8 +718,8 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
         const clean = part.replace(/[.,!?)*\*]+$/, '');
         // Human-friendly label + icon
         let label;
-        if (clean.includes('solar-calculator'))              label = '☀️ Try the Solar Calculator';
-        else if (clean.includes('whatsapp.com') || clean.includes('wa.me')) label = '💬 Chat with us on WhatsApp';
+        if (clean.includes('solar-calculator'))              label = chat.linkCalculator;
+        else if (clean.includes('whatsapp.com') || clean.includes('wa.me')) label = chat.linkWhatsApp;
         else if (clean.includes('mailto:'))                  label = '📧 ' + clean.replace('mailto:', '');
         else if (clean.includes('rayennaenergy.com'))        label = '🌐 ' + clean.replace('https://', '');
         else                                                  label = clean;
@@ -767,7 +778,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     speakerOff.style.display = voiceEnabled ? 'none'  : 'block';
     voiceToggle.setAttribute(
       'aria-label',
-      voiceEnabled ? "Mute Ray's voice" : "Unmute Ray's voice"
+      voiceEnabled ? chat.voiceMute : chat.voiceUnmute
     );
     if (!voiceEnabled) {
       window.speechSynthesis.cancel();
@@ -794,11 +805,12 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     utterance.volume = 1;
 
     const voices = window.speechSynthesis.getVoices();
+    const ttsLang = chat.ttsLang || 'en-IN';
     const preferred =
-      voices.find(v => v.lang === 'en-IN' && v.localService) ||
-      voices.find(v => v.lang === 'en-IN') ||
-      voices.find(v => v.lang.startsWith('en') && v.localService) ||
-      voices.find(v => v.lang.startsWith('en'));
+      voices.find(v => v.lang === ttsLang && v.localService) ||
+      voices.find(v => v.lang === ttsLang) ||
+      voices.find(v => v.lang.startsWith(ttsLang.split('-')[0]) && v.localService) ||
+      voices.find(v => v.lang.startsWith(ttsLang.split('-')[0]));
     if (preferred) utterance.voice = preferred;
 
     utterance.onstart = () => avatar.classList.add('ray-speaking');
@@ -829,14 +841,14 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     recognition = new SpeechRecognition();
     recognition.continuous     = false;
     recognition.interimResults = true;
-    recognition.lang           = 'en-IN';
+    recognition.lang           = chat.speechLang || 'en-IN';
 
     recognition.onstart = () => {
       isRecording = true;
       micBtn.classList.add('ray-recording');
-      micBtn.setAttribute('aria-label', 'Listening… tap to stop');
+      micBtn.setAttribute('aria-label', chat.micListening);
       input.value       = '';
-      input.placeholder = 'Listening...';
+      input.placeholder = chat.listeningPlaceholder;
       input.classList.add('ray-listening');
     };
 
@@ -850,8 +862,8 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     recognition.onend = () => {
       isRecording = false;
       micBtn.classList.remove('ray-recording');
-      micBtn.setAttribute('aria-label', 'Speak your message');
-      input.placeholder = 'Type your question...';
+      micBtn.setAttribute('aria-label', chat.micSpeak);
+      input.placeholder = chat.inputPlaceholder;
       input.classList.remove('ray-listening');
       const text = input.value.trim();
       if (text) {
@@ -863,14 +875,10 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     recognition.onerror = (event) => {
       isRecording = false;
       micBtn.classList.remove('ray-recording');
-      input.placeholder = 'Type your question...';
+      input.placeholder = chat.inputPlaceholder;
       input.classList.remove('ray-listening');
       if (event.error === 'not-allowed') {
-        addMessage(
-          "I couldn't access your microphone. Please check your browser " +
-          "permissions and try again, or just type your question below ☀️",
-          'assistant'
-        );
+        addMessage(chat.errorMic, 'assistant');
       }
     };
 
@@ -927,7 +935,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
       const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: conversationHistory }),
+        body: JSON.stringify({ messages: conversationHistory, locale: lang }),
       });
 
       const data = await res.json();
@@ -935,8 +943,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 
       const reply =
         data?.content?.[0]?.text ||
-        "I'm sorry, I had a little trouble responding. " +
-        "You can reach our team directly on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️";
+        chat.errorReply;
 
       addMessage(reply, 'assistant');
       speakText(reply);
@@ -944,11 +951,7 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 
     } catch (_err) {
       hideTyping();
-      addMessage(
-        "I'm having a little trouble right now. You can reach our team directly on WhatsApp: " +
-        "https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️",
-        'assistant'
-      );
+      addMessage(chat.errorNetwork, 'assistant');
     }
 
     isLoading = false;

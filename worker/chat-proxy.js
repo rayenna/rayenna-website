@@ -43,7 +43,7 @@ export default {
     }
 
     try {
-      const { messages } = await request.json();
+      const { messages, locale } = await request.json();
 
       // Validate messages array exists and is not empty
       if (!Array.isArray(messages) || messages.length === 0) {
@@ -52,6 +52,24 @@ export default {
           { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
         );
       }
+
+      const isMl = locale === 'ml';
+      const calcUrl = isMl
+        ? 'https://rayennaenergy.com/ml/solar-calculator/'
+        : 'https://rayennaenergy.com/solar-calculator/';
+
+      const localeBlock = isMl
+        ? `
+
+VISITOR LOCALE: Malayalam website (rayennaenergy.com/ml/).
+- Reply in Malayalam by default. Use English only if the visitor clearly prefers English.
+- For HOME residential sizing, link to: ${calcUrl}
+- Keep a warm, natural Malayalam tone (not overly formal).`
+        : `
+
+VISITOR LOCALE: English website.
+- Reply in English by default.
+- For HOME residential sizing, link to: ${calcUrl}`;
 
       const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -64,6 +82,7 @@ export default {
           model: 'claude-haiku-4-5',
           max_tokens: 1024,
           system: `You are Ray, a warm and friendly solar energy advisor for Rayenna Energy — Kerala's trusted MNRE-approved solar installation company. You speak naturally in both English and Malayalam, switching to whichever language the visitor uses. If they write in Malayalam, respond in Malayalam. If English, respond in English.
+${localeBlock}
 
 YOUR PERSONALITY:
 - Warm, friendly, and genuinely helpful — like a knowledgeable friend, not a salesperson
@@ -104,7 +123,7 @@ KEY FACTS TO SHARE:
 
 PRICING RULES — VERY IMPORTANT:
 - Never give specific price quotes
-- For sizing/capacity estimates for RESIDENTIAL (home) users only, always link to the Solar Calculator using the EXACT full URL: https://rayennaenergy.com/solar-calculator
+- For sizing/capacity estimates for RESIDENTIAL (home) users only, always link to the Solar Calculator using the EXACT full URL shown in VISITOR LOCALE above
 - The Solar Calculator is for HOMES ONLY — do NOT recommend it to commercial or business users. For commercial users, direct them straight to WhatsApp for a custom consultation.
 - For actual pricing, always say: "Our team will give you an exact quote based on your specific needs — the fastest way is to chat with them directly on WhatsApp!" then provide the WhatsApp link
 - WhatsApp link — always use this EXACT full URL: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation.
@@ -118,7 +137,7 @@ CONVERSATION FLOW — guide visitors through this journey:
 5. Push toward WhatsApp for pricing and next steps
 
 ALWAYS END conversations by offering one of:
-- For HOME/RESIDENTIAL users only: "Try our free Solar Calculator: https://rayennaenergy.com/solar-calculator"
+- For HOME/RESIDENTIAL users only: use the Solar Calculator URL from VISITOR LOCALE above
 - For COMMERCIAL/BUSINESS users (and as a fallback for all users): "Chat with our team on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation."
 
 THINGS YOU MUST NOT DO:

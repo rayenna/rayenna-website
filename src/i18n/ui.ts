@@ -99,6 +99,44 @@ const ui = {
     },
     langSwitcherAria: 'Choose language',
     waTooltip: 'Chat with us!',
+    chat: {
+      tooltip: 'Ask Ray ☀️',
+      btnAria: 'Chat with Ray, our solar assistant',
+      panelAria: 'Chat with Ray',
+      subtitle: 'Rayenna Solar Assistant',
+      voiceMute: "Mute Ray's voice",
+      voiceUnmute: "Unmute Ray's voice",
+      voiceTitle: 'Toggle voice',
+      close: 'Close chat',
+      quickRepliesAria: 'Quick questions',
+      chips: [
+        { label: '🏠 Home solar', msg: "I'm interested in home solar" },
+        { label: '🏢 Business solar', msg: "I'm interested in business solar" },
+        { label: '💰 Subsidies', msg: 'Tell me about government subsidies' },
+        { label: '📞 Talk to team', msg: "I'd like to talk to your team" },
+      ],
+      inputPlaceholder: 'Type your question...',
+      inputAria: 'Type your message to Ray',
+      micSpeak: 'Speak your message',
+      micTap: 'Tap to speak',
+      micListening: 'Listening… tap to stop',
+      listeningPlaceholder: 'Listening...',
+      send: 'Send message',
+      opening:
+        "Hi there! I'm Ray, your solar guide from Rayenna Energy ☀️ Whether you're curious about going solar at home or for your business, I'm here to help. What can I help you with today?",
+      nudge: '👋 What would solar save you?',
+      linkCalculator: '☀️ Try the Solar Calculator',
+      linkWhatsApp: '💬 Chat with us on WhatsApp',
+      errorMic:
+        "I couldn't access your microphone. Please check your browser permissions and try again, or just type your question below ☀️",
+      errorReply:
+        "I'm sorry, I had a little trouble responding. You can reach our team directly on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️",
+      errorNetwork:
+        "I'm having a little trouble right now. You can reach our team directly on WhatsApp: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️",
+      calculatorUrl: 'https://rayennaenergy.com/solar-calculator/',
+      speechLang: 'en-IN',
+      ttsLang: 'en-IN',
+    },
   },
   ml: {
     nav: {
@@ -133,6 +171,44 @@ const ui = {
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
+    chat: {
+      tooltip: 'റെയിനോട് ചോദിക്കുക ☀️',
+      btnAria: 'റയെന്ന സോളാർ അസിസ്റ്റന്റ് റെയിനോട് ചാറ്റ് ചെയ്യുക',
+      panelAria: 'റെയിനോട് ചാറ്റ് ചെയ്യുക',
+      subtitle: 'റയെന്ന സോളാർ അസിസ്റ്റന്റ്',
+      voiceMute: 'റെയിന്റെ ശബ്ദം നിശബ്ദമാക്കുക',
+      voiceUnmute: 'റെയിന്റെ ശബ്ദം ഓണാക്കുക',
+      voiceTitle: 'ശബ്ദം ടോഗിൾ ചെയ്യുക',
+      close: 'ചാറ്റ് അടയ്ക്കുക',
+      quickRepliesAria: 'പെട്ടെന്നുള്ള ചോദ്യങ്ങൾ',
+      chips: [
+        { label: '🏠 വീട്ടുപയോഗ സോളാർ', msg: 'എനിക്ക് വീട്ടുപയോഗ സോളാറിൽ താൽപ്പര്യമുണ്ട്' },
+        { label: '🏢 കമർഷ്യൽ സോളാർ', msg: 'എനിക്ക് കമർഷ്യൽ സോളാറിൽ താൽപ്പര്യമുണ്ട്' },
+        { label: '💰 സബ്സിഡി', msg: 'സർക്കാർ സബ്സിഡികളെക്കുറിച്ച് പറയുക' },
+        { label: '📞 ടീമിനോട് സംസാരിക്കാം', msg: 'ഞാൻ നിങ്ങളുടെ ടീമിനോട് സംസാരിക്കാൻ ആഗ്രഹിക്കുന്നു' },
+      ],
+      inputPlaceholder: 'നിങ്ങളുടെ ചോദ്യം ടൈപ്പ് ചെയ്യുക...',
+      inputAria: 'റെയിന് സന്ദേശം ടൈപ്പ് ചെയ്യുക',
+      micSpeak: 'സന്ദേശം സംസാരിക്കുക',
+      micTap: 'സംസാരിക്കാൻ ടാപ്പ് ചെയ്യുക',
+      micListening: 'കേൾക്കുന്നു… നിർത്താൻ ടാപ്പ് ചെയ്യുക',
+      listeningPlaceholder: 'കേൾക്കുന്നു...',
+      send: 'സന്ദേശം അയയ്ക്കുക',
+      opening:
+        'നമസ്കാരം! ഞാൻ റയ്, റയെന്ന എനർജിയുടെ സോളാർ ഗൈഡ് ☀️ വീട്ടിലോ ബിസിനസിലോ സോളാറിലേക്ക് മാറാൻ ആഗ്രഹിക്കുന്നുണ്ടോ എന്ന് അറിയാൻ ഞാൻ ഇവിടെയുണ്ട്. ഇന്ന് എന്താണ് സഹായിക്കേണ്ടത്?',
+      nudge: '👋 സോളാർ എത്ര സമ്പാദ്യം നൽകും?',
+      linkCalculator: '☀️ സോളാർ കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക',
+      linkWhatsApp: '💬 WhatsApp-ൽ ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക',
+      errorMic:
+        'മൈക്രോഫോൺ ആക്സസ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ബ്രൗസർ അനുമതികൾ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ ചോദ്യം താഴെ ടൈപ്പ് ചെയ്യുക ☀️',
+      errorReply:
+        'ക്ഷമിക്കുക, പ്രതികരിക്കാൻ കുറച്ച് ബുദ്ധിമുട്ടുണ്ടായി. ഞങ്ങളുടെ ടീമിനെ നേരിട്ട് WhatsApp-ൽ ബന്ധപ്പെടാം: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️',
+      errorNetwork:
+        'ഇപ്പോൾ കുറച്ച് ബുദ്ധിമുട്ടുണ്ട്. ഞങ്ങളുടെ ടീമിനെ നേരിട്ട് WhatsApp-ൽ ബന്ധപ്പെടാം: https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation. ☀️',
+      calculatorUrl: 'https://rayennaenergy.com/ml/solar-calculator/',
+      speechLang: 'ml-IN',
+      ttsLang: 'ml-IN',
+    },
   },
 } as const;
 
