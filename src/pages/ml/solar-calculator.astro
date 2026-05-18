@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { calcMl } from '../../i18n/calculator-ml.ts';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 ---
@@ -10,16 +11,16 @@ const mlPrefix = '/ml';
 
   <!-- ===== HERO ===== -->
   <section class="page-hero">
-    <img src={`${base}/media/services-hero-opt3.jpg`} alt="Solar panels on a rooftop at sunset" class="page-hero__bg" />
+    <img src={`${base}/media/services-hero-opt3.jpg`} alt="സൂര്യാശയങ്ങളുള്ള മേൽക്കൂര" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">സ്മാർട്ട് സോളാർ ടൂൾ</p>
       <h1 class="page-hero__title">നിങ്ങൾക്ക് എത്ര സോളാർ വേണമെന്ന് കണ്ടെത്തുക</h1>
       <p class="page-hero__sub">നിങ്ങളുടെ വീടിനെക്കുറിച്ച് പറയുക. എന്ത് ഇൻസ്റ്റാൾ ചെയ്യണമെന്ന് ഞങ്ങൾ പറയാം.</p>
-      <p class="page-hero__note">🏠 This calculator is designed for residential (home) use only. For commercial solar, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer" style="color:#ffd700;text-decoration:underline;">chat with us on WhatsApp</a>.</p>
+      <p class="page-hero__note">🏠 ഈ കാൽക്കുലേറ്റർ വീട്ടുപയോഗത്തിന് മാത്രമാണ്. കമർഷ്യൽ സോളാറിന്, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer" style="color:#ffd700;text-decoration:underline;">WhatsApp-ൽ ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക</a>.</p>
       <div class="hero-btns">
         <a href="#calculator" class="btn btn-primary hero-scroll-btn">കാൽക്കുലേറ്റർ ആരംഭിക്കുക ↓</a>
-        <a href={`${mlPrefix}/contact`} class="btn btn-outline-white">സൗജന്യ കൺസൾട്ടേഷൻ</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-outline-white">സൗജന്യ കൺസൾട്ടേഷൻ</a>
       </div>
     </div>
   </section>
@@ -28,10 +29,10 @@ const mlPrefix = '/ml';
   <section class="trust-strip">
     <div class="container trust-inner">
       {[
-        { val: '5 min',  label: 'Time to complete' },
-        { val: '100%',   label: 'Personalised results' },
-        { val: 'Free',   label: 'No cost, no commitment' },
-        { val: 'MNRE',   label: 'Approved installer' },
+        { val: '5 മിനിറ്റ്',  label: 'പൂർത്തിയാക്കാൻ സമയം' },
+        { val: '100%',   label: 'വ്യക്തിഗത ഫലങ്ങൾ' },
+        { val: 'സൗജന്യം',   label: 'ചെലവില്ല, ബാധ്യതയില്ല' },
+        { val: 'MNRE',   label: 'അംഗീകൃത ഇൻസ്റ്റാളർ' },
       ].map(m => (
         <div class="trust-metric">
           <strong>{m.val}</strong>
@@ -45,32 +46,32 @@ const mlPrefix = '/ml';
   <section class="calc-intro">
     <div class="container calc-intro__inner">
       <div class="calc-intro__image">
-        <img src={`${base}/media/solar-calculator-intro.jpg`} alt="High-efficiency solar panels on a rooftop" />
+        <img src={`${base}/media/solar-calculator-intro.jpg`} alt="മേൽക്കൂരയിലെ ഉയർന്ന കാര്യക്ഷമതയുള്ള സോളാർ പാനലുകൾ" />
       </div>
       <div class="calc-intro__content">
-        <span class="section-tag">How it works</span>
-        <h2 class="section-title">Your Home is Unique. Your Solar System Should Be Too.</h2>
-        <p>Most solar quotes you receive are generic — based on averages, not your actual home. Rayenna's Solar Calculator changes that. Tell us about your home type, the rooms and floors you have, the appliances you run every day, and whether you charge an electric vehicle. Our calculator uses real consumption data to recommend the exact system size, panel type, and number of panels your home needs — along with a financial snapshot showing your payback period and 25-year savings. No guesswork. No salespeople. Just numbers.</p>
+        <span class="section-tag">എങ്ങനെ പ്രവർത്തിക്കുന്നു</span>
+        <h2 class="section-title">നിങ്ങളുടെ വീട് പ്രത്യേകമാണ്. സോളാർ സിസ്റ്റവും അങ്ങനെ തന്നെ.</h2>
+        <p>മിക്ക സോളാർ ക്വോട്ടുകളും പൊതുവായ ശരാശരിയിൽ അടിസ്ഥാനമാക്കിയതാണ് — നിങ്ങളുടെ യഥാർത്ഥ വീടിനല്ല. റയെന്നിന്റെ സോളാർ കാൽക്കുലേറ്റർ അത് മാറ്റുന്നു. വീടിന്റെ തരം, മുറികളും നിലകളും, ദിവസേന ഉപയോഗിക്കുന്ന ഉപകരണങ്ങൾ, EV ചാർജ് ചെയ്യുന്നുണ്ടോ എന്നിവ പറയുക. യഥാർത്ഥ ഉപഭോഗ ഡാറ്റയിൽ നിന്ന് സിസ്റ്റം വലുപ്പം, പാനൽ തരം, പാനലുകളുടെ എണ്ണം — പേയ്ബാക്ക് കാലയളവും 25 വർഷ സമ്പാദ്യവും കാണിക്കുന്ന സാമ്പത്തിക സംഗ്രഹവും ഞങ്ങൾ നിർദ്ദേശിക്കുന്നു. ഊഹിക്കലില്ല. സെയിൽസ് പേഴ്സണില്ല. അക്കങ്ങൾ മാത്രം.</p>
         <div class="how-cards">
           <div class="how-card">
             <span class="how-card__icon">⚡</span>
             <div>
-              <h3>Enter your details</h3>
-              <p>Home type, rooms, and appliances</p>
+              <h3>വിശദാംശങ്ങൾ നൽകുക</h3>
+              <p>വീടിന്റെ തരം, മുറികൾ, ഉപകരണങ്ങൾ</p>
             </div>
           </div>
           <div class="how-card">
             <span class="how-card__icon">☀️</span>
             <div>
-              <h3>Get your recommendation</h3>
-              <p>System size, panels, and roof space</p>
+              <h3>ശുപാർശ നേടുക</h3>
+              <p>സിസ്റ്റം വലുപ്പം, പാനലുകൾ, റൂഫ് സ്ഥലം</p>
             </div>
           </div>
           <div class="how-card">
             <span class="how-card__icon">💰</span>
             <div>
-              <h3>See your savings</h3>
-              <p>Payback period and lifetime savings</p>
+              <h3>സമ്പാദ്യം കാണുക</h3>
+              <p>പേയ്ബാക്ക് കാലയളവും ആജീവനാന്ത സമ്പാദ്യവും</p>
             </div>
           </div>
         </div>
@@ -94,80 +95,80 @@ const mlPrefix = '/ml';
             <div class="cpb-line" data-line="3"></div>
             <div class="cpb-dot" data-dot="4"><span>4</span></div>
           </div>
-          <p class="calc-step-label" id="step-label">Step 1 of 4 — Your home</p>
+          <p class="calc-step-label" id="step-label">{calcMl.stepLabels[1]}</p>
         </div>
 
         <!-- ── STEP 1: HOME ── -->
         <div class="calc-step" id="step-1">
-          <h3 class="calc-step-title">About Your Home</h3>
+          <h3 class="calc-step-title">നിങ്ങളുടെ വീടിനെക്കുറിച്ച്</h3>
 
-          <p class="calc-field-label">Home type</p>
+          <p class="calc-field-label">വീടിന്റെ തരം</p>
           <div class="home-type-grid" id="home-type-grid">
             <div class="ht-card selected" data-type="house">
               <span class="ht-icon">🏠</span>
-              <strong>Independent house</strong>
-              <small>Standalone home</small>
+              <strong>സ്വതന്ത്ര വീട്</strong>
+              <small>സ്റ്റാൻഡ്ടോൺ വീട്</small>
             </div>
             <div class="ht-card" data-type="apartment">
               <span class="ht-icon">🏢</span>
-              <strong>Apartment</strong>
-              <small>Flat / unit in a building</small>
+              <strong>അപ്പാർട്ട്‌മെന്റ്</strong>
+              <small>ഫ്ലാറ്റ് / ബിൽഡിംഗിലെ യൂണിറ്റ്</small>
             </div>
             <div class="ht-card" data-type="villa">
               <span class="ht-icon">🏡</span>
-              <strong>Villa</strong>
-              <small>Detached / gated villa</small>
+              <strong>വില്ല</strong>
+              <small>പ്രത്യേക / ഗേറ്റഡ് വില്ല</small>
             </div>
             <div class="ht-card" data-type="rowhouse">
               <span class="ht-icon">🏘</span>
-              <strong>Row house</strong>
-              <small>Terraced / linked home</small>
+              <strong>റോ ഹൗസ്</strong>
+              <small>ടെറസ് / ബന്ധിപ്പിച്ച വീട്</small>
             </div>
           </div>
 
           <div class="steppers-group">
             <div class="stepper-row">
-              <label>Bedrooms</label>
+              <label>കിടപ്പുമുറികൾ</label>
               <div class="stepper" data-id="bedrooms" data-min="1" data-max="10" data-val="3">
-                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <button class="stp-btn stp-minus" type="button" aria-label="കുറയ്ക്കുക">−</button>
                 <span class="stp-val">3</span>
-                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+                <button class="stp-btn stp-plus" type="button" aria-label="കൂട്ടുക">+</button>
               </div>
             </div>
             <div class="stepper-row">
-              <label>Bathrooms</label>
+              <label>കുളിമുറികൾ</label>
               <div class="stepper" data-id="bathrooms" data-min="1" data-max="10" data-val="2">
-                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <button class="stp-btn stp-minus" type="button" aria-label="കുറയ്ക്കുക">−</button>
                 <span class="stp-val">2</span>
-                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+                <button class="stp-btn stp-plus" type="button" aria-label="കൂട്ടുക">+</button>
               </div>
             </div>
             <div class="stepper-row">
-              <label>Floors</label>
+              <label>നിലകൾ</label>
               <div class="stepper" data-id="floors" data-min="1" data-max="4" data-val="1">
-                <button class="stp-btn stp-minus" type="button" aria-label="Decrease">−</button>
+                <button class="stp-btn stp-minus" type="button" aria-label="കുറയ്ക്കുക">−</button>
                 <span class="stp-val">1</span>
-                <button class="stp-btn stp-plus" type="button" aria-label="Increase">+</button>
+                <button class="stp-btn stp-plus" type="button" aria-label="കൂട്ടുക">+</button>
               </div>
             </div>
           </div>
 
           <div class="calc-nav">
             <div></div>
-            <button class="btn-calc-next" type="button" data-next="2">Next →</button>
+            <button class="btn-calc-next" type="button" data-next="2">അടുത്തത് →</button>
           </div>
         </div>
 
         <!-- ── STEP 2: APPLIANCES ── -->
         <div class="calc-step hidden" id="step-2">
-          <h3 class="calc-step-title">Your Appliances</h3>
+          <h3 class="calc-step-title">നിങ്ങളുടെ ഉപകരണങ്ങൾ</h3>
 
-          <p class="calc-category-label">Cooling</p>
+          <p class="calc-category-label">തണുപ്പിക്കൽ</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Air conditioners</label>
-                <small>1.5 ton split AC, 1500W each</small>
+                <label>എയർ കണ്ടീഷനറുകൾ</label>
+                <small>1.5 ടൺ സ്പ്ലിറ്റ് AC, ഓരോന്നും 1500W</small>
               </div>
               <div class="stepper" data-id="ac" data-min="0" data-max="15" data-val="2">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -177,8 +178,8 @@ const mlPrefix = '/ml';
             </div>
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Ceiling fans</label>
-                <small>75W each</small>
+                <label>സീലിംഗ് ഫാൻസ്</label>
+                <small>ഓരോന്നും 75W</small>
               </div>
               <div class="stepper" data-id="fans" data-min="0" data-max="30" data-val="4">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -188,12 +189,12 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">Entertainment</p>
+          <p class="calc-category-label">വിനോദം</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Televisions</label>
-                <small>LED, 120W each</small>
+                <label>ടെലിവിഷനുകൾ</label>
+                <small>LED, ഓരോന്നും 120W</small>
               </div>
               <div class="stepper" data-id="tvs" data-min="0" data-max="15" data-val="2">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -203,12 +204,12 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">Kitchen</p>
+          <p class="calc-category-label">അടുക്കള</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Refrigerator</label>
-                <small>200W, runs 30% of time</small>
+                <label>റഫ്രിജറേറ്റർ</label>
+                <small>200W, സമയത്തിന്റെ 30% പ്രവർത്തനം</small>
               </div>
               <div class="stepper" data-id="fridge" data-min="0" data-max="5" data-val="1">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -218,8 +219,8 @@ const mlPrefix = '/ml';
             </div>
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Microwave / OTG</label>
-                <small>1200W, ~1 hr/day</small>
+                <label>മൈക്രോവേവ് / OTG</label>
+                <small>1200W, ~1 മണി/ദിവസം</small>
               </div>
               <div class="stepper" data-id="microwave" data-min="0" data-max="5" data-val="1">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -229,8 +230,8 @@ const mlPrefix = '/ml';
             </div>
             <div class="stepper-row">
               <div class="stepper-label-group">
-                <label>Washing machine</label>
-                <small>500W, ~1 hr/day</small>
+                <label>വാഷിംഗ് മെഷീൻ</label>
+                <small>500W, ~1 മണി/ദിവസം</small>
               </div>
               <div class="stepper" data-id="washing" data-min="0" data-max="4" data-val="1">
                 <button class="stp-btn stp-minus" type="button">−</button>
@@ -240,12 +241,12 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">Other</p>
+          <p class="calc-category-label">മറ്റുള്ളവ</p>
           <div class="toggles-group">
             <div class="toggle-row">
               <div class="stepper-label-group">
-                <label>Water heater / geyser</label>
-                <small>2000W, ~1 hr/day</small>
+                <label>വാട്ടർ ഹീറ്റർ / ഗീസർ</label>
+                <small>2000W, ~1 മണി/ദിവസം</small>
               </div>
               <label class="toggle-switch">
                 <input type="checkbox" id="toggle-geyser" checked />
@@ -254,8 +255,8 @@ const mlPrefix = '/ml';
             </div>
             <div class="toggle-row">
               <div class="stepper-label-group">
-                <label>Water pump / motor</label>
-                <small>750W, ~2 hrs/day</small>
+                <label>വാട്ടർ പമ്പ് / മോട്ടോർ</label>
+                <small>750W, ~2 മണി/ദിവസം</small>
               </div>
               <label class="toggle-switch">
                 <input type="checkbox" id="toggle-pump" />
@@ -267,7 +268,7 @@ const mlPrefix = '/ml';
           <!-- EV Section -->
           <div class="ev-section">
             <div class="toggle-row ev-toggle-row">
-              <label class="ev-main-label">⚡ I have an electric vehicle</label>
+              <label class="ev-main-label">⚡ എനിക്ക് ഇലക്ട്രിക് വാഹനമുണ്ട്</label>
               <label class="toggle-switch">
                 <input type="checkbox" id="toggle-ev" />
                 <span class="toggle-pill"></span>
@@ -277,7 +278,7 @@ const mlPrefix = '/ml';
             <div class="ev-panel hidden" id="ev-panel">
               <div class="steppers-group">
                 <div class="stepper-row">
-                  <label>Number of EVs</label>
+                  <label>EV എണ്ണം</label>
                   <div class="stepper" data-id="ev-count" data-min="1" data-max="4" data-val="1">
                     <button class="stp-btn stp-minus" type="button">−</button>
                     <span class="stp-val">1</span>
@@ -286,37 +287,37 @@ const mlPrefix = '/ml';
                 </div>
               </div>
 
-              <p class="calc-field-label" style="margin-top:20px;">Charger type</p>
+              <p class="calc-field-label" style="margin-top:20px;">ചാർജർ തരം</p>
               <div class="charger-grid" id="charger-grid">
                 <div class="charger-card" data-kw="2.3">
                   <strong>2.3 kW</strong>
-                  <span>Regular 5A socket</span>
-                  <small>Overnight standard plug</small>
+                  <span>സാധാരണ 5A സോക്കറ്റ്</span>
+                  <small>രാത്രി സ്റ്റാൻഡേർഡ് പ്ലഗ്</small>
                 </div>
                 <div class="charger-card selected" data-kw="3.3">
                   <strong>3.3 kW</strong>
-                  <span>Slow wall box</span>
-                  <small>Standard home charger</small>
+                  <span>സ്ലോ വാൾ ബോക്സ്</span>
+                  <small>സാധാരണ ഹോം ചാർജർ</small>
                 </div>
                 <div class="charger-card" data-kw="7.4">
                   <strong>7.4 kW</strong>
-                  <span>Fast wall box</span>
-                  <small>Dedicated AC charger</small>
+                  <span>ഫാസ്റ്റ് വാൾ ബോക്സ്</span>
+                  <small>സമർപ്പിത AC ചാർജർ</small>
                 </div>
                 <div class="charger-card" data-kw="11">
                   <strong>11 kW</strong>
-                  <span>Rapid AC charger</span>
-                  <small>3-phase, premium setup</small>
+                  <span>റാപിഡ് AC ചാർജർ</span>
+                  <small>3-ഫേസ്, പ്രീമിയം സെറ്റപ്പ്</small>
                 </div>
               </div>
 
               <div class="sliders-group">
                 <div class="slider-row">
-                  <label>Daily charging duration: <strong id="ev-hours-val">4</strong> hrs</label>
+                  <label>ദൈനംദിന ചാർജ് സമയം: <strong id="ev-hours-val">4</strong> മണി</label>
                   <input type="range" id="ev-hours" min="1" max="12" value="4" step="1" class="calc-slider" />
                 </div>
                 <div class="slider-row">
-                  <label>Days charged per week: <strong id="ev-days-val">5</strong> days</label>
+                  <label>ആഴ്ചയിൽ ചാർജ് ചെയ്യുന്ന ദിവസങ്ങൾ: <strong id="ev-days-val">5</strong> ദിവസം</label>
                   <input type="range" id="ev-days" min="1" max="7" value="5" step="1" class="calc-slider" />
                 </div>
               </div>
@@ -324,12 +325,12 @@ const mlPrefix = '/ml';
               <div class="ev-impact-panel" id="ev-impact">
                 <div class="ev-impact-row">
                   <div>
-                    <p class="ev-impact-label">Added daily load (avg)</p>
+                    <p class="ev-impact-label">കൂടുതൽ ദൈനംദിന ഭാരം (ശരാശരി)</p>
                     <p class="ev-impact-val" id="ev-added-load">— kWh</p>
                   </div>
                   <div>
-                    <p class="ev-impact-label">Extra panels needed</p>
-                    <p class="ev-impact-val" id="ev-extra-panels">— panels</p>
+                    <p class="ev-impact-label">അധിക പാനലുകൾ ആവശ്യം</p>
+                    <p class="ev-impact-val" id="ev-extra-panels">— പാനലുകൾ</p>
                   </div>
                 </div>
                 <p class="ev-impact-note" id="ev-impact-note"></p>
@@ -338,76 +339,76 @@ const mlPrefix = '/ml';
           </div>
 
           <div class="calc-nav">
-            <button class="btn-calc-back" type="button" data-back="1">← Back</button>
-            <button class="btn-calc-next" type="button" data-next="3">Next →</button>
+            <button class="btn-calc-back" type="button" data-back="1">← പിന്നോട്ട്</button>
+            <button class="btn-calc-next" type="button" data-next="3">അടുത്തത് →</button>
           </div>
         </div>
 
         <!-- ── STEP 3: USAGE PATTERN ── -->
         <div class="calc-step hidden" id="step-3">
-          <h3 class="calc-step-title">Your Usage Pattern</h3>
+          <h3 class="calc-step-title">നിങ്ങളുടെ ഉപയോഗ രീതി</h3>
 
           <div class="sliders-group">
             <div class="slider-row">
-              <label>AC usage per day: <strong id="ac-hours-val">8</strong> hrs</label>
+              <label>ദിവസേന AC ഉപയോഗം: <strong id="ac-hours-val">8</strong> മണി</label>
               <input type="range" id="ac-hours" min="2" max="16" value="8" step="1" class="calc-slider" />
-              <div class="slider-range-labels"><span>2 hrs</span><span>16 hrs</span></div>
+              <div class="slider-range-labels"><span>2 മണി</span><span>16 മണി</span></div>
             </div>
           </div>
 
-          <p class="calc-field-label" style="margin-top:28px;">Daytime occupancy</p>
+          <p class="calc-field-label" style="margin-top:28px;">പകൽ സമയത്തെ വീട്ടിൽ ഉള്ളവർ</p>
           <div class="occupancy-grid" id="occupancy-grid">
             <div class="occ-card selected" data-occ="home">
-              <strong>🏠 Home all day</strong>
-              <small>Housewife, work from home</small>
+              <strong>🏠 പകൽ മുഴുവൻ വീട്ടിൽ</strong>
+              <small>ഗൃഹിണി, വീട്ടിൽ നിന്ന് ജോലി</small>
             </div>
             <div class="occ-card" data-occ="away">
-              <strong>🚗 Away daytime</strong>
-              <small>Office goers, school hours</small>
+              <strong>🚗 പകൽ പുറത്ത്</strong>
+              <small>ഓഫീസ് ജോലിക്കാർ, സ്കൂൾ സമയം</small>
             </div>
           </div>
 
           <div class="sliders-group" style="margin-top:28px;">
             <div class="slider-row">
-              <label>Monthly KSEB bill: <strong id="bill-val">₹5,000</strong></label>
+              <label>മാസിക KSEB ബിൽ: <strong id="bill-val">₹5,000</strong></label>
               <input type="range" id="bill-slider" min="1000" max="15000" value="5000" step="500" class="calc-slider" />
               <div class="slider-range-labels"><span>₹1,000</span><span>₹15,000</span></div>
             </div>
           </div>
 
           <div class="calc-nav">
-            <button class="btn-calc-back" type="button" data-back="2">← Back</button>
-            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">Calculate →</button>
+            <button class="btn-calc-back" type="button" data-back="2">← പിന്നോട്ട്</button>
+            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">കണക്കാക്കുക →</button>
           </div>
         </div>
 
         <!-- ── STEP 4: RESULTS ── -->
         <div class="calc-step hidden" id="step-4">
-          <h3 class="calc-step-title">Your Personalised Recommendation</h3>
+          <h3 class="calc-step-title">നിങ്ങൾക്കുള്ള വ്യക്തിഗത ശുപാർശ</h3>
 
           <!-- Hero result card -->
           <div class="result-hero">
-            <p class="result-hero-label">Recommended system size</p>
+            <p class="result-hero-label">ശുപാർശ ചെയ്യുന്ന സിസ്റ്റം വലുപ്പം</p>
             <p class="result-hero-kw" id="result-kw">— kW</p>
-            <p class="result-hero-units" id="result-units">Generates ~— units/year</p>
+            <p class="result-hero-units" id="result-units">വാർഷികം ~— യൂണിറ്റ് ഉത്പാദിക്കും</p>
           </div>
 
           <!-- 4 stat cards -->
           <div class="result-stats-grid">
             <div class="result-stat">
-              <p class="rs-label">Est. daily consumption</p>
+              <p class="rs-label">ഏകദേശ ദൈനംദിന ഉപഭോഗം</p>
               <p class="rs-val" id="result-daily">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">Panels needed</p>
+              <p class="rs-label">ആവശ്യമായ പാനലുകൾ</p>
               <p class="rs-val" id="result-panels">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">Roof space needed</p>
+              <p class="rs-label">ആവശ്യമായ റൂഫ് സ്ഥലം</p>
               <p class="rs-val" id="result-roof">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">PM Surya Ghar subsidy</p>
+              <p class="rs-label">PM സൂര്യ ഘർ സബ്സിഡി</p>
               <p class="rs-val" id="result-subsidy">—</p>
             </div>
           </div>
@@ -415,28 +416,28 @@ const mlPrefix = '/ml';
           <!-- Panel options -->
           <div class="panel-options-section">
             <div class="panel-options-header">
-              <p class="calc-field-label" style="margin-bottom:0;">Panel options — Kerala market prices</p>
-              <p class="panel-select-hint">Tap a panel to see updated numbers</p>
+              <p class="calc-field-label" style="margin-bottom:0;">പാനൽ ഓപ്ഷനുകൾ — കേരള മാർക്കറ്റ് വില</p>
+              <p class="panel-select-hint">അപ്ഡേറ്റ് ചെയ്ത അക്കങ്ങൾ കാണാൻ ഒരു പാനൽ തിരഞ്ഞെടുക്കുക</p>
             </div>
 
             <!-- A: N-Type TopCon 620W — Premium -->
             <div class="panel-option" id="panel-620" data-panel-id="620">
               <div class="panel-option__header">
                 <div>
-                  <span class="panel-badge purple">Premium</span>
+                  <span class="panel-badge purple">പ്രീമിയം</span>
                   <h4>N-Type TopCon 620W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-620-detail">Learn more ▾</button>
+                <button class="panel-expand" type="button" data-target="panel-620-detail">കൂടുതൽ അറിയുക ▾</button>
               </div>
               <div class="panel-option__stats">
-                <span id="p620-panels">— panels</span>
-                <span>22.8% efficiency</span>
-                <span id="p620-roof">— sq ft</span>
+                <span id="p620-panels">— പാനലുകൾ</span>
+                <span>22.8% കാര്യക്ഷമത</span>
+                <span id="p620-roof">— ച.അടി</span>
                 <span>₹29.5/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
-                <span>30yr warranty</span>
+                <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-620-detail">
-                <p>The latest N-Type TopCon technology delivers the highest watt-peak and lowest degradation rate on the market. Fewer panels needed, maximum roof-space efficiency. Best choice when you want the most power from the least area.</p>
+                <p>ഏറ്റവും പുതിയ N-Type TopCon സാങ്കേതികവിദ്യ മാർക്കറ്റിലെ ഏറ്റവും ഉയർന്ന വാട്ട്-പീക്കും ഏറ്റവും കുറഞ്ഞ ഡിഗ്രഡേഷനും നൽകുന്നു. കുറഞ്ഞ പാനലുകൾ, പരമാവധി റൂഫ് സ്ഥല കാര്യക്ഷമത. കുറഞ്ഞ സ്ഥലത്തിൽ ഏറ്റവും കൂടുതൽ വൈദ്യുതി വേണമെങ്കിൽ മികച്ച തിരഞ്ഞെടുപ്പ്.</p>
               </div>
             </div>
 
@@ -444,20 +445,20 @@ const mlPrefix = '/ml';
             <div class="panel-option selected" id="panel-600" data-panel-id="600">
               <div class="panel-option__header">
                 <div>
-                  <span class="panel-badge blue">Recommended</span>
+                  <span class="panel-badge blue">ശുപാർശിതം</span>
                   <h4>N-Type TopCon 600W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-600-detail">Learn more ▾</button>
+                <button class="panel-expand" type="button" data-target="panel-600-detail">കൂടുതൽ അറിയുക ▾</button>
               </div>
               <div class="panel-option__stats">
-                <span id="p600-panels">— panels</span>
-                <span>22.2% efficiency</span>
-                <span id="p600-roof">— sq ft</span>
+                <span id="p600-panels">— പാനലുകൾ</span>
+                <span>22.2% കാര്യക്ഷമത</span>
+                <span id="p600-roof">— ച.അടി</span>
                 <span>₹29/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
-                <span>30yr warranty</span>
+                <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-600-detail">
-                <p>The best all-round choice for Kerala rooftops. N-Type TopCon cells offer superior performance in high-temperature and low-light (overcast monsoon) conditions — exactly what the Kerala climate demands. Excellent long-term value.</p>
+                <p>കേരള മേൽക്കൂരകൾക്കുള്ള ഏറ്റവും മികച്ച സമഗ്ര തിരഞ്ഞെടുപ്പ്. N-Type TopCon സെല്ലുകൾ ഉയർന്ന താപനിലയും കുറഞ്ഞ വെളിച്ചവും (മോൺസൂൺ മേഘാവൃതം) — കേരള കാലാവസ്ഥ ആവശ്യപ്പെടുന്നത് — നന്നായി കൈകാര്യം ചെയ്യുന്നു. മികച്ച ദീർഘകാല മൂല്യം.</p>
               </div>
             </div>
 
@@ -465,20 +466,20 @@ const mlPrefix = '/ml';
             <div class="panel-option" id="panel-580tc" data-panel-id="580tc">
               <div class="panel-option__header">
                 <div>
-                  <span class="panel-badge green">Best Value</span>
+                  <span class="panel-badge green">മികച്ച മൂല്യം</span>
                   <h4>N-Type TopCon 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580tc-detail">Learn more ▾</button>
+                <button class="panel-expand" type="button" data-target="panel-580tc-detail">കൂടുതൽ അറിയുക ▾</button>
               </div>
               <div class="panel-option__stats">
-                <span id="p580tc-panels">— panels</span>
-                <span>21.8% efficiency</span>
-                <span id="p580tc-roof">— sq ft</span>
+                <span id="p580tc-panels">— പാനലുകൾ</span>
+                <span>21.8% കാര്യക്ഷമത</span>
+                <span id="p580tc-roof">— ച.അടി</span>
                 <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
-                <span>30yr warranty</span>
+                <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580tc-detail">
-                <p>N-Type TopCon at a more accessible price point. Retains all the key advantages of TopCon technology — low temperature coefficient, excellent low-light performance, and higher energy yield per Wp — at a lower upfront cost than the 600W or 620W variants.</p>
+                <p>കൂടുതൽ സാമ്പത്തികമായി എത്തിച്ചേരാവുന്ന വിലയിൽ N-Type TopCon. TopCon സാങ്കേതികവിദ്യയുടെ എല്ലാ പ്രധാന ഗുണങ്ങളും — കുറഞ്ഞ താപനില ഗുണാങ്കം, മികച്ച കുറഞ്ഞ വെളിച്ച പ്രകടനം, Wp-ക്ക് ഉയർന്ന ഊർജ്ജ ഉത്പാദനം — 600W അല്ലെങ്കിൽ 620W വേരിയന്റുകളേക്കാൾ കുറഞ്ഞ പ്രാരംഭ ചെലവിൽ.</p>
               </div>
             </div>
 
@@ -486,20 +487,20 @@ const mlPrefix = '/ml';
             <div class="panel-option" id="panel-580bf" data-panel-id="580bf">
               <div class="panel-option__header">
                 <div>
-                  <span class="panel-badge teal">Bifacial</span>
+                  <span class="panel-badge teal">ബൈഫേഷ്യൽ</span>
                   <h4>Bifacial Dual Glass 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580bf-detail">Learn more ▾</button>
+                <button class="panel-expand" type="button" data-target="panel-580bf-detail">കൂടുതൽ അറിയുക ▾</button>
               </div>
               <div class="panel-option__stats">
-                <span id="p580bf-panels">— panels</span>
-                <span>21.3% + bifacial gain</span>
-                <span id="p580bf-roof">— sq ft</span>
+                <span id="p580bf-panels">— പാനലുകൾ</span>
+                <span>21.3% + ബൈഫേഷ്യൽ ഗെയിൻ</span>
+                <span id="p580bf-roof">— ച.അടി</span>
                 <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
-                <span>30yr warranty</span>
+                <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580bf-detail">
-                <p>Dual-glass bifacial panels generate electricity from both sides, harvesting reflected light from the roof surface and surroundings. Particularly effective on light-coloured flat rooftops. The glass-glass construction also offers better protection against Kerala's heavy monsoon humidity and extreme rainfall.</p>
+                <p>ഡ്യുവൽ-ഗ്ലാസ് ബൈഫേഷ്യൽ പാനലുകൾ ഇരുവശത്തും നിന്ന് വൈദ്യുതി ഉത്പാദിപ്പിക്കുന്നു, മേൽക്കൂരയിൽ നിന്നും ചുറ്റുപാടുകളിൽ നിന്നും പ്രതിഫലിത വെളിച്ചം ശേഖരിക്കുന്നു. ഇളം നിറമുള്ള പരന്ന മേൽക്കൂരകളിൽ പ്രത്യേകിച്ച് ഫലപ്രദം. ഗ്ലാസ്-ഗ്ലാസ് നിർമ്മാണം കേരളത്തിന്റെ കനത്ത മോൺസൂൺ ഈർപ്പത്തിനും അതിശക്ത മഴക്കും മികച്ച സംരക്ഷണം നൽകുന്നു.</p>
               </div>
             </div>
 
@@ -507,20 +508,20 @@ const mlPrefix = '/ml';
             <div class="panel-option" id="panel-540" data-panel-id="540">
               <div class="panel-option__header">
                 <div>
-                  <span class="panel-badge grey">Economy</span>
+                  <span class="panel-badge grey">ഇക്കോണമി</span>
                   <h4>Mono PERC 540W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-540-detail">Learn more ▾</button>
+                <button class="panel-expand" type="button" data-target="panel-540-detail">കൂടുതൽ അറിയുക ▾</button>
               </div>
               <div class="panel-option__stats">
-                <span id="p540-panels">— panels</span>
-                <span>20.5% efficiency</span>
-                <span id="p540-roof">— sq ft</span>
+                <span id="p540-panels">— പാനലുകൾ</span>
+                <span>20.5% കാര്യക്ഷമത</span>
+                <span id="p540-roof">— ച.അടി</span>
                 <span>₹27.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
-                <span>25yr warranty</span>
+                <span>25 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-540-detail">
-                <p>Proven Mono PERC technology at the most affordable price point. A solid and reliable choice for homeowners prioritising the lowest upfront cost. Widely available with a strong installer support network across Kerala. Best suited for rooftops with ample available area.</p>
+                <p>ഏറ്റവും സാമ്പത്തികമായ വിലയിൽ തെളിയിക്കപ്പെട്ട Mono PERC സാങ്കേതികവിദ്യ. ഏറ്റവും കുറഞ്ഞ പ്രാരംഭ ചെലവിന് മുൻഗണന നൽകുന്ന വീട്ടുടമകൾക്ക് ഉറപ്പുള്ള തിരഞ്ഞെടുപ്പ്. കേരളമെമ്പാടും ശക്തമായ ഇൻസ്റ്റാളർ പിന്തുണ നെറ്റ്വർക്കുമായി വ്യാപകമായി ലഭ്യം. സമൃദ്ധമായ സ്ഥലമുള്ള മേൽക്കൂരകൾക്ക് ഏറ്റവും അനുയോജ്യം.</p>
               </div>
             </div>
 
@@ -528,48 +529,48 @@ const mlPrefix = '/ml';
 
           <!-- Financial snapshot -->
           <div class="fin-snapshot">
-            <p class="calc-field-label">Cost breakdown</p>
-            <div class="fin-row"><span>Panel cost</span><span id="fin-panel-cost">—</span></div>
-            <div class="fin-row"><span>Inverter, mounting &amp; installation</span><span id="fin-bos">—</span></div>
-            <div class="fin-row fin-total"><span>Total system cost</span><span id="fin-total-cost">—</span></div>
-            <div class="fin-row fin-subsidy"><span>PM Surya Ghar subsidy</span><span id="fin-subsidy-row">—</span></div>
-            <div class="fin-row fin-highlight"><span>Net cost to you</span><span id="fin-net-cost">—</span></div>
+            <p class="calc-field-label">ചെലവ് വിശദാംശം</p>
+            <div class="fin-row"><span>പാനൽ ചെലവ്</span><span id="fin-panel-cost">—</span></div>
+            <div class="fin-row"><span>ഇൻവർട്ടർ, മൗണ്ടിംഗ് &amp; ഇൻസ്റ്റാളേഷൻ</span><span id="fin-bos">—</span></div>
+            <div class="fin-row fin-total"><span>മൊത്തം സിസ്റ്റം ചെലവ്</span><span id="fin-total-cost">—</span></div>
+            <div class="fin-row fin-subsidy"><span>PM സൂര്യ ഘർ സബ്സിഡി</span><span id="fin-subsidy-row">—</span></div>
+            <div class="fin-row fin-highlight"><span>നിങ്ങൾ നൽകേണ്ട നെറ്റ് ചെലവ്</span><span id="fin-net-cost">—</span></div>
 
-            <p class="calc-field-label" style="margin-top:24px;">Returns</p>
-            <div class="fin-row"><span>Est. annual savings</span><span id="fin-annual">—</span></div>
-            <div class="fin-row"><span>Payback period</span><span id="fin-payback">—</span></div>
-            <div class="fin-row fin-highlight"><span>25-year savings</span><span id="fin-lifetime">—</span></div>
-            <div class="fin-row"><span>CO₂ avoided (25yr)</span><span id="fin-co2">—</span></div>
+            <p class="calc-field-label" style="margin-top:24px;">ലാഭം</p>
+            <div class="fin-row"><span>ഏകദേശ വാർഷിക സമ്പാദ്യം</span><span id="fin-annual">—</span></div>
+            <div class="fin-row"><span>പേയ്ബാക്ക് കാലയളവ്</span><span id="fin-payback">—</span></div>
+            <div class="fin-row fin-highlight"><span>25 വർഷ സമ്പാദ്യം</span><span id="fin-lifetime">—</span></div>
+            <div class="fin-row"><span>CO₂ ഒഴിവാക്കൽ (25 വർഷം)</span><span id="fin-co2">—</span></div>
           </div>
 
           <!-- Result CTAs -->
           <div class="result-ctas">
-            <a href={`${mlPrefix}/contact`} class="btn btn-primary">Get a personalised quote →</a>
-            <button class="btn-calc-outline" type="button" id="recalculate-btn">← Recalculate</button>
+            <a href={`${mlPrefix}/contact/`} class="btn btn-primary">വ്യക്തിഗത ക്വോട്ട് നേടുക →</a>
+            <button class="btn-calc-outline" type="button" id="recalculate-btn">← വീണ്ടും കണക്കാക്കുക</button>
           </div>
 
           <!-- Footnote / T&C -->
           <div class="calc-footnote">
             <div class="calc-footnote__icon">ℹ️</div>
             <div class="calc-footnote__body">
-              <p class="calc-footnote__heading">Important notes on this estimate</p>
+              <p class="calc-footnote__heading">ഈ കണക്കുകൂട്ടലിനെക്കുറിച്ചുള്ള പ്രധാന കുറിപ്പുകൾ</p>
               <ol class="calc-footnote__list">
                 <li>
                   <div class="fn-item">
-                    <strong>What the cost includes</strong>
-                    <p>The total system cost shown covers solar PV modules, grid-tied inverter, mounting structure, DC &amp; AC cabling, earthing, net-metering equipment, and complete installation by a certified team. No hidden line items. <em>All applicable taxes and statutory levies, including GST, are additional and will be reflected in the final invoice.</em></p>
+                    <strong>ചെലവിൽ ഉൾപ്പെടുന്നത്</strong>
+                    <p>കാണിച്ചിരിക്കുന്ന മൊത്തം സിസ്റ്റം ചെലവിൽ സോളാർ PV മൊഡ്യൂളുകൾ, ഗ്രിഡ്-ടൈഡ് ഇൻവർട്ടർ, മൗണ്ടിംഗ് സ്ട്രക്ചർ, DC &amp; AC കേബിളിംഗ്, എർത്തിംഗ്, നെറ്റ്-മീറ്ററിംഗ് ഉപകരണങ്ങൾ, സർട്ടിഫൈഡ് ടീമിന്റെ പൂർണ്ണ ഇൻസ്റ്റാളേഷൻ എന്നിവ ഉൾപ്പെടുന്നു. മറഞ്ഞിരിക്കുന്ന ഇനങ്ങളില്ല. <em>GST ഉൾപ്പെടെ ബാധകമായ എല്ലാ നികുതികളും നിയമപരമായ നികുതികളും അധികമാണ്, അവ അന്തിമ ഇൻവോയ്സിൽ പ്രതിഫലിക്കും.</em></p>
                   </div>
                 </li>
                 <li>
                   <div class="fn-item">
-                    <strong>For reference only</strong>
-                    <p>All figures are indicative estimates based on prevailing Kerala market rates. Actual costs vary with roof type, shadow analysis, panel brand selection, and site-specific civil work. Our team will conduct a detailed site visit and assessment and provide you with a precise, fixed proposal — at no charge.</p>
+                    <strong>റഫറൻസിന് മാത്രം</strong>
+                    <p>എല്ലാ അക്കങ്ങളും നിലവിലെ കേരള മാർക്കറ്റ് നിരക്കുകളെ അടിസ്ഥാനമാക്കിയ സൂചനാ കണക്കുകൂട്ടലുകളാണ്. യഥാർത്ഥ ചെലവ് മേൽക്കൂര തരം, നിഴൽ വിശകലനം, പാനൽ ബ്രാൻഡ്, സൈറ്റ്-നിർദ്ദിഷ്ട സിവിൽ വർക്ക് എന്നിവയനുസരിച്ച് വ്യത്യാസപ്പെടും. ഞങ്ങളുടെ ടീം വിശദമായ സൈറ്റ് സന്ദർശനവും വിലയിരുത്തലും നടത്തി കൃത്യമായ, നിശ്ചിത പ്രൊപ്പോസൽ നൽകും — ചെലവില്ലാതെ.</p>
                   </div>
                 </li>
                 <li>
                   <div class="fn-item">
-                    <strong>About the subsidy</strong>
-                    <p>The PM Surya Ghar subsidy is shown as a deduction for illustrative purposes. In practice, the subsidy amount is credited directly to your bank account by the DISCOM or the relevant Government agency after system commissioning and verification — it is not an upfront discount on the invoice.</p>
+                    <strong>സബ്സിഡിയെക്കുറിച്ച്</strong>
+                    <p>PM സൂര്യ ഘർ സബ്സിഡി ഉദാഹരണത്തിനായി കിഴിവായി കാണിച്ചിരിക്കുന്നു. പ്രയോഗത്തിൽ, സിസ്റ്റം കമ്മിഷനിംഗും പരിശോധനയും കഴിഞ്ഞ് DISCOM അല്ലെങ്കിൽ ബന്ധപ്പെട്ട സർക്കാർ ഏജൻസി സബ്സിഡി തുക നിങ്ങളുടെ ബാങ്ക് അക്കൗണ്ടിലേക്ക് നേരിട്ട് ക്രെഡിറ്റ് ചെയ്യും — ഇത് ഇൻവോയ്സിൽ മുൻകൂട്ടി കിഴിവല്ല.</p>
                   </div>
                 </li>
               </ol>
@@ -586,18 +587,18 @@ const mlPrefix = '/ml';
     <div class="container reassurance__inner">
       <div class="reassurance-card">
         <span class="reassurance-icon">🔒</span>
-        <h3>Your data stays private</h3>
-        <p>We don't store your inputs. This tool runs entirely in your browser.</p>
+        <h3>നിങ്ങളുടെ ഡാറ്റ സുരക്ഷിതം</h3>
+        <p>ഞങ്ങൾ നിങ്ങളുടെ ഇൻപുട്ടുകൾ സംഭരിക്കുന്നില്ല. ഈ ടൂൾ പൂർണ്ണമായും നിങ്ങളുടെ ബ്രൗസറിൽ പ്രവർത്തിക്കുന്നു.</p>
       </div>
       <div class="reassurance-card">
         <span class="reassurance-icon">✅</span>
-        <h3>MNRE-approved installer</h3>
-        <p>Every system we install qualifies for the full PM Surya Ghar subsidy.</p>
+        <h3>MNRE അംഗീകൃത ഇൻസ്റ്റാളർ</h3>
+        <p>ഞങ്ങൾ ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റവും പൂർണ്ണ PM സൂര്യ ഘർ സബ്സിഡിക്ക് അർഹമാണ്.</p>
       </div>
       <div class="reassurance-card">
         <span class="reassurance-icon">📞</span>
-        <h3>Free expert review</h3>
-        <p>Not sure about your results? Our team will review them with you at no cost.</p>
+        <h3>സൗജന്യ വിദഗ്ധ പരിശോധന</h3>
+        <p>ഫലങ്ങളിൽ സംശയമുണ്ടോ? ഞങ്ങളുടെ ടീം ചെലവില്ലാതെ നിങ്ങളോടൊപ്പം അവ പരിശോധിക്കും.</p>
       </div>
     </div>
   </section>
@@ -606,12 +607,12 @@ const mlPrefix = '/ml';
   <section class="cta-banner">
     <div class="container cta-banner__inner">
       <div class="cta-banner__content">
-        <h2>Ready to go solar? Let's size your system together.</h2>
-        <p>Our team will visit your home for free, verify these numbers, and give you a fixed quote with no hidden charges.</p>
+        <h2>സോളാറിലേക്ക് തയ്യാറാണോ? നിങ്ങളുടെ സിസ്റ്റം വലുപ്പം ഒരുമിച്ച് നിശ്ചയിക്കാം.</h2>
+        <p>ഞങ്ങളുടെ ടീം സൗജന്യമായി നിങ്ങളുടെ വീട് സന്ദർശിച്ച് ഈ അക്കങ്ങൾ സ്ഥിരീകരിച്ച് മറഞ്ഞിരിക്കുന്ന ചെലവുകളില്ലാതെ നിശ്ചിത ക്വോട്ട് നൽകും.</p>
       </div>
       <div class="cta-banner__actions">
-        <a href={`${mlPrefix}/contact`} class="btn btn-primary">Book a Free Site Survey</a>
-        <a href="tel:+917907369304" class="btn btn-outline-white">Call Us Now</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
+        <a href="tel:+917907369304" class="btn btn-outline-white">ഇപ്പോൾ വിളിക്കുക</a>
       </div>
     </div>
   </section>
@@ -1519,6 +1520,8 @@ const mlPrefix = '/ml';
 </style>
 
 <script>
+import { calcMl } from '../../i18n/calculator-ml.ts';
+
 const state = {
   homeType:    'house',
   bedrooms:    3,
@@ -1542,13 +1545,7 @@ const state = {
   monthlyBill: 5000,
 };
 
-const STEP_LABELS = [
-  '',
-  'Step 1 of 4 — Your home',
-  'Step 2 of 4 — Your appliances',
-  'Step 3 of 4 — Usage pattern',
-  'Step 4 of 4 — Your results',
-];
+const STEP_LABELS = calcMl.stepLabels;
 
 // ── Navigation ──────────────────────────────
 function goToStep(n: number) {
@@ -1732,12 +1729,16 @@ function updateEVImpact() {
   const evDailyAvg  = (state.chargerKw * state.chargeHours * state.chargeDays * state.evCount) / 7;
   const evExtraPanels = Math.ceil((evDailyAvg / (4.5 * 0.80)) * 1.25 * 1000 / 600);
 
-  setText('ev-added-load',   evDailyAvg.toFixed(1) + ' kWh/day');
-  setText('ev-extra-panels', '+' + evExtraPanels + (evExtraPanels === 1 ? ' panel' : ' panels'));
+  setText('ev-added-load',   evDailyAvg.toFixed(1) + calcMl.evKwhDay);
+  setText('ev-extra-panels', '+' + evExtraPanels + (evExtraPanels === 1 ? calcMl.evPanel : calcMl.evPanels));
 
-  const evNote = state.evCount > 1
-    ? `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week × ${state.evCount} EVs, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`
-    : `At ${state.chargerKw} kW × ${state.chargeHours} hrs × ${state.chargeDays} days/week, your EV adds ${evDailyAvg.toFixed(1)} units to daily consumption. Size your system to cover this on solar.`;
+  const evTpl = state.evCount > 1 ? calcMl.evNoteMulti : calcMl.evNoteSingle;
+  const evNote = evTpl
+    .replace('{kw}', String(state.chargerKw))
+    .replace('{hours}', String(state.chargeHours))
+    .replace('{days}', String(state.chargeDays))
+    .replace('{count}', String(state.evCount))
+    .replace('{units}', evDailyAvg.toFixed(1));
   setText('ev-impact-note', evNote);
 }
 
@@ -1792,17 +1793,17 @@ function calculateResults() {
 
   // Static result fields
   setText('result-kw',     sysKw + ' kW');
-  setText('result-units',  'Generates ~' + annUnits.toLocaleString('en-IN') + ' units/year');
-  setText('result-daily',  daily.toFixed(1) + ' units');
+  setText('result-units',  calcMl.generatesUnits.replace('{units}', annUnits.toLocaleString('en-IN')));
+  setText('result-daily',  daily.toFixed(1) + calcMl.units);
   setText('result-subsidy','₹' + inr(subsidy));
-  setText('fin-annual',    '₹' + inr(annSave) + '/yr');
+  setText('fin-annual',    '₹' + inr(annSave) + calcMl.perYear);
   setText('fin-lifetime',  '₹' + inr(lifetime));
-  setText('fin-co2',       co2 + ' tonnes');
+  setText('fin-co2',       co2 + calcMl.tonnes);
 
   // Panel card chips (all 5 panels)
   cachedPanelResults.forEach(p => {
-    setText(`p${p.id}-panels`, p.count + ' panels');
-    setText(`p${p.id}-roof`,   p.roof.toLocaleString('en-IN') + ' sq ft');
+    setText(`p${p.id}-panels`, p.count + calcMl.panels);
+    setText(`p${p.id}-roof`,   p.roof.toLocaleString('en-IN') + calcMl.sqFt);
     setText(`p${p.id}-cost`,   '₹' + inr(p.cost));
   });
 
@@ -1821,8 +1822,8 @@ function updatePanelDisplay(id: string) {
   const payback   = netCost / cachedAnnSave;
 
   // Headline stat tiles
-  setText('result-panels', p.count + ' panels');
-  setText('result-roof',   p.roof.toLocaleString('en-IN') + ' sq ft');
+  setText('result-panels', p.count + calcMl.panels);
+  setText('result-roof',   p.roof.toLocaleString('en-IN') + calcMl.sqFt);
 
   // Cost breakdown rows
   setText('fin-panel-cost',  '₹' + inr(p.cost));
@@ -1830,7 +1831,7 @@ function updatePanelDisplay(id: string) {
   setText('fin-total-cost',  '₹' + inr(totalCost));
   setText('fin-subsidy-row', '−₹' + inr(subsidy));
   setText('fin-net-cost',    '₹' + inr(netCost));
-  setText('fin-payback',     (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + ' years');
+  setText('fin-payback',     (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + calcMl.years);
 
   // Selected card highlight
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
@@ -1856,7 +1857,7 @@ function initPanelExpand() {
       const detail = document.getElementById(btn.dataset.target ?? '');
       if (!detail) return;
       const hidden = detail.classList.toggle('hidden');
-      btn.textContent = hidden ? 'Learn more ▾' : 'Close ▲';
+      btn.textContent = hidden ? calcMl.learnMore : calcMl.learnClose;
     });
   });
 }
@@ -1921,7 +1922,7 @@ function resetAll() {
     card.classList.toggle('selected', card.dataset.panelId === '600');
   });
   document.querySelectorAll('.panel-option__detail').forEach(d => d.classList.add('hidden'));
-  document.querySelectorAll<HTMLElement>('.panel-expand').forEach(b => { b.textContent = 'Learn more ▾'; });
+  document.querySelectorAll<HTMLElement>('.panel-expand').forEach(b => { b.textContent = calcMl.learnMore; });
 }
 
 // ── Bootstrap ────────────────────────────────

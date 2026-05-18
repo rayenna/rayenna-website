@@ -1,0 +1,14 @@
+---
+import BlogArticlePage from '../../../components/BlogArticlePage.astro';
+import { blogArticlesMl } from '../../../i18n/blog-articles-ml/index.ts';
+
+export function getStaticPaths() {
+  return blogArticlesMl.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+---
+<BlogArticlePage article={article} />

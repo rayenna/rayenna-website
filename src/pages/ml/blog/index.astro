@@ -1,51 +1,28 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { blogPostsListingMl } from '../../../i18n/blog-articles-ml/index.ts';
+import { blogCategoriesMl, blogUiMl, categoryLabel } from '../../../i18n/blog-ml.ts';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 
-const posts = [
-  { slug: 'kseb-net-metering-rules-2026', title: "Kerala's Net Metering Rules Are Changing in 2026 — Here's What Every Solar Owner Needs to Know", excerpt: "The new KSERC 2025 regulations reshape how net metering works in Kerala from January 2026. Here's what changed, what it means for you, and what to do right now.", date: '15 May 2026', category: 'Government Schemes', readTime: '5 min read' },
-  { slug: 'solar-trade-war-india-buyers-2026', title: "Why Global Trade Wars Are Actually Good News for Kerala's Solar Buyers Right Now", excerpt: "US tariffs on Indian solar panels have created a domestic supply surplus. More supply, competitive pricing, and unchanged subsidies — here's why 2026 is an optimal window.", date: '12 May 2026', category: 'Analysis', readTime: '5 min read' },
-  { slug: 'solar-battery-storage-kerala-2026', title: 'Solar + Battery Storage in Kerala: Is 2026 the Year It Finally Makes Sense?', excerpt: "Battery prices have fallen 70%, new KSERC rules reward storage, and tariffs are rising. A clear, honest look at whether solar-plus-storage is right for your Kerala home.", date: '9 May 2026', category: 'Buying Guide', readTime: '5 min read' },
-  { slug: 'going-solar-kochi-guide-2025', title: 'Going Solar in Kochi: A Resident\'s Complete Guide for 2025', excerpt: 'Costs, subsidies, KSEB net metering, and Kochi-specific considerations — everything you need to know before making the switch.', date: '29 Mar 2025', category: 'Pricing & Finance', readTime: '4 min read' },
-  { slug: 'solar-loan-vs-subsidy-kerala', title: "Solar Loan vs Solar Subsidy: What's the Smarter Way to Finance Your System?", excerpt: 'Pay upfront, take a solar loan, or use a PPA? A clear breakdown of financing options — including how to save money from day one.', date: '22 Mar 2025', category: 'Pricing & Finance', readTime: '4 min read' },
-  { slug: 'solar-performance-ratio-explained', title: "What Is a Solar System's Performance Ratio — and Why It Matters More Than Efficiency Ratings", excerpt: 'Panel efficiency is measured in a lab. Performance Ratio is what actually matters in Kerala\'s real weather. Here is what to know.', date: '15 Mar 2025', category: 'Education', readTime: '4 min read' },
-  { slug: 'carbon-math-solar-co2-savings', title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System Save Over 25 Years?', excerpt: '123 tonnes of CO₂ avoided. The equivalent of planting 5,500 trees. Here is the actual environmental impact of going solar in Kerala.', date: '8 Mar 2025', category: 'Education', readTime: '4 min read' },
-  { slug: 'solar-panel-warranty-explained', title: "Solar Panel Warranty Explained: What's Covered, What's Not, and What to Watch For", excerpt: 'What does a 25-year solar warranty actually mean? A clear breakdown of all three warranties — and what to do if something goes wrong.', date: '1 Mar 2025', category: 'Maintenance', readTime: '4 min read' },
-  { slug: 'monsoon-solar-system-kerala', title: 'How Monsoons Affect Your Solar System — and What to Do About It', excerpt: 'Solar panels do not stop working during Kerala\'s monsoon. Here is the honest picture — and what to monitor during the rainy season.', date: '22 Feb 2025', category: 'Maintenance', readTime: '4 min read' },
-  { slug: 'string-inverter-vs-microinverter-hybrid', title: 'String Inverter vs Microinverter vs Hybrid Inverter: Which Is Right for You?', excerpt: 'The inverter is the brain of your solar system. Here is a clear comparison to help you choose the right type for your Kerala home.', date: '15 Feb 2025', category: 'Buying Guide', readTime: '4 min read' },
-  { slug: 'what-to-ask-solar-contract-kerala', title: 'What to Ask Before Signing a Solar Installation Contract in Kerala', excerpt: '8 critical questions every Kerala homeowner must ask before signing — protect your investment, your subsidy, and your 25-year commitment.', date: '8 Feb 2025', category: 'Buying Guide', readTime: '4 min read' },
-  { slug: 'monocrystalline-vs-polycrystalline-kerala', title: 'Monocrystalline vs Polycrystalline Solar Panels: Which Is Better for Kerala?', excerpt: 'A clear comparison of panel types — including why Kerala\'s monsoon climate and high humidity make one choice clearly better than the other.', date: '1 Feb 2025', category: 'Buying Guide', readTime: '4 min read' },
-  { slug: 'apartments-solar-kerala', title: 'Can Apartments and Housing Societies Go Solar in Kerala?', excerpt: 'Individual flat owners, housing societies, and common area installations — the honest picture on apartment solar in Kerala.', date: '25 Jan 2025', category: 'Government Schemes', readTime: '4 min read' },
-  { slug: 'kseb-net-metering-guide-2025', title: 'KSEB Net Metering Application: A Step-by-Step Guide for 2025', excerpt: 'How to apply for KSEB net metering in 2025 — the new KSERC regulations, the documents you need, and the full step-by-step process.', date: '18 Jan 2025', category: 'Government Schemes', readTime: '4 min read' },
-  { slug: 'on-grid-vs-off-grid-solar-kerala', title: 'On-Grid vs Off-Grid Solar: Which One Should You Choose in Kerala?', excerpt: 'On-grid, off-grid, or hybrid? A clear, honest comparison so you can make the right choice for your Kerala home — without the jargon.', date: '10 Jan 2025', category: 'Pricing & Finance', readTime: '4 min read' },
-  { slug: 'how-much-does-solar-cost-in-kerala', title: 'How Much Does a Solar Panel System Cost in Kerala?', excerpt: 'A complete guide to solar panel pricing, government subsidies, and what you can realistically expect to pay for a residential system in Kerala.', date: '15 Nov 2024', category: 'Pricing & Finance', readTime: '5 min read' },
-  { slug: 'pm-surya-ghar-subsidy-guide', title: 'PM Surya Ghar Muft Bijli Yojana: Your Complete Subsidy Guide', excerpt: "The government's free electricity scheme offers up to ₹78,000 in subsidies. Here's exactly how to apply and what to expect.", date: '8 Nov 2024', category: 'Government Schemes', readTime: '7 min read' },
-  { slug: 'solar-vs-electricity-bill-comparison', title: 'Solar vs. KSEB Bill: A Real-World Cost Comparison', excerpt: "We ran the numbers for a typical Kerala household with a ₹3,000/month electricity bill. Here's the honest breakdown of ROI, savings, and payback period.", date: '1 Nov 2024', category: 'Analysis', readTime: '6 min read' },
-  { slug: 'best-solar-panels-brands-india-2024', title: 'Best Solar Panel Brands Available in India in 2024', excerpt: 'From Adani to Waaree to Vikram Solar — we compare the top brands on efficiency, warranty, pricing, and reliability for Indian conditions.', date: '22 Oct 2024', category: 'Buying Guide', readTime: '8 min read' },
-  { slug: 'solar-maintenance-tips', title: '5 Simple Maintenance Tips to Keep Your Solar System at Peak Performance', excerpt: 'Solar panels are low-maintenance — but not zero-maintenance. These five tips can protect your investment and boost output by up to 15%.', date: '10 Oct 2024', category: 'Maintenance', readTime: '4 min read' },
-  { slug: 'net-metering-explained', title: 'Net Metering in Kerala: How to Sell Solar Power Back to the Grid', excerpt: "If your solar panels produce more electricity than you use, you can sell it back to KSEB. Here's how net metering works and how to apply.", date: '2 Oct 2024', category: 'Education', readTime: '5 min read' },
-];
-
-const categoryColors: Record<string, string> = {
-  'Pricing & Finance':   '#a83838',
-  'Government Schemes':  '#3a6ea8',
-  'Analysis':            '#788bba',
-  'Buying Guide':        '#4a8a6f',
-  'Maintenance':         '#8a6f2c',
-  'Education':           '#6a3a8a',
-  'default':             '#27324f',
-};
-
+const posts = blogPostsListingMl;
 const featured = posts[0];
 const rest = posts.slice(1);
-const categories = ['All', ...new Set(posts.map(p => p.category))];
+
+const categoryKeys = ['all', ...new Set(posts.map((p) => p.categoryKey))] as const;
+const filterLabels: Record<string, string> = {
+  all: blogUiMl.filterAll,
+  ...Object.fromEntries(
+    Object.entries(blogCategoriesMl).map(([k, v]) => [k, v.label])
+  ),
+};
 ---
 <Layout lang="ml" title="സോളാർ എനർജി ബ്ലോഗ് കേരളം | റയെന്ന എനർജി" description="കേരളത്തിലെ വീട്ടുടമസ്ഥർക്കുള്ള സോളാർ ലേഖനങ്ങൾ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്.">
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
-    <img src={`${base}/media/blog.webp`} alt="Rayenna Solar Blog" class="page-hero__bg" />
+    <img src={`${base}/media/blog.webp`} alt="റയെന്ന സോളാർ ബ്ലോഗ്" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">അറിവ് കേന്ദ്രം</p>
@@ -57,32 +34,36 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
   <!-- ===== BLOG CONTENT ===== -->
   <section class="blog-section">
     <div class="container">
-      <div class="blog-lang-notice" role="note">
-        <strong>ശ്രദ്ധിക്കുക:</strong> ഈ ലേഖനങ്ങൾ ഇംഗ്ലീഷിൽ മാത്രം ലഭ്യമാണ്.
-      </div>
-
       <!-- Category filter -->
       <div class="category-filter">
-        {categories.map(cat => (
-          <button class={`cat-btn ${cat === 'All' ? 'active' : ''}`} data-cat={cat}>{cat}</button>
+        {categoryKeys.map((key) => (
+          <button
+            class={`cat-btn ${key === 'all' ? 'active' : ''}`}
+            data-cat={key}
+          >
+            {filterLabels[key]}
+          </button>
         ))}
       </div>
 
       <!-- Featured post -->
-      <article class="featured-card" data-category={featured.category}>
+      <article class="featured-card" data-category={featured.categoryKey}>
         <div class="featured-card__label">
-          <span class="cat-pill" style={`background:${categoryColors[featured.category]}18; color:${categoryColors[featured.category]};`}>
-            {featured.category}
+          <span
+            class="cat-pill"
+            style={`background:${blogCategoriesMl[featured.categoryKey].color}18; color:${blogCategoriesMl[featured.categoryKey].color};`}
+          >
+            {categoryLabel(featured.categoryKey)}
           </span>
           <span class="read-time">{featured.readTime}</span>
         </div>
         <h2 class="featured-card__title">
-          <a href={`${base}/blog/${featured.slug}`}>{featured.title}</a>
+          <a href={`${mlPrefix}/blog/${featured.slug}/`}>{featured.title}</a>
         </h2>
         <p class="featured-card__excerpt">{featured.excerpt}</p>
         <div class="featured-card__footer">
           <span class="post-date">{featured.date}</span>
-          <a href={`${base}/blog/${featured.slug}`} class="read-more-link">
+          <a href={`${mlPrefix}/blog/${featured.slug}/`} class="read-more-link">
             ലേഖനം വായിക്കുക
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
@@ -91,23 +72,29 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 
       <!-- Posts grid -->
       <div class="posts-grid">
-        {rest.map(post => (
-          <article class="post-card" data-category={post.category}>
-            <div class="post-card__accent" style={`background:${categoryColors[post.category] ?? 'var(--color-secondary)'}`}></div>
+        {rest.map((post) => (
+          <article class="post-card" data-category={post.categoryKey}>
+            <div
+              class="post-card__accent"
+              style={`background:${blogCategoriesMl[post.categoryKey].color};`}
+            ></div>
             <div class="post-card__body">
               <div class="post-meta">
-                <span class="cat-pill" style={`background:${categoryColors[post.category]}18; color:${categoryColors[post.category]};`}>
-                  {post.category}
+                <span
+                  class="cat-pill"
+                  style={`background:${blogCategoriesMl[post.categoryKey].color}18; color:${blogCategoriesMl[post.categoryKey].color};`}
+                >
+                  {categoryLabel(post.categoryKey)}
                 </span>
                 <span class="read-time">{post.readTime}</span>
               </div>
               <h2 class="post-title">
-                <a href={`${base}/blog/${post.slug}`}>{post.title}</a>
+                <a href={`${mlPrefix}/blog/${post.slug}/`}>{post.title}</a>
               </h2>
               <p class="post-excerpt">{post.excerpt}</p>
               <div class="post-footer">
                 <span class="post-date">{post.date}</span>
-                <a href={`${base}/blog/${post.slug}`} class="read-more-link">
+                <a href={`${mlPrefix}/blog/${post.slug}/`} class="read-more-link">
                   വായിക്കുക
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -200,16 +187,6 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 }
 
 /* ===== BLOG SECTION ===== */
-.blog-lang-notice {
-  background: #EEF6FF;
-  border-left: 4px solid #3a6ea8;
-  padding: 14px 18px;
-  border-radius: 8px;
-  margin-bottom: 28px;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--color-navy);
-}
 .blog-section {
   padding: var(--section-padding);
   background: var(--color-light);
@@ -250,6 +227,8 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
   margin-bottom: 28px;
   border-left: 5px solid var(--color-primary);
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 .featured-card:hover {
   box-shadow: var(--shadow-md);
@@ -421,9 +400,6 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 .newsletter-form input:focus { border-color: var(--color-primary); }
 .newsletter-form .btn { width: 100%; justify-content: center; }
 
-/* ===========================
-   Breakpoints — tablet+
-   =========================== */
 @media (min-width: 640px) {
   .posts-grid { grid-template-columns: 1fr 1fr; }
   .newsletter-form { flex-direction: row; }
@@ -447,7 +423,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
       btn.classList.add('active');
       const cat = btn.getAttribute('data-cat');
       allCards.forEach(card => {
-        const show = cat === 'All' || card.dataset.category === cat;
+        const show = cat === 'all' || card.dataset.category === cat;
         card.style.display = show ? 'flex' : 'none';
       });
     });
