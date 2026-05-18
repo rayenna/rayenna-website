@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { localizedPath } from '../i18n/ui';
+
+---
+<Layout
+  title="Page Not Found | Rayenna Energy"
+  description="The page you requested could not be found."
+>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <p class="not-found__code">404</p>
+      <h1>Page not found</h1>
+      <p>The page you are looking for does not exist or may have moved.</p>
+      <div class="not-found__links">
+        <a href={localizedPath('/', 'en')} class="btn btn-primary">English Home</a>
+        <a href={localizedPath('/', 'ml')} class="btn btn-outline">മലയാളം ഹോം</a>
+        <a href={localizedPath('/contact', 'en')} class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.not-found {
+  padding: 120px 0 80px;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.not-found__inner {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.not-found__code {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.not-found h1 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-navy);
+  margin-bottom: 12px;
+}
+.not-found p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.not-found__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.btn-outline {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+.btn-outline:hover {
+  background: var(--color-primary-light);
+}
+</style>

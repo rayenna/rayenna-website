@@ -6,6 +6,7 @@ import {
   getNavLinks,
   useTranslations,
   getAlternateUrls,
+  localizedPath,
   getLangFromPath,
   type Lang,
 } from '../i18n/ui';
@@ -31,11 +32,11 @@ const ogType = isBlogPost ? 'article' : 'website';
 const ogLocale = lang === 'ml' ? 'ml_IN' : 'en_IN';
 
 function navIsActive(href: string): boolean {
-  const norm = (p: string) => (p.replace(/\/$/, '') || '/');
+  const norm = (p: string) => p.replace(/\/$/, '') || '/';
   const cur = norm(Astro.url.pathname);
   const target = norm(href);
   if (target === '/' || target === '/ml') return cur === '/' || cur === '/ml';
-  return cur === target || cur.startsWith(target + '/');
+  return cur === target || cur.startsWith(`${target}/`);
 }
 
 const localBusinessLD = {
@@ -80,7 +81,7 @@ const localBusinessLD = {
     { "@type": "AdministrativeArea", "name": "Kerala" }
   ]
 };
-const homeHref = lang === 'ml' ? '/ml/' : '/';
+const homeHref = localizedPath('/', lang);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -193,9 +194,9 @@ const homeHref = lang === 'ml' ? '/ml/' : '/';
         <div class="footer__area-links">
           <h4 class="footer__heading" style="margin-top:20px">{t.footer.areasHeading}</h4>
           <div class="footer__area-grid">
-            <a href={lang === 'ml' ? '/ml/solar-panels-kochi' : '/solar-panels-kochi'} class="footer__area-link">{t.footer.kochi}</a>
-            <a href={lang === 'ml' ? '/ml/solar-panels-thrissur' : '/solar-panels-thrissur'} class="footer__area-link">{t.footer.thrissur}</a>
-            <a href={lang === 'ml' ? '/ml/solar-panels-trivandrum' : '/solar-panels-trivandrum'} class="footer__area-link">{t.footer.trivandrum}</a>
+            <a href={localizedPath('/solar-panels-kochi', lang)} class="footer__area-link">{t.footer.kochi}</a>
+            <a href={localizedPath('/solar-panels-thrissur', lang)} class="footer__area-link">{t.footer.thrissur}</a>
+            <a href={localizedPath('/solar-panels-trivandrum', lang)} class="footer__area-link">{t.footer.trivandrum}</a>
           </div>
         </div>
       </div>

@@ -18,14 +18,45 @@ export function stripLocale(pathname: string): string {
   return pathname || '/';
 }
 
+/** English routes that have a Malayalam counterpart under /ml/ */
+const ML_ROUTES = new Set([
+  '/',
+  '/about',
+  '/services',
+  '/faqs',
+  '/contact',
+  '/solar-calculator',
+  '/media',
+  '/blog',
+  '/solar-panels-kochi',
+  '/solar-panels-thrissur',
+  '/solar-panels-trivandrum',
+]);
+
+function normalizePath(path: string): string {
+  const p = path.replace(/\/$/, '') || '/';
+  return p;
+}
+
 export function localizedPath(localeNeutralPath: string, lang: Lang): string {
-  const p = localeNeutralPath === '/' ? '' : localeNeutralPath.replace(/\/$/, '');
-  if (lang === 'ml') return p ? `/ml${p}` : '/ml/';
-  return p || '/';
+  const p = normalizePath(localeNeutralPath);
+  if (lang === 'ml') {
+    const resolved = resolveMlPath(p);
+    return resolved === '/' ? '/ml/' : `/ml${resolved}/`;
+  }
+  return p === '/' ? '/' : `${p}/`;
+}
+
+/** Map English path to best available Malayalam URL (avoids 404 on language switch). */
+function resolveMlPath(neutralPath: string): string {
+  const p = normalizePath(neutralPath);
+  if (ML_ROUTES.has(p)) return p;
+  if (p.startsWith('/blog/')) return '/blog';
+  return '/';
 }
 
 export function getAlternateUrls(pathname: string, site = 'https://rayennaenergy.com') {
-  const neutral = stripLocale(pathname);
+  const neutral = normalizePath(stripLocale(pathname));
   const enPath = localizedPath(neutral, 'en');
   const mlPath = localizedPath(neutral, 'ml');
   return {
@@ -111,15 +142,29 @@ export function useTranslations(lang: Lang) {
 
 export function getNavLinks(lang: Lang) {
   const t = useTranslations(lang);
-  const prefix = lang === 'ml' ? '/ml' : '';
-  return [
-    { href: `${prefix}/`, label: t.nav.home },
-    { href: `${prefix}/about`, label: t.nav.about },
-    { href: `${prefix}/services`, label: t.nav.services },
-    { href: `${prefix}/solar-calculator`, label: t.nav.calculator, special: true },
-    { href: `${prefix}/media`, label: t.nav.media },
-    { href: `${prefix}/blog`, label: t.nav.blog },
-    { href: `${prefix}/faqs`, label: t.nav.faqs },
-    { href: `${prefix}/contact`, label: t.nav.contact },
+  const paths = [
+    '/',
+    '/about',
+    '/services',
+    '/solar-calculator',
+    '/media',
+    '/blog',
+    '/faqs',
+    '/contact',
   ];
+  const labels = [
+    t.nav.home,
+    t.nav.about,
+    t.nav.services,
+    t.nav.calculator,
+    t.nav.media,
+    t.nav.blog,
+    t.nav.faqs,
+    t.nav.contact,
+  ];
+  return paths.map((path, i) => ({
+    href: localizedPath(path, lang),
+    label: labels[i],
+    special: path === '/solar-calculator',
+  }));
 }
