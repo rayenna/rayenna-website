@@ -188,7 +188,7 @@ const installCount = installations.length;
             <button class="gf-pill" data-type="pan" data-val="Waaree">Waaree</button>
           </div>
         </div>
-        <p class="gf-count" id="gf-count">എല്ലാ {installCount} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു</p>
+        <p class="gf-count" id="gf-count" data-total={installCount}>എല്ലാ {installCount} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു</p>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
@@ -1265,20 +1265,22 @@ const installCount = installations.length;
 }
 </style>
 
-<script define:vars={{ installCount }}>
+<script>
   const INTERVAL = 4500;
-  const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
-  const dots   = Array.from(document.querySelectorAll<HTMLElement>('.dot'));
-  const progress = document.getElementById('ss-progress') as HTMLElement;
+  const slideshow = document.getElementById('slideshow');
+  const slides = slideshow ? Array.from(slideshow.querySelectorAll('.slide')) : [];
+  const dots = slideshow ? Array.from(slideshow.querySelectorAll('.dot')) : [];
+  const progress = document.getElementById('ss-progress');
   let current = 0;
-  let timer: ReturnType<typeof setInterval>;
+  let timer;
 
-  function goTo(n: number) {
+  function goTo(n) {
+    if (!slides.length) return;
     slides[current].classList.remove('slide--active');
-    dots[current].classList.remove('dot--active');
+    if (dots[current]) dots[current].classList.remove('dot--active');
     current = (n + slides.length) % slides.length;
     slides[current].classList.add('slide--active');
-    dots[current].classList.add('dot--active');
+    if (dots[current]) dots[current].classList.add('dot--active');
     restartProgress();
   }
 
@@ -1295,6 +1297,7 @@ const installCount = installations.length;
   }
 
   function startAuto() {
+    if (!slides.length) return;
     clearInterval(timer);
     timer = setInterval(() => goTo(current + 1), INTERVAL);
   }
@@ -1306,12 +1309,9 @@ const installCount = installations.length;
     dot.addEventListener('click', () => { goTo(i); startAuto(); });
   });
 
-  // Pause on hover
-  const slideshow = document.getElementById('slideshow');
   slideshow?.addEventListener('mouseenter', () => clearInterval(timer));
   slideshow?.addEventListener('mouseleave', () => startAuto());
 
-  // Touch swipe
   let touchStartX = 0;
   slideshow?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
   slideshow?.addEventListener('touchend', (e) => {
@@ -1319,24 +1319,25 @@ const installCount = installations.length;
     if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
   });
 
-  restartProgress();
-  startAuto();
-
-  // Remove skeleton animation once first slide image loads
-  const firstSlideImg = document.querySelector<HTMLImageElement>('.slide--active img');
-  if (firstSlideImg) {
-    if (firstSlideImg.complete) {
-      slideshow?.classList.add('loaded');
-    } else {
-      firstSlideImg.addEventListener('load', () => slideshow?.classList.add('loaded'), { once: true });
+  if (slides.length) {
+    restartProgress();
+    startAuto();
+    const firstSlideImg = slideshow.querySelector('.slide--active img');
+    if (firstSlideImg) {
+      if (firstSlideImg.complete) {
+        slideshow.classList.add('loaded');
+      } else {
+        firstSlideImg.addEventListener('load', () => slideshow.classList.add('loaded'), { once: true });
+      }
     }
   }
 
   // ── Gallery Filters ────────────────────────────────────────────────────────
-  const filters: Record<string, string> = { cap: 'all', inv: 'all', pan: 'all' };
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('.gallery-card'));
+  const filters = { cap: 'all', inv: 'all', pan: 'all' };
+  const cards = Array.from(document.querySelectorAll('.gallery-card'));
   const countEl = document.getElementById('gf-count');
-  const emptyEl = document.getElementById('gf-empty') as HTMLElement;
+  const emptyEl = document.getElementById('gf-empty');
+  const installTotal = Number(countEl?.dataset.total || cards.length);
 
   function applyFilters() {
     let visible = 0;
@@ -1350,19 +1351,19 @@ const installCount = installations.length;
     });
     if (countEl) {
       countEl.textContent = filters.cap === 'all' && filters.inv === 'all' && filters.pan === 'all'
-        ? `എല്ലാ ${cards.length} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു`
-        : `${cards.length}-ൽ നിന്ന് ${visible} ഇൻസ്റ്റാളേഷനുകൾ കാണിക്കുന്നു`;
+        ? `എല്ലാ ${installTotal} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു`
+        : `${installTotal}-ൽ നിന്ന് ${visible} ഇൻസ്റ്റാളേഷനുകൾ കാണിക്കുന്നു`;
     }
     if (emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
   }
 
-  document.querySelectorAll<HTMLElement>('.gf-pill').forEach((pill) => {
+  document.querySelectorAll('.gf-pill').forEach((pill) => {
     pill.addEventListener('click', () => {
-      const type = pill.dataset.type!;
-      const val  = pill.dataset.val!;
+      const type = pill.dataset.type;
+      const val = pill.dataset.val;
+      if (!type || !val) return;
       filters[type] = val;
-      // Update active state within the same group
-      document.querySelectorAll<HTMLElement>(`.gf-pill[data-type="${type}"]`).forEach((p) => {
+      document.querySelectorAll(`.gf-pill[data-type="${type}"]`).forEach((p) => {
         p.classList.toggle('gf-pill--active', p.dataset.val === val);
       });
       applyFilters();
@@ -1370,25 +1371,27 @@ const installCount = installations.length;
   });
 
   document.getElementById('gf-reset')?.addEventListener('click', () => {
-    filters.cap = 'all'; filters.inv = 'all'; filters.pan = 'all';
-    document.querySelectorAll<HTMLElement>('.gf-pill').forEach((p) => {
+    filters.cap = 'all';
+    filters.inv = 'all';
+    filters.pan = 'all';
+    document.querySelectorAll('.gf-pill').forEach((p) => {
       p.classList.toggle('gf-pill--active', p.dataset.val === 'all');
     });
     applyFilters();
   });
 
   // ── Video Library ──────────────────────────────────────────────────────────
-  const vlPlayer = document.getElementById('vl-player') as HTMLVideoElement | null;
-  const vlTitle  = document.getElementById('vl-title')  as HTMLElement | null;
-  const vlBadge  = document.getElementById('vl-badge')  as HTMLElement | null;
-  const vlCards  = Array.from(document.querySelectorAll<HTMLElement>('.vl-card'));
-  const vlTabs   = Array.from(document.querySelectorAll<HTMLElement>('.vl-tab'));
+  const vlPlayer = document.getElementById('vl-player');
+  const vlTitle = document.getElementById('vl-title');
+  const vlBadge = document.getElementById('vl-badge');
+  const vlCards = Array.from(document.querySelectorAll('.vl-card'));
+  const vlTabs = Array.from(document.querySelectorAll('.vl-tab'));
 
   vlCards.forEach((card) => {
     card.addEventListener('click', () => {
-      const src      = card.dataset.src      ?? '';
-      const title    = card.dataset.title    ?? '';
-      const badge    = card.dataset.badge    ?? '';
+      const src = card.dataset.src ?? '';
+      const title = card.dataset.title ?? '';
+      const badge = card.dataset.badge ?? '';
       const badgeCat = card.dataset.badgecat ?? '';
 
       if (vlPlayer) {
@@ -1398,7 +1401,7 @@ const installCount = installations.length;
       if (vlTitle) vlTitle.textContent = title;
       if (vlBadge) {
         vlBadge.textContent = badge;
-        vlBadge.className   = `vl-badge vl-badge--${badgeCat}`;
+        vlBadge.className = `vl-badge vl-badge--${badgeCat}`;
       }
 
       document.getElementById('vl-featured')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
