@@ -60,6 +60,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
+  <!-- ===== LOCAL INSTALLATIONS ===== -->
+  <section class="area-installs">
+    <div class="container">
+      <h2 class="section-title text-center">Recent Thrissur & North Kerala Installations</h2>
+      <div class="area-installs-grid">
+        {[
+          { name: 'Joby',   location: 'Chalakudy', cap: '3 kW', img: 'JOBYCHALAKUDY3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+          { name: 'Koya',   location: 'Nilambur',  cap: '3 kW', img: 'KOYA-NILAMBUR-3KW-SOLIS-INVERTER-PANELS-RENEW.png' },
+          { name: 'Rupesh', location: 'Calicut',   cap: '3 kW', img: 'RUPESHCALICUT3KW-DEYE-INVERTER-PANELS-ADANI-edited.jpeg' },
+          { name: 'Jelees', location: 'Mahe',      cap: '5 kW', img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE.jpeg' },
+        ].map(item => (
+          <div class="area-install-card">
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.cap} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
+            <div class="area-install-label">
+              <strong>{item.name}</strong>
+              <span>{item.location} · {item.cap}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="installs-cta-text"><a href={`${base}/media`}>See all our installations →</a></p>
+    </div>
+  </section>
+
   <!-- ===== FAQ ===== -->
   <section class="area-faq">
     <div class="container area-faq__inner">
@@ -162,11 +186,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .subsidy-row { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 8px; padding: 12px 16px; font-size: 0.9rem; flex-wrap: wrap; gap: 8px; }
 .subsidy-row span { color: var(--color-text-muted); }
 .subsidy-row strong { color: #15803d; }
-.area-faq { padding: var(--section-padding); background: var(--color-light); }
+.area-installs { padding: var(--section-padding); background: var(--color-light); }
+.area-installs-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px;
+}
+.area-install-card { position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; }
+.area-install-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.area-install-card:hover img { transform: scale(1.04); }
+.area-install-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,25,50,0.82) 0%, transparent 100%);
+  padding: 20px 12px 12px;
+}
+.area-install-label strong { display: block; color: #fff; font-size: 0.85rem; font-family: var(--font-heading); }
+.area-install-label span { color: rgba(255,255,255,0.7); font-size: 0.75rem; }
+.installs-cta-text { text-align: center; margin-top: 20px; font-size: 0.9rem; }
+.installs-cta-text a { color: var(--color-primary); font-weight: 600; }
+@media (min-width: 640px) {
+  .area-installs-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+}
+.area-faq { padding: var(--section-padding); background: #fff; }
 .area-faq__inner { max-width: 800px; }
 .area-faq__inner .section-title { margin-bottom: 32px; }
 .area-faq__list { display: flex; flex-direction: column; gap: 12px; }
-.area-faq-item { border: 1.5px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: #fff; }
+.area-faq-item { border: 1.5px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--color-light); }
 .area-faq-item summary { padding: 18px 20px; font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem; color: var(--color-navy); cursor: pointer; list-style: none; position: relative; padding-right: 44px; }
 .area-faq-item summary::after { content: '+'; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--color-primary); font-weight: 700; transition: transform 0.25s; }
 .area-faq-item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
