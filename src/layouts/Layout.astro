@@ -130,7 +130,7 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   <header class={`navbar${navIsActive(homeHref) ? ' navbar--hero' : ''}`} id="navbar">
     <div class="navbar__inner">
       <a href={homeHref} class="navbar__logo" aria-label="Rayenna Energy Home">
-        <img src={`${base}/media/rayenna-logo-nav.png`} alt="Rayenna Energy" class="logo-img" />
+        <img src={`${base}/media/rayenna-logo-nav.png`} alt={t.images.logoAlt} class="logo-img" />
       </a>
 
       <nav class="navbar__nav" id="main-nav" aria-label="Main navigation">
@@ -180,12 +180,12 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
 
       <!-- Col 1: Logo -->
       <div class="footer__col footer__col--logo">
-        <img src={`${base}/media/Logo-white.webp`} alt="Rayenna Energy" class="footer-logo-img" />
+        <img src={`${base}/media/Logo-white.webp`} alt={t.images.logoAlt} class="footer-logo-img" />
       </div>
 
       <!-- Col 2: MNRE Badge -->
       <div class="footer__col footer__col--badge">
-        <img src={`${base}/media/Artboard-2-copymnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="footer-badge-img" />
+        <img src={`${base}/media/Artboard-2-copymnre.webp`} alt={t.images.mnreBadgeAlt} class="footer-badge-img" />
       </div>
 
       <!-- Col 3: About Us + Area Links -->

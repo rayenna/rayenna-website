@@ -99,6 +99,10 @@ const ui = {
       contactUs: 'Contact us',
     },
     langSwitcherAria: 'Choose language',
+    images: {
+      logoAlt: 'Rayenna Energy',
+      mnreBadgeAlt: 'MNRE Approved Channel Partner — Govt of India',
+    },
     waTooltip: 'Chat with us!',
     chat: {
       tooltip: 'Ask Ray ☀️',
@@ -171,6 +175,10 @@ const ui = {
       contactUs: 'ബന്ധപ്പെടുക',
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
+    images: {
+      logoAlt: 'റയെന്ന എനർജി',
+      mnreBadgeAlt: 'ഇന്ത്യാ ഗവൺമെന്റിന്റെ MNRE അംഗീകൃത ചാനൽ പങ്കാളി',
+    },
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
     chat: {
       tooltip: 'റെയിനോട് ചോദിക്കുക ☀️',

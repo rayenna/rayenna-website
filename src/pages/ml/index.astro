@@ -1,7 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/ui';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
+const t = useTranslations('ml');
 ---
 <Layout lang="ml"
   title="കൊച്ചിയിൽ സോളാർ പാനൽ ഇൻസ്റ്റാളേഷൻ | റയെന്ന എനർജി"
@@ -10,12 +13,12 @@ const mlPrefix = '/ml';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <img src={`${base}/media/hero (1).webp`} alt="Solar energy — child flying a kite" class="hero__photo" />
+    <img src={`${base}/media/hero (1).webp`} alt="സോളാർ ഊർജ്ജം — കുട്ടി പട്ടം പറക്കുന്നു" class="hero__photo" />
     <div class="hero__gradient"></div>
     <div class="hero__content">
       <h1 class="hero__title">നിങ്ങളുടെ KSEB ബിൽ<br />₹0 ആകാം.</h1>
       <div class="hero__mid">
-        <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
+        <img src={`${base}/media/Artboard-2mnre.webp`} alt={t.images.mnreBadgeAlt} class="mnre-badge-img" />
         <p class="hero__subtitle">കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. സർക്കാർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം — പിന്നീട് 20+ വർഷം സൗജന്യ വൈദ്യുതി.</p>
       </div>
       <div class="hero-trust-strip">
@@ -247,7 +250,7 @@ const mlPrefix = '/ml';
           { name: 'Mariamma',      location: 'Kollam',     cap: '5 kW',  img: 'MARIAMMA-KOLLAM-5KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.png' },
         ].map(item => (
           <div class="install-card">
-            <img src={`${base}/media/references/${item.img}`} alt={`${item.cap} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${item.location} — ${item.cap} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
             <div class="install-card__overlay">
               <strong>{item.name}</strong>
               <span>{item.location} · {item.cap} സിസ്റ്റം</span>
