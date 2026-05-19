@@ -1,0 +1,43 @@
+---
+description: Bilingual EN+ML parity and mobile-first standards for all site changes
+alwaysApply: true
+---
+
+# Rayenna site — bilingual parity & mobile-first
+
+## 1. Every user-facing change ships in English and Malayalam
+
+Do not merge UI, copy, layout, or feature work that only updates one locale.
+
+| Locale | Location |
+|--------|----------|
+| English | `src/pages/*.astro` (site root, trailing slashes) |
+| Malayalam | `src/pages/ml/*.astro` under `/ml/.../` |
+
+**Shared i18n** (update both `en` and `ml` when applicable):
+
+- Nav, footer, chat: `src/i18n/ui.ts`
+- FAQs: `src/pages/faqs.astro` + `src/i18n/faqs-ml.ts` + `src/pages/ml/faqs.astro`
+- Blog: `src/pages/blog/` + `src/i18n/blog-articles-ml/` + `src/pages/ml/blog/`
+- New routable pages: add path to `ML_ROUTES` in `src/i18n/ui.ts` when a Malayalam page exists
+
+**Links:** Malayalam internal links use `/ml/contact/`, `/ml/solar-calculator/`, etc. (trailing slash). Use `localizedPath()` / `lang` prop from `Layout.astro` — do not hardcode the wrong locale.
+
+**Copy conventions (Malayalam):** brand name **റയെന്ന** (not റയെന്ന്); prefer **ഹരിത** over പച്ച for green/eco wording.
+
+**Exceptions (OK in one language only):** legal entity names in English, external URLs, form subjects, filenames, JSON-LD — unless the user asks otherwise.
+
+## 2. Mobile-first
+
+- Design and implement for **small viewports first**, then enhance with `min-width` media queries.
+- Touch targets, readable type, and no horizontal scroll on ~375px width.
+- Verify layout on mobile before considering a change done (hero, nav, forms, tables, galleries, chat widget).
+- Reuse existing responsive patterns in the file you edit; do not add desktop-only layouts without a mobile baseline.
+
+## 3. Checklist before finishing
+
+- [ ] English page/section updated
+- [ ] Malayalam counterpart updated (or explicitly N/A with user approval)
+- [ ] `ui.ts` / FAQ / blog ML files updated if strings moved to i18n
+- [ ] Mobile layout checked (not desktop-only)
+- [ ] `npm run build` passes
