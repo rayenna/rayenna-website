@@ -72,7 +72,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="leadership-header">
         <span class="section-tag">Our Founders</span>
         <h2 class="section-title">Expertise of Leadership</h2>
-        <p class="leadership-intro">Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our three co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
+        <p class="leadership-intro">Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
       </div>
 
       <div class="leaders-grid">
@@ -86,19 +86,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <span class="leader-role">Managing Director &amp; Co-Founder</span>
             </div>
             <p class="leader-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
-          </div>
-        </div>
-
-        <div class="leader-card">
-          <div class="leader-card__photo">
-            <img src={`${base}/media/anish-samad.jpg`} alt="Anish Samad" />
-          </div>
-          <div class="leader-card__body">
-            <div class="leader-card__identity">
-              <h3 class="leader-card__name">Anish Samad</h3>
-              <span class="leader-role">Director &amp; Co-Founder</span>
-            </div>
-            <p class="leader-card__bio">A 29-year energy veteran who built his career across leading companies before founding ABRA ALARAB Petroleum Trading LLC in Dubai. He commands deep supply chain expertise and a vast network spanning the Middle East, Africa, and Asia.</p>
           </div>
         </div>
 
@@ -492,13 +479,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    =========================== */
 @media (min-width: 640px) {
   .mission-pillars { grid-template-columns: 1fr 1fr; }
-  /* Tablet: 2 columns, third card centered */
   .leaders-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .leaders-grid .leader-card:last-child {
-    grid-column: 1 / -1;
-    max-width: calc(50% - 12px);
-    margin-inline: auto;
-  }
 }
 
 @media (min-width: 900px) {
@@ -514,16 +495,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     align-items: center;
   }
 
-  /* Desktop: 3-column equal layout */
   .leaders-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 28px;
     align-items: stretch;
-  }
-  .leaders-grid .leader-card:last-child {
-    grid-column: auto;
-    max-width: none;
-    margin-inline: 0;
+    max-width: 900px;
+    margin-inline: auto;
   }
   .leader-card__photo { height: 280px; }
   .leader-card__body { padding: 24px 22px; }
