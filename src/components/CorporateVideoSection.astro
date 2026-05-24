@@ -11,7 +11,8 @@ const t = useTranslations(lang);
 const v = t.corporateVideo;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const videoSrc = `${base}/media/rayenna-videos/corporate.mp4`;
-const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
+const thumbBg = `${base}/media/solar-panel-installation.jpg`;
+const logoSrc = `${base}/media/Logo-white.webp`;
 ---
 
 <section class="corporate-video" id="our-story" aria-labelledby="corporate-video-title">
@@ -26,15 +27,37 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
 
     <div class="corporate-video__media">
       <div class="corporate-video__frame" data-corporate-video>
+        <div class="corporate-video__thumb" data-corp-thumb aria-hidden="false">
+          <div
+            class="corporate-video__thumb-bg"
+            style={`background-image: url('${thumbBg}')`}
+            role="img"
+            aria-label=""
+          ></div>
+          <div class="corporate-video__thumb-scrim" aria-hidden="true"></div>
+          <div class="corporate-video__thumb-content">
+            <img
+              src={logoSrc}
+              alt={t.images.logoAlt}
+              class="corporate-video__thumb-logo"
+              width="220"
+              height="80"
+              loading="eager"
+              decoding="async"
+            />
+            <span class="corporate-video__thumb-label">{v.thumbLabel}</span>
+          </div>
+        </div>
+
         <video
           class="corporate-video__el"
-          poster={posterSrc}
           preload="none"
           playsinline
           aria-label={v.playLabel}
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
+
         <button
           type="button"
           class="corporate-video__play"
@@ -46,7 +69,7 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
             <polygon points="8 5 19 12 8 19 8 5" />
           </svg>
         </button>
-        <span class="corporate-video__duration" aria-hidden="true">{v.duration}</span>
+        <span class="corporate-video__duration" data-duration-badge>{v.duration}</span>
       </div>
     </div>
   </div>
@@ -127,19 +150,87 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #0a0f18;
+  background: var(--color-navy-dark);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.08);
   aspect-ratio: 16 / 9;
 }
 
+/* Branded thumbnail (before play) */
+.corporate-video__thumb {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.corporate-video__thumb-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  filter: saturate(0.85) brightness(0.55);
+}
+
+.corporate-video__thumb-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(39, 50, 79, 0.88) 0%, rgba(29, 37, 58, 0.72) 45%, rgba(20, 28, 46, 0.92) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168, 56, 56, 0.12) 0%, transparent 70%);
+}
+
+.corporate-video__thumb-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 24px 36px;
+  text-align: center;
+}
+
+.corporate-video__thumb-logo {
+  width: min(200px, 52vw);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
+}
+
+.corporate-video__thumb-label {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 .corporate-video__el {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   background: #0a0f18;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.45s ease;
+}
+
+.corporate-video__frame.is-playing .corporate-video__el {
+  opacity: 1;
+}
+
+.corporate-video__frame.is-playing .corporate-video__thumb {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .corporate-video__play {
@@ -156,10 +247,10 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  z-index: 3;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition), opacity 0.35s ease;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 8px 32px rgba(168, 56, 56, 0.45);
+  box-shadow: 0 8px 32px rgba(168, 56, 56, 0.5);
 }
 .corporate-video__play svg {
   margin-left: 4px;
@@ -168,7 +259,7 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
   position: absolute;
   inset: -10px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   animation: corp-play-pulse 2.4s ease-out infinite;
 }
 .corporate-video__play:hover {
@@ -184,22 +275,23 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
   position: absolute;
   bottom: 14px;
   right: 14px;
-  z-index: 2;
+  z-index: 3;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.55);
-  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 11px;
   border-radius: 6px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.35s ease;
 }
 
 .corporate-video__frame.is-playing .corporate-video__play,
 .corporate-video__frame.is-playing .corporate-video__duration {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
 }
 
 @keyframes corp-play-pulse {
@@ -211,6 +303,10 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
 @media (prefers-reduced-motion: reduce) {
   .corporate-video__play-ring {
     animation: none;
+  }
+  .corporate-video__thumb,
+  .corporate-video__el {
+    transition: none;
   }
 }
 
@@ -226,6 +322,9 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
     width: 80px;
     height: 80px;
   }
+  .corporate-video__thumb-logo {
+    width: min(220px, 42%);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -239,15 +338,18 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
   document.querySelectorAll('[data-corporate-video]').forEach((frame) => {
     const video = frame.querySelector('video');
     const btn = frame.querySelector('[data-play-btn]');
+    const thumb = frame.querySelector('[data-corp-thumb]');
     if (!video || !btn) return;
 
     const play = async () => {
       frame.classList.add('is-playing');
+      if (thumb) thumb.setAttribute('aria-hidden', 'true');
       video.setAttribute('controls', '');
       try {
         await video.play();
       } catch {
         frame.classList.remove('is-playing');
+        if (thumb) thumb.setAttribute('aria-hidden', 'false');
         video.removeAttribute('controls');
       }
     };
@@ -256,12 +358,9 @@ const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
 
     video.addEventListener('ended', () => {
       frame.classList.remove('is-playing');
+      if (thumb) thumb.setAttribute('aria-hidden', 'false');
       video.removeAttribute('controls');
       video.load();
-    });
-
-    video.addEventListener('pause', () => {
-      if (video.currentTime > 0 && !video.ended) return;
     });
   });
 </script>
