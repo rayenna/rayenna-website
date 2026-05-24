@@ -103,6 +103,14 @@ const ui = {
       logoAlt: 'Rayenna Energy',
       mnreBadgeAlt: 'MNRE Approved Channel Partner — Govt of India',
     },
+    corporateVideo: {
+      eyebrow: 'Our Story',
+      title: 'One Minute with Rayenna',
+      sub: 'Installations, our people, and the promise behind every rooftop we touch.',
+      aboutLink: 'Learn more about us →',
+      playLabel: 'Play corporate video',
+      duration: '1 min',
+    },
     waTooltip: 'Chat with us!',
     chat: {
       tooltip: 'Ask Ray ☀️',
@@ -178,6 +186,14 @@ const ui = {
     images: {
       logoAlt: 'റയെന്ന എനർജി',
       mnreBadgeAlt: 'ഇന്ത്യാ ഗവൺമെന്റിന്റെ MNRE അംഗീകൃത ചാനൽ പങ്കാളി',
+    },
+    corporateVideo: {
+      eyebrow: 'ഞങ്ങളുടെ കഥ',
+      title: 'റയെന്നയുടെ ഒരുമിനിറ്റ്',
+      sub: 'ഇൻസ്റ്റാളേഷനുകൾ, ഞങ്ങളുടെ ആളുകൾ, ഓരോ മേൽക്കൂരക്ക് പിന്നിലെ വാഗ്ദാനം.',
+      aboutLink: 'ഞങ്ങളെക്കുറിച്ച് കൂടുതൽ →',
+      playLabel: 'കോർപ്പറേറ്റ് വീഡിയോ പ്ലേ ചെയ്യുക',
+      duration: '1 മിനിറ്റ്',
     },
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
     chat: {

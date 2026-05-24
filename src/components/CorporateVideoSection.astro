@@ -1,0 +1,267 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  aboutHref: string;
+}
+
+const { lang, aboutHref } = Astro.props;
+const t = useTranslations(lang);
+const v = t.corporateVideo;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const videoSrc = `${base}/media/rayenna-videos/corporate.mp4`;
+const posterSrc = `${base}/media/rayenna-videos/corporate-poster.jpg`;
+---
+
+<section class="corporate-video" id="our-story" aria-labelledby="corporate-video-title">
+  <div class="corporate-video__glow" aria-hidden="true"></div>
+  <div class="container corporate-video__inner">
+    <div class="corporate-video__copy">
+      <span class="corporate-video__tag">{v.eyebrow}</span>
+      <h2 class="corporate-video__title" id="corporate-video-title">{v.title}</h2>
+      <p class="corporate-video__sub">{v.sub}</p>
+      <a href={aboutHref} class="corporate-video__link">{v.aboutLink}</a>
+    </div>
+
+    <div class="corporate-video__media">
+      <div class="corporate-video__frame" data-corporate-video>
+        <video
+          class="corporate-video__el"
+          poster={posterSrc}
+          preload="none"
+          playsinline
+          aria-label={v.playLabel}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+        <button
+          type="button"
+          class="corporate-video__play"
+          data-play-btn
+          aria-label={v.playLabel}
+        >
+          <span class="corporate-video__play-ring" aria-hidden="true"></span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <polygon points="8 5 19 12 8 19 8 5" />
+          </svg>
+        </button>
+        <span class="corporate-video__duration" aria-hidden="true">{v.duration}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.corporate-video {
+  position: relative;
+  padding: 56px 0;
+  background: linear-gradient(165deg, var(--color-navy) 0%, var(--color-navy-dark) 55%, #141c2e 100%);
+  overflow: hidden;
+}
+
+.corporate-video__glow {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  background: radial-gradient(circle, rgba(168, 56, 56, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.corporate-video__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.corporate-video__tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.corporate-video__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.corporate-video__sub {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+  font-size: 0.95rem;
+  max-width: 36ch;
+  margin-bottom: 20px;
+}
+
+.corporate-video__link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #f0c4c4;
+  transition: color var(--transition);
+}
+.corporate-video__link:hover {
+  color: #fff;
+}
+
+.corporate-video__frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0a0f18;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  aspect-ratio: 16 / 9;
+}
+
+.corporate-video__el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a0f18;
+}
+
+.corporate-video__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 72px;
+  height: 72px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 8px 32px rgba(168, 56, 56, 0.45);
+}
+.corporate-video__play svg {
+  margin-left: 4px;
+}
+.corporate-video__play-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  animation: corp-play-pulse 2.4s ease-out infinite;
+}
+.corporate-video__play:hover {
+  transform: scale(1.06);
+  background: var(--color-primary-dark);
+}
+.corporate-video__play:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.corporate-video__duration {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 5px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+}
+
+.corporate-video__frame.is-playing .corporate-video__play,
+.corporate-video__frame.is-playing .corporate-video__duration {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+@keyframes corp-play-pulse {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  70% { transform: scale(1.12); opacity: 0; }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corporate-video__play-ring {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .corporate-video {
+    padding: 72px 0;
+  }
+  .corporate-video__inner {
+    grid-template-columns: 0.95fr 1.15fr;
+    gap: 48px;
+  }
+  .corporate-video__play {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .corporate-video__inner {
+    gap: 64px;
+  }
+}
+</style>
+
+<script>
+  document.querySelectorAll('[data-corporate-video]').forEach((frame) => {
+    const video = frame.querySelector('video');
+    const btn = frame.querySelector('[data-play-btn]');
+    if (!video || !btn) return;
+
+    const play = async () => {
+      frame.classList.add('is-playing');
+      video.setAttribute('controls', '');
+      try {
+        await video.play();
+      } catch {
+        frame.classList.remove('is-playing');
+        video.removeAttribute('controls');
+      }
+    };
+
+    btn.addEventListener('click', play);
+
+    video.addEventListener('ended', () => {
+      frame.classList.remove('is-playing');
+      video.removeAttribute('controls');
+      video.load();
+    });
+
+    video.addEventListener('pause', () => {
+      if (video.currentTime > 0 && !video.ended) return;
+    });
+  });
+</script>
