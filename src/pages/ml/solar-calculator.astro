@@ -1951,6 +1951,7 @@ function buildFitCopy(p: PanelResult): string {
 }
 
 function buildShareSummary(p: PanelResult, paybackText: string): string {
+  const contactPath = '/ml/contact/';
   const home = calcMl.homeTypes[state.homeType as keyof typeof calcMl.homeTypes] ?? 'വീട്';
   const bill = inr(state.monthlyBill);
   const intro = state.hasEV
@@ -1968,12 +1969,13 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
     `${calcMl.sharePayback}: ${paybackText}`,
     '',
     `${calcMl.shareSurvey}:`,
-    new URL(`${mlPrefix}/contact/`, window.location.origin).toString(),
+    new URL(contactPath, window.location.origin).toString(),
   ];
   return lines.join('\n');
 }
 
 function buildContactHref(p: PanelResult, paybackText: string, summary: string): string {
+  const contactPath = '/ml/contact/';
   const params = new URLSearchParams({
     source: 'solar-calculator',
     subject: calcMl.contactSubject,
@@ -1989,7 +1991,7 @@ function buildContactHref(p: PanelResult, paybackText: string, summary: string):
     homeTypeLabel: calcMl.homeTypes[state.homeType as keyof typeof calcMl.homeTypes] ?? 'വീട്',
     evCount: state.hasEV ? String(state.evCount) : '0',
   });
-  return `${mlPrefix}/contact/?${params.toString()}`;
+  return `${contactPath}?${params.toString()}`;
 }
 
 async function copyText(value: string): Promise<void> {

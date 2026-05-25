@@ -1945,6 +1945,7 @@ function buildFitCopy(p: PanelResult): string {
 }
 
 function buildShareSummary(p: PanelResult, paybackText: string): string {
+  const contactPath = '/contact/';
   const bill = '₹' + inr(state.monthlyBill);
   const home = getHomeTypeLabel(state.homeType);
   const intro = state.hasEV
@@ -1962,12 +1963,13 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
     `Estimated payback: ${paybackText}`,
     '',
     'Request a free site survey:',
-    new URL(`${base}/contact/`, window.location.origin).toString(),
+    new URL(contactPath, window.location.origin).toString(),
   ];
   return lines.join('\n');
 }
 
 function buildContactHref(p: PanelResult, paybackText: string, summary: string): string {
+  const contactPath = '/contact/';
   const params = new URLSearchParams({
     source: 'solar-calculator',
     subject: 'Solar calculator estimate review',
@@ -1983,7 +1985,7 @@ function buildContactHref(p: PanelResult, paybackText: string, summary: string):
     homeTypeLabel: getHomeTypeLabel(state.homeType),
     evCount: state.hasEV ? String(state.evCount) : '0',
   });
-  return `${base}/contact/?${params.toString()}`;
+  return `${contactPath}?${params.toString()}`;
 }
 
 async function copyText(value: string): Promise<void> {
