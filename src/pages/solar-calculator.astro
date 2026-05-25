@@ -576,9 +576,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Result CTAs -->
           <div class="result-ctas">
-            <a href={`${base}/contact`} class="btn btn-primary" id="result-review-cta">Get this estimate reviewed →</a>
+            <a href={`${base}/contact/`} class="btn btn-primary" id="result-review-cta">Get this estimate reviewed →</a>
             <div class="result-share-actions">
-              <button class="btn-calc-outline" type="button" id="result-whatsapp-btn">Send on WhatsApp</button>
+              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" target="_blank" rel="noopener">Send on WhatsApp</a>
               <button class="btn-calc-outline" type="button" id="result-copy-btn">Copy summary</button>
             </div>
             <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
@@ -1510,6 +1510,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   grid-template-columns: 1fr;
   gap: 12px;
 }
+.result-share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .result-action-status {
   min-height: 1.25rem;
   margin: -2px 4px 0;
@@ -1957,7 +1962,7 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
     `Estimated payback: ${paybackText}`,
     '',
     'Request a free site survey:',
-    new URL(`${base}/contact`, window.location.origin).toString(),
+    new URL(`${base}/contact/`, window.location.origin).toString(),
   ];
   return lines.join('\n');
 }
@@ -1976,12 +1981,12 @@ function buildContactHref(p: PanelResult, paybackText: string): string {
     homeTypeLabel: getHomeTypeLabel(state.homeType),
     evCount: state.hasEV ? String(state.evCount) : '0',
   });
-  return `${base}/contact?${params.toString()}`;
+  return `${base}/contact/?${params.toString()}`;
 }
 
 function updateResultActions(p: PanelResult, paybackText: string) {
   const review = document.getElementById('result-review-cta') as HTMLAnchorElement | null;
-  const waBtn = document.getElementById('result-whatsapp-btn') as HTMLButtonElement | null;
+  const waBtn = document.getElementById('result-whatsapp-btn') as HTMLAnchorElement | null;
   const copyBtn = document.getElementById('result-copy-btn') as HTMLButtonElement | null;
   const status = document.getElementById('result-action-status');
   const summary = buildShareSummary(p, paybackText);
@@ -1990,17 +1995,26 @@ function updateResultActions(p: PanelResult, paybackText: string) {
   if (review) review.href = contactHref;
 
   if (waBtn) {
-    waBtn.onclick = () => {
-      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
-      window.open(whatsappUrl, '_blank', 'noopener');
-    };
+    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
   }
 
   if (copyBtn) {
     copyBtn.onclick = async () => {
       if (!status) return;
       try {
-        await navigator.clipboard.writeText(summary);
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(summary);
+        } else {
+          const fallback = document.createElement('textarea');
+          fallback.value = summary;
+          fallback.setAttribute('readonly', '');
+          fallback.style.position = 'absolute';
+          fallback.style.left = '-9999px';
+          document.body.appendChild(fallback);
+          fallback.select();
+          document.execCommand('copy');
+          document.body.removeChild(fallback);
+        }
         status.textContent = 'Copied to clipboard.';
       } catch {
         status.textContent = 'Copy failed. Please try again.';
