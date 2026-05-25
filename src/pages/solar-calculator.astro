@@ -13,9 +13,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">Smart Solar Sizing Tool</p>
-      <h1 class="page-hero__title">Find Out Exactly How Much Solar You Need</h1>
-      <p class="page-hero__sub">Tell us about your home. We'll tell you exactly what to install.</p>
-      <p class="page-hero__note">🏠 This calculator is designed for residential (home) use only. For commercial solar, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer" style="color:#ffd700;text-decoration:underline;">chat with us on WhatsApp</a>.</p>
+      <h1 class="page-hero__title">Find the Right Solar System for Your Home</h1>
+      <p class="page-hero__sub">Tell us about your home and get a personalised solar estimate in minutes.</p>
+      <p class="page-hero__note">🏠 This calculator is built for residential homes in Kerala. For commercial solar, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer" style="color:#ffd700;text-decoration:underline;">chat with us on WhatsApp</a>.</p>
       <div class="hero-btns">
         <a href="#calculator" class="btn btn-primary hero-scroll-btn">Start the Calculator ↓</a>
         <a href={`${base}/contact`} class="btn btn-outline-white">Get a Free Consultation</a>
@@ -49,7 +49,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="calc-intro__content">
         <span class="section-tag">How it works</span>
         <h2 class="section-title">Your Home is Unique. Your Solar System Should Be Too.</h2>
-        <p>Most solar quotes you receive are generic — based on averages, not your actual home. Rayenna's Solar Calculator changes that. Tell us about your home type, the rooms and floors you have, the appliances you run every day, and whether you charge an electric vehicle. Our calculator uses real consumption data to recommend the exact system size, panel type, and number of panels your home needs — along with a financial snapshot showing your payback period and 25-year savings. No guesswork. No salespeople. Just numbers.</p>
+        <p>Most solar quotes start with broad averages, not the realities of your home. Rayenna's solar calculator gives you a better planning estimate. Tell us about your home type, rooms, appliances, and EV usage, and we'll estimate system size, panel count, roof space, subsidy, and returns using current Kerala rooftop solar assumptions. It is a smart starting point you can refine further with a free site survey.</p>
         <div class="how-cards">
           <div class="how-card">
             <span class="how-card__icon">⚡</span>
@@ -382,19 +382,52 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
         <!-- ── STEP 4: RESULTS ── -->
         <div class="calc-step hidden" id="step-4">
-          <h3 class="calc-step-title">Your Personalised Recommendation</h3>
+          <h3 class="calc-step-title">Your Personalised Solar Estimate</h3>
+          <p class="calc-results-intro">A planning estimate based on your inputs and current Kerala rooftop solar assumptions.</p>
 
           <!-- Hero result card -->
           <div class="result-hero">
-            <p class="result-hero-label">Recommended system size</p>
-            <p class="result-hero-kw" id="result-kw">— kW</p>
-            <p class="result-hero-units" id="result-units">Generates ~— units/year</p>
+            <div class="result-hero__top">
+              <div>
+                <p class="result-hero-label">Recommended rooftop solar size</p>
+                <p class="result-hero-kw" id="result-kw">— kW</p>
+                <p class="result-hero-units" id="result-units">Estimated generation ~— units/year</p>
+              </div>
+              <div class="result-pill-row">
+                <span class="result-pill">Planning estimate</span>
+                <span class="result-pill">Residential only</span>
+                <span class="result-pill">Kerala market basis</span>
+              </div>
+            </div>
+            <p class="result-hero-summary" id="result-summary">Sized around your current bill, appliance mix, and daytime usage pattern.</p>
+            <div class="result-highlights">
+              <div class="result-highlight">
+                <span class="rh-label">Estimated annual savings</span>
+                <strong class="rh-value" id="result-annual-top">—</strong>
+              </div>
+              <div class="result-highlight">
+                <span class="rh-label">Estimated payback</span>
+                <strong class="rh-value" id="result-payback-top">—</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-guidance-grid">
+            <div class="result-guide-card result-guide-card--accent">
+              <p class="guide-card__label">Best fit for your home</p>
+              <h4 id="result-fit-title">Balanced family-home solar system</h4>
+              <p id="result-fit-copy">Sized from your appliance mix, current bill, and typical Kerala solar conditions.</p>
+            </div>
+            <div class="result-guide-card">
+              <p class="guide-card__label">Before you finalise</p>
+              <p>We confirm roof access, shade, structure, wiring runs, and final inverter placement during the free site survey before issuing a fixed proposal.</p>
+            </div>
           </div>
 
           <!-- 4 stat cards -->
           <div class="result-stats-grid">
             <div class="result-stat">
-              <p class="rs-label">Est. daily consumption</p>
+              <p class="rs-label">Daily consumption estimate</p>
               <p class="rs-val" id="result-daily">—</p>
             </div>
             <div class="result-stat">
@@ -402,11 +435,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <p class="rs-val" id="result-panels">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">Roof space needed</p>
+              <p class="rs-label">Roof space estimate</p>
               <p class="rs-val" id="result-roof">—</p>
             </div>
             <div class="result-stat">
-              <p class="rs-label">PM Surya Ghar subsidy</p>
+              <p class="rs-label">Subsidy estimate</p>
               <p class="rs-val" id="result-subsidy">—</p>
             </div>
           </div>
@@ -414,8 +447,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <!-- Panel options -->
           <div class="panel-options-section">
             <div class="panel-options-header">
-              <p class="calc-field-label" style="margin-bottom:0;">Panel options — Kerala market prices</p>
-              <p class="panel-select-hint">Tap a panel to see updated numbers</p>
+              <p class="calc-field-label" style="margin-bottom:0;">Panel options — current Kerala residential pricing</p>
+              <p class="panel-select-hint">Select a panel to compare roof use, cost, and long-term value.</p>
             </div>
 
             <!-- A: N-Type TopCon 620W — Premium -->
@@ -536,16 +569,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <p class="calc-field-label" style="margin-top:24px;">Returns</p>
             <div class="fin-row"><span>Est. annual savings</span><span id="fin-annual">—</span></div>
-            <div class="fin-row"><span>Payback period</span><span id="fin-payback">—</span></div>
-            <div class="fin-row fin-highlight"><span>25-year savings</span><span id="fin-lifetime">—</span></div>
-            <div class="fin-row"><span>CO₂ avoided (25yr)</span><span id="fin-co2">—</span></div>
+            <div class="fin-row"><span>Estimated payback period</span><span id="fin-payback">—</span></div>
+            <div class="fin-row fin-highlight"><span>Estimated 25-year savings</span><span id="fin-lifetime">—</span></div>
+            <div class="fin-row"><span>CO₂ avoided over 25 years</span><span id="fin-co2">—</span></div>
           </div>
 
           <!-- Result CTAs -->
           <div class="result-ctas">
-            <a href={`${base}/contact`} class="btn btn-primary">Get a personalised quote →</a>
+            <a href={`${base}/contact`} class="btn btn-primary">Get this estimate reviewed →</a>
             <button class="btn-calc-outline" type="button" id="recalculate-btn">← Recalculate</button>
           </div>
+
+          <details class="calc-assumptions">
+            <summary>How this estimate is calculated</summary>
+            <div class="calc-assumptions__grid">
+              <div class="assumption-card">
+                <strong>Solar yield basis</strong>
+                <p>Assumes roughly 4.5 peak sun hours per day in Kerala, a performance ratio of 0.80, and a 25% sizing buffer for seasonal variation and real-world losses.</p>
+              </div>
+              <div class="assumption-card">
+                <strong>Cost basis</strong>
+                <p>Panel prices and balance-of-system costs reflect current Kerala residential rooftop market assumptions for planning purposes, not a final fixed quote.</p>
+              </div>
+              <div class="assumption-card">
+                <strong>Savings basis</strong>
+                <p>Annual savings are estimated from your current bill and typical on-grid residential usage. Actual savings vary with load timing, export credits, and site conditions.</p>
+              </div>
+              <div class="assumption-card">
+                <strong>What a site survey verifies</strong>
+                <p>Roof access, shade-free area, structural suitability, cable routes, and final panel or inverter selection before we issue a fixed proposal.</p>
+              </div>
+            </div>
+            <p class="calc-assumptions__updated">Planning assumptions updated for Kerala market conditions — May 2026.</p>
+          </details>
 
           <!-- Footnote / T&C -->
           <div class="calc-footnote">
@@ -1163,13 +1219,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .btn-calc-back:hover { border-color: var(--color-text-muted); color: var(--color-text); }
 
 /* ── RESULT HERO CARD ── */
+.calc-results-intro {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+}
 .result-hero {
-  background: var(--calc-blue-light);
+  background: linear-gradient(135deg, #f7fbff 0%, #eef5fc 100%);
   border: 1.5px solid var(--calc-border);
   border-radius: var(--radius-md);
-  text-align: center;
-  padding: 28px 20px;
+  padding: 24px 20px;
   margin-bottom: 24px;
+}
+.result-hero__top {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 .result-hero-label {
   font-size: 0.75rem;
@@ -1188,6 +1254,95 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin-bottom: 8px;
 }
 .result-hero-units { font-size: 0.92rem; color: var(--calc-blue); font-weight: 500; }
+.result-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.result-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid #d9e3ef;
+}
+.result-hero-summary {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #d9e3ef;
+  color: var(--color-text);
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+.result-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+.result-highlight {
+  background: #fff;
+  border: 1px solid #d9e3ef;
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+}
+.rh-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.rh-value {
+  font-family: 'Oswald', var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1;
+  color: var(--color-navy);
+}
+
+.result-guidance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.result-guide-card {
+  border: 1px solid #dce4ef;
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 18px 18px 16px;
+}
+.result-guide-card--accent {
+  background: linear-gradient(180deg, #fbfdff 0%, #f1f7fd 100%);
+}
+.guide-card__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--calc-blue);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.result-guide-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+.result-guide-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
 
 /* ── 4 STAT CARDS ── */
 .result-stats-grid {
@@ -1360,6 +1515,60 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 .btn-calc-outline:hover { background: var(--calc-blue); color: #fff; }
 
+/* ── ASSUMPTIONS ── */
+.calc-assumptions {
+  margin-top: 24px;
+  border: 1px solid #dce4ef;
+  border-radius: var(--radius-md);
+  background: #fbfcfe;
+  padding: 18px 20px;
+}
+.calc-assumptions summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+.calc-assumptions summary::-webkit-details-marker { display: none; }
+.calc-assumptions summary::after {
+  content: '+';
+  float: right;
+  font-size: 1.1rem;
+  color: var(--calc-blue);
+}
+.calc-assumptions[open] summary::after { content: '−'; }
+.calc-assumptions__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.assumption-card {
+  background: #fff;
+  border: 1px solid #e3eaf3;
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+}
+.assumption-card strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+.assumption-card p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+.calc-assumptions__updated {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
 /* ── FOOTNOTE / T&C ── */
 .calc-footnote {
   display: flex;
@@ -1489,6 +1698,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .result-ctas { flex-direction: row; }
   .result-ctas .btn, .result-ctas .btn-calc-outline { flex: 1; }
   .reassurance__inner { grid-template-columns: repeat(3, 1fr); }
+  .result-hero__top {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1497,6 +1711,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .how-cards { gap: 14px; }
   .trust-inner { gap: 0; justify-content: space-evenly; }
   .result-stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .result-guidance-grid { grid-template-columns: 1.15fr 0.85fr; }
+  .calc-assumptions__grid { grid-template-columns: repeat(2, 1fr); }
   .occupancy-grid { grid-template-columns: 1fr 1fr; }
   .home-type-grid { grid-template-columns: repeat(4, 1fr); }
   .charger-grid   { grid-template-columns: repeat(4, 1fr); }
@@ -1652,6 +1868,15 @@ function setText(id: string, val: string) {
 const inr = (n: number): string =>
   (isNaN(n) || !isFinite(n)) ? '—' : Math.round(n).toLocaleString('en-IN');
 
+function getHomeTypeLabel(type: string): string {
+  return {
+    house: 'independent house',
+    apartment: 'apartment',
+    villa: 'villa',
+    rowhouse: 'row house',
+  }[type] ?? 'home';
+}
+
 // ── Panel data ───────────────────────────────
 const PANEL_SPECS = [
   { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
@@ -1661,6 +1886,30 @@ const PANEL_SPECS = [
   { id: '540',   watt: 540, ppw: 27.5, sqft: 27, label: 'Mono PERC 540W'          },
 ];
 type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
+
+function getSystemProfileLabel(sysKw: number): string {
+  if (sysKw <= 2) return 'Compact rooftop solar system';
+  if (sysKw <= 5) return 'Balanced family-home solar system';
+  if (sysKw <= 8) return 'High-consumption home solar system';
+  return 'Large residential solar system';
+}
+
+function buildResultSummary(): string {
+  const home = getHomeTypeLabel(state.homeType);
+  const bill = '₹' + inr(state.monthlyBill);
+  if (state.hasEV) {
+    return `A planning estimate for your ${home}, with a current monthly bill around ${bill} and EV charging for ${state.evCount} vehicle${state.evCount > 1 ? 's' : ''}.`;
+  }
+  return `A planning estimate for your ${home}, with a current monthly bill around ${bill}.`;
+}
+
+function buildFitCopy(p: PanelResult): string {
+  const occupancy = state.homeAllDay ? 'higher daytime self-use' : 'an office-hours usage pattern';
+  const evSuffix = state.hasEV
+    ? ` It also includes EV charging for ${state.evCount} vehicle${state.evCount > 1 ? 's' : ''}.`
+    : '';
+  return `Sized from your appliance mix, ${occupancy}, and average Kerala solar conditions. With ${p.label}, you'd need about ${p.count} panels across ${p.roof.toLocaleString('en-IN')} sq ft.${evSuffix}`;
+}
 
 let cachedPanelResults: PanelResult[] = [];
 let cachedSysKw    = 0;
@@ -1791,12 +2040,14 @@ function calculateResults() {
 
   // Static result fields
   setText('result-kw',     sysKw + ' kW');
-  setText('result-units',  'Generates ~' + annUnits.toLocaleString('en-IN') + ' units/year');
+  setText('result-units',  'Estimated generation ~' + annUnits.toLocaleString('en-IN') + ' units/year');
   setText('result-daily',  daily.toFixed(1) + ' units');
   setText('result-subsidy','₹' + inr(subsidy));
+  setText('result-annual-top', '₹' + inr(annSave) + '/yr');
   setText('fin-annual',    '₹' + inr(annSave) + '/yr');
   setText('fin-lifetime',  '₹' + inr(lifetime));
   setText('fin-co2',       co2 + ' tonnes');
+  setText('result-summary', buildResultSummary());
 
   // Panel card chips (all 5 panels)
   cachedPanelResults.forEach(p => {
@@ -1829,7 +2080,11 @@ function updatePanelDisplay(id: string) {
   setText('fin-total-cost',  '₹' + inr(totalCost));
   setText('fin-subsidy-row', '−₹' + inr(subsidy));
   setText('fin-net-cost',    '₹' + inr(netCost));
-  setText('fin-payback',     (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + ' years');
+  const paybackText = (isNaN(payback) || !isFinite(payback)) ? '—' : payback.toFixed(1) + ' years';
+  setText('fin-payback',     paybackText);
+  setText('result-payback-top', paybackText);
+  setText('result-fit-title', getSystemProfileLabel(cachedSysKw));
+  setText('result-fit-copy', buildFitCopy(p));
 
   // Selected card highlight
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
