@@ -580,7 +580,7 @@ const mlPrefix = '/ml';
           <div class="result-ctas">
             <a href={`${mlPrefix}/contact/`} class="btn btn-primary" id="result-review-cta">{calcMl.reviewCta}</a>
             <div class="result-share-actions">
-              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" target="_blank" rel="noopener">{calcMl.whatsapp}</a>
+              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" rel="noopener">{calcMl.whatsapp}</a>
               <button class="btn-calc-outline" type="button" id="result-copy-btn">{calcMl.copySummary}</button>
             </div>
             <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
@@ -2013,12 +2013,7 @@ async function copyText(value: string): Promise<void> {
 
 function getWhatsAppShareUrl(text: string): string {
   const encoded = encodeURIComponent(text);
-  const isMobile =
-    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-    window.matchMedia('(max-width: 767px)').matches;
-  return isMobile
-    ? `https://wa.me/?text=${encoded}`
-    : `https://web.whatsapp.com/send?text=${encoded}`;
+  return `whatsapp://send?text=${encoded}`;
 }
 
 function updateResultActions(p: PanelResult, paybackText: string) {
@@ -2364,7 +2359,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (status) status.textContent = 'ആദ്യം ഒരു എസ്റ്റിമേറ്റ് സൃഷ്ടിക്കുക.';
       return;
     }
-    waBtn.href = getWhatsAppShareUrl(latestShareSummary);
+    e.preventDefault();
+    window.location.href = getWhatsAppShareUrl(latestShareSummary);
   });
 
   document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {
