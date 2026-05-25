@@ -2011,6 +2011,16 @@ async function copyText(value: string): Promise<void> {
   document.body.removeChild(fallback);
 }
 
+function getWhatsAppShareUrl(text: string): string {
+  const encoded = encodeURIComponent(text);
+  const isMobile =
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    window.matchMedia('(max-width: 767px)').matches;
+  return isMobile
+    ? `https://wa.me/?text=${encoded}`
+    : `https://web.whatsapp.com/send?text=${encoded}`;
+}
+
 function updateResultActions(p: PanelResult, paybackText: string) {
   const review = document.getElementById('result-review-cta') as HTMLAnchorElement | null;
   const waBtn = document.getElementById('result-whatsapp-btn') as HTMLAnchorElement | null;
@@ -2024,7 +2034,7 @@ function updateResultActions(p: PanelResult, paybackText: string) {
   if (review) review.href = contactHref;
 
   if (waBtn) {
-    waBtn.href = `https://wa.me/?text=${encodeURIComponent(summary)}`;
+    waBtn.href = getWhatsAppShareUrl(summary);
   }
   if (status) status.textContent = '';
 }
@@ -2354,7 +2364,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (status) status.textContent = 'ആദ്യം ഒരു എസ്റ്റിമേറ്റ് സൃഷ്ടിക്കുക.';
       return;
     }
-    waBtn.href = `https://wa.me/?text=${encodeURIComponent(latestShareSummary)}`;
+    waBtn.href = getWhatsAppShareUrl(latestShareSummary);
   });
 
   document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {
