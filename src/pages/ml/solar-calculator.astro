@@ -1973,9 +1973,11 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
   return lines.join('\n');
 }
 
-function buildContactHref(p: PanelResult, paybackText: string): string {
+function buildContactHref(p: PanelResult, paybackText: string, summary: string): string {
   const params = new URLSearchParams({
     source: 'solar-calculator',
+    subject: calcMl.contactSubject,
+    summary,
     system: `${cachedSysKw} kW`,
     bill: String(state.monthlyBill),
     billRange: getBillRange(state.monthlyBill),
@@ -1990,43 +1992,39 @@ function buildContactHref(p: PanelResult, paybackText: string): string {
   return `${mlPrefix}/contact/?${params.toString()}`;
 }
 
+async function copyText(value: string): Promise<void> {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+
+  const fallback = document.createElement('textarea');
+  fallback.value = value;
+  fallback.setAttribute('readonly', '');
+  fallback.style.position = 'absolute';
+  fallback.style.left = '-9999px';
+  document.body.appendChild(fallback);
+  fallback.select();
+  document.execCommand('copy');
+  document.body.removeChild(fallback);
+}
+
 function updateResultActions(p: PanelResult, paybackText: string) {
   const review = document.getElementById('result-review-cta') as HTMLAnchorElement | null;
   const waBtn = document.getElementById('result-whatsapp-btn') as HTMLAnchorElement | null;
-  const copyBtn = document.getElementById('result-copy-btn') as HTMLButtonElement | null;
   const status = document.getElementById('result-action-status');
   const summary = buildShareSummary(p, paybackText);
-  const contactHref = buildContactHref(p, paybackText);
+  const contactHref = buildContactHref(p, paybackText, summary);
+
+  latestShareSummary = summary;
+  latestContactHref = contactHref;
 
   if (review) review.href = contactHref;
 
   if (waBtn) {
     waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
   }
-
-  if (copyBtn) {
-    copyBtn.onclick = async () => {
-      if (!status) return;
-      try {
-        if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(summary);
-        } else {
-          const fallback = document.createElement('textarea');
-          fallback.value = summary;
-          fallback.setAttribute('readonly', '');
-          fallback.style.position = 'absolute';
-          fallback.style.left = '-9999px';
-          document.body.appendChild(fallback);
-          fallback.select();
-          document.execCommand('copy');
-          document.body.removeChild(fallback);
-        }
-        status.textContent = calcMl.copied;
-      } catch {
-        status.textContent = calcMl.copyFailed;
-      }
-    };
-  }
+  if (status) status.textContent = '';
 }
 
 let cachedPanelResults: PanelResult[] = [];
@@ -2034,6 +2032,8 @@ let cachedSysKw    = 0;
 let cachedBos      = 0;
 let cachedAnnSave  = 0;
 let selectedPanelId = '600';
+let latestShareSummary = '';
+let latestContactHref = '';
 
 // ── Subsidy (MNRE tiered) ────────────────────
 function pmSubsidy(sysKw: number): number {
@@ -2326,6 +2326,33 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('recalculate-btn')?.addEventListener('click', () => {
     resetAll();
     goToStep(1);
+  });
+
+  const copyBtn = document.getElementById('result-copy-btn') as HTMLButtonElement | null;
+  const waBtn = document.getElementById('result-whatsapp-btn') as HTMLAnchorElement | null;
+  const status = document.getElementById('result-action-status');
+
+  copyBtn?.addEventListener('click', async () => {
+    if (!status) return;
+    if (!latestShareSummary) {
+      status.textContent = 'ആദ്യം ഒരു എസ്റ്റിമേറ്റ് സൃഷ്ടിക്കുക.';
+      return;
+    }
+    try {
+      await copyText(latestShareSummary);
+      status.textContent = calcMl.copied;
+    } catch {
+      status.textContent = calcMl.copyFailed;
+    }
+  });
+
+  waBtn?.addEventListener('click', (e) => {
+    if (!latestShareSummary) {
+      e.preventDefault();
+      if (status) status.textContent = 'ആദ്യം ഒരു എസ്റ്റിമേറ്റ് സൃഷ്ടിക്കുക.';
+      return;
+    }
+    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(latestShareSummary)}`;
   });
 
   document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {

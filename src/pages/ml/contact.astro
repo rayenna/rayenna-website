@@ -591,6 +591,8 @@ const mlPrefix = '/ml';
     const subsidy = params.get('subsidy') ?? '';
     const annualSavings = params.get('annualSavings') ?? '';
     const payback = params.get('payback') ?? '';
+    const summary = params.get('summary') ?? '';
+    const subjectFromParams = params.get('subject') ?? '';
     const propertyType = params.get('propertyType') ?? '';
     const billRange = params.get('billRange') ?? '';
     const homeTypeLabel = params.get('homeTypeLabel') ?? 'വീട്';
@@ -601,7 +603,7 @@ const mlPrefix = '/ml';
       prefillNote.style.display = 'block';
     }
     if (subjectInput && !subjectInput.value) {
-      subjectInput.value = 'സോളാർ കാൽക്കുലേറ്റർ എസ്റ്റിമേറ്റ് റിവ്യൂ';
+      subjectInput.value = subjectFromParams || 'സോളാർ കാൽക്കുലേറ്റർ എസ്റ്റിമേറ്റ് റിവ്യൂ';
     }
     if (propertyTypeInput && propertyType) {
       propertyTypeInput.value = propertyType;
@@ -611,7 +613,7 @@ const mlPrefix = '/ml';
     }
     if (messageInput && !messageInput.value) {
       const evLine = evCount > 0 ? `\n- EV ചാർജിംഗ് ഉൾപ്പെടുത്തി: ${evCount}` : '';
-      messageInput.value =
+      const fallbackMessage =
 `സോളാർ കാൽക്കുലേറ്ററിൽ നിന്നുള്ള എന്റെ എസ്റ്റിമേറ്റ് റയെന്ന ടീം പരിശോധിക്കണമെന്ന് ഞാൻ ആഗ്രഹിക്കുന്നു.
 
 - വീടിന്റെ തരം: ${homeTypeLabel}
@@ -622,6 +624,9 @@ const mlPrefix = '/ml';
 - ഏകദേശ പേയ്ബാക്ക്: ${payback}${evLine}
 
 സൗജന്യ സൈറ്റ് സർവേയുടെ അടുത്ത ഘട്ടങ്ങളെക്കുറിച്ച് ദയവായി എന്നെ ബന്ധപ്പെടുക.`;
+      messageInput.value = summary
+        ? `സോളാർ കാൽക്കുലേറ്ററിൽ നിന്നുള്ള എന്റെ എസ്റ്റിമേറ്റ് റയെന്ന ടീം പരിശോധിക്കണമെന്ന് ഞാൻ ആഗ്രഹിക്കുന്നു.\n\n${summary}\n\nസൗജന്യ സൈറ്റ് സർവേയുടെ അടുത്ത ഘട്ടങ്ങളെക്കുറിച്ച് ദയവായി എന്നെ ബന്ധപ്പെടുക.`
+        : fallbackMessage;
     }
   }
 

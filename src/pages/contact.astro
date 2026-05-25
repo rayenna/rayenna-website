@@ -590,6 +590,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const subsidy = params.get('subsidy') ?? '';
     const annualSavings = params.get('annualSavings') ?? '';
     const payback = params.get('payback') ?? '';
+    const summary = params.get('summary') ?? '';
+    const subjectFromParams = params.get('subject') ?? '';
     const propertyType = params.get('propertyType') ?? '';
     const billRange = params.get('billRange') ?? '';
     const homeTypeLabel = params.get('homeTypeLabel') ?? 'home';
@@ -600,7 +602,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       prefillNote.style.display = 'block';
     }
     if (subjectInput && !subjectInput.value) {
-      subjectInput.value = 'Solar calculator estimate review';
+      subjectInput.value = subjectFromParams || 'Solar calculator estimate review';
     }
     if (propertyTypeInput && propertyType) {
       propertyTypeInput.value = propertyType;
@@ -610,7 +612,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
     if (messageInput && !messageInput.value) {
       const evLine = evCount > 0 ? `\n- EV charging included: ${evCount}` : '';
-      messageInput.value =
+      const fallbackMessage =
 `I'd like Rayenna to review my solar calculator estimate.
 
 - Home type: ${homeTypeLabel}
@@ -621,6 +623,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 - Estimated payback: ${payback}${evLine}
 
 Please contact me with the next steps for a free site survey.`;
+      messageInput.value = summary
+        ? `I'd like Rayenna to review my solar calculator estimate.\n\n${summary}\n\nPlease contact me with the next steps for a free site survey.`
+        : fallbackMessage;
     }
   }
 
