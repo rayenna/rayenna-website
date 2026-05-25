@@ -1945,7 +1945,7 @@ function buildFitCopy(p: PanelResult): string {
 }
 
 function buildShareSummary(p: PanelResult, paybackText: string): string {
-  const contactPath = '/contact/';
+  const publicContactUrl = 'https://rayennaenergy.com/contact/';
   const bill = '₹' + inr(state.monthlyBill);
   const home = getHomeTypeLabel(state.homeType);
   const intro = state.hasEV
@@ -1963,7 +1963,7 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
     `Estimated payback: ${paybackText}`,
     '',
     'Request a free site survey:',
-    new URL(contactPath, window.location.origin).toString(),
+    publicContactUrl,
   ];
   return lines.join('\n');
 }
@@ -2018,7 +2018,7 @@ function updateResultActions(p: PanelResult, paybackText: string) {
   if (review) review.href = contactHref;
 
   if (waBtn) {
-    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
+    waBtn.href = `https://wa.me/?text=${encodeURIComponent(summary)}`;
   }
   if (status) status.textContent = '';
 }
@@ -2344,7 +2344,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (status) status.textContent = 'Generate an estimate first.';
       return;
     }
-    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(latestShareSummary)}`;
+    waBtn.href = `https://wa.me/?text=${encodeURIComponent(latestShareSummary)}`;
   });
 
   document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {

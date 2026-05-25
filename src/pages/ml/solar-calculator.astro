@@ -1951,7 +1951,7 @@ function buildFitCopy(p: PanelResult): string {
 }
 
 function buildShareSummary(p: PanelResult, paybackText: string): string {
-  const contactPath = '/ml/contact/';
+  const publicContactUrl = 'https://rayennaenergy.com/ml/contact/';
   const home = calcMl.homeTypes[state.homeType as keyof typeof calcMl.homeTypes] ?? 'വീട്';
   const bill = inr(state.monthlyBill);
   const intro = state.hasEV
@@ -1969,7 +1969,7 @@ function buildShareSummary(p: PanelResult, paybackText: string): string {
     `${calcMl.sharePayback}: ${paybackText}`,
     '',
     `${calcMl.shareSurvey}:`,
-    new URL(contactPath, window.location.origin).toString(),
+    publicContactUrl,
   ];
   return lines.join('\n');
 }
@@ -2024,7 +2024,7 @@ function updateResultActions(p: PanelResult, paybackText: string) {
   if (review) review.href = contactHref;
 
   if (waBtn) {
-    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
+    waBtn.href = `https://wa.me/?text=${encodeURIComponent(summary)}`;
   }
   if (status) status.textContent = '';
 }
@@ -2354,7 +2354,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (status) status.textContent = 'ആദ്യം ഒരു എസ്റ്റിമേറ്റ് സൃഷ്ടിക്കുക.';
       return;
     }
-    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(latestShareSummary)}`;
+    waBtn.href = `https://wa.me/?text=${encodeURIComponent(latestShareSummary)}`;
   });
 
   document.querySelector<HTMLAnchorElement>('.hero-scroll-btn')?.addEventListener('click', e => {
