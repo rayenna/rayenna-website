@@ -578,7 +578,12 @@ const mlPrefix = '/ml';
 
           <!-- Result CTAs -->
           <div class="result-ctas">
-            <a href={`${mlPrefix}/contact/`} class="btn btn-primary">ഈ എസ്റ്റിമേറ്റ് ഞങ്ങളുടെ ടീമിനോട് പരിശോധിക്കുക →</a>
+            <a href={`${mlPrefix}/contact/`} class="btn btn-primary" id="result-review-cta">{calcMl.reviewCta}</a>
+            <div class="result-share-actions">
+              <button class="btn-calc-outline" type="button" id="result-whatsapp-btn">{calcMl.whatsapp}</button>
+              <button class="btn-calc-outline" type="button" id="result-copy-btn">{calcMl.copySummary}</button>
+            </div>
+            <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
             <button class="btn-calc-outline" type="button" id="recalculate-btn">← വീണ്ടും കണക്കാക്കുക</button>
           </div>
 
@@ -1502,6 +1507,17 @@ const mlPrefix = '/ml';
   margin-top: 8px;
 }
 .result-ctas .btn { justify-content: center; }
+.result-share-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.result-action-status {
+  min-height: 1.25rem;
+  margin: -2px 4px 0;
+  font-size: 0.82rem;
+  color: var(--calc-blue);
+}
 .btn-calc-outline {
   background: transparent;
   color: var(--calc-blue);
@@ -1697,8 +1713,7 @@ const mlPrefix = '/ml';
    RESPONSIVE — Tablet & Desktop
    ============================================= */
 @media (min-width: 640px) {
-  .result-ctas { flex-direction: row; }
-  .result-ctas .btn, .result-ctas .btn-calc-outline { flex: 1; }
+  .result-share-actions { grid-template-columns: 1fr 1fr; }
   .reassurance__inner { grid-template-columns: repeat(3, 1fr); }
   .result-hero__top {
     flex-direction: row;
@@ -1873,6 +1888,19 @@ function fillTemplate(template: string, vars: Record<string, string>): string {
   );
 }
 
+function getContactPropertyType(type: string): string {
+  return type === 'apartment' ? 'Apartment' : 'Home / Villa';
+}
+
+function getBillRange(bill: number): string {
+  if (bill <= 1000) return 'Below ₹1,000';
+  if (bill <= 2000) return '₹1,000 – ₹2,000';
+  if (bill <= 4000) return '₹2,000 – ₹4,000';
+  if (bill <= 8000) return '₹4,000 – ₹8,000';
+  if (bill <= 15000) return '₹8,000 – ₹15,000';
+  return 'Above ₹15,000';
+}
+
 // ── Panel data ───────────────────────────────
 const PANEL_SPECS = [
   { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
@@ -1915,6 +1943,76 @@ function buildFitCopy(p: PanelResult): string {
     text += fillTemplate(calcMl.fitCopyEvSuffix, { count: String(state.evCount) });
   }
   return text;
+}
+
+function buildShareSummary(p: PanelResult, paybackText: string): string {
+  const home = calcMl.homeTypes[state.homeType as keyof typeof calcMl.homeTypes] ?? 'വീട്';
+  const bill = inr(state.monthlyBill);
+  const intro = state.hasEV
+    ? fillTemplate(calcMl.shareIntroWithEv, { home, bill, count: String(state.evCount) })
+    : fillTemplate(calcMl.shareIntroNoEv, { home, bill });
+  const lines = [
+    calcMl.shareHeading,
+    '',
+    intro,
+    `${calcMl.shareSystem}: ${cachedSysKw} kW`,
+    `${calcMl.shareGeneration}: ~${Math.round(cachedSysKw * 1200).toLocaleString('en-IN')} യൂണിറ്റ്/വർഷം`,
+    `${calcMl.shareSavings}: ₹${inr(cachedAnnSave)}${calcMl.perYear}`,
+    `${calcMl.shareSubsidy}: ₹${inr(pmSubsidy(cachedSysKw))}`,
+    `${calcMl.sharePanel}: ${p.label}`,
+    `${calcMl.sharePayback}: ${paybackText}`,
+    '',
+    `${calcMl.shareSurvey}:`,
+    new URL(`${mlPrefix}/contact/`, window.location.origin).toString(),
+  ];
+  return lines.join('\n');
+}
+
+function buildContactHref(p: PanelResult, paybackText: string): string {
+  const params = new URLSearchParams({
+    source: 'solar-calculator',
+    system: `${cachedSysKw} kW`,
+    bill: String(state.monthlyBill),
+    billRange: getBillRange(state.monthlyBill),
+    propertyType: getContactPropertyType(state.homeType),
+    panel: p.label,
+    subsidy: `₹${inr(pmSubsidy(cachedSysKw))}`,
+    annualSavings: `₹${inr(cachedAnnSave)}${calcMl.perYear}`,
+    payback: paybackText,
+    homeTypeLabel: calcMl.homeTypes[state.homeType as keyof typeof calcMl.homeTypes] ?? 'വീട്',
+    evCount: state.hasEV ? String(state.evCount) : '0',
+  });
+  return `${mlPrefix}/contact/?${params.toString()}`;
+}
+
+function updateResultActions(p: PanelResult, paybackText: string) {
+  const review = document.getElementById('result-review-cta') as HTMLAnchorElement | null;
+  const waBtn = document.getElementById('result-whatsapp-btn') as HTMLButtonElement | null;
+  const copyBtn = document.getElementById('result-copy-btn') as HTMLButtonElement | null;
+  const status = document.getElementById('result-action-status');
+  const summary = buildShareSummary(p, paybackText);
+  const contactHref = buildContactHref(p, paybackText);
+
+  if (review) review.href = contactHref;
+
+  if (waBtn) {
+    waBtn.onclick = () => {
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
+      window.open(whatsappUrl, '_blank', 'noopener');
+    };
+  }
+
+  if (copyBtn) {
+    copyBtn.onclick = async () => {
+      if (!status) return;
+      try {
+        await navigator.clipboard.writeText(summary);
+        status.textContent = calcMl.copied;
+      } catch {
+        status.textContent = calcMl.copyFailed;
+      }
+    };
+  }
 }
 
 let cachedPanelResults: PanelResult[] = [];
@@ -2095,6 +2193,7 @@ function updatePanelDisplay(id: string) {
   setText('result-payback-top', paybackText);
   setText('result-fit-title', getSystemProfileLabel(cachedSysKw));
   setText('result-fit-copy', buildFitCopy(p));
+  updateResultActions(p, paybackText);
 
   // Selected card highlight
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {

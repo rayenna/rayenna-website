@@ -60,6 +60,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <span class="section-tag">Send a Message</span>
           <h2 class="section-title">Let's connect and<br /><span>power your world</span></h2>
           <p>Please do not hesitate to contact us if you are interested in exploring solar energy solutions or have any concerns. We take delight in providing tailored solutions and reliable services that ensure a seamless experience from start to finish.</p>
+          <div class="prefill-note" id="prefill-note" style="display:none"></div>
         </div>
 
         <form class="contact-form" id="contact-form">
@@ -326,6 +327,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   line-height: 1.85;
   font-size: 0.95rem;
 }
+.prefill-note {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #dce4ef;
+  background: #f7fbff;
+  color: #185fa5;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -565,6 +576,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const success = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
+  const params = new URLSearchParams(window.location.search);
+  const prefillNote = document.getElementById('prefill-note');
+
+  if (params.get('source') === 'solar-calculator') {
+    const subjectInput = document.getElementById('subject') as HTMLInputElement | null;
+    const propertyTypeInput = document.getElementById('property-type') as HTMLSelectElement | null;
+    const monthlyBillInput = document.getElementById('monthly-bill') as HTMLSelectElement | null;
+    const messageInput = document.getElementById('message') as HTMLTextAreaElement | null;
+
+    const system = params.get('system') ?? '';
+    const panel = params.get('panel') ?? '';
+    const subsidy = params.get('subsidy') ?? '';
+    const annualSavings = params.get('annualSavings') ?? '';
+    const payback = params.get('payback') ?? '';
+    const propertyType = params.get('propertyType') ?? '';
+    const billRange = params.get('billRange') ?? '';
+    const homeTypeLabel = params.get('homeTypeLabel') ?? 'home';
+    const evCount = parseInt(params.get('evCount') ?? '0', 10);
+
+    if (prefillNote) {
+      prefillNote.textContent = `Your solar calculator estimate (${system}) has been added to this enquiry.`;
+      prefillNote.style.display = 'block';
+    }
+    if (subjectInput && !subjectInput.value) {
+      subjectInput.value = 'Solar calculator estimate review';
+    }
+    if (propertyTypeInput && propertyType) {
+      propertyTypeInput.value = propertyType;
+    }
+    if (monthlyBillInput && billRange) {
+      monthlyBillInput.value = billRange;
+    }
+    if (messageInput && !messageInput.value) {
+      const evLine = evCount > 0 ? `\n- EV charging included: ${evCount}` : '';
+      messageInput.value =
+`I'd like Rayenna to review my solar calculator estimate.
+
+- Home type: ${homeTypeLabel}
+- Recommended system: ${system}
+- Selected panel: ${panel}
+- Estimated subsidy: ${subsidy}
+- Estimated annual savings: ${annualSavings}
+- Estimated payback: ${payback}${evLine}
+
+Please contact me with the next steps for a free site survey.`;
+    }
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -576,7 +634,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     try {
       const formData = new FormData(form);
       formData.append('access_key', '7fec7b57-8d29-4f8b-a09b-6c67140417aa');
-      formData.append('subject', 'New Contact Form Submission – Rayenna Energy');
+      const subjectValue = String(formData.get('subject') || 'New Contact Form Submission – Rayenna Energy');
+      formData.set('subject', subjectValue);
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },

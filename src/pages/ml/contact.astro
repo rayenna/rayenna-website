@@ -61,6 +61,7 @@ const mlPrefix = '/ml';
           <span class="section-tag">സന്ദേശം അയയ്ക്കുക</span>
           <h2 class="section-title">നമുക്ക് ഒന്നിക്കാം,<br /><span>നിങ്ങളുടെ ലോകത്തെ ഊർജ്ജസ്വലമാക്കാം</span></h2>
           <p>സോളാർ പരിഹാരങ്ങളിൽ താൽപ്പര്യമുണ്ടെങ്കിൽ സംശയങ്ങളുണ്ടെങ്കിൽ സ്വതന്ത്രമായി ബന്ധപ്പെടുക. ആരംഭം മുതൽ അവസാനം വരെ മികച്ച സേവനം ഞങ്ങൾ ഉറപ്പുനൽകുന്നു.</p>
+          <div class="prefill-note" id="prefill-note" style="display:none"></div>
         </div>
 
         <form class="contact-form" id="contact-form">
@@ -327,6 +328,16 @@ const mlPrefix = '/ml';
   line-height: 1.85;
   font-size: 0.95rem;
 }
+.prefill-note {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #dce4ef;
+  background: #f7fbff;
+  color: #185fa5;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -566,6 +577,53 @@ const mlPrefix = '/ml';
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const success = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
+  const params = new URLSearchParams(window.location.search);
+  const prefillNote = document.getElementById('prefill-note');
+
+  if (params.get('source') === 'solar-calculator') {
+    const subjectInput = document.getElementById('subject') as HTMLInputElement | null;
+    const propertyTypeInput = document.getElementById('property-type') as HTMLSelectElement | null;
+    const monthlyBillInput = document.getElementById('monthly-bill') as HTMLSelectElement | null;
+    const messageInput = document.getElementById('message') as HTMLTextAreaElement | null;
+
+    const system = params.get('system') ?? '';
+    const panel = params.get('panel') ?? '';
+    const subsidy = params.get('subsidy') ?? '';
+    const annualSavings = params.get('annualSavings') ?? '';
+    const payback = params.get('payback') ?? '';
+    const propertyType = params.get('propertyType') ?? '';
+    const billRange = params.get('billRange') ?? '';
+    const homeTypeLabel = params.get('homeTypeLabel') ?? 'വീട്';
+    const evCount = parseInt(params.get('evCount') ?? '0', 10);
+
+    if (prefillNote) {
+      prefillNote.textContent = `${system} സോളാർ കാൽക്കുലേറ്റർ എസ്റ്റിമേറ്റ് ഈ ഫോമിൽ ചേർത്തിട്ടുണ്ട്.`;
+      prefillNote.style.display = 'block';
+    }
+    if (subjectInput && !subjectInput.value) {
+      subjectInput.value = 'സോളാർ കാൽക്കുലേറ്റർ എസ്റ്റിമേറ്റ് റിവ്യൂ';
+    }
+    if (propertyTypeInput && propertyType) {
+      propertyTypeInput.value = propertyType;
+    }
+    if (monthlyBillInput && billRange) {
+      monthlyBillInput.value = billRange;
+    }
+    if (messageInput && !messageInput.value) {
+      const evLine = evCount > 0 ? `\n- EV ചാർജിംഗ് ഉൾപ്പെടുത്തി: ${evCount}` : '';
+      messageInput.value =
+`സോളാർ കാൽക്കുലേറ്ററിൽ നിന്നുള്ള എന്റെ എസ്റ്റിമേറ്റ് റയെന്ന ടീം പരിശോധിക്കണമെന്ന് ഞാൻ ആഗ്രഹിക്കുന്നു.
+
+- വീടിന്റെ തരം: ${homeTypeLabel}
+- ശുപാർശ ചെയ്യുന്ന സിസ്റ്റം: ${system}
+- തിരഞ്ഞെടുത്ത പാനൽ: ${panel}
+- ഏകദേശ സബ്സിഡി: ${subsidy}
+- ഏകദേശ വാർഷിക സമ്പാദ്യം: ${annualSavings}
+- ഏകദേശ പേയ്ബാക്ക്: ${payback}${evLine}
+
+സൗജന്യ സൈറ്റ് സർവേയുടെ അടുത്ത ഘട്ടങ്ങളെക്കുറിച്ച് ദയവായി എന്നെ ബന്ധപ്പെടുക.`;
+    }
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -577,7 +635,8 @@ const mlPrefix = '/ml';
     try {
       const formData = new FormData(form);
       formData.append('access_key', '7fec7b57-8d29-4f8b-a09b-6c67140417aa');
-      formData.append('subject', 'പുതിയ കോൺടാക്റ്റ് ഫോം — റയെന്ന എനർജി');
+      const subjectValue = String(formData.get('subject') || 'പുതിയ കോൺടാക്റ്റ് ഫോം — റയെന്ന എനർജി');
+      formData.set('subject', subjectValue);
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },

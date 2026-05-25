@@ -576,7 +576,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Result CTAs -->
           <div class="result-ctas">
-            <a href={`${base}/contact`} class="btn btn-primary">Get this estimate reviewed →</a>
+            <a href={`${base}/contact`} class="btn btn-primary" id="result-review-cta">Get this estimate reviewed →</a>
+            <div class="result-share-actions">
+              <button class="btn-calc-outline" type="button" id="result-whatsapp-btn">Send on WhatsApp</button>
+              <button class="btn-calc-outline" type="button" id="result-copy-btn">Copy summary</button>
+            </div>
+            <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
             <button class="btn-calc-outline" type="button" id="recalculate-btn">← Recalculate</button>
           </div>
 
@@ -1500,6 +1505,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   margin-top: 8px;
 }
 .result-ctas .btn { justify-content: center; }
+.result-share-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.result-action-status {
+  min-height: 1.25rem;
+  margin: -2px 4px 0;
+  font-size: 0.82rem;
+  color: var(--calc-blue);
+}
 .btn-calc-outline {
   background: transparent;
   color: var(--calc-blue);
@@ -1695,8 +1711,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    RESPONSIVE — Tablet & Desktop
    ============================================= */
 @media (min-width: 640px) {
-  .result-ctas { flex-direction: row; }
-  .result-ctas .btn, .result-ctas .btn-calc-outline { flex: 1; }
+  .result-share-actions { grid-template-columns: 1fr 1fr; }
   .reassurance__inner { grid-template-columns: repeat(3, 1fr); }
   .result-hero__top {
     flex-direction: row;
@@ -1877,6 +1892,19 @@ function getHomeTypeLabel(type: string): string {
   }[type] ?? 'home';
 }
 
+function getContactPropertyType(type: string): string {
+  return type === 'apartment' ? 'Apartment' : 'Home / Villa';
+}
+
+function getBillRange(bill: number): string {
+  if (bill <= 1000) return 'Below ₹1,000';
+  if (bill <= 2000) return '₹1,000 – ₹2,000';
+  if (bill <= 4000) return '₹2,000 – ₹4,000';
+  if (bill <= 8000) return '₹4,000 – ₹8,000';
+  if (bill <= 15000) return '₹8,000 – ₹15,000';
+  return 'Above ₹15,000';
+}
+
 // ── Panel data ───────────────────────────────
 const PANEL_SPECS = [
   { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
@@ -1909,6 +1937,76 @@ function buildFitCopy(p: PanelResult): string {
     ? ` It also includes EV charging for ${state.evCount} vehicle${state.evCount > 1 ? 's' : ''}.`
     : '';
   return `Sized from your appliance mix, ${occupancy}, and average Kerala solar conditions. With ${p.label}, you'd need about ${p.count} panels across ${p.roof.toLocaleString('en-IN')} sq ft.${evSuffix}`;
+}
+
+function buildShareSummary(p: PanelResult, paybackText: string): string {
+  const bill = '₹' + inr(state.monthlyBill);
+  const home = getHomeTypeLabel(state.homeType);
+  const intro = state.hasEV
+    ? `${home} · monthly bill around ${bill} · includes charging for ${state.evCount} vehicle${state.evCount > 1 ? 's' : ''}`
+    : `${home} · monthly bill around ${bill}`;
+  const lines = [
+    'Rayenna Solar Estimate',
+    '',
+    intro,
+    `Recommended system: ${cachedSysKw} kW`,
+    `Estimated generation: ~${Math.round(cachedSysKw * 1200).toLocaleString('en-IN')} units/year`,
+    `Estimated annual savings: ₹${inr(cachedAnnSave)}/yr`,
+    `Estimated subsidy: ₹${inr(pmSubsidy(cachedSysKw))}`,
+    `Selected panel: ${p.label}`,
+    `Estimated payback: ${paybackText}`,
+    '',
+    'Request a free site survey:',
+    new URL(`${base}/contact`, window.location.origin).toString(),
+  ];
+  return lines.join('\n');
+}
+
+function buildContactHref(p: PanelResult, paybackText: string): string {
+  const params = new URLSearchParams({
+    source: 'solar-calculator',
+    system: `${cachedSysKw} kW`,
+    bill: String(state.monthlyBill),
+    billRange: getBillRange(state.monthlyBill),
+    propertyType: getContactPropertyType(state.homeType),
+    panel: p.label,
+    subsidy: `₹${inr(pmSubsidy(cachedSysKw))}`,
+    annualSavings: `₹${inr(cachedAnnSave)}/yr`,
+    payback: paybackText,
+    homeTypeLabel: getHomeTypeLabel(state.homeType),
+    evCount: state.hasEV ? String(state.evCount) : '0',
+  });
+  return `${base}/contact?${params.toString()}`;
+}
+
+function updateResultActions(p: PanelResult, paybackText: string) {
+  const review = document.getElementById('result-review-cta') as HTMLAnchorElement | null;
+  const waBtn = document.getElementById('result-whatsapp-btn') as HTMLButtonElement | null;
+  const copyBtn = document.getElementById('result-copy-btn') as HTMLButtonElement | null;
+  const status = document.getElementById('result-action-status');
+  const summary = buildShareSummary(p, paybackText);
+  const contactHref = buildContactHref(p, paybackText);
+
+  if (review) review.href = contactHref;
+
+  if (waBtn) {
+    waBtn.onclick = () => {
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(summary)}`;
+      window.open(whatsappUrl, '_blank', 'noopener');
+    };
+  }
+
+  if (copyBtn) {
+    copyBtn.onclick = async () => {
+      if (!status) return;
+      try {
+        await navigator.clipboard.writeText(summary);
+        status.textContent = 'Copied to clipboard.';
+      } catch {
+        status.textContent = 'Copy failed. Please try again.';
+      }
+    };
+  }
 }
 
 let cachedPanelResults: PanelResult[] = [];
@@ -2085,6 +2183,7 @@ function updatePanelDisplay(id: string) {
   setText('result-payback-top', paybackText);
   setText('result-fit-title', getSystemProfileLabel(cachedSysKw));
   setText('result-fit-copy', buildFitCopy(p));
+  updateResultActions(p, paybackText);
 
   // Selected card highlight
   document.querySelectorAll<HTMLElement>('.panel-option[data-panel-id]').forEach(card => {
