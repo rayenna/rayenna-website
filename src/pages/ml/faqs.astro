@@ -4,8 +4,29 @@ import { faqCategoriesMl as categories } from '../../i18n/faqs-ml';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 const FAQ_COUNT_HINT = '6 വിഷയങ്ങളിൽ 45 ചോദ്യങ്ങൾ';
+const faqPageSchema = {
+  "@type": "FAQPage",
+  "@id": "https://rayennaenergy.com/ml/faqs/#faq",
+  "url": "https://rayennaenergy.com/ml/faqs/",
+  "inLanguage": "ml-IN",
+  "mainEntity": categories.flatMap((category) =>
+    category.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    }))
+  ),
+};
 ---
-<Layout lang="ml" title="സോളാർ ചോദ്യോത്തരങ്ങൾ കേരളം | റയെന്ന എനർജി" description="കേരളത്തിലെ സോളാർ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്, ഇൻസ്റ്റാളേഷൻ, പരിപാലനം.">
+<Layout
+  lang="ml"
+  title="സോളാർ ചോദ്യോത്തരങ്ങൾ കേരളം | റയെന്ന എനർജി"
+  description="കേരളത്തിലെ സോളാർ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്, ഇൻസ്റ്റാളേഷൻ, പരിപാലനം."
+  schema={[faqPageSchema]}
+>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">

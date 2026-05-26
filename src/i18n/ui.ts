@@ -52,7 +52,7 @@ export function localizedPath(localeNeutralPath: string, lang: Lang): string {
 function resolveMlPath(neutralPath: string): string {
   const p = normalizePath(neutralPath);
   if (ML_ROUTES.has(p)) return p;
-  if (p.startsWith('/blog/')) return '/blog';
+  if (p.startsWith('/blog/')) return p;
   return '/';
 }
 

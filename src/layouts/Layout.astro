@@ -8,6 +8,7 @@ import {
   getAlternateUrls,
   localizedPath,
   getLangFromPath,
+  stripLocale,
   type Lang,
 } from '../i18n/ui';
 
@@ -16,6 +17,9 @@ const {
   description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.',
   ogImage = 'https://rayennaenergy.com/media/solar-panel-installation.jpg',
   lang: langProp,
+  canonical: canonicalProp,
+  noindex = false,
+  schema = [],
 } = Astro.props;
 
 const lang: Lang = langProp ?? getLangFromPath(Astro.url.pathname);
@@ -26,18 +30,21 @@ const alternates = getAlternateUrls(Astro.url.pathname);
 const siteUrl = 'https://rayennaenergy.com';
 const siteName = 'Rayenna Energy';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const canonicalURL = new URL(canonicalProp ?? Astro.url.pathname, siteUrl);
 const isBlogPost =
   (Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/') ||
   (Astro.url.pathname.startsWith('/ml/blog/') && Astro.url.pathname !== '/ml/blog/');
 const ogType = isBlogPost ? 'article' : 'website';
 const ogLocale = lang === 'ml' ? 'ml_IN' : 'en_IN';
 const pageLanguage = lang === 'ml' ? 'ml-IN' : 'en-IN';
+const neutralPath = stripLocale(canonicalURL.pathname);
+const extraSchemaNodes = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
 const faviconSvgHref = `${base}/favicon.svg`;
 const favicon192Href = `${base}/favicon-192.png`;
 const favicon512Href = `${base}/favicon-512.png`;
 const appleTouchIconHref = `${base}/apple-touch-icon.png`;
 const manifestHref = `${base}/site.webmanifest`;
+const robotsContent = `${noindex ? 'noindex' : 'index'},follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1`;
 
 function navIsActive(href: string): boolean {
   const norm = (p: string) => p.replace(/\/$/, '') || '/';
@@ -47,8 +54,30 @@ function navIsActive(href: string): boolean {
   return cur === target || cur.startsWith(`${target}/`);
 }
 
+function cleanSchemaTitle(rawTitle: string): string {
+  return rawTitle
+    .replace(/\s+\|\s+Rayenna Energy$/u, '')
+    .replace(/\s+—\s+Rayenna Energy Blog$/u, '')
+    .replace(/\s+\|\s+റയെന്ന എനർജി$/u, '')
+    .replace(/\s+—\s+റയെന്ന എനർജി ബ്ലോഗ്$/u, '')
+    .trim();
+}
+
+const schemaPageName = cleanSchemaTitle(title);
+const breadcrumbs = [{ name: t.nav.home, item: new URL(localizedPath('/', lang), siteUrl).href }];
+
+if (isBlogPost) {
+  breadcrumbs.push({
+    name: t.nav.blog,
+    item: new URL(localizedPath('/blog', lang), siteUrl).href,
+  });
+}
+
+if (neutralPath !== '/') {
+  breadcrumbs.push({ name: schemaPageName, item: canonicalURL.href });
+}
+
 const localBusinessLD = {
-  "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ElectricalContractor"],
   "name": "Rayenna Energy Private Limited",
   "logo": `${siteUrl}/favicon-512.png`,
@@ -100,11 +129,23 @@ const websiteLD = {
     "@id": "https://rayennaenergy.com/#business",
   },
 };
+const breadcrumbLD = neutralPath === '/'
+  ? null
+  : {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalURL.href}#breadcrumb`,
+      "itemListElement": breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": crumb.name,
+        "item": crumb.item,
+      })),
+    };
 const webPageLD = {
   "@type": "WebPage",
   "@id": `${canonicalURL.href}#webpage`,
   "url": canonicalURL.href,
-  "name": title,
+  "name": schemaPageName,
   "description": description,
   "inLanguage": pageLanguage,
   "isPartOf": {
@@ -117,10 +158,43 @@ const webPageLD = {
     "@type": "ImageObject",
     "url": ogImage,
   },
+  ...(breadcrumbLD
+    ? {
+        "breadcrumb": {
+          "@id": `${canonicalURL.href}#breadcrumb`,
+        },
+      }
+    : {}),
 };
+const blogPostingLD = !isBlogPost
+  ? null
+  : {
+      "@type": "BlogPosting",
+      "@id": `${canonicalURL.href}#article`,
+      "headline": schemaPageName,
+      "description": description,
+      "url": canonicalURL.href,
+      "mainEntityOfPage": {
+        "@id": `${canonicalURL.href}#webpage`,
+      },
+      "image": [ogImage],
+      "inLanguage": pageLanguage,
+      "author": {
+        "@type": "Organization",
+        "name": lang === 'ml' ? 'റയെന്ന എനർജി ടീം' : 'Rayenna Energy Team',
+        "url": siteUrl,
+      },
+      "publisher": {
+        "@id": "https://rayennaenergy.com/#business",
+      },
+      "isPartOf": {
+        "@id": `${siteUrl}/#website`,
+      },
+      "articleSection": lang === 'ml' ? 'സോളാർ ബ്ലോഗ്' : 'Solar Blog',
+    };
 const structuredDataLD = {
   "@context": "https://schema.org",
-  "@graph": [websiteLD, webPageLD, localBusinessLD],
+  "@graph": [websiteLD, webPageLD, breadcrumbLD, blogPostingLD, localBusinessLD, ...extraSchemaNodes].filter(Boolean),
 };
 const homeHref = localizedPath('/', lang);
 const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
@@ -131,7 +205,7 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="robots" content={robotsContent} />
   <meta name="theme-color" content="#1e3a5f" />
   <meta name="application-name" content={siteName} />
   <meta name="apple-mobile-web-app-title" content={siteName} />

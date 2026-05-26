@@ -232,8 +232,28 @@ const categories = [
     ],
   },
 ];
+const faqPageSchema = {
+  "@type": "FAQPage",
+  "@id": "https://rayennaenergy.com/faqs/#faq",
+  "url": "https://rayennaenergy.com/faqs/",
+  "inLanguage": "en-IN",
+  "mainEntity": categories.flatMap((category) =>
+    category.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    }))
+  ),
+};
 ---
-<Layout title="Solar Energy FAQs Kerala | Cost, Subsidy, KSEB Net Metering | Rayenna Energy" description="Everything you need to know about solar in Kerala — costs, PM Surya Ghar subsidy, KSEB net metering, installation, and maintenance. Answered by Rayenna Energy, Kochi.">
+<Layout
+  title="Solar Energy FAQs Kerala | Cost, Subsidy, KSEB Net Metering | Rayenna Energy"
+  description="Everything you need to know about solar in Kerala — costs, PM Surya Ghar subsidy, KSEB net metering, installation, and maintenance. Answered by Rayenna Energy, Kochi."
+  schema={[faqPageSchema]}
+>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
