@@ -23,13 +23,21 @@ const t = useTranslations(lang);
 const navLinks = getNavLinks(lang);
 const alternates = getAlternateUrls(Astro.url.pathname);
 
+const siteUrl = 'https://rayennaenergy.com';
+const siteName = 'Rayenna Energy';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const canonicalURL = new URL(Astro.url.pathname, 'https://rayennaenergy.com');
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const isBlogPost =
   (Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/') ||
   (Astro.url.pathname.startsWith('/ml/blog/') && Astro.url.pathname !== '/ml/blog/');
 const ogType = isBlogPost ? 'article' : 'website';
 const ogLocale = lang === 'ml' ? 'ml_IN' : 'en_IN';
+const pageLanguage = lang === 'ml' ? 'ml-IN' : 'en-IN';
+const faviconSvgHref = `${base}/favicon.svg`;
+const favicon192Href = `${base}/favicon-192.png`;
+const favicon512Href = `${base}/favicon-512.png`;
+const appleTouchIconHref = `${base}/apple-touch-icon.png`;
+const manifestHref = `${base}/site.webmanifest`;
 
 function navIsActive(href: string): boolean {
   const norm = (p: string) => p.replace(/\/$/, '') || '/';
@@ -43,9 +51,10 @@ const localBusinessLD = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ElectricalContractor"],
   "name": "Rayenna Energy Private Limited",
+  "logo": `${siteUrl}/favicon-512.png`,
   "image": "https://rayennaenergy.com/media/solar-panel-installation.jpg",
   "@id": "https://rayennaenergy.com/#business",
-  "url": "https://rayennaenergy.com",
+  "url": siteUrl,
   "telephone": "+917907369304",
   "email": "sales@rayenna.energy",
   "description": "MNRE-approved solar panel installer in Kochi, Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.",
@@ -81,6 +90,38 @@ const localBusinessLD = {
     { "@type": "AdministrativeArea", "name": "Kerala" }
   ]
 };
+const websiteLD = {
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "url": siteUrl,
+  "name": siteName,
+  "inLanguage": ["en-IN", "ml-IN"],
+  "publisher": {
+    "@id": "https://rayennaenergy.com/#business",
+  },
+};
+const webPageLD = {
+  "@type": "WebPage",
+  "@id": `${canonicalURL.href}#webpage`,
+  "url": canonicalURL.href,
+  "name": title,
+  "description": description,
+  "inLanguage": pageLanguage,
+  "isPartOf": {
+    "@id": `${siteUrl}/#website`,
+  },
+  "about": {
+    "@id": "https://rayennaenergy.com/#business",
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": ogImage,
+  },
+};
+const structuredDataLD = {
+  "@context": "https://schema.org",
+  "@graph": [websiteLD, webPageLD, localBusinessLD],
+};
 const homeHref = localizedPath('/', lang);
 const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
 ---
@@ -90,12 +131,20 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#1e3a5f" />
+  <meta name="application-name" content={siteName} />
+  <meta name="apple-mobile-web-app-title" content={siteName} />
   <title>{title}</title>
   <link rel="canonical" href={canonicalURL.href} />
   <link rel="alternate" hreflang="en" href={alternates.en} />
   <link rel="alternate" hreflang="ml" href={alternates.ml} />
   <link rel="alternate" hreflang="x-default" href={alternates.en} />
-  <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+  <link rel="icon" href={faviconSvgHref} type="image/svg+xml" sizes="any" />
+  <link rel="icon" href={favicon192Href} type="image/png" sizes="192x192" />
+  <link rel="icon" href={favicon512Href} type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href={appleTouchIconHref} sizes="180x180" />
+  <link rel="manifest" href={manifestHref} />
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -114,8 +163,8 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- LocalBusiness JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify(localBusinessLD)} />
+  <!-- Shared JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredDataLD)} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
