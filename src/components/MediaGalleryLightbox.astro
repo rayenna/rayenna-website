@@ -82,7 +82,7 @@ const { installations, base, labels, lang = 'en' } = Astro.props;
   const nextBtn = document.getElementById('gallery-lightbox-next');
 
   let currentIndex = 0;
-  let lastFocus: HTMLElement | null;
+  let lastFocus = null;
 
   function projectAt(index) {
     const total = installations.length;

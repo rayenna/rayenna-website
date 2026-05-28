@@ -564,31 +564,6 @@ const installCount = installations.length;
   justify-content: center;
   min-height: 52px;
 }
-.gallery-card {
-  background: #fff;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
-  display: flex;
-  flex-direction: column;
-  border: none;
-  padding: 0;
-  text-align: left;
-  font: inherit;
-  color: inherit;
-  width: 100%;
-}
-.gallery-card--interactive {
-  cursor: pointer;
-}
-.gallery-card--interactive:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 3px;
-}
-.gallery-card:hover,
-.gallery-card--interactive:focus-visible {
-
 
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
@@ -718,6 +693,21 @@ const installCount = installations.length;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+.gallery-card--interactive {
+  cursor: pointer;
+}
+.gallery-card--interactive:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
 }
 .gallery-card:hover {
   transform: translateY(-4px);
@@ -1523,6 +1513,15 @@ const installCount = installations.length;
 
   // ── Video Library ──────────────────────────────────────────────────────────
   const vlPlayer = document.getElementById('vl-player');
+  let featuredVideoReady = false;
+
+  function ensureFeaturedVideoLoaded(src) {
+    if (!vlPlayer || featuredVideoReady || !src) return;
+    vlPlayer.src = src;
+    vlPlayer.load();
+    featuredVideoReady = true;
+  }
+
   const vlTitle = document.getElementById('vl-title');
   const vlBadge = document.getElementById('vl-badge');
   const vlCards = Array.from(document.querySelectorAll('.vl-card'));
