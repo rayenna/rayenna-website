@@ -58,6 +58,7 @@ const installations = [
   { name: 'Anathasia',         location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'ANATHASIA-VARAPUZHA3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Arun',              location: 'Kollam',        capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Aysha George',      location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'AYSHA-GEORGE-RAVIPURAM-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Ajaya Ghosh',        location: 'Thevara',       capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'AJAYAGHOSH -THEVARA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Babu',              location: 'North Paravur', capacity: '5 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'BABU-NORTH-PARAVUR-5KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
   { name: 'Balu',              location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'BALU-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Byju George',       location: 'Thevara',       capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
@@ -86,7 +87,9 @@ const installations = [
   { name: 'Santhosh Kumar B.', location: 'Kallara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SANTHOSH-KUMAR-B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.png' },
   { name: 'Saphiya',           location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
   { name: 'Sasidharan',        location: 'Eroor',         capacity: '3 kW',  inverter: 'Sunways',     panels: 'Adani',  img: 'SASIDHARAN-EROOR-3KW-SUNWAYS-INVERTER-PANELS-ADANI.png' },
+  { name: 'Sathya Dineshan',   location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SATHYA DINESHAN-ALAPPUZHA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Shamna',            location: 'Kollam',        capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SHAMNA-KOLLAM-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Suji Jose',         location: 'Panangad',      capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SUJI JOSE-PANANGAD-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Thomas Varghese',   location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Havells',     panels: 'Adani',  img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png' },
   { name: 'Vanaja',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Vijith Kumar',      location: 'Vazhakkala',    capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VIJITH-KUMAR-VAZHAKKALA-5KW-DEYE-INVERTER-PANELS-ADANI.png' },
@@ -129,6 +132,9 @@ const allSlides = [
   { img: 'SANTHOSH-KUMAR-B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.png', caption: 'Santhosh Kumar — Kallara',        sub: specSub('3 kW', 'Deye', 'Adani') },
   { img: 'KOYA-NILAMBUR-3KW-SOLIS-INVERTER-PANELS-RENEW.png',          caption: 'Koya — Nilambur',                  sub: specSub('3 kW', 'Solis', 'Renew') },
   { img: 'PADMAJA-EZHIKKARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg',      caption: 'Padmaja — Ezhikkara',              sub: specSub('3 kW', 'Deye', 'Adani') },
+  { img: 'AJAYAGHOSH -THEVARA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg', caption: 'Ajaya Ghosh — Thevara',            sub: specSub('3 kW', 'Eastman', 'Adani') },
+  { img: 'SATHYA DINESHAN-ALAPPUZHA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg', caption: 'Sathya Dineshan — Alappuzha',   sub: specSub('3 kW', 'Deye', 'Adani') },
+  { img: 'SUJI JOSE-PANANGAD-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg',     caption: 'Suji Jose — Panangad',             sub: specSub('3 kW', 'Deye', 'Adani') },
 ];
 
 const imageGallerySchema = {
@@ -202,6 +208,7 @@ const installCount = installations.length;
             <button class="gf-pill gf-pill--active" data-type="inv" data-val="all">എല്ലാം</button>
             <button class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
             <button class="gf-pill" data-type="inv" data-val="Deye Hybrid">Deye Hybrid</button>
+            <button class="gf-pill" data-type="inv" data-val="Eastman">Eastman</button>
             <button class="gf-pill" data-type="inv" data-val="Feston">Feston</button>
             <button class="gf-pill" data-type="inv" data-val="Growatt">Growatt</button>
             <button class="gf-pill" data-type="inv" data-val="Havells">Havells</button>
