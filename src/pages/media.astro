@@ -330,6 +330,7 @@ const imageGallerySchema = {
             class="vl-card"
             data-cat={v.category}
             data-src={videoUrl(v.file)}
+            data-poster={`${base}/media/${v.thumb}`}
             data-title={v.title}
             data-badge={categoryLabel(v.category)}
             data-badgecat={v.category}
@@ -919,6 +920,10 @@ const imageGallerySchema = {
   border-color: rgba(255,255,255,0.18);
 }
 .vl-card--hidden { display: none; }
+.vl-card--playing {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
 
 /* Thumbnail */
 .vl-card__thumb {
@@ -1479,18 +1484,26 @@ const imageGallerySchema = {
 
   // ── Video Library ──────────────────────────────────────────────────────────
   const vlPlayer = document.getElementById('vl-player') as HTMLVideoElement | null;
-  let featuredVideoReady = false;
-
-  function ensureFeaturedVideoLoaded(src: string) {
-    if (!vlPlayer || featuredVideoReady) return;
-    vlPlayer.src = src;
-    vlPlayer.load();
-    featuredVideoReady = true;
-  }
   const vlTitle  = document.getElementById('vl-title')  as HTMLElement | null;
   const vlBadge  = document.getElementById('vl-badge')  as HTMLElement | null;
   const vlCards  = Array.from(document.querySelectorAll<HTMLElement>('.vl-card'));
   const vlTabs   = Array.from(document.querySelectorAll<HTMLElement>('.vl-tab'));
+
+  function playFeaturedVideo(src: string, poster?: string) {
+    if (!vlPlayer || !src) return;
+
+    const activeSrc = vlPlayer.dataset.activeSrc ?? '';
+    if (activeSrc !== src) {
+      vlPlayer.pause();
+      vlPlayer.src = src;
+      vlPlayer.dataset.activeSrc = src;
+      if (poster) vlPlayer.poster = poster;
+      vlPlayer.load();
+    }
+
+    const playPromise = vlPlayer.play();
+    if (playPromise) playPromise.catch(() => {});
+  }
 
   vlCards.forEach((card) => {
     card.addEventListener('click', () => {
@@ -1498,11 +1511,13 @@ const imageGallerySchema = {
       const title    = card.dataset.title    ?? '';
       const badge    = card.dataset.badge    ?? '';
       const badgeCat = card.dataset.badgecat ?? '';
+      const poster   = card.dataset.poster   ?? '';
 
-      ensureFeaturedVideoLoaded(src);
-      if (vlPlayer) {
-        vlPlayer.play().catch(() => {});
-      }
+      playFeaturedVideo(src, poster);
+
+      vlCards.forEach((c) => c.classList.remove('vl-card--playing'));
+      card.classList.add('vl-card--playing');
+
       if (vlTitle) vlTitle.textContent = title;
       if (vlBadge) {
         vlBadge.textContent = badge;
