@@ -112,6 +112,12 @@ const ui = {
       thumbLabel: 'Corporate film',
       duration: '1 min',
     },
+    mediaFeatured: {
+      defaultTitle: 'Rayenna Energy',
+      defaultBadge: 'Video Library',
+      thumbLabel: 'Films & stories',
+      hint: 'Select any video below to play it here',
+    },
     waTooltip: 'Chat with us!',
     chat: {
       tooltip: 'Ask Ray ☀️',
@@ -196,6 +202,12 @@ const ui = {
       playLabel: 'കോർപ്പറേറ്റ് വീഡിയോ പ്ലേ ചെയ്യുക',
       thumbLabel: 'കോർപ്പറേറ്റ് ഫിലിം',
       duration: '1 മിനിറ്റ്',
+    },
+    mediaFeatured: {
+      defaultTitle: 'റയെന്ന എനർജി',
+      defaultBadge: 'വീഡിയോ ലൈബ്രറി',
+      thumbLabel: 'ചലച്ചിത്രങ്ങളും കഥകളും',
+      hint: 'താഴെയുള്ള ഏതെങ്കിലും വീഡിയോ തിരഞ്ഞെടുത്ത് ഇവിടെ പ്ലേ ചെയ്യുക',
     },
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
     chat: {

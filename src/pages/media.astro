@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MediaGalleryLightbox from '../components/MediaGalleryLightbox.astro';
+import { useTranslations } from '../i18n/ui';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://rayennaenergy.com';
+const t = useTranslations('en');
+const mv = t.mediaFeatured;
+const videoThumbBg = `${base}/media/solar-panel-installation.jpg`;
+const videoLogo = `${base}/media/Logo-white.webp`;
 
 const lightboxLabels = {
   inverter: 'Inverter',
@@ -281,22 +286,43 @@ const imageGallerySchema = {
 
       <!-- Featured Player -->
       <div class="vl-featured" id="vl-featured">
-        <video
-          id="vl-player"
-          class="vl-player"
-          controls
-          preload="none"
-          playsinline
-          poster={`${base}/media/thumbs/customer--sudheer.jpg`}
-        >
-          Your browser does not support the video tag.
-        </video>
+        <div class="vl-player-frame" id="vl-player-frame">
+          <div class="vl-player-placeholder" id="vl-placeholder">
+            <div
+              class="vl-player-placeholder__bg"
+              style={`background-image: url('${videoThumbBg}')`}
+              role="img"
+              aria-hidden="true"
+            ></div>
+            <div class="vl-player-placeholder__scrim" aria-hidden="true"></div>
+            <div class="vl-player-placeholder__content">
+              <img
+                src={videoLogo}
+                alt={t.images.logoAlt}
+                class="vl-player-placeholder__logo"
+                width="220"
+                height="80"
+                loading="eager"
+                decoding="async"
+              />
+              <span class="vl-player-placeholder__label">{mv.thumbLabel}</span>
+            </div>
+          </div>
+          <video
+            id="vl-player"
+            class="vl-player"
+            preload="none"
+            playsinline
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="vl-featured__footer">
           <div class="vl-featured__meta">
-            <p class="vl-featured__title" id="vl-title">Sudheer — Njarakkal Installation</p>
-            <span class="vl-badge vl-badge--customer" id="vl-badge">Customer Stories</span>
+            <p class="vl-featured__title" id="vl-title">{mv.defaultTitle}</p>
+            <span class="vl-badge vl-badge--brand" id="vl-badge">{mv.defaultBadge}</span>
           </div>
-          <p class="vl-featured__hint">Select any video below to play it here</p>
+          <p class="vl-featured__hint">{mv.hint}</p>
         </div>
       </div>
 
@@ -810,13 +836,80 @@ const imageGallerySchema = {
   max-width: 900px;
   margin: 0 auto 40px;
 }
-.vl-player {
-  width: 100%;
+.vl-player-frame {
+  position: relative;
   border-radius: 16px;
+  overflow: hidden;
+  background: #0a0f18;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.55);
+}
+.vl-player-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.vl-player-placeholder.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.vl-player-placeholder__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  filter: saturate(0.85) brightness(0.55);
+}
+.vl-player-placeholder__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(39, 50, 79, 0.88) 0%, rgba(29, 37, 58, 0.72) 45%, rgba(20, 28, 46, 0.92) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168, 56, 56, 0.12) 0%, transparent 70%);
+}
+.vl-player-placeholder__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.vl-player-placeholder__logo {
+  width: min(200px, 52vw);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
+}
+.vl-player-placeholder__label {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.vl-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
   background: #000;
-  box-shadow: 0 24px 72px rgba(0,0,0,0.55);
-  max-height: 520px;
+  object-fit: contain;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+.vl-player-frame.is-playing .vl-player {
+  opacity: 1;
 }
 .vl-featured__footer {
   padding: 14px 2px 0;
@@ -1484,20 +1577,32 @@ const imageGallerySchema = {
 
   // ── Video Library ──────────────────────────────────────────────────────────
   const vlPlayer = document.getElementById('vl-player') as HTMLVideoElement | null;
+  const vlPlayerFrame = document.getElementById('vl-player-frame');
+  const vlPlaceholder = document.getElementById('vl-placeholder');
   const vlTitle  = document.getElementById('vl-title')  as HTMLElement | null;
   const vlBadge  = document.getElementById('vl-badge')  as HTMLElement | null;
   const vlCards  = Array.from(document.querySelectorAll<HTMLElement>('.vl-card'));
   const vlTabs   = Array.from(document.querySelectorAll<HTMLElement>('.vl-tab'));
 
-  function playFeaturedVideo(src: string, poster?: string) {
+  function revealFeaturedPlayer() {
+    vlPlaceholder?.classList.add('is-hidden');
+    vlPlayerFrame?.classList.add('is-playing');
+    if (vlPlayer && !vlPlayer.hasAttribute('controls')) {
+      vlPlayer.setAttribute('controls', '');
+    }
+  }
+
+  function playFeaturedVideo(src: string) {
     if (!vlPlayer || !src) return;
+
+    revealFeaturedPlayer();
 
     const activeSrc = vlPlayer.dataset.activeSrc ?? '';
     if (activeSrc !== src) {
       vlPlayer.pause();
+      vlPlayer.removeAttribute('poster');
       vlPlayer.src = src;
       vlPlayer.dataset.activeSrc = src;
-      if (poster) vlPlayer.poster = poster;
       vlPlayer.load();
     }
 
@@ -1511,9 +1616,7 @@ const imageGallerySchema = {
       const title    = card.dataset.title    ?? '';
       const badge    = card.dataset.badge    ?? '';
       const badgeCat = card.dataset.badgecat ?? '';
-      const poster   = card.dataset.poster   ?? '';
-
-      playFeaturedVideo(src, poster);
+      playFeaturedVideo(src);
 
       vlCards.forEach((c) => c.classList.remove('vl-card--playing'));
       card.classList.add('vl-card--playing');
