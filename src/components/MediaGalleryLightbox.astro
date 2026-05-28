@@ -1,0 +1,338 @@
+---
+interface Installation {
+  name: string;
+  location: string;
+  capacity: string;
+  inverter: string;
+  panels: string;
+  img: string;
+}
+
+interface Props {
+  installations: Installation[];
+  base: string;
+  labels: {
+    inverter: string;
+    panels: string;
+    close: string;
+    prev: string;
+    next: string;
+  };
+  lang?: 'en' | 'ml';
+}
+
+const { installations, base, labels, lang = 'en' } = Astro.props;
+---
+
+<div
+  class="gallery-lightbox"
+  id="gallery-lightbox"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="gallery-lightbox-title"
+  lang={lang}
+>
+  <div class="gallery-lightbox__backdrop" data-lightbox-close></div>
+  <div class="gallery-lightbox__panel">
+    <button type="button" class="gallery-lightbox__close" data-lightbox-close aria-label={labels.close}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--prev" id="gallery-lightbox-prev" aria-label={labels.prev}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="gallery-lightbox__media">
+      <img id="gallery-lightbox-image" src="" alt="" />
+    </div>
+
+    <div class="gallery-lightbox__meta">
+      <p class="gallery-lightbox__capacity" id="gallery-lightbox-capacity"></p>
+      <h2 class="gallery-lightbox__title" id="gallery-lightbox-title"></h2>
+      <p class="gallery-lightbox__location" id="gallery-lightbox-location"></p>
+      <div class="gallery-lightbox__specs">
+        <span class="spec-pill" id="gallery-lightbox-inverter"></span>
+        <span class="spec-pill" id="gallery-lightbox-panels"></span>
+      </div>
+    </div>
+
+    <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--next" id="gallery-lightbox-next" aria-label={labels.next}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script define:vars={{ installations, base, labels }}>
+  const lightbox = document.getElementById('gallery-lightbox');
+  const imageEl = document.getElementById('gallery-lightbox-image');
+  const titleEl = document.getElementById('gallery-lightbox-title');
+  const locationEl = document.getElementById('gallery-lightbox-location');
+  const capacityEl = document.getElementById('gallery-lightbox-capacity');
+  const inverterEl = document.getElementById('gallery-lightbox-inverter');
+  const panelsEl = document.getElementById('gallery-lightbox-panels');
+  const prevBtn = document.getElementById('gallery-lightbox-prev');
+  const nextBtn = document.getElementById('gallery-lightbox-next');
+
+  let currentIndex = 0;
+  let lastFocus: HTMLElement | null;
+
+  function projectAt(index) {
+    const total = installations.length;
+    return installations[((index % total) + total) % total];
+  }
+
+  function render(index) {
+    const item = projectAt(index);
+    currentIndex = ((index % installations.length) + installations.length) % installations.length;
+
+    if (imageEl) {
+      imageEl.src = `${base}/media/references/${item.img}`;
+      imageEl.alt = `${item.name} – ${item.capacity} solar installation in ${item.location}`;
+    }
+    if (capacityEl) capacityEl.textContent = item.capacity;
+    if (titleEl) titleEl.textContent = item.name;
+    if (locationEl) locationEl.textContent = item.location;
+    if (inverterEl) inverterEl.textContent = `${item.inverter} ${labels.inverter}`;
+    if (panelsEl) panelsEl.textContent = `${item.panels} ${labels.panels}`;
+  }
+
+  function open(index) {
+    if (!lightbox) return;
+    lastFocus = document.activeElement;
+    render(index);
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lightbox.querySelector('.gallery-lightbox__close')?.focus();
+  }
+
+  function close() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function step(delta) {
+    open(currentIndex + delta);
+  }
+
+  document.querySelectorAll('.gallery-card[data-gallery-index]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const index = Number(card.getAttribute('data-gallery-index'));
+      open(index);
+    });
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const index = Number(card.getAttribute('data-gallery-index'));
+        open(index);
+      }
+    });
+  });
+
+  lightbox?.querySelectorAll('[data-lightbox-close]').forEach((el) => {
+    el.addEventListener('click', close);
+  });
+
+  prevBtn?.addEventListener('click', () => step(-1));
+  nextBtn?.addEventListener('click', () => step(1));
+
+  document.addEventListener('keydown', (event) => {
+    if (lightbox?.hidden) return;
+    if (event.key === 'Escape') close();
+    if (event.key === 'ArrowLeft') step(-1);
+    if (event.key === 'ArrowRight') step(1);
+  });
+
+  let touchStartX = 0;
+  lightbox?.addEventListener('touchstart', (event) => {
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+
+  lightbox?.addEventListener('touchend', (event) => {
+    const diff = touchStartX - event.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) step(diff > 0 ? 1 : -1);
+  });
+</script>
+
+<style>
+.gallery-lightbox[hidden] {
+  display: none !important;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.gallery-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 20, 45, 0.92);
+}
+
+.gallery-lightbox__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 920px);
+  max-height: calc(100vh - 32px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.gallery-lightbox__media {
+  grid-column: 2;
+  grid-row: 1;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.gallery-lightbox__media img {
+  display: block;
+  width: 100%;
+  max-height: min(62vh, 520px);
+  object-fit: contain;
+  background: #111;
+}
+
+.gallery-lightbox__meta {
+  grid-column: 2;
+  grid-row: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 8px 8px;
+}
+
+.gallery-lightbox__capacity {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+}
+
+.gallery-lightbox__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.gallery-lightbox__location {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 14px;
+}
+
+.gallery-lightbox__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.gallery-lightbox__specs .spec-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.gallery-lightbox__close,
+.gallery-lightbox__nav {
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: background 0.2s, transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-lightbox__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  z-index: 2;
+}
+
+.gallery-lightbox__nav {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.gallery-lightbox__nav--prev {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.gallery-lightbox__nav--next {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.gallery-lightbox__close:hover,
+.gallery-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.04);
+}
+
+@media (max-width: 767px) {
+  .gallery-lightbox {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .gallery-lightbox__panel {
+    width: 100%;
+    max-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    border-radius: 0;
+  }
+
+  .gallery-lightbox__close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .gallery-lightbox__nav {
+    display: none;
+  }
+
+  .gallery-lightbox__media {
+    border-radius: 0;
+    min-height: 42vh;
+  }
+
+  .gallery-lightbox__media img {
+    max-height: 50vh;
+  }
+}
+</style>

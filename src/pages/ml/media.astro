@@ -1,7 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import MediaGalleryLightbox from '../../components/MediaGalleryLightbox.astro';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const siteUrl = 'https://rayennaenergy.com';
 const mlPrefix = '/ml';
+
+const lightboxLabels = {
+  inverter: 'ഇൻവർട്ടർ',
+  panels: 'പാനലുകൾ',
+  close: 'അടയ്ക്കുക',
+  prev: 'മുമ്പത്തെ ഇൻസ്റ്റാളേഷൻ',
+  next: 'അടുത്ത ഇൻസ്റ്റാളേഷൻ',
+};
 
 function videoUrl(file: string): string {
   return `${base}/media/${file.split('/').map((p) => encodeURIComponent(p)).join('/')}`;
@@ -120,9 +131,28 @@ const allSlides = [
   { img: 'PADMAJA-EZHIKKARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg',      caption: 'Padmaja — Ezhikkara',              sub: specSub('3 kW', 'Deye', 'Adani') },
 ];
 
+const imageGallerySchema = {
+  '@type': 'ImageGallery',
+  '@id': `${siteUrl}/ml/media/#gallery`,
+  'name': 'റയെന്ന എനർജി കേരളത്തിലെ സോളാർ ഇൻസ്റ്റാളേഷനുകൾ',
+  'description': 'കേരളമെമ്പാടും റയെന്ന എനർജി പൂർത്തിയാക്കിയ സോളാർ ഇൻസ്റ്റാളേഷനുകൾ.',
+  'url': `${siteUrl}/ml/media/`,
+  'associatedMedia': installations.map((inst) => ({
+    '@type': 'ImageObject',
+    'contentUrl': `${siteUrl}/media/references/${inst.img}`,
+    'name': `${inst.name} — ${inst.location} · ${inst.capacity} സോളാർ ഇൻസ്റ്റാളേഷൻ`,
+    'description': `${inst.location} — ${inst.capacity}, ${inst.inverter} ഇൻവർട്ടർ, ${inst.panels} പാനലുകൾ.`,
+  })),
+};
+
 const installCount = installations.length;
 ---
-<Layout lang="ml" title="സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി | റയെന്ന എനർജി" description="കേരളമെമ്പാടുമുള്ള പൂർത്തിയാക്കിയ സോളാർ പ്രോജക്റ്റുകൾ — ഫോട്ടോകളും വീഡിയോകളും.">
+<Layout
+  lang="ml"
+  title="സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി | റയെന്ന എനർജി"
+  description="കേരളമെമ്പാടുമുള്ള പൂർത്തിയാക്കിയ സോളാർ ഇൻസ്റ്റാളേഷനുകൾ — ഫോട്ടോകളും വീഡിയോകളും."
+  schema={[imageGallerySchema]}
+>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
@@ -136,12 +166,16 @@ const installCount = installations.length;
       <p class="page-hero__eyebrow">പോർട്ട്ഫോളിയോ</p>
       <h1 class="page-hero__title">കേരളമെമ്പാടും<br />സോളാർ ഇൻസ്റ്റാളേഷനുകൾ</h1>
       <p class="page-hero__sub">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ. യഥാർത്ഥ സമ്പാദ്യം. കേരളത്തിലെ പൂർത്തിയാക്കിയ പ്രോജക്റ്റുകൾ.</p>
+      <div class="page-hero__actions">
+        <a href="#gallery-section" class="btn btn-primary">ഇൻസ്റ്റാളേഷനുകൾ കാണുക</a>
+        <a href="#video-library" class="btn btn-outline-white">വീഡിയോകൾ കാണുക</a>
+      </div>
     </div>
   </section>
 
 
   <!-- ===== INSTALLATION GALLERY ===== -->
-  <section class="gallery-section">
+  <section class="gallery-section" id="gallery-section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">ഇൻസ്റ്റാളേഷൻ ഗാലറി</span>
@@ -151,8 +185,8 @@ const installCount = installations.length;
 
       <!-- ── Filter Bar ── -->
       <div class="gallery-filters" id="gallery-filters">
-        <div class="gf-group">
-          <span class="gf-label">സിസ്റ്റം വലിപ്പം</span>
+        <details class="gf-group gf-group--accordion" open>
+          <summary class="gf-label">സിസ്റ്റം വലിപ്പം</summary>
           <div class="gf-pills">
             <button class="gf-pill gf-pill--active" data-type="cap" data-val="all">എല്ലാം</button>
             <button class="gf-pill" data-type="cap" data-val="3 kW">3 kW</button>
@@ -161,9 +195,9 @@ const installCount = installations.length;
             <button class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
             <button class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
           </div>
-        </div>
-        <div class="gf-group">
-          <span class="gf-label">ഇൻവർട്ടർ</span>
+        </details>
+        <details class="gf-group gf-group--accordion" open>
+          <summary class="gf-label">ഇൻവർട്ടർ</summary>
           <div class="gf-pills">
             <button class="gf-pill gf-pill--active" data-type="inv" data-val="all">എല്ലാം</button>
             <button class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
@@ -177,9 +211,9 @@ const installCount = installations.length;
             <button class="gf-pill" data-type="inv" data-val="Solis">Solis</button>
             <button class="gf-pill" data-type="inv" data-val="Sunways">Sunways</button>
           </div>
-        </div>
-        <div class="gf-group">
-          <span class="gf-label">പാനലുകൾ</span>
+        </details>
+        <details class="gf-group gf-group--accordion" open>
+          <summary class="gf-label">പാനലുകൾ</summary>
           <div class="gf-pills">
             <button class="gf-pill gf-pill--active" data-type="pan" data-val="all">എല്ലാം</button>
             <button class="gf-pill" data-type="pan" data-val="Adani">Adani</button>
@@ -187,13 +221,22 @@ const installCount = installations.length;
             <button class="gf-pill" data-type="pan" data-val="Renew">Renew</button>
             <button class="gf-pill" data-type="pan" data-val="Waaree">Waaree</button>
           </div>
-        </div>
+        </details>
         <p class="gf-count" id="gf-count" data-total={installCount}>എല്ലാ {installCount} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു</p>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
-        {installations.map((inst) => (
-          <article class="gallery-card" data-cap={inst.capacity} data-inv={inst.inverter} data-pan={inst.panels}>
+        {installations.map((inst, index) => (
+          <article
+            class="gallery-card gallery-card--interactive"
+            data-cap={inst.capacity}
+            data-inv={inst.inverter}
+            data-pan={inst.panels}
+            data-gallery-index={index}
+            tabindex="0"
+            role="button"
+            aria-label={`${inst.name} — ${inst.location} · ${inst.capacity} ഇൻസ്റ്റാളേഷൻ കാണുക`}
+          >
             <div class="gallery-card__img-wrap">
               <img
                 src={`${base}/media/references/${inst.img}`}
@@ -243,8 +286,9 @@ const installCount = installations.length;
           id="vl-player"
           class="vl-player"
           controls
-          preload="metadata"
-          src={videoUrl('references/SUDHEERNJARAKKAL3KW-SOLIS-INVERTER-PANELS-ADANI.mp4')}
+          preload="none"
+          playsinline
+          poster={`${base}/media/thumbs/customer--sudheer.jpg`}
         >
           നിങ്ങളുടെ ബ്രൗസർ വീഡിയോ ടാഗിനെ പിന്തുണയ്ക്കുന്നില്ല.
         </video>
@@ -432,6 +476,13 @@ const installCount = installations.length;
 
 </Layout>
 
+<MediaGalleryLightbox
+  installations={installations}
+  base={base}
+  labels={lightboxLabels}
+  lang="ml"
+/>
+
 <style>
 /* ===========================
    Media Page — Mobile First
@@ -492,7 +543,44 @@ const installCount = installations.length;
   color: rgba(255,255,255,0.7);
   max-width: 520px;
   line-height: 1.8;
+  margin-bottom: 24px;
 }
+.page-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+.page-hero__actions .btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+.gallery-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+.gallery-card--interactive {
+  cursor: pointer;
+}
+.gallery-card--interactive:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.gallery-card:hover,
+.gallery-card--interactive:focus-visible {
 
 
 /* ===== GALLERY SECTION ===== */
@@ -512,6 +600,31 @@ const installCount = installations.length;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+.gf-group--accordion {
+  border: 1px solid rgba(39, 50, 79, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  background: #fff;
+}
+.gf-group--accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gf-group--accordion > summary::-webkit-details-marker {
+  display: none;
+}
+.gf-group--accordion > summary::after {
+  content: '+';
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.gf-group--accordion[open] > summary::after {
+  content: '−';
 }
 .gf-label {
   font-size: 0.7rem;
@@ -1251,6 +1364,27 @@ const installCount = installations.length;
 }
 
 @media (min-width: 768px) {
+  .page-hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: none;
+    width: auto;
+  }
+  .page-hero__actions .btn {
+    width: auto;
+  }
+  .gf-group--accordion {
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+  .gf-group--accordion > summary {
+    cursor: default;
+    pointer-events: none;
+  }
+  .gf-group--accordion > summary::after {
+    display: none;
+  }
   .showcase-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   .showcase-item--tall { grid-row: span 2; }
   .showcase-item img { min-height: 240px; }
@@ -1394,8 +1528,8 @@ const installCount = installations.length;
       const badge = card.dataset.badge ?? '';
       const badgeCat = card.dataset.badgecat ?? '';
 
+      ensureFeaturedVideoLoaded(src);
       if (vlPlayer) {
-        vlPlayer.src = src;
         vlPlayer.play().catch(() => {});
       }
       if (vlTitle) vlTitle.textContent = title;
