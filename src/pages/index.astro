@@ -16,13 +16,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h1 class="hero__title">Your KSEB Bill<br />Could Be ₹0.</h1>
       <div class="hero__mid">
         <img src={`${base}/media/Artboard-2mnre.webp`} alt="MNRE Approved Channel Partner — Govt of India" class="mnre-badge-img" />
-        <p class="hero__subtitle">Kerala's MNRE-approved solar installer. Government subsidy up to ₹78,000. Free site survey. Most homes break even in 3–5 years — then generate free power for 20+ years.</p>
-      </div>
-      <div class="hero-trust-strip">
-        <span>✓ MNRE Approved</span>
-        <span>✓ ₹78,000 Subsidy</span>
-        <span>✓ Free Site Survey</span>
-        <span>✓ 25-Year Warranty</span>
+        <div class="hero__mid-copy">
+          <p class="hero__subtitle">Kerala's MNRE-approved solar installer. Government subsidy up to ₹78,000. Free site survey. Most homes break even in 3–5 years — then generate free power for 20+ years.</p>
+          <div class="hero-trust-strip">
+            <span>✓ MNRE Approved</span>
+            <span>✓ ₹78,000 Subsidy</span>
+            <span>✓ Free Site Survey</span>
+            <span>✓ 25-Year Warranty</span>
+          </div>
+        </div>
       </div>
       <div class="hero-cta-wrapper">
         <a href={`${base}/solar-calculator`} class="btn btn-hero-primary hero-btn-primary">☀️ Calculate My Savings</a>
@@ -359,7 +361,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   display: flex;
   align-items: center;
   gap: 28px;
-  margin-bottom: 36px;
+  margin-bottom: 0;
+}
+
+.hero__mid-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* ===== MNRE BADGE IMAGE ===== */
@@ -382,8 +392,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .hero-trust-strip {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px 16px;
-  margin-top: 20px;
+  width: 100%;
 }
 .hero-trust-strip span {
   font-size: 0.78rem;
@@ -391,6 +402,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   color: #27324f;
   opacity: 0.75;
   letter-spacing: 0.3px;
+  text-align: center;
 }
 
 /* ===== HERO CTA WRAPPER — mobile first ===== */
@@ -399,6 +411,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   flex-direction: column;
   gap: 12px;
   width: 100%;
+  margin-top: 32px;
 }
 .hero-btn-primary {
   display: flex;
@@ -1094,7 +1107,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .hero-trust-strip {
     gap: 8px 12px;
-    max-width: 36ch;
   }
 }
 @media (max-width: 768px) {
