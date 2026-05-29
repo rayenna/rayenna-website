@@ -1041,6 +1041,29 @@ const t = useTranslations('ml');
   .invest-inner { grid-template-columns: 1fr; gap: 36px; }
   .invest-left { padding-right: 0; }
 }
+@media (min-width: 769px) and (max-width: 1199px) {
+  .hero {
+    min-height: 88svh;
+    align-items: center;
+  }
+  .hero__content {
+    width: 72%;
+    max-width: 580px;
+    padding: 40px 28px 48px 28px;
+  }
+  .hero__title { font-size: clamp(2rem, 4vw, 3rem); }
+  .hero__mid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+  }
+  .mnre-badge-img {
+    width: 110px;
+    height: 110px;
+  }
+  .hero-trust-strip { gap: 10px 14px; }
+}
 @media (max-width: 768px) {
   .hero {
     min-height: 100svh;
