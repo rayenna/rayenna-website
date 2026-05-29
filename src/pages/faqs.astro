@@ -7,10 +7,10 @@ const categories = [
     id: 'costs',
     emoji: '₹',
     label: 'Costs & Subsidies',
-    count: 9,
+    count: 11,
     faqs: [
       {
-        q: 'How much does a solar panel system cost in Kerala in 2025?',
+        q: 'How much does a solar panel system cost in Kerala in 2026?',
         a: 'A rooftop solar system in Kerala typically costs between ₹70,000–₹90,000 per kW before subsidies. A popular 3 kW system runs ₹1.85–₹2.15 lakhs before subsidy. After applying the government\'s PM Surya Ghar subsidy of up to ₹78,000, your out-of-pocket cost comes down to approximately ₹1.1–₹1.4 lakhs. Pricing varies based on panel brand, inverter type, and your roof\'s structural requirements.',
       },
       {
@@ -44,6 +44,14 @@ const categories = [
       {
         q: 'Is there a state-level subsidy in Kerala in addition to the central PM Surya Ghar subsidy?',
         a: 'Currently, the primary subsidy available is the central government\'s PM Surya Ghar scheme offering up to ₹78,000. Kerala\'s state agency ANERT has run state-level schemes in the past, and KSEB has its own Soura programme history. It is worth checking anert.gov.in for any active state schemes at the time of your installation. Our team stays current on all available incentives and will ensure you claim everything you are entitled to.',
+      },
+      {
+        q: 'What are ALMM-listed (Made in India) solar panels, and do I need them?',
+        a: 'ALMM is MNRE\'s Approved List of Models and Manufacturers. From June 2026, new grid-connected rooftop systems generally require ALMM-listed modules. For PM Surya Ghar subsidy, panels must also meet Domestic Content Requirement (DCR). Before signing, confirm your installer\'s proposed model is on the current ALMM list and matches your invoice — non-compliant hardware is a common reason for subsidy rejection or delay. Rayenna uses MNRE-approved, subsidy-eligible equipment and verifies compliance on every project.',
+      },
+      {
+        q: 'Is the PM Surya Ghar ₹78,000 subsidy about to end?',
+        a: 'The scheme targets solarising one crore Indian households nationwide. By FY26, over 31 lakh installations were completed and application-to-installation conversion improved sharply — meaning the programme is advancing toward its cap. Subsidy rules and budgets can change once national targets are met. Kerala\'s rooftop market is also growing fast (roughly 55% year-on-year in FY26). If you are considering solar, locking in today\'s subsidy and pricing is generally smarter than waiting for an uncertain future revision.',
       },
     ],
   },
@@ -87,7 +95,7 @@ const categories = [
     id: 'how-solar-works',
     emoji: '⚡',
     label: 'How Solar Works',
-    count: 9,
+    count: 10,
     faqs: [
       {
         q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
@@ -125,6 +133,10 @@ const categories = [
         q: 'What is net billing, and how is it different from net metering?',
         a: 'Under Kerala\'s new KSERC 2025 regulations, larger solar systems may fall under net billing rather than traditional net metering. With net metering, exported units are credited at full tariff rate against your bill. With net billing, exported energy is valued at a feed-in tariff — 1.5x the standard tariff during peak hours — and credited against your total bill. For most homes with systems up to 3 kW, traditional net metering continues to apply. For larger systems, our team will explain which arrangement applies to your installation and what it means for your savings.',
       },
+      {
+        q: 'Do I need battery storage with rooftop solar in Kerala in 2026?',
+        a: 'Most standard 2–3 kW homes on traditional net metering do not require batteries. Under KSERC\'s 2025 regulations (billing from January 2026), larger residential systems may need battery backup to qualify for certain net metering arrangements — for example, systems above 5 kW seeking feasibility after April 2027 face storage requirements in the regulatory framework. Batteries also make sense if you want backup during power cuts (hybrid systems) or to maximise benefits under net billing for bigger arrays. Our team sizes your system and explains whether storage is optional, recommended, or required for your consumption and approval path.',
+      },
     ],
   },
   {
@@ -143,7 +155,7 @@ const categories = [
       },
       {
         q: 'How long does the entire process take — from enquiry to a working system?',
-        a: 'From your initial consultation to a fully commissioned system, the typical timeline in Kerala is 4–8 weeks. The physical installation itself takes just 1–2 days. The rest of the time accounts for site survey, system design, KSEB feasibility approval, and net meter installation. We keep you informed at every step.',
+        a: 'From your initial consultation to a fully commissioned system, the typical timeline in Kerala is 4–8 weeks. The physical installation itself takes just 1–2 days. The rest of the time accounts for site survey, system design, KSEB feasibility approval, and net meter installation. Under current KSERC rules, KSEB should confirm technical feasibility within 15 days, with full approval pathways targeting up to 135 days — though busy periods and incomplete documents can extend waits. We keep you informed at every step.',
       },
       {
         q: 'Can I claim the subsidy if I have already installed solar previously?',
@@ -203,11 +215,11 @@ const categories = [
     id: 'special',
     emoji: '🏢',
     label: 'Special Situations',
-    count: 6,
+    count: 7,
     faqs: [
       {
         q: 'Can apartments and housing societies go solar in Kerala?',
-        a: 'Yes, though it requires a collective decision and compliance with KSEB\'s guidelines for common area installations. Individual flat owners can also explore solar for their specific units if they have dedicated rooftop access. This is an evolving area of regulation — contact us for an assessment specific to your building.',
+        a: 'Yes. Individual flat owners with dedicated roof access can install as today. Housing societies can also explore shared rooftop systems — KSERC\'s 2025 regulations now recognise Virtual Net Metering (VNM), allowing one common solar plant to allocate credits across multiple flat meters with a society agreement. Implementation is still maturing in Kerala, so early societies should start with a feasibility study and clear benefit-sharing rules. Contact us for a building-specific assessment.',
       },
       {
         q: 'Can businesses and commercial establishments avail the subsidy?',
@@ -215,7 +227,11 @@ const categories = [
       },
       {
         q: 'What is the new KSERC 2025 net metering regulation I\'ve been hearing about?',
-        a: 'From October 2025, new KSERC regulations cap residential net metering at 3 kW for systems without battery storage. If you wish to install more than 3 kW, you will need to include battery backup covering at least 30% of your system\'s capacity. If your system was already approved and commissioned before October 2025, your existing net metering agreement remains unaffected. We stay current on all regulatory changes and design every new system in full compliance.',
+        a: 'KSERC\'s Renewable Energy Regulations, 2025 apply from November 2025, with the new billing system from January 1, 2026. Key points for homes: domestic net metering is available up to 20 kW; systems up to 10 kW are exempt from grid support charges; above 10 kW, grid support charges apply on banked energy during non-solar hours; net billing and gross metering options exist for larger consumers; existing systems with prior feasibility can be grandfathered. Systems above 5 kW may need battery storage for certain approvals after April 2027. Rayenna designs every installation to current rules so your savings and subsidy stay protected.',
+      },
+      {
+        q: 'What is Virtual Net Metering (VNM) for apartments in Kerala?',
+        a: 'Virtual Net Metering lets one shared rooftop solar system supply multiple KSEB consumer numbers — typical for housing societies. Solar generation from a common roof is allocated among participating flats according to an agreed formula, instead of each flat needing its own separate installation. KSERC\'s 2025 regulations formally enable VNM alongside traditional net metering. Societies still need a resolution, legal agreement on credit sharing, KSEB approval, and an installer experienced in multi-meter projects. Rayenna advises societies on compliant designs from common-area pilots to full VNM layouts.',
       },
       {
         q: 'I am building a new house — when is the best time to plan for solar?',
@@ -226,8 +242,8 @@ const categories = [
         a: 'The subsidy and net metering agreement require property ownership. However, with your landlord\'s written consent, a solar system can be installed on a rental property — ownership of the system and any subsidy would typically belong to the property owner. Some landlords are increasingly open to solar because it increases property value. If you are a tenant interested in solar, speak to your landlord about a shared arrangement.',
       },
       {
-        q: 'What is the India-Pakistan situation\'s effect on electricity supply and solar in Kerala?',
-        a: 'Geopolitical tensions in the region have historically had limited direct impact on Kerala\'s electricity supply, which draws primarily from KSEB\'s hydro and solar assets plus interstate power purchase agreements. However, broader national energy security concerns — including reducing dependence on imported fuels — have accelerated India\'s domestic solar push, which directly benefits Kerala consumers through better subsidies, more domestic panel supply, and continued government focus on rooftop solar adoption.',
+        q: 'Why do KSEB solar approvals sometimes take longer in 2026?',
+        a: 'India added a record volume of rooftop solar in early 2026, driven by PM Surya Ghar. Higher application volumes mean DISCOMs and KSEB teams handle more feasibility checks, meter upgrades, and inspections. Regulators have set improved targets — feasibility confirmation within 15 days and full approvals within 135 days — but real-world timelines still depend on documentation quality, Electrical Inspector scheduling, and local grid capacity. Choosing an MNRE-approved installer who files ekiran and KSEB paperwork correctly is the best way to avoid unnecessary delays. Rayenna tracks every approval stage on your behalf.',
       },
     ],
   },
@@ -263,7 +279,7 @@ const faqPageSchema = {
       <p class="page-hero__eyebrow">Knowledge Base</p>
       <h1 class="page-hero__title">Solar FAQs for<br />Kerala Homes</h1>
       <p class="page-hero__sub">Clear, honest answers to every question about going solar — from costs and subsidies to installation timelines and warranties.</p>
-      <p class="page-hero__count">45 questions across 6 topics</p>
+      <p class="page-hero__count">49 questions across 6 topics</p>
     </div>
   </section>
 
@@ -279,7 +295,7 @@ const faqPageSchema = {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <p class="faq-search-hint" id="faq-search-hint">45 questions across 6 topics</p>
+        <p class="faq-search-hint" id="faq-search-hint">49 questions across 6 topics</p>
       </div>
     </div>
 
@@ -995,7 +1011,7 @@ const faqPageSchema = {
       allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
       allCats.forEach(c => (c.style.display = ''));
       noResults.style.display = 'none';
-      searchHint.textContent = '45 questions across 6 topics';
+      searchHint.textContent = '49 questions across 6 topics';
       return;
     }
 
