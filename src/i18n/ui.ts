@@ -88,7 +88,7 @@ const ui = {
       thrissur: 'Solar in Thrissur',
       trivandrum: 'Solar in Trivandrum',
       contactHeading: 'Contact us',
-      copyright: '© 2026 Rayenna Energy, All Rights Reserved.',
+      copyright: '© 2026 Rayenna Energy Pvt. Ltd. All Rights Reserved.',
       privacy: 'Privacy Policy',
     },
     cta: {
@@ -179,7 +179,7 @@ const ui = {
       thrissur: 'തൃശ്ശൂരിൽ സോളാർ',
       trivandrum: 'തിരുവനന്തപുരത്ത് സോളാർ',
       contactHeading: 'കോൺടാക്റ്റ്',
-      copyright: '© 2026 റയെന്ന എനർജി. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
+      copyright: '© 2026 റയെന്ന എനർജി പ്രൈവറ്റ് ലിമിറ്റഡ്. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
       privacy: 'സ്വകാര്യതാ നയം',
     },
     cta: {
