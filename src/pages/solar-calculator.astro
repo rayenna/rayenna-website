@@ -466,7 +466,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p620-panels">— panels</span>
                 <span>22.8% efficiency</span>
                 <span id="p620-roof">— sq ft</span>
-                <span>₹29.5/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
+                <span><strong id="p620-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-620-detail">
@@ -487,7 +487,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p600-panels">— panels</span>
                 <span>22.2% efficiency</span>
                 <span id="p600-roof">— sq ft</span>
-                <span>₹29/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
+                <span><strong id="p600-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-600-detail">
@@ -508,7 +508,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p580tc-panels">— panels</span>
                 <span>21.8% efficiency</span>
                 <span id="p580tc-roof">— sq ft</span>
-                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
+                <span><strong id="p580tc-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580tc-detail">
@@ -529,7 +529,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p580bf-panels">— panels</span>
                 <span>21.3% + bifacial gain</span>
                 <span id="p580bf-roof">— sq ft</span>
-                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
+                <span><strong id="p580bf-cost">—</strong></span>
                 <span>30yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580bf-detail">
@@ -550,7 +550,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span id="p540-panels">— panels</span>
                 <span>20.5% efficiency</span>
                 <span id="p540-roof">— sq ft</span>
-                <span>₹27.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
+                <span><strong id="p540-cost">—</strong></span>
                 <span>25yr warranty</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-540-detail">
@@ -607,7 +607,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <p>Roof access, shade-free area, structural suitability, cable routes, and final panel or inverter selection before we issue a fixed proposal.</p>
               </div>
             </div>
-            <p class="calc-assumptions__updated">Planning assumptions updated for Kerala market conditions — May 2026.</p>
+            <p class="calc-assumptions__updated">Planning assumptions updated for Kerala market conditions — June 2026.</p>
           </details>
 
           <!-- Footnote / T&C -->
@@ -1914,11 +1914,11 @@ function getBillRange(bill: number): string {
 
 // ── Panel data ───────────────────────────────
 const PANEL_SPECS = [
-  { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
-  { id: '600',   watt: 600, ppw: 29.0, sqft: 27, label: 'N-Type TopCon 600W'      },
-  { id: '580tc', watt: 580, ppw: 28.5, sqft: 27, label: 'N-Type TopCon 580W'      },
-  { id: '580bf', watt: 580, ppw: 28.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
-  { id: '540',   watt: 540, ppw: 27.5, sqft: 27, label: 'Mono PERC 540W'          },
+  { id: '620',   watt: 620, ppw: 34.5, sqft: 27, label: 'N-Type TopCon 620W'      },
+  { id: '600',   watt: 600, ppw: 34.5, sqft: 27, label: 'N-Type TopCon 600W'      },
+  { id: '580tc', watt: 580, ppw: 33.5, sqft: 27, label: 'N-Type TopCon 580W'      },
+  { id: '580bf', watt: 580, ppw: 33.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
+  { id: '540',   watt: 540, ppw: 33.0, sqft: 27, label: 'Mono PERC 540W'          },
 ];
 type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
 
@@ -2046,11 +2046,12 @@ function pmSubsidy(sysKw: number): number {
 }
 
 // ── Non-panel system costs (BOS) ─────────────
-// Kerala market reality (Apr 2026): all-in ₹75k–85k/kW total installed cost.
-// At ₹29/W panels = ₹29k/kW, non-panel BoS = ₹46k–56k/kW.
+// Baseline BoS tiers from prior ₹29/W reference; scaled by 34.5/29 for June 2026 revision.
 // Small systems are disproportionately expensive — fixed overheads
 // (inverter electronics, cable runs, team visit, KSEB fee) don't halve
 // when system size halves.
+const BOS_COST_SCALE = 34.5 / 29.0;
+
 function calcBos(sysKw: number): number {
   // Inverter — BIS-certified string inverter, Kerala supply chain pricing
   let inverter: number;
@@ -2093,7 +2094,8 @@ function calcBos(sysKw: number): number {
   else if (sysKw <= 5) install = 22000;
   else                  install = sysKw * 3500;
 
-  return inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
+  const base = inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
+  return Math.round(base * BOS_COST_SCALE);
 }
 
 // ── EV live impact ────────────────────────────

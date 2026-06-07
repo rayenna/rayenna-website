@@ -468,7 +468,7 @@ const mlPrefix = '/ml';
                 <span id="p620-panels">— പാനലുകൾ</span>
                 <span>22.8% കാര്യക്ഷമത</span>
                 <span id="p620-roof">— ച.അടി</span>
-                <span>₹29.5/W &nbsp;·&nbsp; <strong id="p620-cost">—</strong></span>
+                <span><strong id="p620-cost">—</strong></span>
                 <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-620-detail">
@@ -489,7 +489,7 @@ const mlPrefix = '/ml';
                 <span id="p600-panels">— പാനലുകൾ</span>
                 <span>22.2% കാര്യക്ഷമത</span>
                 <span id="p600-roof">— ച.അടി</span>
-                <span>₹29/W &nbsp;·&nbsp; <strong id="p600-cost">—</strong></span>
+                <span><strong id="p600-cost">—</strong></span>
                 <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-600-detail">
@@ -510,7 +510,7 @@ const mlPrefix = '/ml';
                 <span id="p580tc-panels">— പാനലുകൾ</span>
                 <span>21.8% കാര്യക്ഷമത</span>
                 <span id="p580tc-roof">— ച.അടി</span>
-                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580tc-cost">—</strong></span>
+                <span><strong id="p580tc-cost">—</strong></span>
                 <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580tc-detail">
@@ -531,7 +531,7 @@ const mlPrefix = '/ml';
                 <span id="p580bf-panels">— പാനലുകൾ</span>
                 <span>21.3% + ബൈഫേഷ്യൽ ഗെയിൻ</span>
                 <span id="p580bf-roof">— ച.അടി</span>
-                <span>₹28.5/W &nbsp;·&nbsp; <strong id="p580bf-cost">—</strong></span>
+                <span><strong id="p580bf-cost">—</strong></span>
                 <span>30 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-580bf-detail">
@@ -552,7 +552,7 @@ const mlPrefix = '/ml';
                 <span id="p540-panels">— പാനലുകൾ</span>
                 <span>20.5% കാര്യക്ഷമത</span>
                 <span id="p540-roof">— ച.അടി</span>
-                <span>₹27.5/W &nbsp;·&nbsp; <strong id="p540-cost">—</strong></span>
+                <span><strong id="p540-cost">—</strong></span>
                 <span>25 വർഷ വാറന്റി</span>
               </div>
               <div class="panel-option__detail hidden" id="panel-540-detail">
@@ -609,7 +609,7 @@ const mlPrefix = '/ml';
                 <p>മേൽക്കൂരയിൽ പ്രവേശനം, നിഴലില്ലാത്ത സ്ഥലം, ഘടനാപരമായ അനുയോജ്യത, കേബിൾ റൂട്ടുകൾ, അന്തിമ പാനൽ അല്ലെങ്കിൽ ഇൻവർട്ടർ തിരഞ്ഞെടുപ്പ് എന്നിവ, സ്ഥിരമായ പ്രൊപ്പോസൽ നൽകുന്നതിന് മുമ്പ് സ്ഥിരീകരിക്കും.</p>
               </div>
             </div>
-            <p class="calc-assumptions__updated">കേരള വിപണി സാഹചര്യങ്ങൾ അടിസ്ഥാനമാക്കിയ പ്ലാനിംഗ് ധാരണകൾ — മെയ് 2026.</p>
+            <p class="calc-assumptions__updated">കേരള വിപണി സാഹചര്യങ്ങൾ അടിസ്ഥാനമാക്കിയ പ്ലാനിംഗ് ധാരണകൾ — ജൂൺ 2026.</p>
           </details>
 
           <!-- Footnote / T&C -->
@@ -1910,11 +1910,11 @@ function getBillRange(bill: number): string {
 
 // ── Panel data ───────────────────────────────
 const PANEL_SPECS = [
-  { id: '620',   watt: 620, ppw: 29.5, sqft: 27, label: 'N-Type TopCon 620W'      },
-  { id: '600',   watt: 600, ppw: 29.0, sqft: 27, label: 'N-Type TopCon 600W'      },
-  { id: '580tc', watt: 580, ppw: 28.5, sqft: 27, label: 'N-Type TopCon 580W'      },
-  { id: '580bf', watt: 580, ppw: 28.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
-  { id: '540',   watt: 540, ppw: 27.5, sqft: 27, label: 'Mono PERC 540W'          },
+  { id: '620',   watt: 620, ppw: 34.5, sqft: 27, label: 'N-Type TopCon 620W'      },
+  { id: '600',   watt: 600, ppw: 34.5, sqft: 27, label: 'N-Type TopCon 600W'      },
+  { id: '580tc', watt: 580, ppw: 33.5, sqft: 27, label: 'N-Type TopCon 580W'      },
+  { id: '580bf', watt: 580, ppw: 33.5, sqft: 27, label: 'Bifacial Dual Glass 580W' },
+  { id: '540',   watt: 540, ppw: 33.0, sqft: 27, label: 'Mono PERC 540W'          },
 ];
 type PanelResult = typeof PANEL_SPECS[0] & { count: number; roof: number; cost: number };
 
@@ -2052,11 +2052,12 @@ function pmSubsidy(sysKw: number): number {
 }
 
 // ── Non-panel system costs (BOS) ─────────────
-// Kerala market reality (Apr 2026): all-in ₹75k–85k/kW total installed cost.
-// At ₹29/W panels = ₹29k/kW, non-panel BoS = ₹46k–56k/kW.
+// Baseline BoS tiers from prior ₹29/W reference; scaled by 34.5/29 for June 2026 revision.
 // Small systems are disproportionately expensive — fixed overheads
 // (inverter electronics, cable runs, team visit, KSEB fee) don't halve
 // when system size halves.
+const BOS_COST_SCALE = 34.5 / 29.0;
+
 function calcBos(sysKw: number): number {
   // Inverter — BIS-certified string inverter, Kerala supply chain pricing
   let inverter: number;
@@ -2099,7 +2100,8 @@ function calcBos(sysKw: number): number {
   else if (sysKw <= 5) install = 22000;
   else                  install = sysKw * 3500;
 
-  return inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
+  const base = inverter + mounting + cables + install + 3000; // 3000 = KSEB net meter
+  return Math.round(base * BOS_COST_SCALE);
 }
 
 // ── EV live impact ────────────────────────────
