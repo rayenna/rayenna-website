@@ -121,7 +121,7 @@ const ui = {
     waTooltip: 'Chat with us!',
     officeMap: {
       eyebrow: 'Our Location',
-      title: 'Visit Rayenna in Vyttila, Kochi',
+      title: 'Visit our Office',
       sub: 'Drop by for a free consultation — our office is on NH Bypass near Thykoodam, about 5 km from Kochi city centre.',
       directions: 'Get Directions on Google Maps',
       iframeTitle: 'Rayenna Energy office location on Google Maps',
@@ -227,7 +227,7 @@ const ui = {
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
     officeMap: {
       eyebrow: 'ഞങ്ങളുടെ സ്ഥലം',
-      title: 'Vyttila, കൊച്ചിയിൽ റയെന്ന സന്ദർശിക്കുക',
+      title: 'ഞങ്ങളുടെ ഓഫീസ് സന്ദർശിക്കുക',
       sub: 'സൗജന്യ കൺസൾട്ടേഷൻ നേടാൻ സന്ദർശിക്കൂ — തൈക്കൂടം NH Bypass-ലെ ഞങ്ങളുടെ ഓഫീസ്, കൊച്ചി നഗര കേന്ദ്രത്തിൽ നിന്ന് ഏകദേശം 5 km ദൂരത്തിൽ.',
       directions: 'Google Maps-ൽ വഴി കാണുക',
       iframeTitle: 'Google Maps-ൽ റയെന്ന എനർജി ഓഫീസ്',
