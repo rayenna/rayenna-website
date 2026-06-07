@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { blogPostsListingMl } from '../../../i18n/blog-articles-ml/index.ts';
 import { blogCategoriesMl, blogUiMl, categoryLabel } from '../../../i18n/blog-ml.ts';
+import { OG } from '../../../i18n/og-images';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
@@ -18,7 +19,7 @@ const filterLabels: Record<string, string> = {
   ),
 };
 ---
-<Layout lang="ml" title="സോളാർ എനർജി ബ്ലോഗ് കേരളം | റയെന്ന എനർജി" description="കേരളത്തിലെ വീട്ടുടമസ്ഥർക്കുള്ള സോളാർ ലേഖനങ്ങൾ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്.">
+<Layout lang="ml" title="സോളാർ എനർജി ബ്ലോഗ് കേരളം | റയെന്ന എനർജി" description="കേരളത്തിലെ വീട്ടുടമസ്ഥർക്കുള്ള സോളാർ ലേഖനങ്ങൾ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്." ogImage={OG.blog}>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">

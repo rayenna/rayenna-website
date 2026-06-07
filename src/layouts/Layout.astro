@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
 import ChatWidget from '../components/ChatWidget.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
 import SolarNewsTicker from '../components/SolarNewsTicker.astro';
+import { OG } from '../i18n/og-images';
 import {
   getNavLinks,
   useTranslations,
@@ -15,7 +17,7 @@ import {
 const {
   title = 'Rayenna Energy — Solar Solutions in Kochi',
   description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.',
-  ogImage = 'https://rayennaenergy.com/media/solar-panel-installation.jpg',
+  ogImage = OG.default,
   lang: langProp,
   canonical: canonicalProp,
   noindex = false,
@@ -198,6 +200,13 @@ const structuredDataLD = {
 };
 const homeHref = localizedPath('/', lang);
 const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
+const MOBILE_BAR_HIDDEN = new Set(['/contact', '/solar-calculator']);
+const showMobileBar = !MOBILE_BAR_HIDDEN.has(normalizePath(stripLocale(canonicalURL.pathname)));
+
+function normalizePath(path: string): string {
+  const p = path.replace(/\/$/, '') || '/';
+  return p;
+}
 ---
 <!doctype html>
 <html lang={lang}>
@@ -247,7 +256,7 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet" />
   )}
 </head>
-<body class={lang === 'ml' ? 'lang-ml' : 'lang-en'}>
+<body class:list={[lang === 'ml' ? 'lang-ml' : 'lang-en', showMobileBar && 'has-mobile-action-bar']}>
 
   <!-- ===== NAVBAR ===== -->
   <header class={`navbar${navIsActive(homeHref) ? ' navbar--hero' : ''}`} id="navbar">
@@ -363,6 +372,8 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   <!-- Ray AI Chat Widget -->
   <ChatWidget lang={lang} />
 
+  {showMobileBar && <MobileActionBar lang={lang} />}
+
   <!-- WhatsApp Floating Button -->
   <a
     href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation."
@@ -392,6 +403,25 @@ const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
   </a>
 
   <style>
+    /* Mobile action bar — reserve space & avoid duplicate WhatsApp on small screens */
+    @media (max-width: 767px) {
+      body.has-mobile-action-bar {
+        --mobile-action-bar-h: calc(52px + env(safe-area-inset-bottom, 0px));
+      }
+
+      body.has-mobile-action-bar main {
+        padding-bottom: var(--mobile-action-bar-h);
+      }
+
+      body.has-mobile-action-bar .wa-float {
+        display: none;
+      }
+
+      body.has-mobile-action-bar.mobile-bar-active #ray-chat-btn {
+        bottom: calc(var(--mobile-action-bar-h) + 12px);
+      }
+    }
+
     /* ── MOBILE FIRST (base styles) ── */
     .wa-float {
       position: fixed;

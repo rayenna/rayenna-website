@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'Made in India Solar Panels: What Kerala Buyers Must Know About the 2026 ALMM Rule', date: '28 May 2026', category: 'Government Schemes', readTime: '5 min read', author: 'Rayenna Energy Team' };
 ---
-<Layout title={`${post.title} — Rayenna Energy Blog`} description="From June 2026, grid-connected and subsidised rooftop solar in India must use ALMM-listed panels. What the rule means for Kerala homeowners and how to verify your quote.">
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="From June 2026, grid-connected and subsidised rooftop solar in India must use ALMM-listed panels. What the rule means for Kerala homeowners and how to verify your quote." ogImage={ogForBlogSlug('almm-made-in-india-solar-panels-2026')}>
 
   <section class="post-hero">
     <div class="container post-hero__inner">

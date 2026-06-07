@@ -119,6 +119,14 @@ const ui = {
       hint: 'Select any video below to play it here',
     },
     waTooltip: 'Chat with us!',
+    mobileBar: {
+      ariaLabel: 'Quick contact actions',
+      call: 'Call',
+      whatsapp: 'WhatsApp',
+      calculate: 'Calculate',
+      whatsappAria: 'Chat with Rayenna on WhatsApp',
+      calculateAria: 'Open the solar savings calculator',
+    },
     chat: {
       tooltip: 'Ask Ray ☀️',
       btnAria: 'Chat with Ray, our solar assistant',
@@ -210,6 +218,14 @@ const ui = {
       hint: 'താഴെയുള്ള ഏതെങ്കിലും വീഡിയോ തിരഞ്ഞെടുത്ത് ഇവിടെ പ്ലേ ചെയ്യുക',
     },
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
+    mobileBar: {
+      ariaLabel: 'വേഗത്തിലുള്ള ബന്ധം',
+      call: 'കോൾ',
+      whatsapp: 'WhatsApp',
+      calculate: 'കണക്കാക്കുക',
+      whatsappAria: 'WhatsApp-ൽ റയെന്ന എനർജിയോട് ചാറ്റ് ചെയ്യുക',
+      calculateAria: 'സോളാർ സമ്പാദ്യ കാൽക്കുലേറ്റർ തുറക്കുക',
+    },
     chat: {
       tooltip: 'റെയിനോട് ചോദിക്കുക ☀️',
       btnAria: 'റയെന്ന സോളാർ അസിസ്റ്റന്റ് റെയിനോട് ചാറ്റ് ചെയ്യുക',

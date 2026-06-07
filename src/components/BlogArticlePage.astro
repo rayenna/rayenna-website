@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import type { BlogArticleMl } from '../i18n/blog-ml.ts';
 import { blogCategoriesMl, blogUiMl, categoryLabel } from '../i18n/blog-ml.ts';
+import { ogForBlogSlug } from '../i18n/og-images';
 
 interface Props {
   article: BlogArticleMl;
@@ -17,6 +18,7 @@ const blogHref = `${mlPrefix}/blog/`;
   lang="ml"
   title={`${article.title} ${blogUiMl.pageTitleSuffix}`}
   description={article.description}
+  ogImage={ogForBlogSlug(article.slug)}
 >
   <section class="post-hero">
     <div class="container post-hero__inner">

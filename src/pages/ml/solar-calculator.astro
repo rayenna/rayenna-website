@@ -1,12 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { calcMl } from '../../i18n/calculator-ml.ts';
+import { OG } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 ---
 <Layout lang="ml"
   title="സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ കേരളം | റയെന്ന എനർജി"
   description="നിങ്ങളുടെ വീട്ടിന് അനുയോജ്യമായ സിസ്റ്റം വലുപ്പവും ചെലവും കണക്കാക്കുക. സബ്സിഡി, പേയ്ബാക്ക് കാലയളവ്."
+  ogImage={OG.calculator}
 >
 
   <!-- ===== HERO ===== -->

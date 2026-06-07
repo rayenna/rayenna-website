@@ -1,11 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { OG } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 ---
 <Layout lang="ml"
   title="തൃശ്ശൂരിൽ സോളാർ ഇൻസ്റ്റാളേഷൻ | റയെന്ന എനർജി"
   description="തൃശ്ശൂരിൽ സോളാർ ഇൻസ്റ്റാളേഷൻ — MNRE അംഗീകൃത. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ."
+  ogImage={OG.thrissur}
 >
 
   <section class="area-hero">

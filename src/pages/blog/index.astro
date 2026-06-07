@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { OG } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const posts = [
@@ -43,7 +44,7 @@ const featured = posts[0];
 const rest = posts.slice(1);
 const categories = ['All', ...new Set(posts.map(p => p.category))];
 ---
-<Layout title="Solar Energy Blog Kerala | Tips, Subsidies & Installation Guides | Rayenna Energy" description="Expert solar energy articles for Kerala homeowners — solar panel costs, PM Surya Ghar subsidy, KSEB net metering, installation guides and more from Rayenna Energy, Kochi.">
+<Layout title="Solar Energy Blog Kerala | Tips, Subsidies & Installation Guides | Rayenna Energy" description="Expert solar energy articles for Kerala homeowners — solar panel costs, PM Surya Ghar subsidy, KSEB net metering, installation guides and more from Rayenna Energy, Kochi." ogImage={OG.blog}>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">

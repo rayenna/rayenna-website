@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: "Kerala's Net Metering Rules Are Changing in 2026 — Here's What Every Solar Owner Needs to Know", date: '15 May 2026', category: 'Government Schemes', readTime: '5 min read', author: 'Rayenna Energy Team' };
 ---
-<Layout title={`${post.title} — Rayenna Energy Blog`} description="Kerala's KSERC 2025 regulations reshape net metering from January 2026. What changed, what it means for your solar system, and what to do right now.">
+<Layout title={`${post.title} — Rayenna Energy Blog`} description="Kerala's KSERC 2025 regulations reshape net metering from January 2026. What changed, what it means for your solar system, and what to do right now." ogImage={ogForBlogSlug('kseb-net-metering-rules-2026')}>
 
   <section class="post-hero">
     <div class="container post-hero__inner">

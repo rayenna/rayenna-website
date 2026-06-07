@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "og:generate": "node scripts/generate-og-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.2"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.6",

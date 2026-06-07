@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import CorporateVideoSection from '../../components/CorporateVideoSection.astro';
 import { useTranslations } from '../../i18n/ui';
+import { OG } from '../../i18n/og-images';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
@@ -10,6 +11,7 @@ const t = useTranslations('ml');
 <Layout lang="ml"
   title="കേരളത്തിൽ സോളാർ ഇൻസ്റ്റാളേഷൻ | റയെന്ന എനർജി"
   description="റയെന്ന എനർജി — കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. +91 7907 369 304."
+  ogImage={OG.home}
 >
 
   <!-- ===== HERO ===== -->
