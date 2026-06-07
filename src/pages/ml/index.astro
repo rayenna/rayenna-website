@@ -134,6 +134,39 @@ const t = useTranslations('ml');
     </div>
   </section>
 
+  <!-- ===== INSTALLATIONS PREVIEW ===== -->
+  <section class="installs-preview">
+    <div class="container">
+      <div class="installs-preview__header">
+        <div>
+          <span class="section-tag">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ</span>
+          <h2 class="section-title">സോളാർ — മനോഹരമായി</h2>
+          <p class="installs-preview__sub">ഗാലറിയിലെ ഓരോ സിസ്റ്റവും റയെന്ന ടീം ഡിസൈൻ ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്ത് കമ്മിഷൻ ചെയ്തതാണ്. വിശദാംശങ്ങൾക്ക് ഹോവർ ചെയ്യുക.</p>
+        </div>
+        <a href={`${mlPrefix}/media/`} class="btn btn-outline installs-view-all">എല്ലാ ഇൻസ്റ്റാളേഷനുകളും കാണുക →</a>
+      </div>
+      <div class="installs-grid">
+        {[
+          { name: 'Byju George',   location: 'Thevara',    cap: '10 kW', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
+          { name: 'Jelees',        location: 'Mahe',       cap: '5 kW',  img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
+          { name: 'Hyder',         location: 'Edapally',   cap: '5 kW',  img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
+          { name: 'Angelo Thomas', location: 'Edapally',   cap: '10 kW', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
+        ].map(item => (
+          <div class="install-card">
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${item.location} — ${item.cap} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
+            <div class="install-card__overlay">
+              <strong>{item.name}</strong>
+              <span>{item.location} · {item.cap} സിസ്റ്റം</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="installs-mobile-cta">
+        <a href={`${mlPrefix}/media/`} class="btn btn-outline">എല്ലാ ഇൻസ്റ്റാളേഷനുകളും കാണുക →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials-section">
     <div class="container">
@@ -220,39 +253,6 @@ const t = useTranslations('ml');
             <p class="process-card__desc">{step.desc}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INSTALLATIONS PREVIEW ===== -->
-  <section class="installs-preview">
-    <div class="container">
-      <div class="installs-preview__header">
-        <div>
-          <span class="section-tag">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ</span>
-          <h2 class="section-title">സോളാർ — മനോഹരമായി</h2>
-          <p class="installs-preview__sub">ഗാലറിയിലെ ഓരോ സിസ്റ്റവും റയെന്ന ടീം ഡിസൈൻ ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്ത് കമ്മിഷൻ ചെയ്തതാണ്. വിശദാംശങ്ങൾക്ക് ഹോവർ ചെയ്യുക.</p>
-        </div>
-        <a href={`${mlPrefix}/media/`} class="btn btn-outline installs-view-all">എല്ലാ ഇൻസ്റ്റാളേഷനുകളും കാണുക →</a>
-      </div>
-      <div class="installs-grid">
-        {[
-          { name: 'Byju George',   location: 'Thevara',    cap: '10 kW', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Jelees',        location: 'Mahe',       cap: '5 kW',  img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Hyder',         location: 'Edapally',   cap: '5 kW',  img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Angelo Thomas', location: 'Edapally',   cap: '10 kW', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
-        ].map(item => (
-          <div class="install-card">
-            <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${item.location} — ${item.cap} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
-            <div class="install-card__overlay">
-              <strong>{item.name}</strong>
-              <span>{item.location} · {item.cap} സിസ്റ്റം</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="installs-mobile-cta">
-        <a href={`${mlPrefix}/media/`} class="btn btn-outline">എല്ലാ ഇൻസ്റ്റാളേഷനുകളും കാണുക →</a>
       </div>
     </div>
   </section>

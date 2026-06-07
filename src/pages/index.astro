@@ -130,6 +130,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
+  <!-- ===== INSTALLATIONS PREVIEW ===== -->
+  <section class="installs-preview">
+    <div class="container">
+      <div class="installs-preview__header">
+        <div>
+          <span class="section-tag">Real Installations</span>
+          <h2 class="section-title">Solar — Beautifully Done</h2>
+          <p class="installs-preview__sub">Every system in our gallery was designed, installed, and commissioned by the Rayenna team. Hover to see details.</p>
+        </div>
+        <a href={`${base}/media`} class="btn btn-outline installs-view-all">View All Installations →</a>
+      </div>
+      <div class="installs-grid">
+        {[
+          { name: 'Byju George',   location: 'Thevara',    cap: '10 kW', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
+          { name: 'Jelees',        location: 'Mahe',       cap: '5 kW',  img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
+          { name: 'Hyder',         location: 'Edapally',   cap: '5 kW',  img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
+          { name: 'Angelo Thomas', location: 'Edapally',   cap: '10 kW', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
+        ].map(item => (
+          <div class="install-card">
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.cap} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
+            <div class="install-card__overlay">
+              <strong>{item.name}</strong>
+              <span>{item.location} · {item.cap} system</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="installs-mobile-cta">
+        <a href={`${base}/media`} class="btn btn-outline">View All Installations →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials-section">
     <div class="container">
@@ -216,39 +249,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <p class="process-card__desc">{step.desc}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INSTALLATIONS PREVIEW ===== -->
-  <section class="installs-preview">
-    <div class="container">
-      <div class="installs-preview__header">
-        <div>
-          <span class="section-tag">Real Installations</span>
-          <h2 class="section-title">Solar — Beautifully Done</h2>
-          <p class="installs-preview__sub">Every system in our gallery was designed, installed, and commissioned by the Rayenna team. Hover to see details.</p>
-        </div>
-        <a href={`${base}/media`} class="btn btn-outline installs-view-all">View All Installations →</a>
-      </div>
-      <div class="installs-grid">
-        {[
-          { name: 'Byju George',   location: 'Thevara',    cap: '10 kW', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Jelees',        location: 'Mahe',       cap: '5 kW',  img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Hyder',         location: 'Edapally',   cap: '5 kW',  img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Angelo Thomas', location: 'Edapally',   cap: '10 kW', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
-        ].map(item => (
-          <div class="install-card">
-            <img src={`${base}/media/references/${item.img}`} alt={`${item.cap} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
-            <div class="install-card__overlay">
-              <strong>{item.name}</strong>
-              <span>{item.location} · {item.cap} system</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="installs-mobile-cta">
-        <a href={`${base}/media`} class="btn btn-outline">View All Installations →</a>
       </div>
     </div>
   </section>
