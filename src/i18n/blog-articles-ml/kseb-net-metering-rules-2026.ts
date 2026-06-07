@@ -20,7 +20,7 @@ export const article: BlogArticleMl = {
     },
     {
       slug: 'going-solar-kochi-guide-2025',
-      title: 'കൊച്ചിയിൽ സോളാറിലേക്ക്: 2025 ഗൈഡ്',
+      title: 'കൊച്ചിയിൽ സോളാറിലേക്ക്: 2026 ഗൈഡ്',
     },
   ],
   sidebarHighlight: {
