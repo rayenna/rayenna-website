@@ -1,0 +1,128 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const m = useTranslations(lang).officeMap;
+
+const mapsPlaceUrl =
+  'https://www.google.com/maps/place/Rayenna+Energy+Private+Limited/@9.9582784,76.3156774,17z/data=!3m1!4b1!4m6!3m5!1s0x3b08730fe2f262fd%3A0xfe3741e3a2de18d8!8m2!3d9.9582784!4d76.3182523!16s%2Fg%2F11wmyllt0y?entry=ttu';
+const embedSrc =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.2!2d76.3156774!3d9.9582784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b08730fe2f262fd%3A0xfe3741e3a2de18d8!2sRayenna%20Energy%20Private%20Limited!5e0!3m2!1sen!2sin!4v1';
+---
+
+<section class="office-map" aria-labelledby="office-map-title">
+  <div class="container office-map__inner">
+    <div class="office-map__copy">
+      <span class="section-tag">{m.eyebrow}</span>
+      <h2 id="office-map-title" class="section-title">{m.title}</h2>
+      <p class="office-map__sub">{m.sub}</p>
+      <a href={mapsPlaceUrl} target="_blank" rel="noopener noreferrer" class="office-map__directions">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+        </svg>
+        {m.directions}
+      </a>
+    </div>
+    <div class="office-map__frame">
+      <iframe
+        class="office-map__iframe"
+        src={embedSrc}
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title={m.iframeTitle}
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .office-map {
+    padding: 56px 0 0;
+    background: var(--color-white);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .office-map__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 56px;
+  }
+
+  .office-map__copy {
+    max-width: 520px;
+  }
+
+  .office-map__sub {
+    margin-top: 12px;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+  }
+
+  .office-map__directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: gap var(--transition);
+  }
+
+  .office-map__directions:hover {
+    gap: 11px;
+  }
+
+  .office-map__frame {
+    width: 100%;
+    min-height: 260px;
+    height: 56vw;
+    max-height: 420px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    line-height: 0;
+  }
+
+  .office-map__iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: grayscale(45%) contrast(1.05);
+    transition: filter 0.4s ease;
+  }
+
+  .office-map__frame:hover .office-map__iframe {
+    filter: grayscale(0%) contrast(1);
+  }
+
+  @media (min-width: 768px) {
+    .office-map {
+      padding-top: 72px;
+    }
+
+    .office-map__inner {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr);
+      align-items: center;
+      gap: 40px;
+      padding-bottom: 72px;
+    }
+
+    .office-map__frame {
+      height: 380px;
+      max-height: none;
+    }
+  }
+</style>
