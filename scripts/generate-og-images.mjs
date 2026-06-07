@@ -77,8 +77,8 @@ const images = [
   },
   {
     file: 'home.jpg',
-    title: 'Your KSEB Bill Could Be ₹0',
-    subtitle: 'Government subsidy up to ₹78,000 · Free site survey',
+    title: 'Solar Panel Installation in Kerala',
+    subtitle: 'MNRE approved · PM Surya Ghar subsidy up to ₹78,000',
     bg: 'public/media/hero (1).webp',
   },
   {
