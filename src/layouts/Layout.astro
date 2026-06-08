@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import AnalyticsDelegate from '../components/AnalyticsDelegate.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import SolarNewsTicker from '../components/SolarNewsTicker.astro';
@@ -258,6 +260,7 @@ function normalizePath(path: string): string {
   {lang === 'ml' && (
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet" />
   )}
+  <Analytics />
 </head>
 <body class:list={[lang === 'ml' ? 'lang-ml' : 'lang-en', showMobileBar && 'has-mobile-action-bar']}>
 
@@ -273,6 +276,7 @@ function normalizePath(path: string): string {
           <a
             href={link.href}
             class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
+            {...(link.special ? { 'data-analytics-location': 'nav' } : {})}
           >{link.special ? '☀️ ' : ''}{link.label}</a>
         ))}
       </nav>
@@ -295,7 +299,7 @@ function normalizePath(path: string): string {
       </div>
       {navLinks.map(link => (
         link.special
-          ? <a href={link.href} class="mobile-link mobile-nav-calculator">☀️ {t.nav.calcMobile}</a>
+          ? <a href={link.href} class="mobile-link mobile-nav-calculator" data-analytics-location="nav_mobile">☀️ {t.nav.calcMobile}</a>
           : <a href={link.href} class="mobile-link">{link.label}</a>
       ))}
     </div>
@@ -343,7 +347,7 @@ function normalizePath(path: string): string {
         <h4 class="footer__heading">{t.footer.contactHeading}</h4>
         <p class="footer__text">No. 3329/52, Ray Bhavan, Nh Bypass,<br />Thykoodam, Vyttila,<br />Ernakulam, Kerala, India, 682019</p>
         <p class="footer__text" style="margin-top:8px;">
-          <a href="tel:+917907369304" class="footer__link">+91 7907 369 304</a><br />
+          <a href="tel:+917907369304" class="footer__link" data-analytics-location="footer">+91 7907 369 304</a><br />
           <a href="mailto:sales@rayenna.energy" class="footer__link">sales@rayenna.energy</a><br />
           <a href="https://rayennaenergy.com" class="footer__link">rayennaenergy.com</a>
         </p>
@@ -377,6 +381,8 @@ function normalizePath(path: string): string {
 
   {showMobileBar && <MobileActionBar lang={lang} />}
 
+  <AnalyticsDelegate />
+
   <!-- WhatsApp Floating Button -->
   <a
     href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20solar%20installation."
@@ -384,6 +390,7 @@ function normalizePath(path: string): string {
     rel="noopener noreferrer"
     class="wa-float"
     aria-label="Chat with us on WhatsApp"
+    data-analytics-location="wa_float"
   >
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
          fill="white" width="26" height="26" aria-hidden="true">

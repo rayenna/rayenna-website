@@ -1503,6 +1503,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </style>
 
 <script>
+import { trackEvent } from '../lib/analytics';
+
 const state = {
   homeType:    'house',
   bedrooms:    3,
@@ -1793,6 +1795,12 @@ function calculateResults() {
   });
 
   updatePanelDisplay(selectedPanelId);
+
+  trackEvent('calculator_complete', {
+    system_kw: sysKw,
+    panel_id: selectedPanelId,
+    monthly_bill: s.monthlyBill,
+  });
 }
 
 // ── Update financials for selected panel ──────

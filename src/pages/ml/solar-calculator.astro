@@ -582,7 +582,7 @@ const mlPrefix = '/ml';
           <div class="result-ctas">
             <a href={`${mlPrefix}/contact/`} class="btn btn-primary" id="result-review-cta">{calcMl.reviewCta}</a>
             <div class="result-share-actions">
-              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" rel="noopener">{calcMl.whatsapp}</a>
+              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" rel="noopener" data-analytics-location="calculator_result">{calcMl.whatsapp}</a>
               <button class="btn-calc-outline" type="button" id="result-copy-btn">{calcMl.copySummary}</button>
             </div>
             <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
@@ -1759,6 +1759,7 @@ const mlPrefix = '/ml';
 
 <script>
 import { calcMl } from '../../i18n/calculator-ml.ts';
+import { trackEvent } from '../../lib/analytics';
 
 const state = {
   homeType:    'house',
@@ -2190,6 +2191,12 @@ function calculateResults() {
   });
 
   updatePanelDisplay(selectedPanelId);
+
+  trackEvent('calculator_complete', {
+    system_kw: sysKw,
+    panel_id: selectedPanelId,
+    monthly_bill: s.monthlyBill,
+  });
 }
 
 // ── Update financials for selected panel ──────

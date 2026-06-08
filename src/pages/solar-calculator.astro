@@ -580,7 +580,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <div class="result-ctas">
             <a href={`${base}/contact/`} class="btn btn-primary" id="result-review-cta">Get this estimate reviewed →</a>
             <div class="result-share-actions">
-              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" rel="noopener">Send on WhatsApp</a>
+              <a href="#" class="btn-calc-outline result-share-link" id="result-whatsapp-btn" rel="noopener" data-analytics-location="calculator_result">Send on WhatsApp</a>
               <button class="btn-calc-outline" type="button" id="result-copy-btn">Copy summary</button>
             </div>
             <p class="result-action-status" id="result-action-status" aria-live="polite"></p>
@@ -1756,6 +1756,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </style>
 
 <script>
+import { trackEvent } from '../lib/analytics';
+
 const state = {
   homeType:    'house',
   bedrooms:    3,
@@ -2180,6 +2182,12 @@ function calculateResults() {
   });
 
   updatePanelDisplay(selectedPanelId);
+
+  trackEvent('calculator_complete', {
+    system_kw: sysKw,
+    panel_id: selectedPanelId,
+    monthly_bill: s.monthlyBill,
+  });
 }
 
 // ── Update financials for selected panel ──────

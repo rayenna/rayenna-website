@@ -1115,6 +1115,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </style>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
   const observerOptions = { threshold: 0.3 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1155,6 +1157,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       });
 
       if (response.ok) {
+        trackEvent('homepage_callback_submit');
         form.reset();
         btn.textContent = "✓ We'll call you soon!";
         if (feedback) { feedback.textContent = ''; feedback.style.display = 'none'; }

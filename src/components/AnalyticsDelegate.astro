@@ -1,0 +1,52 @@
+---
+/** Document-level click tracking for tel / WhatsApp / calculator CTAs. */
+---
+
+<script>
+  import { trackEvent } from '../lib/analytics';
+
+  function analyticsLocation(el: Element): string {
+    const own = el.getAttribute('data-analytics-location');
+    if (own) return own;
+    const parent = el.closest('[data-analytics-location]');
+    return parent?.getAttribute('data-analytics-location') || 'unknown';
+  }
+
+  document.addEventListener(
+    'click',
+    (event) => {
+      const anchor = (event.target as Element | null)?.closest('a');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href') || '';
+      const location = analyticsLocation(anchor);
+
+      if (href.startsWith('tel:')) {
+        if (location === 'mobile_bar') {
+          trackEvent('mobile_bar_call');
+        } else {
+          trackEvent('click_call', { location });
+        }
+        return;
+      }
+
+      if (href.includes('whatsapp.com') || href.startsWith('whatsapp://')) {
+        if (location === 'mobile_bar') {
+          trackEvent('mobile_bar_whatsapp');
+        } else {
+          trackEvent('click_whatsapp', { location });
+        }
+        return;
+      }
+
+      if (href.includes('/solar-calculator')) {
+        if (location === 'mobile_bar') {
+          trackEvent('mobile_bar_calculate');
+        } else {
+          trackEvent('click_calculate_cta', { location });
+        }
+      }
+    },
+    true,
+  );
+</script>

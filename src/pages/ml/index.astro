@@ -1117,6 +1117,8 @@ const t = useTranslations('ml');
 </style>
 
 <script>
+  import { trackEvent } from '../../lib/analytics';
+
   const observerOptions = { threshold: 0.3 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1157,6 +1159,7 @@ const t = useTranslations('ml');
       });
 
       if (response.ok) {
+        trackEvent('homepage_callback_submit');
         form.reset();
         btn.textContent = '✓ ഉടൻ വിളിക്കാം!';
         if (feedback) { feedback.textContent = ''; feedback.style.display = 'none'; }
