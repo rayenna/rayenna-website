@@ -280,7 +280,7 @@ const t = useTranslations('ml');
       </div>
       <div class="connect-form-wrap">
         <form class="connect-form" id="connect-form">
-          <input type="hidden" name="_subject" value="New Callback Request — Rayenna Website" />
+          <input type="hidden" name="subject" value="ഹോംപേജ് കോൾ ബാക്ക് — റയെന്ന എനർജി" />
           <input type="hidden" name="source" value="Homepage callback form" />
           <input type="text" name="name" placeholder="നിങ്ങളുടെ പേര്" required />
           <input type="tel" name="phone" placeholder="ഫോൺ നമ്പർ" required />
@@ -1152,10 +1152,14 @@ const t = useTranslations('ml');
     if (feedback) feedback.style.display = 'none';
 
     try {
-      const response = await fetch('https://formspree.io/f/xwvazrnw', {
+      const formData = new FormData(form);
+      formData.append('access_key', '7fec7b57-8d29-4f8b-a09b-6c67140417aa');
+      const subjectValue = String(formData.get('subject') || 'ഹോംപേജ് കോൾ ബാക്ക് — റയെന്ന എനർജി');
+      formData.set('subject', subjectValue);
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form),
+        body: formData,
       });
 
       if (response.ok) {
