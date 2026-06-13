@@ -107,6 +107,12 @@ ul { list-style: none; }
   box-shadow: 0 6px 20px rgba(168,56,56,0.35);
 }
 
+/* Blog post end-of-article CTA — override .post-content a link color on dark block */
+.post-content .post-cta .btn.btn-primary,
+.post-content .post-cta .btn.btn-primary:hover {
+  color: var(--color-white);
+}
+
 .btn-outline {
   background: transparent;
   color: var(--color-primary);
