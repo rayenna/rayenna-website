@@ -91,6 +91,28 @@ export const calcEn = {
   chartYear: 'Year',
   chartCumulativeCost: 'Cumulative cost (₹)',
   kwSuffix: ' kW',
+  panelTotal: 'Total system',
+  panelNet: 'Net after subsidy',
+  trustItems: [
+    {
+      icon: '🔒',
+      title: 'Your data stays private',
+      text: "We don't store your inputs. This tool runs entirely in your browser.",
+    },
+    {
+      icon: '✅',
+      title: 'MNRE-approved installer',
+      text: 'Every system we install qualifies for the full PM Surya Ghar subsidy.',
+    },
+    {
+      icon: '📞',
+      title: 'Free expert review',
+      text: 'Not sure about your results? Our team will review them with you at no cost.',
+    },
+  ],
+  reassuranceSlim: 'Questions about your estimate?',
+  reassuranceSlimLink: 'Get a free expert review',
+  reassuranceSlimSuffix: '— no obligation.',
 };
 
 export type CalcI18n = typeof calcEn;

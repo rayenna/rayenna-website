@@ -60,23 +60,28 @@ const mlPrefix = '/ml';
         <span class="section-tag">എങ്ങനെ പ്രവർത്തിക്കുന്നു</span>
         <h2 class="section-title">നിങ്ങളുടെ വീട് പ്രത്യേകമാണ്. സോളാർ സിസ്റ്റവും അങ്ങനെ തന്നെ.</h2>
         <p>മിക്ക സോളാർ ക്വോട്ടുകളും നിങ്ങളുടെ വീടിന്റെ യാഥാർത്ഥ്യത്തിനുപകരം പൊതുവായ ശരാശരികളിൽ നിന്നാണ് തുടങ്ങുന്നത്. റയെന്നയുടെ സോളാർ കാൽക്കുലേറ്റർ അതിനേക്കാൾ നല്ല ഒരു പ്ലാനിംഗ് എസ്റ്റിമേറ്റ് നൽകുന്നു. വീടിന്റെ തരം, മുറികൾ, ഉപകരണങ്ങൾ, EV ഉപയോഗം എന്നിവ പറയുക, പിന്നെ നിലവിലെ കേരള റൂഫ്‌ടോപ്പ് സോളാർ ധാരണകളെ അടിസ്ഥാനമാക്കി സിസ്റ്റം വലുപ്പം, പാനൽ എണ്ണം, റൂഫ് സ്ഥലം, സബ്സിഡി, ലാഭം എന്നിവ ഞങ്ങൾ കണക്കാക്കും. ഇത് സൗജന്യ സൈറ്റ് സർവേയ്ക്ക് മുമ്പുള്ള ബുദ്ധിപരമായ ഒരു തുടക്കമാണ്.</p>
-        <div class="how-cards">
-          <div class="how-card">
-            <span class="how-card__icon">⚡</span>
+        <div class="how-steps">
+          <div class="how-step">
+            <span class="how-step__num">1</span>
+            <span class="how-step__icon" aria-hidden="true">⚡</span>
             <div>
               <h3>വിശദാംശങ്ങൾ നൽകുക</h3>
               <p>വീടിന്റെ തരം, മുറികൾ, ഉപകരണങ്ങൾ</p>
             </div>
           </div>
-          <div class="how-card">
-            <span class="how-card__icon">☀️</span>
+          <div class="how-step__divider" aria-hidden="true"></div>
+          <div class="how-step">
+            <span class="how-step__num">2</span>
+            <span class="how-step__icon" aria-hidden="true">☀️</span>
             <div>
               <h3>ശുപാർശ നേടുക</h3>
               <p>സിസ്റ്റം വലുപ്പം, പാനലുകൾ, റൂഫ് സ്ഥലം</p>
             </div>
           </div>
-          <div class="how-card">
-            <span class="how-card__icon">💰</span>
+          <div class="how-step__divider" aria-hidden="true"></div>
+          <div class="how-step">
+            <span class="how-step__num">3</span>
+            <span class="how-step__icon" aria-hidden="true">💰</span>
             <div>
               <h3>സമ്പാദ്യം കാണുക</h3>
               <p>പേയ്ബാക്ക് കാലയളവും ആജീവനാന്ത സമ്പാദ്യവും</p>
@@ -92,25 +97,28 @@ const mlPrefix = '/ml';
     <div class="container">
       <div class="calc-card">
 
-        <!-- Progress bar -->
-        <div class="calc-progress">
-          <div class="calc-progress-head">
-            <div class="calc-progress-track" aria-hidden="true">
-              <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
-            </div>
-            <div class="calc-progress-steps" role="list">
-              {calcMl.progressStepNames.map((name, i) => (
-                <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
-                  <div class="cpb-dot">
-                    {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+        <div class="calc-head">
+          <div class="calc-progress">
+            <div class="calc-progress-head">
+              <div class="calc-progress-track" aria-hidden="true">
+                <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="calc-progress-steps" role="list">
+                {calcMl.progressStepNames.map((name, i) => (
+                  <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
+                    <div class="cpb-dot">
+                      {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+                    </div>
+                    <span class="cpb-step-name">{name}</span>
                   </div>
-                  <span class="cpb-step-name">{name}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <p class="calc-step-label" id="step-label">{calcMl.stepLabels[1]}</p>
           </div>
-          <p class="calc-step-label" id="step-label">{calcMl.stepLabels[1]}</p>
         </div>
+
+        <div class="calc-body">
 
         <!-- ── STEP 1: HOME ── -->
         <div class="calc-step" id="step-1">
@@ -433,26 +441,32 @@ const mlPrefix = '/ml';
 
           <div class="kpi-dashboard" aria-label="പ്രധാന എസ്റ്റിമേറ്റ് മെട്രിക്‌സ്">
             <div class="kpi-card kpi-card--accent">
+              <span class="kpi-icon" aria-hidden="true">☀️</span>
               <p class="kpi-label">ശുപാർശ ചെയ്യുന്ന സിസ്റ്റം</p>
               <p class="kpi-value" id="kpi-system-kw">— kW</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">💚</span>
               <p class="kpi-label">ഏകദേശ വാർഷിക സമ്പാദ്യം</p>
               <p class="kpi-value" id="kpi-annual">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">⏱️</span>
               <p class="kpi-label">ഏകദേശ പേയ്ബാക്ക്</p>
               <p class="kpi-value" id="kpi-payback">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">💳</span>
               <p class="kpi-label">നിങ്ങൾ നൽകേണ്ട നെറ്റ് ചെലവ്</p>
               <p class="kpi-value" id="kpi-net-cost">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">📈</span>
               <p class="kpi-label">25 വർഷ സമ്പാദ്യം</p>
               <p class="kpi-value" id="kpi-lifetime">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">⚡</span>
               <p class="kpi-label">ദൈനംദിന ഉപഭോഗം</p>
               <p class="kpi-value" id="kpi-daily">—</p>
             </div>
@@ -481,18 +495,22 @@ const mlPrefix = '/ml';
           <!-- 4 stat cards -->
           <div class="result-stats-grid">
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">⚡</span>
               <p class="rs-label">ഏകദേശ ദൈനംദിന ഉപഭോഗം</p>
               <p class="rs-val" id="result-daily">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">🔲</span>
               <p class="rs-label">ആവശ്യമായ പാനലുകൾ</p>
               <p class="rs-val" id="result-panels">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">📐</span>
               <p class="rs-label">ആവശ്യമായ റൂഫ് സ്ഥലം</p>
               <p class="rs-val" id="result-roof">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">🏛️</span>
               <p class="rs-label">സബ്സിഡി എസ്റ്റിമേറ്റ്</p>
               <p class="rs-val" id="result-subsidy">—</p>
             </div>
@@ -508,11 +526,21 @@ const mlPrefix = '/ml';
             <!-- A: N-Type TopCon 620W — Premium -->
             <div class="panel-option" id="panel-620" data-panel-id="620">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge purple">പ്രീമിയം</span>
                   <h4>N-Type TopCon 620W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-620-detail">കൂടുതൽ അറിയുക ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcMl.panelTotal}</span>
+                    <strong class="panel-price-val" id="p620-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcMl.panelNet}</span>
+                    <strong class="panel-price-val" id="p620-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-620-detail">{calcMl.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p620-panels">— പാനലുകൾ</span>
@@ -529,11 +557,21 @@ const mlPrefix = '/ml';
             <!-- B: N-Type TopCon 600W — Recommended (default selected) -->
             <div class="panel-option selected" id="panel-600" data-panel-id="600">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge blue">ശുപാർശിതം</span>
                   <h4>N-Type TopCon 600W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-600-detail">കൂടുതൽ അറിയുക ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcMl.panelTotal}</span>
+                    <strong class="panel-price-val" id="p600-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcMl.panelNet}</span>
+                    <strong class="panel-price-val" id="p600-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-600-detail">{calcMl.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p600-panels">— പാനലുകൾ</span>
@@ -550,11 +588,21 @@ const mlPrefix = '/ml';
             <!-- C: N-Type TopCon 580W — Best Value -->
             <div class="panel-option" id="panel-580tc" data-panel-id="580tc">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge green">മികച്ച മൂല്യം</span>
                   <h4>N-Type TopCon 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580tc-detail">കൂടുതൽ അറിയുക ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcMl.panelTotal}</span>
+                    <strong class="panel-price-val" id="p580tc-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcMl.panelNet}</span>
+                    <strong class="panel-price-val" id="p580tc-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580tc-detail">{calcMl.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p580tc-panels">— പാനലുകൾ</span>
@@ -571,11 +619,21 @@ const mlPrefix = '/ml';
             <!-- D: Bi-Facial Dual Glass 580W — Bifacial -->
             <div class="panel-option" id="panel-580bf" data-panel-id="580bf">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge teal">ബൈഫേഷ്യൽ</span>
                   <h4>Bifacial Dual Glass 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580bf-detail">കൂടുതൽ അറിയുക ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcMl.panelTotal}</span>
+                    <strong class="panel-price-val" id="p580bf-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcMl.panelNet}</span>
+                    <strong class="panel-price-val" id="p580bf-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580bf-detail">{calcMl.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p580bf-panels">— പാനലുകൾ</span>
@@ -592,11 +650,21 @@ const mlPrefix = '/ml';
             <!-- E: Mono PERC 540W — Economy -->
             <div class="panel-option" id="panel-540" data-panel-id="540">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge grey">ഇക്കോണമി</span>
                   <h4>Mono PERC 540W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-540-detail">കൂടുതൽ അറിയുക ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcMl.panelTotal}</span>
+                    <strong class="panel-price-val" id="p540-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcMl.panelNet}</span>
+                    <strong class="panel-price-val" id="p540-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-540-detail">{calcMl.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p540-panels">— പാനലുകൾ</span>
@@ -709,41 +777,49 @@ const mlPrefix = '/ml';
           </div>
         </div>
 
+        </div><!-- .calc-body -->
+
+        <div class="calc-trust" aria-label="ഈ കാൽക്കുലേറ്റർ എന്തുകൊണ്ട് വിശ്വസിക്കാം">
+          {calcMl.trustItems.map((item) => (
+            <div class="calc-trust-item">
+              <span class="calc-trust-icon" aria-hidden="true">{item.icon}</span>
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div><!-- .calc-card -->
     </div>
   </section>
 
   <!-- ===== REASSURANCE STRIP ===== -->
-  <section class="reassurance-section">
-    <div class="container reassurance__inner">
-      <div class="reassurance-card">
-        <span class="reassurance-icon">🔒</span>
-        <h3>നിങ്ങളുടെ ഡാറ്റ സുരക്ഷിതം</h3>
-        <p>ഞങ്ങൾ നിങ്ങളുടെ ഇൻപുട്ടുകൾ സംഭരിക്കുന്നില്ല. ഈ ടൂൾ പൂർണ്ണമായും നിങ്ങളുടെ ബ്രൗസറിൽ പ്രവർത്തിക്കുന്നു.</p>
-      </div>
-      <div class="reassurance-card">
-        <span class="reassurance-icon">✅</span>
-        <h3>MNRE അംഗീകൃത ഇൻസ്റ്റാളർ</h3>
-        <p>ഞങ്ങൾ ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റവും പൂർണ്ണ PM സൂര്യ ഘർ സബ്സിഡിക്ക് അർഹമാണ്.</p>
-      </div>
-      <div class="reassurance-card">
-        <span class="reassurance-icon">📞</span>
-        <h3>സൗജന്യ വിദഗ്ധ പരിശോധന</h3>
-        <p>ഫലങ്ങളിൽ സംശയമുണ്ടോ? ഞങ്ങളുടെ ടീം ചെലവില്ലാതെ നിങ്ങളോടൊപ്പം അവ പരിശോധിക്കും.</p>
-      </div>
+  <section class="reassurance-section reassurance-section--slim">
+    <div class="container">
+      <p class="reassurance-slim-text">
+        {calcMl.reassuranceSlim}{' '}
+        <a href={`${mlPrefix}/contact/`}>{calcMl.reassuranceSlimLink}</a>{' '}
+        {calcMl.reassuranceSlimSuffix}
+      </p>
     </div>
   </section>
 
   <!-- ===== CTA BAND ===== -->
   <section class="cta-banner">
-    <div class="container cta-banner__inner">
-      <div class="cta-banner__content">
-        <h2>സോളാറിലേക്ക് തയ്യാറാണോ? നിങ്ങളുടെ സിസ്റ്റം വലുപ്പം ഒരുമിച്ച് നിശ്ചയിക്കാം.</h2>
-        <p>ഞങ്ങളുടെ ടീം സൗജന്യമായി നിങ്ങളുടെ വീട് സന്ദർശിച്ച് ഈ അക്കങ്ങൾ സ്ഥിരീകരിച്ച് മറഞ്ഞിരിക്കുന്ന ചെലവുകളില്ലാതെ നിശ്ചിത ക്വോട്ട് നൽകും.</p>
-      </div>
-      <div class="cta-banner__actions">
-        <a href={`${mlPrefix}/contact/`} class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
-        <a href="tel:+917907369304" class="btn btn-outline-white">ഇപ്പോൾ വിളിക്കുക</a>
+    <div class="container">
+      <div class="cta-banner__card">
+        <div class="cta-banner__inner">
+          <div class="cta-banner__content">
+            <h2>സോളാറിലേക്ക് തയ്യാറാണോ? നിങ്ങളുടെ സിസ്റ്റം വലുപ്പം ഒരുമിച്ച് നിശ്ചയിക്കാം.</h2>
+            <p>ഞങ്ങളുടെ ടീം സൗജന്യമായി നിങ്ങളുടെ വീട് സന്ദർശിച്ച് ഈ അക്കങ്ങൾ സ്ഥിരീകരിച്ച് മറഞ്ഞിരിക്കുന്ന ചെലവുകളില്ലാതെ നിശ്ചിത ക്വോട്ട് നൽകും.</p>
+          </div>
+          <div class="cta-banner__actions">
+            <a href={`${mlPrefix}/contact/`} class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
+            <a href="tel:+917907369304" class="btn btn-outline-white">ഇപ്പോൾ വിളിക്കുക</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

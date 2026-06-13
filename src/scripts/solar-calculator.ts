@@ -525,9 +525,13 @@ function calculateResults() {
   setText('result-summary', buildResultSummary());
 
   cachedPanelResults.forEach((p) => {
+    const totalCost = p.cost + bos;
+    const netCost = totalCost - subsidy;
     setText(`p${p.id}-panels`, p.count + i18n.panels);
     setText(`p${p.id}-roof`, p.roof.toLocaleString('en-IN') + i18n.sqFt);
     setText(`p${p.id}-cost`, '₹' + inr(p.cost));
+    setText(`p${p.id}-total`, '₹' + inr(totalCost));
+    setText(`p${p.id}-net`, '₹' + inr(netCost));
   });
 
   updatePanelDisplay(selectedPanelId);

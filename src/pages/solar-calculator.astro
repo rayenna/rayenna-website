@@ -59,23 +59,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <span class="section-tag">How it works</span>
         <h2 class="section-title">Your Home is Unique. Your Solar System Should Be Too.</h2>
         <p>Most solar quotes start with broad averages, not the realities of your home. Rayenna's solar calculator gives you a better planning estimate. Tell us about your home type, rooms, appliances, and EV usage, and we'll estimate system size, panel count, roof space, subsidy, and returns using current Kerala rooftop solar assumptions. It is a smart starting point you can refine further with a free site survey.</p>
-        <div class="how-cards">
-          <div class="how-card">
-            <span class="how-card__icon">⚡</span>
+        <div class="how-steps">
+          <div class="how-step">
+            <span class="how-step__num">1</span>
+            <span class="how-step__icon" aria-hidden="true">⚡</span>
             <div>
               <h3>Enter your details</h3>
               <p>Home type, rooms, and appliances</p>
             </div>
           </div>
-          <div class="how-card">
-            <span class="how-card__icon">☀️</span>
+          <div class="how-step__divider" aria-hidden="true"></div>
+          <div class="how-step">
+            <span class="how-step__num">2</span>
+            <span class="how-step__icon" aria-hidden="true">☀️</span>
             <div>
               <h3>Get your recommendation</h3>
               <p>System size, panels, and roof space</p>
             </div>
           </div>
-          <div class="how-card">
-            <span class="how-card__icon">💰</span>
+          <div class="how-step__divider" aria-hidden="true"></div>
+          <div class="how-step">
+            <span class="how-step__num">3</span>
+            <span class="how-step__icon" aria-hidden="true">💰</span>
             <div>
               <h3>See your savings</h3>
               <p>Payback period and lifetime savings</p>
@@ -91,25 +96,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="container">
       <div class="calc-card">
 
-        <!-- Progress bar -->
-        <div class="calc-progress">
-          <div class="calc-progress-head">
-            <div class="calc-progress-track" aria-hidden="true">
-              <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
-            </div>
-            <div class="calc-progress-steps" role="list">
-              {calcEn.progressStepNames.map((name, i) => (
-                <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
-                  <div class="cpb-dot">
-                    {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+        <div class="calc-head">
+          <div class="calc-progress">
+            <div class="calc-progress-head">
+              <div class="calc-progress-track" aria-hidden="true">
+                <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="calc-progress-steps" role="list">
+                {calcEn.progressStepNames.map((name, i) => (
+                  <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
+                    <div class="cpb-dot">
+                      {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+                    </div>
+                    <span class="cpb-step-name">{name}</span>
                   </div>
-                  <span class="cpb-step-name">{name}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <p class="calc-step-label" id="step-label">{calcEn.stepLabels[1]}</p>
           </div>
-          <p class="calc-step-label" id="step-label">{calcEn.stepLabels[1]}</p>
         </div>
+
+        <div class="calc-body">
 
         <!-- ── STEP 1: HOME ── -->
         <div class="calc-step" id="step-1">
@@ -432,26 +440,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <div class="kpi-dashboard" aria-label="Key estimate metrics">
             <div class="kpi-card kpi-card--accent">
+              <span class="kpi-icon" aria-hidden="true">☀️</span>
               <p class="kpi-label">Recommended system</p>
               <p class="kpi-value" id="kpi-system-kw">— kW</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">💚</span>
               <p class="kpi-label">Estimated annual savings</p>
               <p class="kpi-value" id="kpi-annual">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">⏱️</span>
               <p class="kpi-label">Estimated payback</p>
               <p class="kpi-value" id="kpi-payback">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">💳</span>
               <p class="kpi-label">Net cost to you</p>
               <p class="kpi-value" id="kpi-net-cost">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">📈</span>
               <p class="kpi-label">25-year savings</p>
               <p class="kpi-value" id="kpi-lifetime">—</p>
             </div>
             <div class="kpi-card">
+              <span class="kpi-icon" aria-hidden="true">⚡</span>
               <p class="kpi-label">Daily consumption</p>
               <p class="kpi-value" id="kpi-daily">—</p>
             </div>
@@ -480,18 +494,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <!-- 4 stat cards -->
           <div class="result-stats-grid">
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">⚡</span>
               <p class="rs-label">Daily consumption estimate</p>
               <p class="rs-val" id="result-daily">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">🔲</span>
               <p class="rs-label">Panels needed</p>
               <p class="rs-val" id="result-panels">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">📐</span>
               <p class="rs-label">Roof space estimate</p>
               <p class="rs-val" id="result-roof">—</p>
             </div>
             <div class="result-stat">
+              <span class="rs-icon" aria-hidden="true">🏛️</span>
               <p class="rs-label">Subsidy estimate</p>
               <p class="rs-val" id="result-subsidy">—</p>
             </div>
@@ -507,11 +525,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <!-- A: N-Type TopCon 620W — Premium -->
             <div class="panel-option" id="panel-620" data-panel-id="620">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge purple">Premium</span>
                   <h4>N-Type TopCon 620W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-620-detail">Learn more ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcEn.panelTotal}</span>
+                    <strong class="panel-price-val" id="p620-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcEn.panelNet}</span>
+                    <strong class="panel-price-val" id="p620-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-620-detail">{calcEn.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p620-panels">— panels</span>
@@ -528,11 +556,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <!-- B: N-Type TopCon 600W — Recommended (default selected) -->
             <div class="panel-option selected" id="panel-600" data-panel-id="600">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge blue">Recommended</span>
                   <h4>N-Type TopCon 600W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-600-detail">Learn more ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcEn.panelTotal}</span>
+                    <strong class="panel-price-val" id="p600-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcEn.panelNet}</span>
+                    <strong class="panel-price-val" id="p600-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-600-detail">{calcEn.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p600-panels">— panels</span>
@@ -549,11 +587,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <!-- C: N-Type TopCon 580W — Best Value -->
             <div class="panel-option" id="panel-580tc" data-panel-id="580tc">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge green">Best Value</span>
                   <h4>N-Type TopCon 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580tc-detail">Learn more ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcEn.panelTotal}</span>
+                    <strong class="panel-price-val" id="p580tc-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcEn.panelNet}</span>
+                    <strong class="panel-price-val" id="p580tc-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580tc-detail">{calcEn.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p580tc-panels">— panels</span>
@@ -570,11 +618,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <!-- D: Bi-Facial Dual Glass 580W — Bifacial -->
             <div class="panel-option" id="panel-580bf" data-panel-id="580bf">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge teal">Bifacial</span>
                   <h4>Bifacial Dual Glass 580W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-580bf-detail">Learn more ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcEn.panelTotal}</span>
+                    <strong class="panel-price-val" id="p580bf-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcEn.panelNet}</span>
+                    <strong class="panel-price-val" id="p580bf-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-580bf-detail">{calcEn.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p580bf-panels">— panels</span>
@@ -591,11 +649,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <!-- E: Mono PERC 540W — Economy -->
             <div class="panel-option" id="panel-540" data-panel-id="540">
               <div class="panel-option__header">
-                <div>
+                <div class="panel-option__title">
                   <span class="panel-badge grey">Economy</span>
                   <h4>Mono PERC 540W</h4>
                 </div>
-                <button class="panel-expand" type="button" data-target="panel-540-detail">Learn more ▾</button>
+                <div class="panel-option__pricing">
+                  <div class="panel-price-col">
+                    <span class="panel-price-label">{calcEn.panelTotal}</span>
+                    <strong class="panel-price-val" id="p540-total">—</strong>
+                  </div>
+                  <div class="panel-price-col panel-price-col--net">
+                    <span class="panel-price-label">{calcEn.panelNet}</span>
+                    <strong class="panel-price-val" id="p540-net">—</strong>
+                  </div>
+                </div>
+                <button class="panel-expand" type="button" data-target="panel-540-detail">{calcEn.learnMore}</button>
               </div>
               <div class="panel-option__stats">
                 <span id="p540-panels">— panels</span>
@@ -708,41 +776,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
         </div>
 
+        </div><!-- .calc-body -->
+
+        <div class="calc-trust" aria-label="Why you can trust this calculator">
+          {calcEn.trustItems.map((item) => (
+            <div class="calc-trust-item">
+              <span class="calc-trust-icon" aria-hidden="true">{item.icon}</span>
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div><!-- .calc-card -->
     </div>
   </section>
 
   <!-- ===== REASSURANCE STRIP ===== -->
-  <section class="reassurance-section">
-    <div class="container reassurance__inner">
-      <div class="reassurance-card">
-        <span class="reassurance-icon">🔒</span>
-        <h3>Your data stays private</h3>
-        <p>We don't store your inputs. This tool runs entirely in your browser.</p>
-      </div>
-      <div class="reassurance-card">
-        <span class="reassurance-icon">✅</span>
-        <h3>MNRE-approved installer</h3>
-        <p>Every system we install qualifies for the full PM Surya Ghar subsidy.</p>
-      </div>
-      <div class="reassurance-card">
-        <span class="reassurance-icon">📞</span>
-        <h3>Free expert review</h3>
-        <p>Not sure about your results? Our team will review them with you at no cost.</p>
-      </div>
+  <section class="reassurance-section reassurance-section--slim">
+    <div class="container">
+      <p class="reassurance-slim-text">
+        {calcEn.reassuranceSlim}{' '}
+        <a href={`${base}/contact/`}>{calcEn.reassuranceSlimLink}</a>{' '}
+        {calcEn.reassuranceSlimSuffix}
+      </p>
     </div>
   </section>
 
   <!-- ===== CTA BAND ===== -->
   <section class="cta-banner">
-    <div class="container cta-banner__inner">
-      <div class="cta-banner__content">
-        <h2>Ready to go solar? Let's size your system together.</h2>
-        <p>Our team will visit your home for free, verify these numbers, and give you a fixed quote with no hidden charges.</p>
-      </div>
-      <div class="cta-banner__actions">
-        <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Survey</a>
-        <a href="tel:+917907369304" class="btn btn-outline-white">Call Us Now</a>
+    <div class="container">
+      <div class="cta-banner__card">
+        <div class="cta-banner__inner">
+          <div class="cta-banner__content">
+            <h2>Ready to go solar? Let's size your system together.</h2>
+            <p>Our team will visit your home for free, verify these numbers, and give you a fixed quote with no hidden charges.</p>
+          </div>
+          <div class="cta-banner__actions">
+            <a href={`${base}/contact/`} class="btn btn-primary">Book a Free Site Survey</a>
+            <a href="tel:+917907369304" class="btn btn-outline-white">Call Us Now</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
