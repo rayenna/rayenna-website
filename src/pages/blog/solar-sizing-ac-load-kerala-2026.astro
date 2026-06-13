@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ogForBlogSlug } from '../../i18n/og-images';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = {
+  title: 'Sizing Solar for AC Load in Kerala: Summer Bills, Peak Demand, and the Right System Size',
+  date: '7 June 2026',
+  category: 'Education',
+  readTime: '5 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout
+  title={`${post.title} — Rayenna Energy Blog`}
+  description="Kerala summer bills spike with AC use. Learn how to size rooftop solar for air conditioner load, daytime usage, and realistic payback in 2026."
+  ogImage={ogForBlogSlug('solar-sizing-ac-load-kerala-2026')}
+>
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <p class="post-lead">Every April in Kerala, the same pattern repeats: temperatures climb, ACs run longer, and KSEB bills jump — often doubling for families running two or three split units through the day. Rooftop solar is one of the few investments that directly targets that spike. But sizing only from your annual average bill misses the point. Here is how to think about AC load honestly.</p>
+
+        <h2>How Much Power Does AC Actually Use?</h2>
+        <p>A 1.5-ton inverter split AC typically draws <strong>1,200–1,800 W</strong> while the compressor runs — not the 5-star label wattage on the brochure. Run two units for eight hours on a hot day and you can add <strong>15–25 kWh</strong> to daily consumption before geysers, fridges, or EV charging.</p>
+        <p>Kerala's monsoon months reduce AC hours but fans, dehumidifiers, and school-holiday indoor time keep baseload higher than many north Indian states. Solar sizing must cover your <em>peak season</em>, not just your 12-month average.</p>
+
+        <div class="post-callout">
+          <span class="callout-icon">❄️</span>
+          <div><strong>Quick Reference: Daily AC Energy</strong><p>1 × 1.5-ton AC, 8 hrs/day ≈ <strong>8–12 kWh</strong>. 2 × ACs, 10 hrs combined ≈ <strong>18–28 kWh</strong>. 3 × ACs in a large home can exceed <strong>35 kWh/day</strong> in peak summer.</p></div>
+        </div>
+
+        <h2>Typical System Sizes by AC Count</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Home profile</span><span>Indicative solar size</span><span>Notes</span></div>
+          <div class="cost-row"><span>1 AC + standard load</span><span>3–4 kW</span><span>Often matches ₹3,000–4,500/month bill</span></div>
+          <div class="cost-row"><span>2 ACs + geyser</span><span>4–6 kW</span><span>Most common Kerala family home</span></div>
+          <div class="cost-row"><span>3+ ACs / villa</span><span>6–10 kW</span><span>Check roof area and GSC above 10 kW</span></div>
+          <div class="cost-row"><span>AC mostly at night</span><span>Add storage or upsize</span><span>Banking limits reduce export value</span></div>
+        </div>
+
+        <h2>Daytime vs Night AC — Why It Changes Solar Value</h2>
+        <p>Families with work-from-home parents or retirees often run AC during solar hours — excellent for self-consumption. Office-goers who cool bedrooms only after 6 pm rely more on grid banking, which is now capped during peak hours under KSERC 2026 rules.</p>
+        <p>If your AC load is evening-heavy, discuss three options with your installer: slightly larger system, battery storage for 5–10 kWh, or smart pre-cooling before sunset. There is no one-size-fits-all answer — but there is a wrong answer: ignoring when you actually run AC.</p>
+
+        <h2>Inverter ACs, Star Ratings, and Solar</h2>
+        <ul class="post-list">
+          <li><strong>Inverter ACs</strong> cycle compressors rather than running flat-out — they reduce average draw and smooth your solar match.</li>
+          <li><strong>5-star ratings</strong> help, but real-world Kerala humidity still pushes runtimes longer than lab tests.</li>
+          <li><strong>Room sealing and insulation</strong> cut the kW you need as much as any panel upgrade — fix leaks before oversizing solar.</li>
+          <li>Use our <a href={`${base}/solar-calculator`}>solar calculator</a> to model AC count and daily hours before requesting quotes.</li>
+        </ul>
+
+        <h2>Payback Still Works — If Sized Correctly</h2>
+        <p>A well-sized AC-focused system in Kerala typically pays back in <strong>5–7 years</strong> after PM Surya Ghar subsidy, with faster returns when daytime self-use is high. Oversizing adds cost without shortening payback; undersizing leaves you paying peak AC bills from the grid every summer.</p>
+
+        <div class="post-cta">
+          <h3>Model Your AC Load Before You Buy Panels</h3>
+          <p>Rayenna Energy sizes systems from your actual appliance mix — not generic per-kW templates.</p>
+          <a href={`${base}/solar-calculator`} class="btn btn-primary">Calculate My Savings →</a>
+        </div>
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/solar-vs-electricity-bill-comparison`}>Solar vs KSEB Bill →</a></li>
+            <li><a href={`${base}/blog/kseb-time-of-day-tariff-solar-2026`}>Time-of-Day Tariffs →</a></li>
+            <li><a href={`${base}/blog/how-much-does-solar-cost-in-kerala`}>Solar Cost in Kerala →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🌡️</div>
+          <strong>Summer-ready sizing</strong>
+          <p>Size for your hottest month, not your annual average — that is when bills hurt most.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section style="padding:0 0 56px; background:var(--color-light)">
+    <div class="container">
+      <div class="calc-cta-card">
+        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Calculate your solar savings</p>
+        <p class="calc-cta-card__sub">Enter your AC count and daily hours — get a personalised system size in minutes.</p>
+        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-content a { color: var(--color-primary); font-weight: 600; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 1.4fr 1.4fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row span:nth-child(3) { display: none; } .cost-row--header span:nth-child(3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>

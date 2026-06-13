@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ogForBlogSlug } from '../../i18n/og-images';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = {
+  title: 'EV + Solar at Home in Kerala: How to Size Your Rooftop System for Electric Vehicle Charging',
+  date: '7 June 2026',
+  category: 'Buying Guide',
+  readTime: '6 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout
+  title={`${post.title} — Rayenna Energy Blog`}
+  description="Planning to charge your EV at home in Kerala? Learn how to size rooftop solar for wall-box load, daytime charging, net metering limits, and PM Surya Ghar subsidy in 2026."
+  ogImage={ogForBlogSlug('ev-solar-home-charging-kerala-2026')}
+>
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <p class="post-lead">Electric vehicle sales in India crossed 2 million units in FY26 — and Kerala's narrow lanes, short commutes, and rising KSEB bills make home charging especially attractive. The question we hear every week: <em>"I am buying an EV — how much extra solar do I need?"</em> Here is a clear, numbers-first answer for 2026.</p>
+
+        <h2>Why EV Load Changes Your Solar Sizing</h2>
+        <p>A typical Kerala commute adds <strong>8–15 kWh per day</strong> depending on vehicle efficiency and distance. Charge that on a 3.3 kW home wall box for four hours and you have added roughly the same load as running an extra 1.5-ton AC — but often at night, when your panels are not producing.</p>
+        <p>Under KSERC's 2026 net metering rules, exporting solar during the day and drawing back at peak evening hours is increasingly constrained. EV owners who charge after 6 pm without shifting load or adding storage may see less benefit from banking than they expect.</p>
+
+        <div class="post-callout">
+          <span class="callout-icon">⚡</span>
+          <div><strong>Rule of Thumb for One EV</strong><p>A daily commute of ~40 km often needs <strong>1.5–2.5 kW of additional solar capacity</strong> (or disciplined daytime charging) on top of your existing household load — not a full duplicate system.</p></div>
+        </div>
+
+        <h2>Charger Type vs Solar Requirement</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Home charger</span><span>Typical daily use</span><span>Extra daily energy</span></div>
+          <div class="cost-row"><span>2.3 kW (15A plug)</span><span>6–8 hrs overnight</span><span>~12–18 kWh</span></div>
+          <div class="cost-row"><span>3.3 kW wall box</span><span>3–5 hrs</span><span>~10–16 kWh</span></div>
+          <div class="cost-row"><span>7.4 kW AC charger</span><span>1.5–2 hrs</span><span>~11–15 kWh</span></div>
+          <div class="cost-row"><span>Daytime solar charging</span><span>10 am – 3 pm</span><span>Direct self-use — best value</span></div>
+        </div>
+
+        <h2>Three Strategies That Work in Kerala</h2>
+        <ul class="post-list">
+          <li><strong>Size up the rooftop system</strong> — add 1.5–3 kW depending on EV count, charger kW, and weekly mileage. Our <a href={`${base}/solar-calculator`}>solar calculator</a> includes an EV section for exactly this.</li>
+          <li><strong>Charge during solar hours</strong> — workplace or home charging between 9 am and 4 pm maximises self-consumption and avoids peak-hour grid draw.</li>
+          <li><strong>Add battery storage for night charging</strong> — worthwhile if you must charge after sunset and run multiple ACs; see our <a href={`${base}/blog/solar-battery-storage-kerala-2026`}>battery guide</a>.</li>
+        </ul>
+
+        <h2>Subsidy and Compliance in 2026</h2>
+        <p>PM Surya Ghar still offers up to ₹78,000 for compliant residential systems — and from June 2026, ALMM-listed panels are required for subsidised installs. EV charging does not change subsidy tiers, but it <em>does</em> change the kW you should install. Oversizing without understanding banking limits wastes roof space; undersizing leaves you buying peak-rate grid power for your car.</p>
+
+        <h2>Worked Example: 5 kW Home + One EV</h2>
+        <p>Household baseline: 2 ACs, geyser, ₹5,000/month bill → often sized around 4–5 kW. Add one EV at 3.3 kW × 4 hrs × 5 days/week → roughly 3–4 extra units/day average. Many families land on a <strong>6–7 kW system</strong> or a 5 kW system with strict daytime charging discipline.</p>
+        <p>Exact sizing depends on roof area, shade, and whether someone is home during solar hours — which is why a site survey beats a WhatsApp guess.</p>
+
+        <div class="post-cta">
+          <h3>Size Solar for Your Home and EV Together</h3>
+          <p>Rayenna Energy designs integrated systems across Kerala — MNRE-approved, ALMM-compliant, with honest EV load modelling.</p>
+          <a href={`${base}/solar-calculator`} class="btn btn-primary">Try the Solar Calculator →</a>
+        </div>
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/kseb-time-of-day-tariff-solar-2026`}>Time-of-Day Tariffs & Solar →</a></li>
+            <li><a href={`${base}/blog/solar-battery-storage-kerala-2026`}>Solar + Battery Storage →</a></li>
+            <li><a href={`${base}/blog/how-much-does-solar-cost-in-kerala`}>Solar Cost in Kerala →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🚗</div>
+          <strong>Charge smarter</strong>
+          <p>Daytime solar charging avoids peak tariffs and banking limits — the cheapest km you will drive.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section style="padding:0 0 56px; background:var(--color-light)">
+    <div class="container">
+      <div class="calc-cta-card">
+        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Calculate your solar savings</p>
+        <p class="calc-cta-card__sub">Includes EV charging inputs — see system size and payback in under 5 minutes.</p>
+        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-content a { color: var(--color-primary); font-weight: 600; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 1.4fr 1.4fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row span:nth-child(3) { display: none; } .cost-row--header span:nth-child(3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>
