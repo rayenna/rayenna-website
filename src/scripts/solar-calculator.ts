@@ -261,13 +261,10 @@ function animateCurrency(id: string, target: number, suffix = '') {
 function updateProgressBar(step: number) {
   const fill = document.getElementById('calc-progress-fill');
   if (fill) fill.style.width = `${((step - 1) / 3) * 100}%`;
-  document.querySelectorAll<HTMLElement>('.cpb-dot').forEach((dot, i) => {
+  document.querySelectorAll<HTMLElement>('.cpb-step').forEach((stepEl, i) => {
     const s = i + 1;
-    dot.classList.toggle('active', s === step);
-    dot.classList.toggle('done', s < step);
-  });
-  document.querySelectorAll<HTMLElement>('.cpb-line').forEach((line, i) => {
-    line.classList.toggle('done', i + 1 < step);
+    stepEl.classList.toggle('active', s === step);
+    stepEl.classList.toggle('done', s < step);
   });
 }
 

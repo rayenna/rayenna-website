@@ -16,15 +16,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <img src={`${base}/media/services-hero-opt3.jpg`} alt="Solar panels on a rooftop at sunset" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
-      <p class="page-hero__eyebrow">Smart Solar Sizing Tool</p>
-      <h1 class="page-hero__title">Find the Right Solar System for Your Home</h1>
+      <p class="page-hero__eyebrow page-hero__eyebrow--pill">☀️ Smart Solar Sizing Tool</p>
+      <h1 class="page-hero__title">Find the Right<br /><span class="hero-title-grad">Solar System</span><br />for Your Home</h1>
       <p class="page-hero__sub">Tell us about your home and get a personalised solar estimate in minutes.</p>
       <div class="hero-stat-pills" aria-hidden="true">
         <span class="hero-stat-pill"><strong>5 min</strong> to complete</span>
         <span class="hero-stat-pill"><strong>100%</strong> personalised</span>
         <span class="hero-stat-pill"><strong>Free</strong> · no commitment</span>
       </div>
-      <p class="page-hero__note">🏠 This calculator is built for residential homes in Kerala. For commercial solar, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer">chat with us on WhatsApp</a>.</p>
+      <p class="page-hero__note page-hero__note--callout">🏠 This calculator is built for residential homes in Kerala. For commercial solar, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer">chat with us on WhatsApp</a>.</p>
       <div class="hero-btns">
         <a href="#calculator" class="btn btn-primary hero-scroll-btn">Start the Calculator ↓</a>
         <a href={`${base}/contact/`} class="btn btn-outline-white">Get a Free Consultation</a>
@@ -93,25 +93,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
         <!-- Progress bar -->
         <div class="calc-progress">
-          <div class="calc-progress-track" aria-hidden="true">
-            <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
+          <div class="calc-progress-head">
+            <div class="calc-progress-track" aria-hidden="true">
+              <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="calc-progress-steps" role="list">
+              {calcEn.progressStepNames.map((name, i) => (
+                <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
+                  <div class="cpb-dot">
+                    {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+                  </div>
+                  <span class="cpb-step-name">{name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div class="calc-progress-bar">
-            <div class="cpb-dot active" data-dot="1"><span>1</span></div>
-            <div class="cpb-line" data-line="1"></div>
-            <div class="cpb-dot" data-dot="2"><span>2</span></div>
-            <div class="cpb-line" data-line="2"></div>
-            <div class="cpb-dot" data-dot="3"><span>3</span></div>
-            <div class="cpb-line" data-line="3"></div>
-            <div class="cpb-dot" data-dot="4"><span>4</span></div>
-          </div>
-          <p class="calc-step-label" id="step-label">Step 1 of 4 — Your home</p>
+          <p class="calc-step-label" id="step-label">{calcEn.stepLabels[1]}</p>
         </div>
 
         <!-- ── STEP 1: HOME ── -->
         <div class="calc-step" id="step-1">
           <h3 class="calc-step-title">About Your Home</h3>
-
+          <p class="calc-step-sub">{calcEn.stepSubtitles[1]}</p>
           <p class="calc-field-label">Home type</p>
           <div class="home-type-grid" id="home-type-grid">
             <div class="ht-card selected" data-type="house">
@@ -165,15 +168,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <div class="calc-nav">
             <div></div>
-            <button class="btn-calc-next" type="button" data-next="2">Next →</button>
+            <button class="btn-calc-next" type="button" data-next="2">{calcEn.nextToAppliances}</button>
           </div>
         </div>
 
         <!-- ── STEP 2: APPLIANCES ── -->
         <div class="calc-step hidden" id="step-2">
           <h3 class="calc-step-title">Your Appliances</h3>
+          <p class="calc-step-sub">{calcEn.stepSubtitles[2]}</p>
 
-          <p class="calc-category-label">Cooling</p>
+          <p class="calc-category-label">❄️ Cooling</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -199,7 +203,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
 
-          <p class="calc-category-label">Entertainment</p>
+          <p class="calc-category-label">📺 Entertainment</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -214,7 +218,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
 
-          <p class="calc-category-label">Kitchen</p>
+          <p class="calc-category-label">🍳 Kitchen</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -251,7 +255,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
 
-          <p class="calc-category-label">Other</p>
+          <p class="calc-category-label">🔌 Other</p>
           <div class="toggles-group">
             <div class="toggle-row">
               <div class="stepper-label-group">
@@ -325,10 +329,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <div class="slider-row">
                   <label>Daily charging duration: <strong id="ev-hours-val">4</strong> hrs</label>
                   <input type="range" id="ev-hours" min="1" max="12" value="4" step="1" class="calc-slider" />
+                  <div class="slider-range-labels"><span>1 hr</span><span>12 hrs</span></div>
                 </div>
                 <div class="slider-row">
                   <label>Days charged per week: <strong id="ev-days-val">5</strong> days</label>
                   <input type="range" id="ev-days" min="1" max="7" value="5" step="1" class="calc-slider" />
+                  <div class="slider-range-labels"><span>1 day</span><span>7 days</span></div>
                 </div>
               </div>
 
@@ -350,14 +356,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <div class="calc-nav">
             <button class="btn-calc-back" type="button" data-back="1">← Back</button>
-            <button class="btn-calc-next" type="button" data-next="3">Next →</button>
+            <button class="btn-calc-next" type="button" data-next="3">{calcEn.nextToUsage}</button>
           </div>
         </div>
 
         <!-- ── STEP 3: USAGE PATTERN ── -->
         <div class="calc-step hidden" id="step-3">
           <h3 class="calc-step-title">Your Usage Pattern</h3>
-
+          <p class="calc-step-sub">{calcEn.stepSubtitles[3]}</p>
           <div class="sliders-group">
             <div class="slider-row">
               <label>AC usage per day: <strong id="ac-hours-val">8</strong> hrs</label>
@@ -388,7 +394,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <div class="calc-nav">
             <button class="btn-calc-back" type="button" data-back="2">← Back</button>
-            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">Calculate →</button>
+            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">{calcEn.calculateCta}</button>
           </div>
         </div>
 
@@ -615,10 +621,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="fin-row fin-highlight"><span>Net cost to you</span><span id="fin-net-cost">—</span></div>
 
             <p class="calc-field-label" style="margin-top:24px;">Returns</p>
-            <div class="fin-row"><span>Est. annual savings</span><span id="fin-annual">—</span></div>
-            <div class="fin-row"><span>Estimated payback period</span><span id="fin-payback">—</span></div>
-            <div class="fin-row fin-highlight"><span>Estimated 25-year savings</span><span id="fin-lifetime">—</span></div>
-            <div class="fin-row"><span>CO₂ avoided over 25 years</span><span id="fin-co2">—</span></div>
+            <div class="returns-grid">
+              <div class="return-card return-card--green">
+                <p class="return-card__label">{calcEn.returnAnnual}</p>
+                <p class="return-card__value" id="fin-annual">—</p>
+                <p class="return-card__sub">{calcEn.returnAnnualSub}</p>
+              </div>
+              <div class="return-card return-card--blue">
+                <p class="return-card__label">{calcEn.returnLifetime}</p>
+                <p class="return-card__value" id="fin-lifetime">—</p>
+                <p class="return-card__sub">{calcEn.returnLifetimeSub}</p>
+              </div>
+              <div class="return-card return-card--green">
+                <p class="return-card__label">{calcEn.returnPayback}</p>
+                <p class="return-card__value" id="fin-payback">—</p>
+                <p class="return-card__sub">{calcEn.returnPaybackSub}</p>
+              </div>
+              <div class="return-card return-card--blue">
+                <p class="return-card__label">{calcEn.returnCo2}</p>
+                <p class="return-card__value" id="fin-co2">—</p>
+                <p class="return-card__sub">{calcEn.returnCo2Sub}</p>
+              </div>
+            </div>
           </div>
 
           <!-- Result CTAs -->

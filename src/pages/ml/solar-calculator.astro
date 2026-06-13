@@ -17,15 +17,15 @@ const mlPrefix = '/ml';
     <img src={`${base}/media/services-hero-opt3.jpg`} alt="സൂര്യാശയങ്ങളുള്ള മേൽക്കൂര" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
-      <p class="page-hero__eyebrow">സ്മാർട്ട് സോളാർ ടൂൾ</p>
-      <h1 class="page-hero__title">നിങ്ങളുടെ വീട്ടിന് അനുയോജ്യമായ സോളാർ സിസ്റ്റം കണ്ടെത്തുക</h1>
+      <p class="page-hero__eyebrow page-hero__eyebrow--pill">☀️ സ്മാർട്ട് സോളാർ ടൂൾ</p>
+      <h1 class="page-hero__title">നിങ്ങളുടെ വീട്ടിന് അനുയോജ്യമായ<br /><span class="hero-title-grad">സോളാർ സിസ്റ്റം</span><br />കണ്ടെത്തുക</h1>
       <p class="page-hero__sub">നിങ്ങളുടെ വീടിനെക്കുറിച്ച് പറയുക. മിനിറ്റുകൾക്കുള്ളിൽ വ്യക്തിഗത സോളാർ എസ്റ്റിമേറ്റ് നേടുക.</p>
       <div class="hero-stat-pills" aria-hidden="true">
         <span class="hero-stat-pill"><strong>5 മിനിറ്റ്</strong> പൂർത്തിയാക്കാൻ</span>
         <span class="hero-stat-pill"><strong>100%</strong> വ്യക്തിഗതം</span>
         <span class="hero-stat-pill"><strong>സൗജന്യം</strong> · ബാധ്യതയില്ല</span>
       </div>
-      <p class="page-hero__note">🏠 ഈ കാൽക്കുലേറ്റർ കേരളത്തിലെ വീട്ടുപയോഗ മേൽക്കൂര സോളാറിനാണ്. കമർഷ്യൽ സോളാറിന്, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer">WhatsApp-ൽ ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക</a>.</p>
+      <p class="page-hero__note page-hero__note--callout">🏠 ഈ കാൽക്കുലേറ്റർ കേരളത്തിലെ വീട്ടുപയോഗ മേൽക്കൂര സോളാറിനാണ്. കമർഷ്യൽ സോളാറിന്, <a href="https://api.whatsapp.com/send?phone=917907369304&text=Hi%20Rayenna%20Energy!%20I%27m%20interested%20in%20commercial%20solar%20installation." target="_blank" rel="noopener noreferrer">WhatsApp-ൽ ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക</a>.</p>
       <div class="hero-btns">
         <a href="#calculator" class="btn btn-primary hero-scroll-btn">കാൽക്കുലേറ്റർ ആരംഭിക്കുക ↓</a>
         <a href={`${mlPrefix}/contact/`} class="btn btn-outline-white">സൗജന്യ കൺസൾട്ടേഷൻ</a>
@@ -94,17 +94,20 @@ const mlPrefix = '/ml';
 
         <!-- Progress bar -->
         <div class="calc-progress">
-          <div class="calc-progress-track" aria-hidden="true">
-            <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
-          </div>
-          <div class="calc-progress-bar">
-            <div class="cpb-dot active" data-dot="1"><span>1</span></div>
-            <div class="cpb-line" data-line="1"></div>
-            <div class="cpb-dot" data-dot="2"><span>2</span></div>
-            <div class="cpb-line" data-line="2"></div>
-            <div class="cpb-dot" data-dot="3"><span>3</span></div>
-            <div class="cpb-line" data-line="3"></div>
-            <div class="cpb-dot" data-dot="4"><span>4</span></div>
+          <div class="calc-progress-head">
+            <div class="calc-progress-track" aria-hidden="true">
+              <div class="calc-progress-fill" id="calc-progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="calc-progress-steps" role="list">
+              {calcMl.progressStepNames.map((name, i) => (
+                <div class:list={['cpb-step', { active: i === 0 }]} data-step={i + 1} role="listitem">
+                  <div class="cpb-dot">
+                    {i === 3 ? <span class="cpb-sun" aria-hidden="true">☀</span> : <span>{i + 1}</span>}
+                  </div>
+                  <span class="cpb-step-name">{name}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <p class="calc-step-label" id="step-label">{calcMl.stepLabels[1]}</p>
         </div>
@@ -112,7 +115,7 @@ const mlPrefix = '/ml';
         <!-- ── STEP 1: HOME ── -->
         <div class="calc-step" id="step-1">
           <h3 class="calc-step-title">നിങ്ങളുടെ വീടിനെക്കുറിച്ച്</h3>
-
+          <p class="calc-step-sub">{calcMl.stepSubtitles[1]}</p>
           <p class="calc-field-label">വീടിന്റെ തരം</p>
           <div class="home-type-grid" id="home-type-grid">
             <div class="ht-card selected" data-type="house">
@@ -166,15 +169,16 @@ const mlPrefix = '/ml';
 
           <div class="calc-nav">
             <div></div>
-            <button class="btn-calc-next" type="button" data-next="2">അടുത്തത് →</button>
+            <button class="btn-calc-next" type="button" data-next="2">{calcMl.nextToAppliances}</button>
           </div>
         </div>
 
         <!-- ── STEP 2: APPLIANCES ── -->
         <div class="calc-step hidden" id="step-2">
           <h3 class="calc-step-title">നിങ്ങളുടെ ഉപകരണങ്ങൾ</h3>
+          <p class="calc-step-sub">{calcMl.stepSubtitles[2]}</p>
 
-          <p class="calc-category-label">തണുപ്പിക്കൽ</p>
+          <p class="calc-category-label">❄️ തണുപ്പിക്കൽ</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -200,7 +204,7 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">വിനോദം</p>
+          <p class="calc-category-label">📺 വിനോദം</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -215,7 +219,7 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">അടുക്കള</p>
+          <p class="calc-category-label">🍳 അടുക്കള</p>
           <div class="steppers-group">
             <div class="stepper-row">
               <div class="stepper-label-group">
@@ -252,7 +256,7 @@ const mlPrefix = '/ml';
             </div>
           </div>
 
-          <p class="calc-category-label">മറ്റുള്ളവ</p>
+          <p class="calc-category-label">🔌 മറ്റുള്ളവ</p>
           <div class="toggles-group">
             <div class="toggle-row">
               <div class="stepper-label-group">
@@ -326,10 +330,12 @@ const mlPrefix = '/ml';
                 <div class="slider-row">
                   <label>ദൈനംദിന ചാർജ് സമയം: <strong id="ev-hours-val">4</strong> മണി</label>
                   <input type="range" id="ev-hours" min="1" max="12" value="4" step="1" class="calc-slider" />
+                  <div class="slider-range-labels"><span>1 മണി</span><span>12 മണി</span></div>
                 </div>
                 <div class="slider-row">
                   <label>ആഴ്ചയിൽ ചാർജ് ചെയ്യുന്ന ദിവസങ്ങൾ: <strong id="ev-days-val">5</strong> ദിവസം</label>
                   <input type="range" id="ev-days" min="1" max="7" value="5" step="1" class="calc-slider" />
+                  <div class="slider-range-labels"><span>1 ദിവസം</span><span>7 ദിവസം</span></div>
                 </div>
               </div>
 
@@ -351,14 +357,14 @@ const mlPrefix = '/ml';
 
           <div class="calc-nav">
             <button class="btn-calc-back" type="button" data-back="1">← പിന്നോട്ട്</button>
-            <button class="btn-calc-next" type="button" data-next="3">അടുത്തത് →</button>
+            <button class="btn-calc-next" type="button" data-next="3">{calcMl.nextToUsage}</button>
           </div>
         </div>
 
         <!-- ── STEP 3: USAGE PATTERN ── -->
         <div class="calc-step hidden" id="step-3">
           <h3 class="calc-step-title">നിങ്ങളുടെ ഉപയോഗ രീതി</h3>
-
+          <p class="calc-step-sub">{calcMl.stepSubtitles[3]}</p>
           <div class="sliders-group">
             <div class="slider-row">
               <label>ദിവസേന AC ഉപയോഗം: <strong id="ac-hours-val">8</strong> മണി</label>
@@ -389,7 +395,7 @@ const mlPrefix = '/ml';
 
           <div class="calc-nav">
             <button class="btn-calc-back" type="button" data-back="2">← പിന്നോട്ട്</button>
-            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">കണക്കാക്കുക →</button>
+            <button class="btn-calc-next btn-calc-primary" type="button" data-next="4">{calcMl.calculateCta}</button>
           </div>
         </div>
 
@@ -616,10 +622,28 @@ const mlPrefix = '/ml';
             <div class="fin-row fin-highlight"><span>നിങ്ങൾ നൽകേണ്ട നെറ്റ് ചെലവ്</span><span id="fin-net-cost">—</span></div>
 
             <p class="calc-field-label" style="margin-top:24px;">ലാഭം</p>
-            <div class="fin-row"><span>ഏകദേശ വാർഷിക സമ്പാദ്യം</span><span id="fin-annual">—</span></div>
-            <div class="fin-row"><span>ഏകദേശ പേയ്ബാക്ക് കാലയളവ്</span><span id="fin-payback">—</span></div>
-            <div class="fin-row fin-highlight"><span>ഏകദേശ 25 വർഷ സമ്പാദ്യം</span><span id="fin-lifetime">—</span></div>
-            <div class="fin-row"><span>25 വർഷത്തിൽ CO₂ ഒഴിവാക്കൽ</span><span id="fin-co2">—</span></div>
+            <div class="returns-grid">
+              <div class="return-card return-card--green">
+                <p class="return-card__label">{calcMl.returnAnnual}</p>
+                <p class="return-card__value" id="fin-annual">—</p>
+                <p class="return-card__sub">{calcMl.returnAnnualSub}</p>
+              </div>
+              <div class="return-card return-card--blue">
+                <p class="return-card__label">{calcMl.returnLifetime}</p>
+                <p class="return-card__value" id="fin-lifetime">—</p>
+                <p class="return-card__sub">{calcMl.returnLifetimeSub}</p>
+              </div>
+              <div class="return-card return-card--green">
+                <p class="return-card__label">{calcMl.returnPayback}</p>
+                <p class="return-card__value" id="fin-payback">—</p>
+                <p class="return-card__sub">{calcMl.returnPaybackSub}</p>
+              </div>
+              <div class="return-card return-card--blue">
+                <p class="return-card__label">{calcMl.returnCo2}</p>
+                <p class="return-card__value" id="fin-co2">—</p>
+                <p class="return-card__sub">{calcMl.returnCo2Sub}</p>
+              </div>
+            </div>
           </div>
 
           <!-- Result CTAs -->
