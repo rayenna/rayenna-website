@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { faqCategoriesMl as categories } from '../../i18n/faqs-ml';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
-const FAQ_COUNT_HINT = '6 വിഷയങ്ങളിൽ 49 ചോദ്യങ്ങൾ';
+const FAQ_COUNT_HINT = '6 വിഷയങ്ങളിൽ 48 ചോദ്യങ്ങൾ';
 const faqPageSchema = {
   "@type": "FAQPage",
   "@id": "https://rayennaenergy.com/ml/faqs/#faq",
@@ -36,7 +36,7 @@ const faqPageSchema = {
       <p class="page-hero__eyebrow">അറിവ് ബേസ്</p>
       <h1 class="page-hero__title">കേരള വീടുകൾക്കുള്ള<br />സോളാർ ചോദ്യോത്തരങ്ങൾ</h1>
       <p class="page-hero__sub">സോളാറിലേക്ക് മാറുന്നതിനെക്കുറിച്ചുള്ള എല്ലാ ചോദ്യങ്ങൾക്കും വ്യക്തമായ ഉത്തരങ്ങൾ.</p>
-      <p class="page-hero__count">6 വിഷയങ്ങളിൽ 49 ചോദ്യങ്ങൾ</p>
+      <p class="page-hero__count">{FAQ_COUNT_HINT}</p>
     </div>
   </section>
 
@@ -769,7 +769,7 @@ const faqPageSchema = {
       allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
       allCats.forEach(c => (c.style.display = ''));
       noResults.style.display = 'none';
-      searchHint.textContent = '6 വിഷയങ്ങളിൽ 49 ചോദ്യങ്ങൾ';
+      searchHint.textContent = '6 വിഷയങ്ങളിൽ 48 ചോദ്യങ്ങൾ';
       return;
     }
 

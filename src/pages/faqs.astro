@@ -95,7 +95,7 @@ const categories = [
     id: 'how-solar-works',
     emoji: '⚡',
     label: 'How Solar Works',
-    count: 10,
+    count: 9,
     faqs: [
       {
         q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
@@ -116,10 +116,6 @@ const categories = [
       {
         q: 'How much electricity does a 3 kW solar system generate per day?',
         a: 'In Kerala\'s conditions, a well-installed 3 kW system generates approximately 10–12 units per day on a clear day, and around 3,600 units annually when averaged across all seasons including monsoon.',
-      },
-      {
-        q: 'What happens to my solar generation data — can I monitor it?',
-        a: 'Yes. All Rayenna installations include online monitoring capability. You can track your system\'s real-time generation, daily and monthly output, and performance trends through a monitoring app on your phone. This lets you spot any underperformance early and gives you a clear picture of your savings accumulating over time.',
       },
       {
         q: 'What is a TOPCon or Bifacial panel, and should I be asking for one?',
@@ -279,7 +275,7 @@ const faqPageSchema = {
       <p class="page-hero__eyebrow">Knowledge Base</p>
       <h1 class="page-hero__title">Solar FAQs for<br />Kerala Homes</h1>
       <p class="page-hero__sub">Clear, honest answers to every question about going solar — from costs and subsidies to installation timelines and warranties.</p>
-      <p class="page-hero__count">49 questions across 6 topics</p>
+      <p class="page-hero__count">48 questions across 6 topics</p>
     </div>
   </section>
 
@@ -295,7 +291,7 @@ const faqPageSchema = {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <p class="faq-search-hint" id="faq-search-hint">49 questions across 6 topics</p>
+        <p class="faq-search-hint" id="faq-search-hint">48 questions across 6 topics</p>
       </div>
     </div>
 
@@ -1011,7 +1007,7 @@ const faqPageSchema = {
       allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
       allCats.forEach(c => (c.style.display = ''));
       noResults.style.display = 'none';
-      searchHint.textContent = '49 questions across 6 topics';
+      searchHint.textContent = '48 questions across 6 topics';
       return;
     }
 
