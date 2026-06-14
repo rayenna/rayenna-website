@@ -285,6 +285,7 @@ const mlPrefix = '/ml';
   grid-template-columns: 1fr;
   gap: 48px;
   align-items: start;
+  min-width: 0;
 }
 .mission-section__content p {
   color: var(--color-text-muted);
@@ -294,14 +295,17 @@ const mlPrefix = '/ml';
 .mission-section__content .section-title { margin-bottom: 20px; }
 .mission-pillars {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 .mission-pillar {
   background: #ffffff;
   border-radius: var(--radius-md);
-  padding: 24px 20px;
+  padding: 18px 14px;
   box-shadow: var(--shadow-sm);
+  min-width: 0;
 }
 .mission-pillar__icon {
   font-size: 1.6rem;
@@ -310,14 +314,17 @@ const mlPrefix = '/ml';
 .mission-pillar h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--color-navy);
   margin-bottom: 8px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 .mission-pillar p {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
 }
 
 /* ===== LEADERSHIP ===== */
@@ -531,7 +538,13 @@ const mlPrefix = '/ml';
    Breakpoints — tablet+
    =========================== */
 @media (min-width: 640px) {
-  .mission-pillars { grid-template-columns: 1fr 1fr; }
+  .mission-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .mission-pillar { padding: 24px 20px; }
+  .mission-pillar h3 { font-size: 0.95rem; }
+  .mission-pillar p { font-size: 0.85rem; line-height: 1.7; }
   .leaders-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
