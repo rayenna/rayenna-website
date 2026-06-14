@@ -948,8 +948,17 @@ const t = useTranslations('ml');
   margin-bottom: 8px;
   line-height: 1.3;
 }
+.calc-cta-content { min-width: 0; }
 .calc-cta-content p { font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
-.calc-cta-btn { align-self: flex-start; white-space: nowrap; }
+.calc-cta-btn {
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+  line-height: 1.4;
+}
 @media (min-width: 768px) {
   .calc-cta-card {
     flex-direction: row;
@@ -957,6 +966,11 @@ const t = useTranslations('ml');
     gap: 28px;
   }
   .calc-cta-content { flex: 1; }
+  .calc-cta-btn {
+    align-self: flex-start;
+    width: auto;
+    white-space: nowrap;
+  }
 }
 
 /* ===== LET'S CONNECT ===== */
