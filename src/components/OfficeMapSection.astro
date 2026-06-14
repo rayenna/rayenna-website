@@ -22,9 +22,11 @@ const embedSrc =
       <h2 id="office-map-title" class="section-title">{m.title}</h2>
       <p class="office-map__sub">{m.sub}</p>
       <a href={mapsPlaceUrl} target="_blank" rel="noopener noreferrer" class="office-map__directions">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
-        </svg>
+        {lang !== 'ml' && (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          </svg>
+        )}
         {m.directions}
       </a>
     </div>
