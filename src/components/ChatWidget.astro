@@ -16,7 +16,6 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 <div
   id="ray-chat-widget"
   class={`ray-lang-${lang}`}
-  style={`--ray-nudge-text: '${chat.nudge.replace(/'/g, "\\'")}';`}
 >
 
   <!-- ── Floating bubble button ── -->
@@ -162,41 +161,6 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   --ray-shadow: 0 4px 24px rgba(30, 42, 59, 0.18);
 }
 
-
-/* ── Proactive nudge (CSS pseudo-element on the chat button) ──
-   Clicking it = clicking the button. Zero separate event listeners. */
-#ray-chat-btn[data-nudge]::before {
-  content: var(--ray-nudge-text);
-  position: absolute;
-  bottom: 0;
-  right: calc(100% + 14px);
-  background: #ffffff;
-  color: #1a1a1a;
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-family: sans-serif;
-  white-space: nowrap;
-  padding: 10px 14px;
-  border-radius: 14px 14px 2px 14px;
-  box-shadow: 0 4px 20px rgba(30,42,59,0.2);
-  border: 1px solid rgba(168,56,56,0.12);
-  animation: nudge-in 0.35s ease forwards;
-  pointer-events: none; /* let clicks fall through to the button */
-}
-#ray-chat-btn[data-nudge]::after {
-  /* small arrow pointing right */
-  content: '';
-  position: absolute;
-  bottom: 14px;
-  right: calc(100% + 6px);
-  border: 6px solid transparent;
-  border-left-color: #ffffff;
-  pointer-events: none;
-}
-@keyframes nudge-in {
-  from { opacity: 0; transform: translateX(8px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
 
 /* ── Floating button ── */
 #ray-chat-btn {
@@ -902,8 +866,6 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     document.body.classList.toggle('ray-chat-open', isOpen);
     const waFloat = document.querySelector('.wa-float');
     if (waFloat) waFloat.style.display = isOpen ? 'none' : '';
-    // Hide the nudge tooltip whenever the chat opens
-    delete btn.dataset.nudge;
 
     if (isOpen) {
       if (!welcomeShown) {
@@ -995,11 +957,6 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isOpen) toggleChat();
   });
-
-  // Show nudge tooltip on button after 8 s
-  setTimeout(() => {
-    if (!isOpen) btn.dataset.nudge = 'true';
-  }, 8000);
 
   // Auto-open after 45 s if chat still closed
   setTimeout(() => {

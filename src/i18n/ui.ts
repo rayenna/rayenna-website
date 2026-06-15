@@ -159,7 +159,6 @@ const ui = {
       send: 'Send message',
       opening:
         "Hi there! I'm Ray, your solar guide from Rayenna Energy ☀️ Whether you're curious about going solar at home or for your business, I'm here to help. What can I help you with today?",
-      nudge: '👋 What would solar save you?',
       linkCalculator: '☀️ Try the Solar Calculator',
       linkWhatsApp: '💬 Chat with us on WhatsApp',
       errorMic:
@@ -265,7 +264,6 @@ const ui = {
       send: 'സന്ദേശം അയയ്ക്കുക',
       opening:
         'നമസ്കാരം! ഞാൻ റയ്, റയെന്ന എനർജിയുടെ സോളാർ ഗൈഡ് ☀️ വീട്ടിലോ ബിസിനസിലോ സോളാറിലേക്ക് മാറാൻ ആഗ്രഹിക്കുന്നുണ്ടോ എന്ന് അറിയാൻ ഞാൻ ഇവിടെയുണ്ട്. ഇന്ന് എന്താണ് സഹായിക്കേണ്ടത്?',
-      nudge: '👋 സോളാർ എത്ര സമ്പാദ്യം നൽകും?',
       linkCalculator: '☀️ സോളാർ കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക',
       linkWhatsApp: '💬 WhatsApp-ൽ ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക',
       errorMic:
