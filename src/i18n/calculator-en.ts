@@ -113,6 +113,20 @@ export const calcEn = {
   reassuranceSlim: 'Questions about your estimate?',
   reassuranceSlimLink: 'Get a free expert review',
   reassuranceSlimSuffix: '— no obligation.',
+  pageHeroSub:
+    'See your system size, PM Surya Ghar subsidy, and 25-year savings in 5 minutes — free, no signup.',
+  preTrust: [
+    'MNRE Approved',
+    'Up to ₹78,000 subsidy',
+    'Free site survey',
+    'Private — runs in your browser',
+  ],
+  trustMetrics: [
+    { val: '₹78k', label: 'PM Surya Ghar subsidy' },
+    { val: '5 min', label: 'To your estimate' },
+    { val: 'Free', label: 'No signup needed' },
+    { val: 'MNRE', label: 'Approved installer' },
+  ],
 };
 
 export type CalcI18n = typeof calcEn;

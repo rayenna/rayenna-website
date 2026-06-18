@@ -469,6 +469,26 @@
    CALCULATOR SECTION
    ============================================= */
 
+.calc-pre-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 12px;
+  margin-bottom: 18px;
+}
+
+.calc-pre-trust span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--calc-navy);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(19, 39, 67, 0.1);
+  border-radius: 999px;
+  padding: 8px 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .calculator-section {
   position: relative;
   padding: var(--section-padding);

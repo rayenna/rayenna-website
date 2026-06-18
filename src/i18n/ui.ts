@@ -99,6 +99,20 @@ const ui = {
       contactUs: 'Contact us',
     },
     langSwitcherAria: 'Choose language',
+    homeConvert: {
+      heroMicro: 'Free · 5 minutes · No signup · MNRE-approved',
+      heroPhone: 'Or call',
+      testimonialsCalc: '☀️ Calculate My Savings',
+      testimonialsSurvey: 'Book a Free Site Survey',
+      connectTrust: [
+        'MNRE-approved installer in Kerala',
+        'Free site survey & fixed quote',
+        'No spam — we call you back once',
+      ],
+      calcCtaTitle: 'See your savings before you commit',
+      calcCtaSub:
+        'Enter your bill and home details — get system size, subsidy estimate, and payback in under 5 minutes. Free, no obligation.',
+    },
     schema: {
       localBusinessDescription:
         'MNRE-approved solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.',
@@ -208,6 +222,20 @@ const ui = {
       contactUs: 'ബന്ധപ്പെടുക',
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
+    homeConvert: {
+      heroMicro: 'സൗജന്യം · 5 മിനിറ്റ് · സൈൻഅപ്പ് വേണ്ട · MNRE അംഗീകൃത',
+      heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
+      testimonialsCalc: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
+      testimonialsSurvey: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
+      connectTrust: [
+        'കേരളത്തിലെ MNRE അംഗീകൃത ഇൻസ്റ്റാളർ',
+        'സൗജന്യ സൈറ്റ് സർവേയും ഫിക്സഡ് ക്വോട്ടും',
+        'സ്പാം ഇല്ല — ഒരു തവണ മാത്രം കോൾ ബാക്ക്',
+      ],
+      calcCtaTitle: 'തീരുമാനമെടുക്കുന്നതിന് മുമ്പ് സമ്പാദ്യം കാണുക',
+      calcCtaSub:
+        'നിങ്ങളുടെ ബിൽ, വീടിന്റെ വിവരങ്ങൾ നൽകുക — 5 മിനിറ്റിനുള്ളിൽ സിസ്റ്റം വലുപ്പം, സബ്സിഡി, പേയ്ബാക്ക് കണക്ക്. സൗജന്യം, ബാധ്യതയില്ല.',
+    },
     schema: {
       localBusinessDescription:
         'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ സിസ്റ്റങ്ങൾ, PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ, സൗജന്യ സൈറ്റ് സർവേ.',

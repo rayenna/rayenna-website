@@ -18,8 +18,8 @@ const mlPrefix = '/ml';
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow page-hero__eyebrow--pill">☀️ സ്മാർട്ട് സോളാർ ടൂൾ</p>
-      <h1 class="page-hero__title">നിങ്ങളുടെ വീട്ടിന് അനുയോജ്യമായ<br /><span class="hero-title-grad">സോളാർ സിസ്റ്റം</span><br />കണ്ടെത്തുക</h1>
-      <p class="page-hero__sub">നിങ്ങളുടെ വീടിനെക്കുറിച്ച് പറയുക. മിനിറ്റുകൾക്കുള്ളിൽ വ്യക്തിഗത സോളാർ എസ്റ്റിമേറ്റ് നേടുക.</p>
+      <h1 class="page-hero__title">നിങ്ങൾക്ക് എത്ര<br /><span class="hero-title-grad">സമ്പാദ്യം</span><br />കിട്ടുമെന്ന് കാണുക</h1>
+      <p class="page-hero__sub">{calcMl.pageHeroSub}</p>
       <div class="hero-stat-pills" aria-hidden="true">
         <span class="hero-stat-pill"><strong>5 മിനിറ്റ്</strong> പൂർത്തിയാക്കാൻ</span>
         <span class="hero-stat-pill"><strong>100%</strong> വ്യക്തിഗതം</span>
@@ -36,12 +36,7 @@ const mlPrefix = '/ml';
   <!-- ===== TRUST STRIP ===== -->
   <section class="trust-strip">
     <div class="container trust-inner">
-      {[
-        { val: '5 മിനിറ്റ്',  label: 'പൂർത്തിയാക്കാൻ സമയം' },
-        { val: '100%',   label: 'വ്യക്തിഗത ഫലങ്ങൾ' },
-        { val: 'സൗജന്യം',   label: 'ചെലവില്ല, ബാധ്യതയില്ല' },
-        { val: 'MNRE',   label: 'അംഗീകൃത ഇൻസ്റ്റാളർ' },
-      ].map(m => (
+      {calcMl.trustMetrics.map(m => (
         <div class="trust-metric">
           <strong>{m.val}</strong>
           <span>{m.label}</span>
@@ -95,6 +90,11 @@ const mlPrefix = '/ml';
   <!-- ===== CALCULATOR MODULE ===== -->
   <section class="calculator-section" id="calculator">
     <div class="container">
+      <div class="calc-pre-trust" aria-label="ഈ കാൽക്കുലേറ്റർ വിശ്വസിക്കാനുള്ള കാരണങ്ങൾ">
+        {calcMl.preTrust.map((item) => (
+          <span>{item}</span>
+        ))}
+      </div>
       <div class="calc-card">
 
         <div class="calc-head">

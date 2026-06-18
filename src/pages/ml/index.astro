@@ -37,6 +37,11 @@ const t = useTranslations('ml');
         <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-hero-primary hero-btn-primary">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക</a>
         <a href={`${mlPrefix}/contact/`} class="btn btn-hero-outline hero-btn-secondary">കോൾ ബാക്ക് നേടുക</a>
       </div>
+      <p class="hero-cta-micro">{t.homeConvert.heroMicro}</p>
+      <p class="hero-phone-cta">
+        {t.homeConvert.heroPhone}{' '}
+        <a href="tel:+917907369304" data-analytics-location="home_hero">+91 7907 369 304</a>
+      </p>
     </div>
   </section>
 
@@ -215,7 +220,8 @@ const t = useTranslations('ml');
 
       </div>
       <div class="testimonials-footer">
-        <a href={`${mlPrefix}/media/`} class="btn btn-outline">ഞങ്ങളുടെ ഇൻസ്റ്റാളേഷനുകൾ കാണുക →</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary">{t.homeConvert.testimonialsCalc}</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-outline">{t.homeConvert.testimonialsSurvey}</a>
       </div>
     </div>
   </section>
@@ -265,8 +271,8 @@ const t = useTranslations('ml');
       <div class="calc-cta-card">
         <span class="calc-cta-icon">☀️</span>
         <div class="calc-cta-content">
-          <h2>ഏത് സോളാർ സിസ്റ്റമാണ് നിങ്ങൾക്ക് ശരി എന്ന് അറിയില്ലേ?</h2>
-          <p>ഞങ്ങളുടെ സൗജന്യ കാൽക്കുലേറ്റർ ഉപയോഗിക്കൂ — വീടിന്റെ വിശദാംശങ്ങൾ നൽകി 5 മിനിറ്റിനുള്ളിൽ നിങ്ങൾക്കായി തയ്യാറാക്കിയ ശുപാർശ നേടൂ.</p>
+          <h2>{t.homeConvert.calcCtaTitle}</h2>
+          <p>{t.homeConvert.calcCtaSub}</p>
         </div>
         <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary calc-cta-btn">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക →</a>
       </div>
@@ -281,6 +287,11 @@ const t = useTranslations('ml');
         <p>സോളാർ ഒരു സ്വപ്നമല്ല — ഒരു തീരുമാനം മാത്രമാണ്. ആ തീരുമാനം ഇന്ന് നിങ്ങൾ എടുക്കൂ. ബാക്കി ഞങ്ങൾ നോക്കിക്കൊള്ളാം.</p>
       </div>
       <div class="connect-form-wrap">
+        <ul class="connect-trust" aria-label="എന്തുകൊണ്ട് റയെന്നയെ ബന്ധപ്പെടണം">
+          {t.homeConvert.connectTrust.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
         <form class="connect-form" id="connect-form">
           <input type="hidden" name="subject" value="ഹോംപേജ് കോൾ ബാക്ക് — റയെന്ന എനർജി" />
           <input type="hidden" name="source" value="Homepage callback form" />
@@ -407,6 +418,27 @@ const t = useTranslations('ml');
   width: 100%;
   margin-top: 32px;
 }
+.hero-cta-micro {
+  margin: 14px 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #27324f;
+  opacity: 0.8;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.hero-phone-cta {
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+  color: #27324f;
+  text-align: center;
+}
+.hero-phone-cta a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.hero-phone-cta a:hover { text-decoration: underline; }
 .hero-btn-primary {
   display: flex;
   align-items: center;
@@ -840,8 +872,40 @@ const t = useTranslations('ml');
   color: var(--color-text-muted);
 }
 .testimonials-footer {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   margin-top: 36px;
+}
+@media (min-width: 520px) {
+  .testimonials-footer {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+.connect-trust {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.connect-trust li {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.88);
+  padding-left: 1.35rem;
+  position: relative;
+  line-height: 1.5;
+}
+.connect-trust li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #7dd3a8;
+  font-weight: 700;
 }
 @media (min-width: 640px) {
   .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 24px; }

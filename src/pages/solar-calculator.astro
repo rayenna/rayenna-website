@@ -17,8 +17,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow page-hero__eyebrow--pill">☀️ Smart Solar Sizing Tool</p>
-      <h1 class="page-hero__title">Find the Right<br /><span class="hero-title-grad">Solar System</span><br />for Your Home</h1>
-      <p class="page-hero__sub">Tell us about your home and get a personalised solar estimate in minutes.</p>
+      <h1 class="page-hero__title">Find Out How Much<br /><span class="hero-title-grad">You Could Save</span><br />with Solar</h1>
+      <p class="page-hero__sub">{calcEn.pageHeroSub}</p>
       <div class="hero-stat-pills" aria-hidden="true">
         <span class="hero-stat-pill"><strong>5 min</strong> to complete</span>
         <span class="hero-stat-pill"><strong>100%</strong> personalised</span>
@@ -35,12 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- ===== TRUST STRIP ===== -->
   <section class="trust-strip">
     <div class="container trust-inner">
-      {[
-        { val: '5 min',  label: 'Time to complete' },
-        { val: '100%',   label: 'Personalised results' },
-        { val: 'Free',   label: 'No cost, no commitment' },
-        { val: 'MNRE',   label: 'Approved installer' },
-      ].map(m => (
+      {calcEn.trustMetrics.map(m => (
         <div class="trust-metric">
           <strong>{m.val}</strong>
           <span>{m.label}</span>
@@ -95,6 +90,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- ===== CALCULATOR MODULE ===== -->
   <section class="calculator-section" id="calculator">
     <div class="container">
+      <div class="calc-pre-trust" aria-label="Why you can trust this calculator">
+        {calcEn.preTrust.map((item) => (
+          <span>{item}</span>
+        ))}
+      </div>
       <div class="calc-card">
 
         <div class="calc-head">
