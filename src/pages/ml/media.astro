@@ -499,6 +499,18 @@ const installCount = installations.length;
           </div>
         </div>
 
+        <div class="testi-real-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">റയെന്ന സോളാറുമായുള്ള അനുഭവം മികച്ചതായിരുന്നു. പ്ലാൻ മുതൽ ഇൻസ്റ്റാളേഷൻ വരെ — ഓരോ ഘട്ടത്തിലും ടീം പ്രൊഫഷണലിസത്തോടും സുതാര്യതയോടും കൂടെ നയിച്ചു. അന്തിമ സെറ്റപ്പ് എന്റെ പ്രതീക്ഷകൾ കവിഞ്ഞു. തുടക്കം മുതൽ അവസാനം വരെ — ഒരു തടസ്സവുമില്ലാതെ, മികവോടെ, ഒരു ടെൻഷനും ഇല്ലാതെ. അവരെ ഞാൻ നിശ്ചയമായും ശുപാർശ ചെയ്യും!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SB</div>
+            <div>
+              <strong>Snoby Babu</strong>
+              <span>തൃക്കാക്കര · 5 kW സിസ്റ്റം</span>
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="testimonials-cta-row">
         <a href={`${mlPrefix}/contact/`} class="btn testimonials-cta">നിങ്ങളുടെ അനുഭവം പങ്കിടുക →</a>
@@ -1387,12 +1399,10 @@ const installCount = installations.length;
   color: var(--color-primary);
 }
 @media (min-width: 640px) {
-  .testi-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .testi-grid .testi-real-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 12px); margin-inline: auto; }
+  .testi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 }
-@media (min-width: 960px) {
-  .testi-grid { grid-template-columns: repeat(3, 1fr); }
-  .testi-grid .testi-real-card:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+@media (min-width: 1100px) {
+  .testi-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 }
 
 /* ===== CTA BANNER ===== */
