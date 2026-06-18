@@ -20,7 +20,10 @@ const t = useTranslations('ml');
     <img src={`${base}/media/hero (1).webp`} alt="സോളാർ ഊർജ്ജം — കുട്ടി പട്ടം പറക്കുന്നു" class="hero__photo" />
     <div class="hero__gradient"></div>
     <div class="hero__content">
-      <h1 class="hero__title"><span class="hero__title-line1">നിങ്ങളുടെ KSEB ബിൽ</span><br />₹0 ആകാം.</h1>
+      <h1 class="hero__title">
+        <span class="hero__title-line1">നിങ്ങളുടെ KSEB ബിൽ</span>
+        <span class="hero__title-line2">₹0 ആകാം.</span>
+      </h1>
       <div class="hero__mid">
         <img src={`${base}/media/Artboard-2mnre.webp`} alt={t.images.mnreBadgeAlt} class="mnre-badge-img" />
         <div class="hero__mid-copy">
@@ -354,6 +357,9 @@ const t = useTranslations('ml');
 }
 
 .hero__title {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4.5vw, 4rem);
   font-weight: 400;
@@ -364,6 +370,10 @@ const t = useTranslations('ml');
 
 .hero__title-line1 {
   white-space: nowrap;
+}
+
+.hero__title-line2 {
+  display: block;
 }
 
 .hero__mid {
