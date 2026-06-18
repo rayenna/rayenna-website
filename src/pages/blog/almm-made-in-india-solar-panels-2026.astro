@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'Made in India Solar Panels: What Kerala Buyers Must Know About the 2026 ALMM Rule', date: '28 May 2026', category: 'Government Schemes', readTime: '5 min read', author: 'Rayenna Energy Team' };
@@ -20,6 +24,7 @@ const post = { title: 'Made in India Solar Panels: What Kerala Buyers Must Know 
     <div class="container post-layout">
 
       <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">India crossed 150 GW of installed solar capacity in early 2026 — and the government is now tightening one rule that affects almost every Kerala homeowner applying for rooftop solar or PM Surya Ghar subsidy: panels must be on the Approved List of Models and Manufacturers (ALMM), with domestic content requirements (DCR) for subsidised systems.</p>
 
         <h2>What Is ALMM — and Why Does It Matter Now?</h2>
@@ -56,8 +61,13 @@ const post = { title: 'Made in India Solar Panels: What Kerala Buyers Must Know 
         <div class="post-cta">
           <h3>Get a Compliant Quote You Can Trust</h3>
           <p>Rayenna Energy uses MNRE-approved, ALMM-eligible equipment and handles subsidy paperwork end to end across Kerala.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
 
       <aside class="post-sidebar">
@@ -84,15 +94,8 @@ const post = { title: 'Made in India Solar Panels: What Kerala Buyers Must Know 
     </div>
   </section>
 
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Calculate your solar savings</p>
-        <p class="calc-cta-card__sub">See system size, cost after subsidy, and payback — personalised for your home in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+  <BlogPostEndCta />
+
 
 </Layout>
 <style>

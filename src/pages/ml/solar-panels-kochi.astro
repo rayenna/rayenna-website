@@ -1,7 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { OG } from '../../i18n/og-images';
+import { useTranslations } from '../../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = useTranslations('ml');
+const pc = t.pageConvert.city;
 const mlPrefix = '/ml';
 ---
 <Layout lang="ml"
@@ -21,6 +24,8 @@ const mlPrefix = '/ml';
         <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
         <a href={`${mlPrefix}/contact/`} class="btn btn-outline-light">സൗജന്യ ക്വോട്ട് →</a>
       </div>
+      <p class="area-hero__micro">{pc.heroMicro}</p>
+      <p class="area-hero__phone">{pc.heroPhone} <a href="tel:+917907369304" data-analytics-location="city_hero">+91 7907 369 304</a></p>
     </div>
   </section>
 
@@ -128,8 +133,8 @@ const mlPrefix = '/ml';
         <p>ഞങ്ങളുടെ കൊച്ചി ടീമിൽ നിന്ന് ബാധ്യതയില്ലാത്ത സൈറ്റ് സർവേ നേടുക. മേൽക്കൂര വിലയിരുത്തുക, സാധ്യമായ സമ്പാദ്യം കണക്കാക്കുക, സബ്സിഡി പ്രക്രിയ വിശദീകരിക്കുക — എല്ലാം സൗജന്യം.</p>
       </div>
       <div class="area-cta__btns">
-        <a href={`${mlPrefix}/contact/`} class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-outline">☀️ ആദ്യം സമ്പാദ്യം കണക്കാക്കുക</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-primary">{pc.ctaContact}</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-outline">{pc.ctaCalc}</a>
       </div>
     </div>
   </section>

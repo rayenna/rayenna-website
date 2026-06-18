@@ -113,6 +113,34 @@ const ui = {
       calcCtaSub:
         'Enter your bill and home details — get system size, subsidy estimate, and payback in under 5 minutes. Free, no obligation.',
     },
+    pageConvert: {
+      services: {
+        heroMicro: 'MNRE-approved · ₹78,000 subsidy · Free site survey',
+        heroCalc: '☀️ Calculate My Savings',
+        heroContact: 'Book a Free Site Survey',
+        heroPhone: 'Or call',
+        ctaTitle: 'Not sure which service fits your home?',
+        ctaSub: 'Start with our free calculator — or book a site survey and we will recommend the right system.',
+        ctaCalc: '☀️ Try the Calculator',
+        ctaContact: 'Book a Free Site Survey',
+      },
+      city: {
+        heroMicro: 'Free site survey · PM Surya Ghar subsidy up to ₹78,000',
+        heroPhone: 'Or call',
+        ctaCalc: '☀️ Calculate Savings First',
+        ctaContact: 'Book a Free Site Survey',
+      },
+      contact: {
+        responseTime: 'We typically respond within 24 hours on business days.',
+        calcPrompt: 'Want numbers first?',
+        calcLink: 'Try the free solar calculator →',
+        formTrust: [
+          'MNRE-approved installer across Kerala',
+          'Free site survey with fixed quote',
+          'Subsidy paperwork handled end to end',
+        ],
+      },
+    },
     schema: {
       localBusinessDescription:
         'MNRE-approved solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.',
@@ -235,6 +263,34 @@ const ui = {
       calcCtaTitle: 'തീരുമാനമെടുക്കുന്നതിന് മുമ്പ് സമ്പാദ്യം കാണുക',
       calcCtaSub:
         'നിങ്ങളുടെ ബിൽ, വീടിന്റെ വിവരങ്ങൾ നൽകുക — 5 മിനിറ്റിനുള്ളിൽ സിസ്റ്റം വലുപ്പം, സബ്സിഡി, പേയ്ബാക്ക് കണക്ക്. സൗജന്യം, ബാധ്യതയില്ല.',
+    },
+    pageConvert: {
+      services: {
+        heroMicro: 'MNRE അംഗീകൃത · ₹78,000 സബ്സിഡി · സൗജന്യ സൈറ്റ് സർവേ',
+        heroCalc: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
+        heroContact: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
+        heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
+        ctaTitle: 'ഏത് സേവനമാണ് നിങ്ങളുടെ വീട്ടിന് അനുയോജ്യം?',
+        ctaSub: 'സൗജന്യ കാൽക്കുലേറ്റർ ഉപയോഗിച്ച് തുടങ്ങുക — അല്ലെങ്കിൽ സൈറ്റ് സർവേ ബുക്ക് ചെയ്ത് ശരിയായ സിസ്റ്റം ശുപാർശ നേടുക.',
+        ctaCalc: '☀️ കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക',
+        ctaContact: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
+      },
+      city: {
+        heroMicro: 'സൗജന്യ സൈറ്റ് സർവേ · PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ',
+        heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
+        ctaCalc: '☀️ ആദ്യം സമ്പാദ്യം കണക്കാക്കുക',
+        ctaContact: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
+      },
+      contact: {
+        responseTime: 'പ്രവൃത്തി ദിവസങ്ങളിൽ സാധാരണയായി 24 മണിക്കൂറിനുള്ളിൽ മറുപടി നൽകുന്നു.',
+        calcPrompt: 'ആദ്യം സംഖ്യകൾ കാണണോ?',
+        calcLink: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക →',
+        formTrust: [
+          'കേരളമെമ്പാടും MNRE അംഗീകൃത ഇൻസ്റ്റാളർ',
+          'ഫിക്സഡ് ക്വോട്ടോടെ സൗജന്യ സൈറ്റ് സർവേ',
+          'സബ്സിഡി രേഖകൾ പൂർണ്ണമായി കൈകാര്യം ചെയ്യുന്നു',
+        ],
+      },
     },
     schema: {
       localBusinessDescription:

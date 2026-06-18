@@ -67,6 +67,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ ധനകാര്യ ഓപ്ഷനുകൾ മോഡൽ ചെയ്യുക — സൗജന്യം</h3>
   <p>നിങ്ങളുടെ സാഹചര്യത്തിന് ഓരോ ഓപ്ഷന്റെയും ചെലവും സമ്പാദ്യവും ഞങ്ങളുടെ ടീം കൃത്യമായി കാണിക്കും.</p>
-  <a href="/ml/contact/" class="btn btn-primary">നിങ്ങളുടെ ധനകാര്യ മോഡൽ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">നിങ്ങളുടെ ധനകാര്യ മോഡൽ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

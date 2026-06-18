@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { OG } from '../i18n/og-images';
+import { useTranslations } from '../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = useTranslations('en');
+const pc = t.pageConvert.city;
 ---
 <Layout
   title="Solar Panel Installation in Kochi | MNRE Approved | Rayenna Energy"
@@ -20,6 +23,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <a href={`${base}/solar-calculator`} class="btn btn-primary">☀️ Calculate My Savings</a>
         <a href={`${base}/contact`} class="btn btn-outline-light">Get a Free Quote →</a>
       </div>
+      <p class="area-hero__micro">{pc.heroMicro}</p>
+      <p class="area-hero__phone">{pc.heroPhone} <a href="tel:+917907369304" data-analytics-location="city_hero">+91 7907 369 304</a></p>
     </div>
   </section>
 
@@ -127,8 +132,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p>Get a no-obligation site survey from our Kochi team. We'll assess your roof, calculate your potential savings, and walk you through the subsidy process — all for free.</p>
       </div>
       <div class="area-cta__btns">
-        <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Survey</a>
-        <a href={`${base}/solar-calculator`} class="btn btn-outline">☀️ Calculate Savings First</a>
+        <a href={`${base}/contact`} class="btn btn-primary">{pc.ctaContact}</a>
+        <a href={`${base}/solar-calculator`} class="btn btn-outline">{pc.ctaCalc}</a>
       </div>
     </div>
   </section>
@@ -167,7 +172,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: rgba(255,255,255,0.75); max-width: 540px; line-height: 1.75; margin-bottom: 32px;
 }
-.area-hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.area-hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+.area-hero__micro {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 8px;
+}
+.area-hero__phone {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+.area-hero__phone a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
 .btn-outline-light {
   border: 2px solid rgba(255,255,255,0.7); color: #fff;
   padding: 13px 28px; border-radius: 50px;

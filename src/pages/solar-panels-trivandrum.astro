@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { OG } from '../i18n/og-images';
+import { useTranslations } from '../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = useTranslations('en');
+const pc = t.pageConvert.city;
 ---
 <Layout
   title="Solar Panel Installation in Trivandrum | Rayenna Energy Kerala"
@@ -20,6 +23,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <a href={`${base}/solar-calculator`} class="btn btn-primary">☀️ Calculate My Savings</a>
         <a href={`${base}/contact`} class="btn btn-outline-light">Book a Free Survey →</a>
       </div>
+      <p class="area-hero__micro">{pc.heroMicro}</p>
+      <p class="area-hero__phone">{pc.heroPhone} <a href="tel:+917907369304" data-analytics-location="city_hero">+91 7907 369 304</a></p>
     </div>
   </section>
 
@@ -123,8 +128,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p>Our team visits Thiruvananthapuram regularly. Contact us to schedule a free assessment and receive a site-specific savings estimate with no obligation.</p>
       </div>
       <div class="area-cta__btns">
-        <a href={`${base}/contact`} class="btn btn-primary">Book Free Survey</a>
-        <a href={`${base}/solar-calculator`} class="btn btn-outline">☀️ Calculate First</a>
+        <a href={`${base}/contact`} class="btn btn-primary">{pc.ctaContact}</a>
+        <a href={`${base}/solar-calculator`} class="btn btn-outline">{pc.ctaCalc}</a>
       </div>
     </div>
   </section>

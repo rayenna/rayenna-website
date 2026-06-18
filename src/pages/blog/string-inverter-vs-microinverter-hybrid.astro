@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'String Inverter vs Microinverter vs Hybrid Inverter: Which Is Right for You?', date: 'Updated 7 June 2026', category: 'Buying Guide', readTime: '4 min read', author: 'Rayenna Energy Team' };
 ---
@@ -16,7 +20,7 @@ const post = { title: 'String Inverter vs Microinverter vs Hybrid Inverter: Whic
   <section style="padding:var(--section-padding); background:var(--color-light)">
     <div class="container post-layout">
       <article class="post-content">
-        <p class="post-updated-note"><strong>Updated 7 June 2026:</strong> Prices, subsidy rates, and regulatory references reviewed for current Kerala requirements.</p>
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">The inverter is the brain of your solar system — it converts the DC electricity your panels generate into the AC electricity your home uses. Choosing the right type makes a real difference to performance, especially in Kerala's conditions.</p>
         <h2>String Inverters — The Standard Choice</h2>
         <p>A string inverter connects all your panels in a series and converts their combined output in one central unit. It is the most common and cost-effective option. Best for rooftops with good, unobstructed south-facing space and minimal shading. The catch: if one panel underperforms due to shade or dust, it can drag down the output of the entire string.</p>
@@ -39,9 +43,15 @@ const post = { title: 'String Inverter vs Microinverter vs Hybrid Inverter: Whic
         <div class="post-cta">
           <h3>Get the Right Inverter for Your Roof</h3>
           <p>Book a free site survey and our engineers will recommend the best inverter type after assessing your specific conditions.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Book Free Site Survey →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Book Free Site Survey →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
+
       <aside class="post-sidebar">
         <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
         <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/monocrystalline-vs-polycrystalline-kerala`}>Panel Types Compared →</a></li><li><a href={`${base}/blog/on-grid-vs-off-grid-solar-kerala`}>On-Grid vs Off-Grid →</a></li><li><a href={`${base}/blog/solar-panel-warranty-explained`}>Warranty Guide →</a></li></ul></div>
@@ -50,15 +60,9 @@ const post = { title: 'String Inverter vs Microinverter vs Hybrid Inverter: Whic
     </div>
   </section>
   <!-- ===== CALCULATOR CTA ===== -->
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your solar savings</p>
-        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+
+  <BlogPostEndCta />
+
 
 
 </Layout>

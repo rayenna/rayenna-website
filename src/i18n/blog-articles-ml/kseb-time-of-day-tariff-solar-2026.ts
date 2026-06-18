@@ -63,6 +63,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ലോഡ്-അവബോധമുള്ള സോളാർ ഡിസൈൻ</h3>
   <p>റയെന്ന എനർജി tariff rules evolve ആകുമ്പോൾ system valuable- ആയി നിൽക്കാൻ sizing ചെയ്യുന്നു.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

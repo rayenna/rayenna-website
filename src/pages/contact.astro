@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import OfficeMapSection from '../components/OfficeMapSection.astro';
 import { OG } from '../i18n/og-images';
+import { useTranslations } from '../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = useTranslations('en');
+const pc = t.pageConvert.contact;
 ---
 <Layout title="Contact Rayenna Energy | Free Solar Consultation in Kochi, Kerala" description="Contact Rayenna Energy for a free solar consultation in Kochi, Kerala. Call +91 7907 369 304, email, or fill the form and we'll get back to you within 24 hours." ogImage={OG.contact}>
 
@@ -62,6 +65,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <span class="section-tag">Send a Message</span>
           <h2 class="section-title">Let's connect and<br /><span>power your world</span></h2>
           <p>Please do not hesitate to contact us if you are interested in exploring solar energy solutions or have any concerns. We take delight in providing tailored solutions and reliable services that ensure a seamless experience from start to finish.</p>
+          <p class="form-col__response">{pc.responseTime}</p>
+          <p class="form-col__calc-link"><span>{pc.calcPrompt}</span> <a href={`${base}/solar-calculator/`}>{pc.calcLink}</a></p>
+          <ul class="form-col__trust" aria-label="Why contact Rayenna">
+            {pc.formTrust.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
           <div class="prefill-note" id="prefill-note" style="display:none"></div>
         </div>
 
@@ -330,6 +340,45 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   color: var(--color-text-muted);
   line-height: 1.85;
   font-size: 0.95rem;
+}
+.form-col__response {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+.form-col__calc-link {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+.form-col__calc-link a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.form-col__calc-link a:hover { text-decoration: underline; }
+.form-col__trust {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-col__trust li {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+.form-col__trust li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
 }
 .prefill-note {
   margin-top: 16px;

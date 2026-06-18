@@ -62,6 +62,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ഇന്നത്തെ സബ്സിഡി നിലനിർത്തുക</h3>
   <p>റയെന്ന എനർജി സൈറ്റ് സർവേ, രൂപകൽപ്പന, MNRE, KSEB — സുതാര്യ വില, സമ്മർദ്ദമില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

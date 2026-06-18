@@ -83,7 +83,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>വ്യക്തിഗത സമ്പാദ്യ വിശകലനം നേടുക</h3>
   <p>ഓരോ വീടും വ്യത്യസ്തമാണ്. നിങ്ങളുടെ യഥാർത്ഥ ബിൽ, മേൽക്കൂര, സ്ഥലം അനുസരിച്ച് കൃത്യമായ സമ്പാദ്യം ഞങ്ങളുടെ ടീം കണക്കാക്കും — പൂർണ്ണ സൗജന്യം.</p>
-  <a href="/ml/contact/" class="btn btn-primary">എന്റെ സൗജന്യ വിശകലനം നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">എന്റെ സൗജന്യ വിശകലനം നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

@@ -64,6 +64,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>സൊസൈറ്റി സോളാർ ആലോചിക്കുന്നുണ്ടോ?</h3>
   <p>റയെന്ന എനർജി കേരള സൊസൈറ്റികൾക്ക് നിയമാനുസരണ രൂപകൽപ്പന — കോമൺ-ഏരിയ മുതൽ VNM-റെഡി ലേഔട്ട് വരെ.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

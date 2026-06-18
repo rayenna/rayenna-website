@@ -50,7 +50,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>പേപ്പർവർക്ക് ഞങ്ങൾ കൈകാര്യം ചെയ്യട്ടെ</h3>
   <p>റയെന്ന നിങ്ങളുടെ മുഴുവൻ നെറ്റ് മീറ്ററിംഗ് അപേക്ഷയും കൈകാര്യം ചെയ്യുന്നു — പോർട്ടൽ രജിസ്ട്രേഷൻ മുതൽ KSEB അനുമതി, കമ്മിഷനിംഗ് വരെ.</p>
-  <a href="/ml/contact/" class="btn btn-primary">അപേക്ഷ ആരംഭിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">അപേക്ഷ ആരംഭിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

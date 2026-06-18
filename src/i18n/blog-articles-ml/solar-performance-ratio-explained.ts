@@ -62,6 +62,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ഞങ്ങളുടെ സിസ്റ്റം ഡിസൈൻ സമീപനത്തെക്കുറിച്ച് ചോദിക്കുക</h3>
   <p>സൈൻ ചെയ്യുന്നതിന് മുമ്പ് യഥാർത്ഥമായ PR കണക്കുകൂടി ഉള്ള പൂർണ്ണ ജനറേഷൻ പ്രൊജക്ഷനുകൾ ഞങ്ങൾ നൽകുന്നു.</p>
-  <a href="/ml/contact/" class="btn btn-primary">വിശദമായ പ്രൊപ്പോസൽ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">വിശദമായ പ്രൊപ്പോസൽ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

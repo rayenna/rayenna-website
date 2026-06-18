@@ -51,7 +51,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>എല്ലാ റയെന്ന ഇൻസ്റ്റാളേഷനുകളിലും പൂർണ്ണ വാറന്റി ഡോക്യുമെന്റേഷൻ</h3>
   <p>ഒപ്പിടുന്നതിന് മുമ്പ് തന്നെ ഓരോ ഘടകത്തിനും വ്യക്തമായ എഴുത്ത് വാറന്റി നിബന്ധനകൾ ഞങ്ങൾ നൽകുന്നു.</p>
-  <a href="/ml/contact/" class="btn btn-primary">വാറന്റി ഉള്ള ക്വോട്ട് നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">വാറന്റി ഉള്ള ക്വോട്ട് നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

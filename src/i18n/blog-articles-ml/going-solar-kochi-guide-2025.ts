@@ -67,6 +67,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>സൗജന്യ കൊച്ചി സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</h3>
   <p>ഞങ്ങളുടെ എഞ്ചിനീയർമാർ കൊച്ചിയിൽ അടിസ്ഥാനമാക്കിയിട്ടുണ്ട്; ദിവസങ്ങൾക്കുള്ളിൽ നിങ്ങളുടെ സ്വത്ത് സന്ദർശിക്കാം. ബാധ്യതയില്ല, സമ്മർദ്ദമില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സർവേ ബുക്ക് ചെയ്യുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സർവേ ബുക്ക് ചെയ്യുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

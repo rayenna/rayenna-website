@@ -49,7 +49,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ മേൽക്കൂരയ്ക്ക് ശരിയായ ഇൻവർട്ടർ നേടുക</h3>
   <p>സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക; നിങ്ങളുടെ പ്രത്യേക സാഹചര്യങ്ങൾ വിലയിരുത്തിയ ശേഷം ഞങ്ങളുടെ എഞ്ചിനീയർമാർ മികച്ച ഇൻവർട്ടർ തരം ശുപാർശ ചെയ്യും.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

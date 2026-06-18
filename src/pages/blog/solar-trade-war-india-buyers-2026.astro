@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: "Why Global Trade Wars Are Actually Good News for Kerala's Solar Buyers Right Now", date: '12 May 2026', category: 'Analysis', readTime: '5 min read', author: 'Rayenna Energy Team' };
@@ -20,6 +24,7 @@ const post = { title: "Why Global Trade Wars Are Actually Good News for Kerala's
     <div class="container post-layout">
 
       <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">The United States has imposed significant tariffs on solar imports from India. Supply chains are shifting. For someone in Kerala thinking about installing solar, this sounds alarming. It isn't. When you understand what is actually happening, the picture that emerges is one of the strongest arguments yet for going solar in Kerala right now.</p>
 
         <h2>What Is Happening Globally?</h2>
@@ -64,8 +69,13 @@ const post = { title: "Why Global Trade Wars Are Actually Good News for Kerala's
         <div class="post-cta">
           <h3>Take Advantage of Today's Favourable Market</h3>
           <p>Kerala's trusted MNRE-approved solar installer. Honest assessments. Real numbers. No pressure.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
 
       <aside class="post-sidebar">
@@ -92,15 +102,8 @@ const post = { title: "Why Global Trade Wars Are Actually Good News for Kerala's
     </div>
   </section>
 
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Calculate your solar savings</p>
-        <p class="calc-cta-card__sub">See exactly what a solar system will cost and save for your home — personalised in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+  <BlogPostEndCta />
+
 
 </Layout>
 <style>

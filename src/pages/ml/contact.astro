@@ -2,8 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import OfficeMapSection from '../../components/OfficeMapSection.astro';
 import { OG } from '../../i18n/og-images';
+import { useTranslations } from '../../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
+const t = useTranslations('ml');
+const pc = t.pageConvert.contact;
 ---
 <Layout lang="ml" title="ബന്ധപ്പെടുക | സൗജന്യ സോളാർ കൺസൾട്ടേഷൻ | റയെന്ന എനർജി" description="കേരളമെമ്പാടും സൗജന്യ സോളാർ കൺസൾട്ടേഷൻ. +91 7907 369 304 — ഫോൺ, ഇമെയിൽ അല്ലെങ്കിൽ ഫോം പൂരിപ്പിക്കുക. 24 മണിക്കൂറിനുള്ളിൽ മറുപടി." ogImage={OG.contact}>
 
@@ -63,6 +66,13 @@ const mlPrefix = '/ml';
           <span class="section-tag">സന്ദേശം അയയ്ക്കുക</span>
           <h2 class="section-title">നമുക്ക് സംസാരിക്കാം.<br /><span>നിങ്ങളുടെ ഊർജ്ജ ഭാവി ഇവിടെ തുടങ്ങുന്നു.</span></h2>
           <p>സോളാർ സംബന്ധിച്ച് എന്തെങ്കിലും ചോദ്യമുണ്ടോ? ഒരു ക്വോട്ട് വേണോ? അതോ ഏത് സിസ്റ്റം ശരി എന്ന് അറിയില്ലേ? — ഞങ്ങൾ ഇവിടെയുണ്ട്. തുടക്കം മുതൽ അവസാനം വരെ മികച്ച സേവനം ഉറപ്പ്.</p>
+          <p class="form-col__response">{pc.responseTime}</p>
+          <p class="form-col__calc-link"><span>{pc.calcPrompt}</span> <a href={`${mlPrefix}/solar-calculator/`}>{pc.calcLink}</a></p>
+          <ul class="form-col__trust" aria-label="എന്തുകൊണ്ട് റയെന്നയെ ബന്ധപ്പെടണം">
+            {pc.formTrust.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
           <div class="prefill-note" id="prefill-note" style="display:none"></div>
         </div>
 
@@ -331,6 +341,45 @@ const mlPrefix = '/ml';
   color: var(--color-text-muted);
   line-height: 1.85;
   font-size: 0.95rem;
+}
+.form-col__response {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+.form-col__calc-link {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+.form-col__calc-link a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.form-col__calc-link a:hover { text-decoration: underline; }
+.form-col__trust {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-col__trust li {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+.form-col__trust li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
 }
 .prefill-note {
   margin-top: 16px;

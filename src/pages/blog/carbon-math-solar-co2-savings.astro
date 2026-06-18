@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System Save Over 25 Years?', date: 'Updated 7 June 2026', category: 'Education', readTime: '4 min read', author: 'Rayenna Energy Team' };
 ---
@@ -16,7 +20,7 @@ const post = { title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System 
   <section style="padding:var(--section-padding); background:var(--color-light)">
     <div class="container post-layout">
       <article class="post-content">
-        <p class="post-updated-note"><strong>Updated 7 June 2026:</strong> Prices, subsidy rates, and regulatory references reviewed for current Kerala requirements.</p>
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">Most people go solar to save money. But the environmental impact is staggering — and worth understanding. Here is the actual carbon math for a Kerala household switching to solar.</p>
         <h2>Where India's Grid Electricity Comes From</h2>
         <p>India's electricity grid is still heavily dependent on coal-based thermal power. The national average emission factor is approximately 0.82 kg of CO₂ per kWh (unit). Every time you draw a unit of electricity from the KSEB grid, roughly 820 grams of CO₂ is released somewhere at a power plant.</p>
@@ -40,9 +44,15 @@ const post = { title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System 
         <div class="post-cta">
           <h3>Start Making Your Environmental Impact</h3>
           <p>Book a free consultation and find out how much CO₂ your household could avoid by switching to solar.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get Started Today →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get Started Today →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
+
       <aside class="post-sidebar">
         <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
         <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/solar-performance-ratio-explained`}>Performance Ratio →</a></li><li><a href={`${base}/blog/monsoon-solar-system-kerala`}>Solar in Monsoon →</a></li><li><a href={`${base}/blog/going-solar-kochi-guide-2025`}>Kochi Solar Guide →</a></li></ul></div>
@@ -51,15 +61,9 @@ const post = { title: 'The Carbon Math: How Much CO₂ Does a 5 kW Solar System 
     </div>
   </section>
   <!-- ===== CALCULATOR CTA ===== -->
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your solar savings</p>
-        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+
+  <BlogPostEndCta />
+
 
 
 </Layout>

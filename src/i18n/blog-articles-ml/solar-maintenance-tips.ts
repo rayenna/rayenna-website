@@ -72,7 +72,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>റയെന്ന എനർജി പരിപാലന സേവനം</h3>
   <p>ഞങ്ങളുടെ എല്ലാ ഇൻസ്റ്റാളേഷനുകൾക്കും — മറ്റുള്ളവർ ഇൻസ്റ്റാൾ ചെയ്ത സിസ്റ്റങ്ങൾക്കും — വാർഷിക പരിപാലന പ്ലാൻ ലഭ്യമാണ്. നിങ്ങളുടെ സോളാർ നിക്ഷേപം സംരക്ഷിക്കുക.</p>
-  <a href="/ml/contact/" class="btn btn-primary">പരിപാലനത്തെക്കുറിച്ച് അന്വേഷിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">പരിപാലനത്തെക്കുറിച്ച് അന്വേഷിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

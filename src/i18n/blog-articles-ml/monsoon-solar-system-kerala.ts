@@ -52,7 +52,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>മൺസൂൺ-സജ്ജ ഇൻസ്റ്റാളേഷനുകളെക്കുറിച്ച് ഞങ്ങളോട് ചോദിക്കുക</h3>
   <p>കേരളത്തിലെ മൺസൂൺ സാഹചര്യങ്ങൾക്ക് റയെന്ന എല്ലാ ഇൻസ്റ്റാളേഷനുകളിലും ശരിയായ എർത്തിംഗ്, മിന്നൽ സംരക്ഷണം, കാലാവസ്ഥാ പ്രതിരോധം ഉൾപ്പെടുന്നു.</p>
-  <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

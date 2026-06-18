@@ -60,6 +60,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>വീടും EV-യും ഒരുമിച്ച് size ചെയ്യുക</h3>
   <p>റയെന്ന എനർജി integrated systems — honest EV load modelling.</p>
-  <a href="/ml/solar-calculator/" class="btn btn-primary">കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/solar-calculator/" class="btn btn-primary">കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക →</a>
+    <a href="/ml/contact/" class="btn btn-cta-secondary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
+  </div>
 </div>`,
 };

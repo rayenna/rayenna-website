@@ -48,7 +48,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ കെട്ടിടം അർഹതയുണ്ടോ എന്ന് പരിശോധിക്കുക</h3>
   <p>സൗജന്യ വിലയിരുത്തൽ ബുക്ക് ചെയ്യുക; മേൽക്കൂര, ഉപയോഗ പ്രൊഫൈൽ, സാധ്യത എന്നിവ ഞങ്ങൾ വിലയിരുത്തും — നിങ്ങൾക്ക് ചെലവില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ വിലയിരുത്തൽ ബുക്ക് ചെയ്യുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ വിലയിരുത്തൽ ബുക്ക് ചെയ്യുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

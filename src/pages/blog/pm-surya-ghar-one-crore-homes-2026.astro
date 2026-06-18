@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'PM Surya Ghar Is Nearing One Crore Homes — Why 2026 May Be Your Last Best Year for ₹78,000 Subsidy', date: '25 May 2026', category: 'Government Schemes', readTime: '5 min read', author: 'Rayenna Energy Team' };
@@ -20,6 +24,7 @@ const post = { title: 'PM Surya Ghar Is Nearing One Crore Homes — Why 2026 May
     <div class="container post-layout">
 
       <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">When PM Surya Ghar: Muft Bijli Yojana launched, it promised rooftop solar and central subsidies for up to one crore Indian households. In FY26, the scheme crossed 31 lakh installations — and conversion from applicant to installed system improved sharply. For Kerala families still paying rising KSEB bills, the question is no longer <em>whether</em> solar works, but <em>how long</em> today's subsidy window stays fully open.</p>
 
         <h2>Where the Scheme Stands in 2026</h2>
@@ -58,8 +63,13 @@ const post = { title: 'PM Surya Ghar Is Nearing One Crore Homes — Why 2026 May
         <div class="post-cta">
           <h3>Lock In Today's Subsidy While It Lasts</h3>
           <p>Rayenna Energy handles site survey, system design, MNRE paperwork, and KSEB coordination across Kerala — transparent pricing, no pressure.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
 
       <aside class="post-sidebar">
@@ -86,15 +96,8 @@ const post = { title: 'PM Surya Ghar Is Nearing One Crore Homes — Why 2026 May
     </div>
   </section>
 
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your subsidy-adjusted price</p>
-        <p class="calc-cta-card__sub">Free Solar Calculator — system size, savings, and payback for your monthly bill.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+  <BlogPostEndCta />
+
 
 </Layout>
 <style>

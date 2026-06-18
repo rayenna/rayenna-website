@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // This is a sample post. In a real Astro site, you'd use
@@ -46,7 +50,7 @@ const post = {
     <div class="container post-layout">
 
       <article class="post-content">
-        <p class="post-updated-note"><strong>Updated 7 June 2026:</strong> Prices, subsidy rates, and regulatory references reviewed for current Kerala requirements.</p>
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">One of the first questions every homeowner asks when considering solar is: <strong>how much will it actually cost?</strong> The honest answer depends on several factors — but in this guide, we'll break it all down clearly so you can plan with confidence.</p>
 
         <h2>Average Solar System Costs in Kerala</h2>
@@ -103,7 +107,10 @@ const post = {
         <div class="post-cta">
           <h3>Get Your Free Solar Quote Today</h3>
           <p>Our experts will visit your site and give you an exact cost estimate within 48 hours.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Visit →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Visit →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
       </article>
 
@@ -133,15 +140,9 @@ const post = {
   </section>
 
   <!-- ===== CALCULATOR CTA ===== -->
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your solar savings</p>
-        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+
+  <BlogPostEndCta />
+
 
 
 </Layout>

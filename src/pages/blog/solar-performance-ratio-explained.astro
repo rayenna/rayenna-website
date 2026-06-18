@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: "What Is a Solar System's Performance Ratio — and Why It Matters More Than Efficiency Ratings", date: 'Updated 7 June 2026', category: 'Education', readTime: '4 min read', author: 'Rayenna Energy Team' };
 ---
@@ -16,7 +20,7 @@ const post = { title: "What Is a Solar System's Performance Ratio — and Why It
   <section style="padding:var(--section-padding); background:var(--color-light)">
     <div class="container post-layout">
       <article class="post-content">
-        <p class="post-updated-note"><strong>Updated 7 June 2026:</strong> Prices, subsidy rates, and regulatory references reviewed for current Kerala requirements.</p>
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">You will see solar panels advertised with efficiency ratings of 20%, 21%, 22%. But here is what most installers do not tell you: <strong>panel efficiency is measured in a laboratory under perfect conditions.</strong> What actually matters in Kerala's real weather is something called the Performance Ratio.</p>
         <h2>What Is Performance Ratio (PR)?</h2>
         <p>Performance Ratio is the measure of how efficiently your entire solar system converts available sunlight into usable electricity — accounting for all real-world losses. It is expressed as a percentage. PR = Actual energy output ÷ Theoretical maximum output. A system with a PR of 80% means that for every 100 units it theoretically could generate, it actually delivers 80 units to your home.</p>
@@ -46,9 +50,15 @@ const post = { title: "What Is a Solar System's Performance Ratio — and Why It
         <div class="post-cta">
           <h3>Ask Us About Our System Design Approach</h3>
           <p>We provide full generation projections with realistic PR calculations — before you sign, not after.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get a Detailed Proposal →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a Detailed Proposal →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
+
       <aside class="post-sidebar">
         <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
         <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/carbon-math-solar-co2-savings`}>Carbon Savings Math →</a></li><li><a href={`${base}/blog/monocrystalline-vs-polycrystalline-kerala`}>Panel Types →</a></li><li><a href={`${base}/blog/monsoon-solar-system-kerala`}>Monsoon & Solar →</a></li></ul></div>
@@ -57,15 +67,9 @@ const post = { title: "What Is a Solar System's Performance Ratio — and Why It
     </div>
   </section>
   <!-- ===== CALCULATOR CTA ===== -->
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your solar savings</p>
-        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+
+  <BlogPostEndCta />
+
 
 
 </Layout>

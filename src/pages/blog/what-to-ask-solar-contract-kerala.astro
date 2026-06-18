@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'What to Ask Before Signing a Solar Installation Contract in Kerala', date: 'Updated 7 June 2026', category: 'Buying Guide', readTime: '4 min read', author: 'Rayenna Energy Team' };
 ---
@@ -16,7 +20,7 @@ const post = { title: 'What to Ask Before Signing a Solar Installation Contract 
   <section style="padding:var(--section-padding); background:var(--color-light)">
     <div class="container post-layout">
       <article class="post-content">
-        <p class="post-updated-note"><strong>Updated 7 June 2026:</strong> Prices, subsidy rates, and regulatory references reviewed for current Kerala requirements.</p>
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">Going solar is a 25-year commitment. The company you choose matters enormously — and the contract you sign matters even more. Here are the questions every Kerala homeowner should ask before putting pen to paper.</p>
         <h2>1. Are You MNRE-Empanelled?</h2>
         <p>This is non-negotiable. Only vendors listed on the MNRE empanelled list can process the PM Surya Ghar subsidy. Ask for their registration number and verify it on pmsuryaghar.gov.in. If they cannot provide this, walk away.</p>
@@ -44,9 +48,15 @@ const post = { title: 'What to Ask Before Signing a Solar Installation Contract 
         <div class="post-cta">
           <h3>Talk to Rayenna — Every Question Has a Clear Answer</h3>
           <p>We welcome every question. Transparency is how we earn your trust before we earn your business.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Talk to Our Team →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Talk to Our Team →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
+
       <aside class="post-sidebar">
         <div class="sidebar-card"><h4>Get a Free Quote</h4><p>Talk to our solar experts. No obligation, no pressure.</p><a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a></div>
         <div class="sidebar-card"><h4>Related Articles</h4><ul class="sidebar-links"><li><a href={`${base}/blog/monocrystalline-vs-polycrystalline-kerala`}>Panel Types Compared →</a></li><li><a href={`${base}/blog/solar-panel-warranty-explained`}>Warranty Explained →</a></li><li><a href={`${base}/blog/string-inverter-vs-microinverter-hybrid`}>Inverter Types →</a></li></ul></div>
@@ -55,15 +65,9 @@ const post = { title: 'What to Ask Before Signing a Solar Installation Contract 
     </div>
   </section>
   <!-- ===== CALCULATOR CTA ===== -->
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; See your solar savings</p>
-        <p class="calc-cta-card__sub">Use our free calculator — get a personalised recommendation in under 5 minutes.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+
+  <BlogPostEndCta />
+
 
 
 </Layout>

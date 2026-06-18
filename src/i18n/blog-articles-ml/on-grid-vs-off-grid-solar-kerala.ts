@@ -66,7 +66,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ വീടിന് ഏത് സിസ്റ്റം യോജിക്കും എന്ന് ഉറപ്പില്ലേ?</h3>
   <p>സൗജന്യ കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യുക — സ്ഥലവും ഉപയോഗവും അനുസരിച്ച് ശരിയായ സെറ്റപ്പ് ഞങ്ങളുടെ വിദഗ്ധർ ശുപാർശ ചെയ്യും.</p>
-  <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

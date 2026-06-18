@@ -56,6 +56,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ പരിസ്ഥിതി സ്വാധീനം ആരംഭിക്കുക</h3>
   <p>സൗജന്യ കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്ത് സോളാറിലേക്ക് മാറി നിങ്ങളുടെ വീട് എത്ര CO₂ ഒഴിവാക്കാമെന്ന് അറിയുക.</p>
-  <a href="/ml/contact/" class="btn btn-primary">ഇന്ന് ആരംഭിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">ഇന്ന് ആരംഭിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

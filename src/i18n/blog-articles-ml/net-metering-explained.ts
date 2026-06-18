@@ -83,7 +83,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നെറ്റ് മീറ്ററിംഗുമായി സോളാർ വരുമാനം പരമാവധിയാക്കുക</h3>
   <p>റയെന്ന എനർജി ഞങ്ങൾ ചെയ്യുന്ന ഓരോ ഇൻസ്റ്റാളേഷനും KSEB-യുമായുള്ള പൂർണ്ണ നെറ്റ് മീറ്ററിംഗ് അപേക്ഷ കൈകാര്യം ചെയ്യുന്നു — അധിക ചെലവില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">ഇന്ന് തുടങ്ങുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">ഇന്ന് തുടങ്ങുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

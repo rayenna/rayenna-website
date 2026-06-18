@@ -62,6 +62,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>Panels-ന് മുമ്പ് AC load model</h3>
   <p>റയെന്ന actual appliances-ൽ നിന്ന് sizing.</p>
-  <a href="/ml/solar-calculator/" class="btn btn-primary">എന്റെ സമ്പാദ്യം കണക്കാക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/solar-calculator/" class="btn btn-primary">എന്റെ സമ്പാദ്യം കണക്കാക്കുക →</a>
+    <a href="/ml/contact/" class="btn btn-cta-secondary">സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക</a>
+  </div>
 </div>`,
 };

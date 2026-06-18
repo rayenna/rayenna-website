@@ -78,6 +78,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ഇന്നത്തെ അനുകൂല മാർക്കറ്റ് പ്രയോജനപ്പെടുത്തുക</h3>
   <p>കേരളത്തിന്റെ വിശ്വസനീയ MNRE-അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. സത്യമായ വിലനിർണ്ണയം. യഥാർത്ഥ സംഖ്യകൾ. സമ്മർദ്ദമില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

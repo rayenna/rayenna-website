@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { OG } from '../i18n/og-images';
+import { useTranslations } from '../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = useTranslations('en');
+const pc = t.pageConvert.services;
 ---
 <Layout title="Solar Panel Installation Services in Kerala | Domestic & Commercial | Rayenna Energy" description="Rayenna Energy provides domestic solar, commercial solar, and solar consultation services across Kerala. MNRE-approved installer in Kochi. PM Surya Ghar subsidy up to ₹78,000. Free site survey." ogImage={OG.services}>
 
@@ -12,7 +15,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">What We Offer</p>
       <h1 class="page-hero__title">Solar Installation Services<br />in Kerala</h1>
-      <p class="page-hero__sub">Customised solar solutions for every home, business, and ambition.</p>
+      <p class="page-hero__sub">Customised solar solutions for every home, business, and ambition — MNRE-approved installation with subsidy support.</p>
+      <div class="page-hero__ctas">
+        <a href={`${base}/solar-calculator/`} class="btn btn-primary">{pc.heroCalc}</a>
+        <a href={`${base}/contact/`} class="btn btn-outline-light">{pc.heroContact}</a>
+      </div>
+      <p class="page-hero__micro">{pc.heroMicro}</p>
+      <p class="page-hero__phone">{pc.heroPhone} <a href="tel:+917907369304" data-analytics-location="services_hero">+91 7907 369 304</a></p>
     </div>
   </section>
 
@@ -155,12 +164,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="cta-banner">
     <div class="container cta-banner__inner">
       <div class="cta-banner__content">
-        <h2>Ready to switch to solar energy?</h2>
-        <p>Contact us today to schedule a consultation and discover how Rayenna can transform your energy usage.</p>
+        <h2>{pc.ctaTitle}</h2>
+        <p>{pc.ctaSub}</p>
       </div>
       <div class="cta-banner__actions">
-        <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation</a>
-        <a href={`${base}/contact`} class="btn btn-outline-white">Call Us Now</a>
+        <a href={`${base}/solar-calculator/`} class="btn btn-primary">{pc.ctaCalc}</a>
+        <a href={`${base}/contact/`} class="btn btn-outline-white">{pc.ctaContact}</a>
       </div>
     </div>
   </section>
@@ -226,8 +235,45 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 .page-hero__sub {
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: rgba(255,255,255,0.72);
-  max-width: 480px;
+  max-width: 520px;
   line-height: 1.7;
+  margin-bottom: 20px;
+}
+.page-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.page-hero__micro {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 8px;
+}
+.page-hero__phone {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+.page-hero__phone a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.btn-outline-light {
+  border: 2px solid rgba(255,255,255,0.75);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.btn-outline-light:hover {
+  background: rgba(255,255,255,0.12);
 }
 
 /* ===== INTRO ===== */

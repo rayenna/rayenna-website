@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
 import { ogForBlogSlug } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const post = { title: 'Virtual Net Metering in Kerala: Can Apartments and Housing Societies Finally Share One Solar System?', date: '22 May 2026', category: 'Government Schemes', readTime: '5 min read', author: 'Rayenna Energy Team' };
@@ -20,6 +24,7 @@ const post = { title: 'Virtual Net Metering in Kerala: Can Apartments and Housin
     <div class="container post-layout">
 
       <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
         <p class="post-lead">For years, Kerala apartment owners heard the same answer: solar is difficult because each flat has its own KSEB meter. The KSERC (Renewable Energy and Related Matters) Regulations, 2025 change that story — by formally recognising <strong>Virtual Net Metering (VNM)</strong>, alongside conventional net metering and emerging concepts like virtual power plants.</p>
 
         <h2>What Is Virtual Net Metering?</h2>
@@ -59,8 +64,13 @@ const post = { title: 'Virtual Net Metering in Kerala: Can Apartments and Housin
         <div class="post-cta">
           <h3>Planning Society Solar? Start With a Feasibility Conversation</h3>
           <p>Rayenna Energy advises housing societies across Kerala on regulatory-compliant designs — from common-area pilots to full VNM-ready layouts.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Get a Free Consultation →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
         </div>
+      <BlogPostResourceLinks />
+
       </article>
 
       <aside class="post-sidebar">
@@ -87,15 +97,8 @@ const post = { title: 'Virtual Net Metering in Kerala: Can Apartments and Housin
     </div>
   </section>
 
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading">&#x2600;&#xFE0F; Society or single home?</p>
-        <p class="calc-cta-card__sub">Use our calculator for individual homes — then talk to us for multi-meter and society projects.</p>
-        <a href={`${base}/solar-calculator`} class="calc-cta-card__btn">Calculate My Savings →</a>
-      </div>
-    </div>
-  </section>
+  <BlogPostEndCta />
+
 
 </Layout>
 <style>

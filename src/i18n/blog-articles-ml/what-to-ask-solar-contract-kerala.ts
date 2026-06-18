@@ -54,9 +54,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>റയെന്നയോട് സംസാരിക്കുക — എല്ലാ ചോദ്യത്തിനും വ്യക്തമായ ഉത്തരം</h3>
   <p>എല്ലാ ചോദ്യങ്ങളും ഞങ്ങൾ സ്വാഗതം ചെയ്യുന്നു. വിശ്വാസം നേടുന്നതാണ് ഞങ്ങളുടെ ബിസിനസ് നേടുന്നതിന് മുമ്പ്.</p>
-  <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
-
-
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">ഞങ്ങളുടെ ടീമുമായി സംസാരിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

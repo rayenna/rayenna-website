@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BlogPostEndCta from '../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../components/BlogUpdatedNote.astro';
 import type { BlogArticleMl } from '../i18n/blog-ml.ts';
 import { blogCategoriesMl, blogUiMl, categoryLabel } from '../i18n/blog-ml.ts';
 import { ogForBlogSlug } from '../i18n/og-images';
@@ -48,7 +51,11 @@ const blogHref = `${mlPrefix}/blog/`;
 
   <section style="padding:var(--section-padding); background:var(--color-light)">
     <div class="container post-layout">
-      <article class="post-content" set:html={article.content} />
+      <article class="post-content">
+        <BlogUpdatedNote date={article.date} lang="ml" />
+        <div class="post-content__body" set:html={article.content} />
+        <BlogPostResourceLinks lang="ml" />
+      </article>
 
       <aside class="post-sidebar">
         <div class="sidebar-card">
@@ -75,15 +82,7 @@ const blogHref = `${mlPrefix}/blog/`;
     </div>
   </section>
 
-  <section style="padding:0 0 56px; background:var(--color-light)">
-    <div class="container">
-      <div class="calc-cta-card">
-        <p class="calc-cta-card__heading" set:html={blogUiMl.calcHeading} />
-        <p class="calc-cta-card__sub">{blogUiMl.calcSub}</p>
-        <a href={`${mlPrefix}/solar-calculator/`} class="calc-cta-card__btn">{blogUiMl.calcBtn}</a>
-      </div>
-    </div>
-  </section>
+  <BlogPostEndCta lang="ml" />
 </Layout>
 
 <style is:global>
@@ -122,6 +121,42 @@ const blogHref = `${mlPrefix}/blog/`;
   .post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
   .post-cta .btn.btn-primary,
   .post-cta .btn.btn-primary:hover { color: var(--color-white); }
+  .post-cta__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .btn-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  @media (min-width: 520px) {
+    .post-cta__actions {
+      flex-direction: row;
+      justify-content: center;
+      max-width: none;
+    }
+  }
+  .post-content__body :global(p) { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+  .post-content__body :global(h2) { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
   .post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
   .sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
   .sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }

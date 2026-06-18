@@ -83,7 +83,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങളുടെ സബ്സിഡി അപേക്ഷ ഞങ്ങൾ കൈകാര്യം ചെയ്യാം</h3>
   <p>റയെന്ന എനർജി MNRE-എംപാനൽ വെണ്ടറാണ്. ഞങ്ങളുടെ ഉപഭോക്താക്കൾക്ക് PM സൂര്യ ഘർ അപേക്ഷ മുഴുവൻ പ്രക്രിയയും ഞങ്ങൾ ചെയ്യുന്നു — അധിക ചെലവില്ല.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

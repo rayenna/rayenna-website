@@ -60,6 +60,9 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>നിങ്ങൾ വിശ്വസിക്കാവുന്ന അനുയോജ്യ ക്വോട്ട്</h3>
   <p>റയെന്ന എനർജി MNRE-അംഗീകൃത, ALMM-യോഗ്യ ഉപകരണം ഉപയോഗിക്കുന്നു; കേരളം മുഴുവനും സബ്സിഡി പേപ്പർവർക്ക്.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ കൺസൾട്ടേഷൻ നേടുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>`,
 };

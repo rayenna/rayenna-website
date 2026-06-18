@@ -82,7 +82,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ഇന്ന് സൗജന്യ സോളാർ ക്വോട്ട് നേടുക</h3>
   <p>ഞങ്ങളുടെ വിദഗ്ധർ സൈറ്റ് സന്ദർശിച്ച് 48 മണിക്കൂറിനുള്ളിൽ കൃത്യമായ ചെലവ് കണക്ക് നൽകും.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ സൈറ്റ് സന്ദർശനം ബുക്ക് ചെയ്യുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സൗജന്യ സൈറ്റ് സന്ദർശനം ബുക്ക് ചെയ്യുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };

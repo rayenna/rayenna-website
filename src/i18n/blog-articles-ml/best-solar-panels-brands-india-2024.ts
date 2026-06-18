@@ -84,7 +84,10 @@ export const article: BlogArticleMl = {
 <div class="post-cta">
   <h3>ഏത് ബ്രാൻഡ് തിരഞ്ഞെടുക്കണമെന്ന് ഉറപ്പില്ലേ?</h3>
   <p>നിങ്ങളുടെ മേൽക്കൂര, ബജറ്റ്, ഉപഭോഗം അനുസരിച്ച് ശരിയായ പാനൽ ഞങ്ങളുടെ ടീം ശുപാർശ ചെയ്യും — സാക്ഷ്യപ്പെടുത്തിയ ടയർ 1 ബ്രാൻഡുകൾ മാത്രം.</p>
-  <a href="/ml/contact/" class="btn btn-primary">സോളാർ വിദഗ്ധനുമായി സംസാരിക്കുക →</a>
+  <div class="post-cta__actions">
+    <a href="/ml/contact/" class="btn btn-primary">സോളാർ വിദഗ്ധനുമായി സംസാരിക്കുക →</a>
+    <a href="/ml/solar-calculator/" class="btn btn-cta-secondary">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+  </div>
 </div>
 `,
 };
