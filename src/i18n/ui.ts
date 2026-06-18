@@ -119,8 +119,11 @@ const ui = {
         heroCalc: '☀️ Calculate My Savings',
         heroContact: 'Book a Free Site Survey',
         heroPhone: 'Or call',
-        ctaTitle: 'Not sure which service fits your home?',
-        ctaSub: 'Start with our free calculator — or book a site survey and we will recommend the right system.',
+        ctaTitle: 'Not sure which service is right for you?',
+        ctaSub:
+          '🏠 Homeowners — Start with our free calculator and get your system size, subsidy, and 25-year savings in 5 minutes.',
+        ctaSub2:
+          '🏢 Businesses & Consultations — Talk to our team directly. We\'ll understand your needs and recommend the right solution.',
         ctaCalc: '☀️ Try the Calculator',
         ctaContact: 'Book a Free Site Survey',
       },
