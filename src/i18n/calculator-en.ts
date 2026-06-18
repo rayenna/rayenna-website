@@ -115,6 +115,9 @@ export const calcEn = {
   reassuranceSlimSuffix: '— no obligation.',
   pageHeroSub:
     'See your system size, PM Surya Ghar subsidy, and 25-year savings in 5 minutes — free, no signup.',
+  commercialCalloutText:
+    '🏠 This calculator is built for residential homes in Kerala. For commercial solar —',
+  commercialCalloutBtn: 'Chat on WhatsApp',
   preTrust: [
     'MNRE Approved',
     'Up to ₹78,000 subsidy',

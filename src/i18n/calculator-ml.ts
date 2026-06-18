@@ -117,6 +117,9 @@ export const calcMl = {
   reassuranceSlimSuffix: '— ബാധ്യതയില്ല.',
   pageHeroSub:
     '5 മിനിറ്റിനുള്ളിൽ സിസ്റ്റം വലുപ്പം, PM സൂര്യ ഘർ സബ്സിഡി, 25 വർഷ സമ്പാദ്യം കാണുക — സൗജന്യം, സൈൻഅപ്പ് വേണ്ട.',
+  commercialCalloutText:
+    '🏠 ഈ കാൽക്കുലേറ്റർ കേരളത്തിലെ വീട്ടുപയോഗ മേൽക്കൂര സോളാറിനാണ്. കമർഷ്യൽ സോളാറിന് —',
+  commercialCalloutBtn: 'WhatsApp-ൽ ചാറ്റ് ചെയ്യുക',
   preTrust: [
     'MNRE അംഗീകാരം',
     '₹78,000 വരെ സബ്സിഡി',
