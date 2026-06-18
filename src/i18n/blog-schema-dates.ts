@@ -1,0 +1,32 @@
+/** ISO 8601 dates (YYYY-MM-DD) for BlogPosting JSON-LD, keyed by locale-neutral slug. */
+export type BlogSchemaDates = { published: string; modified: string };
+
+export const BLOG_SCHEMA_DATES: Record<string, BlogSchemaDates> = {
+  'kseb-time-of-day-tariff-solar-2026': { published: '2026-06-07', modified: '2026-06-07' },
+  'ev-solar-home-charging-kerala-2026': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-sizing-ac-load-kerala-2026': { published: '2026-06-07', modified: '2026-06-07' },
+  'almm-made-in-india-solar-panels-2026': { published: '2026-05-28', modified: '2026-05-28' },
+  'pm-surya-ghar-one-crore-homes-2026': { published: '2026-05-25', modified: '2026-05-25' },
+  'virtual-net-metering-kerala-2026': { published: '2026-05-22', modified: '2026-05-22' },
+  'kseb-net-metering-rules-2026': { published: '2026-05-15', modified: '2026-05-15' },
+  'solar-trade-war-india-buyers-2026': { published: '2026-05-12', modified: '2026-05-12' },
+  'solar-battery-storage-kerala-2026': { published: '2026-05-09', modified: '2026-05-09' },
+  'going-solar-kochi-guide-2025': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-loan-vs-subsidy-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-performance-ratio-explained': { published: '2026-06-07', modified: '2026-06-07' },
+  'carbon-math-solar-co2-savings': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-panel-warranty-explained': { published: '2026-06-07', modified: '2026-06-07' },
+  'monsoon-solar-system-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'string-inverter-vs-microinverter-hybrid': { published: '2026-06-07', modified: '2026-06-07' },
+  'what-to-ask-solar-contract-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'monocrystalline-vs-polycrystalline-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'apartments-solar-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'kseb-net-metering-guide-2025': { published: '2026-06-07', modified: '2026-06-07' },
+  'on-grid-vs-off-grid-solar-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'how-much-does-solar-cost-in-kerala': { published: '2026-06-07', modified: '2026-06-07' },
+  'pm-surya-ghar-subsidy-guide': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-vs-electricity-bill-comparison': { published: '2026-06-07', modified: '2026-06-07' },
+  'best-solar-panels-brands-india-2024': { published: '2026-06-07', modified: '2026-06-07' },
+  'solar-maintenance-tips': { published: '2026-06-07', modified: '2026-06-07' },
+  'net-metering-explained': { published: '2026-06-07', modified: '2026-06-07' },
+};

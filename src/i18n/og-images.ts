@@ -4,6 +4,10 @@ const SITE = 'https://rayennaenergy.com';
 export const OG = {
   default: `${SITE}/og/default.jpg`,
   home: `${SITE}/og/home.jpg`,
+  about: `${SITE}/og/home.jpg`,
+  services: `${SITE}/og/home.jpg`,
+  faqs: `${SITE}/og/blog.jpg`,
+  media: `${SITE}/og/home.jpg`,
   calculator: `${SITE}/og/calculator.jpg`,
   contact: `${SITE}/og/contact.jpg`,
   kochi: `${SITE}/og/kochi.jpg`,

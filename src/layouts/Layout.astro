@@ -5,7 +5,8 @@ import AnalyticsDelegate from '../components/AnalyticsDelegate.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import SolarNewsTicker from '../components/SolarNewsTicker.astro';
-import { OG } from '../i18n/og-images';
+import { OG, ogForBlogSlug } from '../i18n/og-images';
+import { BLOG_SCHEMA_DATES } from '../i18n/blog-schema-dates';
 import {
   getNavLinks,
   useTranslations,
@@ -20,7 +21,9 @@ const {
   title = 'Rayenna Energy — Solar Solutions in Kochi',
   description = 'Rayenna Energy is a leading provider of innovative solar energy solutions in Kochi, Kerala. Switch to solar and save on energy costs while reducing your carbon footprint.',
   ogImage = OG.default,
-  ogUpdatedTime,
+  ogUpdatedTime: ogUpdatedTimeProp,
+  articlePublishedTime: articlePublishedProp,
+  articleModifiedTime: articleModifiedProp,
   lang: langProp,
   canonical: canonicalProp,
   noindex = false,
@@ -43,6 +46,18 @@ const ogType = isBlogPost ? 'article' : 'website';
 const ogLocale = lang === 'ml' ? 'ml_IN' : 'en_IN';
 const pageLanguage = lang === 'ml' ? 'ml-IN' : 'en-IN';
 const neutralPath = stripLocale(canonicalURL.pathname);
+const blogSlug =
+  isBlogPost && neutralPath.startsWith('/blog/')
+    ? normalizePath(neutralPath).replace(/^\/blog\//, '')
+    : null;
+const blogSchemaDates = blogSlug ? BLOG_SCHEMA_DATES[blogSlug] : null;
+const articlePublishedTime = articlePublishedProp ?? blogSchemaDates?.published;
+const articleModifiedTime = articleModifiedProp ?? blogSchemaDates?.modified;
+const ogUpdatedTime = ogUpdatedTimeProp ?? articleModifiedTime;
+const resolvedOgImage =
+  isBlogPost && blogSlug && ogImage === OG.default ? ogForBlogSlug(blogSlug) : ogImage;
+const ogLocaleAlternate = lang === 'ml' ? 'en_IN' : 'ml_IN';
+const htmlLang = pageLanguage;
 const extraSchemaNodes = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
 const faviconSvgHref = `${base}/favicon.svg`;
 const favicon192Href = `${base}/favicon-192.png`;
@@ -91,7 +106,7 @@ const localBusinessLD = {
   "url": siteUrl,
   "telephone": "+917907369304",
   "email": "sales@rayenna.energy",
-  "description": "MNRE-approved solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.",
+  "description": t.schema.localBusinessDescription,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "No. 3329/52, Ray Bhavan, NH Bypass, Thykoodam",
@@ -161,7 +176,7 @@ const webPageLD = {
   },
   "primaryImageOfPage": {
     "@type": "ImageObject",
-    "url": ogImage,
+    "url": resolvedOgImage,
   },
   ...(breadcrumbLD
     ? {
@@ -182,8 +197,10 @@ const blogPostingLD = !isBlogPost
       "mainEntityOfPage": {
         "@id": `${canonicalURL.href}#webpage`,
       },
-      "image": [ogImage],
+      "image": [resolvedOgImage],
       "inLanguage": pageLanguage,
+      ...(articlePublishedTime ? { datePublished: articlePublishedTime } : {}),
+      ...(articleModifiedTime ? { dateModified: articleModifiedTime } : {}),
       "author": {
         "@type": "Organization",
         "name": lang === 'ml' ? 'റയെന്ന എനർജി ടീം' : 'Rayenna Energy Team',
@@ -212,7 +229,7 @@ function normalizePath(path: string): string {
 }
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={htmlLang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -236,20 +253,22 @@ function normalizePath(path: string): string {
   <meta property="og:type" content={ogType} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={resolvedOgImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content={canonicalURL.href} />
   <meta property="og:site_name" content="Rayenna Energy" />
   <meta property="og:locale" content={ogLocale} />
+  <meta property="og:locale:alternate" content={ogLocaleAlternate} />
   {ogUpdatedTime && <meta property="og:updated_time" content={ogUpdatedTime} />}
-  {ogUpdatedTime && <meta property="article:modified_time" content={ogUpdatedTime} />}
+  {articlePublishedTime && isBlogPost && <meta property="article:published_time" content={articlePublishedTime} />}
+  {ogUpdatedTime && isBlogPost && <meta property="article:modified_time" content={ogUpdatedTime} />}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image" content={resolvedOgImage} />
 
   <!-- Shared JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredDataLD)} />
@@ -623,13 +642,18 @@ function normalizePath(path: string): string {
   background: var(--color-primary);
   color: #fff;
 }
-html[lang="ml"] body.lang-ml {
+html[lang="ml"],
+html[lang="ml-IN"] body.lang-ml {
   font-family: 'Noto Sans Malayalam', var(--font-body), sans-serif;
 }
 html[lang="ml"] body.lang-ml .section-title,
 html[lang="ml"] body.lang-ml h1,
 html[lang="ml"] body.lang-ml h2,
-html[lang="ml"] body.lang-ml h3 {
+html[lang="ml"] body.lang-ml h3,
+html[lang="ml-IN"] body.lang-ml .section-title,
+html[lang="ml-IN"] body.lang-ml h1,
+html[lang="ml-IN"] body.lang-ml h2,
+html[lang="ml-IN"] body.lang-ml h3 {
   font-family: 'Noto Sans Malayalam', var(--font-heading), sans-serif;
 }
 .nav-link {

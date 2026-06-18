@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { OG } from '../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const categories = [
@@ -264,6 +265,7 @@ const faqPageSchema = {
 <Layout
   title="Solar Energy FAQs Kerala | Cost, Subsidy, KSEB Net Metering | Rayenna Energy"
   description="Everything you need to know about solar in Kerala — costs, PM Surya Ghar subsidy, KSEB net metering, installation, and maintenance. Answered by Rayenna Energy, Kochi."
+  ogImage={OG.faqs}
   schema={[faqPageSchema]}
 >
 

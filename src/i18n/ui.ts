@@ -99,6 +99,10 @@ const ui = {
       contactUs: 'Contact us',
     },
     langSwitcherAria: 'Choose language',
+    schema: {
+      localBusinessDescription:
+        'MNRE-approved solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.',
+    },
     images: {
       logoAlt: 'Rayenna Energy',
       mnreBadgeAlt: 'MNRE Approved Channel Partner — Govt of India',
@@ -204,6 +208,10 @@ const ui = {
       contactUs: 'ബന്ധപ്പെടുക',
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
+    schema: {
+      localBusinessDescription:
+        'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ സിസ്റ്റങ്ങൾ, PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ, സൗജന്യ സൈറ്റ് സർവേ.',
+    },
     images: {
       logoAlt: 'റയെന്ന എനർജി',
       mnreBadgeAlt: 'ഇന്ത്യാ ഗവൺമെന്റിന്റെ MNRE അംഗീകൃത ചാനൽ പങ്കാളി',

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { faqCategoriesMl as categories } from '../../i18n/faqs-ml';
+import { OG } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 const FAQ_COUNT_HINT = '6 വിഷയങ്ങളിൽ 48 ചോദ്യങ്ങൾ';
@@ -23,8 +24,9 @@ const faqPageSchema = {
 ---
 <Layout
   lang="ml"
-  title="സോളാർ ചോദ്യോത്തരങ്ങൾ കേരളം | റയെന്ന എനർജി"
-  description="കേരളത്തിലെ സോളാർ — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്, ഇൻസ്റ്റാളേഷൻ, പരിപാലനം."
+  title="സോളാർ ചോദ്യോത്തരങ്ങൾ കേരളം | ചെലവ്, സബ്സിഡി, KSEB | റയെന്ന എനർജി"
+  description="കേരളത്തിലെ സോളാർ സംബന്ധിച്ച എല്ലാം — ചെലവ്, PM സൂര്യ ഘർ സബ്സിഡി, KSEB നെറ്റ് മീറ്ററിംഗ്, ഇൻസ്റ്റാളേഷൻ, പരിപാലനം. കൊച്ചിയിലെ റയെന്ന എനർജി ഉത്തരം നൽകുന്നു."
+  ogImage={OG.faqs}
   schema={[faqPageSchema]}
 >
 

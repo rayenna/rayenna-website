@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import MediaGalleryLightbox from '../../components/MediaGalleryLightbox.astro';
 import { useTranslations } from '../../i18n/ui';
+import { OG } from '../../i18n/og-images';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://rayennaenergy.com';
@@ -172,8 +173,9 @@ const installCount = installations.length;
 ---
 <Layout
   lang="ml"
-  title="സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി | റയെന്ന എനർജി"
-  description="കേരളമെമ്പാടുമുള്ള പൂർത്തിയാക്കിയ സോളാർ ഇൻസ്റ്റാളേഷനുകൾ — ഫോട്ടോകളും വീഡിയോകളും."
+  title="സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി & വീഡിയോകൾ | റയെന്ന എനർജി കേരളം"
+  description="കൊച്ചി, എറണാകുളം, കേരളമെമ്പാടുമുള്ള റയെന്ന എനർജിയുടെ സോളാർ ഇൻസ്റ്റാളേഷൻ ഗാലറി — വീട്ടുപയോഗ, കമർഷ്യൽ പ്രോജക്ടുകൾ. ഇൻസ്റ്റാളേഷൻ വീഡിയോകളും ഉപഭോക്തൃ അഭിപ്രായങ്ങളും കാണുക."
+  ogImage={OG.media}
   schema={[imageGallerySchema]}
 >
 
