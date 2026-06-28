@@ -351,6 +351,8 @@
   padding: 16px 16px 0;
   line-height: 0;
   background: var(--color-navy-dark);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 .about-directors__photo-frame img {
   width: 100%;
