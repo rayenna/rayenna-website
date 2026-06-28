@@ -31,37 +31,41 @@ const teamStats = [
   <div class="about-page">
 
     <!-- ===== HERO ===== -->
-    <section class="about-hero">
-      <img src={`${base}/media/hero-copy.jpg`} alt="റയെന്ന എനർജി സോളാർ ഇൻസ്റ്റാളേഷൻ" class="about-hero__bg" width="1920" height="1080" />
-      <div class="about-hero__overlay"></div>
-      <div class="about-hero__inner">
-        <p class="eyebrow eyebrow-white">ഉത്തരവിത്തമുള്ള ഊർജ്ജ കമ്പനി</p>
-        <h1 class="about-hero__title">കേരളത്തിന്റെ സ്വന്തം<br /><em>സോളാർ</em> കമ്പനി.</h1>
-        <p class="about-hero__sub">മേൽക്കൂര തോറും ഊർജ്ജ വിപ്ലവം.</p>
-        <div class="about-hero__ctas">
-          <a href={`${mlPrefix}/services/`} class="about-hero__btn about-hero__btn--primary">ഞങ്ങളുടെ സേവനങ്ങൾ</a>
-          <a href={`${mlPrefix}/contact/`} class="about-hero__btn about-hero__btn--ghost">സൗജന്യ ക്വോട്ട് നേടുക</a>
+    <section class="page-hero">
+      <img src={`${base}/media/hero-copy.jpg`} alt="റയെന്ന എനർജി സോളാർ ഇൻസ്റ്റാളേഷൻ" class="page-hero__bg" width="1920" height="1080" />
+      <div class="page-hero__overlay"></div>
+      <div class="container page-hero__inner">
+        <p class="page-hero__eyebrow">ഉത്തരവിത്തമുള്ള ഊർജ്ജ കമ്പനി</p>
+        <h1 class="page-hero__title">കേരളത്തിന്റെ സ്വന്തം<br /><span>സോളാർ</span> കമ്പനി.</h1>
+        <p class="page-hero__sub">മേൽക്കൂര തോറും ഊർജ്ജ വിപ്ലവം.</p>
+        <div class="page-hero__ctas">
+          <a href={`${mlPrefix}/services/`} class="btn btn-primary">ഞങ്ങളുടെ സേവനങ്ങൾ</a>
+          <a href={`${mlPrefix}/contact/`} class="btn btn-outline-light">സൗജന്യ ക്വോട്ട് നേടുക</a>
         </div>
-        <div class="about-hero__badge">
+        <div class="page-hero__badge">
           <strong>MNRE അംഗീകൃത ചാനൽ പാർട്ണർ</strong>
           <span>ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ്</span>
         </div>
       </div>
     </section>
 
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
-
     <!-- ===== WHO WE ARE ===== -->
     <section class="about-intro">
-      <div class="about-intro__grid">
+      <div class="container about-intro__inner">
         <div class="about-intro__content">
-          <span class="eyebrow eyebrow-amber">ഞങ്ങൾ ആരാണ്</span>
-          <h2>നാളത്തെ ഊർജ്ജം. ഇന്നത്തെ മേൽക്കൂരയിൽ.</h2>
+          <span class="section-tag">ഞങ്ങൾ ആരാണ്</span>
+          <h2 class="section-title">നാളത്തെ ഊർജ്ജം. ഇന്നത്തെ മേൽക്കൂരയിൽ.</h2>
           <p>റയെന്ന എനർജി കേരളത്തിലെ ഉപഭോക്താക്കളെ ഊർജ്ജ സ്വതന്ത്രമാക്കുന്നതിനായി പ്രതിജ്ഞാബദ്ധമായ ഒരു സോളാർ കമ്പനിയാണ്. സുസ്ഥിരത, കാര്യക്ഷമത, താങ്ങാനാവുന്ന വില — ഈ മൂന്ന് തത്ത്വങ്ങൾ ഞങ്ങളുടെ ഓരോ ഇൻസ്റ്റാളേഷന്റെയും അടിത്തറയാണ്. ഒരു ഹരിത ഭാവി കെട്ടിപ്പടുക്കുക — അതാണ് ഞങ്ങളുടെ ദൗത്യം.</p>
           <p>സോളാറിലേക്ക് മാറുന്നത് വെറും ബിൽ കുറയ്ക്കൽ മാത്രമല്ല — അത് നിങ്ങളുടെ കുടുംബത്തിനും വരും തലമുറകൾക്കും ഒരു മുതൽക്കൂട്ടാണ്. ആ തീരുമാനം ശരിയാക്കാൻ ഞങ്ങളുടെ ടീമിന്റെ വർഷങ്ങളുടെ അനുഭവവും പ്രതിബദ്ധതയും നിങ്ങളുടെ കൂടെയുണ്ട്.</p>
           <div class="about-intro__badges">
-            <span class="about-intro__badge">MNRE അംഗീകൃത</span>
-            <span class="about-intro__badge">ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ്</span>
+            <div class="about-intro__badge">
+              <strong>MNRE</strong>
+              <span>അംഗീകൃത ചാനൽ പാർട്ണർ</span>
+            </div>
+            <div class="about-intro__badge">
+              <strong>ഇന്ത്യാ സർക്കാർ</strong>
+              <span>സർട്ടിഫൈഡ്</span>
+            </div>
           </div>
         </div>
         <div class="about-intro__media">
@@ -73,115 +77,99 @@ const teamStats = [
 
     <!-- ===== OUR MISSION ===== -->
     <section class="about-mission">
-      <div class="about-mission__header">
-        <span class="eyebrow eyebrow-white">ഞങ്ങളുടെ ദൗത്യം</span>
-        <h2>വിശ്വസനീയം. താങ്ങാനാവുന്നത്. ഇനി ആർക്കും അകലെയല്ല.</h2>
-        <p>ഞങ്ങളുടെ ലക്ഷ്യം വലുതാണ് — സോളാർ ഊർജ്ജം കേരളത്തിലെ ഓരോ ഉപഭോക്താവിനും എത്തിക്കുക; വിശ്വസനീയമായി, താങ്ങാനാവുന്ന വിലയിൽ, ഒരു വിട്ടുവീഴ്ചയുമില്ലാതെ.</p>
-        <p>ഓരോ ഇൻസ്റ്റാളേഷനും ഒരു വാഗ്ദാനമാണ് — മികച്ച ഗുണനിലവാരം, സമ്പൂർണ്ണ സുതാര്യത, ഇൻസ്റ്റാളേഷന് ശേഷവും നിലനിൽക്കുന്ന പിന്തുണ. നിങ്ങൾ തൃപ്തരാകുമ്പോൾ മാത്രമാണ് ഞങ്ങളുടെ ജോലി പൂർത്തിയാകുന്നത്.</p>
-      </div>
-      <div class="about-mission__pillars">
-        {missionPillars.map((p) => (
-          <div class="about-mission__pillar">
-            <div class="about-mission__pillar-icon" aria-hidden="true">{p.icon}</div>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </div>
-        ))}
+      <div class="container about-mission__inner">
+        <div class="about-mission__content">
+          <span class="section-tag">ഞങ്ങളുടെ ദൗത്യം</span>
+          <h2 class="section-title">വിശ്വസനീയം. താങ്ങാനാവുന്നത്. ഇനി ആർക്കും അകലെയല്ല.</h2>
+          <p>ഞങ്ങളുടെ ലക്ഷ്യം വലുതാണ് — സോളാർ ഊർജ്ജം കേരളത്തിലെ ഓരോ ഉപഭോക്താവിനും എത്തിക്കുക; വിശ്വസനീയമായി, താങ്ങാനാവുന്ന വിലയിൽ, ഒരു വിട്ടുവീഴ്ചയുമില്ലാതെ.</p>
+          <p>ഓരോ ഇൻസ്റ്റാളേഷനും ഒരു വാഗ്ദാനമാണ് — മികച്ച ഗുണനിലവാരം, സമ്പൂർണ്ണ സുതാര്യത, ഇൻസ്റ്റാളേഷന് ശേഷവും നിലനിൽക്കുന്ന പിന്തുണ. നിങ്ങൾ തൃപ്തരാകുമ്പോൾ മാത്രമാണ് ഞങ്ങളുടെ ജോലി പൂർത്തിയാകുന്നത്.</p>
+        </div>
+        <div class="about-mission__pillars">
+          {missionPillars.map((p) => (
+            <div class="about-mission__pillar">
+              <div class="about-mission__pillar-icon" aria-hidden="true">{p.icon}</div>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
 
     <!-- ===== OUR FOUNDERS ===== -->
     <section class="about-founders">
-      <div class="about-founders__header">
-        <span class="eyebrow eyebrow-amber">ഞങ്ങളുടെ സ്ഥാപകർ</span>
-        <h2>അനുഭവം കൊണ്ട് പണിത നേതൃത്വം</h2>
-        <p>നേതൃത്വമാണ് റയെന്നയുടെ ഏറ്റവും വലിയ സമ്പത്ത്. സമുദ്രയാത്ര, ഊർജ്ജം, വ്യവസായം — ഈ മൂന്ന് മേഖലകളിലെ ദശകങ്ങളുടെ അനുഭവം സഹ-സ്ഥാപകർ ഓരോ തീരുമാനത്തിലും പകർന്നുനൽകുന്നു. പശ്ചാത്തലത്തിൽ പൂരകം, ലക്ഷ്യത്തിൽ ഐക്യം — റയെന്ന നിർമ്മിച്ച അടിത്തറ അവർ തന്നെ.</p>
-      </div>
-
-      <div class="about-directors">
-        <div class="about-directors__copy">
-          <span class="eyebrow eyebrow-white">സഹ-സ്ഥാപകർ</span>
-          <h3>രണ്ട് കപ്പിതാന്മാർ.<br /><em>ഒരേ ദൃഷ്ടി.</em></h3>
-          <p>സമുദ്രയാത്രാ കമാൻഡ്, എഞ്ചിനീയറിംഗ് കൃത്യത, സംരംഭക മനോഭാവം — കേരളത്തിലെ ഓരോ മേൽക്കൂരയിലും സോളാർ സ്വാഭാവികമായ തിരഞ്ഞെടുപ്പാക്കുക എന്ന ഒരേ ലക്ഷ്യത്തിന് കീഴിൽ ഒന്നിച്ചു.</p>
-          <div class="about-directors__rule" aria-hidden="true"></div>
-          <ul class="about-directors__creds">
-            {directorCreds.map((item) => <li>{item}</li>)}
-          </ul>
+      <div class="container">
+        <div class="about-founders__header">
+          <span class="section-tag">ഞങ്ങളുടെ സ്ഥാപകർ</span>
+          <h2 class="section-title">അനുഭവം കൊണ്ട് പണിത നേതൃത്വം</h2>
+          <p>നേതൃത്വമാണ് റയെന്നയുടെ ഏറ്റവും വലിയ സമ്പത്ത്. സമുദ്രയാത്ര, ഊർജ്ജം, വ്യവസായം — ഈ മൂന്ന് മേഖലകളിലെ ദശകങ്ങളുടെ അനുഭവം സഹ-സ്ഥാപകർ ഓരോ തീരുമാനത്തിലും പകർന്നുനൽകുന്നു. പശ്ചാത്തലത്തിൽ പൂരകം, ലക്ഷ്യത്തിൽ ഐക്യം — റയെന്ന നിർമ്മിച്ച അടിത്തറ അവർ തന്നെ.</p>
         </div>
-        <div class="about-directors__photo">
-          <img
-            src={`${base}/media/Rayenna-Directors.jpeg`}
-            alt="Ganesh Venkitachalam, Capt. Arun Balakrishnan — റയെന്ന എനർജിയുടെ സഹ-സ്ഥാപകർ"
-            loading="lazy"
-          />
-          <div class="about-directors__names">
-            <div class="about-directors__name-card">
-              <strong>Ganesh Venkitachalam</strong>
-              <em>മാനേജിംഗ് ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
-              <span>Ex-Thermax · മാസ്റ്റർ മറൈനർ · ബെസ്റ്റ് മാസ്റ്റർ അവാർഡ്</span>
-            </div>
-            <div class="about-directors__name-card">
-              <strong>Capt. Arun Balakrishnan</strong>
-              <em>ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
-              <span>ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ് · 100+ മാസം കമാൻഡ്</span>
+
+        <div class="about-directors">
+          <div class="about-directors__copy">
+            <span class="section-tag">സഹ-സ്ഥാപകർ</span>
+            <h3>രണ്ട് കപ്പിതാന്മാർ.<br /><span>ഒരേ ദൃഷ്ടി.</span></h3>
+            <p>സമുദ്രയാത്രാ കമാൻഡ്, എഞ്ചിനീയറിംഗ് കൃത്യത, സംരംഭക മനോഭാവം — കേരളത്തിലെ ഓരോ മേൽക്കൂരയിലും സോളാർ സ്വാഭാവികമായ തിരഞ്ഞെടുപ്പാക്കുക എന്ന ഒരേ ലക്ഷ്യത്തിന് കീഴിൽ ഒന്നിച്ചു.</p>
+            <div class="about-directors__rule" aria-hidden="true"></div>
+            <ul class="about-directors__creds">
+              {directorCreds.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="about-directors__photo">
+            <img
+              src={`${base}/media/Rayenna-Directors.jpeg`}
+              alt="Ganesh Venkitachalam, Capt. Arun Balakrishnan — റയെന്ന എനർജിയുടെ സഹ-സ്ഥാപകർ"
+              loading="lazy"
+            />
+            <div class="about-directors__names">
+              <div class="about-directors__name-card">
+                <strong>Ganesh Venkitachalam</strong>
+                <em>മാനേജിംഗ് ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
+                <span>Ex-Thermax · മാസ്റ്റർ മറൈനർ · ബെസ്റ്റ് മാസ്റ്റർ അവാർഡ്</span>
+              </div>
+              <div class="about-directors__name-card">
+                <strong>Capt. Arun Balakrishnan</strong>
+                <em>ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
+                <span>ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ് · 100+ മാസം കമാൻഡ്</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="about-bio-grid">
-        <article class="about-bio-card">
-          <img
-            class="about-bio-card__avatar"
-            src={`${base}/Ganesh_V2.png`}
-            alt=""
-            width="56"
-            height="56"
-            loading="lazy"
-          />
-          <div class="about-bio-card__body">
-            <p class="about-bio-card__name">Ganesh Venkitachalam</p>
-            <em class="about-bio-card__role">മാനേജിംഗ് ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
-            <p class="about-bio-card__bio">ഗണേഷ് തന്റെ കരിയർ Thermax-ൽ പ്രോജക്റ്റ് എഞ്ചിനീയറായി ആരംഭിച്ചു — HVAC സിസ്റ്റങ്ങളിൽ വിദഗ്ധൻ. പിന്നീട് മർച്ചന്റ് നേവിയിലേക്ക്. 23 വർഷത്തെ കപ്പൽയാത്രാ അനുഭവത്തിൽ മാസ്റ്ററായി അമൂല്യമായ നേതൃത്വ കഴിവുകൾ വികസിപ്പിച്ചു; ബെസ്റ്റ് മാസ്റ്റർ ബഹുമതികൾ — മികവിനോടുള്ള അചലമായ പ്രതിബദ്ധതയുടെ തെളിവ്.</p>
-          </div>
-        </article>
-        <article class="about-bio-card">
-          <img
-            class="about-bio-card__avatar"
-            src={`${base}/Arun%20Balakrishnan.png`}
-            alt=""
-            width="56"
-            height="56"
-            loading="lazy"
-          />
-          <div class="about-bio-card__body">
-            <p class="about-bio-card__name">Capt. Arun Balakrishnan</p>
-            <em class="about-bio-card__role">ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
-            <p class="about-bio-card__bio">ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ് മാസ്റ്റർ മറൈനർ — ആഗോള കടലുകളിൽ ബൾക്ക് കാരിയറുകളിൽ 100+ മാസം കമാൻഡ്. അരുണ്‍ അപൂർവ്വമായ പ്രവർത്തന കൃത്യതയും സമുദ്രയാത്രാ വിദഗ്ധതയും നൽകുന്നു. ആഗോള ഷിപ്പിംഗ് അറിവ് കമ്പനിയുടെ ലോജിസ്റ്റിക്സ് തന്ത്രത്തിന് അമൂല്യമായ നാവിഗേറ്ററാക്കുന്നു.</p>
-          </div>
-        </article>
+        <div class="about-bio-grid">
+          <article class="about-bio-card">
+            <img class="about-bio-card__avatar" src={`${base}/Ganesh_V2.png`} alt="" width="64" height="64" loading="lazy" />
+            <div>
+              <p class="about-bio-card__name">Ganesh Venkitachalam</p>
+              <em class="about-bio-card__role">മാനേജിംഗ് ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
+              <p class="about-bio-card__bio">ഗണേഷ് തന്റെ കരിയർ Thermax-ൽ പ്രോജക്റ്റ് എഞ്ചിനീയറായി ആരംഭിച്ചു — HVAC സിസ്റ്റങ്ങളിൽ വിദഗ്ധൻ. പിന്നീട് മർച്ചന്റ് നേവിയിലേക്ക്. 23 വർഷത്തെ കപ്പൽയാത്രാ അനുഭവത്തിൽ മാസ്റ്ററായി അമൂല്യമായ നേതൃത്വ കഴിവുകൾ വികസിപ്പിച്ചു; ബെസ്റ്റ് മാസ്റ്റർ ബഹുമതികൾ — മികവിനോടുള്ള അചലമായ പ്രതിബദ്ധതയുടെ തെളിവ്.</p>
+            </div>
+          </article>
+          <article class="about-bio-card">
+            <img class="about-bio-card__avatar" src={`${base}/Arun%20Balakrishnan.png`} alt="" width="64" height="64" loading="lazy" />
+            <div>
+              <p class="about-bio-card__name">Capt. Arun Balakrishnan</p>
+              <em class="about-bio-card__role">ഡയറക്ടർ &amp; സഹ-സ്ഥാപകൻ</em>
+              <p class="about-bio-card__bio">ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ് മാസ്റ്റർ മറൈനർ — ആഗോള കടലുകളിൽ ബൾക്ക് കാരിയറുകളിൽ 100+ മാസം കമാൻഡ്. അരുണ്‍ അപൂർവ്വമായ പ്രവർത്തന കൃത്യതയും സമുദ്രയാത്രാ വിദഗ്ധതയും നൽകുന്നു. ആഗോള ഷിപ്പിംഗ് അറിവ് കമ്പനിയുടെ ലോജിസ്റ്റിക്സ് തന്ത്രത്തിന് അമൂല്യമായ നാവിഗേറ്ററാക്കുന്നു.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
-
     <!-- ===== OUR TEAM ===== -->
     <section class="about-team">
-      <div class="about-team__header">
-        <span class="eyebrow eyebrow-amber">ഞങ്ങളുടെ ടീം</span>
-        <h2>ഓരോ ഇൻസ്റ്റാളേഷന്റെയും പിന്നിലെ വിദഗ്ധ കൈകൾ</h2>
-        <p>ഒരു സോളാർ സിസ്റ്റം നല്ലതാകുന്നത് പാനൽ കൊണ്ടല്ല — അത് സ്ഥാപിക്കുന്ന ആളുകൾ കൊണ്ടാണ്. റയെന്നയുടെ എഞ്ചിനീയർമാരും ടെക്നീഷ്യന്മാരും ഉപഭോക്തൃ ടീമും — ഒരേ ലക്ഷ്യത്തോടെ പ്രവർത്തിക്കുന്നവർ. ഓരോ ഇൻസ്റ്റാളേഷനും ഒരു വ്യക്തിയുടെ ജീവിതം മാറ്റുന്നു എന്ന ബോധ്യമാണ് ഞങ്ങളുടെ ടീമിനെ മുന്നോട്ട് നയിക്കുന്നത്.</p>
-        <p>സാങ്കേതിക മേഖലയിലെ നിരന്തര പരിശീലനവും പുതിയ അറിവും ഏറ്റെടുത്ത് ഞങ്ങളുടെ ടീം സോളാർ ഇൻഡസ്ട്രിയിൽ എപ്പോഴും ഒരു ചുവട് മുന്നിലാണ് — നിങ്ങൾക്ക് ഏറ്റവും മികച്ചത് മാത്രം.</p>
-      </div>
-      <div class="about-team__photo-wrap">
-        <img
-          src={`${base}/media/Rayenna-Core-Team.jpeg`}
-          alt="റയെന്ന എനർജി കോർ ടീം"
-          loading="lazy"
-        />
-        <span class="about-team__photo-tag">റയെന്ന കോർ ടീം · 2025</span>
+      <div class="container">
+        <div class="about-team__header">
+          <span class="section-tag">ഞങ്ങളുടെ ടീം</span>
+          <h2 class="section-title">ഓരോ ഇൻസ്റ്റാളേഷന്റെയും പിന്നിലെ വിദഗ്ധ കൈകൾ</h2>
+          <p>ഒരു സോളാർ സിസ്റ്റം നല്ലതാകുന്നത് പാനൽ കൊണ്ടല്ല — അത് സ്ഥാപിക്കുന്ന ആളുകൾ കൊണ്ടാണ്. റയെന്നയുടെ എഞ്ചിനീയർമാരും ടെക്നീഷ്യന്മാരും ഉപഭോക്തൃ ടീമും — ഒരേ ലക്ഷ്യത്തോടെ പ്രവർത്തിക്കുന്നവർ. ഓരോ ഇൻസ്റ്റാളേഷനും ഒരു വ്യക്തിയുടെ ജീവിതം മാറ്റുന്നു എന്ന ബോധ്യമാണ് ഞങ്ങളുടെ ടീമിനെ മുന്നോട്ട് നയിക്കുന്നത്.</p>
+          <p>സാങ്കേതിക മേഖലയിലെ നിരന്തര പരിശീലനവും പുതിയ അറിവും ഏറ്റെടുത്ത് ഞങ്ങളുടെ ടീം സോളാർ ഇൻഡസ്ട്രിയിൽ എപ്പോഴും ഒരു ചുവട് മുന്നിലാണ് — നിങ്ങൾക്ക് ഏറ്റവും മികച്ചത് മാത്രം.</p>
+        </div>
+        <div class="about-team__photo-wrap">
+          <img src={`${base}/media/Rayenna-Core-Team.jpeg`} alt="റയെന്ന എനർജി കോർ ടീം" loading="lazy" />
+          <span class="about-team__photo-tag">റയെന്ന കോർ ടീം · 2025</span>
+        </div>
       </div>
       <div class="about-team__stats">
         {teamStats.map((stat) => (
@@ -196,20 +184,24 @@ const teamStats = [
 
     <!-- ===== OUR PROMISE ===== -->
     <section class="about-promise">
-      <div class="about-promise__grid">
+      <div class="container about-promise__inner">
         <div class="about-promise__content">
-          <span class="eyebrow eyebrow-amber">ഞങ്ങളുടെ വാഗ്ദാനം</span>
-          <h2>ഞങ്ങളുടെ വാഗ്ദാനം<br /><em>നിങ്ങൾക്ക്</em></h2>
+          <span class="section-tag">ഞങ്ങളുടെ വാഗ്ദാനം</span>
+          <h2 class="section-title">നിങ്ങൾക്കുള്ള ഞങ്ങളുടെ വാഗ്ദാനം</h2>
           <p>ഒരു വാഗ്ദാനം വെറും വാക്കല്ല — അത് പാലിക്കപ്പെടുമ്പോഴാണ് അർഥമുള്ളത്. റയെന്നയിൽ ആ വാഗ്ദാനം മൂന്ന് കാര്യങ്ങളാണ് — മികച്ച ഗുണനിലവാരം, പൂർണ്ണ സുതാര്യത, പരിസ്ഥിതിയോടുള്ള ഉത്തരവാദിത്തം.</p>
           <p>നിങ്ങൾ സോളാറിലേക്ക് മാറുമ്പോൾ, ഒരു ഉൽപ്പന്നം മാത്രമല്ല വാങ്ങുന്നത് — ഒരു ടീമിന്റെ പ്രതിബദ്ധതകൂടി. ഇൻസ്റ്റാളേഷൻ കഴിഞ്ഞാലും ഞങ്ങൾ നിങ്ങളോടൊപ്പമുണ്ട്. കാരണം, നിങ്ങളുടെ സംതൃപ്തിയാണ് ഞങ്ങളുടെ ഏറ്റവും വലിയ അംഗീകാരം.</p>
           <div class="about-promise__ctas">
-            <a href={`${mlPrefix}/contact/`} class="about-promise__btn about-promise__btn--primary">കോൺടാക്റ്റ്</a>
-            <a href={`${mlPrefix}/services/`} class="about-promise__btn about-promise__btn--outline">ഞങ്ങളുടെ സേവനങ്ങൾ</a>
+            <a href={`${mlPrefix}/contact/`} class="btn btn-primary">കോൺടാക്റ്റ്</a>
+            <a href={`${mlPrefix}/services/`} class="btn btn-outline">ഞങ്ങളുടെ സേവനങ്ങൾ</a>
           </div>
         </div>
         <div class="about-promise__images">
-          <img src={`${base}/media/Drilling-solar.webp`} alt="റയെന്ന എഞ്ചിനീയർമാർ സോളാർ പാനലുകൾ ഇൻസ്റ്റാൾ ചെയ്യുന്നു" loading="lazy" />
-          <img src={`${base}/media/Plan-solar.webp`} alt="റയെന്ന സോളാർ ആസൂത്രണം" loading="lazy" />
+          <figure>
+            <img src={`${base}/media/Drilling-solar.webp`} alt="റയെന്ന എഞ്ചിനീയർമാർ സോളാർ പാനലുകൾ ഇൻസ്റ്റാൾ ചെയ്യുന്നു" loading="lazy" />
+          </figure>
+          <figure>
+            <img src={`${base}/media/Plan-solar.webp`} alt="റയെന്ന സോളാർ ആസൂത്രണം" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>

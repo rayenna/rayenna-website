@@ -30,37 +30,41 @@ const teamStats = [
   <div class="about-page">
 
     <!-- ===== HERO ===== -->
-    <section class="about-hero">
-      <img src={`${base}/media/hero-copy.jpg`} alt="Rayenna Energy solar installation" class="about-hero__bg" width="1920" height="1080" />
-      <div class="about-hero__overlay"></div>
-      <div class="about-hero__inner">
-        <p class="eyebrow eyebrow-white">The Responsible Energy Company</p>
-        <h1 class="about-hero__title">Kerala's Trusted<br /><em>Solar Energy</em> Company</h1>
-        <p class="about-hero__sub">Transforming the way Kerala harnesses energy — one rooftop at a time.</p>
-        <div class="about-hero__ctas">
-          <a href={`${base}/services/`} class="about-hero__btn about-hero__btn--primary">Explore Our Services</a>
-          <a href={`${base}/contact/`} class="about-hero__btn about-hero__btn--ghost">Get a Free Quote</a>
+    <section class="page-hero">
+      <img src={`${base}/media/hero-copy.jpg`} alt="Rayenna Energy solar installation" class="page-hero__bg" width="1920" height="1080" />
+      <div class="page-hero__overlay"></div>
+      <div class="container page-hero__inner">
+        <p class="page-hero__eyebrow">The Responsible Energy Company</p>
+        <h1 class="page-hero__title">Kerala's Trusted<br /><span>Solar Energy</span> Company</h1>
+        <p class="page-hero__sub">Transforming the way Kerala harnesses energy — one rooftop at a time.</p>
+        <div class="page-hero__ctas">
+          <a href={`${base}/services/`} class="btn btn-primary">Explore Our Services</a>
+          <a href={`${base}/contact/`} class="btn btn-outline-light">Get a Free Quote</a>
         </div>
-        <div class="about-hero__badge">
+        <div class="page-hero__badge">
           <strong>MNRE Approved Channel Partner</strong>
           <span>Government of India Certified</span>
         </div>
       </div>
     </section>
 
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
-
     <!-- ===== WHO WE ARE ===== -->
     <section class="about-intro">
-      <div class="about-intro__grid">
+      <div class="container about-intro__inner">
         <div class="about-intro__content">
-          <span class="eyebrow eyebrow-amber">Who We Are</span>
-          <h2>Innovating Solar Energy for a Greener Tomorrow</h2>
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">Innovating Solar Energy for a Greener Tomorrow</h2>
           <p>Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
           <p>Going solar is about more than simply saving money on electricity bills; it's about making the earth a better place for future generations. The knowledge and experience of our leadership team are not only a benefit to Rayenna Energy but also the cornerstone upon which we establish our standing as a reliable supplier of solar energy solutions.</p>
           <div class="about-intro__badges">
-            <span class="about-intro__badge">MNRE Approved</span>
-            <span class="about-intro__badge">Govt. of India Certified</span>
+            <div class="about-intro__badge">
+              <strong>MNRE</strong>
+              <span>Approved Channel Partner</span>
+            </div>
+            <div class="about-intro__badge">
+              <strong>Govt. of India</strong>
+              <span>Certified</span>
+            </div>
           </div>
         </div>
         <div class="about-intro__media">
@@ -72,115 +76,99 @@ const teamStats = [
 
     <!-- ===== OUR MISSION ===== -->
     <section class="about-mission">
-      <div class="about-mission__header">
-        <span class="eyebrow eyebrow-white">Our Mission</span>
-        <h2>Making Solar Reliable, Affordable, and Accessible for All</h2>
-        <p>Our goal is simple — make solar energy reliable and affordable for every customer in Kerala, without a single compromise. We listen to what each customer actually needs and build solutions around that. Sustainability isn't something we keep an eye on. It's the foundation everything is built on.</p>
-        <p>Every installation we deliver is a commitment — to quality materials, transparent communication, and support that doesn't end when the panels go up. Our job isn't done when the system is installed. It's done when you're satisfied.</p>
-      </div>
-      <div class="about-mission__pillars">
-        {missionPillars.map((p) => (
-          <div class="about-mission__pillar">
-            <div class="about-mission__pillar-icon" aria-hidden="true">{p.icon}</div>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </div>
-        ))}
+      <div class="container about-mission__inner">
+        <div class="about-mission__content">
+          <span class="section-tag">Our Mission</span>
+          <h2 class="section-title">Making Solar Reliable, Affordable, and Accessible for All</h2>
+          <p>Our goal is simple — make solar energy reliable and affordable for every customer in Kerala, without a single compromise. We listen to what each customer actually needs and build solutions around that. Sustainability isn't something we keep an eye on. It's the foundation everything is built on.</p>
+          <p>Every installation we deliver is a commitment — to quality materials, transparent communication, and support that doesn't end when the panels go up. Our job isn't done when the system is installed. It's done when you're satisfied.</p>
+        </div>
+        <div class="about-mission__pillars">
+          {missionPillars.map((p) => (
+            <div class="about-mission__pillar">
+              <div class="about-mission__pillar-icon" aria-hidden="true">{p.icon}</div>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
 
     <!-- ===== OUR FOUNDERS ===== -->
     <section class="about-founders">
-      <div class="about-founders__header">
-        <span class="eyebrow eyebrow-amber">Our Founders</span>
-        <h2>Expertise of Leadership</h2>
-        <p>Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
-      </div>
-
-      <div class="about-directors">
-        <div class="about-directors__copy">
-          <span class="eyebrow eyebrow-white">Co-Founders</span>
-          <h3>Two Captains.<br /><em>One Vision.</em></h3>
-          <p>Maritime command, engineering precision, and entrepreneurial drive — united under a single purpose: making solar the obvious choice for every Kerala rooftop.</p>
-          <div class="about-directors__rule" aria-hidden="true"></div>
-          <ul class="about-directors__creds">
-            {directorCreds.map((item) => <li>{item}</li>)}
-          </ul>
+      <div class="container">
+        <div class="about-founders__header">
+          <span class="section-tag">Our Founders</span>
+          <h2 class="section-title">Expertise of Leadership</h2>
+          <p>Our leadership is Rayenna's greatest asset. With decades of combined expertise spanning maritime, energy, and enterprise, our co-founders bring unmatched depth to every decision. Complementary in background, aligned in purpose — they are the bedrock on which Rayenna was built.</p>
         </div>
-        <div class="about-directors__photo">
-          <img
-            src={`${base}/media/Rayenna-Directors.jpeg`}
-            alt="Ganesh Venkitachalam and Capt. Arun Balakrishnan, Co-Founders of Rayenna Energy"
-            loading="lazy"
-          />
-          <div class="about-directors__names">
-            <div class="about-directors__name-card">
-              <strong>Ganesh Venkitachalam</strong>
-              <em>Managing Director &amp; Co-Founder</em>
-              <span>Ex-Thermax · Master Mariner · Best Master Award</span>
-            </div>
-            <div class="about-directors__name-card">
-              <strong>Capt. Arun Balakrishnan</strong>
-              <em>Director &amp; Co-Founder</em>
-              <span>Govt. of India Certified · 100+ months command</span>
+
+        <div class="about-directors">
+          <div class="about-directors__copy">
+            <span class="section-tag">Co-Founders</span>
+            <h3>Two Captains.<br /><span>One Vision.</span></h3>
+            <p>Maritime command, engineering precision, and entrepreneurial drive — united under a single purpose: making solar the obvious choice for every Kerala rooftop.</p>
+            <div class="about-directors__rule" aria-hidden="true"></div>
+            <ul class="about-directors__creds">
+              {directorCreds.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="about-directors__photo">
+            <img
+              src={`${base}/media/Rayenna-Directors.jpeg`}
+              alt="Ganesh Venkitachalam and Capt. Arun Balakrishnan, Co-Founders of Rayenna Energy"
+              loading="lazy"
+            />
+            <div class="about-directors__names">
+              <div class="about-directors__name-card">
+                <strong>Ganesh Venkitachalam</strong>
+                <em>Managing Director &amp; Co-Founder</em>
+                <span>Ex-Thermax · Master Mariner · Best Master Award</span>
+              </div>
+              <div class="about-directors__name-card">
+                <strong>Capt. Arun Balakrishnan</strong>
+                <em>Director &amp; Co-Founder</em>
+                <span>Govt. of India Certified · 100+ months command</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="about-bio-grid">
-        <article class="about-bio-card">
-          <img
-            class="about-bio-card__avatar"
-            src={`${base}/Ganesh_V2.png`}
-            alt=""
-            width="56"
-            height="56"
-            loading="lazy"
-          />
-          <div class="about-bio-card__body">
-            <p class="about-bio-card__name">Ganesh Venkitachalam</p>
-            <em class="about-bio-card__role">Managing Director &amp; Co-Founder</em>
-            <p class="about-bio-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
-          </div>
-        </article>
-        <article class="about-bio-card">
-          <img
-            class="about-bio-card__avatar"
-            src={`${base}/Arun%20Balakrishnan.png`}
-            alt=""
-            width="56"
-            height="56"
-            loading="lazy"
-          />
-          <div class="about-bio-card__body">
-            <p class="about-bio-card__name">Capt. Arun Balakrishnan</p>
-            <em class="about-bio-card__role">Director &amp; Co-Founder</em>
-            <p class="about-bio-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
-          </div>
-        </article>
+        <div class="about-bio-grid">
+          <article class="about-bio-card">
+            <img class="about-bio-card__avatar" src={`${base}/Ganesh_V2.png`} alt="" width="64" height="64" loading="lazy" />
+            <div>
+              <p class="about-bio-card__name">Ganesh Venkitachalam</p>
+              <em class="about-bio-card__role">Managing Director &amp; Co-Founder</em>
+              <p class="about-bio-card__bio">Ganesh began his career as a project engineer at Thermax, specialising in HVAC systems, before transitioning to the Merchant Navy. With 23 years of sailing experience, he developed invaluable leadership skills as a Master, earning accolades as a Best Master — a testament to his unwavering commitment to excellence.</p>
+            </div>
+          </article>
+          <article class="about-bio-card">
+            <img class="about-bio-card__avatar" src={`${base}/Arun%20Balakrishnan.png`} alt="" width="64" height="64" loading="lazy" />
+            <div>
+              <p class="about-bio-card__name">Capt. Arun Balakrishnan</p>
+              <em class="about-bio-card__role">Director &amp; Co-Founder</em>
+              <p class="about-bio-card__bio">A Government of India–certified Master Mariner with 100+ months of command on bulk carriers across global waters, Arun brings rare operational precision and maritime expertise. His deep knowledge of global shipping makes him an invaluable navigator for the company's logistics strategy.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <div class="about-stripe" aria-hidden="true"><div></div><div></div><div></div></div>
-
     <!-- ===== OUR TEAM ===== -->
     <section class="about-team">
-      <div class="about-team__header">
-        <span class="eyebrow eyebrow-amber">Our Team</span>
-        <h2>The Skilled Hands Behind Every Installation</h2>
-        <p>A great solar system isn't just about the panels. It's about the people who install them. Rayenna's engineers, technicians, and customer service team work with a single purpose — to change someone's life with every installation. That belief is what drives us forward.</p>
-        <p>Our team stays consistently ahead of the industry — through continuous technical training, hands-on experience, and a genuine hunger to keep getting better. The result? Every Rayenna installation reflects the highest standards in the industry. Not because we have to meet them. Because our people wouldn't have it any other way.</p>
-      </div>
-      <div class="about-team__photo-wrap">
-        <img
-          src={`${base}/media/Rayenna-Core-Team.jpeg`}
-          alt="Rayenna Energy core team"
-          loading="lazy"
-        />
-        <span class="about-team__photo-tag">Rayenna Core Team · 2025</span>
+      <div class="container">
+        <div class="about-team__header">
+          <span class="section-tag">Our Team</span>
+          <h2 class="section-title">The Skilled Hands Behind Every Installation</h2>
+          <p>A great solar system isn't just about the panels. It's about the people who install them. Rayenna's engineers, technicians, and customer service team work with a single purpose — to change someone's life with every installation. That belief is what drives us forward.</p>
+          <p>Our team stays consistently ahead of the industry — through continuous technical training, hands-on experience, and a genuine hunger to keep getting better. The result? Every Rayenna installation reflects the highest standards in the industry. Not because we have to meet them. Because our people wouldn't have it any other way.</p>
+        </div>
+        <div class="about-team__photo-wrap">
+          <img src={`${base}/media/Rayenna-Core-Team.jpeg`} alt="Rayenna Energy core team" loading="lazy" />
+          <span class="about-team__photo-tag">Rayenna Core Team · 2025</span>
+        </div>
       </div>
       <div class="about-team__stats">
         {teamStats.map((stat) => (
@@ -195,20 +183,24 @@ const teamStats = [
 
     <!-- ===== OUR PROMISE ===== -->
     <section class="about-promise">
-      <div class="about-promise__grid">
+      <div class="container about-promise__inner">
         <div class="about-promise__content">
-          <span class="eyebrow eyebrow-amber">Our Promise</span>
-          <h2>Our Promise<br /><em>to You</em></h2>
+          <span class="section-tag">Our Promise</span>
+          <h2 class="section-title">Our Promise to You</h2>
           <p>A promise only means something when it's kept. At Rayenna, ours comes down to three things — quality that doesn't cut corners, transparency at every stage, and a genuine responsibility to the environment. Not as policies on a wall. As the way we actually work.</p>
           <p>When you switch to solar with Rayenna, you're not just buying a system. You're getting a team that stays with you — through the installation, through the first bill, and long after. We source only the best materials, build systems that last, and treat every home and business we work with as if it were our own. Your satisfaction isn't a metric we track. It's the reason we show up.</p>
           <div class="about-promise__ctas">
-            <a href={`${base}/contact/`} class="about-promise__btn about-promise__btn--primary">Get in Touch</a>
-            <a href={`${base}/services/`} class="about-promise__btn about-promise__btn--outline">Our Services</a>
+            <a href={`${base}/contact/`} class="btn btn-primary">Get in Touch</a>
+            <a href={`${base}/services/`} class="btn btn-outline">Our Services</a>
           </div>
         </div>
         <div class="about-promise__images">
-          <img src={`${base}/media/Drilling-solar.webp`} alt="Rayenna engineers installing solar panels" loading="lazy" />
-          <img src={`${base}/media/Plan-solar.webp`} alt="Rayenna solar planning" loading="lazy" />
+          <figure>
+            <img src={`${base}/media/Drilling-solar.webp`} alt="Rayenna engineers installing solar panels" loading="lazy" />
+          </figure>
+          <figure>
+            <img src={`${base}/media/Plan-solar.webp`} alt="Rayenna solar planning" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
