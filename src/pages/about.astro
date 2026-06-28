@@ -18,12 +18,6 @@ const directorCreds = [
   'Best Master Award — Ganesh Venkitachalam',
   'Govt. of India Certified Master Mariners',
 ];
-
-const teamStats = [
-  { num: '150+', label: 'Installations Completed', desc: 'Across Kerala — and counting' },
-  { num: '6', label: 'Core Team Members', desc: 'Trained, certified, committed' },
-  { num: '100%', label: 'On-time Delivery', desc: 'Promise kept, every project' },
-];
 ---
 <Layout title="About Rayenna Energy | MNRE-Approved Solar Installer in Kochi, Kerala" description="Rayenna Energy is an MNRE-empanelled solar company based in Vyttila, Kochi. Our certified team installs domestic and commercial solar systems across Kerala with full PM Surya Ghar subsidy assistance." ogImage={OG.about}>
 
@@ -169,17 +163,7 @@ const teamStats = [
         </div>
         <div class="about-team__photo-wrap">
           <img src={`${base}/media/Rayenna-Core-Team.png`} alt="Rayenna Energy core team" loading="lazy" />
-          <span class="about-team__photo-tag">Rayenna Core Team · 2025</span>
         </div>
-      </div>
-      <div class="about-team__stats">
-        {teamStats.map((stat) => (
-          <div class="about-team__stat">
-            <div class="about-team__stat-num">{stat.num}</div>
-            <div class="about-team__stat-label">{stat.label}</div>
-            <div class="about-team__stat-desc">{stat.desc}</div>
-          </div>
-        ))}
       </div>
     </section>
 

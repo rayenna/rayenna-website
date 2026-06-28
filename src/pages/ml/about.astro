@@ -19,12 +19,6 @@ const directorCreds = [
   'ബെസ്റ്റ് മാസ്റ്റർ അവാർഡ് — Ganesh Venkitachalam',
   'ഇന്ത്യാ സർക്കാർ സർട്ടിഫൈഡ് മാസ്റ്റർ മറൈനർമാർ',
 ];
-
-const teamStats = [
-  { num: '150+', label: 'ഇൻസ്റ്റാളേഷനുകൾ പൂർത്തിയായി', desc: 'കേരളമെമ്പാടും — വർദ്ധിച്ചുവരുന്നു' },
-  { num: '6', label: 'കോർ ടീം അംഗങ്ങൾ', desc: 'പരിശീലിതരും സർട്ടിഫൈഡും പ്രതിജ്ഞാബദ്ധരും' },
-  { num: '100%', label: 'സമയബന്ധിത ഡെലിവറി', desc: 'ഓരോ പ്രോജക്റ്റിലും വാഗ്ദാനം പാലിക്കുന്നു' },
-];
 ---
 <Layout lang="ml" title="റയെന്ന എനർജിയെക്കുറിച്ച് | കൊച്ചിയിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ" description="വ്യറ്റില, കൊച്ചിയിലെ MNRE അംഗീകൃത സോളാർ കമ്പനി റയെന്ന എനർജി. കേരളമെമ്പാടും വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ ഇൻസ്റ്റാളേഷൻ. PM സൂര്യ ഘർ സബ്സിഡി പൂർണ്ണ സഹായം." ogImage={OG.about}>
 
@@ -170,17 +164,7 @@ const teamStats = [
         </div>
         <div class="about-team__photo-wrap">
           <img src={`${base}/media/Rayenna-Core-Team.png`} alt="റയെന്ന എനർജി കോർ ടീം" loading="lazy" />
-          <span class="about-team__photo-tag">റയെന്ന കോർ ടീം · 2025</span>
         </div>
-      </div>
-      <div class="about-team__stats">
-        {teamStats.map((stat) => (
-          <div class="about-team__stat">
-            <div class="about-team__stat-num">{stat.num}</div>
-            <div class="about-team__stat-label">{stat.label}</div>
-            <div class="about-team__stat-desc">{stat.desc}</div>
-          </div>
-        ))}
       </div>
     </section>
 
