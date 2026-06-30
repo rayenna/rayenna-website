@@ -43,8 +43,8 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* Horizontal nav from 1200px — 11" iPad stays on hamburger menu */
-  --nav-desktop-min: 1200px;
+  /* Horizontal nav from 1680px (1920@125% ≈ 1536px uses hamburger) */
+  --nav-desktop-min: 1680px;
 }
 
 /* Reset */
@@ -265,17 +265,45 @@ ul { list-style: none; }
   :root { --section-padding: 56px 0; }
   .hide-mobile { display: none !important; }
 }
-@media (min-width: 769px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1679px) {
   :root {
     --section-padding: 64px 0;
     --container-pad: 0 28px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1680px) {
   .hide-desktop { display: none !important; }
 }
-@media (max-width: 1199px) {
+@media (max-width: 1679px) {
   .hide-tablet { display: none !important; }
+}
+
+/* ===== Malayalam — laptop-friendly type scale ===== */
+body.lang-ml .section-title {
+  font-size: clamp(1.25rem, 1.55vw, 1.75rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+body.lang-ml .page-hero__title,
+body.lang-ml .post-hero__title,
+body.lang-ml .calc-page-hero__title {
+  font-size: clamp(1.45rem, 2.1vw, 2rem) !important;
+  line-height: 1.28;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+body.lang-ml .area-hero__title {
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem) !important;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+body.lang-ml .about-page .page-hero__title {
+  font-size: clamp(1.45rem, 2.1vw, 2rem) !important;
+  line-height: 1.28;
+  max-width: 18ch;
 }
 
 /* Blog — refreshed post banner */

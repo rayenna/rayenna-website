@@ -149,6 +149,14 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
 #ray-chat-widget.ray-lang-ml .ray-tooltip {
   font-family: 'Noto Sans Malayalam', var(--font-body), sans-serif;
 }
+#ray-chat-widget.ray-lang-ml .ray-msg {
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+#ray-chat-widget.ray-lang-ml .ray-chip {
+  font-size: 0.76rem;
+  padding: 8px 10px;
+}
 
 :root {
   --ray-primary: #a83838;
@@ -594,13 +602,14 @@ const workerUrl = 'https://rayenna-chat-proxy.rayennasolar.workers.dev';
     100% { box-shadow: 0 0 0 0 rgba(39, 50, 79, 0); }
   }
 
-  /* Desktop: floating card */
+  /* Desktop: floating card — always fit inside viewport */
   #ray-chat-panel {
-    bottom: 172px;
-    right: 30px;
+    bottom: 24px;
+    right: 24px;
     left: auto;
-    width: 380px;
-    height: 560px;
+    width: min(360px, calc(100vw - 48px));
+    height: min(440px, calc(100dvh - 80px));
+    max-height: calc(100dvh - 80px);
     border-radius: 16px;
     transform: translateY(16px);
     opacity: 0;

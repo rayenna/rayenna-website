@@ -296,7 +296,7 @@ function normalizePath(path: string): string {
             href={link.href}
             class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
             {...(link.special ? { 'data-analytics-location': 'nav' } : {})}
-          >{link.special ? '☀️ ' : ''}{link.label}</a>
+          >{link.label}</a>
         ))}
       </nav>
 
@@ -587,8 +587,15 @@ function normalizePath(path: string): string {
 .navbar__nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  flex-wrap: nowrap;
+  gap: 2px;
   margin-left: auto;
+  flex-shrink: 1;
+  min-width: 0;
+  justify-content: flex-end;
+}
+.navbar {
+  overflow-x: clip;
 }
 .lang-switcher {
   display: none;
@@ -659,12 +666,13 @@ html[lang="ml-IN"] body.lang-ml h3 {
 .nav-link {
   font-family: var(--font-heading);
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   color: var(--color-text);
-  padding: 8px 14px;
+  padding: 7px 11px;
   border-radius: var(--radius-sm);
   transition: all var(--transition);
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
   color: var(--color-primary);
@@ -682,13 +690,15 @@ html[lang="ml-IN"] body.lang-ml h3 {
 }
 
 /* Desktop calculator pill — only when horizontal nav is shown */
-@media (min-width: 1200px) {
+@media (min-width: 1680px) {
   .nav-link.nav-calculator-link {
     background-color: var(--color-primary);
     color: #fff;
-    padding: 8px 18px;
+    padding: 7px 14px;
     border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
+    line-height: 1.1;
     transition: opacity 0.2s ease;
   }
   .nav-link.nav-calculator-link:hover,
@@ -953,14 +963,29 @@ body.nav-menu-open {
   .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }
   .footer__col--contact { grid-column: 2 / span 2; }
 }
-@media (min-width: 1200px) {
+/* Horizontal nav only on wide screens (1920@125% ≈ 1536px stays on hamburger) */
+@media (min-width: 1680px) {
   .lang-switcher { display: flex; }
+  .navbar__nav { display: flex; }
   .navbar__burger { display: none !important; }
   .mobile-menu,
   .nav-backdrop { display: none !important; }
+  .navbar__inner {
+    gap: 10px;
+    padding: 0 22px 0 18px;
+  }
+  .logo-img { height: 32px; }
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+  }
+  body.lang-ml .nav-link {
+    font-size: 0.78rem;
+    padding: 6px 9px;
+  }
 }
-/* Hamburger nav: phones + tablets (incl. 11" iPad portrait & landscape) */
-@media (max-width: 1199px) {
+/* Hamburger nav: phones, tablets, and laptops below desktop threshold */
+@media (max-width: 1679px) {
   .navbar { position: fixed; }
   .navbar__inner {
     gap: 12px;
@@ -1019,7 +1044,8 @@ body.nav-menu-open {
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  const NAV_DESKTOP_MIN = 1200;
+  const NAV_DESKTOP_MIN = 1680;
+
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
   const navBackdrop = document.getElementById('nav-backdrop');
