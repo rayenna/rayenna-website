@@ -279,32 +279,88 @@ ul { list-style: none; }
   .hide-tablet { display: none !important; }
 }
 
-/* ===== Malayalam — laptop-friendly type scale ===== */
+/* ===== Malayalam — heading type scale (+30% vs laptop-compact) ===== */
 body.lang-ml .section-title {
-  font-size: clamp(1.25rem, 1.55vw, 1.75rem);
+  font-size: clamp(1.625rem, 2.015vw, 2.275rem);
   line-height: 1.35;
   text-wrap: balance;
 }
 
 body.lang-ml .page-hero__title,
 body.lang-ml .post-hero__title,
-body.lang-ml .calc-page-hero__title {
-  font-size: clamp(1.45rem, 2.1vw, 2rem) !important;
+body.lang-ml .calc-page-hero__title,
+body.lang-ml .about-page .page-hero__title {
+  font-size: clamp(1.885rem, 2.73vw, 2.6rem) !important;
   line-height: 1.28;
   text-wrap: balance;
-  max-width: 18ch;
+  max-width: 20ch;
 }
 
 body.lang-ml .area-hero__title {
-  font-size: clamp(1.5rem, 2.2vw, 2.2rem) !important;
+  font-size: clamp(1.95rem, 2.86vw, 2.86rem) !important;
   line-height: 1.28;
   text-wrap: balance;
 }
 
-body.lang-ml .about-page .page-hero__title {
-  font-size: clamp(1.45rem, 2.1vw, 2rem) !important;
+body.lang-ml .hero__title {
+  font-size: clamp(2.405rem, 3.38vw, 3.445rem) !important;
+  line-height: 1.22;
+  text-wrap: balance;
+}
+
+body.lang-ml .area-cta h2,
+body.lang-ml .cta-banner__content h2,
+body.lang-ml .faq-cta__title,
+body.lang-ml .cta-banner__title,
+body.lang-ml .invest-title,
+body.lang-ml .priv-title,
+body.lang-ml .slide__caption-title,
+body.lang-ml .featured-card__title {
+  font-size: clamp(1.82rem, 3.9vw, 2.6rem) !important;
   line-height: 1.28;
-  max-width: 18ch;
+  text-wrap: balance;
+}
+
+body.lang-ml .featured-card__title {
+  font-size: clamp(1.56rem, 3.25vw, 2.21rem) !important;
+}
+
+body.lang-ml .slide__caption-title {
+  font-size: clamp(1.56rem, 3.9vw, 2.6rem) !important;
+}
+
+body.lang-ml .faq-cta__title {
+  font-size: clamp(2.34rem, 5.2vw, 3.64rem) !important;
+}
+
+body.lang-ml .cta-banner__title {
+  font-size: clamp(1.95rem, 4.55vw, 3.12rem) !important;
+}
+
+body.lang-ml .invest-title {
+  font-size: clamp(2.34rem, 4.55vw, 3.9rem) !important;
+}
+
+body.lang-ml .priv-title {
+  font-size: clamp(2.6rem, 5.2vw, 3.9rem) !important;
+}
+
+@media (max-width: 1024px) {
+  body.lang-ml .hero__title {
+    font-size: clamp(2.535rem, 5.46vw, 3.575rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.lang-ml .hero__title {
+    font-size: 2.86rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.lang-ml .hero__title {
+    font-size: clamp(2.275rem, 11.05vw, 2.86rem) !important;
+  }
 }
 
 /* Blog — refreshed post banner */
