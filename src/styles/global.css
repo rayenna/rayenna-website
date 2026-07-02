@@ -43,8 +43,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* Horizontal nav from 1680px (1920@125% ≈ 1536px uses hamburger) */
-  --nav-desktop-min: 1680px;
+  /* Horizontal nav: EN from 1400px; ML from 1600px (1920@125% ≈ 1536px keeps ML hamburger) */
+  --nav-desktop-min-en: 1400px;
+  --nav-desktop-min-ml: 1600px;
 }
 
 /* Reset */
@@ -265,16 +266,16 @@ ul { list-style: none; }
   :root { --section-padding: 56px 0; }
   .hide-mobile { display: none !important; }
 }
-@media (min-width: 769px) and (max-width: 1679px) {
+@media (min-width: 769px) and (max-width: 1399px) {
   :root {
     --section-padding: 64px 0;
     --container-pad: 0 28px;
   }
 }
-@media (min-width: 1680px) {
+@media (min-width: 1400px) {
   .hide-desktop { display: none !important; }
 }
-@media (max-width: 1679px) {
+@media (max-width: 1399px) {
   .hide-tablet { display: none !important; }
 }
 

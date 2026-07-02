@@ -690,7 +690,7 @@ html[lang="ml-IN"] body.lang-ml h3 {
 }
 
 /* Desktop calculator pill — only when horizontal nav is shown */
-@media (min-width: 1680px) {
+@media (min-width: 1400px) {
   .nav-link.nav-calculator-link {
     background-color: var(--color-primary);
     color: #fff;
@@ -963,29 +963,54 @@ body.nav-menu-open {
   .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }
   .footer__col--contact { grid-column: 2 / span 2; }
 }
-/* Horizontal nav only on wide screens (1920@125% ≈ 1536px stays on hamburger) */
-@media (min-width: 1680px) {
-  .lang-switcher { display: flex; }
-  .navbar__nav { display: flex; }
-  .navbar__burger { display: none !important; }
-  .mobile-menu,
-  .nav-backdrop { display: none !important; }
-  .navbar__inner {
+/* EN horizontal nav from 1400px (MacBook default ~1470–1728px) */
+@media (min-width: 1400px) {
+  body.lang-en .lang-switcher { display: flex; }
+  body.lang-en .navbar__nav { display: flex; }
+  body.lang-en .navbar__burger { display: none !important; }
+  body.lang-en .mobile-menu,
+  body.lang-en .nav-backdrop { display: none !important; }
+  body.lang-en .navbar__inner {
     gap: 10px;
     padding: 0 22px 0 18px;
   }
-  .logo-img { height: 32px; }
-  .nav-link {
+  body.lang-en .logo-img { height: 32px; }
+  body.lang-en .nav-link {
     font-size: 0.82rem;
     padding: 6px 10px;
   }
+}
+/* ML labels need more width — hamburger on laptops until 1600px (Win 1920@125% ≈ 1536px) */
+@media (min-width: 1400px) and (max-width: 1599px) {
+  body.lang-ml .navbar__nav,
+  body.lang-ml .lang-switcher { display: none !important; }
+  body.lang-ml .navbar__burger {
+    display: flex !important;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+@media (min-width: 1600px) {
+  body.lang-ml .lang-switcher { display: flex; }
+  body.lang-ml .navbar__nav { display: flex; }
+  body.lang-ml .navbar__burger { display: none !important; }
+  body.lang-ml .mobile-menu,
+  body.lang-ml .nav-backdrop { display: none !important; }
+  body.lang-ml .navbar__inner {
+    gap: 10px;
+    padding: 0 22px 0 18px;
+  }
+  body.lang-ml .logo-img { height: 32px; }
   body.lang-ml .nav-link {
     font-size: 0.78rem;
     padding: 6px 9px;
   }
+  body.lang-ml .nav-link.nav-calculator-link {
+    padding: 6px 12px;
+  }
 }
-/* Hamburger nav: phones, tablets, and laptops below desktop threshold */
-@media (max-width: 1679px) {
+/* Hamburger nav: phones, tablets, and laptops below locale thresholds */
+@media (max-width: 1399px) {
   .navbar { position: fixed; }
   .navbar__inner {
     gap: 12px;
@@ -1044,7 +1069,9 @@ body.nav-menu-open {
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  const NAV_DESKTOP_MIN = 1680;
+  function navDesktopMin() {
+    return document.body.classList.contains('lang-ml') ? 1600 : 1400;
+  }
 
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -1084,6 +1111,6 @@ body.nav-menu-open {
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= NAV_DESKTOP_MIN) closeNavMenu();
+    if (window.innerWidth >= navDesktopMin()) closeNavMenu();
   });
 </script>
