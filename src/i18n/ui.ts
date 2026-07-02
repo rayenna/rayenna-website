@@ -76,7 +76,7 @@ const ui = {
       media: 'Media',
       blog: 'Blog',
       faqs: 'FAQs',
-      contact: 'Contact us',
+      contact: 'Contact',
       calcMobile: 'Calculate My Savings',
     },
     footer: {
@@ -224,7 +224,7 @@ const ui = {
   ml: {
     nav: {
       home: 'ഹോം',
-      about: 'ഞങ്ങളെക്കുറിച്ച്',
+      about: 'പരിചയം',
       services: 'സേവനങ്ങൾ',
       calculator: 'കാൽക്കുലേറ്റർ',
       media: 'മീഡിയ',

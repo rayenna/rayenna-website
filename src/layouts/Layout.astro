@@ -689,14 +689,14 @@ html[lang="ml-IN"] body.lang-ml h3 {
   background: rgba(168,56,56,0.1);
 }
 
-/* Desktop calculator pill — only when horizontal nav is shown */
-@media (min-width: 1400px) {
+/* Desktop calculator pill — when horizontal nav is shown */
+@media (min-width: 1280px) {
   .nav-link.nav-calculator-link {
     background-color: var(--color-primary);
     color: #fff;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    padding: 5px 11px;
+    border-radius: 18px;
+    font-size: 0.74rem;
     font-weight: 600;
     line-height: 1.1;
     transition: opacity 0.2s ease;
@@ -963,21 +963,56 @@ body.nav-menu-open {
   .footer__grid { grid-template-columns: 160px 120px 1fr; gap: 32px; }
   .footer__col--contact { grid-column: 2 / span 2; }
 }
-/* Horizontal nav from 1400px — EN + ML (MacBook ~1470px+; hamburger when window narrower) */
-@media (min-width: 1400px) {
+/* Horizontal nav from 1280px — ultra-compact 1280–1399, roomier 1400+ */
+@media (min-width: 1280px) {
   .lang-switcher { display: flex; }
   .navbar__nav { display: flex; }
   .navbar__burger { display: none !important; }
   .mobile-menu,
   .nav-backdrop { display: none !important; }
   .navbar__inner {
+    gap: 6px;
+    padding: 0 14px 0 12px;
+  }
+  .logo-img { height: 28px; }
+  .navbar__nav { gap: 0; }
+  .nav-link {
+    font-size: 0.78rem;
+    padding: 5px 7px;
+  }
+  .lang-switcher { padding: 2px; }
+  .lang-switcher__btn {
+    font-size: 0.68rem;
+    padding: 4px 8px;
+  }
+  body.lang-ml .navbar__inner {
+    gap: 4px;
+    padding: 0 12px 0 10px;
+  }
+  body.lang-ml .nav-link {
+    font-size: 0.72rem;
+    padding: 5px 6px;
+  }
+  body.lang-ml .nav-link.nav-calculator-link {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 1400px) {
+  .navbar__inner {
     gap: 10px;
     padding: 0 22px 0 18px;
   }
   .logo-img { height: 32px; }
+  .navbar__nav { gap: 2px; }
   .nav-link {
     font-size: 0.82rem;
     padding: 6px 10px;
+  }
+  .lang-switcher { padding: 3px; }
+  .lang-switcher__btn {
+    font-size: 0.72rem;
+    padding: 5px 10px;
   }
   body.lang-ml .navbar__inner {
     gap: 8px;
@@ -991,9 +1026,14 @@ body.nav-menu-open {
     padding: 6px 11px;
     font-size: 0.74rem;
   }
+  .nav-link.nav-calculator-link {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+  }
 }
-/* Hamburger nav: phones, tablets, and narrow windows below 1400px */
-@media (max-width: 1399px) {
+/* Hamburger nav: phones, tablets, and narrow windows below 1280px */
+@media (max-width: 1279px) {
   .navbar { position: fixed; }
   .navbar__inner {
     gap: 12px;
@@ -1052,7 +1092,7 @@ body.nav-menu-open {
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  const NAV_DESKTOP_MIN = 1400;
+  const NAV_DESKTOP_MIN = 1280;
 
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');

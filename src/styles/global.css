@@ -43,9 +43,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* Horizontal nav from 1400px (EN + ML; resize below switches to hamburger) */
-  --nav-desktop-min-en: 1400px;
-  --nav-desktop-min-ml: 1400px;
+  /* Horizontal nav from 1280px (1920@150% ≈ 1280px; hamburger below) */
+  --nav-desktop-min-en: 1280px;
+  --nav-desktop-min-ml: 1280px;
 }
 
 /* Reset */
@@ -266,16 +266,16 @@ ul { list-style: none; }
   :root { --section-padding: 56px 0; }
   .hide-mobile { display: none !important; }
 }
-@media (min-width: 769px) and (max-width: 1399px) {
+@media (min-width: 769px) and (max-width: 1279px) {
   :root {
     --section-padding: 64px 0;
     --container-pad: 0 28px;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1280px) {
   .hide-desktop { display: none !important; }
 }
-@media (max-width: 1399px) {
+@media (max-width: 1279px) {
   .hide-tablet { display: none !important; }
 }
 
