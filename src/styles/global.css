@@ -296,6 +296,12 @@ body.lang-ml .about-page .page-hero__title {
   max-width: 20ch;
 }
 
+body.lang-ml .page-hero__sub,
+body.lang-ml .area-hero__sub {
+  color: rgba(255,255,255,0.86) !important;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.28);
+}
+
 body.lang-ml .area-hero__title {
   font-size: clamp(1.95rem, 2.86vw, 2.86rem) !important;
   line-height: 1.28;
