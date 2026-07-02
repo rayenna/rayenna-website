@@ -224,7 +224,7 @@ const ui = {
   ml: {
     nav: {
       home: 'ഹോം',
-      about: 'പരിചയം',
+      about: 'ഞങ്ങളെക്കുറിച്ച്',
       services: 'സേവനങ്ങൾ',
       calculator: 'കാൽക്കുലേറ്റർ',
       media: 'മീഡിയ',
