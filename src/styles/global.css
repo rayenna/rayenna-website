@@ -43,9 +43,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* Horizontal nav: EN from 1400px; ML from 1600px (1920@125% ≈ 1536px keeps ML hamburger) */
+  /* Horizontal nav from 1400px (EN + ML; resize below switches to hamburger) */
   --nav-desktop-min-en: 1400px;
-  --nav-desktop-min-ml: 1600px;
+  --nav-desktop-min-ml: 1400px;
 }
 
 /* Reset */
