@@ -708,16 +708,18 @@ const t = useTranslations('ml');
   line-height: 1.25;
 }
 
-/* ML-only urgency CTA — plain golden underline on "ഇന്നാണ്" */
+/* ML-only urgency CTA — full-width golden underline on "ഇന്നാണ്" */
 .invest-urgency {
   font-style: normal;
   font-weight: 600;
-  letter-spacing: 0.02em;
   white-space: nowrap;
-  text-decoration: underline;
-  text-decoration-color: #f59e0b;
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.14em;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1.15;
+  padding-bottom: 0.06em;
+  border-bottom: 0.11em solid #f59e0b;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .invest-cards {
   display: grid;
