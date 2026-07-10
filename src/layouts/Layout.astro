@@ -713,6 +713,13 @@ html[lang="ml-IN"] body.lang-ml h3 {
     color: #fff;
   }
 }
+@media (min-width: 1480px) {
+  .nav-link.nav-calculator-link {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+  }
+}
 
 /* Burger */
 .navbar__burger {
@@ -1029,6 +1036,41 @@ body.nav-menu-open {
   .nav-link.nav-calculator-link {
     padding: 7px 14px;
     font-size: 0.8rem;
+    border-radius: 20px;
+  }
+}
+/* MacBook full-screen — more breathing room from 1480px (Win 1280–1479 stays compact) */
+@media (min-width: 1480px) {
+  .navbar__inner {
+    gap: 16px;
+    padding: 0 28px 0 24px;
+  }
+  .logo-img { height: 34px; }
+  .navbar__nav { gap: 4px; }
+  .nav-link {
+    font-size: 0.86rem;
+    padding: 7px 12px;
+  }
+  .lang-switcher { padding: 3px; }
+  .lang-switcher__btn {
+    font-size: 0.74rem;
+    padding: 5px 11px;
+  }
+  body.lang-ml .navbar__inner {
+    gap: 12px;
+    padding: 0 24px 0 20px;
+  }
+  body.lang-ml .nav-link {
+    font-size: 0.82rem;
+    padding: 7px 10px;
+  }
+  body.lang-ml .nav-link.nav-calculator-link {
+    padding: 7px 15px;
+    font-size: 0.8rem;
+  }
+  .nav-link.nav-calculator-link {
+    padding: 8px 16px;
+    font-size: 0.85rem;
     border-radius: 20px;
   }
 }
