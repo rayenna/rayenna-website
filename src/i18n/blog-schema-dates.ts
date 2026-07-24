@@ -2,6 +2,10 @@
 export type BlogSchemaDates = { published: string; modified: string };
 
 export const BLOG_SCHEMA_DATES: Record<string, BlogSchemaDates> = {
+  'kerala-zero-bill-rooftop-solar-2026': { published: '2026-07-24', modified: '2026-07-24' },
+  'why-kerala-load-shedding-despite-solar-2026': { published: '2026-07-24', modified: '2026-07-24' },
+  'induction-cooking-solar-kerala-2026': { published: '2026-07-24', modified: '2026-07-24' },
+  'kerala-roof-types-solar-installation-2026': { published: '2026-07-24', modified: '2026-07-24' },
   'kseb-time-of-day-tariff-solar-2026': { published: '2026-06-07', modified: '2026-06-07' },
   'ev-solar-home-charging-kerala-2026': { published: '2026-06-07', modified: '2026-06-07' },
   'solar-sizing-ac-load-kerala-2026': { published: '2026-06-07', modified: '2026-06-07' },

@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
+import { ogForBlogSlug } from '../../i18n/og-images';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = {
+  title: 'Tile, Concrete or Sheet Roof? Choosing the Right Solar Mount for Your Kerala Home',
+  date: '24 July 2026',
+  category: 'Education',
+  readTime: '5 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout
+  title={`${post.title} — Rayenna Energy Blog`}
+  description="Kerala homes sit on tiled, RCC, and metal sheet roofs. How each type affects solar mounting, waterproofing, shade, and cost — before you sign a quote in 2026."
+  ogImage={ogForBlogSlug('kerala-roof-types-solar-installation-2026')}
+>
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
+        <p class="post-lead">Panel brand and inverter matter — but your <strong>roof</strong> decides how the system is fixed, how long waterproofing lasts through monsoon, and how much usable area you really have. A site survey that skips roof type is not a site survey.</p>
+
+        <h2>Three Roofs You See Everywhere in Kerala</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Roof type</span><span>Typical mount</span><span>Watch-outs</span></div>
+          <div class="cost-row"><span>Clay / concrete tile</span><span>Rail on hooks / tile anchors</span><span>Fragile tiles, ridge leaks, steep pitch</span></div>
+          <div class="cost-row"><span>RCC flat terrace</span><span>Ballast or penetrative legs</span><span>Parapet shade, water tanks, walkways</span></div>
+          <div class="cost-row"><span>Metal / GI sheet</span><span>Clamp to purlins / raised frame</span><span>Thin sheets, rust, heat under panels</span></div>
+        </div>
+
+        <h2>Tiled Roofs</h2>
+        <p>Common on older and mid-size homes. Installers use specialised hooks that sit under tiles and fix to rafters — done right, tiles go back without chronic leaks. Done wrong, the first heavy rain finds every gap.</p>
+        <ul class="post-list">
+          <li>Ask how many tiles will be lifted and how flashings / sealants are specified.</li>
+          <li>Steep pitches need fall protection and careful cable runs.</li>
+          <li>Broken or porous tiles should be replaced <em>before</em> panels go up — not after the first complaint.</li>
+        </ul>
+
+        <h2>RCC Flat Terraces</h2>
+        <p>Ideal for raised structures (elevated frames) that leave walk space and keep panels cooler with airflow. Ballasted systems avoid roof punctures where structure allows; penetrative mounts need proper waterproofing at every bolt.</p>
+        <div class="post-callout">
+          <span class="callout-icon">🏠</span>
+          <div><strong>Shade Is the Silent Killer</strong><p>Water tanks, dish antennas, parapet walls, and neighbouring coconut palms can wipe out a whole string’s output. A good design maps shade across the day — especially for monsoon-low sun angles. See also our <a href={`${base}/blog/monsoon-solar-system-kerala`}>monsoon guide</a>.</p></div>
+        </div>
+
+        <h2>Metal Sheet Roofs</h2>
+        <p>Fast to mount when purlins are sound, but thin sheets can oil-can or rust. Prefer clamps into structure, not self-tappers into sheet alone. Raised frames (common in Kerala) lift panels above heat and allow inspection underneath — exactly what you see in many Rayenna installation photos.</p>
+
+        <h2>Questions to Ask Before You Sign</h2>
+        <ul class="post-list">
+          <li><strong>“Where do loads transfer?”</strong> — into rafters / columns, not just the skin of the roof.</li>
+          <li><strong>“What is the waterproofing method?”</strong> — product name and warranty, not “we will seal it.”</li>
+          <li><strong>“How much area after setbacks and shade?”</strong> — usable kW, not theoretical terrace area.</li>
+          <li><strong>“Who repairs a leak in year three?”</strong> — get it in the contract; our <a href={`${base}/blog/what-to-ask-solar-contract-kerala`}>contract checklist</a> helps.</li>
+        </ul>
+
+        <h2>Bottom Line</h2>
+        <p>Every Kerala roof can host solar — but the mount, waterproofing, and shade plan must match <em>your</em> roof. Insist on a documented site survey with photos of structure and shade before you compare quotes on panel wattage alone.</p>
+
+        <div class="post-cta">
+          <h3>Free Roof Survey Across Kerala</h3>
+          <p>Rayenna engineers assess tile, RCC, and sheet roofs — structure, shade, and monsoon-ready fixing — before you decide.</p>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact`} class="btn btn-primary">Book a Free Site Survey →</a>
+            <a href={`${base}/solar-calculator`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
+        </div>
+      <BlogPostResourceLinks />
+
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/what-to-ask-solar-contract-kerala`}>What to Ask Before Signing →</a></li>
+            <li><a href={`${base}/blog/monsoon-solar-system-kerala`}>Monsoon & Solar →</a></li>
+            <li><a href={`${base}/blog/going-solar-kochi-guide-2025`}>Going Solar in Kochi →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">🔧</div>
+          <strong>Roof first, panels second</strong>
+          <p>A cheap quote that ignores waterproofing is the most expensive leak you will ever buy.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <BlogPostEndCta />
+
+</Layout>
+<style>
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-content a:not(.btn) { color: var(--color-primary); font-weight: 600; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 1.4fr 1.4fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row span:nth-child(3) { display: none; } .cost-row--header span:nth-child(3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>
