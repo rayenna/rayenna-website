@@ -808,21 +808,23 @@ const t = useTranslations('ml');
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 32px;
   align-items: center;
   padding-top: 72px;
   padding-bottom: 72px;
 }
 .invest-left {
-  padding-right: 24px;
+  padding-right: 8px;
+  min-width: 0;
 }
 .invest-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
-  font-weight: 400;
+  font-size: clamp(1.4rem, 2.15vw, 2.2rem);
+  font-weight: 500;
   color: #ffffff;
-  line-height: 1.25;
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
 /* ML-only urgency CTA — full-width golden underline on "ഇന്നാണ്" */
@@ -842,6 +844,7 @@ const t = useTranslations('ml');
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  min-width: 0;
 }
 .invest-card {
   background: rgba(20, 35, 75, 0.65);
@@ -1356,6 +1359,17 @@ const t = useTranslations('ml');
   .who-we-are__inner,
   .rayenna-way__inner {
     gap: 40px;
+  }
+  .invest-inner {
+    grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+    gap: 24px;
+  }
+  .invest-title {
+    font-size: clamp(1.28rem, 1.9vw, 1.7rem);
+    line-height: 1.45;
+  }
+  .invest-card {
+    padding: 22px 18px;
   }
 }
 @media (min-width: 769px) and (max-height: 820px) {
