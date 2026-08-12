@@ -1205,18 +1205,21 @@ body.nav-menu-open {
   .footer-badge-img { width: 100px; height: 100px; }
 }
 
-/* ML home invest — laptop override (ensures stack above page-scoped styles) */
+/* ML home invest — laptop: match EN side-by-side; override global display-scale type */
 @media (min-width: 901px) and (max-width: 1799px) {
-  body.lang-ml .invest-section { overflow: visible; }
   body.lang-ml .invest-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr) !important;
+    gap: 28px;
+    align-items: center;
   }
   body.lang-ml .invest-title {
-    font-size: 1.05rem !important;
-    line-height: 1.55;
-    transform: none;
-    max-width: 100%;
+    font-size: clamp(1.1rem, 1.65vw, 1.45rem) !important;
+    line-height: 1.35;
+  }
+}
+@media (min-width: 1800px) {
+  body.lang-ml .invest-title {
+    font-size: clamp(1.4rem, 1.9vw, 1.85rem) !important;
   }
 }
 </style>

@@ -318,7 +318,6 @@ body.lang-ml .area-cta h2,
 body.lang-ml .cta-banner__content h2,
 body.lang-ml .faq-cta__title,
 body.lang-ml .cta-banner__title,
-body.lang-ml .invest-title,
 body.lang-ml .priv-title,
 body.lang-ml .slide__caption-title,
 body.lang-ml .featured-card__title {
@@ -343,8 +342,11 @@ body.lang-ml .cta-banner__title {
   font-size: clamp(1.95rem, 4.55vw, 3.12rem) !important;
 }
 
+/* Invest title: keep side-by-side EN layout; ML is taller script — controlled size, not display-scale */
 body.lang-ml .invest-title {
-  font-size: clamp(2.34rem, 4.55vw, 3.9rem) !important;
+  font-size: clamp(1.25rem, 2vw, 1.85rem) !important;
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 body.lang-ml .priv-title {
