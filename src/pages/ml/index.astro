@@ -1360,26 +1360,46 @@ const t = useTranslations('ml');
   .rayenna-way__inner {
     gap: 40px;
   }
-  .invest-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 28px;
-    align-items: start;
-  }
-  .invest-left {
-    padding-right: 16px;
+}
+/* EliteBook ML invest — stack heading above cards; side-by-side clips long Malayalam */
+@media (min-width: 1000px) and (max-width: 1479px) {
+  .invest-section {
     overflow: visible;
   }
+  .invest-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .invest-left {
+    padding-right: 0;
+    max-width: 100%;
+  }
   .invest-title {
-    font-size: 1.02rem;
-    line-height: 1.45;
-    transform: translateX(-1cm);
-    padding-right: 0.15em;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    transform: none;
+    padding-right: 0;
+    max-width: 28em;
+    text-wrap: pretty;
   }
   .invest-urgency {
     white-space: normal;
+    display: inline;
+  }
+  .invest-cards {
+    width: 100%;
   }
   .invest-card {
-    padding: 20px 16px;
+    padding: 20px 18px;
+  }
+  .invest-card h3 {
+    font-size: 0.95rem;
+  }
+  .invest-card p {
+    font-size: 0.84rem;
   }
 }
 @media (min-width: 769px) and (max-height: 820px) {
