@@ -3,12 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import { OG } from '../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+const popularQuestions = [
+  { id: 'faq-costs-0', label: 'Solar cost in Kerala' },
+  { id: 'faq-costs-1', label: '₹78,000 subsidy' },
+  { id: 'faq-costs-11', label: 'Zero electricity bill?' },
+  { id: 'faq-how-solar-works-1', label: 'Net metering' },
+  { id: 'faq-how-solar-works-3', label: 'Power cuts & solar' },
+  { id: 'faq-process-2', label: 'Installation timeline' },
+];
+
 const categories = [
   {
     id: 'costs',
     emoji: '₹',
     label: 'Costs & Subsidies',
-    count: 11,
+    count: 12,
     faqs: [
       {
         q: 'How much does a solar panel system cost in Kerala in 2026?',
@@ -54,13 +63,17 @@ const categories = [
         q: 'Is the PM Surya Ghar ₹78,000 subsidy about to end?',
         a: 'The scheme targets solarising one crore Indian households nationwide. By FY26, over 31 lakh installations were completed and application-to-installation conversion improved sharply — meaning the programme is advancing toward its cap. Subsidy rules and budgets can change once national targets are met. Kerala\'s rooftop market is also growing fast (roughly 55% year-on-year in FY26). If you are considering solar, locking in today\'s subsidy and pricing is generally smarter than waiting for an uncertain future revision.',
       },
+      {
+        q: 'Can I really get a zero electricity bill with rooftop solar in Kerala?',
+        a: 'Yes — many Kerala households already do. PM Surya Ghar data shows over half of the State\'s rooftop applicants recorded zero energy charges in a recent billing month when systems are sized to real usage and net metering is set up correctly. Zero bill does not mean off-grid: you stay connected to KSEB, export surplus during the day, and draw back at night. Evening AC, late-night induction, and poor roof design can still leave a residual charge. The path to near-zero is matching system size to 12 months of KSEB units, maximising daytime self-use, and choosing an MNRE-approved installer like Rayenna who handles net-metering paperwork properly.',
+      },
     ],
   },
   {
     id: 'roof',
     emoji: '🏠',
     label: 'Roof & System Requirements',
-    count: 7,
+    count: 8,
     faqs: [
       {
         q: 'How much roof space do I need for a solar system?',
@@ -90,13 +103,17 @@ const categories = [
         q: 'Can I add more panels later if I start with a smaller system?',
         a: 'Yes, this is called a phased installation and is entirely possible. Your inverter capacity and available roof space are the key constraints. If you plan to expand in the future, we design your initial system with this in mind — using an inverter with headroom for additional panels and routing wiring to accommodate future expansion. Tell us your future plans during the initial consultation.',
       },
+      {
+        q: 'Can solar panels be installed on RCC flat terraces or metal sheet roofs?',
+        a: 'Yes. RCC (concrete) flat terraces are among the best options in Kerala — installers use ballasted frames or penetrative mounts with proper waterproofing. Raised structures are common and allow airflow underneath. Metal or GI sheet roofs use clamps fixed to purlins; thin or rusted sheets may need reinforcement or a raised frame. Clay and concrete tile roofs use hook-and-rail systems. Water tanks, parapet walls, and shade from trees matter more than roof material — our free site survey maps usable area and the right mount for your specific roof before you commit.',
+      },
     ],
   },
   {
     id: 'how-solar-works',
     emoji: '⚡',
     label: 'How Solar Works',
-    count: 9,
+    count: 13,
     faqs: [
       {
         q: 'What is the difference between on-grid, off-grid, and hybrid solar systems?',
@@ -133,6 +150,22 @@ const categories = [
       {
         q: 'Do I need battery storage with rooftop solar in Kerala in 2026?',
         a: 'Most standard 2–3 kW homes on traditional net metering do not require batteries. Under KSERC\'s 2025 regulations (billing from January 2026), larger residential systems may need battery backup to qualify for certain net metering arrangements — for example, systems above 5 kW seeking feasibility after April 2027 face storage requirements in the regulatory framework. Batteries also make sense if you want backup during power cuts (hybrid systems) or to maximise benefits under net billing for bigger arrays. Our team sizes your system and explains whether storage is optional, recommended, or required for your consumption and approval path.',
+      },
+      {
+        q: 'Why does Kerala still have load shedding if I have rooftop solar?',
+        a: 'Solar produces power during daylight hours, but Kerala\'s peak demand is between about 6 pm and 11 pm — when panels are not generating. A standard on-grid system also shuts down during outages for safety. So rooftop solar cuts your bill dramatically but does not automatically end evening load shedding unless you shift heavy loads to daytime, add battery storage, or wait for grid-scale storage projects now being built. Maximising daytime use (washing machine, pump, induction lunch) gives you the best value. If evening AC and load shedding are both concerns, talk to our team about hybrid or battery options.',
+      },
+      {
+        q: 'Can I run an induction cooker on rooftop solar?',
+        a: 'Yes — and it is one of the smartest combinations for Kerala kitchens in 2026 if you cook mainly during solar hours (roughly 9 am–4 pm). A 1.5–2 kW induction cooktop is a real electrical load, so tell your installer when sizing the system. Many families use induction for daytime boiling and lunch while keeping LPG for open-flame dishes — cutting cylinder cost without spiking the KSEB bill. Cooking only after 6 pm draws from the grid or banked units, which is less valuable under 2026 banking rules. A well-designed 3 kW system often covers induction plus baseload; homes adding induction and multiple ACs may need 4–5 kW.',
+      },
+      {
+        q: 'Can I charge my electric vehicle with rooftop solar at home?',
+        a: 'Yes. A typical Kerala commute adds roughly 8–15 kWh per day, often equivalent to running an extra AC — but many owners charge after 6 pm when panels are idle. Best value comes from daytime charging between 9 am and 4 pm, or adding 1.5–3 kW of extra solar capacity beyond household load. Under KSERC\'s 2026 rules, exporting solar by day and reclaiming fully at peak evening is increasingly limited, so EV owners should plan charger timing, system size, and possibly battery storage with their installer. Our solar calculator includes an EV section, and Rayenna sizes every quote around your actual mileage and charging habits.',
+      },
+      {
+        q: 'What is KSEB\'s time-of-day (ToD) tariff and how does it affect solar owners?',
+        a: 'Time-of-day pricing means electricity may cost more during evening peak hours (typically 6 pm–11 pm) and less during off-peak or daytime periods. KSERC has asked KSEB to study ToD tariffs for domestic consumers, and 2025 regulations already cap how much daytime solar export can be drawn back during peak hours — often around 75% for households above 2 kW. Solar economics remain strong, but the highest-value unit is the one you use while your panels are producing. Shift washers, pumps, and dishwashers to daylight; consider storage if EV or AC load peaks at night. Rayenna models daytime vs evening usage before sizing so your system stays profitable as rules evolve.',
       },
     ],
   },
@@ -245,6 +278,7 @@ const categories = [
     ],
   },
 ];
+const FAQ_TOTAL = categories.reduce((total, category) => total + category.faqs.length, 0);
 const faqPageSchema = {
   "@type": "FAQPage",
   "@id": "https://rayennaenergy.com/faqs/#faq",
@@ -274,10 +308,14 @@ const faqPageSchema = {
     <img src={`${base}/media/federico-beccari-ahi73ZN5P0Y-unsplash.jpg`} alt="Rayenna Solar FAQ" class="page-hero__bg" />
     <div class="page-hero__overlay"></div>
     <div class="container page-hero__inner">
-      <p class="page-hero__eyebrow">Knowledge Base</p>
-      <h1 class="page-hero__title">Solar Questions?<br />We Have Answers.</h1>
-      <p class="page-hero__sub">Clear, honest answers to every question about going solar — from costs and subsidies to installation timelines and warranties.</p>
-      <p class="page-hero__count">48 questions across 6 topics</p>
+      <p class="page-hero__eyebrow">Knowledge Base · Updated 2026</p>
+      <h1 class="page-hero__title">Solar FAQs for<br />Kerala Homes</h1>
+      <p class="page-hero__sub">Costs, ₹78,000 subsidy, KSEB net metering, zero bills, and installation timelines — clear answers from Kochi's MNRE-approved installer.</p>
+      <p class="page-hero__count">{FAQ_TOTAL} questions across {categories.length} topics</p>
+      <div class="page-hero__actions">
+        <a href={`${base}/contact/`} class="btn btn-primary">Get Free Installation Quote</a>
+        <a href={`${base}/solar-calculator/`} class="btn btn-outline-white">Calculate My Savings</a>
+      </div>
     </div>
   </section>
 
@@ -293,7 +331,7 @@ const faqPageSchema = {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <p class="faq-search-hint" id="faq-search-hint">48 questions across 6 topics</p>
+        <p class="faq-search-hint" id="faq-search-hint">{FAQ_TOTAL} questions across {categories.length} topics</p>
       </div>
     </div>
 
@@ -313,6 +351,18 @@ const faqPageSchema = {
       </div>
     </nav>
   </div>
+
+  <!-- ===== POPULAR QUESTIONS ===== -->
+  <section class="faq-popular" aria-label="Popular questions">
+    <div class="container">
+      <p class="faq-popular__label">Most asked in 2026</p>
+      <div class="faq-popular__grid">
+        {popularQuestions.map((item) => (
+          <button type="button" class="faq-popular__chip" data-faq-target={item.id}>{item.label}</button>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- ===== FAQ BODY ===== -->
   <div class="faq-body" id="faq-body">
@@ -334,7 +384,7 @@ const faqPageSchema = {
 
           <div class="accordion" data-cat={cat.id}>
             {cat.faqs.map((faq, fi) => (
-              <div class="accordion-item" data-question={faq.q.toLowerCase()}>
+              <div class="accordion-item" id={`faq-${cat.id}-${fi}`} data-question={faq.q.toLowerCase()}>
                 <button class="accordion-trigger" aria-expanded="false">
                   <span class="accordion-num">0{fi + 1}</span>
                   <span class="accordion-q">{faq.q}</span>
@@ -354,6 +404,18 @@ const faqPageSchema = {
       </section>
     ))}
   </div>
+
+  <!-- ===== INSTALLATION CTA ===== -->
+  <section class="faq-install-cta">
+    <div class="container faq-install-cta__inner">
+      <div class="faq-install-cta__copy">
+        <span class="section-tag">Ready to install?</span>
+        <h2 class="faq-install-cta__title">Get a free site survey &amp; installation quote</h2>
+        <p class="faq-install-cta__sub">MNRE-approved equipment, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.</p>
+      </div>
+      <a href={`${base}/contact/`} class="btn btn-primary faq-install-cta__btn">Request Installation Quote →</a>
+    </div>
+  </section>
 
   <!-- ===== SUBSIDY HIGHLIGHT ===== -->
   <section class="subsidy-section">
@@ -392,7 +454,7 @@ const faqPageSchema = {
             We manage all paperwork — you just say yes
           </li>
         </ul>
-        <a href={`${base}/contact`} class="btn btn-primary">Check My Eligibility</a>
+        <a href={`${base}/contact/`} class="btn btn-primary">Get Free Installation Quote</a>
       </div>
     </div>
   </section>
@@ -446,10 +508,10 @@ const faqPageSchema = {
     <img src={`${base}/media/glass-BG.webp`} alt="" class="faq-cta__bg" />
     <div class="faq-cta__overlay"></div>
     <div class="container faq-cta__inner">
-      <h2 class="faq-cta__title">Still have questions?</h2>
-      <p class="faq-cta__sub">Our solar experts are just a call or message away. Free consultations, honest answers, no pressure.</p>
+      <h2 class="faq-cta__title">Ready to install solar on your roof?</h2>
+      <p class="faq-cta__sub">Free site survey, honest sizing, and subsidy handled end-to-end. No pressure — just expert advice from Kochi's trusted MNRE channel partner.</p>
       <div class="faq-cta__actions">
-        <a href={`${base}/contact`} class="btn btn-primary">Talk to an Expert</a>
+        <a href={`${base}/contact/`} class="btn btn-primary">Get Free Installation Quote</a>
         <a href="tel:+917907369304" class="faq-cta__call">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.18 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 16 16.61l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           +91 7907 369 304
@@ -533,6 +595,82 @@ const faqPageSchema = {
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 99px;
   padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.page-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+.page-hero__actions .btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255,255,255,0.75);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+/* ===== POPULAR QUESTIONS ===== */
+.faq-popular {
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  padding: 18px 0 20px;
+}
+.faq-popular__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+.faq-popular__grid {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+  -webkit-overflow-scrolling: touch;
+}
+.faq-popular__grid::-webkit-scrollbar { display: none; }
+.faq-popular__chip {
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-light);
+  color: var(--color-navy);
+  border-radius: 99px;
+  padding: 9px 16px;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.faq-popular__chip:hover,
+.faq-popular__chip:focus-visible {
+  border-color: rgba(168,56,56,0.35);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  outline: none;
 }
 
 /* ===== SEARCH + NAV WRAPPER ===== */
@@ -830,6 +968,39 @@ const faqPageSchema = {
 }
 .subsidy-points li svg { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
 
+/* ===== INSTALLATION CTA ===== */
+.faq-install-cta {
+  padding: 40px 0;
+  background: linear-gradient(135deg, rgba(168,56,56,0.08) 0%, rgba(10,25,50,0.04) 100%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.faq-install-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+.faq-install-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.35;
+  margin: 8px 0 10px;
+}
+.faq-install-cta__sub {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 560px;
+}
+.faq-install-cta__btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+
 /* ===== WARRANTY STRIP ===== */
 .warranty-strip {
   padding: var(--section-padding);
@@ -952,6 +1123,15 @@ const faqPageSchema = {
 @media (min-width: 640px) {
   .faq-cta__actions { flex-direction: row; justify-content: center; }
   .warranty-cards { grid-template-columns: repeat(3, 1fr); }
+  .page-hero__actions { flex-direction: row; max-width: none; }
+  .page-hero__actions .btn { width: auto; }
+  .faq-install-cta__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .faq-install-cta__btn { width: auto; flex-shrink: 0; }
 }
 
 @media (min-width: 900px) {
@@ -1000,6 +1180,27 @@ const faqPageSchema = {
   const searchHint  = document.getElementById('faq-search-hint') as HTMLElement;
   const allItems    = Array.from(document.querySelectorAll<HTMLElement>('.accordion-item'));
   const allCats     = Array.from(document.querySelectorAll<HTMLElement>('.faq-category'));
+  const defaultHint = searchHint.textContent || '';
+
+  function openFaqItem(item: HTMLElement) {
+    const trigger = item.querySelector<HTMLButtonElement>('.accordion-trigger');
+    const panel = item.querySelector<HTMLElement>('.accordion-panel');
+    if (!trigger || !panel) return;
+
+    item.closest<HTMLElement>('.accordion')!
+      .querySelectorAll<HTMLElement>('.accordion-item.is-open')
+      .forEach(open => {
+        if (open !== item) {
+          open.classList.remove('is-open');
+          open.querySelector<HTMLElement>('.accordion-panel')!.style.maxHeight = '0';
+          open.querySelector<HTMLButtonElement>('.accordion-trigger')!.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+    item.classList.add('is-open');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    trigger.setAttribute('aria-expanded', 'true');
+  }
 
   function runSearch(q: string) {
     const term = q.toLowerCase().trim();
@@ -1009,7 +1210,7 @@ const faqPageSchema = {
       allItems.forEach(i => i.classList.remove('accordion-item--hidden'));
       allCats.forEach(c => (c.style.display = ''));
       noResults.style.display = 'none';
-      searchHint.textContent = '48 questions across 6 topics';
+      searchHint.textContent = defaultHint;
       return;
     }
 
@@ -1069,4 +1270,26 @@ const faqPageSchema = {
     });
   }, { rootMargin: '-130px 0px -60% 0px' });
   allCats.forEach(c => io.observe(c));
+
+  document.querySelectorAll<HTMLButtonElement>('.faq-popular__chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const targetId = chip.dataset.faqTarget;
+      if (!targetId) return;
+
+      pills.forEach(p => p.classList.remove('cat-pill--active'));
+      (pills[0] || pills.find(p => p.dataset.filter === 'all'))?.classList.add('cat-pill--active');
+      searchInput.value = '';
+      runSearch('');
+      allCats.forEach(cat => (cat.style.display = ''));
+
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      openFaqItem(target);
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 150,
+        behavior: 'smooth',
+      });
+    });
+  });
 </script>
