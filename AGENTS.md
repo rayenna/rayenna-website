@@ -21,11 +21,13 @@ Also keep in sync when relevant:
 
 **Malayalam copy:** use **റയെന്ന** for the brand (not റയെന്ന്). Prefer **ഹരിത** over പച്ച for green/eco terms.
 
-## Mobile-first
+## Mobile-first + multi-device compatibility
 
-- Build and review at **mobile width first** (~375px), then tablet/desktop.  
-- Use progressive enhancement (`min-width` breakpoints), adequate tap targets, and no horizontal overflow.  
-- Treat mobile layout as part of “done” for every feature or design change.
+- Build and review at **mobile width first** (~375px), then tablet/desktop.
+- Use progressive enhancement (`min-width` breakpoints), adequate tap targets, and no horizontal overflow.
+- Treat layout as “done” only when it works on **Android, iPhone, iPad, MacBook, and Windows laptops** (esp. HP EliteBook 1920×1200 @ 125–150% scale ≈ **1280–1536px CSS**).
+- Malayalam is longer and clips more easily at laptop CSS widths — prefer stacking / wider breakpoints over overflow hacks.
+- See `.cursor/rules/bilingual-mobile-first.mdc` for EliteBook / scaling details.
 
 ## Build & deploy
 

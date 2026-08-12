@@ -27,17 +27,39 @@ Do not merge UI, copy, layout, or feature work that only updates one locale.
 
 **Exceptions (OK in one language only):** legal entity names in English, external URLs, form subjects, filenames, JSON-LD — unless the user asks otherwise.
 
-## 2. Mobile-first
+## 2. Mobile-first + multi-device compatibility
 
-- Design and implement for **small viewports first**, then enhance with `min-width` media queries.
+Design and implement for **small viewports first**, then enhance with `min-width` media queries. Every layout/CSS/copy change must remain usable and correctly aligned on **all** of these:
+
+| Device | What to verify |
+|--------|----------------|
+| Android phone | ~360–412px; touch targets; no overflow |
+| Apple iPhone | ~375–430px; safe areas; hamburger nav |
+| iPad | portrait + landscape (~768–1199px); tablet hero / grids |
+| MacBook | ~1440–1800px+ CSS; full horizontal nav; side-by-side sections |
+| HP EliteBook | **1920×1200 @ 125–150% Windows scale** → often **~1280–1536px CSS** (not “true” 1920). Nav may be hamburger or compact horizontal; ML text is longer and clips easily |
+
+**EliteBook / Windows scaling notes (learned):**
+
+- Do **not** assume MacBook layouts work on EliteBook — CSS width is reduced by DPI scale.
+- Malayalam needs extra room (Noto Sans ML + longer labels). Prefer stacking or wider ML-specific breakpoints over `overflow: hidden` / `translateX` hacks that clip glyphs.
+- Laptop hamburger (when shown) should look like a right-docked panel, not a phone sheet.
+- Narrow media queries that stop at 1479px often miss EliteBook at 125% scale — use ranges that cover **~901–1799px** when targeting “laptop but not large MacBook”.
+- Never “fix for EliteBook only” in a way that breaks phones/iPad/MacBook; scope ML laptop overrides carefully and re-check other breakpoints.
+
+Also:
+
 - Touch targets, readable type, and no horizontal scroll on ~375px width.
-- Verify layout on mobile before considering a change done (hero, nav, forms, tables, galleries, chat widget).
-- Reuse existing responsive patterns in the file you edit; do not add desktop-only layouts without a mobile baseline.
+- Reuse existing responsive patterns; do not add desktop-only layouts without a mobile baseline.
+- Verify hero, nav, forms, tables, galleries, and chat on mobile before considering a change done.
 
 ## 3. Checklist before finishing
 
 - [ ] English page/section updated
 - [ ] Malayalam counterpart updated (or explicitly N/A with user approval)
 - [ ] `ui.ts` / FAQ / blog ML files updated if strings moved to i18n
-- [ ] Mobile layout checked (not desktop-only)
+- [ ] Mobile (Android + iPhone) layout checked
+- [ ] iPad / tablet breakpoint checked where relevant
+- [ ] MacBook desktop layout checked
+- [ ] EliteBook / ~1280–1536px CSS (Windows scale) checked — especially Malayalam
 - [ ] `npm run build` passes
