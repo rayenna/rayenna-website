@@ -137,7 +137,10 @@ const t = useTranslations('ml');
     <div class="invest-overlay"></div>
     <div class="container invest-inner">
       <div class="invest-left">
-        <h2 class="invest-title">{t.homeConvert.investTitle} <em class="invest-urgency">{t.homeConvert.investUrgency}</em></h2>
+        <h2 class="invest-title">
+          {t.homeConvert.investTitle}<br />
+          <em class="invest-urgency">{t.homeConvert.investUrgency}</em>
+        </h2>
       </div>
       <div class="invest-cards">
         <div class="invest-card">
@@ -1361,8 +1364,8 @@ const t = useTranslations('ml');
     gap: 40px;
   }
 }
-/* EliteBook ML invest — stack heading above cards; side-by-side clips long Malayalam */
-@media (min-width: 1000px) and (max-width: 1479px) {
+/* EliteBook / laptop ML invest — stack heading above cards (901–1799px catches 125% & 150% scale) */
+@media (min-width: 901px) and (max-width: 1799px) {
   .invest-section {
     overflow: visible;
   }
@@ -1378,16 +1381,17 @@ const t = useTranslations('ml');
     max-width: 100%;
   }
   .invest-title {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.55;
     transform: none;
     padding-right: 0;
-    max-width: 28em;
+    max-width: 100%;
     text-wrap: pretty;
   }
   .invest-urgency {
     white-space: normal;
     display: inline;
+    margin-top: 0.15em;
   }
   .invest-cards {
     width: 100%;

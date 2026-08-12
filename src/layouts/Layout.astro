@@ -1143,8 +1143,8 @@ body.nav-menu-open {
     border-radius: 20px;
   }
 }
-/* Compact laptop horizontal nav — ML only (EliteBook ~1280–1479px CSS) */
-@media (min-width: 1280px) and (max-width: 1479px) {
+/* Compact laptop horizontal nav — ML only (EliteBook ~1280–1799px CSS) */
+@media (min-width: 1280px) and (max-width: 1799px) {
   body.lang-ml .nav-link {
     font-size: 0.73rem;
     font-weight: 500;
@@ -1203,6 +1203,21 @@ body.nav-menu-open {
   /* Scale logos down to fit side by side */
   .footer-logo-img { width: 130px; }
   .footer-badge-img { width: 100px; height: 100px; }
+}
+
+/* ML home invest — laptop override (ensures stack above page-scoped styles) */
+@media (min-width: 901px) and (max-width: 1799px) {
+  body.lang-ml .invest-section { overflow: visible; }
+  body.lang-ml .invest-inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  body.lang-ml .invest-title {
+    font-size: 1.05rem !important;
+    line-height: 1.55;
+    transform: none;
+    max-width: 100%;
+  }
 }
 </style>
 
