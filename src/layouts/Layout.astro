@@ -1143,6 +1143,17 @@ body.nav-menu-open {
     border-radius: 20px;
   }
 }
+/* Compact laptop horizontal nav — ML only (EliteBook ~1280–1479px CSS) */
+@media (min-width: 1280px) and (max-width: 1479px) {
+  body.lang-ml .nav-link {
+    font-size: 0.73rem;
+    font-weight: 500;
+  }
+  body.lang-ml .nav-link.nav-calculator-link {
+    font-size: 0.69rem;
+    font-weight: 600;
+  }
+}
 /* Hamburger nav: phones, tablets, and narrow windows below 1280px */
 @media (max-width: 1279px) {
   .navbar { position: fixed; }
