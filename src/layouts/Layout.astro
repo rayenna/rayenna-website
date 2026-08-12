@@ -275,6 +275,7 @@ function normalizePath(path: string): string {
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
   {lang === 'ml' && (
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -291,7 +292,7 @@ function normalizePath(path: string): string {
       </a>
 
       <nav class="navbar__nav" id="main-nav" aria-label="Main navigation">
-        {navLinks.map(link => (
+        {navLinks.map((link) => (
           <a
             href={link.href}
             class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
@@ -668,6 +669,8 @@ html[lang="ml-IN"] body.lang-ml h3 {
   font-family: 'Noto Sans Malayalam', var(--font-heading), sans-serif;
 }
 .nav-link {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-heading);
   font-weight: 400;
   font-size: 0.86rem;
@@ -677,6 +680,8 @@ html[lang="ml-IN"] body.lang-ml h3 {
   transition: all var(--transition);
   letter-spacing: 0.1px;
   white-space: nowrap;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 .nav-link:hover, .nav-link.active {
   color: var(--color-primary);
@@ -1127,14 +1132,14 @@ body.nav-menu-open {
     gap: 5px;
   }
   body.lang-ml .nav-link {
-    font-size: 1rem;
+    font-size: 0.94rem;
     font-weight: 500;
-    padding: 7px 11px;
+    padding: 7px 10px;
     letter-spacing: 0.01em;
   }
   body.lang-ml .nav-link.nav-calculator-link {
-    padding: 7px 15px;
-    font-size: 0.95rem;
+    padding: 7px 14px;
+    font-size: 0.9rem;
     font-weight: 600;
   }
   .nav-link.nav-calculator-link {
