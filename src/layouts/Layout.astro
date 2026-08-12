@@ -597,6 +597,10 @@ function normalizePath(path: string): string {
 .navbar {
   overflow-x: clip;
 }
+@media (max-width: 1279px) {
+  /* clip would hide the dropdown on hamburger layouts */
+  .navbar { overflow: visible; }
+}
 .lang-switcher {
   display: none;
   align-items: center;
@@ -831,6 +835,63 @@ body.nav-menu-open {
 .mobile-nav-calculator:focus-visible {
   background-color: var(--color-primary-dark);
   color: #fff;
+}
+
+/* Laptop / large-tablet hamburger: right-docked panel, not a phone sheet */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .navbar__burger {
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  .navbar__burger:hover {
+    background: var(--color-primary-light);
+  }
+  .nav-backdrop {
+    background: rgba(27, 35, 58, 0.32);
+  }
+  .mobile-menu {
+    left: auto;
+    right: 16px;
+    width: min(400px, calc(100vw - 32px));
+    margin-top: 8px;
+    padding: 18px 18px 22px;
+    gap: 4px;
+    max-height: min(78vh, 640px);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 24px 56px rgba(15, 23, 42, 0.2);
+  }
+  .mobile-lang-switcher {
+    position: static;
+    padding: 0 0 12px;
+    margin-bottom: 8px;
+    background: transparent;
+  }
+  .mobile-lang-btn {
+    padding: 10px 12px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+  }
+  .mobile-link {
+    border-bottom: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 1.05rem;
+    min-height: 48px;
+  }
+  body.lang-ml .mobile-link {
+    font-size: 1.08rem;
+    font-weight: 600;
+  }
+  .mobile-nav-calculator {
+    margin-top: 10px;
+    border-radius: 50px;
+    font-size: 1rem;
+  }
 }
 
 /* ===== FOOTER ===== */
