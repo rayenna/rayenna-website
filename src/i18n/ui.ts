@@ -100,18 +100,50 @@ const ui = {
     },
     langSwitcherAria: 'Choose language',
     homeConvert: {
-      heroMicro: 'Free · 5 minutes · No signup · MNRE-approved',
+      heroMicro: 'Free site survey · Subsidy paperwork handled · MNRE-approved',
       heroPhone: 'Or call',
+      heroPrimary: 'Get Free Installation Quote',
+      heroSecondary: '☀️ Calculate My Savings',
+      heroSubtitle:
+        "Kerala's MNRE-approved solar installer. Up to ₹78,000 PM Surya Ghar subsidy. Free site survey. Many homes now hit near-zero KSEB bills — payback in 3–5 years, then 25+ years of low-cost power.",
+      whyNowLabel: 'Why Kerala homeowners are going solar in 2026',
+      whyNow: [
+        { icon: '₹0', text: 'Over half of Kerala PM Surya Ghar homes recorded zero energy charges' },
+        { icon: '₹78k', text: 'Central subsidy up to ₹78,000 — only through MNRE partners like Rayenna' },
+        { icon: '📋', text: '2026 KSEB net metering rules — we handle ekiran, subsidy & approvals' },
+        { icon: '🏠', text: 'Free site survey with honest sizing before you sign anything' },
+      ],
+      investTitle: 'The best time to go solar is',
+      investUrgency: 'today',
       testimonialsCalc: '☀️ Calculate My Savings',
-      testimonialsSurvey: 'Book a Free Site Survey',
+      testimonialsSurvey: 'Get Free Installation Quote',
+      installStripTag: 'Ready to install?',
+      installStripTitle: 'Get a free site survey & installation quote',
+      installStripSub:
+        'MNRE-approved equipment, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.',
+      installStripBtn: 'Request Installation Quote →',
+      resourceHeading: 'Plan your solar project',
+      resources: [
+        { href: '/solar-calculator/', label: 'Free Solar Calculator' },
+        { href: '/faqs/', label: '54 Solar FAQs' },
+        { href: '/blog/', label: 'Expert Guides & News' },
+        { href: '/contact/', label: 'Book a Free Site Survey' },
+      ],
       connectTrust: [
         'MNRE-approved installer in Kerala',
         'Free site survey & fixed quote',
         'No spam — we call you back once',
       ],
+      connectTitle: 'Ready for your free installation quote?',
+      connectSub:
+        'Tell us your city and phone number — our solar team will call back with next steps. Subsidy, sizing, and timeline explained in plain language.',
+      connectSubmit: 'Get Free Installation Quote',
+      connectSubmitSending: 'Sending…',
+      connectSubmitDone: "✓ We'll call you soon!",
       calcCtaTitle: 'See your savings before you commit',
       calcCtaSub:
         'Enter your bill and home details — get system size, subsidy estimate, and payback in under 5 minutes. Free, no obligation.',
+      calcCtaContact: 'Get Free Installation Quote',
     },
     pageConvert: {
       services: {
@@ -254,18 +286,50 @@ const ui = {
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
     homeConvert: {
-      heroMicro: 'സൗജന്യം · 5 മിനിറ്റ് · സൈൻഅപ്പ് വേണ്ട · MNRE അംഗീകൃത',
+      heroMicro: 'സൗജന്യ സൈറ്റ് സർവേ · സബ്സിഡി രേഖകൾ കൈകാര്യം · MNRE അംഗീകൃത',
       heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
+      heroPrimary: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
+      heroSecondary: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
+      heroSubtitle:
+        'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. പല വീടുകളും ഇപ്പോൾ KSEB ബിൽ ശൂന്യത്തോട് അടുക്കുന്നു — 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം, അതിനുശേഷം 25+ വർഷം കുറഞ്ഞ ചെലവിൽ വൈദ്യുതി.',
+      whyNowLabel: '2026-ൽ കേരള വീട്ടുടമകൾ എന്തുകൊണ്ട് സോളാറിലേക്ക് പോകുന്നു',
+      whyNow: [
+        { icon: '₹0', text: 'PM സൂര്യ ഘർ വീടുകളിൽ അർദ്ധത്തിലധികം പേർക്ക് ശൂന്യ ഊർജ ചാർജ്' },
+        { icon: '₹78k', text: '₹78,000 വരെ കേന്ദ്ര സബ്സിഡി — റയെന്ന പോലുള്ള MNRE പാർട്ണർമാർ വഴി മാത്രം' },
+        { icon: '📋', text: '2026 KSEB നെറ്റ് മീറ്ററിംഗ് — ekiran, സബ്സിഡി, അനുമതി ഞങ്ങൾ കൈകാര്യം ചെയ്യുന്നു' },
+        { icon: '🏠', text: 'ഒപ്പിടുന്നതിന് മുമ്പ് സൗജന്യ സൈറ്റ് സർവേയും സത്യസന്ധമായ സൈസിംഗും' },
+      ],
+      investTitle: 'സോളാർ തിരഞ്ഞെടുക്കാനുള്ള ഏറ്റവും നല്ല സമയം',
+      investUrgency: 'ഇന്നാണ്',
       testimonialsCalc: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
-      testimonialsSurvey: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
+      testimonialsSurvey: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
+      installStripTag: 'ഇൻസ്റ്റാൾ ചെയ്യാൻ തയ്യാറാണോ?',
+      installStripTitle: 'സൗജന്യ സൈറ്റ് സർവേ & ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
+      installStripSub:
+        'MNRE-അംഗീകൃത ഉപകരണം, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യൽ, അനുമതികൾ ലഭിച്ചാൽ സാധാരണയായി 1–2 ദിവസം ഇൻസ്റ്റാൾ.',
+      installStripBtn: 'ഇൻസ്റ്റാളേഷൻ ക്വോട്ട് അഭ്യർത്ഥിക്കുക →',
+      resourceHeading: 'നിങ്ങളുടെ സോളാർ പദ്ധതി ആസൂത്രണം ചെയ്യുക',
+      resources: [
+        { href: '/ml/solar-calculator/', label: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ' },
+        { href: '/ml/faqs/', label: '54 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
+        { href: '/ml/blog/', label: 'വിദഗ്ധ ഗൈഡുകൾ' },
+        { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
+      ],
       connectTrust: [
         'കേരളത്തിലെ MNRE അംഗീകൃത ഇൻസ്റ്റാളർ',
         'സൗജന്യ സൈറ്റ് സർവേയും ഫിക്സഡ് ക്വോട്ടും',
         'സ്പാം ഇല്ല — ഒരു തവണ മാത്രം കോൾ ബാക്ക്',
       ],
+      connectTitle: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട് തയ്യാറാണോ?',
+      connectSub:
+        'നിങ്ങളുടെ നഗരവും ഫോൺ നമ്പറും പറയൂ — ഞങ്ങളുടെ സോളാർ ടീം അടുത്ത ഘട്ടങ്ങൾ വിളിച്ച് വിശദീകരിക്കും. സബ്സിഡി, സൈസിംഗ്, സമയക്രമം — ലളിതമായ ഭാഷയിൽ.',
+      connectSubmit: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
+      connectSubmitSending: 'അയയ്ക്കുന്നു…',
+      connectSubmitDone: '✓ ഉടൻ വിളിക്കാം!',
       calcCtaTitle: 'നിങ്ങളുടെ മേൽക്കൂര എത്ര സമ്പാദിക്കും? ഇപ്പോൾ കണ്ടെത്തൂ.',
       calcCtaSub:
         'ബിൽ തുകയും വീടിന്റെ വിവരങ്ങളും നൽകൂ — 5 മിനിറ്റിൽ സിസ്റ്റം വലുപ്പം, സബ്സിഡി, 25 വർഷ ലാഭം. സൗജന്യം. ഒരു ബാധ്യതയുമില്ല.',
+      calcCtaContact: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
     },
     pageConvert: {
       services: {

@@ -11,7 +11,7 @@ const t = useTranslations('ml');
 <Layout lang="ml"
   title="കേരളത്തിൽ സോളാർ ഇൻസ്റ്റാളേഷൻ | റയെന്ന എനർജി"
   description="റയെന്ന എനർജി — കേരളമെമ്പാടും MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. +91 7907 369 304."
-  ogUpdatedTime="2026-06-07T10:00:00+05:30"
+  ogUpdatedTime="2026-08-12T16:00:00+05:30"
   ogImage={OG.home}
 >
 
@@ -27,7 +27,7 @@ const t = useTranslations('ml');
       <div class="hero__mid">
         <img src={`${base}/media/Artboard-2mnre.webp`} alt={t.images.mnreBadgeAlt} class="mnre-badge-img" />
         <div class="hero__mid-copy">
-          <p class="hero__subtitle">കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. സർക്കാർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് പരിശോധന. 3–5 വർഷത്തിനുള്ളിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം — അതിനുശേഷം 25+ വർഷം ശുദ്ധമായ സൗജന്യ വൈദ്യുതി.</p>
+          <p class="hero__subtitle">{t.homeConvert.heroSubtitle}</p>
           <div class="hero-trust-strip">
             <span>✓ MNRE അംഗീകാരം</span>
             <span>✓ ₹78,000 സബ്സിഡി</span>
@@ -37,14 +37,29 @@ const t = useTranslations('ml');
         </div>
       </div>
       <div class="hero-cta-wrapper">
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-hero-primary hero-btn-primary">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക</a>
-        <a href={`${mlPrefix}/contact/`} class="btn btn-hero-outline hero-btn-secondary">കോൾ ബാക്ക് നേടുക</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-hero-primary hero-btn-primary">{t.homeConvert.heroPrimary}</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-hero-outline hero-btn-secondary">{t.homeConvert.heroSecondary}</a>
       </div>
       <p class="hero-cta-micro">{t.homeConvert.heroMicro}</p>
       <p class="hero-phone-cta">
         {t.homeConvert.heroPhone}{' '}
         <a href="tel:+917907369304" data-analytics-location="home_hero">+91 7907 369 304</a>
       </p>
+    </div>
+  </section>
+
+  <!-- ===== WHY NOW 2026 ===== -->
+  <section class="why-now">
+    <div class="container">
+      <p class="why-now__label">{t.homeConvert.whyNowLabel}</p>
+      <div class="why-now__grid">
+        {t.homeConvert.whyNow.map((item) => (
+          <div class="why-now__card">
+            <span class="why-now__icon">{item.icon}</span>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -71,7 +86,10 @@ const t = useTranslations('ml');
             <span><strong>25 വർഷ പാനൽ പെർഫോർമൻസ് വാറന്റി</strong> — Adani, Waaree, Solis പോലുള്ള നിലവാരമുള്ള ബ്രാൻഡുകൾ പരിശീലിത ഇഞ്ചിനീയർമാർ ഇൻസ്റ്റാൾ ചെയ്യുന്നു</span>
           </li>
         </ul>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary solar-intro__cta">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക →</a>
+        <div class="solar-intro__actions">
+          <a href={`${mlPrefix}/contact/`} class="btn btn-primary">{t.homeConvert.heroPrimary}</a>
+          <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-outline solar-intro__cta-secondary">{t.homeConvert.heroSecondary}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -119,10 +137,7 @@ const t = useTranslations('ml');
     <div class="invest-overlay"></div>
     <div class="container invest-inner">
       <div class="invest-left">
-        <h2 class="invest-title">
-          സോളാർ തിരഞ്ഞെടുക്കാനുള്ള ഏറ്റവും നല്ല സമയം{' '}
-          <em class="invest-urgency">ഇന്നാണ്</em>
-        </h2>
+        <h2 class="invest-title">{t.homeConvert.investTitle} <em class="invest-urgency">{t.homeConvert.investUrgency}</em></h2>
       </div>
       <div class="invest-cards">
         <div class="invest-card">
@@ -158,18 +173,18 @@ const t = useTranslations('ml');
       </div>
       <div class="installs-grid">
         {[
-          { name: 'Byju George',   location: 'Thevara',    cap: '10 kW', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Jelees',        location: 'Mahe',       cap: '5 kW',  img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
-          { name: 'Hyder',         location: 'Edapally',   cap: '5 kW',  img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Angelo Thomas', location: 'Edapally',   cap: '10 kW', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
+          { name: 'Arun',          location: 'കൊല്ലം',      cap: '5 kW', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
+          { name: 'Dhanya V.T.',   location: 'പള്ളുരുത്തി', cap: '5 kW', img: 'DHANYA-VT-PALLURUTHY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
+          { name: 'Rajesh K.G.',   location: 'ചെറായി',      cap: '3 kW', img: 'RAJESH-KG-CHERAI-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+          { name: 'Sudheer K.R.',  location: 'ഞാറാക്കൽ',   cap: '3 kW', img: 'SUDHEER-KR-NJARAKKAL-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
         ].map(item => (
-          <div class="install-card">
+          <a href={`${mlPrefix}/media/`} class="install-card">
             <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${item.location} — ${item.cap} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
             <div class="install-card__overlay">
               <strong>{item.name}</strong>
               <span>{item.location} · {item.cap} സിസ്റ്റം</span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <div class="installs-mobile-cta">
@@ -280,7 +295,34 @@ const t = useTranslations('ml');
           <h2>{t.homeConvert.calcCtaTitle}</h2>
           <p>{t.homeConvert.calcCtaSub}</p>
         </div>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary calc-cta-btn">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക →</a>
+        <div class="calc-cta-actions">
+          <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary calc-cta-btn">{t.homeConvert.heroSecondary} →</a>
+          <a href={`${mlPrefix}/contact/`} class="btn btn-outline calc-cta-btn-secondary">{t.homeConvert.calcCtaContact}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSTALLATION CTA ===== -->
+  <section class="home-install-cta">
+    <div class="container home-install-cta__inner">
+      <div class="home-install-cta__copy">
+        <span class="section-tag">{t.homeConvert.installStripTag}</span>
+        <h2 class="home-install-cta__title">{t.homeConvert.installStripTitle}</h2>
+        <p class="home-install-cta__sub">{t.homeConvert.installStripSub}</p>
+      </div>
+      <a href={`${mlPrefix}/contact/`} class="btn btn-primary home-install-cta__btn">{t.homeConvert.installStripBtn}</a>
+    </div>
+  </section>
+
+  <!-- ===== RESOURCE LINKS ===== -->
+  <section class="home-resources">
+    <div class="container">
+      <h2 class="home-resources__heading">{t.homeConvert.resourceHeading}</h2>
+      <div class="home-resources__grid">
+        {t.homeConvert.resources.map((link) => (
+          <a href={`${base}${link.href}`} class="home-resources__link">{link.label}</a>
+        ))}
       </div>
     </div>
   </section>
@@ -289,8 +331,8 @@ const t = useTranslations('ml');
   <section class="connect-section">
     <div class="container connect-section__inner">
       <div class="connect-content">
-        <h2 class="section-title connect-title">ഇനി കറന്റ് ബിൽ ഞെട്ടലല്ല, ആശ്വാസമാകട്ടെ!</h2>
-        <p>സോളാർ ഒരു സ്വപ്നമല്ല — ഒരു തീരുമാനം മാത്രമാണ്. ആ തീരുമാനം ഇന്ന് നിങ്ങൾ എടുക്കൂ. ബാക്കി ഞങ്ങൾ നോക്കിക്കൊള്ളാം.</p>
+        <h2 class="section-title connect-title">{t.homeConvert.connectTitle}</h2>
+        <p>{t.homeConvert.connectSub}</p>
       </div>
       <div class="connect-form-wrap">
         <ul class="connect-trust" aria-label="എന്തുകൊണ്ട് റയെന്നയെ ബന്ധപ്പെടണം">
@@ -304,7 +346,7 @@ const t = useTranslations('ml');
           <input type="text" name="name" placeholder="നിങ്ങളുടെ പേര്" required />
           <input type="tel" name="phone" placeholder="ഫോൺ നമ്പർ" required />
           <input type="text" name="city" placeholder="നിങ്ങളുടെ നഗരം" />
-          <button type="submit" class="btn btn-primary connect-submit">കോൾ ബാക്ക് നേടുക</button>
+          <button type="submit" class="btn btn-primary connect-submit" data-label-default={t.homeConvert.connectSubmit} data-label-sending={t.homeConvert.connectSubmitSending} data-label-done={t.homeConvert.connectSubmitDone}>{t.homeConvert.connectSubmit}</button>
           <p class="connect-form__feedback" id="connect-feedback" style="display:none"></p>
         </form>
       </div>
@@ -507,6 +549,60 @@ const t = useTranslations('ml');
   .hero-btn-primary, .hero-btn-secondary { width: auto; }
 }
 
+/* ===== WHY NOW ===== */
+.why-now {
+  padding: 28px 0 36px;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+.why-now__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.why-now__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.why-now__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--color-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+.why-now__icon {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 44px;
+  text-align: center;
+}
+.why-now__card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+@media (min-width: 640px) {
+  .why-now__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .why-now__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 /* ===== SOLAR INTRO ===== */
 .solar-intro {
   padding: var(--section-padding);
@@ -559,11 +655,21 @@ const t = useTranslations('ml');
   line-height: 1.5;
   flex-shrink: 0;
 }
-.solar-intro__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 100%;
+.solar-intro__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.solar-intro__cta-secondary {
+  justify-content: center;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .solar-intro__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 /* ===== WHO WE ARE ===== */
@@ -974,10 +1080,12 @@ const t = useTranslations('ml');
 }
 .install-card {
   position: relative;
+  display: block;
   border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 4/3;
   background: #e2e8f0;
+  text-decoration: none;
 }
 .install-card img {
   width: 100%;
@@ -1047,7 +1155,14 @@ const t = useTranslations('ml');
 }
 .calc-cta-content { min-width: 0; }
 .calc-cta-content p { font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
-.calc-cta-btn {
+.calc-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.calc-cta-btn,
+.calc-cta-btn-secondary {
   align-self: stretch;
   width: 100%;
   max-width: 100%;
@@ -1063,11 +1178,95 @@ const t = useTranslations('ml');
     gap: 28px;
   }
   .calc-cta-content { flex: 1; }
-  .calc-cta-btn {
-    align-self: flex-start;
+  .calc-cta-actions {
+    width: auto;
+    flex-shrink: 0;
+  }
+  .calc-cta-btn,
+  .calc-cta-btn-secondary {
     width: auto;
     white-space: nowrap;
   }
+}
+
+/* ===== HOME INSTALL CTA ===== */
+.home-install-cta {
+  padding: 40px 0;
+  background: linear-gradient(135deg, rgba(168,56,56,0.08) 0%, rgba(10,25,50,0.04) 100%);
+  border-top: 1px solid var(--color-border);
+}
+.home-install-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+.home-install-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.35;
+  margin: 8px 0 10px;
+}
+.home-install-cta__sub {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 560px;
+}
+.home-install-cta__btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+
+/* ===== HOME RESOURCES ===== */
+.home-resources {
+  padding: 40px 0 48px;
+  background: var(--color-light);
+}
+.home-resources__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 18px;
+  text-align: center;
+}
+.home-resources__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.home-resources__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.home-resources__link:hover {
+  border-color: rgba(168,56,56,0.35);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+@media (min-width: 640px) {
+  .home-install-cta__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .home-install-cta__btn { width: auto; flex-shrink: 0; }
 }
 
 /* ===== LET'S CONNECT ===== */
@@ -1233,36 +1432,18 @@ const t = useTranslations('ml');
 <script>
   import { trackEvent } from '../../lib/analytics';
 
-  const observerOptions = { threshold: 0.3 };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target as HTMLElement;
-      if (entry.isIntersecting && !el.dataset.animated) {
-        el.dataset.animated = 'true';
-        observer.unobserve(el);
-        const target = parseInt(el.dataset.target || '0');
-        let current = 0;
-        const duration = 1500;
-        const step = target / (duration / 16);
-        const timer = setInterval(() => {
-          current = Math.min(current + step, target);
-          el.textContent = Math.floor(current).toString();
-          if (current >= target) clearInterval(timer);
-        }, 16);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.stat-number[data-target]').forEach(el => observer.observe(el));
-
   const form = document.getElementById('connect-form') as HTMLFormElement | null;
   const feedback = document.getElementById('connect-feedback');
+  const submitBtn = form?.querySelector('.connect-submit') as HTMLButtonElement | null;
+  const labelDefault = submitBtn?.dataset.labelDefault || 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്';
+  const labelSending = submitBtn?.dataset.labelSending || 'അയയ്ക്കുന്നു…';
+  const labelDone = submitBtn?.dataset.labelDone || '✓ ഉടൻ വിളിക്കാം!';
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = form.querySelector('.connect-submit') as HTMLButtonElement;
-    btn.disabled = true;
-    btn.textContent = 'അയയ്ക്കുന്നു…';
+    if (!submitBtn) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = labelSending;
     if (feedback) feedback.style.display = 'none';
 
     try {
@@ -1279,23 +1460,23 @@ const t = useTranslations('ml');
       if (response.ok) {
         trackEvent('homepage_callback_submit');
         form.reset();
-        btn.textContent = '✓ ഉടൻ വിളിക്കാം!';
+        submitBtn.textContent = labelDone;
         if (feedback) { feedback.textContent = ''; feedback.style.display = 'none'; }
         setTimeout(() => {
-          btn.textContent = 'കോൾ ബാക്ക് നേടുക';
-          btn.disabled = false;
+          submitBtn.textContent = labelDefault;
+          submitBtn.disabled = false;
         }, 4000);
       } else {
-        btn.textContent = 'കോൾ ബാക്ക് നേടുക';
-        btn.disabled = false;
+        submitBtn.textContent = labelDefault;
+        submitBtn.disabled = false;
         if (feedback) {
           feedback.textContent = 'എന്തോ പിശക് സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക.';
           feedback.style.display = 'block';
         }
       }
     } catch {
-      btn.textContent = 'കോൾ ബാക്ക് നേടുക';
-      btn.disabled = false;
+      submitBtn.textContent = labelDefault;
+      submitBtn.disabled = false;
       if (feedback) {
         feedback.textContent = 'നെറ്റ്‌വർക്ക് പിശക്. വീണ്ടും ശ്രമിക്കുക.';
         feedback.style.display = 'block';
