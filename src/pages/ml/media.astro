@@ -10,6 +10,7 @@ const siteUrl = 'https://rayennaenergy.com';
 const mlPrefix = '/ml';
 const t = useTranslations('ml');
 const mv = t.mediaFeatured;
+const mg = t.mediaGallery;
 const videoThumbBg = `${base}/media/solar-panel-installation.jpg`;
 const videoLogo = `${base}/media/Logo-white.webp`;
 
@@ -231,46 +232,95 @@ const installCount = installations.length;
       </div>
 
       <!-- ── Filter Bar ── -->
-      <div class="gallery-filters" id="gallery-filters">
-        <details class="gf-group gf-group--accordion" open>
-          <summary class="gf-label">സിസ്റ്റം വലിപ്പം</summary>
-          <div class="gf-pills">
-            <button class="gf-pill gf-pill--active" data-type="cap" data-val="all">എല്ലാം</button>
-            <button class="gf-pill" data-type="cap" data-val="3 kW">3 kW</button>
-            <button class="gf-pill" data-type="cap" data-val="4 kW">4 kW</button>
-            <button class="gf-pill" data-type="cap" data-val="5 kW">5 kW</button>
-            <button class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
-            <button class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
+      <div
+        class="gallery-filters"
+        id="gallery-filters"
+        data-showing-all={mg.showingAll}
+        data-showing-filtered={mg.showingFiltered}
+        data-remove-aria={mg.removeFilterAria}
+        data-clear-all={mg.clearAll}
+      >
+        <div class="gf-toolbar">
+          <button
+            type="button"
+            class="gf-open"
+            id="gf-open"
+            aria-expanded="false"
+            aria-controls="gf-sheet"
+          >
+            <svg class="gf-open__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M4 6h16M7 12h10M10 18h4"/>
+            </svg>
+            <span>{mg.filter}</span>
+            <span class="gf-open__badge" id="gf-badge" hidden>0</span>
+          </button>
+          <p class="gf-count" id="gf-count" data-total={installCount}>{mg.showingAll.replace('{n}', String(installCount))}</p>
+        </div>
+
+        <div class="gf-active-chips" id="gf-active-chips" hidden></div>
+
+        <div class="gf-overlay" id="gf-overlay" hidden>
+          <button type="button" class="gf-backdrop" id="gf-backdrop" tabindex="-1" aria-label={mg.closeAria}></button>
+          <div
+            class="gf-sheet"
+            id="gf-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gf-sheet-title"
+          >
+            <div class="gf-sheet__handle" aria-hidden="true"></div>
+            <div class="gf-sheet__header">
+              <h3 class="gf-sheet__title" id="gf-sheet-title">{mg.filters}</h3>
+              <button type="button" class="gf-sheet__close" id="gf-close" aria-label={mg.closeAria}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="gf-sheet__body">
+              <div class="gf-group">
+                <p class="gf-label">{mg.systemSize}</p>
+                <div class="gf-pills">
+                  <button type="button" class="gf-pill gf-pill--active" data-type="cap" data-val="all">{mg.all}</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="3 kW">3 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="4 kW">4 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="5 kW">5 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
+                </div>
+              </div>
+              <div class="gf-group">
+                <p class="gf-label">{mg.inverter}</p>
+                <div class="gf-pills">
+                  <button type="button" class="gf-pill gf-pill--active" data-type="inv" data-val="all">{mg.all}</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Deye Hybrid">Deye Hybrid</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Eastman">Eastman</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Feston">Feston</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Growatt">Growatt</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Havells">Havells</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Polycab">Polycab</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Selec">Selec</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Solaire">Solaire</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Solis">Solis</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="Sunways">Sunways</button>
+                </div>
+              </div>
+              <div class="gf-group">
+                <p class="gf-label">{mg.panels}</p>
+                <div class="gf-pills">
+                  <button type="button" class="gf-pill gf-pill--active" data-type="pan" data-val="all">{mg.all}</button>
+                  <button type="button" class="gf-pill" data-type="pan" data-val="Adani">Adani</button>
+                  <button type="button" class="gf-pill" data-type="pan" data-val="Emmvee">Emmvee</button>
+                  <button type="button" class="gf-pill" data-type="pan" data-val="Renew">Renew</button>
+                  <button type="button" class="gf-pill" data-type="pan" data-val="Waaree">Waaree</button>
+                </div>
+              </div>
+            </div>
+            <div class="gf-sheet__footer">
+              <button type="button" class="gf-clear" id="gf-clear">{mg.clearAll}</button>
+              <button type="button" class="gf-done btn btn-primary" id="gf-done">{mg.done}</button>
+            </div>
           </div>
-        </details>
-        <details class="gf-group gf-group--accordion" open>
-          <summary class="gf-label">ഇൻവർട്ടർ</summary>
-          <div class="gf-pills">
-            <button class="gf-pill gf-pill--active" data-type="inv" data-val="all">എല്ലാം</button>
-            <button class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
-            <button class="gf-pill" data-type="inv" data-val="Deye Hybrid">Deye Hybrid</button>
-            <button class="gf-pill" data-type="inv" data-val="Eastman">Eastman</button>
-            <button class="gf-pill" data-type="inv" data-val="Feston">Feston</button>
-            <button class="gf-pill" data-type="inv" data-val="Growatt">Growatt</button>
-            <button class="gf-pill" data-type="inv" data-val="Havells">Havells</button>
-            <button class="gf-pill" data-type="inv" data-val="Polycab">Polycab</button>
-            <button class="gf-pill" data-type="inv" data-val="Selec">Selec</button>
-            <button class="gf-pill" data-type="inv" data-val="Solaire">Solaire</button>
-            <button class="gf-pill" data-type="inv" data-val="Solis">Solis</button>
-            <button class="gf-pill" data-type="inv" data-val="Sunways">Sunways</button>
-          </div>
-        </details>
-        <details class="gf-group gf-group--accordion" open>
-          <summary class="gf-label">പാനലുകൾ</summary>
-          <div class="gf-pills">
-            <button class="gf-pill gf-pill--active" data-type="pan" data-val="all">എല്ലാം</button>
-            <button class="gf-pill" data-type="pan" data-val="Adani">Adani</button>
-            <button class="gf-pill" data-type="pan" data-val="Emmvee">Emmvee</button>
-            <button class="gf-pill" data-type="pan" data-val="Renew">Renew</button>
-            <button class="gf-pill" data-type="pan" data-val="Waaree">Waaree</button>
-          </div>
-        </details>
-        <p class="gf-count" id="gf-count" data-total={installCount}>എല്ലാ {installCount} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു</p>
+        </div>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
@@ -313,7 +363,7 @@ const installCount = installations.length;
           </article>
         ))}
       </div>
-      <p class="gf-empty" id="gf-empty" style="display:none">തിരഞ്ഞെടുത്ത ഫിൽട്ടറുകൾക്ക് പൊരുത്തപ്പെടുന്ന ഇൻസ്റ്റാളേഷനുകൾ ഇല്ല. <button class="gf-reset-link" id="gf-reset">ഫിൽട്ടറുകൾ റീസെറ്റ് ചെയ്യുക</button></p>
+      <p class="gf-empty" id="gf-empty" style="display:none">{mg.empty} <button type="button" class="gf-reset-link" id="gf-reset">{mg.reset}</button></p>
     </div>
   </section>
 
@@ -648,44 +698,203 @@ const installCount = installations.length;
   background: var(--color-light);
 }
 
-/* ── Filter Bar ── */
+/* ── Filter Bar (compact toolbar + sheet) ── */
 .gallery-filters {
-  margin-bottom: 36px;
+  margin-bottom: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gf-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.gf-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--color-primary);
+  background: #fff;
+  color: var(--color-primary);
+  border-radius: 99px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 40px;
+}
+.gf-open:hover,
+.gf-open[aria-expanded="true"] {
+  background: var(--color-primary-light);
+}
+.gf-open--active {
+  background: var(--color-primary-light);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+.gf-open__icon {
+  flex-shrink: 0;
+}
+.gf-open__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.gf-open__badge[hidden] {
+  display: none;
+}
+.gf-count {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+.gf-active-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.gf-active-chips[hidden] {
+  display: none;
+}
+.gf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 99px;
+  padding: 5px 10px 5px 12px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-chip__x {
+  font-size: 0.95rem;
+  line-height: 1;
+  opacity: 0.75;
+}
+.gf-chip-clear {
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 2px;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.gf-overlay[hidden] {
+  display: none;
+}
+.gf-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: rgba(29, 37, 58, 0.45);
+  cursor: pointer;
+}
+.gf-sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: min(88vh, 640px);
+  background: #fff;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -8px 32px rgba(29, 37, 58, 0.18);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.gallery-filters.is-open .gf-sheet {
+  transform: translateY(0);
+}
+.gf-sheet__handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(39, 50, 79, 0.18);
+  margin: 10px auto 4px;
+  flex-shrink: 0;
+}
+.gf-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 18px 12px;
+  border-bottom: 1px solid rgba(39, 50, 79, 0.08);
+}
+.gf-sheet__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+.gf-sheet__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 99px;
+  background: var(--color-light);
+  color: var(--color-navy);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-sheet__body {
+  padding: 14px 18px 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  -webkit-overflow-scrolling: touch;
 }
 .gf-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-.gf-group--accordion {
-  border: 1px solid rgba(39, 50, 79, 0.1);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  background: #fff;
-}
-.gf-group--accordion > summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.gf-group--accordion > summary::-webkit-details-marker {
-  display: none;
-}
-.gf-group--accordion > summary::after {
-  content: '+';
-  font-size: 1.1rem;
-  color: var(--color-primary);
-  font-weight: 700;
-}
-.gf-group--accordion[open] > summary::after {
-  content: '−';
+  min-width: 0;
 }
 .gf-label {
+  margin: 0;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -694,14 +903,22 @@ const installCount = installations.length;
 }
 .gf-pills {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gf-pills::-webkit-scrollbar {
+  display: none;
 }
 .gf-pill {
+  flex: 0 0 auto;
   border: 1.5px solid rgba(39,50,79,0.15);
   background: #fff;
   border-radius: 99px;
-  padding: 6px 14px;
+  padding: 7px 14px;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
@@ -728,10 +945,34 @@ const installCount = installations.length;
   color: #fff;
   box-shadow: none;
 }
-.gf-count {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  margin-top: 4px;
+.gf-sheet__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px 16px;
+  border-top: 1px solid rgba(39, 50, 79, 0.08);
+  flex-shrink: 0;
+}
+.gf-clear {
+  flex: 1;
+  border: 1.5px solid rgba(39, 50, 79, 0.15);
+  background: #fff;
+  color: var(--color-navy);
+  border-radius: 99px;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-done {
+  flex: 1;
+  min-height: 44px;
+  border-radius: 99px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
 }
 .gf-empty {
   text-align: center;
@@ -749,10 +990,51 @@ const installCount = installations.length;
   text-decoration: underline;
   font-size: inherit;
 }
+body.gf-sheet-open {
+  overflow: hidden;
+}
+
 @media (min-width: 768px) {
-  .gallery-filters { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
-  .gf-group { flex-shrink: 0; }
-  .gf-count { width: 100%; margin-top: 0; }
+  .gallery-filters {
+    margin-bottom: 32px;
+  }
+  .gf-overlay {
+    position: absolute;
+    inset: auto 0 auto 0;
+    top: calc(100% + 8px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 40;
+  }
+  .gf-backdrop {
+    position: fixed;
+    background: transparent;
+  }
+  .gf-sheet {
+    width: min(100%, 560px);
+    max-height: min(70vh, 520px);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(29, 37, 58, 0.16);
+    border: 1px solid rgba(39, 50, 79, 0.1);
+    transform: translateY(-6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding-bottom: 0;
+  }
+  .gallery-filters.is-open .gf-sheet {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .gf-sheet__handle {
+    display: none;
+  }
+  .gf-pills {
+    flex-wrap: wrap;
+    overflow: visible;
+    padding-bottom: 0;
+  }
 }
 .section-header {
   text-align: center;
@@ -1525,18 +1807,6 @@ const installCount = installations.length;
   .page-hero__actions .btn {
     width: auto;
   }
-  .gf-group--accordion {
-    border: none;
-    padding: 0;
-    background: transparent;
-  }
-  .gf-group--accordion > summary {
-    cursor: default;
-    pointer-events: none;
-  }
-  .gf-group--accordion > summary::after {
-    display: none;
-  }
   .showcase-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   .showcase-item--tall { grid-row: span 2; }
   .showcase-item img { min-height: 240px; }
@@ -1619,11 +1889,74 @@ const installCount = installations.length;
   }
 
   // ── Gallery Filters ────────────────────────────────────────────────────────
+  const filtersRoot = document.getElementById('gallery-filters');
   const filters = { cap: 'all', inv: 'all', pan: 'all' };
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
   const countEl = document.getElementById('gf-count');
   const emptyEl = document.getElementById('gf-empty');
+  const openBtn = document.getElementById('gf-open');
+  const overlay = document.getElementById('gf-overlay');
+  const backdrop = document.getElementById('gf-backdrop');
+  const closeBtn = document.getElementById('gf-close');
+  const doneBtn = document.getElementById('gf-done');
+  const clearBtn = document.getElementById('gf-clear');
+  const chipsEl = document.getElementById('gf-active-chips');
+  const badgeEl = document.getElementById('gf-badge');
   const installTotal = Number(countEl?.dataset.total || cards.length);
+  const tplAll = filtersRoot?.dataset.showingAll || 'എല്ലാ {n} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു';
+  const tplFiltered = filtersRoot?.dataset.showingFiltered || '{n}-ൽ നിന്ന് {v} ഇൻസ്റ്റാളേഷനുകൾ കാണിക്കുന്നു';
+  const tplRemove = filtersRoot?.dataset.removeAria || '{label} ഫിൽട്ടർ നീക്കം ചെയ്യുക';
+  const clearLabel = filtersRoot?.dataset.clearAll || 'എല്ലാം മായ്ക്കുക';
+
+  function formatCount(visible) {
+    const allClear = filters.cap === 'all' && filters.inv === 'all' && filters.pan === 'all';
+    return allClear
+      ? tplAll.replace('{n}', String(installTotal))
+      : tplFiltered.replace('{v}', String(visible)).replace('{n}', String(installTotal));
+  }
+
+  function activeFilterCount() {
+    return ['cap', 'inv', 'pan'].filter((k) => filters[k] !== 'all').length;
+  }
+
+  function syncChrome(visible) {
+    if (countEl) countEl.textContent = formatCount(visible);
+    const n = activeFilterCount();
+    openBtn?.classList.toggle('gf-open--active', n > 0);
+    if (badgeEl) {
+      if (n > 0) {
+        badgeEl.hidden = false;
+        badgeEl.textContent = String(n);
+      } else {
+        badgeEl.hidden = true;
+      }
+    }
+    if (!chipsEl) return;
+    chipsEl.innerHTML = '';
+    if (n === 0) {
+      chipsEl.hidden = true;
+      return;
+    }
+    chipsEl.hidden = false;
+    ['cap', 'inv', 'pan'].forEach((type) => {
+      const val = filters[type];
+      if (val === 'all') return;
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'gf-chip';
+      chip.dataset.type = type;
+      chip.dataset.val = val;
+      chip.setAttribute('aria-label', tplRemove.replace('{label}', val));
+      chip.innerHTML = `${val}<span class="gf-chip__x" aria-hidden="true">×</span>`;
+      chipsEl.appendChild(chip);
+    });
+    const clearChip = document.createElement('button');
+    clearChip.type = 'button';
+    clearChip.className = 'gf-chip-clear';
+    clearChip.id = 'gf-chip-clear';
+    clearChip.textContent = clearLabel;
+    chipsEl.appendChild(clearChip);
+  }
 
   function applyFilters() {
     let visible = 0;
@@ -1635,28 +1968,19 @@ const installCount = installations.length;
       card.style.display = match ? '' : 'none';
       if (match) visible++;
     });
-    if (countEl) {
-      countEl.textContent = filters.cap === 'all' && filters.inv === 'all' && filters.pan === 'all'
-        ? `എല്ലാ ${installTotal} ഇൻസ്റ്റാളേഷനുകളും കാണിക്കുന്നു`
-        : `${installTotal}-ൽ നിന്ന് ${visible} ഇൻസ്റ്റാളേഷനുകൾ കാണിക്കുന്നു`;
-    }
+    syncChrome(visible);
     if (emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
   }
 
-  document.querySelectorAll('.gf-pill').forEach((pill) => {
-    pill.addEventListener('click', () => {
-      const type = pill.dataset.type;
-      const val = pill.dataset.val;
-      if (!type || !val) return;
-      filters[type] = val;
-      document.querySelectorAll(`.gf-pill[data-type="${type}"]`).forEach((p) => {
-        p.classList.toggle('gf-pill--active', p.dataset.val === val);
-      });
-      applyFilters();
+  function setFilter(type, val) {
+    filters[type] = val;
+    document.querySelectorAll(`.gf-pill[data-type="${type}"]`).forEach((p) => {
+      p.classList.toggle('gf-pill--active', p.dataset.val === val);
     });
-  });
+    applyFilters();
+  }
 
-  document.getElementById('gf-reset')?.addEventListener('click', () => {
+  function resetFilters() {
     filters.cap = 'all';
     filters.inv = 'all';
     filters.pan = 'all';
@@ -1664,7 +1988,69 @@ const installCount = installations.length;
       p.classList.toggle('gf-pill--active', p.dataset.val === 'all');
     });
     applyFilters();
+  }
+
+  function openSheet() {
+    if (!filtersRoot || !overlay || !openBtn) return;
+    overlay.hidden = false;
+    requestAnimationFrame(() => {
+      filtersRoot.classList.add('is-open');
+    });
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('gf-sheet-open');
+    closeBtn?.focus();
+  }
+
+  function closeSheet() {
+    if (!filtersRoot || !overlay || !openBtn) return;
+    filtersRoot.classList.remove('is-open');
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('gf-sheet-open');
+    window.setTimeout(() => {
+      if (!filtersRoot.classList.contains('is-open')) overlay.hidden = true;
+    }, 280);
+    openBtn.focus();
+  }
+
+  openBtn?.addEventListener('click', () => {
+    if (filtersRoot?.classList.contains('is-open')) closeSheet();
+    else openSheet();
   });
+  backdrop?.addEventListener('click', closeSheet);
+  closeBtn?.addEventListener('click', closeSheet);
+  doneBtn?.addEventListener('click', closeSheet);
+  clearBtn?.addEventListener('click', resetFilters);
+  document.getElementById('gf-reset')?.addEventListener('click', resetFilters);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && filtersRoot?.classList.contains('is-open')) {
+      e.preventDefault();
+      closeSheet();
+    }
+  });
+
+  document.querySelectorAll('.gf-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const type = pill.dataset.type;
+      const val = pill.dataset.val;
+      if (!type || !val) return;
+      setFilter(type, val);
+    });
+  });
+
+  chipsEl?.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest('.gf-chip-clear')) {
+      resetFilters();
+      return;
+    }
+    const chip = target.closest('.gf-chip');
+    if (!chip?.dataset.type) return;
+    setFilter(chip.dataset.type, 'all');
+  });
+
+  applyFilters();
 
   // ── Video Library ──────────────────────────────────────────────────────────
   const vlPlayer = document.getElementById('vl-player');
