@@ -67,6 +67,7 @@ const installations = [
   { name: 'Avio D Luiz',       location: 'Thevara',       capacity: '5 kW',  inverter: 'Eastman',     panels: 'Waaree', img: 'AVIO D LUIZ-THEVARA-5KW-EASTMAN-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Aysha George',      location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'AYSHA-GEORGE-RAVIPURAM-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Ajaya Ghosh',        location: 'Thevara',       capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'AJAYAGHOSH -THEVARA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Ajayakumar',        location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'AJAYAKUMAR-ALAPUZHA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Babu',              location: 'North Paravur', capacity: '5 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'BABU-NORTH-PARAVUR-5KW-POLYCAB-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Balu',              location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'BALU-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Byju George',       location: 'Thevara',       capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
@@ -105,12 +106,14 @@ const installations = [
   { name: 'Saphiya',           location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
   { name: 'Sasidharan',        location: 'Eroor',         capacity: '3 kW',  inverter: 'Sunways',     panels: 'Adani',  img: 'SASIDHARAN-EROOR-3KW-SUNWAYS-INVERTER-PANELS-ADANI.png' },
   { name: 'Sathya Dineshan',   location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SATHYA DINESHAN-ALAPPUZHA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Sessy Antony',      location: 'Chottanikkara', capacity: '6 kW',  inverter: 'Deye',        panels: 'Emmvee', img: 'SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
   { name: 'Sibu KS',           location: 'Udayamperoor',  capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SIBU KS-UDAYAMPEROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Swapna Biju',       location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SWAPNA BIJU-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Shamna',            location: 'Kollam',        capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SHAMNA-KOLLAM-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Snoby Babu',        location: 'Thrikkakkara',  capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SNOBY BABU-THRIKKAKKARA-5KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Smitha Vineesh',    location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SMITHA VINEESH-PALLURUTHY-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Sudheer K.R.',      location: 'Njarakkal',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SUDHEER-KR-NJARAKKAL-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Suresh',            location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Suji Jose',         location: 'Panangad',      capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SUJI JOSE-PANANGAD-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Thomas Varghese',   location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Havells',     panels: 'Adani',  img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png' },
   { name: 'Vanaja',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
@@ -170,6 +173,9 @@ const allSlides = [
   { img: 'RADHA P K-THEVARA-5KW-EASTMAN-INVERTER-PANELS-EMMVEE.jpeg',          caption: 'Radha P.K. — Thevara',      sub: '5 kW · Eastman Inverter · Emmvee Panels' },
   { img: 'RANJIT RAJ-THEVARA-3KW-EASTMAN-INVERTER-PANELS-WAAREE.jpeg',         caption: 'Ranjit Raj — Thevara',      sub: '3 kW · Eastman Inverter · Waaree Panels' },
   { img: 'SWAPNA BIJU-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg',          caption: 'Swapna Biju — Eroor',       sub: '4 kW · Sunways Inverter · Waaree Panels' },
+  { img: 'AJAYAKUMAR-ALAPUZHA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg',         caption: 'Ajayakumar — Alappuzha',    sub: '3 kW · Eastman Inverter · Adani Panels' },
+  { img: 'SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg',   caption: 'Sessy Antony — Chottanikkara', sub: '6 kW · Deye Inverter · Emmvee Panels' },
+  { img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg',               caption: 'Suresh — Eroor',            sub: '4 kW · Sunways Inverter · Waaree Panels' },
   { img: 'BABU-NORTH-PARAVUR-5KW-POLYCAB-INVERTER-PANELS-ADANI.jpeg',            caption: 'Babu — North Paravur',      sub: '5 kW · Polycab Inverter · Adani Panels' },
   { img: 'SABU-VARAPUZHA-3KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.jpeg',            caption: 'Sabu — Varapuzha',          sub: '3 kW · Deye Hybrid Inverter · Adani Panels' },
 ];
@@ -278,6 +284,7 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
                   <button type="button" class="gf-pill" data-type="cap" data-val="3 kW">3 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="4 kW">4 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="5 kW">5 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="6 kW">6 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
                 </div>
