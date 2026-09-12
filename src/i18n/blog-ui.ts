@@ -38,12 +38,12 @@ export const blogUiEn = {
     'Free site survey, honest sizing, and subsidy handled end-to-end. No pressure — just expert advice from Kochi’s trusted MNRE channel partner.',
   indexBottomBtn: 'Get Free Installation Quote',
   indexPopularReads: [
+    { slug: 'pm-surya-ghar-vendor-ban-2026', label: 'Choose a trusted installer' },
+    { slug: 'kerala-rooftop-solar-1282-mw-2026', label: 'Kerala’s 1,282 MW boom' },
     { slug: 'kerala-zero-bill-rooftop-solar-2026', label: 'Zero electricity bill' },
     { slug: 'pm-surya-ghar-subsidy-guide', label: '₹78,000 subsidy guide' },
     { slug: 'how-much-does-solar-cost-in-kerala', label: 'Solar cost in Kerala' },
-    { slug: 'kseb-net-metering-rules-2026', label: '2026 net metering rules' },
-    { slug: 'going-solar-kochi-guide-2025', label: 'Going solar in Kochi' },
-    { slug: 'what-to-ask-solar-contract-kerala', label: 'Before you sign' },
+    { slug: 'almm-list-ii-exemption-december-2026', label: 'ALMM List-II to Dec 2026' },
   ],
 } as const;
 
@@ -85,12 +85,12 @@ export const blogUiMlStrings = {
     'സൗജന്യ സൈറ്റ് സർവേ, സത്യസന്ധമായ സൈസിംഗ്, സബ്സിഡി മുഴുവനും എൻഡ്-ടു-എൻഡ്. സമ്മർദ്ദമില്ല — കൊച്ചിയിലെ വിശ്വസനീയ MNRE ചാനൽ പാർട്ണറിൽ നിന്ന് വിദഗ്ധ ഉപദേശം മാത്രം.',
   indexBottomBtn: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
   indexPopularReads: [
+    { slug: 'pm-surya-ghar-vendor-ban-2026', label: 'വിശ്വസ്ത ഇൻസ്റ്റാളർ' },
+    { slug: 'kerala-rooftop-solar-1282-mw-2026', label: 'കേരളം 1,282 MW' },
     { slug: 'kerala-zero-bill-rooftop-solar-2026', label: 'ശൂന്യ വൈദ്യുതി ബിൽ' },
     { slug: 'pm-surya-ghar-subsidy-guide', label: '₹78,000 സബ്സിഡി ഗൈഡ്' },
     { slug: 'how-much-does-solar-cost-in-kerala', label: 'കേരളത്തിൽ സോളാർ ചെലവ്' },
-    { slug: 'kseb-net-metering-rules-2026', label: '2026 നെറ്റ് മീറ്ററിംഗ്' },
-    { slug: 'going-solar-kochi-guide-2025', label: 'കൊച്ചിയിൽ സോളാർ' },
-    { slug: 'what-to-ask-solar-contract-kerala', label: 'ഒപ്പിടുന്നതിന് മുമ്പ്' },
+    { slug: 'almm-list-ii-exemption-december-2026', label: 'ALMM ലിസ്റ്റ്-II ഡിസം 2026' },
   ],
 } as const;
 

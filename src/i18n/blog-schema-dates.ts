@@ -2,6 +2,9 @@
 export type BlogSchemaDates = { published: string; modified: string };
 
 export const BLOG_SCHEMA_DATES: Record<string, BlogSchemaDates> = {
+  'pm-surya-ghar-vendor-ban-2026': { published: '2026-09-12', modified: '2026-09-12' },
+  'almm-list-ii-exemption-december-2026': { published: '2026-09-12', modified: '2026-09-12' },
+  'kerala-rooftop-solar-1282-mw-2026': { published: '2026-09-12', modified: '2026-09-12' },
   'kerala-zero-bill-rooftop-solar-2026': { published: '2026-07-24', modified: '2026-07-24' },
   'why-kerala-load-shedding-despite-solar-2026': { published: '2026-07-24', modified: '2026-07-24' },
   'induction-cooking-solar-kerala-2026': { published: '2026-07-24', modified: '2026-07-24' },

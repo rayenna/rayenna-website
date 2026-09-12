@@ -1,4 +1,7 @@
 import type { BlogArticleMl } from '../blog-ml.ts';
+import { article as pmSuryaGharVendorBan2026 } from './pm-surya-ghar-vendor-ban-2026.ts';
+import { article as almmListIiExemptionDecember2026 } from './almm-list-ii-exemption-december-2026.ts';
+import { article as keralaRooftopSolar1282Mw2026 } from './kerala-rooftop-solar-1282-mw-2026.ts';
 import { article as keralaZeroBillRooftopSolar2026 } from './kerala-zero-bill-rooftop-solar-2026.ts';
 import { article as whyKeralaLoadSheddingDespiteSolar2026 } from './why-kerala-load-shedding-despite-solar-2026.ts';
 import { article as inductionCookingSolarKerala2026 } from './induction-cooking-solar-kerala-2026.ts';
@@ -33,6 +36,9 @@ import { article as netMeteringExplained } from './net-metering-explained.ts';
 
 /** Malayalam blog articles — newest first (matches English blog index order). */
 export const blogArticlesMl: BlogArticleMl[] = [
+  pmSuryaGharVendorBan2026,
+  almmListIiExemptionDecember2026,
+  keralaRooftopSolar1282Mw2026,
   keralaZeroBillRooftopSolar2026,
   whyKeralaLoadSheddingDespiteSolar2026,
   inductionCookingSolarKerala2026,
