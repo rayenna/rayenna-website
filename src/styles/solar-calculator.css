@@ -1,6 +1,6 @@
 /* =============================================
    Rayenna Solar Calculator — Premium UI
-   Navy · White · Gold · Glassmorphism
+   Navy · White · Brand maroon CTAs · Gold savings accents
    Mobile-first (640px · 900px)
    ============================================= */
 
@@ -9,6 +9,12 @@
   --calc-navy:        #0a1929;
   --calc-navy-mid:    #132743;
   --calc-navy-soft:   #1a3358;
+  /* Interactive / CTA accents → Rayenna maroon (site brand bridge) */
+  --calc-brand:       #a83838;
+  --calc-brand-dark:  #8a2c2c;
+  --calc-brand-light: #d47272;
+  --calc-brand-muted: rgba(168, 56, 56, 0.16);
+  /* Gold kept for savings / money highlights */
   --calc-gold:        #c9a227;
   --calc-gold-light:  #e8d48a;
   --calc-gold-muted:  rgba(201, 162, 39, 0.15);
@@ -58,8 +64,8 @@
 }
 
 @keyframes calcPulseGold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.35); }
-  50%       { box-shadow: 0 0 0 6px rgba(201, 162, 39, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168, 56, 56, 0.35); }
+  50%       { box-shadow: 0 0 0 6px rgba(168, 56, 56, 0); }
 }
 
 /* =============================================
@@ -130,7 +136,7 @@
   width: 18px;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--calc-gold), var(--calc-gold-light));
+  background: linear-gradient(90deg, var(--calc-brand), var(--calc-brand-light));
 }
 
 .page-hero__title,
@@ -145,7 +151,7 @@
 }
 
 .hero-title-grad {
-  background: linear-gradient(135deg, #fff 0%, var(--calc-gold-light) 48%, var(--calc-gold) 100%);
+  background: linear-gradient(135deg, #fff 0%, #f0c4c4 48%, var(--calc-brand-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -437,8 +443,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--calc-gold), #b8921f);
-  color: var(--calc-navy);
+  background: linear-gradient(135deg, var(--calc-brand), var(--calc-brand-dark));
+  color: #fff;
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 800;
@@ -660,10 +666,10 @@
   top: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--calc-gold), #d4a82a);
+  background: linear-gradient(90deg, var(--calc-brand), var(--calc-brand-dark));
   border-radius: 999px;
   transition: width 0.55s ease;
-  box-shadow: 0 0 14px rgba(201, 162, 39, 0.4);
+  box-shadow: 0 0 14px rgba(168, 56, 56, 0.35);
 }
 
 .calc-progress-steps {
@@ -697,7 +703,7 @@
 }
 
 .cpb-step.active .cpb-step-name {
-  color: var(--calc-gold);
+  color: var(--calc-brand);
 }
 
 .cpb-step.done .cpb-step-name {
@@ -735,17 +741,17 @@
 }
 
 .cpb-step.active .cpb-dot {
-  background: linear-gradient(135deg, var(--calc-gold), #d4a82a);
-  color: var(--calc-navy);
-  border-color: var(--calc-gold);
-  box-shadow: 0 0 18px rgba(201, 162, 39, 0.45);
+  background: linear-gradient(135deg, var(--calc-brand), var(--calc-brand-dark));
+  color: #fff;
+  border-color: var(--calc-brand);
+  box-shadow: 0 0 18px rgba(168, 56, 56, 0.4);
   animation: calcPulseGold 2.2s ease-in-out infinite;
 }
 
 .cpb-step.done .cpb-dot {
   background: var(--calc-navy-mid);
-  color: var(--calc-gold-light);
-  border-color: rgba(201, 162, 39, 0.45);
+  color: #fff;
+  border-color: rgba(168, 56, 56, 0.45);
 }
 
 .calc-step-label {
@@ -840,7 +846,7 @@
 .ht-card.selected {
   border-color: var(--calc-gold);
   background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(232, 212, 138, 0.12) 100%);
-  box-shadow: 0 0 0 3px var(--calc-gold-muted);
+  box-shadow: 0 0 0 3px var(--calc-brand-muted);
 }
 
 .ht-icon {
@@ -1094,7 +1100,7 @@
 .charger-card.selected {
   border-color: var(--calc-gold);
   background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(232, 212, 138, 0.1) 100%);
-  box-shadow: 0 0 0 3px var(--calc-gold-muted);
+  box-shadow: 0 0 0 3px var(--calc-brand-muted);
 }
 
 .charger-card strong {
@@ -1117,7 +1123,7 @@
 }
 
 /* =============================================
-   SLIDERS — gold gradient fill
+   SLIDERS — brand maroon gradient fill
    ============================================= */
 
 .sliders-group {
@@ -1150,8 +1156,8 @@
   border-radius: 6px;
   background: linear-gradient(
     to right,
-    var(--calc-gold) 0%,
-    var(--calc-gold-light) 50%,
+    var(--calc-brand) 0%,
+    var(--calc-brand-light) 50%,
     var(--calc-slider-track) 50%,
     var(--calc-slider-track) 100%
   );
@@ -1164,9 +1170,9 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--calc-gold), var(--calc-gold-light));
+  background: linear-gradient(135deg, var(--calc-brand), var(--calc-brand-light));
   border: 3px solid var(--calc-white);
-  box-shadow: 0 2px 10px rgba(201, 162, 39, 0.45);
+  box-shadow: 0 2px 10px rgba(168, 56, 56, 0.4);
   cursor: pointer;
   transition: transform var(--calc-transition);
 }
@@ -1179,10 +1185,10 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--calc-gold), var(--calc-gold-light));
+  background: linear-gradient(135deg, var(--calc-brand), var(--calc-brand-light));
   border: 3px solid var(--calc-white);
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(201, 162, 39, 0.45);
+  box-shadow: 0 2px 10px rgba(168, 56, 56, 0.4);
 }
 
 .slider-range-labels {
@@ -1266,7 +1272,7 @@
 .occ-card.selected {
   border-color: var(--calc-gold);
   background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(232, 212, 138, 0.1) 100%);
-  box-shadow: 0 0 0 3px var(--calc-gold-muted);
+  box-shadow: 0 0 0 3px var(--calc-brand-muted);
 }
 
 .occ-card strong {
@@ -1316,13 +1322,13 @@
 }
 
 .btn-calc-next.btn-calc-primary {
-  background: linear-gradient(135deg, var(--calc-gold) 0%, #b8921f 100%);
-  color: var(--calc-navy);
+  background: linear-gradient(135deg, var(--calc-brand) 0%, var(--calc-brand-dark) 100%);
+  color: #fff;
 }
 
 .btn-calc-next.btn-calc-primary:hover {
-  background: linear-gradient(135deg, var(--calc-gold-light) 0%, var(--calc-gold) 100%);
-  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.35);
+  background: linear-gradient(135deg, var(--calc-brand-light) 0%, var(--calc-brand) 100%);
+  box-shadow: 0 8px 24px rgba(168, 56, 56, 0.35);
 }
 
 .btn-calc-back {
@@ -1714,17 +1720,17 @@
 .panel-option:hover {
   transform: translateY(-2px);
   box-shadow: var(--calc-shadow-lg);
-  border-color: rgba(201, 162, 39, 0.35);
+  border-color: rgba(168, 56, 56, 0.35);
 }
 
 .panel-option.selected {
-  border-color: var(--calc-gold);
+  border-color: var(--calc-brand);
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.82) 0%,
-    rgba(232, 212, 138, 0.14) 100%
+    rgba(168, 56, 56, 0.08) 100%
   );
-  box-shadow: 0 0 0 3px var(--calc-gold-muted), var(--calc-shadow-md);
+  box-shadow: 0 0 0 3px var(--calc-brand-muted), var(--calc-shadow-md);
 }
 
 .panel-option.selected::after {
@@ -1732,8 +1738,8 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: linear-gradient(135deg, var(--calc-gold), #b8921f);
-  color: var(--calc-navy);
+  background: linear-gradient(135deg, var(--calc-brand), var(--calc-brand-dark));
+  color: #fff;
   font-size: clamp(0.64rem, 1.4vw, 0.7rem);
   font-weight: 700;
   letter-spacing: 0.4px;

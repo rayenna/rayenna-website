@@ -243,6 +243,18 @@ const ui = {
       testimonialsTitle: 'What Kerala Homeowners Say',
       testimonialsIntro:
         'Real results from real installations across Kerala. Every Rayenna system includes a 25-year panel performance warranty and end-to-end support.',
+      seasonNote:
+        'Post-monsoon roofs dry faster — book a free survey while 2026 PM Surya Ghar subsidy is open.',
+      billStoryEyebrow: 'Featured result',
+      billStoryTitle: 'One roof. Two bills cut.',
+      billStoryMeta: 'Arun · Kollam · 5 kW',
+      billStoryBeforeLabel: 'Before',
+      billStoryBefore: 'Rising KSEB bill + LPG kitchen costs every month',
+      billStoryAfterLabel: 'After Rayenna',
+      billStoryAfter: 'Lower electricity bill + induction cooking — double savings',
+      billStoryQuote:
+        '“After going solar, I switched my kitchen to induction — my electricity bill dropped, and so did my LPG costs.”',
+      billStoryCta: 'See more installations →',
     },
     pageConvert: {
       services: {
@@ -544,6 +556,18 @@ const ui = {
       testimonialsTitle: 'കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്',
       testimonialsIntro:
         'കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പാനൽ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.',
+      seasonNote:
+        'മഴക്കാലം കഴിഞ്ഞ് മേൽക്കൂരകൾ വേഗം ഉണങ്ങുന്നു — 2026 PM സൂര്യ ഘർ സബ്സിഡി തുറന്നിരിക്കുമ്പോൾ സൗജന്യ സർവേ ബുക്ക് ചെയ്യൂ.',
+      billStoryEyebrow: 'ഫീച്ചർ ചെയ്ത ഫലം',
+      billStoryTitle: 'ഒരു മേൽക്കൂര. രണ്ട് ബിൽ കുറഞ്ഞു.',
+      billStoryMeta: 'Arun · കൊല്ലം · 5 kW',
+      billStoryBeforeLabel: 'മുമ്പ്',
+      billStoryBefore: 'കയറുന്ന KSEB ബിൽ + ഓരോ മാസവും LPG അടുക്കള ചെലവ്',
+      billStoryAfterLabel: 'റയെന്നയ്ക്ക് ശേഷം',
+      billStoryAfter: 'കുറഞ്ഞ വൈദ്യുതി ബിൽ + ഇൻഡക്ഷൻ പാചകം — ഇരട്ട സമ്പാദ്യം',
+      billStoryQuote:
+        '“സോളാർ വന്നതിനുശേഷം ഞാൻ സ്റ്റൗ ഇൻഡക്ഷനിലേക്ക് മാറ്റി — KSEB ബിൽ കുറഞ്ഞു, LPG ഉപഭോഗവും കുറഞ്ഞു.”',
+      billStoryCta: 'കൂടുതൽ ഇൻസ്റ്റാളേഷനുകൾ കാണുക →',
     },
     pageConvert: {
       services: {
