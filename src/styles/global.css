@@ -212,6 +212,30 @@ ul { list-style: none; }
 .animate-fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
 .animate-fade-in { animation: fadeIn 1s ease both; }
 
+/* Scroll reveal — used on home (and reusable sitewide) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-fade-up,
+  .animate-fade-up-2,
+  .animate-fade-up-3,
+  .animate-fade-in {
+    animation: none !important;
+  }
+}
+
 /* ===== CALCULATOR CTA CARD (shared — blog posts & FAQ) ===== */
 /* Mobile first */
 .calc-cta-card {

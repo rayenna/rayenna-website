@@ -145,6 +145,14 @@ const ui = {
       calcCtaSub:
         'Enter your bill and home details — get system size, subsidy estimate, and payback in under 5 minutes. Free, no obligation.',
       calcCtaContact: 'Get Free Installation Quote',
+      installsSub:
+        'Real rooftops across Kerala — designed, installed, and commissioned by Rayenna. Tap any photo to open the gallery.',
+      installsViewAll: 'View all installations →',
+      installsQuote: '“After going solar, my electricity bill dropped — and so did my LPG costs.” — Arun, Kollam',
+      installsQuoteLink: 'Browse the full gallery →',
+      midLinkQuote: 'Get a free quote →',
+      midLinkCalc: 'Calculate my savings →',
+      testimonialsMore: 'See installations & more stories →',
     },
     pageConvert: {
       services: {
@@ -348,6 +356,14 @@ const ui = {
       calcCtaSub:
         'ബിൽ തുകയും വീടിന്റെ വിവരങ്ങളും നൽകൂ — 5 മിനിറ്റിൽ സിസ്റ്റം വലുപ്പം, സബ്സിഡി, 25 വർഷ ലാഭം. സൗജന്യം. ഒരു ബാധ്യതയുമില്ല.',
       calcCtaContact: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
+      installsSub:
+        'കേരളമെമ്പാടുമുള്ള യഥാർത്ഥ റൂഫ്ടോപ്പുകൾ — റയെന്ന ടീം ഡിസൈൻ ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്തവ. ഗാലറി തുറക്കാൻ ഒരു ഫോട്ടോ ടാപ്പ് ചെയ്യൂ.',
+      installsViewAll: 'എല്ലാ ഇൻസ്റ്റാളേഷനുകളും കാണുക →',
+      installsQuote: '“സോളാർ വന്നതിനുശേഷം വൈദ്യുതി ബിൽ കുറഞ്ഞു — LPG ചെലവും കുറഞ്ഞു.” — Arun, കൊല്ലം',
+      installsQuoteLink: 'മുഴുവൻ ഗാലറി കാണുക →',
+      midLinkQuote: 'സൗജന്യ ക്വോട്ട് നേടുക →',
+      midLinkCalc: 'സമ്പാദ്യം കണക്കാക്കുക →',
+      testimonialsMore: 'ഇൻസ്റ്റാളേഷനുകളും കൂടുതൽ കഥകളും കാണുക →',
     },
     pageConvert: {
       services: {
