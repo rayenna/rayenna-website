@@ -153,6 +153,96 @@ const ui = {
       midLinkQuote: 'Get a free quote →',
       midLinkCalc: 'Calculate my savings →',
       testimonialsMore: 'See installations & more stories →',
+      whoTitle: 'Who We Are',
+      whoBody:
+        "Rayenna Energy is Kerala's MNRE-approved rooftop solar partner — a local team that designs, installs, and stands behind every system. We size for your KSEB bill, handle ekiran and subsidy paperwork, and commission ALMM-listed kits so net metering goes live without drama.",
+      whoPoints: [
+        {
+          title: 'MNRE channel partner',
+          text: 'PM Surya Ghar subsidy filing and approvals handled end to end — not left to you.',
+        },
+        {
+          title: 'Honest sizing first',
+          text: 'Free site survey before you sign. We recommend the kW your roof and bill actually need.',
+        },
+        {
+          title: 'Support after switch-on',
+          text: 'App monitoring, 25-year panel performance warranty, and a team that picks up the phone.',
+        },
+      ],
+      whoReadMore: 'More about Rayenna →',
+      whoStatsCta: 'See how much you could save →',
+      whoStatBrands: 'Brands',
+      whoStatBills: 'Less bills',
+      whoStatSatisfied: 'Client satisfaction',
+      investCards: [
+        {
+          title: 'More affordable',
+          text: 'Panel prices have fallen over 80% in two decades — and PM Surya Ghar can cut up to ₹78,000 more for eligible homes.',
+        },
+        {
+          title: 'More efficient',
+          text: 'Modern modules near 22% efficiency turn Kerala sun into more units per square metre of roof.',
+        },
+        {
+          title: 'Built for 300 sunny days',
+          text: 'Clear days often mean 6–8 hours of generation — power you already pay KSEB for every month.',
+        },
+        {
+          title: 'Subsidy + net metering',
+          text: 'Central subsidy through MNRE partners; surplus units credited on your KSEB bill.',
+        },
+      ],
+      wayTitle: 'The Rayenna Way',
+      wayLead:
+        "Solar in Kerala isn't only panels on a roof — it's KSEB net metering, ANERT timelines, and monsoon-ready hardware. We keep the paperwork and the install in one place.",
+      wayPoints: [
+        {
+          title: 'ALMM panels & trusted inverters',
+          text: 'Brands that clear subsidy checks — including Adani, Waaree, Solis, and peers we install every week.',
+        },
+        {
+          title: 'Install when clearances land',
+          text: 'Typical rooftop install in 1–2 days once KSEB / ANERT approvals are in place.',
+        },
+        {
+          title: 'You see generation live',
+          text: 'Online monitoring so you know what your roof produces — and we stay reachable after commissioning.',
+        },
+      ],
+      processTitle: 'From first call to commissioning',
+      processSub: 'Clear steps. Kerala timelines. No mystery middlemen.',
+      processSteps: [
+        {
+          num: '01',
+          title: 'Call or quote',
+          desc: 'Share your bill and city. We explain subsidy eligibility and sizing in plain language.',
+        },
+        {
+          num: '02',
+          title: 'Free site survey',
+          desc: 'Roof, shade, and load check — honest kW recommendation before any deposit.',
+        },
+        {
+          num: '03',
+          title: 'Design & paperwork',
+          desc: 'Custom layout plus ekiran, ANERT, and PM Surya Ghar filing handled by our team.',
+        },
+        {
+          num: '04',
+          title: 'Installation',
+          desc: 'Trained crew, neat cabling — typically 1–2 days on site once approvals are ready.',
+        },
+        {
+          num: '05',
+          title: 'Commissioning & support',
+          desc: 'Net metering go-live, handover, monitoring setup, and ongoing help when you need it.',
+        },
+      ],
+      installsTitle: 'Solar — Beautifully Done',
+      testimonialsTitle: 'What Kerala Homeowners Say',
+      testimonialsIntro:
+        'Real results from real installations across Kerala. Every Rayenna system includes a 25-year panel performance warranty and end-to-end support.',
     },
     pageConvert: {
       services: {
@@ -364,6 +454,96 @@ const ui = {
       midLinkQuote: 'സൗജന്യ ക്വോട്ട് നേടുക →',
       midLinkCalc: 'സമ്പാദ്യം കണക്കാക്കുക →',
       testimonialsMore: 'ഇൻസ്റ്റാളേഷനുകളും കൂടുതൽ കഥകളും കാണുക →',
+      whoTitle: 'ആരാണ് ഞങ്ങൾ',
+      whoBody:
+        'റയെന്ന എനർജി കേരളത്തിലെ MNRE അംഗീകൃത റൂഫ്ടോപ്പ് സോളാർ പങ്കാളിയാണ് — ഡിസൈൻ മുതൽ ഇൻസ്റ്റാൾ വരെ ഒരേ ടീം. നിങ്ങളുടെ KSEB ബില്ലിനനുസരിച്ച് സൈസ് ചെയ്യുന്നു; ekiran, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യുന്നു; ALMM ലിസ്റ്റ് ചെയ്ത കിറ്റുകൾ കൊണ്ട് നെറ്റ് മീറ്ററിംഗ് ലളിതമാക്കുന്നു.',
+      whoPoints: [
+        {
+          title: 'MNRE ചാനൽ പാർട്ണർ',
+          text: 'PM സൂര്യ ഘർ സബ്സിഡി ഫയലിംഗും അനുമതിയും അറ്റം മുതൽ അറ്റം വരെ — നിങ്ങൾക്ക് മാത്രം വിട്ടുകൊടുക്കില്ല.',
+        },
+        {
+          title: 'ആദ്യം സത്യസന്ധമായ സൈസിംഗ്',
+          text: 'ഒപ്പിടുന്നതിന് മുമ്പ് സൗജന്യ സൈറ്റ് സർവേ. മേൽക്കൂരയ്ക്കും ബില്ലിനും വേണ്ട kW മാത്രം നിർദ്ദേശിക്കുന്നു.',
+        },
+        {
+          title: 'സ്വിച്ച്-ഓണിന് ശേഷവും പിന്തുണ',
+          text: 'ആപ്പ് മോണിറ്ററിംഗ്, 25 വർഷ പാനൽ പെർഫോർമൻസ് വാറന്റി, വിളിച്ചാൽ മറുപടി തരുന്ന ടീം.',
+        },
+      ],
+      whoReadMore: 'റയെന്നയെക്കുറിച്ച് കൂടുതൽ →',
+      whoStatsCta: 'എത്ര സമ്പാദിക്കാം എന്ന് കാണുക →',
+      whoStatBrands: 'ബ്രാൻഡുകൾ',
+      whoStatBills: 'കുറഞ്ഞ ബിൽ',
+      whoStatSatisfied: 'ഉപഭോക്തൃ സംതൃപ്തി',
+      investCards: [
+        {
+          title: 'ഇന്ന് ഏറ്റവും താങ്ങാനാവുന്നത്',
+          text: 'ഇരുപത് വർഷത്തിൽ പാനൽ വില 80%-ലധികം കുറഞ്ഞു — യോഗ്യമായ വീടുകൾക്ക് PM സൂര്യ ഘർ ₹78,000 വരെ കൂടി കുറയ്ക്കും.',
+        },
+        {
+          title: 'ഇന്ന് ഏറ്റവും കാര്യക്ഷമം',
+          text: 'ആധുനിക മോഡ്യൂളുകൾ ~22% കാര്യക്ഷമത — കേരള വെയിൽ ചതുരശ്ര മീറ്ററിൽ കൂടുതൽ യൂണിറ്റാക്കി മാറ്റുന്നു.',
+        },
+        {
+          title: '300 സൂര്യദിനങ്ങൾക്ക് വേണ്ടി',
+          text: 'തെളിഞ്ഞ ദിവസങ്ങളിൽ പലപ്പോഴും 6–8 മണിക്കൂർ ജനറേഷൻ — ഇപ്പോൾ KSEB-ക്ക് നൽകുന്ന അതേ വൈദ്യുതി.',
+        },
+        {
+          title: 'സബ്സിഡി + നെറ്റ് മീറ്ററിംഗ്',
+          text: 'MNRE പാർട്ണർമാർ വഴി കേന്ദ്ര സബ്സിഡി; അധിക യൂണിറ്റുകൾ KSEB ബില്ലിൽ ക്രെഡിറ്റ്.',
+        },
+      ],
+      wayTitle: 'റയെന്നയുടെ വഴി',
+      wayLead:
+        'കേരളത്തിലെ സോളാർ പാനലുകൾ മാത്രമല്ല — KSEB നെറ്റ് മീറ്ററിംഗ്, ANERT സമയക്രമം, മഴക്കാലത്തിന് തയ്യാറായ ഹാർഡ്‌വെയർ. രേഖകളും ഇൻസ്റ്റാളും ഒരിടത്ത്.',
+      wayPoints: [
+        {
+          title: 'ALMM പാനലുകളും വിശ്വസ്ത ഇൻവർട്ടറുകളും',
+          text: 'സബ്സിഡി പരിശോധനകൾ കടക്കുന്ന ബ്രാൻഡുകൾ — Adani, Waaree, Solis ഉൾപ്പെടെ ഞങ്ങൾ ആഴ്ചയിൽ ഇൻസ്റ്റാൾ ചെയ്യുന്നവ.',
+        },
+        {
+          title: 'അനുമതി വന്നാൽ ഇൻസ്റ്റാൾ',
+          text: 'KSEB / ANERT അനുമതി ലഭിച്ചാൽ സാധാരണയായി 1–2 ദിവസം മേൽക്കൂര ഇൻസ്റ്റാൾ.',
+        },
+        {
+          title: 'ജനറേഷൻ തത്സമയം കാണാം',
+          text: 'ഓൺലൈൻ മോണിറ്ററിംഗ് — മേൽക്കൂര എന്ത് ഉൽപ്പാദിപ്പിക്കുന്നു എന്ന് അറിയാം; കമ്മീഷനിങ്ങിന് ശേഷവും ഞങ്ങൾ എത്താം.',
+        },
+      ],
+      processTitle: 'ആദ്യ കോൾ മുതൽ കമ്മീഷനിങ് വരെ',
+      processSub: 'വ്യക്തമായ ഘട്ടങ്ങൾ. കേരള സമയക്രമം. രഹസ്യ മധ്യവർത്തികളില്ല.',
+      processSteps: [
+        {
+          num: '01',
+          title: 'കോൾ അല്ലെങ്കിൽ ക്വോട്ട്',
+          desc: 'ബില്ലും നഗരവും പറയൂ. സബ്സിഡി യോഗ്യതയും സൈസിംഗും ലളിതമായ ഭാഷയിൽ വിശദീകരിക്കാം.',
+        },
+        {
+          num: '02',
+          title: 'സൗജന്യ സൈറ്റ് സർവേ',
+          desc: 'മേൽക്കൂര, ഷേഡ്, ലോഡ് — ഡിപ്പോസിറ്റിന് മുമ്പ് സത്യസന്ധമായ kW നിർദ്ദേശം.',
+        },
+        {
+          num: '03',
+          title: 'ഡിസൈനും രേഖകളും',
+          desc: 'കസ്റ്റം ലേഔട്ട്; ekiran, ANERT, PM സൂര്യ ഘർ ഫയലിംഗ് ഞങ്ങളുടെ ടീം കൈകാര്യം ചെയ്യുന്നു.',
+        },
+        {
+          num: '04',
+          title: 'ഇൻസ്റ്റാളേഷൻ',
+          desc: 'പരിശീലനം നേടിയ ക്രൂ, വൃത്തിയുള്ള കേബ്ലിങ് — അനുമതി ലഭിച്ചാൽ സാധാരണയായി 1–2 ദിവസം.',
+        },
+        {
+          num: '05',
+          title: 'കമ്മീഷനിങും പിന്തുണയും',
+          desc: 'നെറ്റ് മീറ്ററിംഗ് ഗോ-ലൈവ്, ഹാൻഡോവർ, മോണിറ്ററിംഗ് സെറ്റപ്പ്, ആവശ്യം വരുമ്പോൾ തുടർ സഹായം.',
+        },
+      ],
+      installsTitle: 'സോളാർ — മനോഹരമായി',
+      testimonialsTitle: 'കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്',
+      testimonialsIntro:
+        'കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പാനൽ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.',
     },
     pageConvert: {
       services: {

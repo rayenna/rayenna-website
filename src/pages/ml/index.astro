@@ -98,9 +98,17 @@ const t = useTranslations('ml');
   <section class="who-we-are" data-reveal>
     <div class="container who-we-are__inner">
       <div class="who-we-are__content">
-        <h2 class="section-title">ആരാണ് ഞങ്ങൾ</h2>
-        <p>ഞങ്ങൾ വെറും സോളാർ കമ്പനിയല്ല — കേരളത്തിലെ ഉപഭോക്താക്കളെ ഊർജ്ജ സ്വതന്ത്രരാക്കുന്നതിനായി പ്രതിജ്ഞാബദ്ധമായ ഒരു ടീമാണ്. സോളാറിലേക്ക് മാറുന്നത് ബിൽ കുറയ്ക്കൽ മാത്രമല്ല — അത് നിങ്ങളുടെ കുടുംബത്തിനും വരും തലമുറകൾക്കും ഒരു മുതൽക്കൂട്ടാണ്. സുസ്ഥിരത, കാര്യക്ഷമത, താങ്ങാനാവുന്ന വില — ഈ മൂന്ന് തത്ത്വങ്ങൾ ഞങ്ങളുടെ ഓരോ ഇൻസ്റ്റാളേഷന്റെയും അടിത്തറയാണ്.</p>
-        <a href={`${mlPrefix}/about/`} class="read-more">കൂടുതൽ വായിക്കുക &gt;&gt;</a>
+        <h2 class="section-title">{t.homeConvert.whoTitle}</h2>
+        <p>{t.homeConvert.whoBody}</p>
+        <ul class="who-points">
+          {t.homeConvert.whoPoints.map((point) => (
+            <li>
+              <strong>{point.title}</strong>
+              <span>{point.text}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={`${mlPrefix}/about/`} class="text-cta">{t.homeConvert.whoReadMore}</a>
       </div>
       <div class="who-we-are__stats">
         <div class="stat-item">
@@ -108,23 +116,23 @@ const t = useTranslations('ml');
             <span class="stat-number" data-target="20">20</span>
             <span class="stat-suffix">+</span>
           </div>
-          <p class="stat-label">ബ്രാൻഡുകൾ</p>
+          <p class="stat-label">{t.homeConvert.whoStatBrands}</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
             <span class="stat-number" data-target="80">80</span>
             <span class="stat-suffix">%</span>
           </div>
-          <p class="stat-label">കുറഞ്ഞ ബിൽ</p>
+          <p class="stat-label">{t.homeConvert.whoStatBills}</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
             <span class="stat-number" data-target="100">100</span>
             <span class="stat-suffix">%</span>
           </div>
-          <p class="stat-label">ഉപഭോക്തൃ സംതൃപ്തി</p>
+          <p class="stat-label">{t.homeConvert.whoStatSatisfied}</p>
         </div>
-        <a href={`${mlPrefix}/solar-calculator/`} class="stats-cta">☀️ എത്ര സമ്പാദിക്കാം എന്ന് കാണുക →</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="text-cta who-stats-link">{t.homeConvert.whoStatsCta}</a>
       </div>
     </div>
   </section>
@@ -145,22 +153,12 @@ const t = useTranslations('ml');
         </h2>
       </div>
       <div class="invest-cards">
-        <div class="invest-card">
-          <h3>ഇന്ന് ഏറ്റവും താങ്ങാനാവുന്നത്</h3>
-          <p>കഴിഞ്ഞ ഇരുപത് വർഷത്തിൽ സോളാർ പാനൽ വില 80%-ലധികം കുറഞ്ഞു. ഒരിക്കൽ ആഡംബരമായിരുന്നത് ഇന്ന് ഏത് വീടിനും കൈയ്യെത്തുന്ന ദൂരത്താണ്.</p>
-        </div>
-        <div class="invest-card">
-          <h3>ഇന്ന് ഏറ്റവും കാര്യക്ഷമം</h3>
-          <p>ആധുനിക പാനലുകൾ 22% വരെ കാര്യക്ഷമത നൽകുന്നു — അതായത് ഓരോ തുള്ളി വെയിലും കൂടുതൽ വൈദ്യുതിയായി മാറുന്നു.</p>
-        </div>
-        <div class="invest-card">
-          <h3>300 ദിവസം വെയിൽ — പൂർണ്ണമായി ഉപയോഗിക്കൂ</h3>
-          <p>കേരളത്തിൽ വർഷം 300-ലധികം സൂര്യദിനങ്ങൾ. ആ ഊർജ്ജം KSEB-ന് സൗജന്യമായി നൽകുന്നത് ഇനി നിർത്താം.</p>
-        </div>
-        <div class="invest-card">
-          <h3>സർക്കാർ സബ്സിഡി — ₹78,000 വരെ</h3>
-          <p>PM സൂര്യ ഘർ പദ്ധതി വഴി ഇൻസ്റ്റാളേഷൻ ചിലവ് ഗണ്യമായി കുറയുന്നു. ഇന്ന് സോളാർ ഒരു ബുദ്ധിപൂർവ്വമായ സാമ്പത്തിക തീരുമാനം കൂടിയാണ്.</p>
-        </div>
+        {t.homeConvert.investCards.map((card) => (
+          <div class="invest-card">
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -170,8 +168,7 @@ const t = useTranslations('ml');
     <div class="container">
       <div class="installs-preview__header">
         <div>
-          <span class="section-tag">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ</span>
-          <h2 class="section-title">സോളാർ — മനോഹരമായി</h2>
+          <h2 class="section-title">{t.homeConvert.installsTitle}</h2>
           <p class="installs-preview__sub">{t.homeConvert.installsSub}</p>
         </div>
         <a href={`${mlPrefix}/media/`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
@@ -206,9 +203,8 @@ const t = useTranslations('ml');
   <section class="testimonials-section" data-reveal>
     <div class="container">
       <div class="testimonials-header">
-        <span class="section-tag">ഉപഭോക്തൃ അനുഭവങ്ങൾ</span>
-        <h2 class="section-title">കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്</h2>
-        <p class="testimonials-intro">കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.</p>
+        <h2 class="section-title">{t.homeConvert.testimonialsTitle}</h2>
+        <p class="testimonials-intro">{t.homeConvert.testimonialsIntro}</p>
       </div>
       <div class="testimonials-grid">
 
@@ -255,17 +251,23 @@ const t = useTranslations('ml');
     </div>
   </section>
 
-  <!-- ===== CHOOSING THE RAYENNA WAY ===== -->
+  <!-- ===== THE RAYENNA WAY ===== -->
   <section class="rayenna-way" data-reveal>
     <div class="container rayenna-way__inner">
+      <div class="rayenna-way__content">
+        <h2 class="section-title">{t.homeConvert.wayTitle}</h2>
+        <p class="rayenna-way__lead">{t.homeConvert.wayLead}</p>
+        <ul class="way-points">
+          {t.homeConvert.wayPoints.map((point) => (
+            <li>
+              <strong>{point.title}</strong>
+              <span>{point.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div class="rayenna-way__image">
         <img src={`${base}/media/Hardshell-solar.webp`} alt="റയെന്ന സോളാർ ഗുണനിലവാരം" />
-      </div>
-      <div class="rayenna-way__content">
-        <h2 class="section-title">റയെന്നയുടെ വഴി</h2>
-        <p>റയെന്നയിൽ ഗുണനിലവാരമാണ് മുൻഗണന — ഒരു വിട്ടുവീഴ്ചയുമില്ലാതെ. മികച്ച മെറ്റീരിയലുകൾ മാത്രം ഉപയോഗിച്ച്, ഓരോ സോളാർ സിസ്റ്റവും വിശ്വസനീയതയ്ക്കും ദീർഘകാല പ്രകടനത്തിനും വേണ്ടി സ്ഥാപിക്കുന്നു.</p>
-        <p>ഡിസൈൻ മുതൽ ഇൻസ്റ്റാളേഷൻ വരെ — ഓരോ ഘട്ടവും നിങ്ങളുടെ ആവശ്യങ്ങൾക്കനുസരിച്ച്, കൃത്യതയോടെ, സമയത്ത്. ഓൺലൈൻ മോണിറ്ററിംഗ് വഴി തത്സമയ അപ്ഡേറ്റുകളും ആവശ്യം വരുമ്പോൾ വേഗത്തിലുള്ള പിന്തുണയും — ഇൻസ്റ്റാളേഷന് ശേഷവും ഞങ്ങൾ കൂടെയുണ്ട്.</p>
-        <p>സോളാർ വൈദ്യുതി ഇനി സങ്കീർണ്ണമല്ല, ചെലവേറിയതുമല്ല — റയെന്നയോടൊപ്പം അത് എളുപ്പമാണ്, ആശ്വാസകരമാണ്, ബുദ്ധിപൂർവ്വമായ തിരഞ്ഞെടുപ്പാണ്.</p>
       </div>
     </div>
   </section>
@@ -273,24 +275,21 @@ const t = useTranslations('ml');
   <!-- ===== PROCESS ===== -->
   <section class="process-section" data-reveal>
     <div class="container">
-      <div class="text-center" style="margin-bottom:56px">
-        <h2 class="section-title">സോളാർ — തുടക്കം മുതൽ അവസാനം വരെ ഞങ്ങൾ കൂടെ</h2>
-      </div>
-      <div class="process-grid">
-        {[
-          { num: '01', title: 'ആദ്യ സംഭാഷണം', desc: 'നിങ്ങളുടെ ഊർജ്ജ ആവശ്യങ്ങളും ലക്ഷ്യങ്ങളും മനസ്സിലാക്കി ശരിയായ ദിശ നിശ്ചയിക്കുന്നു.' },
-          { num: '02', title: 'സൈറ്റ് പരിശോധന', desc: 'നിങ്ങളുടെ സ്ഥലത്തിന് ഏറ്റവും അനുയോജ്യമായ സോളാർ പരിഹാരം കണ്ടെത്താൻ ടീം നേരിൽ വന്ന് വിലയിരുത്തുന്നു.' },
-          { num: '03', title: 'സിസ്റ്റം രൂപകൽപ്പന', desc: 'പരിശോധനയുടെ ഫലത്തെ അടിസ്ഥാനമാക്കി പ്രകടനവും കാര്യക്ഷമതയും പരമാവധിയാക്കുന്ന സിസ്റ്റം ഡിസൈൻ ചെയ്യുന്നു.' },
-          { num: '04', title: 'ഇൻസ്റ്റാളേഷൻ', desc: 'പരിശീലനം നേടിയ എഞ്ചിനീയർമാർ ഏറ്റവും ഉയർന്ന നിലവാരത്തിൽ — ഓരോ ഘട്ടവും കൃത്യതയോടെ.' },
-          { num: '05', title: 'ഇൻസ്റ്റാളേഷന് ശേഷവും കൂടെ', desc: 'സിസ്റ്റം കാര്യക്ഷമമായി പ്രവർത്തിക്കാൻ തുടർ പിന്തുണയും പരിചരണവും — ആശങ്കയില്ലാതെ സൗരോർജ്ജം ആസ്വദിക്കൂ.' },
-        ].map(step => (
-          <div class="process-card">
-            <div class="process-card__num">{step.num}</div>
-            <h3 class="process-card__title">{step.title}</h3>
-            <p class="process-card__desc">{step.desc}</p>
-          </div>
+      <header class="process-header">
+        <h2 class="section-title">{t.homeConvert.processTitle}</h2>
+        <p class="process-sub">{t.homeConvert.processSub}</p>
+      </header>
+      <ol class="process-timeline">
+        {t.homeConvert.processSteps.map((step) => (
+          <li class="process-step">
+            <span class="process-step__num" aria-hidden="true">{step.num}</span>
+            <div class="process-step__body">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__desc">{step.desc}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
@@ -719,14 +718,36 @@ const t = useTranslations('ml');
   line-height: 1.9;
   margin-bottom: 20px;
 }
-.read-more {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--color-primary);
-  font-size: 0.95rem;
-  transition: color var(--transition);
+.who-points {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
-.read-more:hover { color: var(--color-primary-dark); }
+.who-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-primary);
+}
+.who-points strong {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.who-points span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+.who-stats-link {
+  margin-top: 8px;
+  text-align: center;
+}
 
 .who-we-are__stats {
   display: flex;
@@ -764,38 +785,7 @@ const t = useTranslations('ml');
   letter-spacing: 2px;
 }
 
-/* Stats CTA — mobile first */
-.stats-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  margin-top: 28px;
-  padding: 15px 32px;
-  background-color: var(--color-primary);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  letter-spacing: 0.3px;
-  text-decoration: none;
-  min-height: 52px;
-  box-shadow: 0 4px 18px rgba(168, 56, 56, 0.28);
-  -webkit-tap-highlight-color: transparent;
-  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-}
-.stats-cta:hover {
-  background-color: var(--color-primary-dark);
-  box-shadow: 0 6px 24px rgba(168, 56, 56, 0.4);
-  transform: translateY(-1px);
-  color: #fff;
-}
-.stats-cta:active { opacity: 0.85; transform: none; }
-@media (min-width: 768px) {
-  .stats-cta { width: auto; padding: 13px 36px; }
-}
+/* Stats link uses who-stats-link */
 
 /* ===== INVEST IN SOLAR ===== */
 .invest-section {
@@ -899,7 +889,7 @@ const t = useTranslations('ml');
 /* ===== RAYENNA WAY ===== */
 .rayenna-way {
   padding: var(--section-padding);
-  background: var(--color-light);
+  background: var(--color-white);
 }
 .rayenna-way__inner {
   display: grid;
@@ -913,61 +903,119 @@ const t = useTranslations('ml');
   box-shadow: var(--shadow-lg);
   object-fit: cover;
 }
-.rayenna-way__content .section-title { margin-bottom: 24px; }
-.rayenna-way__content p {
+.rayenna-way__content .section-title { margin-bottom: 16px; }
+.rayenna-way__lead {
   color: var(--color-text-muted);
-  line-height: 1.9;
+  line-height: 1.85;
+  margin-bottom: 28px;
+  font-size: 1.02rem;
 }
-
-/* ===== PROCESS ===== */
-.process-section {
-  padding: var(--section-padding);
-  background: var(--color-white);
+.way-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
-.process-card {
+.way-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
   background: var(--color-light);
   border-radius: var(--radius-md);
-  padding: 32px 20px 28px;
+  border-top: 3px solid var(--color-primary);
+}
+.way-points strong {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.way-points span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ===== PROCESS (timeline) ===== */
+.process-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.process-header {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+.process-header .section-title {
+  margin-bottom: 10px;
+}
+.process-sub {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+.process-timeline {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   position: relative;
-  text-align: center;
-  transition: all var(--transition);
 }
-.process-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  background: var(--color-white);
+.process-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 16px;
+  align-items: start;
+  position: relative;
+  padding-bottom: 28px;
 }
-.process-card__num {
+.process-step:last-child {
+  padding-bottom: 0;
+}
+.process-step:not(:last-child)::before {
+  content: '';
   position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 25px;
+  top: 44px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(168, 56, 56, 0.22);
+}
+.process-step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   background: var(--color-primary);
-  color: white;
+  color: #fff;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.8rem;
-  padding: 4px 14px;
-  border-radius: 50px;
-  white-space: nowrap;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
-.process-card__title {
+.process-step__title {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-secondary);
-  margin-bottom: 12px;
-  margin-top: 8px;
-  font-size: 1.05rem;
+  margin: 6px 0 8px;
+  font-size: 1.08rem;
 }
-.process-card__desc {
-  font-size: 0.88rem;
+.process-step__desc {
+  font-size: 0.92rem;
   color: var(--color-text-muted);
   line-height: 1.7;
+  margin: 0;
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -1358,9 +1406,6 @@ const t = useTranslations('ml');
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1399px) {
-  .process-grid { grid-template-columns: repeat(3, 1fr); }
-}
 @media (max-width: 900px) {
   .solar-intro { padding-bottom: 24px; }
   .who-we-are { padding-top: 24px; }
@@ -1368,10 +1413,11 @@ const t = useTranslations('ml');
   .who-we-are__inner,
   .rayenna-way__inner,
   .connect-section__inner { grid-template-columns: 1fr; gap: 40px; }
-  .who-we-are__stats { flex-direction: row; justify-content: space-around; }
-  .rayenna-way__image { order: -1; }
+  .who-we-are__stats { flex-direction: row; justify-content: space-around; flex-wrap: wrap; }
+  .who-stats-link { width: 100%; }
   .invest-inner { grid-template-columns: 1fr; gap: 36px; }
   .invest-left { padding-right: 0; }
+  .process-header { margin-bottom: 32px; }
 }
 /* 1920×1200 @ 150% and similar laptop CSS viewports (~1280×800) */
 @media (min-width: 1000px) and (max-width: 1399px) {
@@ -1517,11 +1563,9 @@ const t = useTranslations('ml');
   }
   .hero__title { font-size: 2.2rem; }
   .hero-cta-wrapper { align-items: stretch; }
-  .process-grid { grid-template-columns: 1fr 1fr; }
   .invest-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .process-grid { grid-template-columns: 1fr; }
   .who-we-are__stats { flex-direction: column; }
   .hero__mid { flex-direction: column; align-items: flex-start; gap: 16px; }
   .hero__subtitle { max-width: 100%; }

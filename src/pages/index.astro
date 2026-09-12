@@ -93,9 +93,17 @@ const t = useTranslations('en');
   <section class="who-we-are" data-reveal>
     <div class="container who-we-are__inner">
       <div class="who-we-are__content">
-        <h2 class="section-title">Who We Are</h2>
-        <p>Rayenna Energy is a leading provider of innovative solar energy solutions dedicated to transforming the way you harness and use energy. The knowledge and experience of our leadership team are not only a benefit to Rayenna Energy but also the cornerstone upon which we establish our standing as a reliable supplier of solar energy solutions. Going solar is about more than simply saving money on electricity bills; it's about making the earth a better place for future generations. With a deep commitment to delivering high-quality solar installations that prioritise sustainability, efficiency, and affordability, we believe in creating a greener future.</p>
-        <a href={`${base}/about`} class="read-more">Read more &gt;&gt;</a>
+        <h2 class="section-title">{t.homeConvert.whoTitle}</h2>
+        <p>{t.homeConvert.whoBody}</p>
+        <ul class="who-points">
+          {t.homeConvert.whoPoints.map((point) => (
+            <li>
+              <strong>{point.title}</strong>
+              <span>{point.text}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={`${base}/about/`} class="text-cta">{t.homeConvert.whoReadMore}</a>
       </div>
       <div class="who-we-are__stats">
         <div class="stat-item">
@@ -103,23 +111,23 @@ const t = useTranslations('en');
             <span class="stat-number" data-target="20">20</span>
             <span class="stat-suffix">+</span>
           </div>
-          <p class="stat-label">Brands</p>
+          <p class="stat-label">{t.homeConvert.whoStatBrands}</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
             <span class="stat-number" data-target="80">80</span>
             <span class="stat-suffix">%</span>
           </div>
-          <p class="stat-label">Less bills</p>
+          <p class="stat-label">{t.homeConvert.whoStatBills}</p>
         </div>
         <div class="stat-item">
           <div class="stat-wrap">
             <span class="stat-number" data-target="100">100</span>
             <span class="stat-suffix">%</span>
           </div>
-          <p class="stat-label">Client satisfaction</p>
+          <p class="stat-label">{t.homeConvert.whoStatSatisfied}</p>
         </div>
-        <a href={`${base}/solar-calculator`} class="stats-cta">☀️ See how much you could save →</a>
+        <a href={`${base}/solar-calculator/`} class="text-cta who-stats-link">{t.homeConvert.whoStatsCta}</a>
       </div>
     </div>
   </section>
@@ -135,22 +143,12 @@ const t = useTranslations('en');
         <h2 class="invest-title">{t.homeConvert.investTitle} <em class="invest-urgency">{t.homeConvert.investUrgency}</em></h2>
       </div>
       <div class="invest-cards">
-        <div class="invest-card">
-          <h3>More affordable</h3>
-          <p>Solar panel prices have dropped by over 80% in the last two decades, making it more affordable than ever.</p>
-        </div>
-        <div class="invest-card">
-          <h3>More efficient</h3>
-          <p>Modern solar panels now boast efficiency rates of up to 22%, maximizing energy output.</p>
-        </div>
-        <div class="invest-card">
-          <h3>More available</h3>
-          <p>With over 300 sunny days a year in India, solar power generation is at its peak.</p>
-        </div>
-        <div class="invest-card">
-          <h3>Subsidised</h3>
-          <p>Government incentives and subsidies further reduce installation costs, making it a smart financial move today.</p>
-        </div>
+        {t.homeConvert.investCards.map((card) => (
+          <div class="invest-card">
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -160,8 +158,7 @@ const t = useTranslations('en');
     <div class="container">
       <div class="installs-preview__header">
         <div>
-          <span class="section-tag">Real Installations</span>
-          <h2 class="section-title">Solar — Beautifully Done</h2>
+          <h2 class="section-title">{t.homeConvert.installsTitle}</h2>
           <p class="installs-preview__sub">{t.homeConvert.installsSub}</p>
         </div>
         <a href={`${base}/media/`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
@@ -196,9 +193,8 @@ const t = useTranslations('en');
   <section class="testimonials-section" data-reveal>
     <div class="container">
       <div class="testimonials-header">
-        <span class="section-tag">Customer Stories</span>
-        <h2 class="section-title">What Kerala Homeowners Say</h2>
-        <p class="testimonials-intro">Real results from real installations across Kerala. Every system installed by Rayenna comes with a 25-year performance warranty and end-to-end support.</p>
+        <h2 class="section-title">{t.homeConvert.testimonialsTitle}</h2>
+        <p class="testimonials-intro">{t.homeConvert.testimonialsIntro}</p>
       </div>
       <div class="testimonials-grid">
 
@@ -245,15 +241,23 @@ const t = useTranslations('en');
     </div>
   </section>
 
-  <!-- ===== CHOOSING THE RAYENNA WAY ===== -->
+  <!-- ===== THE RAYENNA WAY ===== -->
   <section class="rayenna-way" data-reveal>
     <div class="container rayenna-way__inner">
+      <div class="rayenna-way__content">
+        <h2 class="section-title">{t.homeConvert.wayTitle}</h2>
+        <p class="rayenna-way__lead">{t.homeConvert.wayLead}</p>
+        <ul class="way-points">
+          {t.homeConvert.wayPoints.map((point) => (
+            <li>
+              <strong>{point.title}</strong>
+              <span>{point.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div class="rayenna-way__image">
         <img src={`${base}/media/Hardshell-solar.webp`} alt="Rayenna solar quality" />
-      </div>
-      <div class="rayenna-way__content">
-        <h2 class="section-title">Choosing the Rayenna Way</h2>
-        <p>Quality is our priority at Rayenna. We make sure every solar system is constructed for dependability and long-term performance by using only the best materials. From design to installation, we customise our services to match your unique demands, emphasising accuracy and timeliness in every step. We provide real-time updates and prompt maintenance as needed using online monitoring systems, so you can feel supported even after the installation. Solar power is an easy, hassle-free, affordable alternative because of our commitment to excellent standards and smooth service.</p>
       </div>
     </div>
   </section>
@@ -261,24 +265,21 @@ const t = useTranslations('en');
   <!-- ===== PROCESS ===== -->
   <section class="process-section" data-reveal>
     <div class="container">
-      <div class="text-center" style="margin-bottom:56px">
-        <h2 class="section-title">Our Process for Seamless Solar Integration</h2>
-      </div>
-      <div class="process-grid">
-        {[
-          { num: '01', title: 'Consultation', desc: 'Through a customised consultation, we first ascertain your energy needs and goals.' },
-          { num: '02', title: 'Site Evaluation', desc: 'To identify the ideal solar solution for your property, our team thoroughly evaluates the site.' },
-          { num: '03', title: 'System Design', desc: 'We develop a unique solar system that optimises performance and efficiency based on the evaluation.' },
-          { num: '04', title: 'Installation', desc: 'Your solar system is built up to the highest standards by our trained installers, who execute the process with accuracy.' },
-          { num: '05', title: 'Ongoing Support', desc: 'We offer ongoing maintenance and support to ensure that your system operates efficiently, enabling you to experience the advantages of solar energy without any concerns.' },
-        ].map(step => (
-          <div class="process-card">
-            <div class="process-card__num">{step.num}</div>
-            <h3 class="process-card__title">{step.title}</h3>
-            <p class="process-card__desc">{step.desc}</p>
-          </div>
+      <header class="process-header">
+        <h2 class="section-title">{t.homeConvert.processTitle}</h2>
+        <p class="process-sub">{t.homeConvert.processSub}</p>
+      </header>
+      <ol class="process-timeline">
+        {t.homeConvert.processSteps.map((step) => (
+          <li class="process-step">
+            <span class="process-step__num" aria-hidden="true">{step.num}</span>
+            <div class="process-step__body">
+              <h3 class="process-step__title">{step.title}</h3>
+              <p class="process-step__desc">{step.desc}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
@@ -680,14 +681,36 @@ const t = useTranslations('en');
   line-height: 1.9;
   margin-bottom: 20px;
 }
-.read-more {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--color-primary);
-  font-size: 0.95rem;
-  transition: color var(--transition);
+.who-points {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
-.read-more:hover { color: var(--color-primary-dark); }
+.who-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-primary);
+}
+.who-points strong {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.who-points span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+.who-stats-link {
+  margin-top: 8px;
+  text-align: center;
+}
 
 .who-we-are__stats {
   display: flex;
@@ -725,38 +748,7 @@ const t = useTranslations('en');
   letter-spacing: 2px;
 }
 
-/* Stats CTA — mobile first */
-.stats-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  margin-top: 28px;
-  padding: 15px 32px;
-  background-color: var(--color-primary);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  letter-spacing: 0.3px;
-  text-decoration: none;
-  min-height: 52px;
-  box-shadow: 0 4px 18px rgba(168, 56, 56, 0.28);
-  -webkit-tap-highlight-color: transparent;
-  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-}
-.stats-cta:hover {
-  background-color: var(--color-primary-dark);
-  box-shadow: 0 6px 24px rgba(168, 56, 56, 0.4);
-  transform: translateY(-1px);
-  color: #fff;
-}
-.stats-cta:active { opacity: 0.85; transform: none; }
-@media (min-width: 768px) {
-  .stats-cta { width: auto; padding: 13px 36px; }
-}
+/* Stats link uses who-stats-link */
 
 /* ===== INVEST IN SOLAR ===== */
 .invest-section {
@@ -843,7 +835,7 @@ const t = useTranslations('en');
 /* ===== RAYENNA WAY ===== */
 .rayenna-way {
   padding: var(--section-padding);
-  background: var(--color-light);
+  background: var(--color-white);
 }
 .rayenna-way__inner {
   display: grid;
@@ -857,61 +849,119 @@ const t = useTranslations('en');
   box-shadow: var(--shadow-lg);
   object-fit: cover;
 }
-.rayenna-way__content .section-title { margin-bottom: 24px; }
-.rayenna-way__content p {
+.rayenna-way__content .section-title { margin-bottom: 16px; }
+.rayenna-way__lead {
   color: var(--color-text-muted);
-  line-height: 1.9;
+  line-height: 1.85;
+  margin-bottom: 28px;
+  font-size: 1.02rem;
 }
-
-/* ===== PROCESS ===== */
-.process-section {
-  padding: var(--section-padding);
-  background: var(--color-white);
+.way-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
-.process-card {
+.way-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
   background: var(--color-light);
   border-radius: var(--radius-md);
-  padding: 32px 20px 28px;
+  border-top: 3px solid var(--color-primary);
+}
+.way-points strong {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.way-points span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ===== PROCESS (timeline) ===== */
+.process-section {
+  padding: var(--section-padding);
+  background: var(--color-light);
+}
+.process-header {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+.process-header .section-title {
+  margin-bottom: 10px;
+}
+.process-sub {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+.process-timeline {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   position: relative;
-  text-align: center;
-  transition: all var(--transition);
 }
-.process-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  background: var(--color-white);
+.process-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 16px;
+  align-items: start;
+  position: relative;
+  padding-bottom: 28px;
 }
-.process-card__num {
+.process-step:last-child {
+  padding-bottom: 0;
+}
+.process-step:not(:last-child)::before {
+  content: '';
   position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 25px;
+  top: 44px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(168, 56, 56, 0.22);
+}
+.process-step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   background: var(--color-primary);
-  color: white;
+  color: #fff;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.8rem;
-  padding: 4px 14px;
-  border-radius: 50px;
-  white-space: nowrap;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
-.process-card__title {
+.process-step__title {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-secondary);
-  margin-bottom: 12px;
-  margin-top: 8px;
-  font-size: 1.05rem;
+  margin: 6px 0 8px;
+  font-size: 1.08rem;
 }
-.process-card__desc {
-  font-size: 0.88rem;
+.process-step__desc {
+  font-size: 0.92rem;
   color: var(--color-text-muted);
   line-height: 1.7;
+  margin: 0;
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -1304,9 +1354,6 @@ const t = useTranslations('en');
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1399px) {
-  .process-grid { grid-template-columns: repeat(3, 1fr); }
-}
 @media (max-width: 900px) {
   .solar-intro { padding-bottom: 24px; }
   .who-we-are { padding-top: 24px; }
@@ -1314,10 +1361,11 @@ const t = useTranslations('en');
   .who-we-are__inner,
   .rayenna-way__inner,
   .connect-section__inner { grid-template-columns: 1fr; gap: 40px; }
-  .who-we-are__stats { flex-direction: row; justify-content: space-around; }
-  .rayenna-way__image { order: -1; }
+  .who-we-are__stats { flex-direction: row; justify-content: space-around; flex-wrap: wrap; }
+  .who-stats-link { width: 100%; }
   .invest-inner { grid-template-columns: 1fr; gap: 36px; }
   .invest-left { padding-right: 0; }
+  .process-header { margin-bottom: 32px; }
 }
 /* 1920×1200 @ 150% and similar laptop CSS viewports (~1280×800) */
 @media (min-width: 1000px) and (max-width: 1399px) {
@@ -1438,11 +1486,9 @@ const t = useTranslations('en');
   }
   .hero__title { font-size: 2.2rem; }
   .hero-cta-wrapper { align-items: stretch; }
-  .process-grid { grid-template-columns: 1fr 1fr; }
   .invest-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .process-grid { grid-template-columns: 1fr; }
   .who-we-are__stats { flex-direction: column; }
   .hero__mid { flex-direction: column; align-items: flex-start; gap: 16px; }
   .hero__subtitle { max-width: 100%; }
