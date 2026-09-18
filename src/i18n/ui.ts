@@ -309,6 +309,9 @@ const ui = {
       defaultBadge: 'Video Library',
       thumbLabel: 'Films & stories',
       hint: 'Select any video below to play it here',
+      heroUnmute: 'Unmute',
+      heroMute: 'Mute',
+      heroVideoAria: 'Rayenna Energy corporate film — looping background',
     },
     mediaGallery: {
       filter: 'Filter',
@@ -622,6 +625,9 @@ const ui = {
       defaultBadge: 'വീഡിയോ ലൈബ്രറി',
       thumbLabel: 'ചലച്ചിത്രങ്ങളും കഥകളും',
       hint: 'താഴെയുള്ള ഏതെങ്കിലും വീഡിയോ തിരഞ്ഞെടുത്ത് ഇവിടെ പ്ലേ ചെയ്യുക',
+      heroUnmute: 'ശബ്ദം ഓൺ',
+      heroMute: 'നിശബ്ദം',
+      heroVideoAria: 'റയെന്ന എനർജി കോർപ്പറേറ്റ് ഫിലിം — ലൂപ്പ് ബാക്ക്ഗ്രൗണ്ട്',
     },
     mediaGallery: {
       filter: 'ഫിൽട്ടർ',

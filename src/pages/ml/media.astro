@@ -208,14 +208,33 @@ const installCount = installations.length;
   schema={[imageGallerySchema, videoLibrarySchema]}
 >
 
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <img
-      src={`${base}/media/references/Gemini_Generated_Image_14u7k214u7k214u7.png`}
-      alt="റയെന്ന എനർജി സോളാർ ഇൻസ്റ്റാളേഷനുകൾ"
-      class="page-hero__bg"
-    />
+  <!-- ===== PAGE HERO (cinematic video) ===== -->
+  <section class="page-hero page-hero--video" aria-label="മീഡിയ പോർട്ട്ഫോളിയോ">
+    <div class="page-hero__media" aria-hidden="true">
+      <img
+        src={`${base}/media/rayenna-videos/corporate-poster.jpg`}
+        alt=""
+        class="page-hero__poster"
+        width="1920"
+        height="1080"
+        decoding="async"
+      />
+      <video
+        class="page-hero__video"
+        id="media-hero-video"
+        muted
+        loop
+        playsinline
+        autoplay
+        preload="metadata"
+        poster={`${base}/media/rayenna-videos/corporate-poster.jpg`}
+        aria-label={mv.heroVideoAria}
+      >
+        <source src={`${base}/media/rayenna-videos/corporate.mp4`} type="video/mp4" />
+      </video>
+    </div>
     <div class="page-hero__overlay"></div>
+    <div class="page-hero__vignette" aria-hidden="true"></div>
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">പോർട്ട്ഫോളിയോ</p>
       <h1 class="page-hero__title">കേരളമെമ്പാടും<br />സോളാർ ഇൻസ്റ്റാളേഷനുകൾ</h1>
@@ -225,6 +244,27 @@ const installCount = installations.length;
         <a href="#video-library" class="btn btn-outline-white">വീഡിയോകൾ കാണുക</a>
       </div>
     </div>
+    <button
+      type="button"
+      class="page-hero__sound"
+      id="media-hero-sound"
+      aria-pressed="false"
+      aria-label={mv.heroUnmute}
+      data-label-unmute={mv.heroUnmute}
+      data-label-mute={mv.heroMute}
+    >
+      <svg class="page-hero__sound-icon page-hero__sound-icon--muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+      <svg class="page-hero__sound-icon page-hero__sound-icon--on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
+      <span class="page-hero__sound-label" data-sound-label>{mv.heroUnmute}</span>
+    </button>
   </section>
 
 
@@ -627,47 +667,81 @@ const installCount = installations.length;
    Media Page — Mobile First
    =========================== */
 
-/* ===== HERO ===== */
+/* ===== HERO (cinematic video) ===== */
 .page-hero {
   position: relative;
-  min-height: 460px;
+  min-height: min(88vh, 820px);
   display: flex;
   align-items: flex-end;
-  padding-bottom: 56px;
+  padding-bottom: clamp(48px, 8vw, 72px);
   overflow: hidden;
+  background: #08142d;
 }
-.page-hero__bg {
+.page-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.page-hero__poster,
+.page-hero__video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center center;
+}
+.page-hero__video {
+  z-index: 1;
+}
+.page-hero__poster {
   z-index: 0;
 }
 .page-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(8, 20, 45, 0.95) 0%,
-    rgba(8, 20, 45, 0.55) 55%,
-    rgba(8, 20, 45, 0.15) 100%
-  );
+  background:
+    linear-gradient(
+      to top,
+      rgba(8, 20, 45, 0.92) 0%,
+      rgba(8, 20, 45, 0.55) 42%,
+      rgba(8, 20, 45, 0.28) 68%,
+      rgba(8, 20, 45, 0.18) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(8, 20, 45, 0.55) 0%,
+      rgba(8, 20, 45, 0.2) 48%,
+      rgba(8, 20, 45, 0.05) 100%
+    );
   z-index: 1;
+  pointer-events: none;
+}
+.page-hero__vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  pointer-events: none;
 }
 .page-hero__inner {
   position: relative;
   z-index: 2;
-  padding-top: 96px;
+  padding-top: 110px;
+  max-width: 720px;
+  animation: mediaHeroIn 0.9s ease-out both;
+}
+@keyframes mediaHeroIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .page-hero__eyebrow {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 12px;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 14px;
 }
 .page-hero__title {
   font-family: var(--font-heading);
@@ -675,16 +749,17 @@ const installCount = installations.length;
   font-weight: 500;
   color: #fff;
   line-height: 1.28;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-wrap: balance;
   max-width: 18ch;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.28);
 }
 .page-hero__sub {
   font-size: clamp(0.95rem, 2vw, 1.05rem);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.82);
   max-width: 520px;
   line-height: 1.8;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .page-hero__actions {
   display: flex;
@@ -697,6 +772,53 @@ const installCount = installations.length;
   width: 100%;
   justify-content: center;
   min-height: 52px;
+}
+.page-hero__sound {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(8, 20, 45, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.page-hero__sound:hover {
+  background: rgba(8, 20, 45, 0.78);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.page-hero__sound:active {
+  transform: scale(0.98);
+}
+.page-hero__sound[aria-pressed="true"] {
+  border-color: rgba(168, 56, 56, 0.65);
+  background: rgba(168, 56, 56, 0.35);
+}
+.page-hero__sound-label {
+  line-height: 1;
+}
+.page-hero__sound-icon {
+  display: block;
+  flex-shrink: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__video { display: none; }
+  .page-hero__inner { animation: none; }
+  .page-hero__sound { display: none; }
 }
 
 /* ===== GALLERY SECTION ===== */
@@ -1827,6 +1949,52 @@ body.gf-sheet-open {
   .vl-tabs { justify-content: center; }
 }
 </style>
+
+<script>
+  (() => {
+    const video = document.getElementById('media-hero-video') as HTMLVideoElement | null;
+    const btn = document.getElementById('media-hero-sound') as HTMLButtonElement | null;
+    if (!video || !btn) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      return;
+    }
+
+    const iconMuted = btn.querySelector('.page-hero__sound-icon--muted') as HTMLElement | null;
+    const iconOn = btn.querySelector('.page-hero__sound-icon--on') as HTMLElement | null;
+    const labelEl = btn.querySelector('[data-sound-label]') as HTMLElement | null;
+    const unmuteLabel = btn.dataset.labelUnmute || 'Unmute';
+    const muteLabel = btn.dataset.labelMute || 'Mute';
+
+    const tryPlay = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+    };
+
+    video.muted = true;
+    tryPlay();
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) video.pause();
+      else tryPlay();
+    });
+
+    btn.addEventListener('click', () => {
+      const willUnmute = video.muted;
+      video.muted = !willUnmute;
+      if (willUnmute) tryPlay();
+      btn.setAttribute('aria-pressed', willUnmute ? 'true' : 'false');
+      btn.setAttribute('aria-label', willUnmute ? muteLabel : unmuteLabel);
+      if (labelEl) labelEl.textContent = willUnmute ? muteLabel : unmuteLabel;
+      if (iconMuted) iconMuted.hidden = willUnmute;
+      if (iconOn) iconOn.hidden = !willUnmute;
+    });
+  })();
+</script>
 
 <script>
   const INTERVAL = 4500;
