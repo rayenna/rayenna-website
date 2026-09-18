@@ -126,7 +126,7 @@ const ui = {
       resourceHeading: 'Plan your solar project',
       resources: [
         { href: '/solar-calculator/', label: 'Free Solar Calculator' },
-        { href: '/faqs/', label: '54 Solar FAQs' },
+        { href: '/faqs/', label: '60 Solar FAQs' },
         { href: '/blog/', label: 'Expert Guides & News' },
         { href: '/contact/', label: 'Book a Free Site Survey' },
       ],
@@ -442,7 +442,7 @@ const ui = {
       resourceHeading: 'നിങ്ങളുടെ സോളാർ പദ്ധതി ആസൂത്രണം ചെയ്യുക',
       resources: [
         { href: '/ml/solar-calculator/', label: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ' },
-        { href: '/ml/faqs/', label: '54 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
+        { href: '/ml/faqs/', label: '60 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
         { href: '/ml/blog/', label: 'വിദഗ്ധ ഗൈഡുകൾ' },
         { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
       ],
