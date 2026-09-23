@@ -385,6 +385,7 @@ const t = useTranslations('ml');
 /* ===== HERO ===== */
 .hero {
   position: relative;
+  z-index: 0;
   width: 100%;
   min-height: 92vh;
   display: flex;
@@ -621,11 +622,15 @@ const t = useTranslations('ml');
 
 /* ===== WHY NOW ===== */
 .why-now {
-  padding: 28px 0 36px;
+  position: relative;
+  z-index: 2;
+  padding: 36px 0 36px;
   background: #fff;
   border-bottom: 1px solid var(--color-border);
 }
 .season-note {
+  position: relative;
+  z-index: 1;
   display: block;
   max-width: 720px;
   margin: 0 auto 18px;
@@ -1629,8 +1634,9 @@ const t = useTranslations('ml');
     min-height: 0;
     height: auto;
     padding-top: 88px;
-    padding-bottom: 32px;
-    overflow: visible;
+    padding-bottom: 40px;
+    /* Keep wallpaper clipped — overflow:visible let Ken Burns bleed over .season-note */
+    overflow: hidden;
   }
   .hero__title { margin-bottom: 16px; }
   .hero__mid { gap: 16px; }
