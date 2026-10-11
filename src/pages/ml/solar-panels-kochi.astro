@@ -57,11 +57,11 @@ const mlPrefix = '/ml';
         <div class="subsidy-icon">🏛️</div>
         <div class="subsidy-content">
           <h2>കൊച്ചിയിൽ PM സൂര്യ ഘർ സബ്സിഡി ലഭ്യം</h2>
-          <p>കൊച്ചി വീട്ടുടമകൾക്ക് കേന്ദ്ര സർക്കാരിന്റെ PM സൂര്യ ഘർ മുഫ്ത് ബിജ്ലി യോജനയിൽ അർഹതയുണ്ട് — 3 kW വരെയുള്ള സിസ്റ്റങ്ങൾക്ക് <strong>₹78,000</strong> വരെ നേരിട്ട് ബാങ്ക് അക്കൗണ്ടിലേക്ക് സബ്സിഡി, അതിനു മുകളിലുള്ള സിസ്റ്റങ്ങൾക്ക് ബാക്കി ചെലവിന്റെ 20% വരെ അധിക പിന്തുണ. KSEB അംഗീകാരവും പോർട്ടൽ സമർപ്പണവും ഉൾപ്പെടെ മുഴുവൻ അപേക്ഷാ പ്രക്രിയയും ഓരോ ഇൻസ്റ്റാളേഷന്റെയും ഭാഗമായി റയെന്ന കൈകാര്യം ചെയ്യുന്നു.</p>
+          <p>കൊച്ചി വീട്ടുടമകൾക്ക് കേന്ദ്ര സർക്കാരിന്റെ PM സൂര്യ ഘർ മുഫ്ത് ബിജ്ലി യോജനയിൽ അർഹതയുണ്ട് — യോഗ്യമായ റെസിഡൻഷ്യൽ സിസ്റ്റങ്ങൾക്ക് പരമാവധി <strong>₹78,000</strong> കേന്ദ്ര സബ്സിഡി (1 kW-ക്ക് ₹30,000, 2 kW-ക്ക് ₹60,000, 3 kW ഉം അതിന് മുകളിലും ₹78,000 പരമാവധി). KSEB അംഗീകാരവും പോർട്ടൽ സമർപ്പണവും ഉൾപ്പെടെ മുഴുവൻ അപേക്ഷാ പ്രക്രിയയും ഓരോ ഇൻസ്റ്റാളേഷന്റെയും ഭാഗമായി റയെന്ന കൈകാര്യം ചെയ്യുന്നു.</p>
           <div class="subsidy-table">
-            <div class="subsidy-row"><span>1–2 kW സിസ്റ്റം</span><strong>₹30,000 – ₹60,000 സബ്സിഡി</strong></div>
-            <div class="subsidy-row"><span>3 kW സിസ്റ്റം</span><strong>₹78,000 സബ്സിഡി</strong></div>
-            <div class="subsidy-row"><span>3–10 kW സിസ്റ്റം</span><strong>₹78,000 + അധിക ചെലവിന്റെ 20%</strong></div>
+            <div class="subsidy-row"><span>1 kW സിസ്റ്റം</span><strong>₹30,000 സബ്സിഡി</strong></div>
+            <div class="subsidy-row"><span>2 kW സിസ്റ്റം</span><strong>₹60,000 സബ്സിഡി</strong></div>
+            <div class="subsidy-row"><span>3 kW ഉം അതിന് മുകളിലും</span><strong>₹78,000 (പരമാവധി)</strong></div>
           </div>
         </div>
       </div>
@@ -214,7 +214,9 @@ const mlPrefix = '/ml';
 }
 .subsidy-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem; }
 .subsidy-table { display: flex; flex-direction: column; gap: 10px; }
-.subsidy-row {
+            <div class="subsidy-row"><span>1 kW സിസ്റ്റം</span><strong>₹30,000 സബ്സിഡി</strong></div>
+            <div class="subsidy-row"><span>2 kW സിസ്റ്റം</span><strong>₹60,000 സബ്സിഡി</strong></div>
+            <div class="subsidy-row"><span>3 kW ഉം അതിന് മുകളിലും</span><strong>₹78,000 (പരമാവധി)</strong></div>
   display: flex; justify-content: space-between; align-items: center;
   background: #fff; border-radius: 8px; padding: 12px 16px;
   font-size: 0.9rem; flex-wrap: wrap; gap: 8px;
