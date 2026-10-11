@@ -15,8 +15,8 @@ export const article: BlogArticleMl = {
   ],
   sidebarHighlight: {
     icon: '🌞',
-    title: '3–4 വർഷം ROI',
-    text: 'കൊച്ചി വീട്ടുടമകൾ സാധാരണയായി സബ്സിഡിക്ക് ശേഷം 3–4 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കുന്നു.',
+    title: '3–5 വർഷം പേയ്ബാക്ക്',
+    text: 'കൊച്ചി വീട്ടുടമകൾ സാധാരണയായി സബ്സിഡിക്ക് ശേഷം 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കുന്നു.',
   },
   postCta: {
     title: 'സൗജന്യ കൊച്ചി സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
@@ -38,7 +38,7 @@ export const article: BlogArticleMl = {
   <div class="cost-row"><span>PM Surya Ghar സബ്സിഡി</span><span>−₹78,000</span></div>
   <div class="cost-row"><span>നിങ്ങൾക്കുള്ള നെറ്റ് ചെലവ്</span><span>₹1,07,000–₹1,32,000</span></div>
   <div class="cost-row"><span>വാർഷിക വൈദ്യുതി സമ്പാദ്യം</span><span>₹28,000–₹36,000</span></div>
-  <div class="cost-row"><span>തിരിച്ചടവ് കാലം</span><span>3–4 വർഷം</span></div>
+  <div class="cost-row"><span>തിരിച്ചടവ് കാലം</span><span>3–5 വർഷം</span></div>
 </div>
 
 <h2>കൊച്ചി-പ്രത്യേക പരിഗണനകൾ</h2>
