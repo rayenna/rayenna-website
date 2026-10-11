@@ -119,7 +119,7 @@ export const calcEn = {
     '🏠 This calculator is built for residential homes in Kerala. For commercial solar —',
   commercialCalloutBtn: 'Chat on WhatsApp',
   preTrust: [
-    'MNRE Approved',
+    'PM Surya Ghar registered',
     'Up to ₹78,000 subsidy',
     'Free site survey',
     'Private — runs in your browser',
@@ -128,7 +128,7 @@ export const calcEn = {
     { val: '₹78k', label: 'PM Surya Ghar subsidy' },
     { val: '5 min', label: 'To your estimate' },
     { val: 'Free', label: 'No signup needed' },
-    { val: 'MNRE', label: 'Approved installer' },
+    { val: 'PM', label: 'Surya Ghar registered' },
   ],
 };
 
