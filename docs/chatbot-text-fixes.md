@@ -6,7 +6,7 @@ Source in this repo: `worker/chat-proxy.js` (Cloudflare Worker).
 
 | Topic | Change |
 |-------|--------|
-| Registration | **PM Surya Ghar registered vendor (MNRE)** — not company-level “Govt. of India certified” |
+| Registration | **PM Surya Ghar empanelled vendor (MNRE)** — not company-level “Govt. of India certified” |
 | Payback | **3–5 years** (was 5–6 ROI) |
 | Panel life | **25+ years** |
 | Subsidy slabs | ₹30k / ₹60k / ₹78k max |

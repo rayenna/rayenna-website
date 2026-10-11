@@ -101,7 +101,7 @@ export const calcEn = {
     },
     {
       icon: '✅',
-      title: 'PM Surya Ghar registered installer',
+      title: 'PM Surya Ghar empanelled installer',
       text: 'Eligible residential systems can claim the central subsidy up to scheme limits, subject to compliant equipment and portal approval.',
     },
     {
@@ -119,7 +119,7 @@ export const calcEn = {
     '🏠 This calculator is built for residential homes in Kerala. For commercial solar —',
   commercialCalloutBtn: 'Chat on WhatsApp',
   preTrust: [
-    'PM Surya Ghar registered',
+    'PM Surya Ghar empanelled',
     'Up to ₹78,000 subsidy',
     'Free site survey',
     'Private — runs in your browser',
@@ -128,7 +128,7 @@ export const calcEn = {
     { val: '₹78k', label: 'PM Surya Ghar subsidy' },
     { val: '5 min', label: 'To your estimate' },
     { val: 'Free', label: 'No signup needed' },
-    { val: 'PM', label: 'Surya Ghar registered' },
+    { val: 'PM', label: 'Surya Ghar empanelled' },
   ],
 };
 

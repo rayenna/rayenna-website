@@ -4,10 +4,10 @@
  */
 
 export const CLAIMS = {
-  registrationTermEn: 'PM Surya Ghar registered vendor (MNRE)',
-  registrationTermMl: 'PM സൂര്യ ഘർ രജിസ്റ്റർ ചെയ്ത വെൻഡർ (MNRE)',
-  registrationShortEn: 'PM Surya Ghar registered',
-  registrationShortMl: 'PM സൂര്യ ഘർ രജിസ്റ്റർഡ്',
+  registrationTermEn: 'PM Surya Ghar empanelled vendor (MNRE)',
+  registrationTermMl: 'PM സൂര്യ ഘർ എംപാനൽഡ് വെൻഡർ (MNRE)',
+  registrationShortEn: 'PM Surya Ghar empanelled',
+  registrationShortMl: 'PM സൂര്യ ഘർ എംപാനൽഡ്',
 
   subsidy: {
     slab1KwInr: 30_000,
@@ -51,8 +51,8 @@ export const CLAIMS = {
   zeroBillEn: 'Many Kerala homes with right-sized solar record near-zero electricity bills',
   zeroBillMl: 'ശരിയായി സൈസ് ചെയ്ത സോളാറുള്ള പല കേരള വീടുകളും ഏതാണ്ട് ശൂന്യ വൈദ്യുതി ബിൽ രേഖപ്പെടുത്തുന്നു',
 
-  exclusivitySafeEn: 'Subsidy applies only with registered installers, and we handle it end to end.',
-  exclusivitySafeMl: 'സബ്സിഡി രജിസ്റ്റർ ചെയ്ത ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.',
+  exclusivitySafeEn: 'Subsidy applies only with empanelled installers, and we handle it end to end.',
+  exclusivitySafeMl: 'സബ്സിഡി എംപാനൽഡ് ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.',
 
   calculatorSubsidyTrustEn: 'Eligible residential systems can claim the central subsidy up to scheme limits, subject to compliant equipment and portal approval.',
   calculatorSubsidyTrustMl: 'യോഗ്യമായ രെസിഡൻഷ്യൽ സിസ്റ്റങ്ങൾക്ക് അനുയോജ്യമായ ഉപകരണവും പോർട്ടൽ അംഗീകാരവും ഉണ്ടെങ്കിൽ പദ്ധതി പരിധി വരെ കേന്ദ്ര സബ്സിഡി ക്ലെയിം ചെയ്യാം.',

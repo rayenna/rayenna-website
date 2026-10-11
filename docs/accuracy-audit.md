@@ -10,10 +10,10 @@ Phase 1 is audit only. Proposed replacements below are applied in Phase 2.
 
 | # | Decision | Fallback used until answered |
 |---|----------|------------------------------|
-| 1 | Exact registration term matching national portal listing | **PM Surya Ghar registered vendor (MNRE)** / ML: **PM സൂര്യ ഘർ രജിസ്റ്റർ ചെയ്ത വെൻഡർ (MNRE)** |
-| 2 | Source URL + date for “zero energy charges / over half” statistic | Softened to “Many Kerala homes with right-sized solar record near-zero electricity bills” — no “over half” figure |
+| 1 | Exact registration term matching national portal listing | **Answered:** **PM Surya Ghar empanelled vendor (MNRE)** / ML: **PM സൂര്യ ഘർ എംപാനൽഡ് വെൻഡർ (MNRE)** |
+| 2 | Source URL + date for “zero energy charges / over half” statistic | **Answered:** keep near-zero fallback (no %) |
 | 3 | Verifiable replacement for “100% client satisfaction” | **25-year panel performance warranty** (homepage who-we-are stat) |
-| 4 | Confirm scheme end date vs current MNRE guidance | Softened urgency; **no** asserted 31 Mar 2027 end date as fact; omit visible “last verified” date line until owner supplies `CLAIMS.lastVerified` |
+| 4 | Confirm scheme end date vs current MNRE guidance | **Answered:** keep soft “check portal” wording |
 | 5 | Whether 25-year headline warranty applies to all panel brands | Keep headline **25 years**; calculator model cards → “Up to 30-year manufacturer performance warranty (model-specific)” |
 
 ## Image files owner must replace (baked-in text)
@@ -23,6 +23,8 @@ Phase 1 is audit only. Proposed replacements below are applied in Phase 2.
 | `public/media/Artboard-2mnre.webp` | Likely contains “Govt of India” / channel-partner wording in the bitmap |
 | `public/media/Artboard-2-copymnre.webp` | Same |
 | `public/media/Artboard-1mnre.webp` | Same |
+
+Owner (2026-10-11): replace MNRE seal bitmaps **later**.
 
 Alt text will be updated in code; bitmap text cannot be edited here.
 
@@ -49,7 +51,7 @@ Alt text will be updated in code; bitmap text cannot be edited here.
 | `src/pages/faqs.astro` / `faqs-ml` | “best time to buy” answers | Timing favourable; no GST note | 2 | Add GST cut selling point | No |
 | `src/pages/index.astro` / `ml/index.astro` | solar-intro / season | Cost discussion | 2 | Optional one-line GST cut near costs / “best time” copy via `ui.ts` or intro | No |
 | `src/pages/solar-calculator.astro` | 776 | “including GST, are additional” | 2 Flag | **No change** — does not assert 12%. Flagged only. | No |
-| `src/i18n/ui.ts` | 112, 428 | “only through MNRE partners like Rayenna” / ML equivalent | 3 Exclusivity | “Subsidy applies only with registered installers, and we handle it end to end.” | No |
+| `src/i18n/ui.ts` | 112, 428 | “only through MNRE partners like Rayenna” / ML equivalent | 3 Exclusivity | “Subsidy applies only with empanelled installers, and we handle it end to end.” | No |
 | `src/pages/faqs.astro` | 40, 462, 470 | “only available through MNRE-empanelled”; “exclusively through”; “Available only via … like Rayenna” | 3 | Registered-installer wording; keep portal + registered vendor truth; remove Rayenna-only implication | No |
 | `src/pages/ml/faqs.astro` | 175, 183 | Exclusive / Rayenna-only | 3 | Mirror | No |
 | `src/i18n/faqs-ml.ts` | 34 | MNRE-empanelled only + channel partner | 3 | Soften Rayenna exclusivity; keep registered-vendor requirement | No |
