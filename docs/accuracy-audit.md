@@ -97,3 +97,45 @@ Alt text will be updated in code; bitmap text cannot be edited here.
 ## Chatbot
 
 Prompt lives in-repo at `worker/chat-proxy.js` (deployed Worker `rayenna-chat-proxy`). Fixes applied in Phase 2 to the source file; **owner must redeploy the Cloudflare Worker** for production chat to update. See also `docs/chatbot-text-fixes.md`.
+
+
+## Phase 2 completion (2026-10-11)
+
+All Issues 1–7 applied on branch `fix/accuracy-credibility`. `npm run build` passed. Re-grep cleared forbidden phrases listed in the brief. No `TODO_OWNER` in rendered `dist/` HTML.
+
+| Issue | Status |
+|-------|--------|
+| 1 Subsidy slabs | Done (6 city pages); calculator `pmSubsidy()` already correct |
+| 2 GST 5% | Done (FAQs EN/ML + homepage invest cards) |
+| 3 Exclusivity | Done (ui, FAQs EN/ML banners) |
+| 4 Overclaims | Done (calculator trust, 100%→25yr warranty, zero-bill soften EN/ML/blog) |
+| 5 Certification / registration | Done (About EN/ML, sitewide term, founder Master Mariner) |
+| 6 Numbers | Done (services, Thrissur, calculator warranties, Kochi guide) |
+| 7 Scheme urgency | Done (softened; no asserted 31 Mar 2027) |
+| Claims register | `docs/claims-register.md` + `src/data/claims.ts` |
+| Chatbot | `worker/chat-proxy.js` + `docs/chatbot-text-fixes.md` (redeploy Worker) |
+
+### Calculator GST note (flagged, not changed)
+
+EN/ML calculator still say taxes/GST are **additional** on the invoice — correct; no stale “12% on panels” claim there. Invoice split (equipment vs services) covered in FAQ.
+
+### Malayalam lines needing native-speaker review
+
+Priority files touched for factual ML copy (tone preserved; verify grammar/naturalness):
+
+- `src/i18n/faqs-ml.ts` — GST, exclusivity, zero-bill, scheme-window, registration wording
+- `src/i18n/ui.ts` (`ml` section) — whyNow, invest cards, seasonNote, registration microcopy, who-stat
+- `src/pages/ml/about.astro` — badges, director creds, founder spans, meta
+- `src/pages/ml/faqs.astro` — subsidy banner / points
+- `src/pages/ml/index.astro` — subsidy bullet slabs; who-stat 25yr
+- `src/pages/ml/services.astro` — payback / panel life stats
+- `src/pages/ml/solar-panels-{kochi,thrissur,trivandrum}.astro` — subsidy tables + Thrissur payback
+- `src/pages/ml/solar-calculator.astro` — manufacturer warranty labels
+- `src/i18n/calculator-ml.ts` — trust subsidy sentence + title
+- `src/i18n/blog-articles-ml/kerala-zero-bill-rooftop-solar-2026.ts`
+- `src/i18n/blog-articles-ml/going-solar-kochi-guide-2025.ts`
+- `src/pages/ml/privacy.astro` — registration term in company description
+
+### Absolute claims flagged (not changed)
+
+See table above (best-grade, Tier-1 exclusive installs, warranty 85% guarantee language, media testimonials).
