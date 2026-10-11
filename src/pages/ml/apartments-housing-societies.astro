@@ -87,7 +87,7 @@ const ogImage = OG.services;
   </section>
 
   <!-- 3. THREE WAYS -->
-  <section class="apt-section apt-section--alt">
+  <section class="apt-section apt-section--alt apt-section--routes">
     <div class="container">
       <h2 class="section-title">ഒരു കെട്ടിടത്തിന് സോളാർ സ്വീകരിക്കാനുള്ള മൂന്ന് വഴികൾ</h2>
       <p class="apt-lead">മേൽക്കൂര അവകാശം, മീറ്ററുകൾ, ബൈലോകൾക്ക് അനുയോജ്യമായ വഴി തിരഞ്ഞെടുക്കുക. പഠനത്തിന് ശേഷം ഞങ്ങൾ ഒന്ന് ശുപാർശ ചെയ്യും.</p>
@@ -816,6 +816,36 @@ const ogImage = OG.services;
   font-size: 0.85rem;
   color: var(--color-text-muted);
   margin-top: 8px;
+}
+/* Laptop / full-screen: centre the routes block (keep mobile + iPad left-aligned) */
+@media (min-width: 1100px) {
+  .apt-section--routes .container {
+    text-align: center;
+  }
+  .apt-section--routes .section-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .apt-section--routes .apt-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .apt-section--routes .apt-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .apt-section--routes .apt-diagram__svg {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 860px;
+  }
+  .apt-section--routes .apt-diagram__caption {
+    text-align: center;
+  }
+  .apt-section--routes .apt-cards {
+    text-align: left;
+  }
 }
 .apt-illustration {
   margin-top: 24px;
