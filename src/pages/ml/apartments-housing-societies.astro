@@ -1,0 +1,1484 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { OG } from '../../i18n/og-images';
+import { apartmentsFaqsMl } from '../../i18n/apartments-faqs-ml';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const waText = encodeURIComponent(
+  'ഹായ് റയെന്ന, ഞങ്ങളുടെ അപ്പാർട്ട്മെന്റ് അസോസിയേഷന് സോളാർ സാധ്യതാ പഠനം വേണം.'
+);
+const waHref = `https://wa.me/917907369304?text=${waText}`;
+
+const faqs = apartmentsFaqsMl;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Solar feasibility study for apartments and housing societies in Kerala',
+  description:
+    'Free feasibility study for apartment associations and housing societies in Kerala — roof, shade, structure, common-area bills, subsidy ceiling and metering route.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Rayenna Energy',
+    url: 'https://rayennaenergy.com',
+  },
+  areaServed: { '@type': 'State', name: 'Kerala' },
+  serviceType: 'Solar energy consultation',
+  url: 'https://rayennaenergy.com/ml/apartments-housing-societies/',
+};
+
+// TODO_OWNER: custom Open Graph image for apartments page; reusing services OG for now.
+const ogImage = OG.services;
+---
+
+<Layout
+  lang="ml"
+  title="അപ്പാർട്ട്മെന്റ് & സൊസൈറ്റി സോളാർ | കേരളം"
+  description="കോമൺ ഏരിയ വൈദ്യുതി ബിൽ കുറയ്ക്കുക. സൗജന്യ സോളാർ സാധ്യതാ പഠനം — ബാധ്യതയില്ല."
+  ogImage={ogImage}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <!-- 1. HERO -->
+  <section class="apt-hero">
+    <img src={`${base}/media/services-hero-opt3.jpg`} alt="സൂര്യാസ്തമയത്തിൽ മേൽക്കൂരയിലെ സോളാർ പാനലുകൾ" class="apt-hero__bg" />
+    <div class="apt-hero__overlay"></div>
+    <div class="container apt-hero__inner">
+      <p class="apt-hero__eyebrow">കേരളത്തിലെ കമ്മിറ്റികൾക്ക്</p>
+      <h1 class="apt-hero__title">കേരളത്തിലെ അപ്പാർട്ട്മെന്റുകൾക്കും ഹൗസിംഗ് സൊസൈറ്റികൾക്കും സോളാർ</h1>
+      <p class="apt-hero__sub">
+        നിങ്ങളുടെ കോമൺ ഏരിയ വൈദ്യുതി ബിൽ കുറയ്ക്കുക. ഞങ്ങൾ സൗജന്യ സാധ്യതാ പഠനത്തോടെ ആരംഭിക്കുന്നു — ബാധ്യതയില്ല.
+      </p>
+      <div class="apt-hero__ctas">
+        <a href="#enquiry" class="btn btn-primary">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</a>
+        <a href={waHref} class="btn btn-outline-light" target="_blank" rel="noopener noreferrer" data-analytics-location="apartments-hero-wa">
+          WhatsApp ചെയ്യുക
+        </a>
+      </div>
+      <p class="apt-hero__micro">PM സൂര്യ ഘർ എംപാനൽഡ് · ആദ്യം പ്രക്രിയ · കണ്ടുപിടിച്ച പ്രോജക്റ്റ് എണ്ണങ്ങളില്ല</p>
+      <img src={`${base}/media/Artboard-2mnre.webp`} alt="PM സൂര്യ ഘർ എംപാനൽഡ് vendor (MNRE)" class="apt-hero__badge" width="160" height="56" />
+    </div>
+  </section>
+
+  <!-- 2. WHO THIS IS FOR -->
+  <section class="apt-section">
+    <div class="container apt-split">
+      <div class="apt-split__media">
+        <img src={`${base}/media/Plan-solar.webp`} alt="കേരളത്തിലെ മൽട്ടി-യൂണിട് കെട്ടിടത്തിന് റൂഫ്ടോപ്പ് സോളാർ പ്ലാനിംഗ്" loading="lazy" />
+      </div>
+      <div class="apt-split__copy">
+        <h2 class="section-title">ആർക്ക് വേണ്ടിയുള്ളതാണ്</h2>
+        <p>
+          കേരളത്തിലെ അപ്പാർട്ട്മെന്റ് അസോസിയേഷനുകൾ, ഗേറ്റഡ് കമ്മ്യൂണിടികൾ, രെസിഡന്റ്സ് വെൽഫെയർ അസോസിയേഷനുകൾ (RWA), ബിൽഡർ മാനേജ് ചെയ്യുന്ന കമ്മ്യൂണിടികൾ. കമ്മിറ്റിയിലെ പ്രസിഡന്റ്, സെക്രട്ടറി, ട്രഷറർ അല്ലെങ്കിൽ അംഗമാണെങ്കിൽ — വോട്ടിന് മുമ്പ് വ്യക്തമായ ചിത്രം വേണമെങ്കിൽ ഇവിടെ നിന്ന് തുടങ്ങുക.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THREE WAYS -->
+  <section class="apt-section apt-section--alt apt-section--routes">
+    <div class="container">
+      <h2 class="section-title">ഒരു കെട്ടിടത്തിന് സോളാർ സ്വീകരിക്കാനുള്ള മൂന്ന് വഴികൾ</h2>
+      <p class="apt-lead">മേൽക്കൂര അവകാശം, മീറ്ററുകൾ, ബൈലോകൾക്ക് അനുയോജ്യമായ വഴി തിരഞ്ഞെടുക്കുക. പഠനത്തിന് ശേഷം ഞങ്ങൾ ഒന്ന് ശുപാർശ ചെയ്യും.</p>
+
+      <div class="apt-diagram" role="img" aria-label="മൂന്ന് സോളാർ വഴികളുടെ ഡയഗ്രം: വ്യക്തിഗത ഫ്ലാറ്റ് പ്ലാന്റ്, കോമൺ ഏരിയ പ്ലാന്റ്, പങ്കിട്ട വെർച്വല് നെറ്റ് മീറ്ററിംഗ്">
+        <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" width="720" height="200" class="apt-diagram__svg" aria-hidden="true">
+          <rect x="8" y="20" width="220" height="160" rx="8" fill="#f5f5f5" stroke="#a83838" stroke-width="2"/>
+          <text x="118" y="48" text-anchor="middle" font-size="13" font-family="system-ui,sans-serif" fill="#27324f" font-weight="600">A · വ്യക്തിഗത</text>
+          <text x="118" y="72" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">ഫ്ലാറ്റ് / ടെറസ് പ്ലാന്റ്</text>
+          <rect x="48" y="90" width="40" height="28" fill="#a83838"/>
+          <rect x="98" y="90" width="40" height="28" fill="#788bba"/>
+          <rect x="148" y="90" width="40" height="28" fill="#f9efef"/>
+          <text x="118" y="150" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">ഒരു ഉടമ · ഒരു മീറ്റർ</text>
+
+          <rect x="250" y="20" width="220" height="160" rx="8" fill="#f5f5f5" stroke="#a83838" stroke-width="2"/>
+          <text x="360" y="48" text-anchor="middle" font-size="13" font-family="system-ui,sans-serif" fill="#27324f" font-weight="600">B · കോമൺ ഏരിയ</text>
+          <text x="360" y="72" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">സൊസൈറ്റി പ്ലാന്റ്</text>
+          <rect x="300" y="90" width="120" height="28" fill="#a83838"/>
+          <text x="360" y="150" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">ലിഫ്റ്റ് · പമ്പ് · ലൈട്ട് · EV</text>
+
+          <rect x="492" y="20" width="220" height="160" rx="8" fill="#f5f5f5" stroke="#a83838" stroke-width="2"/>
+          <text x="602" y="48" text-anchor="middle" font-size="13" font-family="system-ui,sans-serif" fill="#27324f" font-weight="600">C · പങ്കിട്ട (VNM)</text>
+          <text x="602" y="72" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">ഒരു പ്ലാന്റ് · പല മീറ്റർ</text>
+          <rect x="542" y="90" width="120" height="28" fill="#788bba"/>
+          <line x1="562" y1="118" x2="542" y2="145" stroke="#27324f" stroke-width="1.5"/>
+          <line x1="602" y1="118" x2="602" y2="145" stroke="#27324f" stroke-width="1.5"/>
+          <line x1="642" y1="118" x2="662" y2="145" stroke="#27324f" stroke-width="1.5"/>
+          <text x="602" y="165" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#616161">കരാർ അനുസരിച്ച് ക്രെഡിറ്റ്</text>
+        </svg>
+        <p class="apt-diagram__caption">അപ്പാർട്ട്മെന്റ് കെട്ടിടങ്ങൾക്കുള്ള മൂന്ന് മീറ്ററിംഗ് വഴികൾ — ലളിതമായ ചിത്രീകരണം.</p>
+      </div>
+
+      <div class="apt-cards">
+        <article class="apt-card">
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-rooftop-home.jpg`} alt="കേരള വീട്ടിലെ വ്യക്തിഗത റൂഫ്ടോപ്പ് സോളാർ പാനലുകൾ" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>A. വ്യക്തിഗത ഫ്ലാറ്റ് അല്ലെങ്കിൽ ടെറസ് പ്ലാന്റുകൾ</h3>
+          <p>ഉടമയ്ക്ക് പ്രത്യേക മേൽക്കൂര അല്ലെങ്കിൽ ടെറസ് പ്രവേശനമുണ്ട്, സൊസൈറ്റി അനുവദിക്കുന്നിടത്ത് മാത്രം. സാധാരണ PM സൂര്യ ഘർ രെസിഡൻഷ്യൽ നിയമങ്ങൾ ബാധകം.</p>
+          </div>
+        </article>
+        <article class="apt-card">
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-panel-installation.jpg`} alt="റൂഫ്ടോപ്പിൽ സോളാർ പാനലുകൾ സ്ഥാപിക്കുന്ന റയെന്ന ടീം" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>B. കോമൺ ഏരിയ പ്ലാന്റ്</h3>
+          <p>ലിഫ്റ്റ്, വാട്ടർ പമ്പ്, കോറിഡോർ/ബേസ്മെന്റ് ലൈട്ടിംഗ്, EV ചാർജിംഗ് എന്നിവയ്ക്കുള്ള ഒരു പ്ലാന്റ്. സൊസൈറ്റി തല സബ്സിഡിയും അനുമതികളും ബാധകം (താഴെ കാണുക).</p>
+          </div>
+        </article>
+        <article class="apt-card">
+          <div class="apt-card__media">
+            <img src={`${base}/media/Hardshell-solar.webp`} alt="കേരള സൂര്യന് കീഴിലുള്ള പൂര്ത്തിയാക്കിയ റൂഫ്ടോപ്പ് സോളാർ അറേ" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>C. പങ്കിട്ട (വെർച്വൽ) നെറ്റ് മീറ്ററിംഗ്</h3>
+          <p>
+            ഒരു പ്ലാന്റ്; പങ്കെടുക്കുന്ന ഫ്ലാറ്റുകള്ക്കിടയിൽ കരാർ പ്രകാരം ക്രെഡിറ്റ് പങ്കിടൽ. KSERC-യുടെ 2025 നിയന്ത്രണങ്ങൾ പ്രകാരം, മൽട്ടി-സ്റ്റോറിഡ് രെസിഡൻഷ്യൽ കെട്ടിടങ്ങൾക്കും രെസിഡന്റ്സ് അസോസിയേഷനുകൾക്കും VNM-ന് പ്ലാന്റിന്റെ ജനറേഷൻ പൊട്ടൻഷ്യലിന്റെ കുറഞ്ഞത് 20% എനർജി സ്റ്റോറേജ്, Lead person, സൊസൈറ്റി രെസല്യൂഷൻ, ക്രെഡിറ്റ്-ഷെയറിംഗ് കരാർ, KSEB അനുമതി എന്നിവ ആവശ്യമാണ്. ഏറ്റവും കുറഞ്ഞ പ്ലാന്റ് വലുപ്പം 10 kW. കേരളത്തിൽ നടപ്പാക്കൽ ഇപ്പോഴും പുരോഗമിക്കുകയാണ് — നിങ്ങളുടെ കെട്ടിടത്തിന് യോജിക്കുന്നുണ്ടോ എന്ന് പഠനത്തിൽ ഞങ്ങൾ സ്ഥിരീകരിക്കും.
+          </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHY COMMON-AREA -->
+  <section class="apt-section">
+    <div class="container apt-split apt-split--flip">
+      <div class="apt-split__copy">
+        <h2 class="section-title">കോമൺ ഏരിയ ലോഡുകൾക്ക് സോളാർ എന്തുകൊണ്ട് യോജിക്കുന്നു</h2>
+        <p>
+          ലിഫ്റ്റ്, പമ്പ്, ലൈട്ടിംഗ് എന്നിവ പലപ്പോഴും പകൽ സമയത്ത് പ്രവർത്തിക്കുന്നു — പാനലുകൾ ഉൽപ്പാദിപ്പിക്കുന്ന സമയം. ഈ പകൽ ഓവർലാപ്പ് കാരണം കോമൺ ഏരിയ ലോഡുകൾ റൂഫ്ടോപ്പ് സോളാറിന് സ്വാഭാവികമായി യോജിക്കുന്നു. ഞങ്ങൾ സാധാരണ ശതമാനം സേവിങ്ങ്സ് അവകാശപ്പെടുന്നില്ല — നിങ്ങളുടെ കഴിഞ്ഞ പന്ത്രണ്ട് മാസത്തെ ബില്ലുകളാണ് കേസ് തീരുമാനിക്കുന്നത്.
+        </p>
+      </div>
+      <div class="apt-split__media">
+        <img src={`${base}/media/Drilling-solar.jpg`} alt="കേരള റൂഫ്ടോപ്പിലെ സോളാർ പാനൽ മൡണ്ടിംഗ് ജോലി" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b. REAL ROOFS STRIP -->
+  <section class="apt-section apt-section--gallery" aria-labelledby="apt-gallery-title">
+    <div class="container">
+      <h2 id="apt-gallery-title" class="section-title">കേരളത്തിലെയുള്ള യഥാർത്ഥ റയെന്ന റൂഫ്ട്ടപ്പുകൾ</h2>
+      <p class="apt-lead">ഞങ്ങൾ പൂര്ത്തിയാക്കിയ വീട്ടു ഇൻസ്റ്റലേഷനുകൾ — സൊസൈറ്റി സാധ്യതാ പഠനത്തിലും അതേ ഗുണമാന് പ്രക്രിയയും.</p>
+      <div class="apt-gallery">
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg`} alt="Arun · Kollam · 5 kW" loading="lazy" />
+          <span>Arun · Kollam · 5 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg`} alt="Sessy Antony · Chottanikkara · 6 kW" loading="lazy" />
+          <span>Sessy Antony · Chottanikkara · 6 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg`} alt="Suresh · Eroor · 4 kW" loading="lazy" />
+          <span>Suresh · Eroor · 4 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg`} alt="Dhanya V.T. · Thoppumpady · 5 kW" loading="lazy" />
+          <span>Dhanya V.T. · Thoppumpady · 5 kW</span>
+        </a>
+      </div>
+      <p class="apt-gallery__cta"><a href={`${base}/ml/media/`}>എല്ലാ ഇൻസ്റ്റലേഷനുകളും കാണുക →</a></p>
+    </div>
+  </section>
+
+  <!-- 5. SUBSIDY -->
+  <section class="apt-section apt-section--subsidy">
+    <div class="apt-band">
+      <img src={`${base}/media/apartments/apt-buildings.jpg`} alt="മൽട്ടി-സ്റ്റോറി അപ്പാർട്ട്മെന്റ് കെട്ടിടങ്ങള്‍" class="apt-band__img" loading="lazy" />
+      <div class="apt-band__shade"></div>
+      <div class="container apt-band__inner">
+        <p class="apt-band__eyebrow">PM സൂര്യ ഘർ · GHS / RWA</p>
+        <h2 class="apt-band__title">സൊസൈറ്റികൾക്കുള്ള സബ്സിഡി</h2>
+        <div class="apt-stats">
+          <div class="apt-stat">
+            <span class="apt-stat__value">₹18,000</span>
+            <span class="apt-stat__label">കോമൺ സൗകര്യങ്ങള്‍ക്ക് kW-ന് CFA</span>
+          </div>
+          <div class="apt-stat">
+            <span class="apt-stat__value">500 kW</span>
+            <span class="apt-stat__label">ഉയർന്ന ശേഷി (വീടിന് 3 kW)</span>
+          </div>
+          <div class="apt-stat">
+            <span class="apt-stat__value">1–500 kW</span>
+            <span class="apt-stat__label">കോമൺ ഏരിയ നെറ്റ് മീട്ററിംഗ് (KSERC 2025)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container apt-subsidy-grid">
+      <div class="apt-subsidy-copy">
+        <p>
+                Group Housing Society / Resident Welfare Association കോമൺ സൗകര്യങ്ങൾക്ക് (EV ചാർജിംഗ് ഉൾപ്പെടെ) PM സൂര്യ ഘർ പ്രകാരം സെൻട്രൽ ഫിനാൻഷ്യൽ അസിസ്റ്റൻസ് (CFA) <strong>kW-ന് ₹18,000</strong> ആണ് — <strong>500 kW</strong> വരെ (വീടിന് 3 kW), ഉയർന്ന പരിധി നിവാസികൾ സ്ഥാപിച്ച വ്യക്തിഗത റൂഫ്ടോപ്പ് പ്ലാന്റുകളും ഉൾക്കൊള്ളുന്നു. ഉറവിടം: pmsuryaghar.gov.in.
+              </p>
+              <p>
+                താരതമ്യത്തിന്, വ്യക്തിഗത രെസിഡൻഷ്യൽ CFA: 2 kW വരെ kW-ന് ₹30,000; മൂന്നാം kW-ന് ₹18,000; 3 kW-ന് മുകളിൽ ₹78,000 പരിധി.
+              </p>
+              <p>
+                KSERC (Renewable Energy and Related Matters) Regulations, 2025 (2025 നവംബർ 6 മുതൽ പ്രാബല്യത്തിൽ) പ്രകാരം, രെസിഡൻഷ്യൽ ഹൈ-റൈസ് / മൽട്ടി-സ്റ്റോറിഡ് കെട്ടിടങ്ങളുടെയും രെസിഡൻഷ്യൽ കോളനികളുടെയും <strong>കോമൺ ഏരിയ സർവീസ് കണക്ഷനുകൾക്ക്</strong> <strong>1 kW മുതൽ 500 kW</strong> വരെ നെറ്റ് മീറ്ററിംഗ് ലഭ്യമാണ്. 25 kW-ന് മുകളിലുള്ള പ്ലാന്റുകൾക്ക് അതേ നിയന്ത്രണങ്ങളിൽ ഹൈബ്രിഡ് ഇൻവെർട്ടർ സ്റ്റോറേജ് ആവശ്യകതകളുണ്ട് — സാധ്യതാ പഠനത്തിൽ ഞങ്ങൾ വലുപ്പം നിർണയിച്ച് സ്ഥിരീകരിക്കും. ഉറവിടം: കേരള ഗസറ്റ് / KSERC നിയന്ത്രണങ്ങൾ, 2025.
+              </p>
+      </div>
+      <div class="apt-subsidy-aside">
+        <div class="apt-subsidy-aside__media">
+          <img src={`${base}/media/apartments/apt-ev.jpg`} alt="രെസിഡന്ഷ്യൽ കെട്ടിടത്തിലെ EV ചാർജിംഗ്" loading="lazy" />
+        </div>
+        <aside class="apt-illustration" aria-label="സബ്സിഡി ഉദാഹരണം">
+          <p class="apt-illustration__label">ഉദാഹരണം മാത്രം</p>
+          <p>
+            60 ഫ്ലാറ്റുള്ള ഒരു സൊസൈറ്റിക്ക് യോഗ്യതാ ശേഷി പരിധി 180 kW (ഫ്ലാറ്റിന് 3 kW). യഥാർത്ഥ പ്ലാന്റ് വലുപ്പം നിങ്ങളുടെ കോമൺ ഏരിയ ലോഡിനെയും മേൽക്കൂര സ്ഥലത്തെയും ആശ്രയിച്ചിരിക്കുന്നു. ഉദാഹരണത്തിന്, 30 kW കോമൺ ഏരിയ പ്ലാന്റിന് kW-ന് ₹18,000 നിരക്കിൽ ₹5.4 ലക്ഷം വരെ ലഭിക്കാം (30 × 18,000 = 5,40,000). അന്തിമ യോഗ്യത ദേശീയ പോർടലിൽ സ്ഥിരീകരിക്കും.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. HOW IT WORKS -->
+  <section class="apt-section apt-section--process">
+    <div class="container">
+      <header class="apt-process-head">
+        <div>
+          <p class="apt-kicker">ആദ്യ കോൾ മുതൽ കമ്മീഷനിംഗ് വരെ</p>
+          <h2 class="section-title">എങ്ങനെ പ്രവർത്തിക്കുന്നു</h2>
+          <p class="apt-lead">സമയപരിധി അനുമതികളെയും നിങ്ങളുടെ സൊസൈറ്റിയുടെ തീരുമാന പ്രക്രിയയെയും ആശ്രയിച്ചിരിക്കുന്നു.</p>
+        </div>
+        <div class="apt-process-head__photos" aria-hidden="true">
+          <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="" loading="lazy" />
+          <img src={`${base}/media/apartments/apt-meeting.jpg`} alt="" loading="lazy" />
+        </div>
+      </header>
+      <ol class="apt-process">
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">01</span>
+          <h3>സൗജന്യ സാധ്യതാ പഠനം</h3>
+          <p>മേൽക്കൂര, ഷേഡ്, ഘടന, 12 മാസത്തെ കോമൺ ഏരിയ ബില്ലുകൾ.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">02</span>
+          <h3>കമ്മിറ്റി ബ്രീഫിംഗ്</h3>
+          <p>എഴുത്ത് സംഗ്രഹവും.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">03</span>
+          <h3>ജനറൽ ബോഡി രെസല്യൂഷൻ</h3>
+          <p>ബൈലോകൾ ആവശ്യപ്പെടുന്ന NOC ഉം.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">04</span>
+          <h3>ഡിസൈനും പ്രൊപ്പോസലും</h3>
+          <p>ലോഡിനും മേൽക്കൂരയ്ക്കും അനുയോജ്യമായ വലുപ്പം.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">05</span>
+          <h3>അനുമതികൾ</h3>
+          <p>KSEB, ദേശീയ പോർടൽ, സബ്സിഡി ഫയലിംഗ് ഞങ്ങൾ കൈകാര്യം ചെയ്യും.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">06</span>
+          <h3>ഇൻസ്റ്റലേഷൻ, കമ്മീഷനിംഗ്, മോണിറ്ററിംഗ്</h3>
+          <p>സൊസൈറ്റി മുന്നോട്ട് പോകാൻ തീരുമാനിച്ചതിന് ശേഷം.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7–8. DELIVERABLE + CHECKLIST -->
+  <section class="apt-section apt-section--duo">
+    <div class="apt-duo-banner">
+      <img src={`${base}/media/apartments/apt-solar-roof.jpg`} alt="കെട്ടിടത്തിലെ റൂഫ്ടോപ്പ് സോളാർ അറേ" class="apt-duo-banner__img" loading="lazy" />
+      <div class="apt-duo-banner__shade"></div>
+      <div class="container apt-duo-banner__inner">
+        <h2 class="apt-duo-banner__title">സാധ്യതാ പഠനത്തിൽ നിങ്ങൾക്ക് ലഭിക്കുന്നത് · നിങ്ങളിൽ നിന്ന് ഞങ്ങൾക്ക് വേണ്ടത്</h2>
+        <p>നിങ്ങളുടെ കെട്ടിടത്തിന് സോളാർ അർത്ഥമാക്കുന്നില്ലെങ്കിൽ, ഞങ്ങൾ അത് പറയും.</p>
+      </div>
+    </div>
+    <div class="container apt-duo">
+      <article class="apt-panel apt-panel--deliver">
+        <div class="apt-panel__media">
+          <img src={`${base}/media/apartments/apt-docs.jpg`} alt="മേശപ്പുറത്തെ രേഖകളും പ്ലാനിംഗ് മെറ്റീരിയലുകളും" loading="lazy" />
+        </div>
+        <div class="apt-panel__body">
+          <p class="apt-kicker">നിങ്ങള്‍ക്ക് ലഭിക്കുന്നത്</p>
+          <h3>സാധ്യതാ പഠനത്തിൽ നിങ്ങൾക്ക് ലഭിക്കുന്നത്</h3>
+          <ul class="apt-checklist">
+            <li>ഉപയോഗയോഗ്യമായ മേൽക്കൂര വിസ്തീർണ്ണം</li>
+            <li>സൂചനാപരമായ സിസ്റ്റം വലുപ്പ പരിധി</li>
+            <li>സൂചനാപരമായ വാർഷിക ഉൽപ്പാദനം</li>
+            <li>നിങ്ങളുടെ കെട്ടിടത്തിനുള്ള സബ്സിഡി പരിധി</li>
+            <li>ഞങ്ങൾ ശുപാർശ ചെയ്യുന്ന മീറ്ററിംഗ് വഴി</li>
+          </ul>
+        </div>
+      </article>
+      <article class="apt-panel apt-panel--need">
+        <div class="apt-panel__media">
+          <img src={`${base}/media/apartments/apt-meeting.jpg`} alt="മേശയ്ക്ക് ചുറ്റുമുള്ള കമ്മിറ്റി മീട്ടിംഗ്" loading="lazy" />
+        </div>
+        <div class="apt-panel__body">
+          <p class="apt-kicker">ദയവായി പങ്കിടുക</p>
+          <h3>നിങ്ങളിൽ നിന്ന് ഞങ്ങൾക്ക് വേണ്ടത്</h3>
+          <ul class="apt-checklist apt-checklist--need">
+            <li>കഴിഞ്ഞ 12 മാസത്തെ കോമൺ ഏരിയ വൈദ്യുതി ബില്ലുകൾ</li>
+            <li>കോമൺ കണക്ഷനുകളുടെ KSEB കൻസ്യൂമർ നമ്പറുകൾ</li>
+            <li>മേൽക്കൂര ഫോട്ടോകൾ അല്ലെങ്കിൽ പ്ലാൻ</li>
+            <li>സൊസൈറ്റി രജിസ്ട്രേഷൻ വിവരങ്ങളും ബൈലോകളും</li>
+            <li>സെക്രട്ടറി അല്ലെങ്കിൽ പ്രസിഡന്റിന്റെ പേരും ബന്ധപ്പെടാനുള്ള വിവരങ്ങളും</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 9. GLOSSARY -->
+  <section class="apt-section apt-section--glossary">
+    <div class="container">
+      <header class="apt-section-head">
+        <p class="apt-kicker">ലളിതമായ ഭാഷയിൽ</p>
+        <h2 class="section-title">പദാവലി</h2>
+        <p class="apt-lead">കമ്മിറ്റികള്‍ ഏറ്റവും കൂടുതല് ചോദിക്കുന്ന പദങ്ങള്‍ — ജാർഗൺ ഇല്ലാതെ.</p>
+      </header>
+      <div class="apt-glossary-grid">
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>കോമൺ സർവീസ് കണക്ഷൻ</h3>
+          <p>ലിഫ്റ്റ്, പമ്പ്, കോമൺ ലൈട്ടിംഗ് എന്നിവയ്ക്കുള്ള വൈദ്യുതി നൽകുന്ന മീറ്റർ.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-solar-roof.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>നെറ്റ് മീറ്ററിംഗ്</h3>
+          <p>പകൽ സമയത്തെ അധിക സോളാർ ഉൽപ്പാദനം നിങ്ങളുടെ ബില്ലിൽ ക്രെഡിറ്റ് ആയി കണക്കാക്കുന്നു.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-buildings.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>വെർച്വൽ നെറ്റ് മീറ്ററിംഗ്</h3>
+          <p>ഒരു പങ്കിട്ട പ്ലാന്റ്; ക്രെഡിറ്റുകൾ പല മീറ്ററുകളിലായി വിഭജിക്കുന്നു.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-ev.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>CFA</h3>
+          <p>കേന്ദ്ര സർക്കാർ സബ്സിഡി — Central Financial Assistance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section class="apt-section apt-section--faq">
+    <div class="container apt-faq-layout">
+      <aside class="apt-faq-aside">
+        <div class="apt-faq-aside__media">
+          <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="ഹൈ-റൈസ് കെട്ടിടങ്ങളുള്ള സിറ്റി സ്കൈലൈൻ" loading="lazy" />
+        </div>
+        <h2 class="section-title">പതിവ് ചോദ്യങ്ങൾ</h2>
+        <p class="apt-lead">സെക്രട്ടറി, പ്രസിഡന്റ് ഒപ്പം കമ്മിറ്റി അംഗങ്ങള്‍ക്കുള്ള നേരായ ഉത്തരങ്ങള്‍.</p>
+        <a href="#enquiry" class="btn btn-primary">പഠനം അഭ്യർത്ഥിക്കുക</a>
+      </aside>
+      <div class="accordion" data-apt-faq>
+        {faqs.map((faq, fi) => (
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button" aria-expanded="false">
+              <span class="accordion-num">{String(fi + 1).padStart(2, '0')}</span>
+              <span class="accordion-q">{faq.q}</span>
+              <span class="accordion-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel__body">
+                <p>{faq.a}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. ENQUIRY FORM -->
+  <section class="apt-section apt-section--enquiry" id="enquiry">
+    <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="" class="apt-enquiry__bg" aria-hidden="true" />
+    <div class="container apt-form-layout">
+      <div class="apt-form-intro">
+        <div class="apt-form-intro__copy">
+          <h2 class="section-title">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</h2>
+          <p class="apt-lead">നിങ്ങളുടെ കെട്ടിടത്തെക്കുറിച്ച് പറയുക. അടുത്ത ഘട്ടങ്ങളുമായി ഞങ്ങള്‍ മറുപടി നൽകും — സ്പാം ഇല്ല, നിർബന്ധിത വിൽപ്പനയില്ല.</p>
+        </div>
+        <div class="apt-form-intro__photo">
+          <img
+            src={`${base}/media/apartments/apt-buildings.jpg`}
+            alt="മൽട്ടി-സ്റ്റോറി അപ്പാർട്ട്മെന്റ് സൊസൈറ്റി കെട്ടിടം — സോളാർ വലുപ്പം നിർണയിക്കുന്ന കമ്മ്യൂണിട്ടി"
+            loading="lazy"
+            width="1400"
+            height="1867"
+          />
+        </div>
+      </div>
+<form id="apartments-form" class="apt-form" novalidate>
+        <input type="hidden" name="source" value="apartments-page" />
+        <input type="hidden" name="from_name" value="Rayenna Apartments Enquiry" />
+        <input type="checkbox" name="botcheck" class="apt-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="apt-name">നിങ്ങളുടെ പേര് <span aria-hidden="true">*</span></label>
+            <input type="text" id="apt-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="apt-phone">ഫോൺ <span aria-hidden="true">*</span></label>
+            <input type="tel" id="apt-phone" name="phone" required autocomplete="tel" inputmode="tel" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="apt-email">ഇമെയിൽ</label>
+            <input type="email" id="apt-email" name="email" autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="apt-role">പദവി</label>
+            <select id="apt-role" name="role">
+              <option value="">തിരഞ്ഞെടുക്കുക…</option>
+              <option value="president">പ്രസിഡന്റ്</option>
+              <option value="secretary">സെക്രട്ടറി</option>
+              <option value="treasurer">ട്രഷറർ</option>
+              <option value="committee">കമ്മിറ്റി അംഗം</option>
+              <option value="other">മറ്റുള്ളത്</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="apt-society">സൊസൈറ്റി പേര് <span aria-hidden="true">*</span></label>
+            <input type="text" id="apt-society" name="society_name" required />
+          </div>
+          <div class="form-group">
+            <label for="apt-location">സ്ഥലം (നഗരം, പ്രദേശം) <span aria-hidden="true">*</span></label>
+            <input type="text" id="apt-location" name="location" required placeholder="ഉദാ. കൊച്ചി, കാക്കനാട്" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="apt-flats">ഫ്ലാറ്റുകളുടെ എണ്ണം <span aria-hidden="true">*</span></label>
+            <input type="number" id="apt-flats" name="number_of_flats" required min="1" inputmode="numeric" />
+          </div>
+          <div class="form-group">
+            <label for="apt-bill">ഏകദേശ മാസ കോമൺ ഏരിയ ബിൽ</label>
+            <select id="apt-bill" name="monthly_common_bill">
+              <option value="">പരിധി തിരഞ്ഞെടുക്കുക…</option>
+              <option value="under-10k">₹10,000-ന് താഴെ</option>
+              <option value="10k-25k">₹10,000 – ₹25,000</option>
+              <option value="25k-50k">₹25,000 – ₹50,000</option>
+              <option value="50k-1l">₹50,000 – ₹1 ലക്ഷം</option>
+              <option value="above-1l">₹1 ലക്ഷത്തിന് മുകളിൽ</option>
+              <option value="unsure">ഉറപ്പില്ല</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="apt-roof">മേൽക്കൂര പ്രവേശനം</label>
+          <select id="apt-roof" name="roof_access">
+            <option value="">തിരഞ്ഞെടുക്കുക…</option>
+            <option value="open-terrace">തുറന്ന ടെറസ്</option>
+            <option value="limited">പരിമിതം</option>
+            <option value="unsure">ഉറപ്പില്ല</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="apt-message">സന്ദേശം</label>
+          <textarea id="apt-message" name="message" rows="4" placeholder="കമ്മിറ്റി അറിയിക്കാൻ ആഗ്രഹിക്കുന്ന കാര്യങ്ങൾ…"></textarea>
+        </div>
+
+        <label class="apt-consent">
+          <input type="checkbox" name="consent" value="yes" required />
+          <span>ഈ അന്വേഷണത്തെക്കുറിച്ച് ബന്ധപ്പെടാൻ ഞാൻ സമ്മതിക്കുന്നു. ഞങ്ങളുടെ <a href={`${base}/ml/privacy/`}>സ്വകാര്യതാ നയം</a> കാണുക.</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary apt-submit">അന്വേഷണം അയയ്ക്കുക</button>
+        <p class="apt-wa-fallback">
+          ചാറ്റ് ഇഷ്ടമാണോ?
+          <a href={waHref} target="_blank" rel="noopener noreferrer" data-analytics-location="apartments-form-wa">അതേ അഭ്യർത്ഥന WhatsApp ചെയ്യുക</a>
+        </p>
+
+        <div id="apt-form-success" class="apt-form-status apt-form-status--ok" style="display:none" role="status">
+          നന്ദി. നിങ്ങളുടെ സൊസൈറ്റി അന്വേഷണം ലഭിച്ചു; ഞങ്ങൾ ബന്ധപ്പെടും.
+        </div>
+        <div id="apt-form-error" class="apt-form-status apt-form-status--err" style="display:none" role="alert">
+          എന്തോ തെറ്റി. വീണ്ടും ശ്രമിക്കുക അല്ലെങ്കിൽ WhatsApp ഉപയോഗിക്കുക.
+        </div>
+      </form>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.apt-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 56px;
+  color: #fff;
+  overflow: hidden;
+}
+.apt-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+}
+.apt-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 25, 50, 0.88) 0%,
+    rgba(10, 25, 50, 0.55) 50%,
+    rgba(10, 25, 50, 0.25) 100%
+  );
+  z-index: 1;
+}
+.apt-hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 100px;
+  width: 100%;
+}
+.apt-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 10px;
+}
+.apt-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  max-width: 18ch;
+  color: #ffffff;
+}
+.apt-hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  max-width: 36rem;
+  margin-bottom: 20px;
+}
+.apt-hero__ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.apt-hero__micro {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 14px;
+}
+.apt-hero__badge {
+  display: block;
+  width: min(160px, 42vw);
+  height: auto;
+  margin-top: 4px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+.btn-outline-light {
+  border: 2px solid rgba(255,255,255,0.75);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-outline-light:hover {
+  background: rgba(255,255,255,0.12);
+}
+.apt-section { padding: var(--section-padding); background: #ffffff; }
+.apt-section--alt { background: var(--color-light); }
+.apt-narrow { max-width: 720px; }
+.apt-lead { color: var(--color-text-muted); margin-bottom: 24px; max-width: 40rem; line-height: 1.8; }
+.apt-section p { color: var(--color-text-muted); line-height: 1.8; }
+
+.apt-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.apt-split__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  min-width: 0;
+}
+.apt-split__media img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.apt-split__copy { min-width: 0; }
+.apt-split__copy .section-title { margin-bottom: 14px; }
+.apt-split__copy > p { margin-bottom: 0; }
+
+.apt-cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.apt-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.apt-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-light);
+}
+.apt-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-card:hover .apt-card__media img { transform: scale(1.04); }
+.apt-card__body { padding: 18px 20px 20px; }
+.apt-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--color-navy);
+}
+.apt-card p { color: var(--color-text-muted); margin: 0; }
+
+.apt-section--gallery {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-primary-light) 45%, var(--color-light) 100%);
+}
+.apt-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.apt-gallery__item {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+}
+.apt-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-gallery__item:hover img { transform: scale(1.05); }
+.apt-gallery__item span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 12px 10px;
+  background: linear-gradient(to top, rgba(10,25,50,0.88), transparent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.apt-gallery__cta {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+.apt-gallery__cta a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+.apt-gallery__cta a:hover { text-decoration: underline; }
+
+.apt-section--enquiry {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+}
+.apt-enquiry__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.28;
+  z-index: 0;
+}
+.apt-form-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 22px;
+  align-items: stretch;
+}
+.apt-form-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.apt-form-intro__copy .section-title {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.apt-form-intro__copy .apt-lead {
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 0;
+}
+.apt-form-intro__photo {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  flex: 1 1 auto;
+  min-height: 200px;
+  aspect-ratio: 16 / 10;
+  background: rgba(0,0,0,0.2);
+}
+.apt-form-intro__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.apt-diagram {
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.apt-diagram__svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  min-width: 320px;
+}
+.apt-diagram__caption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+/* Laptop / full-screen: centre the routes block (keep mobile + iPad left-aligned) */
+@media (min-width: 1100px) {
+  .apt-section--routes .container {
+    text-align: center;
+  }
+  .apt-section--routes .section-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .apt-section--routes .apt-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .apt-section--routes .apt-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .apt-section--routes .apt-diagram__svg {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 860px;
+  }
+  .apt-section--routes .apt-diagram__caption {
+    text-align: center;
+  }
+  .apt-section--routes .apt-cards {
+    text-align: left;
+  }
+}
+.apt-illustration {
+  margin-top: 24px;
+  padding: 20px;
+  border-left: 4px solid var(--color-secondary);
+  background: var(--color-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.apt-illustration__label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.apt-illustration p { color: var(--color-text-muted); margin: 0; }
+.apt-steps {
+  display: grid;
+  gap: 14px;
+  padding-left: 1.25rem;
+  max-width: 40rem;
+  color: var(--color-text-muted);
+}
+.apt-steps li { line-height: 1.6; }
+.apt-list { padding-left: 1.25rem; margin: 12px 0 16px; color: var(--color-text-muted); }
+.apt-list li { margin-bottom: 8px; line-height: 1.55; }
+.apt-glossary { display: grid; gap: 16px; }
+.apt-glossary dt {
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 4px;
+}
+.apt-glossary dd { color: var(--color-text-muted); line-height: 1.55; margin: 0; }
+
+.accordion { display: flex; flex-direction: column; gap: 8px; }
+.accordion-item {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.accordion-item.is-open { border-color: var(--color-primary); }
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.accordion-num {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.accordion-q { flex: 1; font-weight: 500; color: var(--color-navy); }
+.accordion-icon { flex-shrink: 0; transition: transform 0.2s; color: var(--color-secondary); }
+.accordion-item.is-open .accordion-icon { transform: rotate(180deg); }
+.accordion-panel { display: none; }
+.accordion-item.is-open .accordion-panel { display: block; }
+.accordion-panel__body { padding: 0 16px 16px 48px; color: var(--color-text-muted); line-height: 1.65; }
+
+.apt-form {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  padding: 24px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+.apt-honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+.form-row {
+  display: grid;
+  gap: 16px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.9rem; font-weight: 500; color: var(--color-navy); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  min-height: 44px;
+  background: #ffffff;
+  color: var(--color-text);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+.apt-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.apt-consent input { margin-top: 4px; min-width: 18px; min-height: 18px; accent-color: var(--color-primary); }
+.apt-submit { align-self: flex-start; min-height: 48px; }
+.apt-wa-fallback { font-size: 0.9rem; color: var(--color-text-muted); }
+.apt-wa-fallback a { color: var(--color-primary); }
+.apt-form-status {
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+.apt-form-status--ok { background: var(--color-primary-light); color: var(--color-navy); border-left: 3px solid var(--color-primary); }
+.apt-form-status--err { background: #ffe5e5; color: #7f1d1d; border-left: 3px solid var(--color-primary); }
+
+
+/* ===== Redesigned lower sections ===== */
+.apt-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+.apt-section-head {
+  margin-bottom: 28px;
+  max-width: 40rem;
+}
+.apt-section-head .section-title { margin-bottom: 10px; }
+.apt-section-head .apt-lead { margin-bottom: 0; }
+
+.apt-section--subsidy {
+  padding: 0 0 var(--section-padding);
+  background: #fff;
+}
+.apt-band {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.apt-band__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.apt-band__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(10,25,50,0.92) 0%, rgba(10,25,50,0.72) 45%, rgba(168,56,56,0.45) 100%);
+}
+.apt-band__inner {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0 36px;
+  color: #fff;
+  width: 100%;
+}
+.apt-band__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 8px;
+}
+.apt-band__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 22px;
+  max-width: 20ch;
+  line-height: 1.2;
+}
+.apt-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.apt-stat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  backdrop-filter: blur(6px);
+}
+.apt-stat__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.apt-stat__label {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.4;
+}
+.apt-subsidy-grid {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+.apt-subsidy-copy p { margin-bottom: 14px; }
+.apt-subsidy-copy p:last-child { margin-bottom: 0; }
+.apt-subsidy-aside__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 16px;
+  aspect-ratio: 16 / 10;
+}
+.apt-subsidy-aside__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-section--subsidy .apt-illustration {
+  margin-top: 0;
+  background: var(--color-light);
+}
+
+.apt-section--process {
+  background: var(--color-light);
+}
+.apt-process-head {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 28px;
+  align-items: end;
+}
+.apt-process-head .apt-lead { margin-bottom: 0; }
+.apt-process-head__photos {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 10px;
+}
+.apt-process-head__photos img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.apt-process {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.apt-process__step {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.apt-process__step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-primary);
+}
+.apt-process__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+}
+.apt-process__step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin: 0 0 6px;
+}
+.apt-process__step p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.apt-section--duo {
+  padding: 0 0 var(--section-padding);
+  background: #fff;
+}
+.apt-duo-banner {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.apt-duo-banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.apt-duo-banner__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,25,50,0.9) 0%, rgba(10,25,50,0.45) 70%, rgba(10,25,50,0.2) 100%);
+}
+.apt-duo-banner__inner {
+  position: relative;
+  z-index: 1;
+  padding: 36px 0 28px;
+  color: #fff;
+}
+.apt-duo-banner__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 8px;
+  max-width: 28ch;
+  line-height: 1.25;
+}
+.apt-duo-banner__inner p {
+  margin: 0;
+  max-width: 40rem;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+.apt-duo {
+  display: grid;
+  gap: 16px;
+}
+.apt-panel {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+.apt-panel--deliver { border-top: 3px solid var(--color-primary); }
+.apt-panel--need { border-top: 3px solid var(--color-secondary); }
+.apt-panel__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-light);
+}
+.apt-panel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-panel__body { padding: 20px 20px 22px; }
+.apt-panel__body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-navy);
+  margin: 0 0 14px;
+}
+.apt-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.apt-checklist li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+.apt-checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px var(--color-primary);
+}
+.apt-checklist--need li::before {
+  background: var(--color-secondary);
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px var(--color-secondary);
+}
+
+.apt-section--glossary {
+  background: var(--color-light);
+}
+.apt-glossary-grid {
+  display: grid;
+  gap: 14px;
+}
+.apt-term {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.apt-term__media {
+  height: 110px;
+  overflow: hidden;
+}
+.apt-term__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.apt-term:hover .apt-term__media img { transform: scale(1.05); }
+.apt-term h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin: 14px 16px 6px;
+}
+.apt-term p {
+  margin: 0 16px 16px;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.apt-section--faq { background: #fff; }
+.apt-faq-layout {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+.apt-faq-aside__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 18px;
+  aspect-ratio: 4 / 3;
+}
+.apt-faq-aside__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-faq-aside .section-title { margin-bottom: 10px; }
+.apt-faq-aside .apt-lead { margin-bottom: 18px; }
+
+
+@media (min-width: 640px) {
+  .apt-stats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .apt-process { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .apt-glossary-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .apt-process-head__photos img { height: 170px; }
+  .apt-duo { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .apt-term__media { height: 130px; }
+  .apt-hero__ctas { flex-direction: row; flex-wrap: wrap; }
+  .form-row { grid-template-columns: 1fr 1fr; }
+  .apt-cards { grid-template-columns: repeat(3, 1fr); }
+  .apt-form { padding: 32px; }
+  .apt-split__media img { height: 300px; }
+  .apt-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .apt-form-intro__photo {
+    min-height: 240px;
+    aspect-ratio: 16 / 9;
+  }
+}
+/* iPad / tablet: keep stacked, taller photo so it doesn’t feel sparse */
+@media (min-width: 768px) and (max-width: 899px) {
+  .apt-form-layout { gap: 28px; }
+  .apt-form-intro__photo {
+    min-height: 280px;
+    aspect-ratio: 21 / 9;
+  }
+}
+@media (min-width: 900px) {
+  .apt-band { min-height: 340px; margin-bottom: 40px; }
+  .apt-subsidy-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+  }
+  .apt-process-head {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+  }
+  .apt-process-head__photos img { height: 200px; }
+  .apt-process { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .apt-duo-banner { min-height: 240px; margin-bottom: 36px; }
+  .apt-faq-layout {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 40px;
+  }
+  .apt-hero { min-height: 480px; padding-bottom: 72px; }
+  .apt-hero__inner { padding-top: 120px; }
+  .apt-hero__title { max-width: 22ch; }
+  .apt-split {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
+  .apt-split--flip .apt-split__copy { order: 1; }
+  .apt-split--flip .apt-split__media { order: 2; }
+  .apt-split__media img { height: 340px; }
+  .apt-form-layout {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 36px;
+    align-items: stretch;
+  }
+  .apt-form-intro {
+    height: 100%;
+  }
+  .apt-form-intro__photo {
+    aspect-ratio: auto;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+  .apt-form-intro__photo img {
+    object-position: center 25%;
+  }
+}
+@media (min-width: 1100px) {
+  .apt-glossary-grid { grid-template-columns: repeat(4, 1fr); }
+  .apt-form-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 44px;
+  }
+}
+</style>
+
+<script>
+  import { trackEvent } from '../../lib/analytics';
+
+  document.querySelectorAll('[data-apt-faq] .accordion-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.accordion-item');
+      const open = item?.classList.contains('is-open');
+      item?.parentElement?.querySelectorAll('.accordion-item.is-open').forEach((el) => {
+        el.classList.remove('is-open');
+        el.querySelector('.accordion-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!open && item) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  const form = document.getElementById('apartments-form') as HTMLFormElement | null;
+  const success = document.getElementById('apt-form-success');
+  const errorMsg = document.getElementById('apt-form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.apt-submit') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'അയയ്ക്കുന്നു…';
+    if (errorMsg) errorMsg.style.display = 'none';
+
+    try {
+      const formData = new FormData(form);
+      formData.append('access_key', '7fec7b57-8d29-4f8b-a09b-6c67140417aa');
+      formData.set(
+        'subject',
+        `Society feasibility enquiry – ${String(formData.get('society_name') || 'Apartments page')}`
+      );
+      formData.set('source', 'apartments-page');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+
+      if (response.ok) {
+        trackEvent('contact_form_submit', { source: 'apartments-page' });
+        trackEvent('apartments_society_enquiry_submit', { source: 'apartments-page' });
+        if (success) success.style.display = 'block';
+        form.reset();
+      } else {
+        if (errorMsg) errorMsg.style.display = 'block';
+      }
+    } catch {
+      if (errorMsg) errorMsg.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'അയയ്ക്കുന്നു…';
+  });
+</script>

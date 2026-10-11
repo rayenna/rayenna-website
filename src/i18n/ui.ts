@@ -31,6 +31,7 @@ const ML_ROUTES = new Set([
   '/solar-panels-kochi',
   '/solar-panels-thrissur',
   '/solar-panels-trivandrum',
+  '/apartments-housing-societies',
   '/privacy',
 ]);
 
@@ -72,6 +73,9 @@ const ui = {
       home: 'Home',
       about: 'About',
       services: 'Services',
+      servicesOverview: 'All Services',
+      apartments: 'Apartments & Societies',
+      // commercial: 'Commercial Projects', // add when page ships
       calculator: 'Calculator',
       media: 'Media',
       blog: 'Blog',
@@ -87,6 +91,7 @@ const ui = {
       kochi: 'Solar in Kochi',
       thrissur: 'Solar in Thrissur',
       trivandrum: 'Solar in Trivandrum',
+      apartments: 'Apartments & Societies',
       contactHeading: 'Contact us',
       copyright: '© 2026 Rayenna Energy Pvt. Ltd. All Rights Reserved.',
       privacy: 'Privacy Policy',
@@ -126,6 +131,7 @@ const ui = {
       resourceHeading: 'Plan your solar project',
       resources: [
         { href: '/solar-calculator/', label: 'Free Solar Calculator' },
+        { href: '/apartments-housing-societies/', label: 'Apartments & Societies' },
         { href: '/faqs/', label: '60 Solar FAQs' },
         { href: '/blog/', label: 'Expert Guides & News' },
         { href: '/contact/', label: 'Book a Free Site Survey' },
@@ -388,6 +394,8 @@ const ui = {
       home: 'ഹോം',
       about: 'ഞങ്ങളെക്കുറിച്ച്',
       services: 'സേവനങ്ങൾ',
+      servicesOverview: 'എല്ലാ സേവനങ്ങളും',
+      apartments: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും',
       calculator: 'കാൽക്കുലേറ്റർ',
       media: 'മീഡിയ',
       blog: 'ബ്ലോഗ്',
@@ -403,6 +411,7 @@ const ui = {
       kochi: 'കൊച്ചിയിൽ സോളാർ',
       thrissur: 'തൃശ്ശൂരിൽ സോളാർ',
       trivandrum: 'തിരുവനന്തപുരത്ത് സോളാർ',
+      apartments: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും',
       contactHeading: 'കോൺടാക്റ്റ്',
       copyright: '© 2026 റയെന്ന എനർജി പ്രൈവറ്റ് ലിമിറ്റഡ്. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
       privacy: 'സ്വകാര്യതാ നയം',
@@ -442,6 +451,7 @@ const ui = {
       resourceHeading: 'നിങ്ങളുടെ സോളാർ പദ്ധതി ആസൂത്രണം ചെയ്യുക',
       resources: [
         { href: '/ml/solar-calculator/', label: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ' },
+        { href: '/ml/apartments-housing-societies/', label: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും' },
         { href: '/ml/faqs/', label: '60 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
         { href: '/ml/blog/', label: 'വിദഗ്ധ ഗൈഡുകൾ' },
         { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
@@ -705,31 +715,36 @@ export function useTranslations(lang: Lang) {
   return ui[lang];
 }
 
-export function getNavLinks(lang: Lang) {
+export type NavChild = { href: string; label: string };
+export type NavLink = {
+  href: string;
+  label: string;
+  special?: boolean;
+  children?: NavChild[];
+};
+
+export function getNavLinks(lang: Lang): NavLink[] {
   const t = useTranslations(lang);
-  const paths = [
-    '/',
-    '/about',
-    '/services',
-    '/solar-calculator',
-    '/media',
-    '/blog',
-    '/faqs',
-    '/contact',
+  return [
+    { href: localizedPath('/', lang), label: t.nav.home },
+    { href: localizedPath('/about', lang), label: t.nav.about },
+    {
+      href: localizedPath('/services', lang),
+      label: t.nav.services,
+      children: [
+        { href: localizedPath('/services', lang), label: t.nav.servicesOverview },
+        { href: localizedPath('/apartments-housing-societies', lang), label: t.nav.apartments },
+        // { href: localizedPath('/commercial', lang), label: t.nav.commercial },
+      ],
+    },
+    {
+      href: localizedPath('/solar-calculator', lang),
+      label: t.nav.calculator,
+      special: true,
+    },
+    { href: localizedPath('/media', lang), label: t.nav.media },
+    { href: localizedPath('/blog', lang), label: t.nav.blog },
+    { href: localizedPath('/faqs', lang), label: t.nav.faqs },
+    { href: localizedPath('/contact', lang), label: t.nav.contact },
   ];
-  const labels = [
-    t.nav.home,
-    t.nav.about,
-    t.nav.services,
-    t.nav.calculator,
-    t.nav.media,
-    t.nav.blog,
-    t.nav.faqs,
-    t.nav.contact,
-  ];
-  return paths.map((path, i) => ({
-    href: localizedPath(path, lang),
-    label: labels[i],
-    special: path === '/solar-calculator',
-  }));
 }
