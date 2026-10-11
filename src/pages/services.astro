@@ -6,7 +6,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = useTranslations('en');
 const pc = t.pageConvert.services;
 ---
-<Layout title="Solar Panel Installation Services in Kerala | Domestic & Commercial | Rayenna Energy" description="Rayenna Energy provides domestic solar, commercial solar, and solar consultation services across Kerala. MNRE-approved installer in Kochi. PM Surya Ghar subsidy up to ₹78,000. Free site survey." ogImage={OG.services}>
+<Layout title="Solar Panel Installation Services in Kerala | Domestic & Commercial | Rayenna Energy" description="Rayenna Energy provides domestic solar, commercial solar, and solar consultation services across Kerala. PM Surya Ghar empanelled installer in Kochi. PM Surya Ghar subsidy up to ₹78,000. Free site survey." ogImage={OG.services}>
 
   <!-- ===== PAGE HERO ===== -->
   <section class="page-hero">
@@ -15,7 +15,7 @@ const pc = t.pageConvert.services;
     <div class="container page-hero__inner">
       <p class="page-hero__eyebrow">What We Offer</p>
       <h1 class="page-hero__title">Solar Installation Services<br />in Kerala</h1>
-      <p class="page-hero__sub">Customised solar solutions for every home, business, and ambition — MNRE-approved installation with subsidy support.</p>
+      <p class="page-hero__sub">Customised solar solutions for every home, business, and ambition — PM Surya Ghar empanelled installation with subsidy support.</p>
       <div class="page-hero__ctas">
         <a href={`${base}/solar-calculator/`} class="btn btn-primary">{pc.heroCalc}</a>
         <a href={`${base}/contact/`} class="btn btn-outline-light">{pc.heroContact}</a>
@@ -37,8 +37,8 @@ const pc = t.pageConvert.services;
         {[
           { num: '20+', label: 'Brands Supported' },
           { num: '80%',  label: 'Average Bill Reduction' },
-          { num: '3–4',  label: 'Year ROI' },
-          { num: '20',   label: 'Year Panel Lifespan' },
+          { num: '3–5',  label: 'Year Payback' },
+          { num: '25+',  label: 'Year Panel Lifespan' },
         ].map(s => (
           <div class="intro-highlight">
             <strong>{s.num}</strong>
@@ -142,7 +142,7 @@ const pc = t.pageConvert.services;
           {[
             { icon: '📋', title: 'Site Assessment', text: "Detailed evaluation of your property's solar potential." },
             { icon: '⚡', title: 'Energy Audit', text: 'Understanding your current consumption patterns.' },
-            { icon: '💰', title: 'Financial Guidance', text: 'Incentives, subsidies, and ROI analysis.' },
+            { icon: '💰', title: 'Financial Guidance', text: 'Incentives, subsidies, and payback analysis.' },
             { icon: '📊', title: 'Tailored Proposal', text: 'A custom system recommendation just for you.' },
           ].map(f => (
             <div class="consult-feature">

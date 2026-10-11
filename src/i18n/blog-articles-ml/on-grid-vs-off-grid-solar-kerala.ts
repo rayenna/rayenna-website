@@ -15,7 +15,7 @@ export const article: BlogArticleMl = {
   ],
   sidebarHighlight: {
     icon: '☀',
-    title: 'MNRE അംഗീകൃതം',
+    title: 'PM സൂര്യ ഘർ എംപാനൽഡ്',
     text: 'റയെന്ന എനർജി MNRE-എംപാനൽ വെണ്ടറാണ് — നിങ്ങളുടെ സബ്സിഡി അർഹത പൂർണ്ണമായി സുരക്ഷിതമാണ്.',
   },
   postCta: {
