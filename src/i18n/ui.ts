@@ -73,6 +73,9 @@ const ui = {
       home: 'Home',
       about: 'About',
       services: 'Services',
+      servicesOverview: 'All Services',
+      apartments: 'Apartments & Societies',
+      // commercial: 'Commercial Projects', // add when page ships
       calculator: 'Calculator',
       media: 'Media',
       blog: 'Blog',
@@ -391,6 +394,8 @@ const ui = {
       home: 'ഹോം',
       about: 'ഞങ്ങളെക്കുറിച്ച്',
       services: 'സേവനങ്ങൾ',
+      servicesOverview: 'എല്ലാ സേവനങ്ങളും',
+      apartments: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും',
       calculator: 'കാൽക്കുലേറ്റർ',
       media: 'മീഡിയ',
       blog: 'ബ്ലോഗ്',
@@ -710,31 +715,36 @@ export function useTranslations(lang: Lang) {
   return ui[lang];
 }
 
-export function getNavLinks(lang: Lang) {
+export type NavChild = { href: string; label: string };
+export type NavLink = {
+  href: string;
+  label: string;
+  special?: boolean;
+  children?: NavChild[];
+};
+
+export function getNavLinks(lang: Lang): NavLink[] {
   const t = useTranslations(lang);
-  const paths = [
-    '/',
-    '/about',
-    '/services',
-    '/solar-calculator',
-    '/media',
-    '/blog',
-    '/faqs',
-    '/contact',
+  return [
+    { href: localizedPath('/', lang), label: t.nav.home },
+    { href: localizedPath('/about', lang), label: t.nav.about },
+    {
+      href: localizedPath('/services', lang),
+      label: t.nav.services,
+      children: [
+        { href: localizedPath('/services', lang), label: t.nav.servicesOverview },
+        { href: localizedPath('/apartments-housing-societies', lang), label: t.nav.apartments },
+        // { href: localizedPath('/commercial', lang), label: t.nav.commercial },
+      ],
+    },
+    {
+      href: localizedPath('/solar-calculator', lang),
+      label: t.nav.calculator,
+      special: true,
+    },
+    { href: localizedPath('/media', lang), label: t.nav.media },
+    { href: localizedPath('/blog', lang), label: t.nav.blog },
+    { href: localizedPath('/faqs', lang), label: t.nav.faqs },
+    { href: localizedPath('/contact', lang), label: t.nav.contact },
   ];
-  const labels = [
-    t.nav.home,
-    t.nav.about,
-    t.nav.services,
-    t.nav.calculator,
-    t.nav.media,
-    t.nav.blog,
-    t.nav.faqs,
-    t.nav.contact,
-  ];
-  return paths.map((path, i) => ({
-    href: localizedPath(path, lang),
-    label: labels[i],
-    special: path === '/solar-calculator',
-  }));
 }

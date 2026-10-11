@@ -293,11 +293,39 @@ function normalizePath(path: string): string {
 
       <nav class="navbar__nav" id="main-nav" aria-label="Main navigation">
         {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
-            {...(link.special ? { 'data-analytics-location': 'nav' } : {})}
-          >{link.label}</a>
+          link.children?.length ? (
+            <div
+              class={`nav-dropdown ${link.children.some((c) => navIsActive(c.href)) || navIsActive(link.href) ? 'nav-dropdown--active' : ''}`}
+              data-nav-dropdown
+            >
+              <button
+                type="button"
+                class={`nav-link nav-dropdown__trigger ${link.children.some((c) => navIsActive(c.href)) || navIsActive(link.href) ? 'active' : ''}`}
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span>{link.label}</span>
+                <svg class="nav-dropdown__caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+                  <path d="M2 3.5L5 6.5L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="nav-dropdown__menu" role="menu">
+                {link.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class={`nav-dropdown__link ${navIsActive(child.href) ? 'active' : ''}`}
+                    role="menuitem"
+                  >{child.label}</a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class={`nav-link ${link.special ? 'nav-calculator-link' : ''} ${navIsActive(link.href) ? 'active' : ''}`}
+              {...(link.special ? { 'data-analytics-location': 'nav' } : {})}
+            >{link.label}</a>
+          )
         ))}
       </nav>
 
@@ -317,10 +345,33 @@ function normalizePath(path: string): string {
         <a href={alternates.en} class:list={['mobile-lang-btn', { 'mobile-lang-btn--active': lang === 'en' }]}>English</a>
         <a href={alternates.ml} class:list={['mobile-lang-btn', { 'mobile-lang-btn--active': lang === 'ml' }]}>മലയാളം</a>
       </div>
-      {navLinks.map(link => (
-        link.special
-          ? <a href={link.href} class="mobile-link mobile-nav-calculator" data-analytics-location="nav_mobile">☀️ {t.nav.calcMobile}</a>
-          : <a href={link.href} class="mobile-link">{link.label}</a>
+      {navLinks.map((link) => (
+        link.special ? (
+          <a href={link.href} class="mobile-link mobile-nav-calculator" data-analytics-location="nav_mobile">☀️ {t.nav.calcMobile}</a>
+        ) : link.children?.length ? (
+          <div class="mobile-nav-group" data-mobile-nav-group>
+            <button
+              type="button"
+              class={`mobile-link mobile-nav-group__trigger ${link.children.some((c) => navIsActive(c.href)) || navIsActive(link.href) ? 'active' : ''}`}
+              aria-expanded="false"
+            >
+              <span>{link.label}</span>
+              <svg class="nav-dropdown__caret" width="12" height="12" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+                <path d="M2 3.5L5 6.5L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-nav-group__panel" hidden>
+              {link.children.map((child) => (
+                <a
+                  href={child.href}
+                  class={`mobile-link mobile-nav-group__link ${navIsActive(child.href) ? 'active' : ''}`}
+                >{child.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="mobile-link">{link.label}</a>
+        )
       ))}
     </div>
     <button type="button" class="nav-backdrop" id="nav-backdrop" aria-hidden="true" tabindex="-1"></button>
@@ -602,6 +653,119 @@ function normalizePath(path: string): string {
 @media (max-width: 1279px) {
   /* clip would hide the dropdown on hamburger layouts */
   .navbar { overflow: visible; }
+}
+@media (min-width: 1280px) {
+  /* allow Services dropdown to paint below the bar */
+  .navbar { overflow: visible; }
+}
+
+/* ===== Services dropdown (desktop) ===== */
+.nav-dropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+.nav-dropdown__trigger {
+  gap: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+.nav-dropdown__caret {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.nav-dropdown.is-open .nav-dropdown__caret,
+.nav-dropdown:hover .nav-dropdown__caret,
+.nav-dropdown:focus-within .nav-dropdown__caret {
+  transform: rotate(180deg);
+}
+.nav-dropdown__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1200;
+}
+.nav-dropdown.is-open .nav-dropdown__menu,
+.nav-dropdown:hover .nav-dropdown__menu,
+.nav-dropdown:focus-within .nav-dropdown__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-dropdown__link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+.nav-dropdown__link:hover,
+.nav-dropdown__link.active {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+body.lang-ml .nav-dropdown__menu {
+  min-width: 260px;
+  left: 0;
+  transform: none;
+}
+body.lang-ml .nav-dropdown__link {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+/* Mobile / tablet accordion under Services */
+.mobile-nav-group {
+  display: flex;
+  flex-direction: column;
+}
+.mobile-nav-group__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.mobile-nav-group__trigger .nav-dropdown__caret {
+  margin-left: auto;
+}
+.mobile-nav-group.is-open .nav-dropdown__caret {
+  transform: rotate(180deg);
+}
+.mobile-nav-group__panel {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 8px 12px;
+  border-left: 2px solid rgba(168, 56, 56, 0.25);
+  margin: 0 16px 8px 20px;
+}
+.mobile-nav-group__panel[hidden] {
+  display: none;
+}
+.mobile-nav-group__link {
+  font-size: 0.95rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .lang-switcher {
   display: none;
@@ -1273,8 +1437,57 @@ body.nav-menu-open {
     link.addEventListener('click', closeNavMenu);
   });
 
+  /* Desktop Services dropdown — click/keyboard toggle (hover also via CSS) */
+  document.querySelectorAll('[data-nav-dropdown]').forEach((dropdown) => {
+    const trigger = dropdown.querySelector('.nav-dropdown__trigger');
+    if (!(trigger instanceof HTMLButtonElement)) return;
+
+    trigger.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const open = dropdown.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.querySelectorAll('[data-nav-dropdown].is-open').forEach((other) => {
+        if (other !== dropdown) {
+          other.classList.remove('is-open');
+          other.querySelector('.nav-dropdown__trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    document.querySelectorAll('[data-nav-dropdown].is-open').forEach((dropdown) => {
+      if (!dropdown.contains(target)) {
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.nav-dropdown__trigger')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  /* Mobile Services accordion */
+  mobileMenu?.querySelectorAll('[data-mobile-nav-group]').forEach((group) => {
+    const trigger = group.querySelector('.mobile-nav-group__trigger');
+    const panel = group.querySelector('.mobile-nav-group__panel');
+    if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) return;
+
+    trigger.addEventListener('click', () => {
+      const open = group.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+    });
+  });
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeNavMenu();
+    if (event.key === 'Escape') {
+      closeNavMenu();
+      document.querySelectorAll('[data-nav-dropdown].is-open').forEach((dropdown) => {
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.nav-dropdown__trigger')?.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 
   window.addEventListener('resize', () => {
