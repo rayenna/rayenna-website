@@ -100,12 +100,12 @@ const ui = {
     },
     langSwitcherAria: 'Choose language',
     homeConvert: {
-      heroMicro: 'Free site survey · Subsidy paperwork handled · MNRE-approved',
+      heroMicro: 'Free site survey · Subsidy paperwork handled · PM Surya Ghar registered',
       heroPhone: 'Or call',
       heroPrimary: 'Get Free Installation Quote',
       heroSecondary: '☀️ Calculate My Savings',
       heroSubtitle:
-        "Kerala's MNRE-approved solar installer. Up to ₹78,000 PM Surya Ghar subsidy. Free site survey. Many homes now hit near-zero KSEB bills — payback in 3–5 years, then 25+ years of low-cost power.",
+        "Kerala's PM Surya Ghar registered solar installer. Up to ₹78,000 PM Surya Ghar subsidy. Free site survey. Many homes now hit near-zero KSEB bills — payback in 3–5 years, then 25+ years of low-cost power.",
       whyNowLabel: 'Why Kerala homeowners are going solar in 2026',
       whyNow: [
         { icon: '₹0', text: 'Many Kerala homes with right-sized solar record near-zero electricity bills' },
@@ -121,7 +121,7 @@ const ui = {
       installStripTag: 'Ready to install?',
       installStripTitle: 'Get a free site survey & installation quote',
       installStripSub:
-        'MNRE-approved equipment, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.',
+        'PM Surya Ghar registered equipment pathway, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.',
       installStripBtn: 'Request Installation Quote →',
       resourceHeading: 'Plan your solar project',
       resources: [
@@ -131,7 +131,7 @@ const ui = {
         { href: '/contact/', label: 'Book a Free Site Survey' },
       ],
       connectTrust: [
-        'MNRE-approved installer in Kerala',
+        'PM Surya Ghar registered installer in Kerala',
         'Free site survey & fixed quote',
         'No spam — we call you back once',
       ],
@@ -155,10 +155,10 @@ const ui = {
       testimonialsMore: 'See installations & more stories →',
       whoTitle: 'Who We Are',
       whoBody:
-        "Rayenna Energy is Kerala's MNRE-approved rooftop solar partner — a local team that designs, installs, and stands behind every system. We size for your KSEB bill, handle ekiran and subsidy paperwork, and commission ALMM-listed kits so net metering goes live without drama.",
+        "Rayenna Energy is Kerala's PM Surya Ghar registered vendor (MNRE) — a local team that designs, installs, and stands behind every system. We size for your KSEB bill, handle ekiran and subsidy paperwork, and commission ALMM-listed kits so net metering goes live without drama.",
       whoPoints: [
         {
-          title: 'MNRE channel partner',
+          title: 'PM Surya Ghar registered vendor',
           text: 'PM Surya Ghar subsidy filing and approvals handled end to end — not left to you.',
         },
         {
@@ -244,7 +244,7 @@ const ui = {
       testimonialsIntro:
         'Real results from real installations across Kerala. Every Rayenna system includes a 25-year panel performance warranty and end-to-end support.',
       seasonNote:
-        'Post-monsoon roofs dry faster — book a free survey while 2026 PM Surya Ghar subsidy is open.',
+        'Post-monsoon roofs dry faster — book a free survey while PM Surya Ghar subsidy remains available under current guidelines.',
       billStoryEyebrow: 'Featured result',
       billStoryTitle: 'One roof. Two bills cut.',
       billStoryMeta: 'Arun · Kollam · 5 kW',
@@ -258,7 +258,7 @@ const ui = {
     },
     pageConvert: {
       services: {
-        heroMicro: 'MNRE-approved · ₹78,000 subsidy · Free site survey',
+        heroMicro: 'PM Surya Ghar registered · ₹78,000 subsidy · Free site survey',
         heroCalc: '☀️ Calculate My Savings',
         heroContact: 'Book a Free Site Survey',
         heroPhone: 'Or call',
@@ -281,7 +281,7 @@ const ui = {
         calcPrompt: 'Want numbers first?',
         calcLink: 'Try the free solar calculator →',
         formTrust: [
-          'MNRE-approved installer across Kerala',
+          'PM Surya Ghar registered installer across Kerala',
           'Free site survey with fixed quote',
           'Subsidy paperwork handled end to end',
         ],
@@ -289,11 +289,11 @@ const ui = {
     },
     schema: {
       localBusinessDescription:
-        'MNRE-approved solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.',
+        'PM Surya Ghar registered solar panel installer in Kerala. Domestic & commercial solar systems, PM Surya Ghar subsidy up to ₹78,000, free site survey.',
     },
     images: {
       logoAlt: 'Rayenna Energy',
-      mnreBadgeAlt: 'MNRE Approved Channel Partner — Govt of India',
+      mnreBadgeAlt: 'PM സൂര്യ ഘർ രജിസ്റ്റർ ചെയ്ത വെൻഡർ (MNRE)',
     },
     corporateVideo: {
       eyebrow: 'Our Story',
@@ -416,12 +416,12 @@ const ui = {
     },
     langSwitcherAria: 'ഭാഷ തിരഞ്ഞെടുക്കുക',
     homeConvert: {
-      heroMicro: 'സൗജന്യ സൈറ്റ് സർവേ · സബ്സിഡി രേഖകൾ കൈകാര്യം · MNRE അംഗീകൃത',
+      heroMicro: 'സൗജന്യ സൈറ്റ് സർവേ · സബ്സിഡി രേഖകൾ കൈകാര്യം · PM സൂര്യ ഘർ രജിസ്റ്റർഡ്',
       heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
       heroPrimary: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
       heroSecondary: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
       heroSubtitle:
-        'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. പല വീടുകളും ഇപ്പോൾ KSEB ബിൽ ശൂന്യത്തോട് അടുക്കുന്നു — 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം, അതിനുശേഷം 25+ വർഷം കുറഞ്ഞ ചെലവിൽ വൈദ്യുതി.',
+        'കേരളത്തിലെ PM സൂര്യ ഘർ രജിസ്റ്റർഡ് സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. പല വീടുകളും ഇപ്പോൾ KSEB ബിൽ ശൂന്യത്തോട് അടുക്കുന്നു — 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം, അതിനുശേഷം 25+ വർഷം കുറഞ്ഞ ചെലവിൽ വൈദ്യുതി.',
       whyNowLabel: '2026-ൽ കേരള വീട്ടുടമകൾ എന്തുകൊണ്ട് സോളാറിലേക്ക് പോകുന്നു',
       whyNow: [
         { icon: '₹0', text: 'ശരിയായി സൈസ് ചെയ്ത സോളാറുള്ള പല കേരള വീടുകളും ഏതാണ്ട് ശൂന്യ വൈദ്യുതി ബിൽ രേഖപ്പെടുത്തുന്നു' },
@@ -437,7 +437,7 @@ const ui = {
       installStripTag: 'ഇൻസ്റ്റാൾ ചെയ്യാൻ തയ്യാറാണോ?',
       installStripTitle: 'സൗജന്യ സൈറ്റ് സർവേ & ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
       installStripSub:
-        'MNRE-അംഗീകൃത ഉപകരണം, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യൽ, അനുമതികൾ ലഭിച്ചാൽ സാധാരണയായി 1–2 ദിവസം ഇൻസ്റ്റാൾ.',
+        'PM സൂര്യ ഘർ രജിസ്റ്റർഡ് ഉപകരണ പാത, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യൽ, അനുമതികൾ ലഭിച്ചാൽ സാധാരണയായി 1–2 ദിവസം ഇൻസ്റ്റാൾ.',
       installStripBtn: 'ഇൻസ്റ്റാളേഷൻ ക്വോട്ട് അഭ്യർത്ഥിക്കുക →',
       resourceHeading: 'നിങ്ങളുടെ സോളാർ പദ്ധതി ആസൂത്രണം ചെയ്യുക',
       resources: [
@@ -447,7 +447,7 @@ const ui = {
         { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
       ],
       connectTrust: [
-        'കേരളത്തിലെ MNRE അംഗീകൃത ഇൻസ്റ്റാളർ',
+        'കേരളത്തിലെ PM സൂര്യ ഘർ രജിസ്റ്റർഡ് ഇൻസ്റ്റാളർ',
         'സൗജന്യ സൈറ്റ് സർവേയും ഫിക്സഡ് ക്വോട്ടും',
         'സ്പാം ഇല്ല — ഒരു തവണ മാത്രം കോൾ ബാക്ക്',
       ],
@@ -471,10 +471,10 @@ const ui = {
       testimonialsMore: 'ഇൻസ്റ്റാളേഷനുകളും കൂടുതൽ കഥകളും കാണുക →',
       whoTitle: 'ആരാണ് ഞങ്ങൾ',
       whoBody:
-        'റയെന്ന എനർജി കേരളത്തിലെ MNRE അംഗീകൃത റൂഫ്ടോപ്പ് സോളാർ പങ്കാളിയാണ് — ഡിസൈൻ മുതൽ ഇൻസ്റ്റാൾ വരെ ഒരേ ടീം. നിങ്ങളുടെ KSEB ബില്ലിനനുസരിച്ച് സൈസ് ചെയ്യുന്നു; ekiran, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യുന്നു; ALMM ലിസ്റ്റ് ചെയ്ത കിറ്റുകൾ കൊണ്ട് നെറ്റ് മീറ്ററിംഗ് ലളിതമാക്കുന്നു.',
+        'റയെന്ന എനർജി കേരളത്തിലെ PM സൂര്യ ഘർ രജിസ്റ്റർഡ് റൂഫ്ടോപ്പ് സോളാർ പങ്കാളിയാണ് — ഡിസൈൻ മുതൽ ഇൻസ്റ്റാൾ വരെ ഒരേ ടീം. നിങ്ങളുടെ KSEB ബില്ലിനനുസരിച്ച് സൈസ് ചെയ്യുന്നു; ekiran, സബ്സിഡി രേഖകൾ കൈകാര്യം ചെയ്യുന്നു; ALMM ലിസ്റ്റ് ചെയ്ത കിറ്റുകൾ കൊണ്ട് നെറ്റ് മീറ്ററിംഗ് ലളിതമാക്കുന്നു.',
       whoPoints: [
         {
-          title: 'MNRE ചാനൽ പാർട്ണർ',
+          title: 'PM സൂര്യ ഘർ രജിസ്റ്റർഡ് വെൻഡർ',
           text: 'PM സൂര്യ ഘർ സബ്സിഡി ഫയലിംഗും അനുമതിയും അറ്റം മുതൽ അറ്റം വരെ — നിങ്ങൾക്ക് മാത്രം വിട്ടുകൊടുക്കില്ല.',
         },
         {
@@ -560,7 +560,7 @@ const ui = {
       testimonialsIntro:
         'കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പാനൽ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.',
       seasonNote:
-        'മഴക്കാലം കഴിഞ്ഞ് മേൽക്കൂരകൾ വേഗം ഉണങ്ങുന്നു — 2026 PM സൂര്യ ഘർ സബ്സിഡി തുറന്നിരിക്കുമ്പോൾ സൗജന്യ സർവേ ബുക്ക് ചെയ്യൂ.',
+        'മൺസൂണിന് ശേഷം റൂഫുകൾ വേഗം ഉണങ്ങും — നിലവിലെ മാർഗനിർദ്ദേശങ്ങള്ക്ക് കീഴിൽ PM സൂര്യ ഘർ സബ്സിഡി ലഭ്യമായിരിക്കുമ്പോൾ സൗജന്യ സർവേ ബുക്ക് ചെയ്യുക.',
       billStoryEyebrow: 'ഫീച്ചർ ചെയ്ത ഫലം',
       billStoryTitle: 'ഒരു മേൽക്കൂര. രണ്ട് ബിൽ കുറഞ്ഞു.',
       billStoryMeta: 'Arun · കൊല്ലം · 5 kW',
@@ -574,7 +574,7 @@ const ui = {
     },
     pageConvert: {
       services: {
-        heroMicro: 'MNRE അംഗീകൃത · ₹78,000 സബ്സിഡി · സൗജന്യ സൈറ്റ് സർവേ',
+        heroMicro: 'PM സൂര്യ ഘർ രജിസ്റ്റർഡ് · ₹78,000 സബ്സിഡി · സൗജന്യ സൈറ്റ് സർവേ',
         heroCalc: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
         heroContact: 'സൗജന്യ സൈറ്റ് സർവേ ബുക്ക് ചെയ്യുക',
         heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
@@ -597,7 +597,7 @@ const ui = {
         calcPrompt: 'ആദ്യം സംഖ്യകൾ കാണണോ?',
         calcLink: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക →',
         formTrust: [
-          'കേരളമെമ്പാടും MNRE അംഗീകൃത ഇൻസ്റ്റാളർ',
+          'കേരളമെമ്പാടും PM സൂര്യ ഘർ രജിസ്റ്റർഡ് ഇൻസ്റ്റാളർ',
           'നിശ്ചിത ക്വോട്ടേഷനോടെ സൗജന്യ സൈറ്റ് പരിശോധന',
           'സബ്സിഡി രേഖകൾ പൂർണ്ണമായി കൈകാര്യം ചെയ്യുന്നു',
         ],
@@ -605,11 +605,11 @@ const ui = {
     },
     schema: {
       localBusinessDescription:
-        'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ സിസ്റ്റങ്ങൾ, PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ, സൗജന്യ സൈറ്റ് സർവേ.',
+        'കേരളത്തിലെ PM സൂര്യ ഘർ രജിസ്റ്റർഡ് സോളാർ ഇൻസ്റ്റാളർ. വീട്ടുപയോഗ, കമർഷ്യൽ സോളാർ സിസ്റ്റങ്ങൾ, PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ, സൗജന്യ സൈറ്റ് സർവേ.',
     },
     images: {
       logoAlt: 'റയെന്ന എനർജി',
-      mnreBadgeAlt: 'ഇന്ത്യാ ഗവൺമെന്റിന്റെ MNRE അംഗീകൃത ചാനൽ പങ്കാളി',
+      mnreBadgeAlt: 'PM സൂര്യ ഘർ രജിസ്റ്റർ ചെയ്ത വെൻഡർ (MNRE)',
     },
     corporateVideo: {
       eyebrow: 'ഞങ്ങളുടെ കഥ',

@@ -20,7 +20,7 @@ export const blogUiEn = {
   indexEyebrow: 'Knowledge Hub · Updated 2026',
   indexTitle: 'Solar Insights for Kerala Homes',
   indexSub:
-    'Expert guides on costs, ₹78,000 subsidy, KSEB rules, zero bills, and installation — from Kochi’s MNRE-approved installer.',
+    'Expert guides on costs, ₹78,000 subsidy, KSEB rules, zero bills, and installation — from Kochi’s PM Surya Ghar registered installer.',
   indexQuoteBtn: 'Get Free Installation Quote',
   indexCalcBtn: 'Calculate My Savings',
   indexSearchPlaceholder: 'Search articles…',
@@ -31,11 +31,11 @@ export const blogUiEn = {
   indexInstallTag: 'Ready to install?',
   indexInstallTitle: 'Get a free site survey & installation quote',
   indexInstallSub:
-    'MNRE-approved equipment, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.',
+    'PM Surya Ghar registered equipment pathway, subsidy paperwork handled, and typical install in 1–2 days once approvals are in place.',
   indexInstallBtn: 'Request Installation Quote →',
   indexBottomTitle: 'Ready to install solar on your roof?',
   indexBottomSub:
-    'Free site survey, honest sizing, and subsidy handled end-to-end. No pressure — just expert advice from Kochi’s trusted MNRE channel partner.',
+    'Free site survey, honest sizing, and subsidy handled end-to-end. No pressure — just expert advice from Kochi’s trusted PM Surya Ghar registered vendor (MNRE).',
   indexBottomBtn: 'Get Free Installation Quote',
   indexPopularReads: [
     { slug: 'pm-surya-ghar-vendor-ban-2026', label: 'Choose a trusted installer' },
