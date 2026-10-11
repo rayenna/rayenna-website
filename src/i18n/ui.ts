@@ -109,7 +109,7 @@ const ui = {
       whyNowLabel: 'Why Kerala homeowners are going solar in 2026',
       whyNow: [
         { icon: '₹0', text: 'Over half of Kerala PM Surya Ghar homes recorded zero energy charges' },
-        { icon: '₹78k', text: 'Central subsidy up to ₹78,000 — only through MNRE partners like Rayenna' },
+        { icon: '₹78k', text: 'Central subsidy up to ₹78,000. Subsidy applies only with registered installers, and we handle it end to end.' },
         { icon: '📋', text: '2026 KSEB net metering rules — we handle ekiran, subsidy & approvals' },
         { icon: '🏠', text: 'Free site survey with honest sizing before you sign anything' },
       ],
@@ -190,7 +190,7 @@ const ui = {
         },
         {
           title: 'Subsidy + net metering',
-          text: 'Central subsidy through MNRE partners; surplus units credited on your KSEB bill.',
+          text: 'Subsidy applies only with registered installers, and we handle it end to end; surplus units credited on your KSEB bill.',
         },
       ],
       wayTitle: 'The Rayenna Way',
@@ -425,7 +425,7 @@ const ui = {
       whyNowLabel: '2026-ൽ കേരള വീട്ടുടമകൾ എന്തുകൊണ്ട് സോളാറിലേക്ക് പോകുന്നു',
       whyNow: [
         { icon: '₹0', text: 'PM സൂര്യ ഘർ വീടുകളിൽ അർദ്ധത്തിലധികം പേർക്ക് ശൂന്യ ഊർജ ചാർജ്' },
-        { icon: '₹78k', text: '₹78,000 വരെ കേന്ദ്ര സബ്സിഡി — റയെന്ന പോലുള്ള MNRE പാർട്ണർമാർ വഴി മാത്രം' },
+        { icon: '₹78k', text: '₹78,000 വരെ കേന്ദ്ര സബ്സിഡി. സബ്സിഡി രജിസ്റ്റർ ചെയ്ത ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.' },
         { icon: '📋', text: '2026 KSEB നെറ്റ് മീറ്ററിംഗ് — ekiran, സബ്സിഡി, അനുമതി ഞങ്ങൾ കൈകാര്യം ചെയ്യുന്നു' },
         { icon: '🏠', text: 'ഒപ്പിടുന്നതിന് മുമ്പ് സൗജന്യ സൈറ്റ് സർവേയും സത്യസന്ധമായ സൈസിംഗും' },
       ],
@@ -506,7 +506,7 @@ const ui = {
         },
         {
           title: 'സബ്സിഡി + നെറ്റ് മീറ്ററിംഗ്',
-          text: 'MNRE പാർട്ണർമാർ വഴി കേന്ദ്ര സബ്സിഡി; അധിക യൂണിറ്റുകൾ KSEB ബില്ലിൽ ക്രെഡിറ്റ്.',
+          text: 'സബ്സിഡി രജിസ്റ്റർ ചെയ്ത ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.; അധിക യൂണിറ്റുകൾ KSEB ബില്ലിൽ ക്രെഡിറ്റ്.',
         },
       ],
       wayTitle: 'റയെന്നയുടെ വഴി',
