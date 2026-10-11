@@ -17,8 +17,8 @@ Individual flat plants (where the society permits dedicated roof/terrace access)
 ## Q: What are the three ways our building can go solar?
 
 1. **Individual flat/terrace plant** — dedicated roof access + society permission; residential PM Surya Ghar rules.  
-2. **Common-area plant** — one plant for lifts, pumps, corridor/basement lighting, EV charging; GHS/RWA CFA.  
-3. **Shared (virtual) net metering** — one plant, credits split across flat meters under agreement. Still maturing in Kerala; needs society resolution, credit-sharing agreement and KSEB approval.
+2. **Common-area plant** — one plant for lifts, pumps, corridor/basement lighting, EV charging; GHS/RWA CFA. Under KSERC 2025, net metering for common-area service connections of multi-storied residential buildings / colonies is **1–500 kW** (hybrid storage rules apply above 25 kW).  
+3. **Shared (virtual) net metering** — one plant, credits split across flat meters. For multi-storied residential / residents’ associations: energy storage of at least **20%** of generation potential; **minimum 10 kW**; Lead person; society resolution; credit-sharing agreement; KSEB approval. Common-amenity meters may join. Ground implementation is still maturing.
 
 **Next step:** Free feasibility study → form or WhatsApp above.
 
