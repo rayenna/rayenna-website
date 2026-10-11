@@ -416,13 +416,21 @@ const ogImage = OG.services;
 
   <!-- 11. ENQUIRY FORM -->
   <section class="apt-section apt-section--enquiry" id="enquiry">
-    <img src={`${base}/media/glass-BG.jpg`} alt="" class="apt-enquiry__bg" aria-hidden="true" />
+    <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="" class="apt-enquiry__bg" aria-hidden="true" />
     <div class="container apt-form-layout">
-                  <div class="apt-form-intro">
-        <h2 class="section-title">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</h2>
-        <p class="apt-lead">നിങ്ങളുടെ കെട്ടിടത്തെക്കുറിച്ച് പറയുക. അടുത്ത ഘട്ടങ്ങളുമായി ഞങ്ങള്‍ മറുപടി നൽകും — സ്പാം ഇല്ല, നിർബന്ധിത വിൽപ്പനയില്ല.</p>
+      <div class="apt-form-intro">
+        <div class="apt-form-intro__copy">
+          <h2 class="section-title">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</h2>
+          <p class="apt-lead">നിങ്ങളുടെ കെട്ടിടത്തെക്കുറിച്ച് പറയുക. അടുത്ത ഘട്ടങ്ങളുമായി ഞങ്ങള്‍ മറുപടി നൽകും — സ്പാം ഇല്ല, നിർബന്ധിത വിൽപ്പനയില്ല.</p>
+        </div>
         <div class="apt-form-intro__photo">
-          <img src={`${base}/media/solar-roof-top.webp`} alt="കേരളത്തിലെ പൂർത്തിയാക്കിയ റൂഫ്ടോപ്പ് സോളാർ ഇൻസ്റ്റലേഷൻ" loading="lazy" />
+          <img
+            src={`${base}/media/apartments/apt-buildings.jpg`}
+            alt="മൽട്ടി-സ്റ്റോറി അപ്പാർട്ട്മെന്റ് സൊസൈറ്റി കെട്ടിടം — സോളാർ വലുപ്പം നിർണയിക്കുന്ന കമ്മ്യൂണിട്ടി"
+            loading="lazy"
+            width="1400"
+            height="1867"
+          />
         </div>
       </div>
 <form id="apartments-form" class="apt-form" novalidate>
@@ -750,27 +758,46 @@ const ogImage = OG.services;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.22;
+  object-position: center 40%;
+  opacity: 0.28;
   z-index: 0;
 }
 .apt-form-layout {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 28px;
+  gap: 22px;
+  align-items: stretch;
 }
-.apt-form-intro .section-title { color: #ffffff; }
-.apt-form-intro .apt-lead { color: rgba(255,255,255,0.82); }
+.apt-form-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.apt-form-intro__copy .section-title {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.apt-form-intro__copy .apt-lead {
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 0;
+}
 .apt-form-intro__photo {
-  display: none;
+  display: block;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  flex: 1 1 auto;
+  min-height: 200px;
+  aspect-ratio: 16 / 10;
+  background: rgba(0,0,0,0.2);
 }
 .apt-form-intro__photo img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
 }
 .apt-diagram {
@@ -1285,8 +1312,6 @@ const ogImage = OG.services;
 .apt-faq-aside .section-title { margin-bottom: 10px; }
 .apt-faq-aside .apt-lead { margin-bottom: 18px; }
 
-.apt-form-intro__photo { display: block; margin-top: 16px; }
-.apt-form-intro__photo img { height: 200px; }
 
 @media (min-width: 640px) {
   .apt-stats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -1295,6 +1320,24 @@ const ogImage = OG.services;
   .apt-process-head__photos img { height: 170px; }
   .apt-duo { grid-template-columns: 1fr 1fr; gap: 20px; }
   .apt-term__media { height: 130px; }
+  .apt-hero__ctas { flex-direction: row; flex-wrap: wrap; }
+  .form-row { grid-template-columns: 1fr 1fr; }
+  .apt-cards { grid-template-columns: repeat(3, 1fr); }
+  .apt-form { padding: 32px; }
+  .apt-split__media img { height: 300px; }
+  .apt-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .apt-form-intro__photo {
+    min-height: 240px;
+    aspect-ratio: 16 / 9;
+  }
+}
+/* iPad / tablet: keep stacked, taller photo so it doesn’t feel sparse */
+@media (min-width: 768px) and (max-width: 899px) {
+  .apt-form-layout { gap: 28px; }
+  .apt-form-intro__photo {
+    min-height: 280px;
+    aspect-ratio: 21 / 9;
+  }
 }
 @media (min-width: 900px) {
   .apt-band { min-height: 340px; margin-bottom: 40px; }
@@ -1313,21 +1356,6 @@ const ogImage = OG.services;
     grid-template-columns: 0.85fr 1.15fr;
     gap: 40px;
   }
-  .apt-form-intro__photo img { height: 280px; }
-}
-@media (min-width: 1100px) {
-  .apt-glossary-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (min-width: 640px) {
-  .apt-hero__ctas { flex-direction: row; flex-wrap: wrap; }
-  .form-row { grid-template-columns: 1fr 1fr; }
-  .apt-cards { grid-template-columns: repeat(3, 1fr); }
-  .apt-form { padding: 32px; }
-  .apt-split__media img { height: 300px; }
-  .apt-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-}
-@media (min-width: 900px) {
   .apt-hero { min-height: 480px; padding-bottom: 72px; }
   .apt-hero__inner { padding-top: 120px; }
   .apt-hero__title { max-width: 22ch; }
@@ -1339,11 +1367,28 @@ const ogImage = OG.services;
   .apt-split--flip .apt-split__media { order: 2; }
   .apt-split__media img { height: 340px; }
   .apt-form-layout {
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 40px;
-    align-items: start;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 36px;
+    align-items: stretch;
   }
-  .apt-form-intro__photo { display: block; margin-top: 20px; }
+  .apt-form-intro {
+    height: 100%;
+  }
+  .apt-form-intro__photo {
+    aspect-ratio: auto;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+  .apt-form-intro__photo img {
+    object-position: center 25%;
+  }
+}
+@media (min-width: 1100px) {
+  .apt-glossary-grid { grid-template-columns: repeat(4, 1fr); }
+  .apt-form-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 44px;
+  }
 }
 </style>
 
