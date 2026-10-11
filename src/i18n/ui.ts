@@ -108,7 +108,7 @@ const ui = {
         "Kerala's MNRE-approved solar installer. Up to ₹78,000 PM Surya Ghar subsidy. Free site survey. Many homes now hit near-zero KSEB bills — payback in 3–5 years, then 25+ years of low-cost power.",
       whyNowLabel: 'Why Kerala homeowners are going solar in 2026',
       whyNow: [
-        { icon: '₹0', text: 'Over half of Kerala PM Surya Ghar homes recorded zero energy charges' },
+        { icon: '₹0', text: 'Many Kerala homes with right-sized solar record near-zero electricity bills' },
         { icon: '₹78k', text: 'Central subsidy up to ₹78,000. Subsidy applies only with registered installers, and we handle it end to end.' },
         { icon: '📋', text: '2026 KSEB net metering rules — we handle ekiran, subsidy & approvals' },
         { icon: '🏠', text: 'Free site survey with honest sizing before you sign anything' },
@@ -174,7 +174,7 @@ const ui = {
       whoStatsCta: 'See how much you could save →',
       whoStatBrands: 'Brands',
       whoStatBills: 'Less bills',
-      whoStatSatisfied: 'Client satisfaction',
+      whoStatSatisfied: 'Panel performance warranty',
       investCards: [
         {
           title: 'More affordable',
@@ -424,7 +424,7 @@ const ui = {
         'കേരളത്തിലെ MNRE അംഗീകൃത സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. പല വീടുകളും ഇപ്പോൾ KSEB ബിൽ ശൂന്യത്തോട് അടുക്കുന്നു — 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം, അതിനുശേഷം 25+ വർഷം കുറഞ്ഞ ചെലവിൽ വൈദ്യുതി.',
       whyNowLabel: '2026-ൽ കേരള വീട്ടുടമകൾ എന്തുകൊണ്ട് സോളാറിലേക്ക് പോകുന്നു',
       whyNow: [
-        { icon: '₹0', text: 'PM സൂര്യ ഘർ വീടുകളിൽ അർദ്ധത്തിലധികം പേർക്ക് ശൂന്യ ഊർജ ചാർജ്' },
+        { icon: '₹0', text: 'ശരിയായി സൈസ് ചെയ്ത സോളാറുള്ള പല കേരള വീടുകളും ഏതാണ്ട് ശൂന്യ വൈദ്യുതി ബിൽ രേഖപ്പെടുത്തുന്നു' },
         { icon: '₹78k', text: '₹78,000 വരെ കേന്ദ്ര സബ്സിഡി. സബ്സിഡി രജിസ്റ്റർ ചെയ്ത ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.' },
         { icon: '📋', text: '2026 KSEB നെറ്റ് മീറ്ററിംഗ് — ekiran, സബ്സിഡി, അനുമതി ഞങ്ങൾ കൈകാര്യം ചെയ്യുന്നു' },
         { icon: '🏠', text: 'ഒപ്പിടുന്നതിന് മുമ്പ് സൗജന്യ സൈറ്റ് സർവേയും സത്യസന്ധമായ സൈസിംഗും' },
@@ -490,7 +490,7 @@ const ui = {
       whoStatsCta: 'എത്ര സമ്പാദിക്കാം എന്ന് കാണുക →',
       whoStatBrands: 'ബ്രാൻഡുകൾ',
       whoStatBills: 'കുറഞ്ഞ ബിൽ',
-      whoStatSatisfied: 'ഉപഭോക്തൃ സംതൃപ്തി',
+      whoStatSatisfied: '25 വർഷം പാനൽ പ്രകടന വാറന്റി',
       investCards: [
         {
           title: 'ഇന്ന് ഏറ്റവും താങ്ങാനാവുന്നത്',

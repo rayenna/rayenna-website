@@ -102,7 +102,7 @@ export const calcEn = {
     {
       icon: '✅',
       title: 'MNRE-approved installer',
-      text: 'Every system we install qualifies for the full PM Surya Ghar subsidy.',
+      text: 'Eligible residential systems can claim the central subsidy up to scheme limits, subject to compliant equipment and portal approval.',
     },
     {
       icon: '📞',
