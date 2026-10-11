@@ -31,6 +31,7 @@ const ML_ROUTES = new Set([
   '/solar-panels-kochi',
   '/solar-panels-thrissur',
   '/solar-panels-trivandrum',
+  '/apartments-housing-societies',
   '/privacy',
 ]);
 
@@ -87,6 +88,7 @@ const ui = {
       kochi: 'Solar in Kochi',
       thrissur: 'Solar in Thrissur',
       trivandrum: 'Solar in Trivandrum',
+      apartments: 'Apartments & Societies',
       contactHeading: 'Contact us',
       copyright: '© 2026 Rayenna Energy Pvt. Ltd. All Rights Reserved.',
       privacy: 'Privacy Policy',
@@ -126,6 +128,7 @@ const ui = {
       resourceHeading: 'Plan your solar project',
       resources: [
         { href: '/solar-calculator/', label: 'Free Solar Calculator' },
+        { href: '/apartments-housing-societies/', label: 'Apartments & Societies' },
         { href: '/faqs/', label: '60 Solar FAQs' },
         { href: '/blog/', label: 'Expert Guides & News' },
         { href: '/contact/', label: 'Book a Free Site Survey' },
@@ -403,6 +406,7 @@ const ui = {
       kochi: 'കൊച്ചിയിൽ സോളാർ',
       thrissur: 'തൃശ്ശൂരിൽ സോളാർ',
       trivandrum: 'തിരുവനന്തപുരത്ത് സോളാർ',
+      apartments: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും',
       contactHeading: 'കോൺടാക്റ്റ്',
       copyright: '© 2026 റയെന്ന എനർജി പ്രൈവറ്റ് ലിമിറ്റഡ്. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
       privacy: 'സ്വകാര്യതാ നയം',
@@ -442,8 +446,10 @@ const ui = {
       resourceHeading: 'നിങ്ങളുടെ സോളാർ പദ്ധതി ആസൂത്രണം ചെയ്യുക',
       resources: [
         { href: '/ml/solar-calculator/', label: 'സൗജന്യ സോളാർ കാൽക്കുലേറ്റർ' },
+        { href: '/ml/apartments-housing-societies/', label: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും' },
         { href: '/ml/faqs/', label: '60 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
         { href: '/ml/blog/', label: 'വിദഗ്ധ ഗൈഡുകൾ' },
+        { href: '/ml/contact/', label: 'സൗജന്�: 'വിദഗ്ധ ഗൈഡുകൾ' },
         { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
       ],
       connectTrust: [
