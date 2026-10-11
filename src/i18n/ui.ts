@@ -178,7 +178,7 @@ const ui = {
       investCards: [
         {
           title: 'More affordable',
-          text: 'Panel prices have fallen over 80% in two decades — and PM Surya Ghar can cut up to ₹78,000 more for eligible homes.',
+          text: 'Panel prices have fallen over 80% in two decades — and PM Surya Ghar can cut up to ₹78,000 more for eligible homes. GST on solar modules was cut from 12% to 5% in September 2025, lowering system costs.',
         },
         {
           title: 'More efficient',
@@ -494,7 +494,7 @@ const ui = {
       investCards: [
         {
           title: 'ഇന്ന് ഏറ്റവും താങ്ങാനാവുന്നത്',
-          text: 'ഇരുപത് വർഷത്തിൽ പാനൽ വില 80%-ലധികം കുറഞ്ഞു — യോഗ്യമായ വീടുകൾക്ക് PM സൂര്യ ഘർ ₹78,000 വരെ കൂടി കുറയ്ക്കും.',
+          text: 'ഇരുപത് വർഷത്തിൽ പാനൽ വില 80%-ലധികം കുറഞ്ഞു — യോഗ്യമായ വീടുകൾക്ക് PM സൂര്യ ഘർ ₹78,000 വരെ കൂടി കുറയ്ക്കും. സോളാർ മോഡ്യൂളുകളുടെ GST 2025 സെപ്റ്റംബറിൽ 12%-ൽ നിന്ന് 5%-ലേക്ക് കുറഞ്ഞു — സിസ്റ്റം ചെലവ് കുറയുന്നു.',
         },
         {
           title: 'ഇന്ന് ഏറ്റവും കാര്യക്ഷമം',

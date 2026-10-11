@@ -24,7 +24,7 @@ export const CLAIMS = {
     effectiveDateEn: '22 September 2025',
     effectiveDateMl: '2025 സെപ്റ്റംബർ 22',
     noteEn: 'GST on solar modules was cut from 12% to 5% in September 2025, lowering system costs.',
-    noteMl: 'സോളാർ മോഡ്യൂളുകളുടെ GST 2025 സെപ്റ്റംബറില് 12%-ൽ നിന്ന് 5%-ലേക്ക് കുറഞ്ഞു — സിസ്റം ചെലവ് കുറയുന്നു.',
+    noteMl: 'സോളാർ മോഡ്യൂളുകളുടെ GST 2025 സെപ്റ്റംബറിൽ 12%-ൽ നിന്ന് 5%-ലേക്ക് കുറഞ്ഞു — സിസ്റ്റം ചെലവ് കുറയുന്നു.',
     sourceUrl: 'https://taxguru.in/goods-and-service-tax/gst-renewable-energy-devices-reduced-5-percent.html',
   },
 
@@ -55,7 +55,7 @@ export const CLAIMS = {
   exclusivitySafeMl: 'സബ്സിഡി രജിസ്റ്റർ ചെയ്ത ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു.',
 
   calculatorSubsidyTrustEn: 'Eligible residential systems can claim the central subsidy up to scheme limits, subject to compliant equipment and portal approval.',
-  calculatorSubsidyTrustMl: 'യോഗ്യമായ രെസിഡൻഷ്യൽ സിസ്റങ്ങൾക്ക് അനുയോജ്യമായ ഉപകരണവും പോർട്ടൽ അംഗീകാരവും ഉണ്ടെങ്കിൽ പദ്ധതി പരിധി വരെ കേന്ദ്ര സബ്സിഡി ക്ലെയിം ചെയ്യാം.',
+  calculatorSubsidyTrustMl: 'യോഗ്യമായ രെസിഡൻഷ്യൽ സിസ്റ്റങ്ങൾക്ക് അനുയോജ്യമായ ഉപകരണവും പോർട്ടൽ അംഗീകാരവും ഉണ്ടെങ്കിൽ പദ്ധതി പരിധി വരെ കേന്ദ്ര സബ്സിഡി ക്ലെയിം ചെയ്യാം.',
 
   /** Empty until owner sets a date; pages omit last-verified when blank. */
   lastVerified: '',
