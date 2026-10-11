@@ -21,3 +21,8 @@ Update both files together.
 | Last verified | (blank) | (blank) | Owner | **TODO_OWNER** | Set CLAIMS.lastVerified when ready |
 | Zero-bill wording | Many Kerala homes with right-sized solar record near-zero electricity bills | ശരിയായി സൈസ് ചെയ്ത സോളാറുള്ള പല കേരള വീടുകളും ഏതാണ്ട് ശൂന്യ വൈദ്യുതി ബിൽ രേഖപ്പെടുത്തുന്നു | Owner 2026-10-11 | Softened | Keep near-zero fallback (no %) |
 | Exclusivity | Subsidy applies only with empanelled installers, and we handle it end to end. | സബ്സിഡി എംപാനൽഡ് ഇൻസ്റ്റാളർമാർ വഴി മാത്രം ബാധകം — ഞങ്ങൾ അത് എൻഡ്-ടു-എൻഡ് കൈകാര്യം ചെയ്യുന്നു. | Compliance | Phase-2 edit | Not only-through-Rayenna |
+
+| GHS/RWA CFA | Rs 18,000 per kW for common facilities (incl. EV charging), up to 500 kW at 3 kW per house; ceiling inclusive of individual resident plants | kW-n Rs 18,000; 500 kW (3 kW/house); includes individual plants | pmsuryaghar.gov.in | Apartments page 2026-10-11 | Societies / RWAs |
+| Society experience | No completed housing-society or apartment-complex installations claimed | No society-complex completion claims | Owner default | Apartments page 2026-10-11 | Feasibility-first |
+| Kerala apt net metering | Soft: 2025 regs allow net metering for apartment common connections; confirm limit in study | Soft — confirm in study | Kerala Gazette 6 Nov 2025 | TODO_OWNER verify gazette | Do not hard-state 500 kW until verified |
+| VNM Kerala | Exists in 2025 regs; implementation still maturing; needs resolution, agreement, KSEB approval | Still maturing | KSERC 2025 | Soft wording | No minimum size/charges unless confirmed |
