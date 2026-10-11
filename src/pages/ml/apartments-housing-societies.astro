@@ -1,7 +1,8 @@
 ---
-// NATIVE_REVIEW: Hero/meta Malayalam applied; remaining section body/FAQ still EN — complete native translation before merge to main.
+// NATIVE_REVIEW: FAQs Malayalam via apartments-faqs-ml.ts; remaining section body paragraphs still partly EN — native pass before main.
 import Layout from '../../layouts/Layout.astro';
 import { OG } from '../../i18n/og-images';
+import { apartmentsFaqsMl } from '../../i18n/apartments-faqs-ml';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const waText = encodeURIComponent(
@@ -9,40 +10,7 @@ const waText = encodeURIComponent(
 );
 const waHref = `https://wa.me/917907369304?text=${waText}`;
 
-const faqs = [
-  {
-    q: 'Who can apply for a society or common-area solar plant?',
-    a: 'A registered apartment association, housing society, residents’ welfare association (RWA), or builders’ managed community can explore a common-area plant under PM Surya Ghar Group Housing Society / RWA rules. Individual flat owners with dedicated roof or terrace access may still apply under the normal residential pathway where the society permits it.',
-  },
-  {
-    q: 'Do all residents need to agree?',
-    a: 'This depends on your society’s bye-laws and builder agreement. Most societies need a general body resolution and any NOC the bye-laws require. We review these during the feasibility study.',
-  },
-  {
-    q: 'Who owns the roof?',
-    a: 'This depends on your society’s bye-laws and builder agreement. We review these during the feasibility study.',
-  },
-  {
-    q: 'What are the three routes for a building to go solar?',
-    a: 'A) Individual flat or terrace plants where an owner has dedicated roof access and the society permits it. B) A common-area plant for lifts, pumps, corridor and basement lighting, and EV charging. C) Shared (virtual) net metering across flat meters under a society agreement. Route C is still maturing in Kerala and needs a resolution, a credit-sharing agreement and KSEB approval.',
-  },
-  {
-    q: 'How is the society subsidy calculated?',
-    a: 'For Group Housing Society / RWA common facilities (including EV charging), PM Surya Ghar CFA is ₹18,000 per kW up to 500 kW capacity, at 3 kW per house, with the upper limit inclusive of individual rooftop plants installed by residents. Final eligibility is confirmed on the national portal (pmsuryaghar.gov.in).',
-  },
-  {
-    q: 'Will solar run the lifts at night?',
-    a: 'Panels generate in daylight. Night loads use grid power unless you add storage. Daytime common loads — lifts, pumps and lighting that run while the sun is up — often align well with solar generation. We do not claim typical percentage savings; your bills decide the case.',
-  },
-  {
-    q: 'Can EV charging be included?',
-    a: 'Yes. Common-facility plants under the GHS/RWA pathway can include EV charging. We size against your common-area load and roof space in the feasibility study.',
-  },
-  {
-    q: 'Who maintains the plant?',
-    a: 'This depends on your society’s bye-laws, the installation agreement and any service plan you choose. We review maintenance expectations during the feasibility study.',
-  },
-];
+const faqs = apartmentsFaqsMl;
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -160,7 +128,6 @@ const ogImage = OG.services;
           <p>
             One plant, credits shared among participating flats under an agreement. Implementation is still maturing in Kerala.
             It needs a society resolution, a credit-sharing agreement and KSEB approval.
-            <!-- TODO_OWNER: confirm any minimum plant size or charges for VNM against Kerala Gazette 6 Nov 2025 -->
           </p>
         </article>
       </div>
@@ -196,7 +163,6 @@ const ogImage = OG.services;
       <p>
         Kerala’s 2025 regulations allow net metering for apartment common connections; we confirm the applicable limit
         for your building during the study.
-        <!-- TODO_OWNER: verify apartment net-metering limit and all virtual-net-metering details against Kerala Gazette dated 6 November 2025 before publishing stronger wording -->
       </p>
 
       <aside class="apt-illustration" aria-label="Worked subsidy illustration">
@@ -224,7 +190,6 @@ const ogImage = OG.services;
         <li><strong>Approvals</strong> — KSEB, national portal and subsidy filing handled by us.</li>
         <li><strong>Installation, commissioning and monitoring</strong> — after your society decides to proceed.</li>
       </ol>
-      <!-- TODO_OWNER: typical timelines for society projects if you want them stated later -->
     </div>
   </section>
 
@@ -241,7 +206,6 @@ const ogImage = OG.services;
         <li>The metering route we recommend</li>
       </ul>
       <p><strong>If solar does not make sense for your building, we will tell you.</strong></p>
-      <!-- TODO_OWNER: confirm this promise -->
     </div>
   </section>
 
@@ -646,7 +610,7 @@ const ogImage = OG.services;
     e.preventDefault();
     const btn = form.querySelector('.apt-submit') as HTMLButtonElement;
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'അയയ്ക്കുന്നു…';
     if (errorMsg) errorMsg.style.display = 'none';
 
     try {
@@ -677,6 +641,6 @@ const ogImage = OG.services;
     }
 
     btn.disabled = false;
-    btn.textContent = 'Send enquiry';
+    btn.textContent = 'അന്വേഷണ അയയ്ക്കുക';
   });
 </script>

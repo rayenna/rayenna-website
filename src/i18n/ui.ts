@@ -449,7 +449,6 @@ const ui = {
         { href: '/ml/apartments-housing-societies/', label: 'അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും' },
         { href: '/ml/faqs/', label: '60 സോളാർ ചോദ്യോത്തരങ്ങൾ' },
         { href: '/ml/blog/', label: 'വിദഗ്ധ ഗൈഡുകൾ' },
-        { href: '/ml/contact/', label: 'സൗജന്�: 'വിദഗ്ധ ഗൈഡുകൾ' },
         { href: '/ml/contact/', label: 'സൗജന്യ സൈറ്റ് സർവേ' },
       ],
       connectTrust: [
