@@ -235,119 +235,213 @@ const ogImage = OG.services;
   </section>
 
   <!-- 5. SUBSIDY -->
-  <section class="apt-section apt-section--alt">
-    <div class="container apt-narrow">
-      <h2 class="section-title">The subsidy for societies</h2>
-      <p>
-        Under PM Surya Ghar for Group Housing Society / Resident Welfare Association common facilities
-        (including EV charging), Central Financial Assistance (CFA) is <strong>₹18,000 per kW</strong>,
-        up to <strong>500 kW</strong> capacity (at 3 kW per house), with the upper limit inclusive of
-        individual rooftop plants installed by residents. Source: pmsuryaghar.gov.in.
-      </p>
-      <p>
-        For comparison, the individual residential CFA is ₹30,000 per kW up to 2 kW; ₹18,000 per kW for the third kW;
-        capped at ₹78,000 above 3 kW.
-      </p>
-      <p>
-        Under the KSERC (Renewable Energy and Related Matters) Regulations, 2025 (in force from 6 November 2025),
-        net metering is available for <strong>common-area service connections</strong> of residential high-rise /
-        multi-storied buildings and residential colonies from <strong>1 kW to 500 kW</strong>.
-        Plants above 25 kW have hybrid-inverter storage requirements under the same regulations — we size and confirm
-        this during the feasibility study. Source: Kerala Gazette / KSERC regulations, 2025.
-      </p>
-
-      <aside class="apt-illustration" aria-label="Worked subsidy illustration">
-        <p class="apt-illustration__label">Illustration only</p>
+  <section class="apt-section apt-section--subsidy">
+    <div class="apt-band">
+      <img src={`${base}/media/apartments/apt-buildings.jpg`} alt="Modern multi-storey apartment buildings" class="apt-band__img" loading="lazy" />
+      <div class="apt-band__shade"></div>
+      <div class="container apt-band__inner">
+        <p class="apt-band__eyebrow">PM Surya Ghar · GHS / RWA</p>
+        <h2 class="apt-band__title">The subsidy for societies</h2>
+        <div class="apt-stats">
+          <div class="apt-stat">
+            <span class="apt-stat__value">₹18,000</span>
+            <span class="apt-stat__label">CFA per kW for common facilities</span>
+          </div>
+          <div class="apt-stat">
+            <span class="apt-stat__value">500 kW</span>
+            <span class="apt-stat__label">Upper capacity (3 kW per house)</span>
+          </div>
+          <div class="apt-stat">
+            <span class="apt-stat__value">1–500 kW</span>
+            <span class="apt-stat__label">Common-area net metering (KSERC 2025)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container apt-subsidy-grid">
+      <div class="apt-subsidy-copy">
         <p>
-          A 60-flat society has an eligible-capacity ceiling of 180 kW (3 kW per flat).
-          Actual plant size depends on your common-area load and roof space.
-          For example, a 30 kW common-area plant would attract up to ₹5.4 lakh at ₹18,000 per kW
-          (30 × 18,000 = 5,40,000). Final eligibility is confirmed on the national portal.
+          Under PM Surya Ghar for Group Housing Society / Resident Welfare Association common facilities
+          (including EV charging), Central Financial Assistance (CFA) is <strong>₹18,000 per kW</strong>,
+          up to <strong>500 kW</strong> capacity (at 3 kW per house), with the upper limit inclusive of
+          individual rooftop plants installed by residents. Source: pmsuryaghar.gov.in.
         </p>
-      </aside>
+        <p>
+          For comparison, the individual residential CFA is ₹30,000 per kW up to 2 kW; ₹18,000 per kW for the third kW;
+          capped at ₹78,000 above 3 kW.
+        </p>
+        <p>
+          Under the KSERC (Renewable Energy and Related Matters) Regulations, 2025 (in force from 6 November 2025),
+          net metering is available for <strong>common-area service connections</strong> of residential high-rise /
+          multi-storied buildings and residential colonies from <strong>1 kW to 500 kW</strong>.
+          Plants above 25 kW have hybrid-inverter storage requirements under the same regulations — we size and confirm
+          this during the feasibility study. Source: Kerala Gazette / KSERC regulations, 2025.
+        </p>
+      </div>
+      <div class="apt-subsidy-aside">
+        <div class="apt-subsidy-aside__media">
+          <img src={`${base}/media/apartments/apt-ev.jpg`} alt="EV charging at a residential building" loading="lazy" />
+        </div>
+        <aside class="apt-illustration" aria-label="Worked subsidy illustration">
+          <p class="apt-illustration__label">Illustration only</p>
+          <p>
+            A 60-flat society has an eligible-capacity ceiling of 180 kW (3 kW per flat).
+            Actual plant size depends on your common-area load and roof space.
+            For example, a 30 kW common-area plant would attract up to ₹5.4 lakh at ₹18,000 per kW
+            (30 × 18,000 = 5,40,000). Final eligibility is confirmed on the national portal.
+          </p>
+        </aside>
+      </div>
     </div>
   </section>
 
   <!-- 6. HOW IT WORKS -->
-  <section class="apt-section">
-    <div class="container apt-split">
-      <div class="apt-split__media">
-        <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="Rayenna installation team working on a Kochi rooftop" loading="lazy" />
-      </div>
-      <div class="apt-split__copy">
-        <h2 class="section-title">How it works</h2>
-        <p class="apt-lead">Timelines depend on approvals and your society’s decision process.</p>
-        <ol class="apt-steps">
-          <li><strong>Free feasibility study</strong> — roof, shade, structure, 12 months of common-area bills.</li>
-          <li><strong>Committee briefing</strong> — and a written summary.</li>
-          <li><strong>General body resolution</strong> — and any NOC your bye-laws require.</li>
-          <li><strong>Design and proposal</strong> — sized to load and roof.</li>
-          <li><strong>Approvals</strong> — KSEB, national portal and subsidy filing handled by us.</li>
-          <li><strong>Installation, commissioning and monitoring</strong> — after your society decides to proceed.</li>
-        </ol>
-      </div>
+  <section class="apt-section apt-section--process">
+    <div class="container">
+      <header class="apt-process-head">
+        <div>
+          <p class="apt-kicker">From first call to commissioning</p>
+          <h2 class="section-title">How it works</h2>
+          <p class="apt-lead">Timelines depend on approvals and your society’s decision process — we keep every step clear.</p>
+        </div>
+        <div class="apt-process-head__photos" aria-hidden="true">
+          <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="" loading="lazy" />
+          <img src={`${base}/media/apartments/apt-meeting.jpg`} alt="" loading="lazy" />
+        </div>
+      </header>
+      <ol class="apt-process">
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">01</span>
+          <h3>Free feasibility study</h3>
+          <p>Roof, shade, structure, and 12 months of common-area bills — honest sizing before any deposit.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">02</span>
+          <h3>Committee briefing</h3>
+          <p>A clear verbal walkthrough plus a written summary your committee can circulate.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">03</span>
+          <h3>General body resolution</h3>
+          <p>And any NOC your bye-laws require — we flag what to table before the vote.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">04</span>
+          <h3>Design and proposal</h3>
+          <p>Layout and kit sized to your actual load and usable roof — not a generic package.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">05</span>
+          <h3>Approvals &amp; subsidy</h3>
+          <p>KSEB, national portal and PM Surya Ghar filing handled by our team end to end.</p>
+        </li>
+        <li class="apt-process__step">
+          <span class="apt-process__num" aria-hidden="true">06</span>
+          <h3>Install &amp; monitor</h3>
+          <p>Installation, commissioning and monitoring — after your society decides to proceed.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- 7. WHAT YOU GET -->
-  <section class="apt-section apt-section--alt">
-    <div class="container apt-narrow">
-      <h2 class="section-title">What you get from the feasibility study</h2>
-      <p>A short written note covering:</p>
-      <ul class="apt-list">
-        <li>Usable roof area</li>
-        <li>An indicative system size range</li>
-        <li>Indicative annual generation</li>
-        <li>Subsidy ceiling for your building</li>
-        <li>The metering route we recommend</li>
-      </ul>
-      <p><strong>If solar does not make sense for your building, we will tell you.</strong></p>
+  <!-- 7–8. DELIVERABLE + CHECKLIST -->
+  <section class="apt-section apt-section--duo">
+    <div class="apt-duo-banner">
+      <img src={`${base}/media/apartments/apt-solar-roof.jpg`} alt="Rooftop solar array on a building" class="apt-duo-banner__img" loading="lazy" />
+      <div class="apt-duo-banner__shade"></div>
+      <div class="container apt-duo-banner__inner">
+        <h2 class="apt-duo-banner__title">Feasibility study — what you get, what we need</h2>
+        <p>One short written note. No obligation. If solar does not make sense for your building, we will tell you.</p>
+      </div>
     </div>
-  </section>
-
-  <!-- 8. WHAT WE NEED -->
-  <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">What we need from you</h2>
-      <ul class="apt-list apt-list--check">
-        <li>Last 12 months of common-area electricity bills</li>
-        <li>KSEB consumer numbers for common connections</li>
-        <li>Roof photos or plan</li>
-        <li>Society registration details and bye-laws</li>
-        <li>Name and contact of the secretary or president</li>
-      </ul>
+    <div class="container apt-duo">
+      <article class="apt-panel apt-panel--deliver">
+        <div class="apt-panel__media">
+          <img src={`${base}/media/apartments/apt-docs.jpg`} alt="Documents and planning materials on a desk" loading="lazy" />
+        </div>
+        <div class="apt-panel__body">
+          <p class="apt-kicker">You receive</p>
+          <h3>From the feasibility study</h3>
+          <ul class="apt-checklist">
+            <li>Usable roof area</li>
+            <li>Indicative system size range</li>
+            <li>Indicative annual generation</li>
+            <li>Subsidy ceiling for your building</li>
+            <li>The metering route we recommend</li>
+          </ul>
+        </div>
+      </article>
+      <article class="apt-panel apt-panel--need">
+        <div class="apt-panel__media">
+          <img src={`${base}/media/apartments/apt-meeting.jpg`} alt="Committee meeting around a table" loading="lazy" />
+        </div>
+        <div class="apt-panel__body">
+          <p class="apt-kicker">Please share</p>
+          <h3>What we need from you</h3>
+          <ul class="apt-checklist apt-checklist--need">
+            <li>Last 12 months of common-area electricity bills</li>
+            <li>KSEB consumer numbers for common connections</li>
+            <li>Roof photos or plan</li>
+            <li>Society registration details and bye-laws</li>
+            <li>Name and contact of the secretary or president</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- 9. GLOSSARY -->
-  <section class="apt-section apt-section--alt">
-    <div class="container apt-narrow">
-      <h2 class="section-title">Glossary</h2>
-      <dl class="apt-glossary">
-        <div>
-          <dt>Common service connection</dt>
-          <dd>The electricity meter that powers lifts, pumps and common lighting.</dd>
-        </div>
-        <div>
-          <dt>Net metering</dt>
-          <dd>Surplus daytime solar is credited against your bill.</dd>
-        </div>
-        <div>
-          <dt>Virtual net metering</dt>
-          <dd>One shared plant whose credits are split across several meters.</dd>
-        </div>
-        <div>
-          <dt>CFA</dt>
-          <dd>The central government subsidy, called Central Financial Assistance.</dd>
-        </div>
-      </dl>
+  <section class="apt-section apt-section--glossary">
+    <div class="container">
+      <header class="apt-section-head">
+        <p class="apt-kicker">Plain language</p>
+        <h2 class="section-title">Glossary</h2>
+        <p class="apt-lead">The terms committees ask about most — without the jargon.</p>
+      </header>
+      <div class="apt-glossary-grid">
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>Common service connection</h3>
+          <p>The electricity meter that powers lifts, pumps and common lighting.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-solar-roof.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>Net metering</h3>
+          <p>Surplus daytime solar is credited against your bill.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-buildings.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>Virtual net metering</h3>
+          <p>One shared plant whose credits are split across several meters.</p>
+        </article>
+        <article class="apt-term">
+          <div class="apt-term__media">
+            <img src={`${base}/media/apartments/apt-ev.jpg`} alt="" loading="lazy" />
+          </div>
+          <h3>CFA</h3>
+          <p>The central government subsidy, called Central Financial Assistance.</p>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- 10. FAQ -->
-  <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">Frequently asked questions</h2>
+  <section class="apt-section apt-section--faq">
+    <div class="container apt-faq-layout">
+      <aside class="apt-faq-aside">
+        <div class="apt-faq-aside__media">
+          <img src={`${base}/media/apartments/apt-skyline.jpg`} alt="City skyline with high-rise buildings" loading="lazy" />
+        </div>
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="apt-lead">Straight answers for secretaries, presidents and committee members.</p>
+        <a href="#enquiry" class="btn btn-primary">Request a study</a>
+      </aside>
       <div class="accordion" data-apt-faq>
         {faqs.map((faq, fi) => (
           <div class="accordion-item">
@@ -874,6 +968,404 @@ const ogImage = OG.services;
 }
 .apt-form-status--ok { background: var(--color-primary-light); color: var(--color-navy); border-left: 3px solid var(--color-primary); }
 .apt-form-status--err { background: #ffe5e5; color: #7f1d1d; border-left: 3px solid var(--color-primary); }
+
+
+/* ===== Redesigned lower sections ===== */
+.apt-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+.apt-section-head {
+  margin-bottom: 28px;
+  max-width: 40rem;
+}
+.apt-section-head .section-title { margin-bottom: 10px; }
+.apt-section-head .apt-lead { margin-bottom: 0; }
+
+.apt-section--subsidy {
+  padding: 0 0 var(--section-padding);
+  background: #fff;
+}
+.apt-band {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.apt-band__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.apt-band__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(10,25,50,0.92) 0%, rgba(10,25,50,0.72) 45%, rgba(168,56,56,0.45) 100%);
+}
+.apt-band__inner {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0 36px;
+  color: #fff;
+  width: 100%;
+}
+.apt-band__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 8px;
+}
+.apt-band__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 22px;
+  max-width: 20ch;
+  line-height: 1.2;
+}
+.apt-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.apt-stat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  backdrop-filter: blur(6px);
+}
+.apt-stat__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.apt-stat__label {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.4;
+}
+.apt-subsidy-grid {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+.apt-subsidy-copy p { margin-bottom: 14px; }
+.apt-subsidy-copy p:last-child { margin-bottom: 0; }
+.apt-subsidy-aside__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 16px;
+  aspect-ratio: 16 / 10;
+}
+.apt-subsidy-aside__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-section--subsidy .apt-illustration {
+  margin-top: 0;
+  background: var(--color-light);
+}
+
+.apt-section--process {
+  background: var(--color-light);
+}
+.apt-process-head {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 28px;
+  align-items: end;
+}
+.apt-process-head .apt-lead { margin-bottom: 0; }
+.apt-process-head__photos {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 10px;
+}
+.apt-process-head__photos img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.apt-process {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.apt-process__step {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.apt-process__step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-primary);
+}
+.apt-process__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+}
+.apt-process__step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin: 0 0 6px;
+}
+.apt-process__step p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.apt-section--duo {
+  padding: 0 0 var(--section-padding);
+  background: #fff;
+}
+.apt-duo-banner {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.apt-duo-banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.apt-duo-banner__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,25,50,0.9) 0%, rgba(10,25,50,0.45) 70%, rgba(10,25,50,0.2) 100%);
+}
+.apt-duo-banner__inner {
+  position: relative;
+  z-index: 1;
+  padding: 36px 0 28px;
+  color: #fff;
+}
+.apt-duo-banner__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 8px;
+  max-width: 28ch;
+  line-height: 1.25;
+}
+.apt-duo-banner__inner p {
+  margin: 0;
+  max-width: 40rem;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+.apt-duo {
+  display: grid;
+  gap: 16px;
+}
+.apt-panel {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+.apt-panel--deliver { border-top: 3px solid var(--color-primary); }
+.apt-panel--need { border-top: 3px solid var(--color-secondary); }
+.apt-panel__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-light);
+}
+.apt-panel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-panel__body { padding: 20px 20px 22px; }
+.apt-panel__body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-navy);
+  margin: 0 0 14px;
+}
+.apt-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.apt-checklist li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+.apt-checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px var(--color-primary);
+}
+.apt-checklist--need li::before {
+  background: var(--color-secondary);
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px var(--color-secondary);
+}
+
+.apt-section--glossary {
+  background: var(--color-light);
+}
+.apt-glossary-grid {
+  display: grid;
+  gap: 14px;
+}
+.apt-term {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.apt-term__media {
+  height: 110px;
+  overflow: hidden;
+}
+.apt-term__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.apt-term:hover .apt-term__media img { transform: scale(1.05); }
+.apt-term h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin: 14px 16px 6px;
+}
+.apt-term p {
+  margin: 0 16px 16px;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.apt-section--faq { background: #fff; }
+.apt-faq-layout {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+.apt-faq-aside__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 18px;
+  aspect-ratio: 4 / 3;
+}
+.apt-faq-aside__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.apt-faq-aside .section-title { margin-bottom: 10px; }
+.apt-faq-aside .apt-lead { margin-bottom: 18px; }
+
+.apt-form-intro__photo { display: block; margin-top: 16px; }
+.apt-form-intro__photo img { height: 200px; }
+
+@media (min-width: 640px) {
+  .apt-stats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .apt-process { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .apt-glossary-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .apt-process-head__photos img { height: 170px; }
+  .apt-duo { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .apt-term__media { height: 130px; }
+}
+@media (min-width: 900px) {
+  .apt-band { min-height: 340px; margin-bottom: 40px; }
+  .apt-subsidy-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+  }
+  .apt-process-head {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+  }
+  .apt-process-head__photos img { height: 200px; }
+  .apt-process { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .apt-duo-banner { min-height: 240px; margin-bottom: 36px; }
+  .apt-faq-layout {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 40px;
+  }
+  .apt-form-intro__photo img { height: 280px; }
+}
+@media (min-width: 1100px) {
+  .apt-glossary-grid { grid-template-columns: repeat(4, 1fr); }
+}
 
 @media (min-width: 640px) {
   .apt-hero__ctas { flex-direction: row; flex-wrap: wrap; }
