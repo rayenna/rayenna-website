@@ -67,16 +67,22 @@ const ogImage = OG.services;
         </a>
       </div>
       <p class="apt-hero__micro">PM സൂര്യ ഘർ എംപാനൽഡ് · ആദ്യം പ്രക്രിയ · കണ്ടുപിടിച്ച പ്രോജക്റ്റ് എണ്ണങ്ങളില്ല</p>
+      <img src={`${base}/media/Artboard-2mnre.webp`} alt="PM സൂര്യ ഘർ എംപാനൽഡ് vendor (MNRE)" class="apt-hero__badge" width="160" height="56" />
     </div>
   </section>
 
   <!-- 2. WHO THIS IS FOR -->
   <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">ആർക്ക് വേണ്ടിയുള്ളതാണ്</h2>
-      <p>
-        കേരളത്തിലെ അപ്പാർട്ട്മെന്റ് അസോസിയേഷനുകൾ, ഗേറ്റഡ് കമ്മ്യൂണിടികൾ, രെസിഡന്റ്സ് വെൽഫെയർ അസോസിയേഷനുകൾ (RWA), ബിൽഡർ മാനേജ് ചെയ്യുന്ന കമ്മ്യൂണിടികൾ. കമ്മിറ്റിയിലെ പ്രസിഡന്റ്, സെക്രട്ടറി, ട്രഷറർ അല്ലെങ്കിൽ അംഗമാണെങ്കിൽ — വോട്ടിന് മുമ്പ് വ്യക്തമായ ചിത്രം വേണമെങ്കിൽ ഇവിടെ നിന്ന് തുടങ്ങുക.
-      </p>
+    <div class="container apt-split">
+      <div class="apt-split__media">
+        <img src={`${base}/media/Plan-solar.webp`} alt="കേരളത്തിലെ മൽട്ടി-യൂണിട് കെട്ടിടത്തിന് റൂഫ്ടോപ്പ് സോളാർ പ്ലാനിംഗ്" loading="lazy" />
+      </div>
+      <div class="apt-split__copy">
+        <h2 class="section-title">ആർക്ക് വേണ്ടിയുള്ളതാണ്</h2>
+        <p>
+          കേരളത്തിലെ അപ്പാർട്ട്മെന്റ് അസോസിയേഷനുകൾ, ഗേറ്റഡ് കമ്മ്യൂണിടികൾ, രെസിഡന്റ്സ് വെൽഫെയർ അസോസിയേഷനുകൾ (RWA), ബിൽഡർ മാനേജ് ചെയ്യുന്ന കമ്മ്യൂണിടികൾ. കമ്മിറ്റിയിലെ പ്രസിഡന്റ്, സെക്രട്ടറി, ട്രഷറർ അല്ലെങ്കിൽ അംഗമാണെങ്കിൽ — വോട്ടിന് മുമ്പ് വ്യക്തമായ ചിത്രം വേണമെങ്കിൽ ഇവിടെ നിന്ന് തുടങ്ങുക.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -116,18 +122,33 @@ const ogImage = OG.services;
 
       <div class="apt-cards">
         <article class="apt-card">
-          <h3>A. വ്യക്തിഗത ഫ്ലാറ്റ് അല്ലെങ്കിൽ ടെറസ് പ്ലാന്റുകൾ</h3>
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-rooftop-home.jpg`} alt="കേരള വീട്ടിലെ വ്യക്തിഗത റൂഫ്ടോപ്പ് സോളാർ പാനലുകൾ" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>A. വ്യക്തിഗത ഫ്ലാറ്റ് അല്ലെങ്കിൽ ടെറസ് പ്ലാന്റുകൾ</h3>
           <p>ഉടമയ്ക്ക് പ്രത്യേക മേൽക്കൂര അല്ലെങ്കിൽ ടെറസ് പ്രവേശനമുണ്ട്, സൊസൈറ്റി അനുവദിക്കുന്നിടത്ത് മാത്രം. സാധാരണ PM സൂര്യ ഘർ രെസിഡൻഷ്യൽ നിയമങ്ങൾ ബാധകം.</p>
+          </div>
         </article>
         <article class="apt-card">
-          <h3>B. കോമൺ ഏരിയ പ്ലാന്റ്</h3>
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-panel-installation.jpg`} alt="റൂഫ്ടോപ്പിൽ സോളാർ പാനലുകൾ സ്ഥാപിക്കുന്ന റയെന്ന ടീം" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>B. കോമൺ ഏരിയ പ്ലാന്റ്</h3>
           <p>ലിഫ്റ്റ്, വാട്ടർ പമ്പ്, കോറിഡോർ/ബേസ്മെന്റ് ലൈട്ടിംഗ്, EV ചാർജിംഗ് എന്നിവയ്ക്കുള്ള ഒരു പ്ലാന്റ്. സൊസൈറ്റി തല സബ്സിഡിയും അനുമതികളും ബാധകം (താഴെ കാണുക).</p>
+          </div>
         </article>
         <article class="apt-card">
-          <h3>C. പങ്കിട്ട (വെർച്വൽ) നെറ്റ് മീറ്ററിംഗ്</h3>
+          <div class="apt-card__media">
+            <img src={`${base}/media/Hardshell-solar.webp`} alt="കേരള സൂര്യന് കീഴിലുള്ള പൂര്ത്തിയാക്കിയ റൂഫ്ടോപ്പ് സോളാർ അറേ" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>C. പങ്കിട്ട (വെർച്വൽ) നെറ്റ് മീറ്ററിംഗ്</h3>
           <p>
             ഒരു പ്ലാന്റ്; പങ്കെടുക്കുന്ന ഫ്ലാറ്റുകള്ക്കിടയിൽ കരാർ പ്രകാരം ക്രെഡിറ്റ് പങ്കിടൽ. KSERC-യുടെ 2025 നിയന്ത്രണങ്ങൾ പ്രകാരം, മൽട്ടി-സ്റ്റോറിഡ് രെസിഡൻഷ്യൽ കെട്ടിടങ്ങൾക്കും രെസിഡന്റ്സ് അസോസിയേഷനുകൾക്കും VNM-ന് പ്ലാന്റിന്റെ ജനറേഷൻ പൊട്ടൻഷ്യലിന്റെ കുറഞ്ഞത് 20% എനർജി സ്റ്റോറേജ്, Lead person, സൊസൈറ്റി രെസല്യൂഷൻ, ക്രെഡിറ്റ്-ഷെയറിംഗ് കരാർ, KSEB അനുമതി എന്നിവ ആവശ്യമാണ്. ഏറ്റവും കുറഞ്ഞ പ്ലാന്റ് വലുപ്പം 10 kW. കേരളത്തിൽ നടപ്പാക്കൽ ഇപ്പോഴും പുരോഗമിക്കുകയാണ് — നിങ്ങളുടെ കെട്ടിടത്തിന് യോജിക്കുന്നുണ്ടോ എന്ന് പഠനത്തിൽ ഞങ്ങൾ സ്ഥിരീകരിക്കും.
           </p>
+          </div>
         </article>
       </div>
     </div>
@@ -135,11 +156,43 @@ const ogImage = OG.services;
 
   <!-- 4. WHY COMMON-AREA -->
   <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">കോമൺ ഏരിയ ലോഡുകൾക്ക് സോളാർ എന്തുകൊണ്ട് യോജിക്കുന്നു</h2>
-      <p>
-        ലിഫ്റ്റ്, പമ്പ്, ലൈട്ടിംഗ് എന്നിവ പലപ്പോഴും പകൽ സമയത്ത് പ്രവർത്തിക്കുന്നു — പാനലുകൾ ഉൽപ്പാദിപ്പിക്കുന്ന സമയം. ഈ പകൽ ഓവർലാപ്പ് കാരണം കോമൺ ഏരിയ ലോഡുകൾ റൂഫ്ടോപ്പ് സോളാറിന് സ്വാഭാവികമായി യോജിക്കുന്നു. ഞങ്ങൾ സാധാരണ ശതമാനം സേവിങ്ങ്സ് അവകാശപ്പെടുന്നില്ല — നിങ്ങളുടെ കഴിഞ്ഞ പന്ത്രണ്ട് മാസത്തെ ബില്ലുകളാണ് കേസ് തീരുമാനിക്കുന്നത്.
-      </p>
+    <div class="container apt-split apt-split--flip">
+      <div class="apt-split__copy">
+        <h2 class="section-title">കോമൺ ഏരിയ ലോഡുകൾക്ക് സോളാർ എന്തുകൊണ്ട് യോജിക്കുന്നു</h2>
+        <p>
+          ലിഫ്റ്റ്, പമ്പ്, ലൈട്ടിംഗ് എന്നിവ പലപ്പോഴും പകൽ സമയത്ത് പ്രവർത്തിക്കുന്നു — പാനലുകൾ ഉൽപ്പാദിപ്പിക്കുന്ന സമയം. ഈ പകൽ ഓവർലാപ്പ് കാരണം കോമൺ ഏരിയ ലോഡുകൾ റൂഫ്ടോപ്പ് സോളാറിന് സ്വാഭാവികമായി യോജിക്കുന്നു. ഞങ്ങൾ സാധാരണ ശതമാനം സേവിങ്ങ്സ് അവകാശപ്പെടുന്നില്ല — നിങ്ങളുടെ കഴിഞ്ഞ പന്ത്രണ്ട് മാസത്തെ ബില്ലുകളാണ് കേസ് തീരുമാനിക്കുന്നത്.
+        </p>
+      </div>
+      <div class="apt-split__media">
+        <img src={`${base}/media/Drilling-solar.jpg`} alt="കേരള റൂഫ്ടോപ്പിലെ സോളാർ പാനൽ മൡണ്ടിംഗ് ജോലി" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b. REAL ROOFS STRIP -->
+  <section class="apt-section apt-section--gallery" aria-labelledby="apt-gallery-title">
+    <div class="container">
+      <h2 id="apt-gallery-title" class="section-title">കേരളത്തിലെയുള്ള യഥാർത്ഥ റയെന്ന റൂഫ്ട്ടപ്പുകൾ</h2>
+      <p class="apt-lead">ഞങ്ങൾ പൂര്ത്തിയാക്കിയ വീട്ടു ഇൻസ്റ്റലേഷനുകൾ — സൊസൈറ്റി സാധ്യതാ പഠനത്തിലും അതേ ഗുണമാന് പ്രക്രിയയും.</p>
+      <div class="apt-gallery">
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg`} alt="Arun · Kollam · 5 kW" loading="lazy" />
+          <span>Arun · Kollam · 5 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg`} alt="Sessy Antony · Chottanikkara · 6 kW" loading="lazy" />
+          <span>Sessy Antony · Chottanikkara · 6 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg`} alt="Suresh · Eroor · 4 kW" loading="lazy" />
+          <span>Suresh · Eroor · 4 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/ml/media/`}>
+          <img src={`${base}/media/references/DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg`} alt="Dhanya V.T. · Thoppumpady · 5 kW" loading="lazy" />
+          <span>Dhanya V.T. · Thoppumpady · 5 kW</span>
+        </a>
+      </div>
+      <p class="apt-gallery__cta"><a href={`${base}/ml/media/`}>എല്ലാ ഇൻസ്റ്റലേഷനുകളും കാണുക →</a></p>
     </div>
   </section>
 
@@ -168,17 +221,22 @@ const ogImage = OG.services;
 
   <!-- 6. HOW IT WORKS -->
   <section class="apt-section">
-    <div class="container">
-      <h2 class="section-title">എങ്ങനെ പ്രവർത്തിക്കുന്നു</h2>
-      <p class="apt-lead">സമയപരിധി അനുമതികളെയും നിങ്ങളുടെ സൊസൈറ്റിയുടെ തീരുമാന പ്രക്രിയയെയും ആശ്രയിച്ചിരിക്കുന്നു.</p>
-      <ol class="apt-steps">
+    <div class="container apt-split">
+      <div class="apt-split__media">
+        <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="കൊച്ചി റൂഫ്ടോപ്പിൽ ജോലി ചെയ്യുന്ന റയെന്ന ഇൻസ്റ്റലേഷൻ ടീം" loading="lazy" />
+      </div>
+      <div class="apt-split__copy">
+        <h2 class="section-title">എങ്ങനെ പ്രവർത്തിക്കുന്നു</h2>
+        <p class="apt-lead">സമയപരിധി അനുമതികളെയും നിങ്ങളുടെ സൊസൈറ്റിയുടെ തീരുമാന പ്രക്രിയയെയും ആശ്രയിച്ചിരിക്കുന്നു.</p>
+        <ol class="apt-steps">
         <li><strong>സൗജന്യ സാധ്യതാ പഠനം</strong> — മേൽക്കൂര, ഷേഡ്, ഘടന, 12 മാസത്തെ കോമൺ ഏരിയ ബില്ലുകൾ.</li>
         <li><strong>കമ്മിറ്റി ബ്രീഫിംഗ്</strong> — എഴുത്ത് സംഗ്രഹവും.</li>
         <li><strong>ജനറൽ ബോഡി രെസല്യൂഷൻ</strong> — ബൈലോകൾ ആവശ്യപ്പെടുന്ന NOC ഉം.</li>
         <li><strong>ഡിസൈനും പ്രൊപ്പോസലും</strong> — ലോഡിനും മേൽക്കൂരയ്ക്കും അനുയോജ്യമായ വലുപ്പം.</li>
         <li><strong>അനുമതികൾ</strong> — KSEB, ദേശീയ പോർടൽ, സബ്സിഡി ഫയലിംഗ് ഞങ്ങൾ കൈകാര്യം ചെയ്യും.</li>
         <li><strong>ഇൻസ്റ്റലേഷൻ, കമ്മീഷനിംഗ്, മോണിറ്ററിംഗ്</strong> — സൊസൈറ്റി മുന്നോട്ട് പോകാൻ തീരുമാനിച്ചതിന് ശേഷം.</li>
-      </ol>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -263,12 +321,17 @@ const ogImage = OG.services;
   </section>
 
   <!-- 11. ENQUIRY FORM -->
-  <section class="apt-section apt-section--alt" id="enquiry">
-    <div class="container apt-form-wrap">
-      <h2 class="section-title">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</h2>
-      <p class="apt-lead">നിങ്ങളുടെ കെട്ടിടത്തെക്കുറിച്ച് പറയുക. അടുത്ത ഘട്ടങ്ങളുമായി ഞങ്ങൾ മറുപടി നൽകും — സ്പാം ഇല്ല, നിർബന്ധിത വിൽപ്പനയില്ല.</p>
-
-      <form id="apartments-form" class="apt-form" novalidate>
+  <section class="apt-section apt-section--enquiry" id="enquiry">
+    <img src={`${base}/media/glass-BG.jpg`} alt="" class="apt-enquiry__bg" aria-hidden="true" />
+    <div class="container apt-form-layout">
+                  <div class="apt-form-intro">
+        <h2 class="section-title">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</h2>
+        <p class="apt-lead">നിങ്ങളുടെ കെട്ടിടത്തെക്കുറിച്ച് പറയുക. അടുത്ത ഘട്ടങ്ങളുമായി ഞങ്ങള്‍ മറുപടി നൽകും — സ്പാം ഇല്ല, നിർബന്ധിത വിൽപ്പനയില്ല.</p>
+        <div class="apt-form-intro__photo">
+          <img src={`${base}/media/solar-roof-top.webp`} alt="കേരളത്തിലെ പൂർത്തിയാക്കിയ റൂഫ്ടോപ്പ് സോളാർ ഇൻസ്റ്റലേഷൻ" loading="lazy" />
+        </div>
+      </div>
+<form id="apartments-form" class="apt-form" novalidate>
         <input type="hidden" name="source" value="apartments-page" />
         <input type="hidden" name="from_name" value="Rayenna Apartments Enquiry" />
         <input type="checkbox" name="botcheck" class="apt-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -441,7 +504,14 @@ const ogImage = OG.services;
   font-size: 0.82rem;
   font-weight: 600;
   color: rgba(255,255,255,0.78);
-  margin: 0;
+  margin: 0 0 14px;
+}
+.apt-hero__badge {
+  display: block;
+  width: min(160px, 42vw);
+  height: auto;
+  margin-top: 4px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
 }
 .btn-outline-light {
   border: 2px solid rgba(255,255,255,0.75);
@@ -465,6 +535,29 @@ const ogImage = OG.services;
 .apt-narrow { max-width: 720px; }
 .apt-lead { color: var(--color-text-muted); margin-bottom: 24px; max-width: 40rem; line-height: 1.8; }
 .apt-section p { color: var(--color-text-muted); line-height: 1.8; }
+
+.apt-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.apt-split__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  min-width: 0;
+}
+.apt-split__media img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.apt-split__copy { min-width: 0; }
+.apt-split__copy .section-title { margin-bottom: 14px; }
+.apt-split__copy > p { margin-bottom: 0; }
+
 .apt-cards {
   display: grid;
   gap: 16px;
@@ -475,9 +568,26 @@ const ogImage = OG.services;
   border: 1px solid var(--color-border);
   border-top: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  padding: 20px;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
+.apt-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-light);
+}
+.apt-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-card:hover .apt-card__media img { transform: scale(1.04); }
+.apt-card__body { padding: 18px 20px 20px; }
 .apt-card h3 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
@@ -485,6 +595,90 @@ const ogImage = OG.services;
   color: var(--color-navy);
 }
 .apt-card p { color: var(--color-text-muted); margin: 0; }
+
+.apt-section--gallery {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-primary-light) 45%, var(--color-light) 100%);
+}
+.apt-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.apt-gallery__item {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+}
+.apt-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-gallery__item:hover img { transform: scale(1.05); }
+.apt-gallery__item span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 12px 10px;
+  background: linear-gradient(to top, rgba(10,25,50,0.88), transparent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.apt-gallery__cta {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+.apt-gallery__cta a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+.apt-gallery__cta a:hover { text-decoration: underline; }
+
+.apt-section--enquiry {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+}
+.apt-enquiry__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  z-index: 0;
+}
+.apt-form-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+}
+.apt-form-intro .section-title { color: #ffffff; }
+.apt-form-intro .apt-lead { color: rgba(255,255,255,0.82); }
+.apt-form-intro__photo {
+  display: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.apt-form-intro__photo img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
 .apt-diagram {
   margin: 24px 0;
   overflow-x: auto;
@@ -571,9 +765,8 @@ const ogImage = OG.services;
 .accordion-item.is-open .accordion-panel { display: block; }
 .accordion-panel__body { padding: 0 16px 16px 48px; color: var(--color-text-muted); line-height: 1.65; }
 
-.apt-form-wrap { max-width: 720px; }
 .apt-form {
-  margin-top: 8px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -581,7 +774,7 @@ const ogImage = OG.services;
   padding: 24px 20px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
 }
 .apt-honeypot {
   position: absolute;
@@ -639,11 +832,26 @@ const ogImage = OG.services;
   .form-row { grid-template-columns: 1fr 1fr; }
   .apt-cards { grid-template-columns: repeat(3, 1fr); }
   .apt-form { padding: 32px; }
+  .apt-split__media img { height: 300px; }
+  .apt-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
 }
 @media (min-width: 900px) {
   .apt-hero { min-height: 480px; padding-bottom: 72px; }
   .apt-hero__inner { padding-top: 120px; }
   .apt-hero__title { max-width: 22ch; }
+  .apt-split {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
+  .apt-split--flip .apt-split__copy { order: 1; }
+  .apt-split--flip .apt-split__media { order: 2; }
+  .apt-split__media img { height: 340px; }
+  .apt-form-layout {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .apt-form-intro__photo { display: block; margin-top: 20px; }
 }
 </style>
 

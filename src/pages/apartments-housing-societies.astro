@@ -98,17 +98,23 @@ const ogImage = OG.services;
         </a>
       </div>
       <p class="apt-hero__micro">PM Surya Ghar empanelled · Process first · No invented project counts</p>
+      <img src={`${base}/media/Artboard-2mnre.webp`} alt="PM Surya Ghar empanelled vendor (MNRE)" class="apt-hero__badge" width="160" height="56" />
     </div>
   </section>
 
   <!-- 2. WHO THIS IS FOR -->
   <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">Who this is for</h2>
-      <p>
-        Apartment associations, gated communities, residents’ welfare associations and builders’ managed communities in Kerala.
-        If you sit on the committee — president, secretary, treasurer or member — and you want a clear picture before any vote, start here.
-      </p>
+    <div class="container apt-split">
+      <div class="apt-split__media">
+        <img src={`${base}/media/Plan-solar.webp`} alt="Rooftop solar planning for a multi-unit building in Kerala" loading="lazy" />
+      </div>
+      <div class="apt-split__copy">
+        <h2 class="section-title">Who this is for</h2>
+        <p>
+          Apartment associations, gated communities, residents’ welfare associations and builders’ managed communities in Kerala.
+          If you sit on the committee — president, secretary, treasurer or member — and you want a clear picture before any vote, start here.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -148,22 +154,37 @@ const ogImage = OG.services;
 
       <div class="apt-cards">
         <article class="apt-card">
-          <h3>A. Individual flat or terrace plants</h3>
-          <p>Only where an owner has dedicated roof or terrace access and the society permits it. Follows the normal PM Surya Ghar residential rules.</p>
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-rooftop-home.jpg`} alt="Individual rooftop solar panels on a Kerala home" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>A. Individual flat or terrace plants</h3>
+            <p>Only where an owner has dedicated roof or terrace access and the society permits it. Follows the normal PM Surya Ghar residential rules.</p>
+          </div>
         </article>
         <article class="apt-card">
-          <h3>B. Common-area plant</h3>
-          <p>One plant for lifts, water pumps, corridor and basement lighting, and EV charging. Society-level subsidy and approvals apply (see below).</p>
+          <div class="apt-card__media">
+            <img src={`${base}/media/solar-panel-installation.jpg`} alt="Rayenna crew installing solar panels on a rooftop" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>B. Common-area plant</h3>
+            <p>One plant for lifts, water pumps, corridor and basement lighting, and EV charging. Society-level subsidy and approvals apply (see below).</p>
+          </div>
         </article>
         <article class="apt-card">
-          <h3>C. Shared (virtual) net metering</h3>
-          <p>
-            One plant, credits shared among participating flats under an agreement.
-            Under KSERC’s 2025 regulations, VNM for multi-storied residential buildings and residents’ associations
-            needs energy storage of at least 20% of the plant’s generation potential, a Lead person, a society resolution,
-            a credit-sharing agreement and KSEB approval. Minimum plant size is 10 kW.
-            Implementation on the ground is still maturing in Kerala — we confirm the fit for your building in the study.
-          </p>
+          <div class="apt-card__media">
+            <img src={`${base}/media/Hardshell-solar.webp`} alt="Completed rooftop solar array under Kerala sun" loading="lazy" />
+          </div>
+          <div class="apt-card__body">
+            <h3>C. Shared (virtual) net metering</h3>
+            <p>
+              One plant, credits shared among participating flats under an agreement.
+              Under KSERC’s 2025 regulations, VNM for multi-storied residential buildings and residents’ associations
+              needs energy storage of at least 20% of the plant’s generation potential, a Lead person, a society resolution,
+              a credit-sharing agreement and KSEB approval. Minimum plant size is 10 kW.
+              Implementation on the ground is still maturing in Kerala — we confirm the fit for your building in the study.
+            </p>
+          </div>
         </article>
       </div>
     </div>
@@ -171,13 +192,45 @@ const ogImage = OG.services;
 
   <!-- 4. WHY COMMON-AREA -->
   <section class="apt-section">
-    <div class="container apt-narrow">
-      <h2 class="section-title">Why common-area loads suit solar</h2>
-      <p>
-        Lifts, pumps and lighting often run in daytime hours, when panels generate.
-        That daytime overlap is why common-area loads are a natural fit for rooftop solar.
-        We do not claim typical percentage savings — your last twelve months of bills decide the case.
-      </p>
+    <div class="container apt-split apt-split--flip">
+      <div class="apt-split__copy">
+        <h2 class="section-title">Why common-area loads suit solar</h2>
+        <p>
+          Lifts, pumps and lighting often run in daytime hours, when panels generate.
+          That daytime overlap is why common-area loads are a natural fit for rooftop solar.
+          We do not claim typical percentage savings — your last twelve months of bills decide the case.
+        </p>
+      </div>
+      <div class="apt-split__media">
+        <img src={`${base}/media/Drilling-solar.jpg`} alt="Solar panel mounting work on a Kerala rooftop" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b. REAL ROOFS STRIP -->
+  <section class="apt-section apt-section--gallery" aria-labelledby="apt-gallery-title">
+    <div class="container">
+      <h2 id="apt-gallery-title" class="section-title">Real Rayenna rooftops across Kerala</h2>
+      <p class="apt-lead">Home installs we have completed — the same quality and process we bring to society feasibility studies.</p>
+      <div class="apt-gallery">
+        <a class="apt-gallery__item" href={`${base}/media/`}>
+          <img src={`${base}/media/references/ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg`} alt="5 kW solar installation for Arun in Kollam" loading="lazy" />
+          <span>Arun · Kollam · 5 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/media/`}>
+          <img src={`${base}/media/references/SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg`} alt="6 kW solar installation for Sessy Antony in Chottanikkara" loading="lazy" />
+          <span>Sessy Antony · Chottanikkara · 6 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/media/`}>
+          <img src={`${base}/media/references/SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg`} alt="4 kW solar installation for Suresh in Eroor" loading="lazy" />
+          <span>Suresh · Eroor · 4 kW</span>
+        </a>
+        <a class="apt-gallery__item" href={`${base}/media/`}>
+          <img src={`${base}/media/references/DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg`} alt="5 kW solar installation for Dhanya V.T. in Thoppumpady" loading="lazy" />
+          <span>Dhanya V.T. · Thoppumpady · 5 kW</span>
+        </a>
+      </div>
+      <p class="apt-gallery__cta"><a href={`${base}/media/`}>View all installations →</a></p>
     </div>
   </section>
 
@@ -217,17 +270,22 @@ const ogImage = OG.services;
 
   <!-- 6. HOW IT WORKS -->
   <section class="apt-section">
-    <div class="container">
-      <h2 class="section-title">How it works</h2>
-      <p class="apt-lead">Timelines depend on approvals and your society’s decision process.</p>
-      <ol class="apt-steps">
-        <li><strong>Free feasibility study</strong> — roof, shade, structure, 12 months of common-area bills.</li>
-        <li><strong>Committee briefing</strong> — and a written summary.</li>
-        <li><strong>General body resolution</strong> — and any NOC your bye-laws require.</li>
-        <li><strong>Design and proposal</strong> — sized to load and roof.</li>
-        <li><strong>Approvals</strong> — KSEB, national portal and subsidy filing handled by us.</li>
-        <li><strong>Installation, commissioning and monitoring</strong> — after your society decides to proceed.</li>
-      </ol>
+    <div class="container apt-split">
+      <div class="apt-split__media">
+        <img src={`${base}/media/Solar-Kochi-workers.jpg`} alt="Rayenna installation team working on a Kochi rooftop" loading="lazy" />
+      </div>
+      <div class="apt-split__copy">
+        <h2 class="section-title">How it works</h2>
+        <p class="apt-lead">Timelines depend on approvals and your society’s decision process.</p>
+        <ol class="apt-steps">
+          <li><strong>Free feasibility study</strong> — roof, shade, structure, 12 months of common-area bills.</li>
+          <li><strong>Committee briefing</strong> — and a written summary.</li>
+          <li><strong>General body resolution</strong> — and any NOC your bye-laws require.</li>
+          <li><strong>Design and proposal</strong> — sized to load and roof.</li>
+          <li><strong>Approvals</strong> — KSEB, national portal and subsidy filing handled by us.</li>
+          <li><strong>Installation, commissioning and monitoring</strong> — after your society decides to proceed.</li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -312,11 +370,16 @@ const ogImage = OG.services;
   </section>
 
   <!-- 11. ENQUIRY FORM -->
-  <section class="apt-section apt-section--alt" id="enquiry">
-    <div class="container apt-form-wrap">
-      <h2 class="section-title">Request a free society feasibility study</h2>
-      <p class="apt-lead">Tell us about your building. We will reply with next steps — no spam, no hard sell.</p>
-
+  <section class="apt-section apt-section--enquiry" id="enquiry">
+    <img src={`${base}/media/glass-BG.jpg`} alt="" class="apt-enquiry__bg" aria-hidden="true" />
+    <div class="container apt-form-layout">
+      <div class="apt-form-intro">
+        <h2 class="section-title">Request a free society feasibility study</h2>
+        <p class="apt-lead">Tell us about your building. We will reply with next steps — no spam, no hard sell.</p>
+        <div class="apt-form-intro__photo">
+          <img src={`${base}/media/solar-roof-top.webp`} alt="Completed rooftop solar installation in Kerala" loading="lazy" />
+        </div>
+      </div>
       <form id="apartments-form" class="apt-form" novalidate>
         <input type="hidden" name="source" value="apartments-page" />
         <input type="hidden" name="from_name" value="Rayenna Apartments Enquiry" />
@@ -489,7 +552,14 @@ const ogImage = OG.services;
   font-size: 0.82rem;
   font-weight: 600;
   color: rgba(255,255,255,0.78);
-  margin: 0;
+  margin: 0 0 14px;
+}
+.apt-hero__badge {
+  display: block;
+  width: min(160px, 42vw);
+  height: auto;
+  margin-top: 4px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
 }
 .btn-outline-light {
   border: 2px solid rgba(255,255,255,0.75);
@@ -513,6 +583,29 @@ const ogImage = OG.services;
 .apt-narrow { max-width: 720px; }
 .apt-lead { color: var(--color-text-muted); margin-bottom: 24px; max-width: 40rem; line-height: 1.8; }
 .apt-section p { color: var(--color-text-muted); line-height: 1.8; }
+
+.apt-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.apt-split__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  min-width: 0;
+}
+.apt-split__media img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.apt-split__copy { min-width: 0; }
+.apt-split__copy .section-title { margin-bottom: 14px; }
+.apt-split__copy > p { margin-bottom: 0; }
+
 .apt-cards {
   display: grid;
   gap: 16px;
@@ -523,9 +616,26 @@ const ogImage = OG.services;
   border: 1px solid var(--color-border);
   border-top: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  padding: 20px;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
+.apt-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-light);
+}
+.apt-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-card:hover .apt-card__media img { transform: scale(1.04); }
+.apt-card__body { padding: 18px 20px 20px; }
 .apt-card h3 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
@@ -533,6 +643,90 @@ const ogImage = OG.services;
   color: var(--color-navy);
 }
 .apt-card p { color: var(--color-text-muted); margin: 0; }
+
+.apt-section--gallery {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-primary-light) 45%, var(--color-light) 100%);
+}
+.apt-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.apt-gallery__item {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+}
+.apt-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.apt-gallery__item:hover img { transform: scale(1.05); }
+.apt-gallery__item span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 12px 10px;
+  background: linear-gradient(to top, rgba(10,25,50,0.88), transparent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.apt-gallery__cta {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+.apt-gallery__cta a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+.apt-gallery__cta a:hover { text-decoration: underline; }
+
+.apt-section--enquiry {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+}
+.apt-enquiry__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  z-index: 0;
+}
+.apt-form-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+}
+.apt-form-intro .section-title { color: #ffffff; }
+.apt-form-intro .apt-lead { color: rgba(255,255,255,0.82); }
+.apt-form-intro__photo {
+  display: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.apt-form-intro__photo img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
 .apt-diagram {
   margin: 24px 0;
   overflow-x: auto;
@@ -619,9 +813,8 @@ const ogImage = OG.services;
 .accordion-item.is-open .accordion-panel { display: block; }
 .accordion-panel__body { padding: 0 16px 16px 48px; color: var(--color-text-muted); line-height: 1.65; }
 
-.apt-form-wrap { max-width: 720px; }
 .apt-form {
-  margin-top: 8px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -629,7 +822,7 @@ const ogImage = OG.services;
   padding: 24px 20px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
 }
 .apt-honeypot {
   position: absolute;
@@ -687,11 +880,26 @@ const ogImage = OG.services;
   .form-row { grid-template-columns: 1fr 1fr; }
   .apt-cards { grid-template-columns: repeat(3, 1fr); }
   .apt-form { padding: 32px; }
+  .apt-split__media img { height: 300px; }
+  .apt-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
 }
 @media (min-width: 900px) {
   .apt-hero { min-height: 480px; padding-bottom: 72px; }
   .apt-hero__inner { padding-top: 120px; }
   .apt-hero__title { max-width: 22ch; }
+  .apt-split {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
+  .apt-split--flip .apt-split__copy { order: 1; }
+  .apt-split--flip .apt-split__media { order: 2; }
+  .apt-split__media img { height: 340px; }
+  .apt-form-layout {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .apt-form-intro__photo { display: block; margin-top: 20px; }
 }
 </style>
 
