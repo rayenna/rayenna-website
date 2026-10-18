@@ -33,6 +33,7 @@ const ML_ROUTES = new Set([
   '/solar-panels-trivandrum',
   '/apartments-housing-societies',
   '/privacy',
+  '/terms',
 ]);
 
 function normalizePath(path: string): string {
@@ -95,6 +96,7 @@ const ui = {
       contactHeading: 'Contact us',
       copyright: '© 2026 Rayenna Energy Pvt. Ltd. All Rights Reserved.',
       privacy: 'Privacy Policy',
+      terms: 'Terms of Use',
     },
     cta: {
       calculateSavings: 'Calculate My Savings',
@@ -415,6 +417,7 @@ const ui = {
       contactHeading: 'കോൺടാക്റ്റ്',
       copyright: '© 2026 റയെന്ന എനർജി പ്രൈവറ്റ് ലിമിറ്റഡ്. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
       privacy: 'സ്വകാര്യതാ നയം',
+      terms: 'ഉപയോഗ നിബന്ധനകൾ',
     },
     cta: {
       calculateSavings: 'എന്റെ സമ്പാദ്യം കണക്കാക്കുക',

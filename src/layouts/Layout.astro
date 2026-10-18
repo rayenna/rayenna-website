@@ -219,6 +219,7 @@ const structuredDataLD = {
 };
 const homeHref = localizedPath('/', lang);
 const privacyHref = lang === 'ml' ? '/ml/privacy/' : '/privacy/';
+const termsHref = lang === 'ml' ? '/ml/terms/' : '/terms/';
 const MOBILE_BAR_HIDDEN = new Set(['/contact', '/solar-calculator']);
 const showMobileBar = !MOBILE_BAR_HIDDEN.has(normalizePath(stripLocale(canonicalURL.pathname)));
 
@@ -439,6 +440,7 @@ function normalizePath(path: string): string {
         <p>{t.footer.copyright}</p>
         <div class="footer__legal">
           <a href={privacyHref} class="footer__legal-link">{t.footer.privacy}</a>
+          <a href={termsHref} class="footer__legal-link">{t.footer.terms}</a>
         </div>
       </div>
     </div>
