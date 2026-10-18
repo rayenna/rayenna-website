@@ -76,14 +76,14 @@ const articleCountHint = `${posts.length} expert articles`;
     </div>
   </section>
 
+  <!-- ===== SOLAR NEWS TICKER (full-bleed under hero) ===== -->
+  <div class="blog-news-ticker">
+    <SolarNewsTicker variant="inline" theme="light" label="Solar News" />
+  </div>
+
   <!-- ===== BLOG CONTENT ===== -->
   <section class="blog-section blog-section--with-ticker">
     <div class="container">
-
-      <!-- Solar news ticker — tight under hero, above search -->
-      <div class="blog-news-ticker">
-        <SolarNewsTicker variant="inline" theme="light" label="Solar News" />
-      </div>
 
       <!-- Search -->
       <div class="blog-search-row">
@@ -334,10 +334,13 @@ const articleCountHint = `${posts.length} expert articles`;
   padding-top: 12px;
 }
 .blog-news-ticker {
+  width: 100%;
+  max-width: none;
   background: transparent;
-  margin: 0 0 8px;
-  padding: 0;
+  margin: 0;
+  padding: 8px 16px 4px;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Search */

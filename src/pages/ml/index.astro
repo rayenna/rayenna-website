@@ -49,11 +49,9 @@ const t = useTranslations('ml');
     </div>
   </section>
 
-  <!-- ===== SOLAR NEWS TICKER ===== -->
+  <!-- ===== SOLAR NEWS TICKER (full-bleed; not inside .container) ===== -->
   <div class="home-news-ticker">
-    <div class="container">
-      <SolarNewsTicker variant="inline" theme="light" label="സോളാർ ന്യൂസ്" />
-    </div>
+    <SolarNewsTicker variant="inline" theme="light" label="സോളാർ ന്യൂസ്" />
   </div>
 
   <!-- ===== WHY NOW 2026 ===== -->
@@ -628,14 +626,17 @@ const t = useTranslations('ml');
   }
 }
 
-/* ===== SOLAR NEWS TICKER (under hero) ===== */
+/* ===== SOLAR NEWS TICKER (under hero, edge-to-edge) ===== */
 .home-news-ticker {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: none;
   background: transparent;
-  padding: 8px 0 4px;
+  padding: 8px 16px 4px;
   margin: 0;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 /* ===== WHY NOW ===== */
