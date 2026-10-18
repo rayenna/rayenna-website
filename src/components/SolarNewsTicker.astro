@@ -329,8 +329,8 @@ class SolarNewsTicker extends HTMLElement {
     requestAnimationFrame(() => {
       const half = track.scrollWidth / 2;
       if (!half || this._reduceMotion) return;
-      // 13.8 px/s ≈ 15% faster than prior 12 px/s
-      const dur = Math.min(255, Math.max(56, half / 13.8));
+      // 15.87 px/s ≈ 15% faster than prior 13.8 px/s
+      const dur = Math.min(222, Math.max(49, half / 15.87));
       track.style.animationDuration = `${dur}s`;
       track.style.gap = '24px';
     });
