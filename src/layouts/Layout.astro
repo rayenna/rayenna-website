@@ -4,7 +4,6 @@ import Analytics from '../components/Analytics.astro';
 import AnalyticsDelegate from '../components/AnalyticsDelegate.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
-import SolarNewsTicker from '../components/SolarNewsTicker.astro';
 import { OG, ogForBlogSlug } from '../i18n/og-images';
 import { BLOG_SCHEMA_DATES } from '../i18n/blog-schema-dates';
 import {
@@ -376,9 +375,6 @@ function normalizePath(path: string): string {
     </div>
     <button type="button" class="nav-backdrop" id="nav-backdrop" aria-hidden="true" tabindex="-1"></button>
   </header>
-
-  <!-- ===== SOLAR NEWS TICKER ===== -->
-  <SolarNewsTicker />
 
   <!-- ===== MAIN ===== -->
   <main>

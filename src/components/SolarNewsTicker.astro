@@ -1,32 +1,59 @@
 ---
+/**
+ * Solar news marquee ticker (web component).
+ * variant="inline" — transparent strip for blog (under hero, above search)
+ * variant="bar"    — sticky dark bar (legacy sitewide; unused by default)
+ */
+interface Props {
+  variant?: 'inline' | 'bar';
+  theme?: 'light' | 'dark';
+  label?: string;
+}
+
+const {
+  variant = 'inline',
+  theme = 'light',
+  label = 'Solar News',
+} = Astro.props;
+
 const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
 ---
 
-{workerUrl && (
-  <div class="news-ticker-strip" aria-label="Solar news ticker">
-    <solar-news-ticker
-      endpoint={workerUrl}
-      refresh-ms="1800000"
-      max-items="20"
-    ></solar-news-ticker>
-  </div>
-)}
+<div
+  class:list={['news-ticker-strip', `news-ticker-strip--${variant}`]}
+  aria-label={label}
+>
+  <solar-news-ticker
+    theme={theme}
+    label={label}
+    refresh-ms="1800000"
+    max-items="20"
+    {...(workerUrl ? { endpoint: workerUrl } : {})}
+  ></solar-news-ticker>
+</div>
 
 <style is:global>
   .news-ticker-strip {
     width: 100%;
-    background: #0b1120;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 0 12px;
     box-sizing: border-box;
     overflow: hidden;
-    /* Sticks just below the fixed navbar (72px tall) */
+  }
+
+  .news-ticker-strip--inline {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .news-ticker-strip--bar {
+    background: #0b1120;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0 12px;
     position: sticky;
     top: 72px;
     z-index: 49;
   }
 
-  /* Give the web component full width */
   .news-ticker-strip solar-news-ticker {
     display: block;
     width: 100%;
@@ -39,7 +66,7 @@ const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
    Inline so it ships with Astro's asset pipeline (no extra fetch).
    ============================================================ */
 class SolarNewsTicker extends HTMLElement {
-  static observedAttributes = ['endpoint', 'refresh-ms', 'max-items'];
+  static observedAttributes = ['endpoint', 'refresh-ms', 'max-items', 'theme', 'label'];
 
   constructor() {
     super();
@@ -52,6 +79,18 @@ class SolarNewsTicker extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         :host {
+          --sn-accent:  #c47a0a;
+          --sn-border:  rgba(0,0,0,0.12);
+          --sn-muted:   rgba(0,0,0,0.40);
+          --sn-policy:  #0d9488;
+          --sn-grid:    #2563eb;
+          --sn-market:  #c47a0a;
+          --sn-tech:    #7c3aed;
+          --sn-agri:    #059669;
+          display: block;
+        }
+
+        :host([theme="dark"]) {
           --sn-accent:  #f59e0b;
           --sn-border:  rgba(255,255,255,0.14);
           --sn-muted:   rgba(255,255,255,0.50);
@@ -60,7 +99,6 @@ class SolarNewsTicker extends HTMLElement {
           --sn-market:  #f59e0b;
           --sn-tech:    #a78bfa;
           --sn-agri:    #34d399;
-          display: block;
         }
 
         .root {
@@ -104,6 +142,8 @@ class SolarNewsTicker extends HTMLElement {
           flex: 1;
           min-width: 0;
           overflow: hidden;
+          background: transparent;
+          border: 0;
           padding: 6px 0;
         }
         .viewport:hover .track { animation-play-state: paused; }
@@ -164,10 +204,16 @@ class SolarNewsTicker extends HTMLElement {
         }
 
         .sep { color: var(--sn-muted); padding-left: 6px; font-size: 11px; }
+
+        @media (max-width: 480px) {
+          .label { letter-spacing: .12em; font-size: 9px; }
+          .headline { font-size: 11px; }
+          .tag { display: none; }
+        }
       </style>
 
       <div class="root">
-        <div class="label"><span class="dot" aria-hidden="true"></span>Solar News</div>
+        <div class="label"><span class="dot" aria-hidden="true"></span><span class="label-text">Solar News</span></div>
         <div class="viewport" role="region" aria-label="Solar news, auto-scrolling">
           <div class="track"></div>
         </div>
@@ -175,11 +221,22 @@ class SolarNewsTicker extends HTMLElement {
     `;
   }
 
-  connectedCallback()    { this._start(); }
-  disconnectedCallback() { this._stop();  }
-  attributeChangedCallback() { if (this.isConnected) this._start(); }
+  connectedCallback() {
+    this._syncLabel();
+    this._start();
+  }
+  disconnectedCallback() { this._stop(); }
+  attributeChangedCallback(name) {
+    if (name === 'label') this._syncLabel();
+    if (this.isConnected && name !== 'label') this._start();
+  }
 
-  get endpoint()  { return this.getAttribute('endpoint') || '/api/solar-news'; }
+  _syncLabel() {
+    const el = this.shadowRoot?.querySelector('.label-text');
+    if (el) el.textContent = this.getAttribute('label') || 'Solar News';
+  }
+
+  get endpoint()  { return this.getAttribute('endpoint') || ''; }
   get refreshMs() {
     const v = Number(this.getAttribute('refresh-ms') || '');
     return Number.isFinite(v) && v > 5000 ? v : 30 * 60 * 1000;
@@ -201,7 +258,16 @@ class SolarNewsTicker extends HTMLElement {
   }
 
   async _load() {
+    const fallback = [
+      { headline: "India's solar capacity crosses 90 GW milestone", url: '#', tag: 'market' },
+      { headline: 'PM Surya Ghar scheme targets 1 crore rooftop installations', url: '#', tag: 'policy' },
+      { headline: 'Kerala leads southern states in rooftop solar adoption', url: '#', tag: 'market' },
+      { headline: 'KSEB net metering: how homeowners earn from excess solar power', url: '#', tag: 'grid' },
+      { headline: 'High-efficiency TOPCon panels now 20% cheaper than 2023', url: '#', tag: 'tech' },
+    ];
+
     try {
+      if (!this.endpoint) throw new Error('no-endpoint');
       const res = await fetch(this.endpoint, { credentials: 'omit' });
       if (!res.ok) throw new Error('network');
       const data = await res.json();
@@ -210,13 +276,7 @@ class SolarNewsTicker extends HTMLElement {
       if (!filtered.length) throw new Error('empty');
       this._items = filtered;
     } catch {
-      this._items = [
-        { headline: "India's solar capacity crosses 90 GW milestone", url: '#', tag: 'market' },
-        { headline: 'PM Surya Ghar scheme targets 1 crore rooftop installations', url: '#', tag: 'policy' },
-        { headline: 'Kerala leads southern states in rooftop solar adoption', url: '#', tag: 'market' },
-        { headline: 'KSEB net metering: how homeowners earn from excess solar power', url: '#', tag: 'grid' },
-        { headline: 'High-efficiency TOPCon panels now 20% cheaper than 2023', url: '#', tag: 'tech' },
-      ];
+      this._items = fallback;
     }
     this._render();
   }

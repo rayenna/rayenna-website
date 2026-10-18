@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import SolarNewsTicker from '../../components/SolarNewsTicker.astro';
 import { blogUiEn as ui } from '../../i18n/blog-ui';
 import { OG } from '../../i18n/og-images';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -76,8 +77,13 @@ const articleCountHint = `${posts.length} expert articles`;
   </section>
 
   <!-- ===== BLOG CONTENT ===== -->
-  <section class="blog-section">
+  <section class="blog-section blog-section--with-ticker">
     <div class="container">
+
+      <!-- Solar news ticker — tight under hero, above search -->
+      <div class="blog-news-ticker">
+        <SolarNewsTicker variant="inline" theme="light" label="Solar News" />
+      </div>
 
       <!-- Search -->
       <div class="blog-search-row">
@@ -324,6 +330,15 @@ const articleCountHint = `${posts.length} expert articles`;
   padding: var(--section-padding);
   background: var(--color-light);
 }
+.blog-section--with-ticker {
+  padding-top: 12px;
+}
+.blog-news-ticker {
+  background: transparent;
+  margin: 0 0 8px;
+  padding: 0;
+  min-width: 0;
+}
 
 /* Search */
 .blog-search-row {
@@ -332,6 +347,7 @@ const articleCountHint = `${posts.length} expert articles`;
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 18px;
+  margin-top: 0;
 }
 .blog-search-field {
   position: relative;
