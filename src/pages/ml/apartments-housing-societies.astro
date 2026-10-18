@@ -4,6 +4,7 @@ import { OG } from '../../i18n/og-images';
 import { apartmentsFaqsMl } from '../../i18n/apartments-faqs-ml';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mlPrefix = '/ml';
 const waText = encodeURIComponent(
   'ഹായ് റയെന്ന, ഞങ്ങളുടെ അപ്പാർട്ട്മെന്റ് അസോസിയേഷന് സോളാർ സാധ്യതാ പഠനം വേണം.'
 );
@@ -61,10 +62,8 @@ const ogImage = OG.services;
         നിങ്ങളുടെ കോമൺ ഏരിയ വൈദ്യുതി ബിൽ കുറയ്ക്കുക. ഞങ്ങൾ സൗജന്യ സാധ്യതാ പഠനത്തോടെ ആരംഭിക്കുന്നു — ബാധ്യതയില്ല.
       </p>
       <div class="apt-hero__ctas">
-        <a href="#enquiry" class="btn btn-primary">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</a>
-        <a href={waHref} class="btn btn-outline-light" target="_blank" rel="noopener noreferrer" data-analytics-location="apartments-hero-wa">
-          WhatsApp ചെയ്യുക
-        </a>
+        <a href="#enquiry" class="btn btn-primary" data-analytics-location="apartments_hero_study">സൗജന്യ സൊസൈറ്റി സാധ്യതാ പഠനം അഭ്യർത്ഥിക്കുക</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-outline-light" data-analytics-location="apartments_hero_calc">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക</a>
       </div>
       <p class="apt-hero__micro">PM സൂര്യ ഘർ എംപാനൽഡ് · ആദ്യം പ്രക്രിയ · കണ്ടുപിടിച്ച പ്രോജക്റ്റ് എണ്ണങ്ങളില്ല</p>
       <img src={`${base}/media/Artboard-2mnre.webp`} alt="PM സൂര്യ ഘർ എംപാനൽഡ് vendor (MNRE)" class="apt-hero__badge" width="160" height="56" />

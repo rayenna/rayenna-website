@@ -35,8 +35,8 @@ const filterLabels: Record<string, string> = {
       <p class="page-hero__sub">{ui.indexSub}</p>
       <p class="page-hero__count">{articleCountHint}</p>
       <div class="page-hero__actions">
-        <a href={`${mlPrefix}/contact/`} class="btn btn-primary">{ui.indexQuoteBtn}</a>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-outline-white">{ui.indexCalcBtn}</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary" data-analytics-location="blog_hero_calc">{ui.indexCalcBtn}</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-outline-white" data-analytics-location="blog_hero_quote">{ui.indexQuoteBtn}</a>
       </div>
     </div>
   </section>

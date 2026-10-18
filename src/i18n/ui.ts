@@ -109,8 +109,8 @@ const ui = {
     homeConvert: {
       heroMicro: 'Free site survey · Subsidy paperwork handled · PM Surya Ghar empanelled',
       heroPhone: 'Or call',
-      heroPrimary: 'Get Free Installation Quote',
-      heroSecondary: '☀️ Calculate My Savings',
+      heroPrimary: '☀️ Calculate My Savings',
+      heroSecondary: 'Get Free Installation Quote',
       heroSubtitle:
         "Kerala's PM Surya Ghar empanelled solar installer. Up to ₹78,000 PM Surya Ghar subsidy. Free site survey. Many homes now hit near-zero KSEB bills — payback in 3–5 years, then 25+ years of low-cost power.",
       whyNowLabel: 'Why Kerala homeowners are going solar in 2026',
@@ -430,8 +430,8 @@ const ui = {
     homeConvert: {
       heroMicro: 'സൗജന്യ സൈറ്റ് സർവേ · സബ്സിഡി രേഖകൾ കൈകാര്യം · PM സൂര്യ ഘർ എംപാനൽഡ്',
       heroPhone: 'അല്ലെങ്കിൽ വിളിക്കുക',
-      heroPrimary: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
-      heroSecondary: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
+      heroPrimary: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
+      heroSecondary: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
       heroSubtitle:
         'കേരളത്തിലെ PM സൂര്യ ഘർ എംപാനൽഡ് സോളാർ ഇൻസ്റ്റാളർ. PM സൂര്യ ഘർ സബ്സിഡി ₹78,000 വരെ. സൗജന്യ സൈറ്റ് സർവേ. പല വീടുകളും ഇപ്പോൾ KSEB ബിൽ ശൂന്യത്തോട് അടുക്കുന്നു — 3–5 വർഷത്തിൽ നിക്ഷേപം തിരിച്ചെടുക്കാം, അതിനുശേഷം 25+ വർഷം കുറഞ്ഞ ചെലവിൽ വൈദ്യുതി.',
       whyNowLabel: '2026-ൽ കേരള വീട്ടുടമകൾ എന്തുകൊണ്ട് സോളാറിലേക്ക് പോകുന്നു',

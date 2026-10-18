@@ -246,8 +246,8 @@ const installCount = installations.length;
       <h1 class="page-hero__title">കേരളമെമ്പാടും<br />സോളാർ ഇൻസ്റ്റാളേഷനുകൾ</h1>
       <p class="page-hero__sub">യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകൾ. യഥാർത്ഥ സമ്പാദ്യം. കേരളത്തിലെ പൂർത്തിയാക്കിയ പ്രോജക്റ്റുകൾ.</p>
       <div class="page-hero__actions">
-        <a href="#gallery-section" class="btn btn-primary">ഇൻസ്റ്റാളേഷനുകൾ കാണുക</a>
-        <a href="#video-library" class="btn btn-outline-white">വീഡിയോകൾ കാണുക</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary" data-analytics-location="media_hero_calc">☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക</a>
+        <a href="#gallery-section" class="btn btn-outline-white" data-analytics-location="media_hero_gallery">ഇൻസ്റ്റാളേഷനുകൾ കാണുക</a>
       </div>
     </div>
     <button
@@ -653,8 +653,8 @@ const installCount = installations.length;
       <h2 class="cta-banner__title">അടുത്ത വിജയഗാഥ നിങ്ങളുടേതാണോ?</h2>
       <p class="cta-banner__sub">കേരളമെമ്പാടുമുള്ള നൂറുകണക്കിന് കുടുംബങ്ങളും ബിസിനസുകളും റയെന്നയോടൊപ്പം ഊർജ്ജ സ്വതന്ത്രരാകുന്നു. ആ യാത്രയിൽ നിങ്ങൾക്കും ചേരണ്ടേ?</p>
       <div class="cta-banner__actions">
-        <a href={`${mlPrefix}/contact/`} class="btn btn-primary cta-banner__btn">സൗജന്യ ക്വോട്ട് നേടുക</a>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary cta-banner__btn">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary cta-banner__btn" data-analytics-location="media_banner_calc">☀️ സമ്പാദ്യം കണക്കാക്കുക</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-primary cta-banner__btn" data-analytics-location="media_banner_quote">സൗജന്യ ക്വോട്ട് നേടുക</a>
       </div>
     </div>
   </section>

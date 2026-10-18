@@ -21,8 +21,8 @@ export const blogUiEn = {
   indexTitle: 'Solar Insights for Kerala Homes',
   indexSub:
     'Expert guides on costs, ₹78,000 subsidy, KSEB rules, zero bills, and installation — from Kochi’s PM Surya Ghar empanelled installer.',
+  indexCalcBtn: '☀️ Calculate My Savings',
   indexQuoteBtn: 'Get Free Installation Quote',
-  indexCalcBtn: 'Calculate My Savings',
   indexSearchPlaceholder: 'Search articles…',
   indexPopularLabel: 'Popular in 2026',
   indexFeaturedBadge: 'Latest',
@@ -68,8 +68,8 @@ export const blogUiMlStrings = {
   indexTitle: 'കേരള വീടുകൾക്കുള്ള സോളാർ ലേഖനങ്ങൾ',
   indexSub:
     'ചെലവ്, ₹78,000 സബ്സിഡി, KSEB നിയമങ്ങൾ, ശൂന്യ ബിൽ, ഇൻസ്റ്റാളേഷൻ — കൊച്ചിയിലെ MNRE-അംഗീകൃത ഇൻസ്റ്റാളറിൽ നിന്ന് വിദഗ്ധ ഗൈഡുകൾ.',
+  indexCalcBtn: '☀️ എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
   indexQuoteBtn: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
-  indexCalcBtn: 'എന്റെ സമ്പാദ്യം കണക്കാക്കുക',
   indexSearchPlaceholder: 'ലേഖനം തിരയുക…',
   indexPopularLabel: '2026-ൽ ജനപ്രിയം',
   indexFeaturedBadge: 'ഏറ്റവും പുതിയത്',

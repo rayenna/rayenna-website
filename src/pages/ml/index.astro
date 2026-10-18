@@ -38,8 +38,8 @@ const t = useTranslations('ml');
         </div>
       </div>
       <div class="hero-cta-wrapper">
-        <a href={`${mlPrefix}/contact/`} class="btn btn-hero-primary hero-btn-primary">{t.homeConvert.heroPrimary}</a>
-        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-hero-outline hero-btn-secondary">{t.homeConvert.heroSecondary}</a>
+        <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-hero-primary hero-btn-primary" data-analytics-location="home_hero_calc">{t.homeConvert.heroPrimary}</a>
+        <a href={`${mlPrefix}/contact/`} class="btn btn-hero-outline hero-btn-secondary" data-analytics-location="home_hero_quote">{t.homeConvert.heroSecondary}</a>
       </div>
       <p class="hero-cta-micro">{t.homeConvert.heroMicro}</p>
       <p class="hero-phone-cta">
@@ -340,7 +340,7 @@ const t = useTranslations('ml');
           <p>{t.homeConvert.calcCtaSub}</p>
         </div>
         <div class="calc-cta-actions">
-          <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary calc-cta-btn">{t.homeConvert.heroSecondary} →</a>
+          <a href={`${mlPrefix}/solar-calculator/`} class="btn btn-primary calc-cta-btn" data-analytics-location="home_mid_calc">{t.homeConvert.heroPrimary} →</a>
           <a href={`${mlPrefix}/contact/`} class="text-cta calc-cta-secondary-link">{t.homeConvert.midLinkQuote}</a>
         </div>
       </div>
