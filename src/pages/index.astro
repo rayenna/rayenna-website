@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CorporateVideoSection from '../components/CorporateVideoSection.astro';
+import SolarNewsTicker from '../components/SolarNewsTicker.astro';
 import { OG } from '../i18n/og-images';
 import { useTranslations } from '../i18n/ui';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -42,6 +43,13 @@ const t = useTranslations('en');
       </p>
     </div>
   </section>
+
+  <!-- ===== SOLAR NEWS TICKER ===== -->
+  <div class="home-news-ticker">
+    <div class="container">
+      <SolarNewsTicker variant="inline" theme="light" label="Solar News" />
+    </div>
+  </div>
 
   <!-- ===== WHY NOW 2026 ===== -->
   <section class="why-now" data-reveal>
@@ -583,11 +591,21 @@ const t = useTranslations('en');
   .hero-btn-primary, .hero-btn-secondary { width: auto; }
 }
 
+/* ===== SOLAR NEWS TICKER (under hero) ===== */
+.home-news-ticker {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  padding: 8px 0 4px;
+  margin: 0;
+  min-width: 0;
+}
+
 /* ===== WHY NOW ===== */
 .why-now {
   position: relative;
   z-index: 2;
-  padding: 36px 0 36px;
+  padding: 28px 0 36px;
   background: #fff;
   border-bottom: 1px solid var(--color-border);
 }
