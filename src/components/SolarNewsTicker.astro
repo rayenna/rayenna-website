@@ -16,7 +16,11 @@ const {
   label = 'Solar News',
 } = Astro.props;
 
-const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
+// Hardcoded like ChatWidget so GitHub Pages builds keep a working endpoint
+// even when PUBLIC_NEWS_TICKER_URL is not set in CI.
+const workerUrl =
+  import.meta.env.PUBLIC_NEWS_TICKER_URL ||
+  'https://winter-bonus-58ad.rayennasolar.workers.dev';
 ---
 
 <div
@@ -26,9 +30,9 @@ const workerUrl = import.meta.env.PUBLIC_NEWS_TICKER_URL || '';
   <solar-news-ticker
     theme={theme}
     label={label}
+    endpoint={workerUrl}
     refresh-ms="1800000"
     max-items="20"
-    {...(workerUrl ? { endpoint: workerUrl } : {})}
   ></solar-news-ticker>
 </div>
 

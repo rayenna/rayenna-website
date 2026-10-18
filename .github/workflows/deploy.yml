@@ -31,6 +31,9 @@ jobs:
         run: npm ci
 
       - name: Build Astro site
+        env:
+          # Optional override; component also hardcodes the production Worker URL
+          PUBLIC_NEWS_TICKER_URL: ${{ secrets.PUBLIC_NEWS_TICKER_URL }}
         run: npm run build
 
       - name: Upload Pages artifact
