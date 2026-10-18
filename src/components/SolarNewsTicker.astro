@@ -113,7 +113,7 @@ class SolarNewsTicker extends HTMLElement {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          font: 800 10px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+          font: 800 11px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
           letter-spacing: .22em;
           text-transform: uppercase;
           white-space: nowrap;
@@ -187,14 +187,14 @@ class SolarNewsTicker extends HTMLElement {
         .icon svg { width: 12px; height: 12px; }
 
         .headline {
-          font: 500 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+          font: 500 13px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
           color: var(--sn-accent);
           transition: opacity .15s ease;
         }
         .item:hover .headline { opacity: .8; }
 
         .tag {
-          font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
           letter-spacing: .07em;
           text-transform: uppercase;
           padding: 3px 7px;
@@ -203,11 +203,11 @@ class SolarNewsTicker extends HTMLElement {
           opacity: .9;
         }
 
-        .sep { color: var(--sn-muted); padding-left: 6px; font-size: 11px; }
+        .sep { color: var(--sn-muted); padding-left: 6px; font-size: 12px; }
 
         @media (max-width: 480px) {
-          .label { letter-spacing: .12em; font-size: 9px; }
-          .headline { font-size: 11px; }
+          .label { letter-spacing: .12em; font-size: 10px; }
+          .headline { font-size: 12px; }
           .tag { display: none; }
         }
       </style>
