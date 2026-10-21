@@ -107,7 +107,7 @@ const pc = t.pageConvert.services;
         <a href={`${base}/apartments-housing-societies/`} class="service-calc-cta">Apartments &amp; Societies page →</a>
       </div>
       <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="Rooftop solar for apartment buildings in Kerala" loading="lazy" />
+        <img src={`${base}/media/apartments-solar.webp`} alt="Rooftop solar for apartment buildings in Kerala" loading="lazy" />
         <div class="service-block__badge">02</div>
       </div>
     </div>
@@ -376,9 +376,13 @@ const pc = t.pageConvert.services;
   width: 100%;
   height: 260px;
   object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   display: block;
+}
+#apartments .service-block__image img {
+  object-position: center 38%;
 }
 .service-block__badge {
   position: absolute;
