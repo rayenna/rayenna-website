@@ -97,9 +97,30 @@ const pc = t.pageConvert.services;
     </div>
   </section>
 
-  <!-- ===== SERVICE 2: COMMERCIAL ===== -->
-  <section class="service-block" id="commercial">
+  <!-- ===== SERVICE 2: APARTMENTS & SOCIETIES ===== -->
+  <section class="service-block" id="apartments">
     <div class="container service-block__inner service-block__inner--flip">
+      <div class="service-block__content">
+        <span class="section-tag">കമ്മിറ്റികളും RWA-കളും</span>
+        <h2 class="section-title">അപ്പാർട്ട്മെന്റുകളും ഹൗസിംഗ് സൊസൈറ്റികളും</h2>
+        <p>കോമൺ ഏരിയ ലോഡുകൾ — ലിഫ്റ്റ്, പമ്പ്, ലൈട്ടിംഗ് — പലപ്പോഴും പകൽ പ്രവർത്തിക്കുന്നു. അപ്പാർട്ട്മെന്റ് അസോസിയേഷനുകള്ക്കും ഹൗസിംഗ് സൊസൈറ്റികള്ക്കും ഞങ്ങൾ സൗജന്യ സാധ്യതാ പഠനത്തിനോടെ ആരംഭിക്കുന്നു. കൃത്രിമ പ്രോജക്റ്റ് കണക്കുകളില്ല; ആദ്യം പ്രക്രിയയും വ്യക്തതയും.</p>
+        <p>മൂന്ന് മീറ്ററിംഗ് വഴികളും സൊസൈറ്റി സബ്സിഡി ഉദാഹരണവും കാണുക; നിങ്ങളുടെ കെട്ടിടത്തിന് പഠനം അഭ്യര്ത്ഥിക്കുക.</p>
+        <a href={`${mlPrefix}/apartments-housing-societies/`} class="service-calc-cta">അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും പേജ് →</a>
+      </div>
+      <div class="service-block__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="കേരളത്തിലെ അപ്പാർട്ട്മെന്റ് കെട്ടിടങ്ങൾക്ക് മേൽക്കൂര സോളാർ" loading="lazy" />
+        <div class="service-block__badge">02</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 3: COMMERCIAL ===== -->
+  <section class="service-block service-block--alt" id="commercial">
+    <div class="container service-block__inner">
+      <div class="service-block__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="കമർഷ്യൽ സോളാർ ഇൻസ്റ്റാളേഷൻ" />
+        <div class="service-block__badge">03</div>
+      </div>
       <div class="service-block__content">
         <span class="section-tag">ബിസിനസും വ്യവസായവും</span>
         <h2 class="section-title">ബിസിനസ്സിനുള്ള സോളാർ സേവനങ്ങൾ</h2>
@@ -118,20 +139,12 @@ const pc = t.pageConvert.services;
           ))}
         </div>
       </div>
-      <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="കമർഷ്യൽ സോളാർ ഇൻസ്റ്റാളേഷൻ" />
-        <div class="service-block__badge">02</div>
-      </div>
     </div>
   </section>
 
-  <!-- ===== SERVICE 3: CONSULTATION ===== -->
-  <section class="service-block service-block--alt" id="consultation">
-    <div class="container service-block__inner">
-      <div class="service-block__image">
-        <img src={`${base}/media/Hardshell-solar.webp`} alt="സോളാർ ഊർജ്ജ കൺസൾട്ടേഷൻ" />
-        <div class="service-block__badge">03</div>
-      </div>
+  <!-- ===== SERVICE 4: CONSULTATION ===== -->
+  <section class="service-block" id="consultation">
+    <div class="container service-block__inner service-block__inner--flip">
       <div class="service-block__content">
         <span class="section-tag">വിദഗ്ധ ഉപദേശം</span>
         <h2 class="section-title">കൺസൾട്ടേഷൻ സേവനങ്ങൾ</h2>
@@ -156,21 +169,8 @@ const pc = t.pageConvert.services;
         </div>
         <a href={`${mlPrefix}/solar-calculator/`} class="service-calc-cta">ശരിയായ സിസ്റ്റം വലുപ്പം കണ്ടെത്തുക → കാൽക്കുലേറ്റർ പരീക്ഷിക്കുക</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== APARTMENTS & SOCIETIES ===== -->
-  <section class="service-block" id="apartments">
-    <div class="container service-block__inner service-block__inner--flip">
-      <div class="service-block__content">
-        <span class="section-tag">കമ്മിറ്റികളും RWA-കളും</span>
-        <h2 class="section-title">അപ്പാർട്ട്മെന്റുകളും ഹൗസിംഗ് സൊസൈറ്റികളും</h2>
-        <p>കോമൺ ഏരിയ ലോഡുകൾ — ലിഫ്റ്റ്, പമ്പ്, ലൈട്ടിംഗ് — പലപ്പോഴും പകൽ പ്രവർത്തിക്കുന്നു. അപ്പാർട്ട്മെന്റ് അസോസിയേഷനുകള്ക്കും ഹൗസിംഗ് സൊസൈറ്റികള്ക്കും ഞങ്ങൾ സൗജന്യ സാധ്യതാ പഠനത്തിനോടെ ആരംഭിക്കുന്നു. കൃത്രിമ പ്രോജക്റ്റ് കണക്കുകളില്ല; ആദ്യം പ്രക്രിയയും വ്യക്തതയും.</p>
-        <p>മൂന്ന് മീറ്ററിംഗ് വഴികളും സൊസൈറ്റി സബ്സിഡി ഉദാഹരണവും കാണുക; നിങ്ങളുടെ കെട്ടിടത്തിന് പഠനം അഭ്യര്ത്ഥിക്കുക.</p>
-        <a href={`${mlPrefix}/apartments-housing-societies/`} class="service-calc-cta">അപ്പാർട്ട്മെന്റുകളും സൊസൈറ്റികളും പേജ് →</a>
-      </div>
       <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="കേരളത്തിലെ അപ്പാർട്ട്മെന്റ് കെട്ടിടങ്ങൾക്ക് മേൽക്കൂര സോളാർ" loading="lazy" />
+        <img src={`${base}/media/Hardshell-solar.webp`} alt="സോളാർ ഊർജ്ജ കൺസൾട്ടേഷൻ" />
         <div class="service-block__badge">04</div>
       </div>
     </div>
@@ -652,7 +652,7 @@ const pc = t.pageConvert.services;
   /* Reset mobile order so DOM order controls layout on desktop */
   .service-block__image { order: unset; }
   .service-block__content { order: unset; }
-  /* Flip: push image to right column for commercial section */
+  /* Flip: push image to right column (even-numbered service blocks) */
   .service-block__inner--flip .service-block__image { order: 1; }
   .service-block__image {
     overflow: visible;

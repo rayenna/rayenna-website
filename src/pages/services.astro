@@ -96,9 +96,30 @@ const pc = t.pageConvert.services;
     </div>
   </section>
 
-  <!-- ===== SERVICE 2: COMMERCIAL ===== -->
-  <section class="service-block" id="commercial">
+  <!-- ===== SERVICE 2: APARTMENTS & SOCIETIES ===== -->
+  <section class="service-block" id="apartments">
     <div class="container service-block__inner service-block__inner--flip">
+      <div class="service-block__content">
+        <span class="section-tag">Committees &amp; RWAs</span>
+        <h2 class="section-title">Apartments &amp; Housing Societies</h2>
+        <p>Common-area loads — lifts, pumps and lighting — often run in daytime hours, when panels generate. We begin with a free feasibility study for apartment associations and housing societies. No invented project counts; process and clarity first.</p>
+        <p>See the three metering routes, the society subsidy illustration, and request a study for your building.</p>
+        <a href={`${base}/apartments-housing-societies/`} class="service-calc-cta">Apartments &amp; Societies page →</a>
+      </div>
+      <div class="service-block__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="Rooftop solar for apartment buildings in Kerala" loading="lazy" />
+        <div class="service-block__badge">02</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE 3: COMMERCIAL ===== -->
+  <section class="service-block service-block--alt" id="commercial">
+    <div class="container service-block__inner">
+      <div class="service-block__image">
+        <img src={`${base}/media/Plan-solar.webp`} alt="Commercial solar installation" />
+        <div class="service-block__badge">03</div>
+      </div>
       <div class="service-block__content">
         <span class="section-tag">Business & Industry</span>
         <h2 class="section-title">Commercial Services</h2>
@@ -118,20 +139,12 @@ const pc = t.pageConvert.services;
           ))}
         </div>
       </div>
-      <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="Commercial solar installation" />
-        <div class="service-block__badge">02</div>
-      </div>
     </div>
   </section>
 
-  <!-- ===== SERVICE 3: CONSULTATION ===== -->
-  <section class="service-block service-block--alt" id="consultation">
-    <div class="container service-block__inner">
-      <div class="service-block__image">
-        <img src={`${base}/media/Hardshell-solar.webp`} alt="Solar energy consultation" />
-        <div class="service-block__badge">03</div>
-      </div>
+  <!-- ===== SERVICE 4: CONSULTATION ===== -->
+  <section class="service-block" id="consultation">
+    <div class="container service-block__inner service-block__inner--flip">
       <div class="service-block__content">
         <span class="section-tag">Expert Guidance</span>
         <h2 class="section-title">Consultation Services</h2>
@@ -156,21 +169,8 @@ const pc = t.pageConvert.services;
         </div>
         <a href={`${base}/solar-calculator`} class="service-calc-cta">Find the right system size → Try the Calculator</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== APARTMENTS & SOCIETIES ===== -->
-  <section class="service-block" id="apartments">
-    <div class="container service-block__inner service-block__inner--flip">
-      <div class="service-block__content">
-        <span class="section-tag">Committees &amp; RWAs</span>
-        <h2 class="section-title">Apartments &amp; Housing Societies</h2>
-        <p>Common-area loads — lifts, pumps and lighting — often run in daytime hours, when panels generate. We begin with a free feasibility study for apartment associations and housing societies. No invented project counts; process and clarity first.</p>
-        <p>See the three metering routes, the society subsidy illustration, and request a study for your building.</p>
-        <a href={`${base}/apartments-housing-societies/`} class="service-calc-cta">Apartments &amp; Societies page →</a>
-      </div>
       <div class="service-block__image">
-        <img src={`${base}/media/Plan-solar.webp`} alt="Rooftop solar for apartment buildings in Kerala" loading="lazy" />
+        <img src={`${base}/media/Hardshell-solar.webp`} alt="Solar energy consultation" />
         <div class="service-block__badge">04</div>
       </div>
     </div>
@@ -650,7 +650,7 @@ const pc = t.pageConvert.services;
   /* Reset mobile order so DOM order controls layout on desktop */
   .service-block__image { order: unset; }
   .service-block__content { order: unset; }
-  /* Flip: push image to right column for commercial section */
+  /* Flip: push image to right column (even-numbered service blocks) */
   .service-block__inner--flip .service-block__image { order: 1; }
   .service-block__image {
     overflow: visible;
