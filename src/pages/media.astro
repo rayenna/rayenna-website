@@ -203,6 +203,45 @@ const imageGallerySchema = {
 };
 
 const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/media/`);
+
+const testimonials = [
+  {
+    initials: 'AR',
+    name: 'Arun',
+    meta: 'Kollam · 5 kW system',
+    quote: 'Rayenna\'s team was exceptionally helpful and knowledgeable. After going solar, I switched my kitchen stoves from LPG to induction — my electricity bill dropped, and so did my LPG costs. Double savings!',
+  },
+  {
+    initials: 'SU',
+    name: 'Sudheer',
+    meta: 'Ernakulam · 3 kW system',
+    quote: 'The Rayenna team was helpful and supportive at every stage — from the first call to final installation. They delivered at a very competitive price, and the quality made it exceptional value. Thoroughly satisfied!',
+  },
+  {
+    initials: 'BJ',
+    name: 'Baiju',
+    meta: 'Ernakulam · 10 kW system',
+    quote: 'Rayenna\'s team truly impressed me — professional, helpful, and knowledgeable. Their pricing is unbeatable, and their support doesn\'t stop after installation. I\'ve already recommended them to several of my contacts and will continue to do so!',
+  },
+  {
+    initials: 'SB',
+    name: 'Snoby Babu',
+    meta: 'Thrikkakkara · 5 kW system',
+    quote: 'Excellent experience with Rayenna Solar. From briefing to installation, their team guided every stage with professionalism and transparency. The final setup exceeded my expectations. Dedicated, precise, and stress-free throughout. Highly recommend!',
+  },
+  {
+    initials: 'ST',
+    name: 'Sinto Thomas',
+    meta: '',
+    quote: 'Excellent experience with Rayenna Energy for our solar installation. The team was professional, responsive and completed the work efficiently. The quality of work and overall service were very good. Highly recommended for anyone planning to go solar.',
+  },
+  {
+    initials: 'MR',
+    name: 'Mahima Reghunath',
+    meta: '',
+    quote: 'Excellent service and a very good experience overall. The team was professional, friendly and responsive throughout. They explained everything clearly, completed the installation efficiently and answered all our queries. Really happy with the quality of work and after-sales support. Highly recommended.',
+  },
+];
 ---
 <Layout
   title="Solar Installation Gallery & Videos | Rayenna Energy Kerala Projects"
@@ -578,62 +617,26 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section class="testimonials-section">
+  <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
     <div class="container">
       <div class="testimonials-header">
         <span class="section-tag section-tag--light">Customer Stories</span>
-        <h2 class="section-title section-title--light">What Our Customers Say</h2>
+        <h2 class="section-title section-title--light" id="testimonials-heading">What Our Customers Say</h2>
       </div>
-      <div class="testi-grid">
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Rayenna's team was exceptionally helpful and knowledgeable. After going solar, I switched my kitchen stoves from LPG to induction — my electricity bill dropped, and so did my LPG costs. Double savings!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">AR</div>
-            <div>
-              <strong>Arun</strong>
-              <span>Kollam · 5 kW system</span>
+      <div class="testi-track" role="list">
+        {testimonials.map((t) => (
+          <article class="testi-real-card" role="listitem">
+            <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testi-quote">{t.quote}</p>
+            <div class="testi-author">
+              <div class="testi-avatar" aria-hidden="true">{t.initials}</div>
+              <div>
+                <strong>{t.name}</strong>
+                {t.meta && <span>{t.meta}</span>}
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">The Rayenna team was helpful and supportive at every stage — from the first call to final installation. They delivered at a very competitive price, and the quality made it exceptional value. Thoroughly satisfied!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SU</div>
-            <div>
-              <strong>Sudheer</strong>
-              <span>Ernakulam · 3 kW system</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Rayenna's team truly impressed me — professional, helpful, and knowledgeable. Their pricing is unbeatable, and their support doesn't stop after installation. I've already recommended them to several of my contacts and will continue to do so!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">BJ</div>
-            <div>
-              <strong>Baiju</strong>
-              <span>Ernakulam · 10 kW system</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Excellent experience with Rayenna Solar. From briefing to installation, their team guided every stage with professionalism and transparency. The final setup exceeded my expectations. Dedicated, precise, and stress-free throughout. Highly recommend!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SB</div>
-            <div>
-              <strong>Snoby Babu</strong>
-              <span>Thrikkakkara · 5 kW system</span>
-            </div>
-          </div>
-        </div>
-
+          </article>
+        ))}
       </div>
       <div class="testimonials-cta-row">
         <a href={`${base}/contact`} class="btn testimonials-cta">Share Your Experience →</a>
@@ -1741,12 +1744,14 @@ body.gf-sheet-open {
   align-items: center;
   gap: 12px;
 }
-.testi-grid {
+.testi-track {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 16px;
+  align-items: stretch;
 }
 .testi-real-card {
+  min-width: 0;
   background: rgba(255,255,255,0.13);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1756,11 +1761,10 @@ body.gf-sheet-open {
   flex-direction: column;
   gap: 16px;
   border: 1px solid rgba(255,255,255,0.18);
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition);
 }
 .testi-real-card:hover {
   background: rgba(255,255,255,0.2);
-  transform: translateY(-3px);
 }
 .testi-stars {
   color: #fde68a;
@@ -1773,6 +1777,7 @@ body.gf-sheet-open {
   line-height: 1.85;
   font-style: italic;
   flex: 1;
+  overflow-wrap: break-word;
 }
 .testi-quote::before { content: '\201C'; }
 .testi-quote::after  { content: '\201D'; }
@@ -1823,10 +1828,15 @@ body.gf-sheet-open {
   color: var(--color-primary);
 }
 @media (min-width: 640px) {
-  .testi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .testi-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
 }
 @media (min-width: 1100px) {
-  .testi-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .testi-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* ===== CTA BANNER ===== */

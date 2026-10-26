@@ -207,6 +207,45 @@ const imageGallerySchema = {
 
 const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/ml/media/`);
 const installCount = installations.length;
+
+const testimonials = [
+  {
+    initials: 'AR',
+    name: 'Arun',
+    meta: 'കൊല്ലം · 5 kW സിസ്റ്റം',
+    quote: 'റയെന്ന ടീം — ഒന്നൊന്നര തന്നെ. അറിവും സഹായ മനോഭാവവും ഒരുപോലെ. സോളാർ വന്നതിനുശേഷം ഞാൻ സ്റ്റൗ ഇൻഡക്ഷനിലേക്ക് മാറ്റി — KSEB ബിൽ കുറഞ്ഞു, LPG ഉപഭോഗവും കുറഞ്ഞു. രണ്ടും ഒരുമിച്ച് ലാഭം!',
+  },
+  {
+    initials: 'SU',
+    name: 'Sudheer',
+    meta: 'എറണാകുളം · 3 kW സിസ്റ്റം',
+    quote: 'തുടക്കം മുതൽ അവസാനം വരെ റയെന്ന ടീം ഒപ്പം നിന്നു — ഒരു ടെൻഷനും ഇല്ലാതെ. വില കേട്ടപ്പോൾ ഞാൻ ആദ്യം അത്ഭുതപ്പെട്ടു — ഇത്ര നല്ല സർവീസിന് ഇത്രയും കുറഞ്ഞ നിരക്കോ? പൈസ ഈടാക്കുന്നതിലും കൂടുതൽ മൂല്യം തരുന്ന ടീം.',
+  },
+  {
+    initials: 'BJ',
+    name: 'Baiju',
+    meta: 'എറണാകുളം · 10 kW സിസ്റ്റം',
+    quote: 'ടീമിന്റെ സമീപനവും പ്രൊഫഷണലിസവും എനിക്ക് ശരിക്കും ഇഷ്ടപ്പെട്ടു. വളരെ സഹായകരവും അറിവുള്ളവരും — വിലയിലും ആരെക്കാളും മികച്ചവർ. ഇൻസ്റ്റാളേഷന് ശേഷവും അവരുടെ പിന്തുണ ഒന്നൊന്നര തന്നെ. എന്റെ പരിചയക്കാർക്ക് പലർക്കും ഞാൻ ഇതിനകം ശുപാർശ ചെയ്തിട്ടുണ്ട് — ഇനിയും ചെയ്യും.',
+  },
+  {
+    initials: 'SB',
+    name: 'Snoby Babu',
+    meta: 'തൃക്കാക്കര · 5 kW സിസ്റ്റം',
+    quote: 'റയെന്ന സോളാറുമായുള്ള അനുഭവം മികച്ചതായിരുന്നു. പ്ലാൻ മുതൽ ഇൻസ്റ്റാളേഷൻ വരെ — ഓരോ ഘട്ടത്തിലും ടീം പ്രൊഫഷണലിസത്തോടും സുതാര്യതയോടും കൂടെ നയിച്ചു. അന്തിമ സെറ്റപ്പ് എന്റെ പ്രതീക്ഷകൾ കവിഞ്ഞു. തുടക്കം മുതൽ അവസാനം വരെ — ഒരു തടസ്സവുമില്ലാതെ, മികവോടെ, ഒരു ടെൻഷനും ഇല്ലാതെ. അവരെ ഞാൻ നിശ്ചയമായും ശുപാർശ ചെയ്യും!',
+  },
+  {
+    initials: 'ST',
+    name: 'Sinto Thomas',
+    meta: '',
+    quote: 'Rayenna Energy വഴി സോളാർ സ്ഥാപിച്ചത് മികച്ച അനുഭവമായിരുന്നു. ടീം പ്രൊഫഷണലും വേഗത്തിൽ പ്രതികരിക്കുന്നവരുമായിരുന്നു; ഇൻസ്റ്റലേഷൻ കാര്യക്ഷമമായി പൂർത്തിയാക്കുകയും ചെയ്തു. ജോലിയുടെ ഗുണനിലവാരവും മൊത്തത്തിലുള്ള സേവനവും വളരെ മികച്ചതായിരുന്നു. സോളാർ സ്ഥാപിക്കാൻ ആലോചിക്കുന്ന എല്ലാവർക്കും ഉറപ്പായും ശുപാർശ ചെയ്യുന്നു.',
+  },
+  {
+    initials: 'MR',
+    name: 'Mahima Reghunath',
+    meta: '',
+    quote: 'മികച്ച സേവനവും വളരെ നല്ല അനുഭവവും. ടീം തുടക്കം മുതൽ അവസാനം വരെ പ്രൊഫഷണലും സൗഹൃദപരവും വേഗത്തിൽ പ്രതികരിക്കുന്നവരുമായിരുന്നു. എല്ലാം വ്യക്തമായി വിശദീകരിച്ചു, ഇൻസ്റ്റലേഷൻ കാര്യക്ഷമമായി പൂർത്തിയാക്കി, ഞങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും മറുപടി നൽകി. ജോലിയുടെ ഗുണനിലവാരത്തിലും വിൽപ്പനാനന്തര സേവനത്തിലും ഏറെ സന്തുഷ്ടരാണ്. ഉറപ്പായും ശുപാർശ ചെയ്യുന്നു.',
+  },
+];
 ---
 <Layout
   lang="ml"
@@ -583,63 +622,27 @@ const installCount = installations.length;
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section class="testimonials-section">
+  <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
     <div class="container">
       <div class="testimonials-header">
         <span class="section-tag section-tag--light">ഉപഭോക്തൃ അനുഭവങ്ങൾ</span>
-        <h2 class="section-title section-title--light">കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്</h2>
+        <h2 class="section-title section-title--light" id="testimonials-heading">കേരളത്തിലെ വീട്ടുടമസ്ഥർ പറയുന്നത്</h2>
         <p class="testimonials-intro testimonials-intro--light">കേരളമെമ്പാടുള്ള യഥാർത്ഥ ഇൻസ്റ്റാളേഷനുകളുടെ ഫലങ്ങൾ. റയെന്ന ഇൻസ്റ്റാൾ ചെയ്യുന്ന ഓരോ സിസ്റ്റത്തിനും 25 വർഷ പെർഫോർമൻസ് വാറന്റിയും പൂർണ്ണ പിന്തുണയും.</p>
       </div>
-      <div class="testi-grid">
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">റയെന്ന ടീം — ഒന്നൊന്നര തന്നെ. അറിവും സഹായ മനോഭാവവും ഒരുപോലെ. സോളാർ വന്നതിനുശേഷം ഞാൻ സ്റ്റൗ ഇൻഡക്ഷനിലേക്ക് മാറ്റി — KSEB ബിൽ കുറഞ്ഞു, LPG ഉപഭോഗവും കുറഞ്ഞു. രണ്ടും ഒരുമിച്ച് ലാഭം!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">AR</div>
-            <div>
-              <strong>Arun</strong>
-              <span>കൊല്ലം · 5 kW സിസ്റ്റം</span>
+      <div class="testi-track" role="list">
+        {testimonials.map((t) => (
+          <article class="testi-real-card" role="listitem">
+            <div class="testi-stars" aria-label="5 / 5 നക്ഷത്രം">★★★★★</div>
+            <p class="testi-quote">{t.quote}</p>
+            <div class="testi-author">
+              <div class="testi-avatar" aria-hidden="true">{t.initials}</div>
+              <div>
+                <strong>{t.name}</strong>
+                {t.meta && <span>{t.meta}</span>}
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">തുടക്കം മുതൽ അവസാനം വരെ റയെന്ന ടീം ഒപ്പം നിന്നു — ഒരു ടെൻഷനും ഇല്ലാതെ. വില കേട്ടപ്പോൾ ഞാൻ ആദ്യം അത്ഭുതപ്പെട്ടു — ഇത്ര നല്ല സർവീസിന് ഇത്രയും കുറഞ്ഞ നിരക്കോ? പൈസ ഈടാക്കുന്നതിലും കൂടുതൽ മൂല്യം തരുന്ന ടീം.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SU</div>
-            <div>
-              <strong>Sudheer</strong>
-              <span>എറണാകുളം · 3 kW സിസ്റ്റം</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">ടീമിന്റെ സമീപനവും പ്രൊഫഷണലിസവും എനിക്ക് ശരിക്കും ഇഷ്ടപ്പെട്ടു. വളരെ സഹായകരവും അറിവുള്ളവരും — വിലയിലും ആരെക്കാളും മികച്ചവർ. ഇൻസ്റ്റാളേഷന് ശേഷവും അവരുടെ പിന്തുണ ഒന്നൊന്നര തന്നെ. എന്റെ പരിചയക്കാർക്ക് പലർക്കും ഞാൻ ഇതിനകം ശുപാർശ ചെയ്തിട്ടുണ്ട് — ഇനിയും ചെയ്യും.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">BJ</div>
-            <div>
-              <strong>Baiju</strong>
-              <span>എറണാകുളം · 10 kW സിസ്റ്റം</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-real-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">റയെന്ന സോളാറുമായുള്ള അനുഭവം മികച്ചതായിരുന്നു. പ്ലാൻ മുതൽ ഇൻസ്റ്റാളേഷൻ വരെ — ഓരോ ഘട്ടത്തിലും ടീം പ്രൊഫഷണലിസത്തോടും സുതാര്യതയോടും കൂടെ നയിച്ചു. അന്തിമ സെറ്റപ്പ് എന്റെ പ്രതീക്ഷകൾ കവിഞ്ഞു. തുടക്കം മുതൽ അവസാനം വരെ — ഒരു തടസ്സവുമില്ലാതെ, മികവോടെ, ഒരു ടെൻഷനും ഇല്ലാതെ. അവരെ ഞാൻ നിശ്ചയമായും ശുപാർശ ചെയ്യും!</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SB</div>
-            <div>
-              <strong>Snoby Babu</strong>
-              <span>തൃക്കാക്കര · 5 kW സിസ്റ്റം</span>
-            </div>
-          </div>
-        </div>
-
+          </article>
+        ))}
       </div>
       <div class="testimonials-cta-row">
         <a href={`${mlPrefix}/contact/`} class="btn testimonials-cta">നിങ്ങളുടെ അനുഭവം പങ്കിടുക →</a>
@@ -1771,12 +1774,14 @@ body.gf-sheet-open {
   line-height: 1.8;
   font-size: 0.95rem;
 }
-.testi-grid {
+.testi-track {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 16px;
+  align-items: stretch;
 }
 .testi-real-card {
+  min-width: 0;
   background: rgba(255,255,255,0.13);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1786,11 +1791,10 @@ body.gf-sheet-open {
   flex-direction: column;
   gap: 16px;
   border: 1px solid rgba(255,255,255,0.18);
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition);
 }
 .testi-real-card:hover {
   background: rgba(255,255,255,0.2);
-  transform: translateY(-3px);
 }
 .testi-stars {
   color: #fde68a;
@@ -1803,6 +1807,7 @@ body.gf-sheet-open {
   line-height: 1.85;
   font-style: italic;
   flex: 1;
+  overflow-wrap: anywhere;
 }
 .testi-quote::before { content: '\201C'; }
 .testi-quote::after  { content: '\201D'; }
@@ -1853,10 +1858,15 @@ body.gf-sheet-open {
   color: var(--color-primary);
 }
 @media (min-width: 640px) {
-  .testi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .testi-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
 }
 @media (min-width: 1100px) {
-  .testi-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .testi-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* ===== CTA BANNER ===== */
