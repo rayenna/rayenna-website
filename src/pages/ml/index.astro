@@ -4,10 +4,14 @@ import CorporateVideoSection from '../../components/CorporateVideoSection.astro'
 import SolarNewsTicker from '../../components/SolarNewsTicker.astro';
 import { useTranslations } from '../../i18n/ui';
 import { OG } from '../../i18n/og-images';
+import { INSTALLATIONS, locationLabel } from '../../data/installations';
+import { TESTIMONIALS_ML } from '../../data/testimonials';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mlPrefix = '/ml';
 const t = useTranslations('ml');
+const previewInstalls = INSTALLATIONS.slice(0, 4);
+const previewTestimonials = TESTIMONIALS_ML.slice(0, 3);
 ---
 <Layout lang="ml"
   title="കേരളത്തിൽ സോളാർ ഇൻസ്റ്റാളേഷൻ | റയെന്ന എനർജി"
@@ -180,18 +184,13 @@ const t = useTranslations('ml');
         </div>
         <a href={`${mlPrefix}/media/`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
       </div>
-      <div class="installs-grid" role="list">
-        {[
-          { name: 'Arun',          location: 'കൊല്ലം',        cap: '5 kW', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Sessy Antony',  location: 'ചോറ്റാനിക്കര',  cap: '6 kW', img: 'SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
-          { name: 'Suresh',        location: 'ഇരൂർ',          cap: '4 kW', img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Dhanya V.T.',   location: 'തോപ്പുമ്പടി',   cap: '5 kW', img: 'DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-        ].map(item => (
+      <div class="installs-grid" id="home-installs" role="list">
+        {previewInstalls.map((item) => (
           <a href={`${mlPrefix}/media/`} class="install-card" role="listitem">
-            <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${item.location} — ${item.cap} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${locationLabel(item.location, 'ml')} — ${item.capacity} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
             <div class="install-card__overlay">
               <strong>{item.name}</strong>
-              <span>{item.location} · {item.cap}</span>
+              <span>{locationLabel(item.location, 'ml')} · {item.capacity}</span>
             </div>
           </a>
         ))}
@@ -243,44 +242,20 @@ const t = useTranslations('ml');
         <h2 class="section-title">{t.homeConvert.testimonialsTitle}</h2>
         <p class="testimonials-intro">{t.homeConvert.testimonialsIntro}</p>
       </div>
-      <div class="testimonials-grid">
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">റയെന്ന ടീം — ഒന്നൊന്നര തന്നെ. അറിവും സഹായ മനോഭാവവും ഒരുപോലെ. സോളാർ വന്നതിനുശേഷം ഞാൻ സ്റ്റൗ ഇൻഡക്ഷനിലേക്ക് മാറ്റി — KSEB ബിൽ കുറഞ്ഞു, LPG ഉപഭോഗവും കുറഞ്ഞു. രണ്ടും ഒരുമിച്ച് ലാഭം!</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">AR</div>
-            <div>
-              <strong>Arun</strong>
-              <span>കൊല്ലം · 5 kW സിസ്റ്റം</span>
+      <div class="testimonials-grid" id="home-testimonials">
+        {previewTestimonials.map((item) => (
+          <div class="tcard">
+            <div class="tcard__stars">★★★★★</div>
+            <p class="tcard__quote">{item.quote}</p>
+            <div class="tcard__author">
+              <div class="tcard__avatar">{item.initials}</div>
+              <div>
+                <strong>{item.name}</strong>
+                <span hidden={!item.meta}>{item.meta}</span>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">തുടക്കം മുതൽ അവസാനം വരെ റയെന്ന ടീം ഒപ്പം നിന്നു — ഒരു ടെൻഷനും ഇല്ലാതെ. വില കേട്ടപ്പോൾ ഞാൻ ആദ്യം അത്ഭുതപ്പെട്ടു — ഇത്ര നല്ല സർവീസിന് ഇത്രയും കുറഞ്ഞ നിരക്കോ? പൈസ ഈടാക്കുന്നതിലും കൂടുതൽ മൂല്യം തരുന്ന ടീം.</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">SU</div>
-            <div>
-              <strong>Sudheer</strong>
-              <span>എറണാകുളം · 3 kW സിസ്റ്റം</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">ടീമിന്റെ സമീപനവും പ്രൊഫഷണലിസവും എനിക്ക് ശരിക്കും ഇഷ്ടപ്പെട്ടു. വളരെ സഹായകരവും അറിവുള്ളവരും — വിലയിലും ആരെക്കാളും മികച്ചവർ. ഇൻസ്റ്റാളേഷന് ശേഷവും അവരുടെ പിന്തുണ ഒന്നൊന്നര തന്നെ. എന്റെ പരിചയക്കാർക്ക് പലർക്കും ഞാൻ ഇതിനകം ശുപാർശ ചെയ്തിട്ടുണ്ട് — ഇനിയും ചെയ്യും.</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">BJ</div>
-            <div>
-              <strong>Baiju</strong>
-              <span>എറണാകുളം · 10 kW സിസ്റ്റം</span>
-            </div>
-          </div>
-        </div>
-
+        ))}
       </div>
       <div class="testimonials-footer">
         <a href={`${mlPrefix}/media/`} class="text-cta">{t.homeConvert.testimonialsMore}</a>
@@ -1247,6 +1222,7 @@ const t = useTranslations('ml');
   line-height: 1.85;
   font-style: italic;
   flex: 1;
+  overflow-wrap: anywhere;
 }
 .tcard__quote::before { content: '\201C'; }
 .tcard__quote::after  { content: '\201D'; }
@@ -1765,6 +1741,16 @@ const t = useTranslations('ml');
 
 <script>
   import { trackEvent } from '../../lib/analytics';
+  import { INSTALLATIONS } from '../../data/installations';
+  import { TESTIMONIALS_ML } from '../../data/testimonials';
+  import { initHomeSpotlight } from '../../lib/home-spotlight';
+
+  initHomeSpotlight({
+    lang: 'ml',
+    imgBase: import.meta.env.BASE_URL.replace(/\/$/, ''),
+    installations: INSTALLATIONS,
+    testimonials: TESTIMONIALS_ML,
+  });
 
   const form = document.getElementById('connect-form') as HTMLFormElement | null;
   const feedback = document.getElementById('connect-feedback');

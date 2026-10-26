@@ -1,14 +1,14 @@
 ---
 description: Rules for adding new reference installation photos to the media page
-globs: src/pages/media.astro
+globs: src/data/installations.ts,src/pages/media.astro,src/pages/ml/media.astro
 alwaysApply: false
 ---
 
 # Adding Reference Installation Photos
 
-When new reference photos are added to `public/media/references/`, they MUST be added to **both** places in `src/pages/media.astro`:
+When new reference photos are added to `public/media/references/`, they MUST be added in **all** of these places:
 
-## 1. `installations` array (Completed Projects gallery)
+## 1. `INSTALLATIONS` in `src/data/installations.ts` (shared gallery + home preview)
 
 ```js
 { name: 'First Last', location: 'City', capacity: 'X kW', inverter: 'Brand', panels: 'Brand', img: 'FILENAME.jpeg' },
@@ -17,10 +17,15 @@ When new reference photos are added to `public/media/references/`, they MUST be 
 Parse name, location, capacity, inverter brand, and panel brand directly from the filename.
 Example: `ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg` → Arun, Kollam, 5 kW, Solis, Waaree
 
-## 2. `allSlides` array (Solar — Beautifully Done slideshow)
+If the city is new, also add it to `LOCATION_ML` in the same file.
+
+## 2. `allSlides` array in **both** media pages (Solar — Beautifully Done slideshow)
+
+- `src/pages/media.astro`
+- `src/pages/ml/media.astro`
 
 ```js
 { img: 'FILENAME.jpeg', caption: 'First Last — City', sub: 'X kW · Brand Inverter · Brand Panels' },
 ```
 
-Both additions are mandatory — never add to one without the other.
+All additions are mandatory — never add to one list without the others.

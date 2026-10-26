@@ -4,8 +4,12 @@ import CorporateVideoSection from '../components/CorporateVideoSection.astro';
 import SolarNewsTicker from '../components/SolarNewsTicker.astro';
 import { OG } from '../i18n/og-images';
 import { useTranslations } from '../i18n/ui';
+import { INSTALLATIONS, locationLabel } from '../data/installations';
+import { TESTIMONIALS_EN } from '../data/testimonials';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = useTranslations('en');
+const previewInstalls = INSTALLATIONS.slice(0, 4);
+const previewTestimonials = TESTIMONIALS_EN.slice(0, 3);
 ---
 <Layout
   title="Solar Panel Installation in Kerala | Rayenna Energy"
@@ -170,18 +174,13 @@ const t = useTranslations('en');
         </div>
         <a href={`${base}/media/`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
       </div>
-      <div class="installs-grid" role="list">
-        {[
-          { name: 'Arun',          location: 'Kollam',        cap: '5 kW', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Sessy Antony',  location: 'Chottanikkara', cap: '6 kW', img: 'SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
-          { name: 'Suresh',        location: 'Eroor',         cap: '4 kW', img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-          { name: 'Dhanya V.T.',   location: 'Thoppumpady',   cap: '5 kW', img: 'DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-        ].map(item => (
+      <div class="installs-grid" id="home-installs" role="list">
+        {previewInstalls.map((item) => (
           <a href={`${base}/media/`} class="install-card" role="listitem">
-            <img src={`${base}/media/references/${item.img}`} alt={`${item.cap} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
+            <img src={`${base}/media/references/${item.img}`} alt={`${item.capacity} solar installation for ${item.name} in ${item.location}`} loading="lazy" />
             <div class="install-card__overlay">
               <strong>{item.name}</strong>
-              <span>{item.location} · {item.cap}</span>
+              <span>{locationLabel(item.location, 'en')} · {item.capacity}</span>
             </div>
           </a>
         ))}
@@ -233,44 +232,20 @@ const t = useTranslations('en');
         <h2 class="section-title">{t.homeConvert.testimonialsTitle}</h2>
         <p class="testimonials-intro">{t.homeConvert.testimonialsIntro}</p>
       </div>
-      <div class="testimonials-grid">
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">Rayenna's team was exceptionally helpful and knowledgeable. After going solar, I switched my kitchen stoves from LPG to induction — my electricity bill dropped, and so did my LPG costs. Double savings!</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">AR</div>
-            <div>
-              <strong>Arun</strong>
-              <span>Kollam · 5 kW system</span>
+      <div class="testimonials-grid" id="home-testimonials">
+        {previewTestimonials.map((item) => (
+          <div class="tcard">
+            <div class="tcard__stars">★★★★★</div>
+            <p class="tcard__quote">{item.quote}</p>
+            <div class="tcard__author">
+              <div class="tcard__avatar">{item.initials}</div>
+              <div>
+                <strong>{item.name}</strong>
+                <span hidden={!item.meta}>{item.meta}</span>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">The Rayenna team was helpful and supportive at every stage — from the first call to final installation. They delivered at a very competitive price, and the quality made it exceptional value. Thoroughly satisfied!</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">SU</div>
-            <div>
-              <strong>Sudheer</strong>
-              <span>Ernakulam · 3 kW system</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">Rayenna's team truly impressed me — professional, helpful, and knowledgeable. Their pricing is unbeatable, and their support doesn't stop after installation. I've already recommended them to several of my contacts and will continue to do so!</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">BJ</div>
-            <div>
-              <strong>Baiju</strong>
-              <span>Ernakulam · 10 kW system</span>
-            </div>
-          </div>
-        </div>
-
+        ))}
       </div>
       <div class="testimonials-footer">
         <a href={`${base}/media/`} class="text-cta">{t.homeConvert.testimonialsMore}</a>
@@ -1194,6 +1169,7 @@ const t = useTranslations('en');
   line-height: 1.85;
   font-style: italic;
   flex: 1;
+  overflow-wrap: break-word;
 }
 .tcard__quote::before { content: '\201C'; }
 .tcard__quote::after  { content: '\201D'; }
@@ -1688,6 +1664,16 @@ const t = useTranslations('en');
 
 <script>
   import { trackEvent } from '../lib/analytics';
+  import { INSTALLATIONS } from '../data/installations';
+  import { TESTIMONIALS_EN } from '../data/testimonials';
+  import { initHomeSpotlight } from '../lib/home-spotlight';
+
+  initHomeSpotlight({
+    lang: 'en',
+    imgBase: import.meta.env.BASE_URL.replace(/\/$/, ''),
+    installations: INSTALLATIONS,
+    testimonials: TESTIMONIALS_EN,
+  });
 
   const form = document.getElementById('connect-form') as HTMLFormElement | null;
   const feedback = document.getElementById('connect-feedback');

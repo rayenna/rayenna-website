@@ -4,6 +4,8 @@ import MediaGalleryLightbox from '../../components/MediaGalleryLightbox.astro';
 import { useTranslations } from '../../i18n/ui';
 import { OG } from '../../i18n/og-images';
 import { buildVideoLibrarySchema } from '../../utils/media-video-schema';
+import { INSTALLATIONS as installations } from '../../data/installations';
+import { TESTIMONIALS_ML as testimonials } from '../../data/testimonials';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://rayennaenergy.com';
@@ -57,74 +59,6 @@ const videos = [
   { title: 'മാത്യുവിനോട് സംസാരിക്കുക — ടെക്നിക്കൽ മാനേജർ',        category: 'expert',    file: 'rayenna videos/Talk to Mathew - Our technical Manager on Solar Intallation.mp4',     thumb: 'thumbs/expert--mathew-talk.jpg' },
   { title: 'ലഭ്യമായ പാനൽ തരങ്ങൾ — മാത്യു വിശദീകരിക്കുന്നു',   category: 'expert',    file: 'rayenna videos/Types of Panels Available - Mathew brings clarity to it.mp4',         thumb: 'thumbs/expert--mathew-panels.jpg' },
   { title: 'ഹൈബ്രിഡ് സിസ്റ്റം എപ്പോൾ സാധ്യമാകും?',    category: 'expert',    file: 'rayenna videos/When does Hybrid Systems become feasible - Mathew clarifies.mp4',     thumb: 'thumbs/expert--mathew-hybrid.jpg' },
-];
-
-const installations = [
-  { name: 'Abdul Kalam',       location: 'Thiruvananthapuram', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'ABDUL-KALAM-VARKALA-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Abdul Rahim',       location: 'Edathala',      capacity: '5 kW',  inverter: 'Solaire',     panels: 'Adani',  img: 'ABDUL-RAHIMEDATHALA5KW-SOLAIRE-INVERTER-PANELS-ADANI-1.jpeg' },
-  { name: 'Angelo Thomas',     location: 'Edapally',      capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
-  { name: 'Anathasia',         location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'ANATHASIA-VARAPUZHA3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Arun',              location: 'Kollam',        capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Avio D Luiz',       location: 'Thevara',       capacity: '5 kW',  inverter: 'Eastman',     panels: 'Waaree', img: 'AVIO D LUIZ-THEVARA-5KW-EASTMAN-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Aysha George',      location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'AYSHA-GEORGE-RAVIPURAM-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Ajaya Ghosh',        location: 'Thevara',       capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'AJAYAGHOSH -THEVARA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Ajayakumar',        location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'AJAYAKUMAR-ALAPUZHA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Babu',              location: 'North Paravur', capacity: '5 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'BABU-NORTH-PARAVUR-5KW-POLYCAB-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Balu',              location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'BALU-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Byju George',       location: 'Thevara',       capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'BYJU-GEORGE10KWTHEVARA-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
-  { name: 'Dhanya V.T.',       location: 'Thoppumpady',   capacity: '5 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'DHANYA V T-THOPPUMPADY-5KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Dinhar V.R.',       location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'DINHAR V R-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Francis',           location: 'Palluruthy',    capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'FRANCISPALLURUTHY5KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Haridas',           location: 'Karimughal',    capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'HARIDAS-KARIMUGHAL-5KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Hyder',             location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Jelees',            location: 'Mahe',          capacity: '5 kW',  inverter: 'Feston',      panels: 'Waaree', img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
-  { name: 'Joby',              location: 'Chalakudy',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JOBYCHALAKUDY3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Johnson',           location: 'Thevara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JOHNSON-THEVARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Joseph K.V.',       location: 'Vennala',       capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'JOSEPH-KV-VENNALA-5KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Koya',              location: 'Nilambur',      capacity: '3 kW',  inverter: 'Solis',       panels: 'Renew',  img: 'KOYA-NILAMBUR-3KW-SOLIS-INVERTER-PANELS-RENEW.png' },
-  { name: 'Manmadhan',         location: 'Moothakunnam',  capacity: '3 kW',  inverter: 'Deye',        panels: 'Emmvee', img: 'MANMADHAN-MOOTHAKUNNAM-3KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
-  { name: 'Manoj Kumar',       location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'MANOJ-KUMAR-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Mariamma',          location: 'Kollam',        capacity: '5 kW',  inverter: 'Deye Hybrid', panels: 'Adani',  img: 'MARIAMMA-KOLLAM-5KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.png' },
-  { name: 'Mary',              location: 'Fort Kochi',    capacity: '3 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'MARY-FORT-KOCHI-3KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
-  { name: 'Misha Lal',         location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Polycab',     panels: 'Adani',  img: 'MISHA-LAL-PALLURUTHY-3KW-POLYCAB-INVERTER-PANELS-ADANI.png' },
-  { name: 'Mohamad Yousu Kunju', location: 'Kollam',      capacity: '5 kW',  inverter: 'Deye',        panels: 'Waaree', img: 'MOHAMAD YOUSU KUNJU-KOLLAM-5KW-DEYE-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Nidhin',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'NIDHIN-NORTH-PARAVUR-3KW-DEYE-INVERTER-PANELS-ADANI.png' },
-  { name: 'Nisha Narendran',   location: 'Vaduthala',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'NISHA NARENDRAN-VADUTHALA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Odoona',            location: 'Paravur',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'ODOONA-PARVUR-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Padmaja',           location: 'Ezhikkara',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'PADMAJA-EZHIKKARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Prasad',            location: 'Chottanikkara', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'PRASAD-CHOTTANIKKARA-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Pushkaran',         location: 'Eroor',         capacity: '4 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'PUSHKARAN-EROOR-4KW-DEYE-INVERTER-PANELS-ADANI.png' },
-  { name: 'Radha P.K.',        location: 'Thevara',       capacity: '5 kW',  inverter: 'Eastman',     panels: 'Emmvee', img: 'RADHA P K-THEVARA-5KW-EASTMAN-INVERTER-PANELS-EMMVEE.jpeg' },
-  { name: 'Ragin',             location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'RAGIN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Rajesh K.G.',       location: 'Cherai',        capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'RAJESH-KG-CHERAI-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Reetha',            location: 'Mundamveli',    capacity: '3 kW',  inverter: 'Selec',       panels: 'Adani',  img: 'REETHA-MUNDAMVELI-3KW-SELEC-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Ranjit Raj',        location: 'Thevara',       capacity: '3 kW',  inverter: 'Eastman',     panels: 'Waaree', img: 'RANJIT RAJ-THEVARA-3KW-EASTMAN-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Rosa',              location: 'Vyttila',       capacity: '15 kW', inverter: 'Solaire',     panels: 'Waaree', img: 'ROSAVYTTILA15KW-SOLAIRE-INVERTER-PANELS-WAAREE-1.jpeg' },
-  { name: 'Rupesh',            location: 'Calicut',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'RUPESHCALICUT3KW-DEYE-INVERTER-PANELS-ADANI-edited.jpeg' },
-  { name: 'Sabu',              location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye Hybrid', panels: 'Adani',  img: 'SABU-VARAPUZHA-3KW-DEYE-HYBRID-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Sajeevan KV',       location: 'Vaduthala',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'SAJEEVAN KV-VADUTHALA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Sajiv Kumar',       location: 'Vennala',       capacity: '5 kW',  inverter: 'Havells',     panels: 'Emmvee', img: 'SAJIVKUMARVENNALA5KW-HAVELLS-INVERTER-PANELS-EMMVEE-1.jpeg' },
-  { name: 'Sajan',             location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SAJAN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Santhosh Kumar B.', location: 'Kallara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SANTHOSH KUMAR B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Saphiya',           location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
-  { name: 'Sasidharan',        location: 'Eroor',         capacity: '3 kW',  inverter: 'Sunways',     panels: 'Adani',  img: 'SASIDHARAN-EROOR-3KW-SUNWAYS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Sathya Dineshan',   location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SATHYA DINESHAN-ALAPPUZHA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Sessy Antony',      location: 'Chottanikkara', capacity: '6 kW',  inverter: 'Deye',        panels: 'Emmvee', img: 'SESSY ANTONY-CHOTTANIKKARA-6KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
-  { name: 'Sibu KS',           location: 'Udayamperoor',  capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SIBU KS-UDAYAMPEROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Swapna Biju',       location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SWAPNA BIJU-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Shamna',            location: 'Kollam',        capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SHAMNA-KOLLAM-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Snoby Babu',        location: 'Thrikkakkara',  capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SNOBY BABU-THRIKKAKKARA-5KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Smitha Vineesh',    location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SMITHA VINEESH-PALLURUTHY-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Sreevidya',         location: 'Aluva',         capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'SREEVIDYA-ALUVA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Sudheer K.R.',      location: 'Njarakkal',     capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SUDHEER-KR-NJARAKKAL-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Suresh',            location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
-  { name: 'Suji Jose',         location: 'Panangad',      capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SUJI JOSE-PANANGAD-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Thomas Varghese',   location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Havells',     panels: 'Adani',  img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Vanaja',            location: 'North Paravur', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
-  { name: 'Vijith Kumar',      location: 'Vazhakkala',    capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VIJITH KUMAR-VAZHAKKALA-5KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Vinish',            location: 'Koonammavu',    capacity: '4 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VINISH-KOONAMMAVU-4KW-DEYE-INVERTER-PANELS-ADANI.png' },
-  { name: 'Vishnu T.V.',       location: 'Mulanthuruthy', capacity: '5 kW',  inverter: 'Growatt',     panels: 'Adani',  img: 'VISHNU-TVMULANTHURUTHY5KW-GROWATT-INVERTERPANELS-ADANI.jpeg' },
-  { name: 'Viswanathan',       location: 'Moothakunnam',  capacity: '3 kW',  inverter: 'Deye',        panels: 'Emmvee', img: 'VISWANATHAN-MOOTHAKUNNAM-3KW-DEYE-INVERTER-PANELS-EMMVEE.jpeg' },
 ];
 
 function specSub(capacity: string, inverter: string, panels: string): string {
@@ -208,44 +142,6 @@ const imageGallerySchema = {
 const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/ml/media/`);
 const installCount = installations.length;
 
-const testimonials = [
-  {
-    initials: 'AR',
-    name: 'Arun',
-    meta: 'കൊല്ലം · 5 kW സിസ്റ്റം',
-    quote: 'റയെന്ന ടീം — ഒന്നൊന്നര തന്നെ. അറിവും സഹായ മനോഭാവവും ഒരുപോലെ. സോളാർ വന്നതിനുശേഷം ഞാൻ സ്റ്റൗ ഇൻഡക്ഷനിലേക്ക് മാറ്റി — KSEB ബിൽ കുറഞ്ഞു, LPG ഉപഭോഗവും കുറഞ്ഞു. രണ്ടും ഒരുമിച്ച് ലാഭം!',
-  },
-  {
-    initials: 'SU',
-    name: 'Sudheer',
-    meta: 'എറണാകുളം · 3 kW സിസ്റ്റം',
-    quote: 'തുടക്കം മുതൽ അവസാനം വരെ റയെന്ന ടീം ഒപ്പം നിന്നു — ഒരു ടെൻഷനും ഇല്ലാതെ. വില കേട്ടപ്പോൾ ഞാൻ ആദ്യം അത്ഭുതപ്പെട്ടു — ഇത്ര നല്ല സർവീസിന് ഇത്രയും കുറഞ്ഞ നിരക്കോ? പൈസ ഈടാക്കുന്നതിലും കൂടുതൽ മൂല്യം തരുന്ന ടീം.',
-  },
-  {
-    initials: 'BJ',
-    name: 'Baiju',
-    meta: 'എറണാകുളം · 10 kW സിസ്റ്റം',
-    quote: 'ടീമിന്റെ സമീപനവും പ്രൊഫഷണലിസവും എനിക്ക് ശരിക്കും ഇഷ്ടപ്പെട്ടു. വളരെ സഹായകരവും അറിവുള്ളവരും — വിലയിലും ആരെക്കാളും മികച്ചവർ. ഇൻസ്റ്റാളേഷന് ശേഷവും അവരുടെ പിന്തുണ ഒന്നൊന്നര തന്നെ. എന്റെ പരിചയക്കാർക്ക് പലർക്കും ഞാൻ ഇതിനകം ശുപാർശ ചെയ്തിട്ടുണ്ട് — ഇനിയും ചെയ്യും.',
-  },
-  {
-    initials: 'SB',
-    name: 'Snoby Babu',
-    meta: 'തൃക്കാക്കര · 5 kW സിസ്റ്റം',
-    quote: 'റയെന്ന സോളാറുമായുള്ള അനുഭവം മികച്ചതായിരുന്നു. പ്ലാൻ മുതൽ ഇൻസ്റ്റാളേഷൻ വരെ — ഓരോ ഘട്ടത്തിലും ടീം പ്രൊഫഷണലിസത്തോടും സുതാര്യതയോടും കൂടെ നയിച്ചു. അന്തിമ സെറ്റപ്പ് എന്റെ പ്രതീക്ഷകൾ കവിഞ്ഞു. തുടക്കം മുതൽ അവസാനം വരെ — ഒരു തടസ്സവുമില്ലാതെ, മികവോടെ, ഒരു ടെൻഷനും ഇല്ലാതെ. അവരെ ഞാൻ നിശ്ചയമായും ശുപാർശ ചെയ്യും!',
-  },
-  {
-    initials: 'ST',
-    name: 'Sinto Thomas',
-    meta: '',
-    quote: 'Rayenna Energy വഴി സോളാർ സ്ഥാപിച്ചത് മികച്ച അനുഭവമായിരുന്നു. ടീം പ്രൊഫഷണലും വേഗത്തിൽ പ്രതികരിക്കുന്നവരുമായിരുന്നു; ഇൻസ്റ്റലേഷൻ കാര്യക്ഷമമായി പൂർത്തിയാക്കുകയും ചെയ്തു. ജോലിയുടെ ഗുണനിലവാരവും മൊത്തത്തിലുള്ള സേവനവും വളരെ മികച്ചതായിരുന്നു. സോളാർ സ്ഥാപിക്കാൻ ആലോചിക്കുന്ന എല്ലാവർക്കും ഉറപ്പായും ശുപാർശ ചെയ്യുന്നു.',
-  },
-  {
-    initials: 'MR',
-    name: 'Mahima Reghunath',
-    meta: '',
-    quote: 'മികച്ച സേവനവും വളരെ നല്ല അനുഭവവും. ടീം തുടക്കം മുതൽ അവസാനം വരെ പ്രൊഫഷണലും സൗഹൃദപരവും വേഗത്തിൽ പ്രതികരിക്കുന്നവരുമായിരുന്നു. എല്ലാം വ്യക്തമായി വിശദീകരിച്ചു, ഇൻസ്റ്റലേഷൻ കാര്യക്ഷമമായി പൂർത്തിയാക്കി, ഞങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും മറുപടി നൽകി. ജോലിയുടെ ഗുണനിലവാരത്തിലും വിൽപ്പനാനന്തര സേവനത്തിലും ഏറെ സന്തുഷ്ടരാണ്. ഉറപ്പായും ശുപാർശ ചെയ്യുന്നു.',
-  },
-];
 ---
 <Layout
   lang="ml"
