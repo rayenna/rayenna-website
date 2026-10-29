@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostEndCta from '../../components/BlogPostEndCta.astro';
+import BlogPostResourceLinks from '../../components/BlogPostResourceLinks.astro';
+import BlogUpdatedNote from '../../components/BlogUpdatedNote.astro';
+import { blogUiEn } from '../../i18n/blog-ui';
+import { ogForBlogSlug } from '../../i18n/og-images';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const post = {
+  title: 'Your Solar App Shows 20 Units. Your KSEB Bill Didn’t Drop by 20. Here’s Why',
+  date: '29 October 2026',
+  category: 'Analysis',
+  readTime: '6 min read',
+  author: 'Rayenna Energy Team',
+};
+---
+<Layout
+  title={`${post.title} — Rayenna Energy Blog`}
+  description="Inverter apps count generation. KSEB bills count rupees after self-use, export, slabs, and fixed charges. How Kerala solar owners should read both numbers in 2026."
+  ogImage={ogForBlogSlug('solar-app-vs-kseb-bill-kerala-2026')}
+>
+
+  <section class="post-hero">
+    <div class="container post-hero__inner">
+      <a href={`${base}/blog/`} class="back-link">← Back to Blog</a>
+      <div class="post-meta"><span class="post-category">{post.category}</span><span>·</span><span>{post.readTime}</span><span>·</span><span>{post.date}</span></div>
+      <h1 class="post-hero__title">{post.title}</h1>
+      <div class="post-author"><div class="author-avatar">☀</div><div><strong>{post.author}</strong><span>Rayenna Energy, Kochi</span></div></div>
+    </div>
+    <div class="post-hero__wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8f9fa"/></svg></div>
+  </section>
+
+  <section style="padding:var(--section-padding); background:var(--color-light)">
+    <div class="container post-layout">
+
+      <article class="post-content">
+        <BlogUpdatedNote date={post.date} />
+
+        <p class="post-lead">The first month after commissioning, Kerala WhatsApp groups fill with screenshots: “App says 22 units today — why is my bill still ₹1,800?” Both numbers can be true. The inverter is counting <strong>kilowatt-hours generated</strong>. KSEB is counting <strong>rupees after import, export, slabs, and fixed charges</strong>. They are not the same meter, and they were never meant to match 1:1.</p>
+
+        <h2>Three Numbers, Three Jobs</h2>
+        <div class="cost-table">
+          <div class="cost-row cost-row--header"><span>Source</span><span>What it measures</span><span>What it ignores</span></div>
+          <div class="cost-row"><span>Inverter / app</span><span>AC (sometimes DC) energy the plant produced</span><span>Your tariff, slabs, fixed charges, meter lag</span></div>
+          <div class="cost-row"><span>Bi-directional meter</span><span>Units imported from and exported to KSEB</span><span>What you used while the sun was up</span></div>
+          <div class="cost-row"><span>KSEB bill</span><span>Rupees on net energy + fixed / other charges</span><span>A live “today’s generation” graph</span></div>
+        </div>
+        <p>Daytime loads — fridge, washing machine, inverter-AC, induction, EV if you charge at home — eat solar before anything is exported. Those units never appear as export, and they never appear as import either. They are the highest-value solar you can have: they displace full retail tariff. Export is valuable too, but only through <a href={`${base}/blog/net-metering-explained/`}>net metering / banking</a>, not as a 1:1 cash refund of the app total.</p>
+
+        <div class="post-callout">
+          <span class="callout-icon">📊</span>
+          <div><strong>Generation ≠ Savings in Rupees</strong><p>20 units on the app might be 12 self-consumed, 8 exported, and a bill that still carries fixed charges, meter rent, and last cycle’s import. Compare months, not a single sunny Tuesday.</p></div>
+        </div>
+
+        <h2>Why the App Is Always the Optimistic One</h2>
+        <ul class="post-list">
+          <li><strong>It starts at the inverter.</strong> Wiring, soiling, heat, and the gap between DC and AC are already in the plant’s <a href={`${base}/blog/solar-performance-ratio-explained/`}>performance ratio</a> — the app does not subtract your tariff.</li>
+          <li><strong>It does not know your slab.</strong> Crossing a KSEB slab changes the rupee value of the next unit you avoid. See our <a href={`${base}/blog/solar-vs-electricity-bill-comparison/`}>bill comparison</a>.</li>
+          <li><strong>Export is not instant cash.</strong> Banked units settle on the billing cycle (and under current KSERC rules, within the net-metering framework you signed up for) — not at 6 PM when you open the app.</li>
+          <li><strong>The first bill after the net meter is messy.</strong> Opening reading, old meter closing, and a partial cycle make that statement a poor “proof” of the system.</li>
+          <li><strong>Night is still the grid.</strong> Evening lighting, cooking, and AC after sunset are import unless you added storage. That is physics, not a vendor trick.</li>
+        </ul>
+
+        <h2>How to Read the First Two Bills Like an Adult</h2>
+        <p>Ignore the app-versus-bill argument until you have <strong>one full cycle with the bi-directional meter in place</strong>. Then check: import kWh down versus the same season last year; export kWh in a plausible band for your kW and monsoon/dry month; energy charges down even if the total payable still shows standing charges. If import barely moved but the app looks heroic, look at daytime self-use (good) versus a CT/meter mix-up (rare, but worth a photo of the meter to your installer).</p>
+        <p>Time-of-day thinking matters more each year: generating at noon and buying at 8 PM is not a failure of solar — it is why load-shifting (laundry, pumping, EV, induction at lunch) and, for some homes, <a href={`${base}/blog/solar-battery-storage-kerala-2026/`}>storage</a> show up in the rupee column when the app looks “fine.”</p>
+
+        <h2>Bottom Line</h2>
+        <p>Use the app to spot a dead string, a tripped inverter, or a filthy array. Use the KSEB bill to judge money. If those two stories diverge for two clean billing cycles, call the installer with meter photos — not with a screenshot of a sunny afternoon. Size the next system (or the first one) for your load and shade, not for a graph you can post.</p>
+
+        <div class="post-cta">
+          <h3>Size for Your Bill, Not a Screenshot</h3>
+          <p>Rayenna Energy designs Kerala rooftops around your load pattern, shade, and net-metering — then explains the first bills with you.</p>
+          <div class="post-cta__actions">
+            <a href={`${base}/contact/`} class="btn btn-primary">Talk to an Engineer →</a>
+            <a href={`${base}/solar-calculator/`} class="btn btn-cta-secondary">{blogUiEn.calcSecondary}</a>
+          </div>
+        </div>
+      <BlogPostResourceLinks />
+
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Get a Free Quote</h4>
+          <p>Talk to our solar experts. No obligation, no pressure.</p>
+          <a href={`${base}/contact/`} class="btn btn-primary" style="width:100%; justify-content:center; margin-top:16px">Request Consultation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="sidebar-links">
+            <li><a href={`${base}/blog/net-metering-explained/`}>How Net Metering Works →</a></li>
+            <li><a href={`${base}/blog/solar-performance-ratio-explained/`}>Performance Ratio Explained →</a></li>
+            <li><a href={`${base}/blog/solar-vs-electricity-bill-comparison/`}>Solar vs KSEB Bill →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-card--cta">
+          <div style="font-size:3rem; margin-bottom:12px">📱</div>
+          <strong>Two meters, two truths</strong>
+          <p>The app proves the plant is alive. The bill proves it is paying for itself.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <BlogPostEndCta />
+
+</Layout>
+<style>
+.post-hero { background: linear-gradient(135deg, #27324f 0%, #3a4a6b 100%); padding: 120px 0 80px; position: relative; }
+.post-hero__inner { max-width: 860px; }
+.back-link { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; transition: color var(--transition); }
+.back-link:hover { color: var(--color-primary); }
+.post-meta { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 16px; flex-wrap: wrap; }
+.post-category { background: var(--color-primary); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; }
+.post-hero__title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: white; line-height: 1.25; margin-bottom: 24px; }
+.post-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.post-author strong { display: block; color: white; font-family: var(--font-heading); }
+.post-author span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.post-hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.post-hero__wave svg { width: 100%; display: block; }
+.post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.post-content { background: white; border-radius: var(--radius-md); padding: 48px; box-shadow: var(--shadow-sm); }
+.post-lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: 32px; border-left: 4px solid var(--color-primary); padding-left: 20px; }
+.post-content h2 { font-family: var(--font-heading); font-weight: 600; color: var(--color-secondary); font-size: 1.4rem; margin: 32px 0 16px; }
+.post-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
+.post-content a:not(.btn) { color: var(--color-primary); font-weight: 600; }
+.cost-table { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); margin: 20px 0 28px; }
+.cost-row { display: grid; grid-template-columns: 1.2fr 1.4fr 1.4fr; }
+.cost-row span { padding: 12px 16px; border-bottom: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+.cost-row--header span { background: var(--color-secondary); color: white; font-family: var(--font-heading); font-weight: 700; }
+.cost-row:not(.cost-row--header):nth-child(even) span { background: var(--color-light); }
+.post-callout { display: flex; gap: 16px; align-items: flex-start; background: var(--color-primary-light); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px; margin: 24px 0; }
+.callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+.post-callout strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); margin-bottom: 6px; }
+.post-callout p { font-size: 0.9rem; color: var(--color-text); margin: 0; }
+.post-list { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.post-list li { padding-left: 20px; position: relative; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+.post-list li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+.post-cta { background: linear-gradient(135deg, var(--color-navy), #3a4a6b); border-radius: var(--radius-md); padding: 32px; margin-top: 40px; text-align: center; }
+.post-cta h3 { font-family: var(--font-heading); font-weight: 600; color: white; margin-bottom: 10px; }
+.post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.post-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 88px; }
+.sidebar-card { background: white; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+.sidebar-card h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-secondary); margin-bottom: 10px; }
+.sidebar-card p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+.sidebar-card--cta { background: var(--color-primary-light); text-align: center; }
+.sidebar-card--cta strong { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+.sidebar-links { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.sidebar-links a { font-size: 0.88rem; color: var(--color-primary); font-weight: 600; }
+.sidebar-links a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .cost-row { grid-template-columns: 1fr 1fr; } .cost-row span:nth-child(3) { display: none; } .cost-row--header span:nth-child(3) { display: none; } }
+@media (max-width: 600px) { .post-content { padding: 24px; } }
+</style>

@@ -38,12 +38,12 @@ export const blogUiEn = {
     'Free site survey, honest sizing, and subsidy handled end-to-end. No pressure — just expert advice from Kochi’s trusted PM Surya Ghar empanelled vendor (MNRE).',
   indexBottomBtn: 'Get Free Installation Quote',
   indexPopularReads: [
+    { slug: 'shade-trees-kerala-rooftop-solar-2026', label: 'Shade on Kerala roofs' },
+    { slug: 'solar-app-vs-kseb-bill-kerala-2026', label: 'App vs KSEB bill' },
+    { slug: 'topcon-vs-perc-kerala-2026', label: 'TOPCon vs PERC' },
     { slug: 'pm-surya-ghar-vendor-ban-2026', label: 'Choose a trusted installer' },
-    { slug: 'kerala-rooftop-solar-1282-mw-2026', label: 'Kerala’s 1,282 MW boom' },
-    { slug: 'kerala-zero-bill-rooftop-solar-2026', label: 'Zero electricity bill' },
     { slug: 'pm-surya-ghar-subsidy-guide', label: '₹78,000 subsidy guide' },
     { slug: 'how-much-does-solar-cost-in-kerala', label: 'Solar cost in Kerala' },
-    { slug: 'almm-list-ii-exemption-december-2026', label: 'ALMM List-II to Dec 2026' },
   ],
 } as const;
 
@@ -85,12 +85,12 @@ export const blogUiMlStrings = {
     'സൗജന്യ സൈറ്റ് സർവേ, സത്യസന്ധമായ സൈസിംഗ്, സബ്സിഡി മുഴുവനും എൻഡ്-ടു-എൻഡ്. സമ്മർദ്ദമില്ല — കൊച്ചിയിലെ വിശ്വസനീയ MNRE ചാനൽ പാർട്ണറിൽ നിന്ന് വിദഗ്ധ ഉപദേശം മാത്രം.',
   indexBottomBtn: 'സൗജന്യ ഇൻസ്റ്റാളേഷൻ ക്വോട്ട്',
   indexPopularReads: [
+    { slug: 'shade-trees-kerala-rooftop-solar-2026', label: 'കേരള റൂഫ് തണൽ' },
+    { slug: 'solar-app-vs-kseb-bill-kerala-2026', label: 'ആപ്പ് vs KSEB ബിൽ' },
+    { slug: 'topcon-vs-perc-kerala-2026', label: 'TOPCon vs PERC' },
     { slug: 'pm-surya-ghar-vendor-ban-2026', label: 'വിശ്വസ്ത ഇൻസ്റ്റാളർ' },
-    { slug: 'kerala-rooftop-solar-1282-mw-2026', label: 'കേരളം 1,282 MW' },
-    { slug: 'kerala-zero-bill-rooftop-solar-2026', label: 'ശൂന്യ വൈദ്യുതി ബിൽ' },
     { slug: 'pm-surya-ghar-subsidy-guide', label: '₹78,000 സബ്സിഡി ഗൈഡ്' },
     { slug: 'how-much-does-solar-cost-in-kerala', label: 'കേരളത്തിൽ സോളാർ ചെലവ്' },
-    { slug: 'almm-list-ii-exemption-december-2026', label: 'ALMM ലിസ്റ്റ്-II ഡിസം 2026' },
   ],
 } as const;
 
