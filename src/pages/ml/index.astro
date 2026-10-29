@@ -193,11 +193,11 @@ const previewTestimonials = TESTIMONIALS_ML.slice(0, 3);
           <h2 class="section-title">{t.homeConvert.installsTitle}</h2>
           <p class="installs-preview__sub">{t.homeConvert.installsSub}</p>
         </div>
-        <a href={`${mlPrefix}/media/`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
+        <a href={`${mlPrefix}/media/#gallery-section`} class="btn btn-outline installs-view-all">{t.homeConvert.installsViewAll}</a>
       </div>
       <div class="installs-grid" id="home-installs" role="list">
         {previewInstalls.map((item) => (
-          <a href={`${mlPrefix}/media/`} class="install-card" role="listitem">
+          <a href={`${mlPrefix}/media/#gallery-section`} class="install-card" role="listitem">
             <img src={`${base}/media/references/${item.img}`} alt={`${item.name}, ${locationLabel(item.location, 'ml')} — ${item.capacity} സോളാർ ഇൻസ്റ്റാളേഷൻ`} loading="lazy" />
             <div class="install-card__overlay">
               <strong>{item.name}</strong>
@@ -208,10 +208,10 @@ const previewTestimonials = TESTIMONIALS_ML.slice(0, 3);
       </div>
       <blockquote class="installs-proof">
         <p class="installs-proof__quote">{t.homeConvert.installsQuote}</p>
-        <a href={`${mlPrefix}/media/`} class="text-cta">{t.homeConvert.installsQuoteLink}</a>
+        <a href={`${mlPrefix}/media/#gallery-section`} class="text-cta">{t.homeConvert.installsQuoteLink}</a>
       </blockquote>
       <div class="installs-mobile-cta">
-        <a href={`${mlPrefix}/media/`} class="text-cta">{t.homeConvert.installsViewAll}</a>
+        <a href={`${mlPrefix}/media/#gallery-section`} class="text-cta">{t.homeConvert.installsViewAll}</a>
       </div>
     </div>
   </section>
