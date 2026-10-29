@@ -163,13 +163,11 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
         muted
         loop
         playsinline
-        autoplay
-        preload="metadata"
+        preload="none"
         poster={`${base}/media/rayenna-videos/corporate-poster.jpg`}
+        data-src={`${base}/media/rayenna-videos/corporate.mp4`}
         aria-label={mv.heroVideoAria}
-      >
-        <source src={`${base}/media/rayenna-videos/corporate.mp4`} type="video/mp4" />
-      </video>
+      ></video>
     </div>
     <div class="page-hero__overlay"></div>
     <div class="page-hero__vignette" aria-hidden="true"></div>
@@ -202,6 +200,17 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
         <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
       </svg>
       <span class="page-hero__sound-label" data-sound-label>{mv.heroUnmute}</span>
+    </button>
+    <button
+      type="button"
+      class="page-hero__sound page-hero__play"
+      id="media-hero-play"
+      aria-label={mv.heroPlay}
+    >
+      <svg class="page-hero__sound-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="6 4 20 12 6 20 6 4"></polygon>
+      </svg>
+      <span class="page-hero__sound-label">{mv.heroPlay}</span>
     </button>
   </section>
 
@@ -472,24 +481,31 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
       <h2 class="section-title">Solar — Beautifully Done</h2>
     </div>
 
-    <div class="slideshow" id="slideshow" aria-label="Installation slideshow">
+    <div class="slideshow" id="slideshow" aria-label="Installation slideshow" data-img-base={`${base}/media/references/`}>
+      <script type="application/json" id="slideshow-data" set:html={JSON.stringify(allSlides)} />
       <div class="slideshow__track" id="slideshow-track">
-        {allSlides.map((slide, i) => (
-          <div class={`slide ${i === 0 ? 'slide--active' : ''}`} data-index={i}>
-            <img
-              src={`${base}/media/references/${slide.img}`}
-              alt={slide.caption}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding={i === 0 ? 'sync' : 'async'}
-              fetchpriority={i === 0 ? 'high' : 'low'}
-            />
-            <div class="slide__overlay"></div>
-            <div class="slide__caption">
-              <p class="slide__caption-title">{slide.caption}</p>
-              <p class="slide__caption-sub">{slide.sub}</p>
-            </div>
+        <div class="slide slide--active" data-slot="a">
+          <img
+            src={`${base}/media/references/${allSlides[0].img}`}
+            alt={allSlides[0].caption}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div class="slide__overlay"></div>
+          <div class="slide__caption">
+            <p class="slide__caption-title">{allSlides[0].caption}</p>
+            <p class="slide__caption-sub">{allSlides[0].sub}</p>
           </div>
-        ))}
+        </div>
+        <div class="slide" data-slot="b">
+          <img alt="" decoding="async" />
+          <div class="slide__overlay"></div>
+          <div class="slide__caption">
+            <p class="slide__caption-title"></p>
+            <p class="slide__caption-sub"></p>
+          </div>
+        </div>
       </div>
 
       <!-- Prev / Next -->
@@ -713,6 +729,12 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
   display: block;
   flex-shrink: 0;
 }
+.page-hero:not(.page-hero--playing) .page-hero__sound:not(.page-hero__play) { display: none; }
+.page-hero:not(.page-hero--playing) .page-hero__video {
+  opacity: 0;
+  pointer-events: none;
+}
+.page-hero--playing .page-hero__play { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .page-hero__video { display: none; }
   .page-hero__inner { animation: none; }
@@ -1836,16 +1858,48 @@ body.gf-sheet-open {
 
 <script>
   (() => {
+    const hero = document.querySelector('.page-hero--video') as HTMLElement | null;
     const video = document.getElementById('media-hero-video') as HTMLVideoElement | null;
     const btn = document.getElementById('media-hero-sound') as HTMLButtonElement | null;
-    if (!video || !btn) return;
+    const playBtn = document.getElementById('media-hero-play') as HTMLButtonElement | null;
+    if (!hero || !video || !btn) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      video.removeAttribute('autoplay');
-      video.pause();
-      return;
-    }
+    if (reduceMotion) return;
+
+    let started = false;
+    const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+
+    const tryPlay = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+      return playPromise;
+    };
+
+    const startPlayback = () => {
+      if (started) {
+        tryPlay();
+        return;
+      }
+      const src = video.dataset.src;
+      if (src && !video.getAttribute('src')) video.src = src;
+      video.muted = true;
+      const playPromise = tryPlay();
+      const markPlaying = () => {
+        started = true;
+        hero.classList.add('page-hero--playing');
+      };
+      if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.then(markPlaying).catch(() => {});
+      } else {
+        markPlaying();
+      }
+    };
+
+    playBtn?.addEventListener('click', startPlayback);
 
     const iconMuted = btn.querySelector('.page-hero__sound-icon--muted') as HTMLElement | null;
     const iconOn = btn.querySelector('.page-hero__sound-icon--on') as HTMLElement | null;
@@ -1853,21 +1907,8 @@ body.gf-sheet-open {
     const unmuteLabel = btn.dataset.labelUnmute || 'Unmute';
     const muteLabel = btn.dataset.labelMute || 'Mute';
 
-    const tryPlay = () => {
-      const playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(() => {});
-      }
-    };
-
-    video.muted = true;
-    tryPlay();
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) video.pause();
-      else tryPlay();
-    });
-
     btn.addEventListener('click', () => {
+      if (!started) startPlayback();
       const willUnmute = video.muted;
       video.muted = !willUnmute;
       if (willUnmute) tryPlay();
@@ -1877,24 +1918,83 @@ body.gf-sheet-open {
       if (iconMuted) iconMuted.hidden = willUnmute;
       if (iconOn) iconOn.hidden = !willUnmute;
     });
+
+    if (isDesktop && !saveData) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          startPlayback();
+          io.disconnect();
+        }
+      }, { threshold: 0.25 });
+      io.observe(hero);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!started) return;
+      if (document.hidden) video.pause();
+      else tryPlay();
+    });
   })();
 </script>
 
 <script>
   const INTERVAL = 4500;
-  const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
-  const dots   = Array.from(document.querySelectorAll<HTMLElement>('.dot'));
-  const progress = document.getElementById('ss-progress') as HTMLElement;
+  const slideshow = document.getElementById('slideshow');
+  const dataEl = document.getElementById('slideshow-data');
+  type SlideItem = { img: string; caption: string; sub: string };
+  const slidesData: SlideItem[] = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
+  const imgBase = slideshow?.dataset.imgBase || '';
+  const slotA = slideshow?.querySelector<HTMLElement>('[data-slot="a"]');
+  const slotB = slideshow?.querySelector<HTMLElement>('[data-slot="b"]');
+  const dots = slideshow ? Array.from(slideshow.querySelectorAll<HTMLElement>('.dot')) : [];
+  const progress = document.getElementById('ss-progress') as HTMLElement | null;
   let current = 0;
+  let gen = 0;
+  let activeSlot = slotA;
+  let idleSlot = slotB;
   let timer: ReturnType<typeof setInterval>;
 
+  function fillSlot(slot: HTMLElement | null, index: number) {
+    if (!slot) return;
+    const item = slidesData[index];
+    if (!item) return;
+    const img = slot.querySelector('img');
+    const title = slot.querySelector('.slide__caption-title');
+    const sub = slot.querySelector('.slide__caption-sub');
+    if (img) {
+      img.alt = item.caption;
+      img.src = `${imgBase}${item.img}`;
+    }
+    if (title) title.textContent = item.caption;
+    if (sub) sub.textContent = item.sub;
+  }
+
   function goTo(n: number) {
-    slides[current].classList.remove('slide--active');
-    dots[current].classList.remove('dot--active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('slide--active');
-    dots[current].classList.add('dot--active');
-    restartProgress();
+    if (!slidesData.length || !activeSlot || !idleSlot) return;
+    const next = (n + slidesData.length) % slidesData.length;
+    if (next === current) return;
+    const my = ++gen;
+    fillSlot(idleSlot, next);
+    const incoming = idleSlot;
+    const outgoing = activeSlot;
+    const img = incoming.querySelector('img');
+    const reveal = () => {
+      if (my !== gen) return;
+      outgoing.classList.remove('slide--active');
+      incoming.classList.add('slide--active');
+      activeSlot = incoming;
+      idleSlot = outgoing;
+      current = next;
+      dots.forEach((dot, i) => dot.classList.toggle('dot--active', i === current));
+      restartProgress();
+      const peek = slidesData[(current + 1) % slidesData.length];
+      if (peek) {
+        const pre = new Image();
+        pre.src = `${imgBase}${peek.img}`;
+      }
+    };
+    if (img && img.complete && img.naturalWidth) reveal();
+    else img?.addEventListener('load', reveal, { once: true });
   }
 
   function restartProgress() {
@@ -1910,6 +2010,7 @@ body.gf-sheet-open {
   }
 
   function startAuto() {
+    if (!slidesData.length) return;
     clearInterval(timer);
     timer = setInterval(() => goTo(current + 1), INTERVAL);
   }
@@ -1921,12 +2022,9 @@ body.gf-sheet-open {
     dot.addEventListener('click', () => { goTo(i); startAuto(); });
   });
 
-  // Pause on hover
-  const slideshow = document.getElementById('slideshow');
   slideshow?.addEventListener('mouseenter', () => clearInterval(timer));
   slideshow?.addEventListener('mouseleave', () => startAuto());
 
-  // Touch swipe
   let touchStartX = 0;
   slideshow?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
   slideshow?.addEventListener('touchend', (e) => {
@@ -1934,16 +2032,13 @@ body.gf-sheet-open {
     if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
   });
 
-  restartProgress();
-  startAuto();
-
-  // Remove skeleton animation once first slide image loads
-  const firstSlideImg = document.querySelector<HTMLImageElement>('.slide--active img');
-  if (firstSlideImg) {
-    if (firstSlideImg.complete) {
-      slideshow?.classList.add('loaded');
-    } else {
-      firstSlideImg.addEventListener('load', () => slideshow?.classList.add('loaded'), { once: true });
+  if (slidesData.length) {
+    restartProgress();
+    startAuto();
+    const firstSlideImg = slideshow?.querySelector<HTMLImageElement>('.slide--active img');
+    if (firstSlideImg) {
+      if (firstSlideImg.complete) slideshow?.classList.add('loaded');
+      else firstSlideImg.addEventListener('load', () => slideshow?.classList.add('loaded'), { once: true });
     }
   }
 

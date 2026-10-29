@@ -1,8 +1,27 @@
-import { Chart, registerables } from 'chart.js';
+import {
+  CategoryScale,
+  Chart,
+  Filler,
+  Legend,
+  LinearScale,
+  LineController,
+  LineElement,
+  PointElement,
+  Tooltip,
+} from 'chart.js';
 import { trackEvent } from '../lib/analytics';
 import type { CalcI18n } from '../i18n/calculator-en';
 
-Chart.register(...registerables);
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Filler,
+  Tooltip,
+  Legend,
+);
 
 export interface SolarCalculatorConfig {
   i18n: CalcI18n;

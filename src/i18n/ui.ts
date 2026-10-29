@@ -319,6 +319,7 @@ const ui = {
       hint: 'Select any video below to play it here',
       heroUnmute: 'Unmute',
       heroMute: 'Mute',
+      heroPlay: 'Play film',
       heroVideoAria: 'Rayenna Energy corporate film — looping background',
     },
     mediaGallery: {
@@ -640,6 +641,7 @@ const ui = {
       hint: 'താഴെയുള്ള ഏതെങ്കിലും വീഡിയോ തിരഞ്ഞെടുത്ത് ഇവിടെ പ്ലേ ചെയ്യുക',
       heroUnmute: 'ശബ്ദം ഓൺ',
       heroMute: 'നിശബ്ദം',
+      heroPlay: 'ഫിലിം പ്ലേ',
       heroVideoAria: 'റയെന്ന എനർജി കോർപ്പറേറ്റ് ഫിലിം — ലൂപ്പ് ബാക്ക്ഗ്രൗണ്ട്',
     },
     mediaGallery: {
