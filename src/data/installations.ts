@@ -53,7 +53,7 @@ export const INSTALLATIONS: Installation[] = [
   { name: 'Sajeevan KV',       location: 'Vaduthala',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'SAJEEVAN KV-VADUTHALA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Sajiv Kumar',       location: 'Vennala',       capacity: '5 kW',  inverter: 'Havells',     panels: 'Emmvee', img: 'SAJIVKUMARVENNALA5KW-HAVELLS-INVERTER-PANELS-EMMVEE-1.jpeg' },
   { name: 'Sajan',             location: 'Palluruthy',    capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'SAJAN-PALLURUTHY-3KW-SOLIS-INVERTER-PANELS-ADANI.jpeg' },
-  { name: 'Salimkumar',        location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'SALIMKUMAR-ALAPUZHA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Salimkumar',        location: 'Alappuzha',     capacity: '3 kW',  inverter: 'Eastman',     panels: 'Adani',  img: 'SALIMKUMAR-ALAPPUZHA-3KW-EASTMAN-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Santhosh Kumar B.', location: 'Kallara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SANTHOSH KUMAR B-KALLARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Saphiya',           location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'SAPHIYAEDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE-1.jpeg' },
   { name: 'Sasidharan',        location: 'Eroor',         capacity: '3 kW',  inverter: 'Sunways',     panels: 'Adani',  img: 'SASIDHARAN-EROOR-3KW-SUNWAYS-INVERTER-PANELS-ADANI.png' },
