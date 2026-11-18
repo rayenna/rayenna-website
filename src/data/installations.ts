@@ -10,6 +10,7 @@ export type Installation = {
 export const INSTALLATIONS: Installation[] = [
   { name: 'Abdul Kalam',       location: 'Thiruvananthapuram', capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'ABDUL-KALAM-VARKALA-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Abdul Rahim',       location: 'Edathala',      capacity: '5 kW',  inverter: 'Solaire',     panels: 'Adani',  img: 'ABDUL-RAHIMEDATHALA5KW-SOLAIRE-INVERTER-PANELS-ADANI-1.jpeg' },
+  { name: 'Ahammedunni',       location: 'Manjeri',       capacity: '10 kW', inverter: 'Deye',        panels: 'Waaree', img: 'AHAMMEDUNNI-MANJERI-10KW-DEYE-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Angelo Thomas',     location: 'Edapally',      capacity: '10 kW', inverter: 'Solis',       panels: 'Waaree', img: 'ANGELO-THOMAS-EDAPALLY-10KW-SOLIS-INVERTER-PANELS-WAAREE.png' },
   { name: 'Anathasia',         location: 'Varapuzha',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'ANATHASIA-VARAPUZHA3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Arun',              location: 'Kollam',        capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'ARUN-KOLLAM-5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
@@ -91,6 +92,7 @@ export const LOCATION_ML: Record<string, string> = {
   'Palluruthy': 'പള്ളുരുത്തി',
   'Karimughal': 'കരിമുഖൽ',
   'Mahe': 'മാഹി',
+  'Manjeri': 'മഞ്ചേരി',
   'Mattancherry': 'മട്ടാഞ്ചേരി',
   'Chalakudy': 'ചാലക്കുടി',
   'Vennala': 'വെണ്ണല',
