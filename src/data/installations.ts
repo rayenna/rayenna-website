@@ -72,6 +72,7 @@ export const INSTALLATIONS: Installation[] = [
   { name: 'Sudheesh',          location: 'Paravur',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SUDHEESH-PARAVUR-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Suresh',            location: 'Eroor',         capacity: '4 kW',  inverter: 'Sunways',     panels: 'Waaree', img: 'SURESH-EROOR-4KW-SUNWAYS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Suji Jose',         location: 'Panangad',      capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'SUJI JOSE-PANANGAD-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'T.K. Narayanan',    location: 'Kottayam',      capacity: '8 kW',  inverter: 'PVblink',     panels: 'Adani',  img: 'T K NARAYANAN-KOTTAYAM-8KW-PVblink-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Thomas Varghese',   location: 'Ravipuram',     capacity: '3 kW',  inverter: 'Havells',     panels: 'Adani',  img: 'THOMAS-VARGHESE-RAVIPURAM-3KW-HAVELLS-INVERTER-PANELS-ADANI.png' },
   { name: 'Vanaja',            location: 'Paravur',       capacity: '3 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'VANAJA-NORTH-PARAVUR-3KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Vijith Kumar',      location: 'Vazhakkala',    capacity: '5 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'VIJITH KUMAR-VAZHAKKALA-5KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
@@ -118,6 +119,7 @@ export const LOCATION_ML: Record<string, string> = {
   'Koonammavu': 'കൂനമ്മാവ്',
   'Mulanthuruthy': 'മുളന്തുരുത്തി',
   'Kallara': 'കല്ലറ',
+  'Kottayam': 'കോട്ടയം',
 };
 
 export function locationLabel(location: string, lang: 'en' | 'ml'): string {
