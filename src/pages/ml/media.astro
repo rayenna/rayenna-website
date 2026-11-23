@@ -288,6 +288,7 @@ const installCount = installations.length;
                   <button type="button" class="gf-pill" data-type="cap" data-val="4 kW">4 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="5 kW">5 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="6 kW">6 kW</button>
+                  <button type="button" class="gf-pill" data-type="cap" data-val="8 kW">8 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="10 kW">10 kW</button>
                   <button type="button" class="gf-pill" data-type="cap" data-val="15 kW">15 kW</button>
                 </div>
@@ -297,12 +298,12 @@ const installCount = installations.length;
                 <div class="gf-pills">
                   <button type="button" class="gf-pill gf-pill--active" data-type="inv" data-val="all">{mg.all}</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Deye">Deye</button>
-                  <button type="button" class="gf-pill" data-type="inv" data-val="Deye Hybrid">Deye Hybrid</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Eastman">Eastman</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Feston">Feston</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Growatt">Growatt</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Havells">Havells</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Polycab">Polycab</button>
+                  <button type="button" class="gf-pill" data-type="inv" data-val="PVblink">PVblink</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Selec">Selec</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Solaire">Solaire</button>
                   <button type="button" class="gf-pill" data-type="inv" data-val="Solis">Solis</button>
@@ -2152,12 +2153,18 @@ body.gf-sheet-open {
     chipsEl.appendChild(clearChip);
   }
 
+  function matchesInverter(cardInv, selected) {
+    if (selected === 'all') return true;
+    if (selected === 'Deye') return cardInv === 'Deye' || cardInv === 'Deye Hybrid';
+    return cardInv === selected;
+  }
+
   function applyFilters() {
     let visible = 0;
     cards.forEach((card) => {
       const match =
         (filters.cap === 'all' || card.dataset.cap === filters.cap) &&
-        (filters.inv === 'all' || card.dataset.inv === filters.inv) &&
+        matchesInverter(card.dataset.inv, filters.inv) &&
         (filters.pan === 'all' || card.dataset.pan === filters.pan);
       card.style.display = match ? '' : 'none';
       if (match) visible++;
