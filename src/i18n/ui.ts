@@ -337,6 +337,8 @@ const ui = {
       empty: 'No installations match the selected filters.',
       reset: 'Reset filters',
       removeFilterAria: 'Remove {label} filter',
+      brandsTitle: 'Top Quality Installation Using Leading Brands',
+      brandsAria: 'Leading brand partners',
     },
     waTooltip: 'Chat with us!',
     officeMap: {
@@ -659,6 +661,8 @@ const ui = {
       empty: 'തിരഞ്ഞെടുത്ത ഫിൽട്ടറുകളുമായി പൊരുത്തപ്പെടുന്ന ഇൻസ്റ്റാളേഷനുകളില്ല.',
       reset: 'ഫിൽട്ടറുകൾ റീസെറ്റ് ചെയ്യുക',
       removeFilterAria: '{label} ഫിൽട്ടർ നീക്കം ചെയ്യുക',
+      brandsTitle: 'മുൻനിര ബ്രാൻഡുകൾ ഉപയോഗിച്ചുള്ള മികച്ച നിലവാരമുള്ള ഇൻസ്റ്റാളേഷൻ',
+      brandsAria: 'മുൻനിര ബ്രാൻഡ് പങ്കാളികൾ',
     },
     waTooltip: 'ഞങ്ങളോട് ചാറ്റ് ചെയ്യുക!',
     officeMap: {

@@ -1,0 +1,197 @@
+---
+interface Props {
+  title: string;
+  ariaLabel?: string;
+}
+
+const { title, ariaLabel = 'Leading brand partners' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const logoBase = `${base}/media/brand-logos`;
+
+const brands = [
+  { name: 'Adani', file: 'adani.png' },
+  { name: 'Deye', file: 'deye.jpeg' },
+  { name: 'Emmvee', file: 'emmvee.jpeg' },
+  { name: 'Finolex', file: 'finolex.jpeg' },
+  { name: 'Havells', file: 'havells.png' },
+  { name: 'L&T', file: 'l-and-t.png' },
+  { name: 'Polycab', file: 'polycab.png' },
+  { name: 'PVblink', file: 'pvblink.png' },
+  { name: 'Renew', file: 'renew.png' },
+  { name: 'Solis', file: 'solis.jpeg' },
+  { name: 'Waaree', file: 'waaree.jpeg' },
+];
+
+const track = [...brands, ...brands];
+---
+
+<section class="brand-strip" aria-label={ariaLabel}>
+  <div class="container brand-strip__header">
+    <h2 class="brand-strip__title">{title}</h2>
+  </div>
+
+  <div class="brand-strip__viewport" role="region" aria-label={ariaLabel}>
+    <div class="brand-strip__fade brand-strip__fade--left" aria-hidden="true"></div>
+    <div class="brand-strip__fade brand-strip__fade--right" aria-hidden="true"></div>
+    <div class="brand-strip__track">
+      {track.map((brand, i) => (
+        <div class="brand-strip__item" aria-hidden={i >= brands.length ? 'true' : undefined}>
+          <div class="brand-strip__logo-slot">
+            <img
+              src={`${logoBase}/${brand.file}`}
+              alt={i < brands.length ? brand.name : ''}
+              loading="lazy"
+              decoding="async"
+              width="160"
+              height="64"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .brand-strip {
+    --brand-strip-bg: #f7f8fb;
+    --brand-strip-slot-h: 56px;
+    --brand-strip-slot-w: 140px;
+    padding: 36px 0 28px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, var(--brand-strip-bg) 40%, #ffffff 100%);
+    border-bottom: 1px solid rgba(30, 58, 95, 0.06);
+    overflow: hidden;
+  }
+
+  .brand-strip__header {
+    text-align: center;
+    margin-bottom: 22px;
+    padding-inline: 16px;
+  }
+
+  .brand-strip__title {
+    margin: 0 auto;
+    max-width: 34ch;
+    font-family: var(--font-display, 'Plus Jakarta Sans', system-ui, sans-serif);
+    font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: var(--color-navy, #1e3a5f);
+  }
+
+  .brand-strip__viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .brand-strip__fade {
+    display: none;
+  }
+
+  .brand-strip__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 12px;
+    padding: 8px 0;
+    animation: brand-marquee 42s linear infinite;
+    will-change: transform;
+  }
+
+  .brand-strip__viewport:hover .brand-strip__track {
+    animation-play-state: paused;
+  }
+
+  .brand-strip__item {
+    flex: 0 0 auto;
+  }
+
+  .brand-strip__logo-slot {
+    width: var(--brand-strip-slot-w);
+    height: var(--brand-strip-slot-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid rgba(30, 58, 95, 0.08);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(20, 35, 75, 0.04);
+  }
+
+  .brand-strip__logo-slot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  @keyframes brand-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 767px) {
+    .brand-strip {
+      --brand-strip-slot-h: 48px;
+      --brand-strip-slot-w: 118px;
+      padding: 28px 0 20px;
+    }
+    .brand-strip__header { margin-bottom: 16px; }
+    .brand-strip__track {
+      gap: 10px;
+      animation-duration: 36s;
+    }
+    .brand-strip__logo-slot {
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .brand-strip {
+      --brand-strip-slot-h: 52px;
+      --brand-strip-slot-w: 132px;
+      padding: 32px 0 24px;
+    }
+    .brand-strip__track { animation-duration: 40s; }
+  }
+
+  @media (min-width: 1200px) {
+    .brand-strip {
+      --brand-strip-slot-h: 60px;
+      --brand-strip-slot-w: 152px;
+      padding: 40px 0 32px;
+    }
+    .brand-strip__track {
+      gap: 14px;
+      animation-duration: 48s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-strip__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      gap: 12px;
+    }
+    .brand-strip__viewport {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+    .brand-strip__item[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MediaGalleryLightbox from '../components/MediaGalleryLightbox.astro';
+import BrandLogoStrip from '../components/BrandLogoStrip.astro';
 import { useTranslations } from '../i18n/ui';
 import { OG } from '../i18n/og-images';
 import { buildVideoLibrarySchema } from '../utils/media-video-schema';
@@ -220,6 +221,7 @@ const videoLibrarySchema = buildVideoLibrarySchema(siteUrl, videos, `${siteUrl}/
     </button>
   </section>
 
+  <BrandLogoStrip title={mg.brandsTitle} ariaLabel={mg.brandsAria} />
 
   <!-- ===== INSTALLATION GALLERY ===== -->
   <section class="gallery-section" id="gallery-section">
