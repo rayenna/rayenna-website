@@ -10,15 +10,15 @@ const logoBase = `${base}/media/brand-logos`;
 
 const brands = [
   { name: 'Adani', file: 'adani.png' },
-  { name: 'Deye', file: 'deye.jpeg' },
+  { name: 'Deye', file: 'deye.jpeg', scale: 1.18 },
   { name: 'Emmvee', file: 'emmvee.jpeg' },
-  { name: 'Finolex', file: 'finolex.jpeg' },
+  { name: 'Finolex', file: 'finolex.jpeg', scale: 1.12 },
   { name: 'Havells', file: 'havells.png' },
-  { name: 'L&T', file: 'l-and-t.png' },
-  { name: 'Polycab', file: 'polycab.png' },
+  { name: 'L&T', file: 'l-and-t.png', scale: 1.1 },
+  { name: 'Polycab', file: 'polycab.png', scale: 1.14 },
   { name: 'PVblink', file: 'pvblink.png' },
   { name: 'Renew', file: 'renew.png' },
-  { name: 'Solis', file: 'solis.jpeg' },
+  { name: 'Solis', file: 'solis.jpeg', scale: 1.16 },
   { name: 'Waaree', file: 'waaree.jpeg' },
 ];
 
@@ -36,7 +36,10 @@ const track = [...brands, ...brands];
     <div class="brand-strip__track">
       {track.map((brand, i) => (
         <div class="brand-strip__item" aria-hidden={i >= brands.length ? 'true' : undefined}>
-          <div class="brand-strip__logo-slot">
+          <div
+            class="brand-strip__logo-slot"
+            style={brand.scale ? `--logo-scale: ${brand.scale}` : undefined}
+          >
             <img
               src={`${logoBase}/${brand.file}`}
               alt={i < brands.length ? brand.name : ''}
@@ -112,6 +115,7 @@ const track = [...brands, ...brands];
   }
 
   .brand-strip__logo-slot {
+    --logo-scale: 1;
     width: var(--brand-strip-slot-w);
     height: var(--brand-strip-slot-h);
     display: flex;
@@ -122,6 +126,7 @@ const track = [...brands, ...brands];
     border: 1px solid rgba(30, 58, 95, 0.08);
     border-radius: 14px;
     box-shadow: 0 4px 14px rgba(20, 35, 75, 0.04);
+    overflow: hidden;
   }
 
   .brand-strip__logo-slot img {
@@ -130,6 +135,8 @@ const track = [...brands, ...brands];
     height: 100%;
     object-fit: contain;
     object-position: center;
+    transform: scale(var(--logo-scale));
+    transform-origin: center;
   }
 
   @keyframes brand-marquee {
