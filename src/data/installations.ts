@@ -27,6 +27,7 @@ export const INSTALLATIONS: Installation[] = [
   { name: 'Haridas',           location: 'Karimughal',    capacity: '5 kW',  inverter: 'Solis',       panels: 'Adani',  img: 'HARIDAS-KARIMUGHAL-5KW-SOLIS-INVERTER-PANELS-ADANI.png' },
   { name: 'Hyder',             location: 'Edapally',      capacity: '5 kW',  inverter: 'Solis',       panels: 'Waaree', img: 'HYDEREDAPALLY5KW-SOLIS-INVERTER-PANELS-WAAREE.jpeg' },
   { name: 'Jagathikumar',      location: 'Mattancherry',  capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JAGATHIKUMAR-MATTANCHERRY-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
+  { name: 'Jeevan',            location: 'Fort Kochi',    capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JEEVAN-FORTKOCHI-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Jelees',            location: 'Mahe',          capacity: '5 kW',  inverter: 'Feston',      panels: 'Waaree', img: 'JELEESMAHE5KW-FESTON-INVERTER-PANELS-WAAREE-1.jpeg' },
   { name: 'Joby',              location: 'Chalakudy',     capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JOBYCHALAKUDY3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
   { name: 'Johnson',           location: 'Thevara',       capacity: '3 kW',  inverter: 'Deye',        panels: 'Adani',  img: 'JOHNSON-THEVARA-3KW-DEYE-INVERTER-PANELS-ADANI.jpeg' },
